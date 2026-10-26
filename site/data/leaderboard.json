@@ -1,21 +1,22 @@
 {
   "schema": "wbggems.public-feed.v1",
-  "generated_at": "2026-10-26T22:08:56.049736+00:00",
+  "generated_at": "2026-10-26T22:18:24.473425+00:00",
   "leaderboard": {
     "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
     "evidence": "ORGANIZER-PUBLISHED LEADERBOARD; NOT A SUBMISSION RECEIPT",
-    "checked_at": "2026-10-26T22:08:56.049736+00:00",
+    "checked_at": "2026-10-26T22:18:24.473425+00:00",
     "status": "stale",
     "value": 0.4437,
     "observed_at": "2026-10-26T21:47:34+00:00",
     "notice": "Official page could not be fetched or parsed; showing dated fallback if available."
   },
-  "site_ref_notice": "Changed refs indicate a freshness review is needed, not an automatic audit of new files.",
+  "site_ref_notice": "Changed refs are compared with an observed HEAD baseline, not the historic raster pins; they require review and are not an automatic audit.",
+  "baseline_observed_at": "2026-10-26T21:56:11.098339+00:00",
   "sites": [
     {
       "site": "GEMSDOE24",
       "baseline_sha": "a433b430b74b813a9118ebd4ec438b12cbc69f46",
-      "latest_sha": "3dfe2dec1e7d9359858e835733ff0d64bb1b3fd1",
+      "latest_sha": "a97aefe1287bed996e4d6dcdbf379de99e7ddd5c",
       "status": "changed"
     },
     {
@@ -33,7 +34,7 @@
     {
       "site": "GEMSDOE28",
       "baseline_sha": "2c839d10f57ec9b074829e93c84bc39935f52896",
-      "latest_sha": "ec1d501fd12c8dee9dc062726003639dec9382ff",
+      "latest_sha": "63851bca9f3e98b4fc7a79616aeb9fb0dd3baf7f",
       "status": "changed"
     },
     {
@@ -45,7 +46,7 @@
     {
       "site": "GEMSDOE31",
       "baseline_sha": "eeb7da54ca4a8ae056f45e5b23eeef586ad79bf2",
-      "latest_sha": "063704b18b62ca06a6ae915d36b1ac7182b4a9b3",
+      "latest_sha": "307553d15ac7c020505fc6b270949bedc5a22fa2",
       "status": "changed"
     },
     {

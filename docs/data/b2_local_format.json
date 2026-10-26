@@ -1,0 +1,60 @@
+{
+  "path": ".cache/priority-audit/GEMSDOE32.tif",
+  "bytes": 219065,
+  "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+  "bands": 1,
+  "dtype": "float32",
+  "crs": "EPSG:32611",
+  "width": 3292,
+  "height": 3730,
+  "bounds": [
+    243350.0,
+    4135550.0,
+    572550.0,
+    4508550.0
+  ],
+  "ref_bounds": [
+    243350.0,
+    4135550.0,
+    572550.0,
+    4508550.0
+  ],
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "nodata": null,
+  "blocksize": [
+    256,
+    256
+  ],
+  "fixture_grid": false,
+  "has_validity_mask": false,
+  "nan_pixels": 0,
+  "infinity_pixels": 0,
+  "n_nan": 0,
+  "min": 0.0,
+  "max": 1.0,
+  "mean": 0.0030664964579045773,
+  "n_nonzero": 37654,
+  "mass": 37654.0,
+  "mass_outside_footprint": 0,
+  "problems": [],
+  "ok": true,
+  "validation_class": "local on-disk template/range check; not organizer upload acceptance",
+  "evidence_class": "LOCAL-FORMAT-MEASUREMENT",
+  "reference_provenance": "Hash-pinned third-party mirror; not organizer authenticated",
+  "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "no_nan_inside_footprint": true,
+  "organizer_acceptance": "unknown",
+  "official_outside_footprint_nodata_compliance": "not established by all-finite check",
+  "scientific_holdout": "not checked by this command",
+  "registry_surface_and_final": "not checked by this command",
+  "ok_to_submit": false,
+  "verdict": "research-only; local format is not promotion or slot selection",
+  "inside_values_in_0_1": true
+}

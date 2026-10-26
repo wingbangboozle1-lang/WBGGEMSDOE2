@@ -18,3 +18,8 @@ Checked 2026-10-26 UTC. “Access” distinguishes a page read through the resea
 | [Shared evaluator/writer template](https://github.com/buffedlizard55-lab/57GEMSDOE/tree/822a0ce5546c7b6749cdd82eb145b6b3e616603d) | Reusable evaluator `gems57-pooled-hide-v2`, submission writer and tests. | Unmodified code restored by Git blob hash; 8 upstream evaluator unit tests passed. Its derived `bank_u8.npy` cache is not in the pinned public tree. Full-catalogue-derived geometric caches must be rebuilt fold-locally, not copied into holdout features. No scientific holdout run was made. |
 
 The requester supplied public Dropbox links, but this sandbox cannot directly access Dropbox and the competition data page requires login. This does not prove the public mirror is the same file as the portal's current data. The public leaderboard figure shown in the site is an organizer-published page observation, not an organizer-confirmed submission receipt. Historical owner-reported numbers are unverified and are not treated as scores.
+
+
+## Source-metadata disagreement
+
+The official [provided-feature description](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features) says **depth to conductive base surface**. The owner-mirrored raster description calls band 15 “depth to basement surface”; that is not sufficient to assert geological basement or units. Band 6's mirror description also disagrees with the official page's radiometric `tc` illustration. Verify original metadata and units before interpreting either band or implementing a depth-dependent shift.

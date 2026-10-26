@@ -1,10 +1,10 @@
-name: Publish evidence dashboard
+name: Publish GEMS dashboards
 
 on:
   push:
     branches: [main]
   schedule:
-    - cron: '15 */6 * * *'
+    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -17,26 +17,44 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Build hash-audit dashboard data
-        run: python scripts/build_site_data.py
-      - name: Refresh public observations, fail closed on inaccessible sources
+      - name: Refresh public leaderboard (stale on failure)
+        run: python scripts/refresh_leaderboard.py
+      - name: Check priority-site commit freshness (no new raster audit)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/refresh_registry_refs.py
+      - name: Refresh fieldnotes feed (stale on failure)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/refresh_feed.py
+      - name: Rebuild both evidence-first static sites
+        run: |
+          python scripts/build_run_card.py
+          python scripts/build_site.py
+          python scripts/build_site_data.py
+      - name: Stage the same URL layout as legacy Pages
+        run: |
+          mkdir -p _site/docs _site/site
+          cp -R docs/. _site/docs/
+          cp -R site/. _site/site/
+          cp index.html .nojekyll _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
-      - name: Deploy
-        id: deployment
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
         uses: actions/deploy-pages@v4

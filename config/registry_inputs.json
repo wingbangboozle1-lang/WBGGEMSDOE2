@@ -1,6 +1,6 @@
 {
   "schema": "gems-audit-inputs-v1",
-  "scope": "Nine owner-reported historical best files plus the 13GEMSDOE lattice. This is NOT a complete registry.",
+  "scope": "Nine owner-reported historical best files, a submitted binary lattice, a registered continuous prior, and two other research files. This is NOT a complete registry.",
   "inputs": [
     {
       "id": "GEMSDOE24",
@@ -145,6 +145,20 @@
       "user_reported_claim": null,
       "claim_evidence": null,
       "url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/3ec02bc8a15957df451c8f862b45123023c5812c/docs/downloads/gemsdoe32-h47-lli-unique-coupling-49231-20261026T230000Z-33464ce2-zeros.tif?raw=1"
+    },
+    {
+      "id": "17GEMSDOE_dense_prior",
+      "repo": "buffedlizard55-lab/17GEMSDOE",
+      "commit": "6fc71d19d49dca4960d5434bd81b6dd06fcc030a",
+      "path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "git_blob": "374c88b1da2b803e2ed160de467fd71ae114010d",
+      "bytes": 25065181,
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "support_type": "continuous_probability",
+      "user_reported_claim": null,
+      "claim_evidence": "Not a historical score claim",
+      "url": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif?raw=1",
+      "registry_evidence": "https://github.com/buffedlizard55-lab/57GEMSDOE/blob/822a0ce5546c7b6749cdd82eb145b6b3e616603d/evidence/registry_profile_session6.json"
     }
   ]
 }

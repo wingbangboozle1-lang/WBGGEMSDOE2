@@ -1,10 +1,13 @@
-# Re-creatable datasets, registry downloads, Python and local runtime state
+# Restorable competition inputs, research rasters and generated local state
 /data/
 /scratch/
 /.venv/
 /.cache/
 /out/
+/_site/
 __pycache__/
 *.py[cod]
+*.partial
 .pytest_cache/
 .coverage
+.DS_Store

@@ -31,7 +31,7 @@ async function loadLeaderboard() {
       const rows = Array.isArray(data.sites) ? data.sites : [];
       const changed = rows.filter(x => x.status === 'changed').length;
       const unknown = rows.filter(x => x.status === 'unknown').length;
-      refs.textContent = rows.length ? `${changed} site refs changed, ${unknown} unknown since the recorded snapshot. New files are not automatically audited.` : 'Site-ref freshness has not yet been checked by the scheduled feed.';
+      refs.textContent = rows.length ? `${changed} site refs changed, ${unknown} unknown since the ${utcLabel(data.baseline_observed_at)} HEAD observation (not the older file pins). New files are not automatically audited.` : 'Site-ref freshness has not yet been checked by the scheduled feed.';
     }
   } catch (_) {
     const meta = document.getElementById('leader-meta');

@@ -140,7 +140,8 @@ def refresh(fallback, snapshots, *, fetch=get_url, now=None):
     with ThreadPoolExecutor(max_workers=4) as executor:
         site_results = list(executor.map(site_status, snapshots["sites"]))
     return {"schema": "wbggems.public-feed.v1", "generated_at": now, "leaderboard": lead,
-            "site_ref_notice": "Changed refs indicate a freshness review is needed, not an automatic audit of new files.",
+            "site_ref_notice": "Changed refs are compared with an observed HEAD baseline, not the historic raster pins; they require review and are not an automatic audit.",
+            "baseline_observed_at": snapshots.get("captured_at"),
             "sites": site_results}
 
 

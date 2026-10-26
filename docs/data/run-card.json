@@ -1,0 +1,78 @@
+{
+  "schema": "wbggems.run-card.v1",
+  "generated_utc": "2026-10-26T22:00:04.530607+00:00",
+  "hypothesis": "H1: depth-shifted, multiscale gravity and magnetic discontinuities may indicate concealed basin faults.",
+  "mechanism": "Paired signed gravity\u2013magnetic gradients, displaced using an unvalidated conductive-base-depth/dip proxy; both magnetic polarities are possible.",
+  "non_fault_mimic": "Unfaulted lithologic contact, intrusive dike, and acquisition striping.",
+  "lane_status": "Provisionally named; no explicit single method lane was supplied; no candidate produced.",
+  "experiment_budget": {
+    "experiments_run": 0,
+    "maximum_experiments": 3,
+    "maximum_hours": 2,
+    "weekly_slots_used": 0
+  },
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "status": "not run: the literal registry preflight blocks placement and the method lane was not assigned",
+    "intended_evaluator_version": "gems57-pooled-hide-v2"
+  },
+  "feature_canary": {
+    "status": "not run; no surface or features were evaluated"
+  },
+  "uniqueness": {
+    "registry_scope": "13 pinned raster references including a binary lattice and a continuous prior; incomplete inventory",
+    "candidate_surface_correlation": null,
+    "candidate_final_overlap": null,
+    "status": "no candidate constructed",
+    "witness": "13GEMSDOE stride-5 lattice",
+    "standard_budget": 37654,
+    "minimum_overlap_bound": 0.8234184947150369,
+    "limit": 0.7,
+    "observed_other_site_H31_overlap": 0.9961491475009295,
+    "dense_prior_witness": "17GEMSDOE continuous probability prior",
+    "dense_prior_full_footprint_positive": true,
+    "dense_prior_policy_caveat": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "not run; no candidate raster",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "reference": "owner mirror; not authenticated"
+  },
+  "submission_name": null,
+  "proposed_research_name": "WBGGEMSDOE2-H1-RESEARCH-20261026",
+  "note": "H1 untested; research only. Literal registry preflight blocked. DO NOT SUBMIT.",
+  "ok_to_submit": false,
+  "verdict": "negative",
+  "experiment_count": 0,
+  "weekly_submission_slots_used": 0,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "NOT RUN",
+    "evaluator_version": null,
+    "intended_evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": null,
+    "value": null,
+    "ci95": null,
+    "reason": "No assigned lane and literal registry preflight blocked."
+  },
+  "registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "surface_rank_correlation": null,
+    "final_dot_overlap": null,
+    "all_current_registry_rasters_checked": false,
+    "binary_lattice_example_budget": 37654,
+    "binary_lattice_minimum_overlap_at_budget": 0.8234184947150369,
+    "dense_probability_prior_full_footprint": true,
+    "interpretation": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
+  },
+  "submission_note": null,
+  "ok_to_download_new_tif": false,
+  "updated_utc": "2026-10-26T22:18:22.949685+00:00"
+}

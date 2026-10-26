@@ -6,9 +6,9 @@
 
 Read this README, including the original project brief below, then read the current findings and run card. **Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome** by surfacing limitations and fixing defects rather than hiding them. Historical instructions and snapshots are not a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New instructions and current evidence take precedence over stale facts in the preserved prompt.
 
-The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The shared derived feature cache is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
+The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
 
-A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. The protocol says stop, not silently exempt the lattice or force edge dots. No new TIFF was generated after that stop. The nine historical downloads are research-only.
+A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. No new TIFF was generated after that stop. The nine historical downloads are research-only.
 
 ## Reproduce the audit
 
@@ -16,21 +16,26 @@ A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
-# Restores owner-mirrored inputs to ignored data/ and checks Git blob + SHA-256 hashes.
-python scripts/restore_public_mirrors.py
-# Restores unmodified shared evaluator/writer files at a pinned upstream commit.
+# Hash-check owner mirrors and rebuild the shared label-free 19-band cache.
+python scripts/prepare_data.py --fetch --cache-bands
+python scripts/restore_public_mirrors.py --small-only
 python scripts/fetch_shared_template.py
-PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_evaluate_holdout.py
-# Fetches pinned historical rasters for learning/audit only; no submission TIFF is made.
+# Reopen registered historical rasters for research only; no TIFF is created.
 python scripts/audit_registry.py --fetch
+python scripts/audit_portfolio.py --fetch
+python scripts/build_run_card.py
+python scripts/build_site.py
 python scripts/build_site_data.py
-pytest -q tests
-python -m http.server 8000 --bind 0.0.0.0 --directory site
+pytest -q
+PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_evaluate_holdout.py
+python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
 
 Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
 
-`python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters.
+`python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters. The concurrent `docs/` dashboard and `site/` fieldnotes both publish byte-identical copies of the single canonical run card; `docs/EXECUTIVE_SUMMARY.md` and `docs/RUN_CARD.json` are explicitly superseded snapshots.
+
+**Shared-tool defect to fix upstream:** the pinned `gems57.gates.format_report` can report a local format pass for finite pixels marked NoData inside the footprint. `scripts/validate_submission.py` now combines the unchanged shared result with a separate fail-closed mask check, but this is not a private fix of the shared tool. Correct and regression-test it in the shared template before future promotion. The shared metric's comment that truth-credit delta cannot exceed one dot's self-credit is also false on a multi-truth fixture; its tested scorer matched a brute-force oracle, but the documentation needs an upstream correction. The official feature description calls `depth_to_base_surf` conductive-base depth, whereas the mirror labels it basement depth; do not assume equivalence.
 
 ## Original project prompt
 

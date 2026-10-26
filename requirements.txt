@@ -1,4 +1,4 @@
-# Runtime for local raster audit and tests; templates remain externally pinned.
+# Runtime for the pinned shared template, independent audits and tests.
 numpy>=1.26,<3
 scipy>=1.11,<2
 rasterio>=1.3,<2

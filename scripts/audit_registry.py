@@ -58,14 +58,20 @@ def run(manifest_path, data_dir, fetch=False, budget=37_654):
         with rasterio.open(target) as src:
             a = src.read(1)
             inside = a[fp]
-            if not np.all((inside == 0) | (inside == 1)):
+            binary = bool(np.all((inside == 0) | (inside == 1)))
+            support_type = entry.get("support_type", "binary_dots")
+            if support_type not in {"binary_dots", "continuous_probability"}:
+                raise ValueError(f"Unknown support type for {entry['id']}")
+            if support_type == "binary_dots" and not binary:
                 raise ValueError(f"{entry['id']} is not binary; positive support is not a set of dots")
             dots = np.isfinite(a) & (a > 0) & fp
         if not dots.any():
             raise ValueError(f"{entry['id']} has no dots")
         masks[entry["id"]] = dots
         per_item[entry["id"]] = {
-            "sha256": entry["sha256"], "source": entry["url"], "dots": int(dots.sum()),
+            "sha256": entry["sha256"], "source": entry["url"],
+            "dots": int(dots.sum()) if support_type == "binary_dots" else None,
+            "positive_support_cells": int(dots.sum()), "support_type": support_type, "binary_in_footprint": binary,
             "format_valid_against_mirror": info["format_valid_against_reference"],
             "all_finite": info["all_finite"], "catalogue_exact_overlap": int((dots & catalogue).sum()),
             "within_2px_catalogue": int((dots & (cat_distance <= 2)).sum()),
@@ -97,8 +103,7 @@ def run(manifest_path, data_dir, fetch=False, budget=37_654):
     uncovered_near_edge = int((uncovered & (edge_distance <= 3)).sum())
     result = {
         "schema": "wbggems.registry-audit.v1", "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "scope": manifest["scope"] + " Also includes two named current research files. "
-                 "A failed witness is conclusive for this rule; no comprehensive uniqueness pass is claimed.",
+        "scope": manifest["scope"] + " A failed witness is conclusive for this rule; no comprehensive uniqueness pass is claimed.",
         "radius_px": 3, "distance_rule": "Euclidean distance <= 3 pixels", "overlap_limit": 0.70,
         "reference_is_authenticated_organizer_file": False,
         "reference_sample_equals_catalogue_positives": bool(np.array_equal(sample_positive, catalogue)),
@@ -112,6 +117,13 @@ def run(manifest_path, data_dir, fetch=False, budget=37_654):
             "GEMSDOE32_equals_GEMSDOE25_pruned_at_2px": bool(np.array_equal(masks["GEMSDOE32"], masks["GEMSDOE25"] & (cat_distance > 2))),
             "GEMSDOE36_additions_to_32": int((masks["GEMSDOE36"] & ~masks["GEMSDOE32"]).sum()),
             "GEMSDOE36_removals_from_32": int((masks["GEMSDOE32"] & ~masks["GEMSDOE36"]).sum()),
+        },
+        "dense_probability_prior": {
+            "id": "17GEMSDOE_dense_prior", "positive_footprint_cells": int((masks["17GEMSDOE_dense_prior"] & fp).sum()),
+            "footprint_cells": int(fp.sum()),
+            "full_footprint_positive": bool(np.array_equal(masks["17GEMSDOE_dense_prior"], fp)),
+            "definition": "The shared literal gate treats every finite value > 0 as support; this is a continuous prior, not a dotted submission.",
+            "implication": "If that definition applies to continuous registry rasters, every nonempty candidate overlaps this prior by 100%; whether it should count as dots requires policy clarification.",
         },
         "surface_rank_correlation": "not evaluated: the original pre-placement surfaces are unavailable",
         "items": per_item,

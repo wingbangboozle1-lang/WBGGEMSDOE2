@@ -18,6 +18,7 @@ if (cap.get('budget') != 37654 or cap.get('footprint_cells') != 5167373
         or cap.get('uncovered_within_3px_of_footprint_exterior') != 6485
         or round(cap.get('minimum_overlap', 0), 4) != 0.8234
         or cap.get('feasible_under_limit') is not False
+        or audit.get('dense_probability_prior', {}).get('full_footprint_positive') is not True
         or not lineage.get('GEMSDOE25_and_30_identical_in_footprint')
         or not lineage.get('GEMSDOE32_equals_GEMSDOE25_pruned_at_2px')
         or lineage.get('GEMSDOE36_additions_to_32') != 1200
