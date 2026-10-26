@@ -1,51 +1,38 @@
 {
-  "status": "NEGATIVE / BLOCKED — research-only documentation; no experiment or TIFF generated",
-  "hypothesis": "Cross-sensor edge concordance with scale persistence: conditional on band-manifest verification and explicit lane assignment, co-located, directionally consistent magnetic and radiometric edges may identify unmapped fault-related lithologic/alteration boundaries.",
-  "mechanism": "Faults/fracture corridors may juxtapose rock units or alter near-surface geochemistry, producing coincident magnetic and radiometric contrasts. This is a hypothesis only; it was not tested.",
-  "named_non_fault_mimic": "Lithologic contacts or intrusive boundaries without a fault; also survey seams, flight-line artifacts, and altitude-correction residuals.",
+  "card_version": "1.0",
+  "run_id": "WBGGEMSDOE2-2026-10-26-review",
+  "status": "not_run_blocked",
+  "hypothesis": null,
+  "mechanism": null,
+  "named_non_fault_process_that_could_mimic_it": null,
   "holdout_dti": {
-    "evidence_label": "HOLDOUT-DTI",
-    "value": null,
-    "confidence_interval_95": null,
+    "label": "HOLDOUT-DTI",
     "evaluator_version": null,
-    "withheld_positive_count": null,
-    "status": "NOT RUN — no evaluator, cached feature stack, competition labels, or raster data in this checkout"
+    "withheld_positives": null,
+    "score": null,
+    "ci_95": null,
+    "status": "NOT RUN: shared evaluator and data are absent"
   },
-  "leakage_canary": {
-    "status": "NOT RUN — no features/evaluator available",
-    "per_feature_auc": null
-  },
-  "registry_uniqueness": {
-    "rank_correlation_max": null,
-    "dots_within_3px_max_fraction": null,
-    "status": "NOT ASSESSED — no candidate surface, final dots, or registry rasters available; no novelty claim"
+  "registry_comparison": {
+    "correlation_limit": 0.9,
+    "overlap_limit": 0.7,
+    "surface_correlation": null,
+    "preplacement_dot_overlap": null,
+    "final_correlation": null,
+    "final_dot_overlap": null,
+    "status": "NOT CHECKED: no actual raster registry is present"
   },
   "raster_sha256": null,
-  "validator_output": {
-    "status": "NOT RUN — no TIFF generated",
+  "validator": {
+    "status": "NOT RUN ON A SUBMISSION",
+    "local_validator_unit_tests": "PASS",
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
-    "single_band_float32": null,
-    "crs_epsg_32611_match": null,
-    "shape_match": null,
-    "transform_match": null,
-    "outside_footprint_null": null
+    "crs_shape_transform_match": null
   },
-  "submission": {
-    "name": null,
-    "note": "No candidate TIFF exists; do not submit."
-  },
+  "submission_name": null,
+  "submission_note": null,
   "verdict": "negative",
-  "blockers": [
-    "This repository contains no shared template, evaluator, writer, cached features, training data, or TIFF artifacts.",
-    "Official DrivenData data page redirects to login in this environment.",
-    "The assigned single-method lane paragraph is not identifiable in the available project files/context.",
-    "No pre-placement or final-dot registry comparison is possible.",
-    "No organizer submission-page receipt for the historical site claims is present."
-  ],
-  "source_context": {
-    "official_competition_specification": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
-    "official_live_leaderboard": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-    "review_date_utc": "2026-10-26"
-  }
+  "verdict_reason": "No candidate was generated or promoted. The method lane, competition data, shared cached feature stack, shared evaluator/writer, reference raster, and complete registry are absent from this checkout. This is a blocked/no-experiment disposition, not a measured negative HOLDOUT-DTI result.",
+  "weekly_submission_slot_spent": false
 }

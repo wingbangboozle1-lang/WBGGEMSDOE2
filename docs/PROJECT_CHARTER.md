@@ -55,4 +55,8 @@ Every delivery must include at least three passes:
 
 ## Competition sources and context
 
-Official source links are kept in `EXECUTIVE_SUMMARY.md`. The DrivenData competition specifies faults as the prediction target, provides a training feature GeoTIFF and known-fault labels, and describes public and private test sets of new expert-labeled faults. External data are permitted when the license allows challenge use and sharing with the sponsor. The official rules and organizer advice take precedence over this charter if they conflict.
+Official source links are kept in `EXECUTIVE_SUMMARY.md`. The DrivenData competition specifies faults as the prediction target, provides a training feature GeoTIFF and known-fault labels, and describes public and private test sets of new expert-labeled faults. External data are permitted when the license allows challenge use and sharing with the sponsor. The official rules and organizer advice take precedence over this charter if they conflict. The September 2026 rules also require disclosure of generative-AI use in the submission narrative, allow up to three weekly prediction submissions, and require one final selection across both prize rounds; verify the current rules at decision time.
+
+## Current implementation boundary
+
+A format-only checker now exists at `scripts/validate_submission.py` with unit tests. It checks an actual candidate against an actual reference TIFF and deliberately never authorizes upload. The repository still lacks the competition data, the shared evaluator/writer, a complete raster registry, and an explicitly assigned lane. `docs/RUN_CARD.json` is the current machine-readable no-experiment disposition. The static Pages entry point is `docs/index.html`; it is a snapshot, not a live leaderboard feed.

@@ -9,7 +9,7 @@ Read [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md) first. It preserves th
 ## Executive decision
 
 - **Best of the nine historical results as supplied by the user:** GEMSDOE32’s `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`, reported as **0.2778**. This is an **owner/user-reported historical claim**, not a HOLDOUT-DTI measurement or an organizer receipt in this checkout. The method’s causal explanation and score cannot be reproduced from the present repository.
-- **Current official public leaderboard snapshot:** the DrivenData leaderboard page showed **0.4437** at the top when reviewed on 2026-10-26. This is a live, organizer-hosted public leaderboard value, not a local holdout result and not a prediction for our model. See the official leaderboard link in the executive summary.
+- **Official public leaderboard check:** a page read on 2026-10-26 showed a leading entry above both purported current values quoted in the request (0.3195 and 0.4413; user-supplied, unsourced claims). The page is live and mutable. We do not copy its displayed score into this run record because it is not a saved submission-page receipt; refresh the official link in the executive summary before any decision.
 - **Submission to download:** **none**. There is no validated unique TIFF here. Do not submit any historical file or a renamed/perturbed copy.
 - **Score estimate for a new candidate:** **not estimable** until the competition rasters, same-evaluator spatial holdout results, and score calibration data are accessible. Do not treat a projection or a past site claim as a score.
 
@@ -31,3 +31,9 @@ The immediate blocker is not GPU compute: it is missing data and missing shared 
 
 - **Maximize P(Win)** — spend effort only on falsifiable experiments that outperform the current same-evaluator holdout champion and pass duplicate/leakage/format gates; never spend a slot on an untested hunch.
 - **Own the Outcome:** report negative results, missing evidence, blockers, and defects clearly; repair shared tools at their source and preserve reproducibility.
+
+## Local format gate and project site
+
+The [static executive summary](docs/index.html) is served from the repository's GitHub Pages site. It states the current no-file decision at the top; it is a manually refreshed snapshot, not an automated live leaderboard/registry feed. No stable public machine-readable endpoint was verified for a current feed, and the runtime cannot query DrivenData from shell. The local [GeoTIFF format checker](scripts/validate_submission.py) compares the saved candidate to the official sample/reference grid and checks one GeoTIFF band, float32, exact CRS/shape/transform, all-cell finite values in [0,1], and the reference footprint. It cannot test uniqueness, leakage, holdout DTI, or portal acceptance, and always returns `submission_authorized: false`.
+
+Run tests with `python -m pip install -r requirements-audit.txt && python -m unittest discover -s tests -v`. Do not upload a format-pass TIFF without the independent shared holdout/uniqueness/selector gates.
