@@ -188,3 +188,30 @@ def test_inspection_cli_exits_blocked_even_after_successful_format_check():
     assert proc.returncode == 2, proc.stderr
     data = json.loads(proc.stdout)
     assert data['format_report']['ok'] is True and data['submission_allowed'] is False
+
+
+def test_raw_input_restore_checks_binary_bytes_and_is_atomic(tmp_path, monkeypatch):
+    import hashlib
+    from scripts import restore_audit_inputs as restore
+    monkeypatch.setattr(restore, 'ROOT', tmp_path)
+    good = b'\x00\xff\x80uninterpreted binary'
+    item = {'cache_path': '.cache/audit/fixture.tif', 'sha256': hashlib.sha256(good).hexdigest(),
+            'path': 'test.tif', 'ref': 'pinned'}
+    monkeypatch.setattr(restore, 'download_api', lambda repo, record, out: out.write(good))
+    assert restore.restore('public/repo', item) == 'downloaded and verified'
+    path = tmp_path / item['cache_path']
+    assert path.read_bytes() == good
+    # A bad replacement cannot overwrite even an old, differently hashed file.
+    path.write_bytes(b'old')
+    monkeypatch.setattr(restore, 'download_api', lambda repo, record, out: out.write(b'bad'))
+    with pytest.raises(ValueError, match='SHA-256 mismatch'):
+        restore.restore('public/repo', item)
+    assert path.read_bytes() == b'old' and not list(path.parent.glob('*.partial'))
+
+
+def test_github_redirect_never_forwards_credentials_to_other_hosts():
+    from urllib.request import Request
+    from scripts.restore_audit_inputs import GitHubAPIRedirectOnly
+    req = Request('https://api.github.com/test', headers={'Authorization': 'Bearer not-a-real-token'})
+    with pytest.raises(ValueError, match='refusing'):
+        GitHubAPIRedirectOnly().redirect_request(req, None, 302, '', {}, 'https://example.invalid/')
