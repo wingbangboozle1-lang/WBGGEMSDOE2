@@ -1,6 +1,6 @@
 # GEMS research & submission decision
 
-**Verdict: NEGATIVE — no new GeoTIFF is approved, downloadable, or submitted.** The request’s literal any-registry uniqueness rule and the unchanged shared template’s finite-positive support definition make the registered, fully positive continuous prior a universal 100% overlap witness. The intention behind applying a dot-overlap rule to a continuous probability map needs a policy decision; there is no authorized exemption here. In addition, no assigned single-method paragraph was included in this session’s brief.
+**Verdict: NEGATIVE — no GeoTIFF is approved for submission.** A file from a parallel run exists as a historical research artifact, but fails the strict uniqueness rule and must not be uploaded. The request’s literal any-registry uniqueness rule and the unchanged shared template’s finite-positive support definition make the registered, fully positive continuous prior a universal 100% overlap witness. The intention behind applying a dot-overlap rule to a continuous probability map needs a policy decision; there is no authorized exemption here. In addition, no assigned single-method paragraph was included in this session’s brief.
 
 [Open the GitHub Pages dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) · [Executive summary](docs/executive-summary.html) · [Research and sources](docs/research/evidence-and-sources.md) · [Hypotheses](docs/research/hypotheses.md) · [Machine-readable negative run card](docs/data/run-card.json)
 
@@ -9,7 +9,7 @@
 - GEMSDOE32 B2’s **USER-REPORTED, unverified** 0.2778 is the highest among the nine requested historical values, not an organizer receipt or proof of future performance. Its 37,654 positive cells equal the GEMSDOE25 D2.8 baseline minus 6,436 cells within 2 pixels of the mirrored known-fault catalogue. Sparser mass and better 300 m coverage are plausible scoring mechanisms, not proven causes.
 - Each of the nine independently hash-verified historical rasters overlaps another priority raster by more than 70% within 3 pixels. The audit is pinned and does not claim to cover every current raster or unretained pre-placement surfaces. The [HEAD check](docs/data/focus-freshness.json) separately flags changes since the pinned refs; it does **not** audit newer rasters.
 - An independently verified binary lattice covers 5,160,724 of 5,167,373 footprint pixels within 3 pixels, forcing at least 82.341849% overlap for any 37,654-distinct-dot set. That lattice alone does **not** rule out all smaller sets. The continuous-prior blocker is separate and depends on the literal shared definition and unresolved policy interpretation.
-- Zero candidate experiments and zero submission slots were used. No candidate holdout DTI, confidence interval, final uniqueness scan, candidate hash, or organizer-confirmed score is claimed.
+- This review ran zero model experiments and used zero submission slots. A separate parallel run reported three experiments and produced a candidate; its local holdout is not accepted as protocol-valid. The independently audited candidate fails the binary-lattice gate; no organizer-confirmed score or upload is claimed.
 - The timestamped official public leaderboard is a snapshot, **not** a prediction for a candidate. Scheduled refresh marks failed observations stale and never fabricates an observation time. Historical claims remain explicitly USER-REPORTED.
 
 ## Reproduce locally
@@ -24,15 +24,17 @@ python3 -m venv .venv
 .venv/bin/python scripts/prepare_data.py --fetch --cache-bands
 # Hash-check and audit the nine historical rasters and both independent witnesses.
 .venv/bin/python scripts/audit_portfolio.py --fetch
+# Audit the existing parallel-run TIFF against the same pinned witnesses.
+.venv/bin/python scripts/audit_parallel_candidate.py --fetch
 .venv/bin/python scripts/build_run_card.py
 .venv/bin/python scripts/build_site.py
 .venv/bin/python -m pytest -q
 python3 -m http.server 8000 --directory docs
 ```
 
-`bash scripts/download_competition_data.sh` is an equivalent convenience entry point. The concurrently merged project charter remains at [docs/PROJECT_CHARTER.md](docs/PROJECT_CHARTER.md); its earlier executive summary and run card are explicitly marked superseded. The earlier independent format diagnostic is retained as `scripts/legacy_format_validator.py` only for compatibility, not as the shared gate. Large files live under ignored `data/official/` and `.cache/`, not Git. Pinned mirror hashes establish integrity, **not** organizer authentication; official data require a DrivenData login, and mirror authenticity and external-data licenses should be independently confirmed before competition use. The supplied sample contains known-fault positives, so use it only for footprint/grid metadata, not negative labels. Restoring data does not create the lane model, run experiments, prove leakage safety, or unlock upload.
+`bash scripts/download_competition_data.sh` is an equivalent convenience entry point. The concurrently merged project charter remains at [docs/PROJECT_CHARTER.md](docs/PROJECT_CHARTER.md); its earlier executive summary and run card are explicitly marked superseded. The earlier independent format diagnostic is retained as `scripts/legacy_format_validator.py` only for compatibility, not as the shared gate. Large files live under ignored `data/official/` and `.cache/`, not Git. Pinned mirror hashes establish integrity, **not** organizer authentication; official data require a DrivenData login, and mirror authenticity and external-data licenses should be independently confirmed before competition use. The supplied sample contains known-fault positives, so use it only for footprint/grid metadata, not negative labels. Restoring data does not validate the parallel lane, prove leakage safety, or unlock upload.
 
-To test a historical raster's local format only, run `python scripts/validate_submission.py PATH_TO_FILE.tif`. It invokes the unchanged pinned shared validator and always returns `ok_to_submit=false`: local checks cannot authorize an upload or settle the organizer's outside-NaN versus zero-outside ambiguity. No prior raster should be uploaded as a new candidate.
+To test a historical raster's local format only, run `python scripts/validate_submission.py PATH_TO_FILE.tif`. It invokes the unchanged pinned shared validator and always returns `ok_to_submit=false`: local checks cannot authorize an upload or settle the organizer's outside-NaN versus zero-outside ambiguity. The parallel TIFF is retained for research only and must not be uploaded.
 
 ## Operations and next steps
 
@@ -854,3 +856,13 @@ Do not stop after the first pass. Each pass must build on the previous one. Befo
 Go ahead and create a pull request and then merge the pull request onto the main. Make suggestions for what work still needs to be done and any limitations that is in the way of a successful project.  It should be worked on in this next session or the next session.  Work line by line verify everything no hallucinations.
 
 </details>
+
+---
+
+## Parallel H1 run — superseded by independent audit
+
+Another session produced `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif` (SHA-256 `592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33`). It reported a narrow pass against nine selected files; that did **not** test every registered raster or the true pre-placement surface. Our [independent saved-byte audit](evidence/parallel_candidate_audit.json) found **34,351 / 34,564 dots (99.38%)** within three pixels of the registered binary lattice, so the candidate is a **duplicate / STOP**, regardless of the continuous-prior ambiguity. It is also 100% overlapping with the continuous prior under the shared literal finite-positive definition. **Do not submit it.**
+
+The parallel run's reported HOLDOUT-DTI values use a separate evaluator; its training-negative sampling references the full catalogue, including withheld labels, and the feature canary was reported only for fold 0. They are not accepted as a leakage-free shared-template holdout or matched champion comparison. The extrapolated live projection is uncalibrated and is not a score. Raw TIFF values are finite and locally grid-matched, but `nodata=0` causes its dataset mask to mark 5,132,809 in-footprint zero cells invalid; portal handling is unverified. The shared format checker reports the mask but does not reject it, so local PASS cannot settle this issue.
+
+The original [parallel PR](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/pull/10) and recorded logs remain available for research. Historical lane scripts are blocked from generating further files until the policy, lane, and shared protocol are resolved. Three parallel experiments were reported; do not run more without a fresh authorized budget.

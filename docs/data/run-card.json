@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T21:57:29.936110+00:00",
-  "hypothesis": "Proposed only: multiscale gravity-magnetic gradient alignment residualized against detrended elevation; no lane was supplied and none was run.",
+  "generated_utc": "2026-10-26T22:23:33.196244+00:00",
+  "hypothesis": "This review proposed multiscale gravity-magnetic gradient alignment residualized against detrended elevation; no lane was supplied and this review ran no model.",
   "mechanism": "Buried faulted contacts might produce coincident persistent gravity and magnetic edges even where surface expression is weak.",
   "named_non_fault_process": "Lithologic contacts or igneous dikes can produce aligned potential-field gradients; terrain-related survey artifacts can mimic structure.",
   "experiment_count": 0,
   "weekly_submission_slots_used": 0,
+  "scope": "This review only; a separate parallel run generated and evaluated a candidate, independently audited below.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "status": "NOT RUN",
@@ -43,5 +44,14 @@
   "ok_to_download_new_tif": false,
   "ok_to_submit": false,
   "verdict": "negative",
-  "reason": "No candidate produced; strict registry STOP and no assigned single method. Do not spend a slot."
+  "reason": "No candidate produced in this review; the separately generated parallel candidate fails the strict registry STOP. No assigned single method was supplied. Do not spend a slot.",
+  "parallel_candidate": {
+    "status": "DUPLICATE / STOP; research only",
+    "raster_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+    "binary_lattice_overlap": 0.9938375188056938,
+    "continuous_prior_overlap_literal": 1.0,
+    "preplacement_surface_checked": false,
+    "evidence": "parallel_candidate_audit.json",
+    "ok_to_submit": false
+  }
 }
