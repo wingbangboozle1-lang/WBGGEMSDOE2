@@ -1,12 +1,18 @@
 # Executive audit: what is safe to submit?
 
-**Decision: no new file is approved.** This was a research and repository audit, not a competition submission. No new prediction, canary AUC, holdout experiment or leaderboard forecast was generated. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
+**Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
 
 ## The nine focus sites
 
 The table is generated from [`config/registry_inputs.json`](../config/registry_inputs.json) and the measured [`evidence/registry_audit.json`](../evidence/registry_audit.json); the [dashboard](../site/index.html) links each exact pinned historical TIFF for research only. A reported value is an **owner/user claim**, not an organizer-confirmed receipt. No estimated leaderboard score is defensible for these archived files. The best *claimed* historical value among the nine is the GEMSDOE32 B2 claim, not proof of the score of the audited bytes.
 
 All nine named historical rasters have more than 70% of their positive dots within three pixels of at least one other named focus-site raster. This is a directional test: it counts the proportion of the **candidate's** dots near the reference, not a symmetric intersection-over-union. The source pre-placement surfaces were not available and their rank correlations were not independently tested.
+
+## Recheck of the parallel-session TIFF
+
+The concurrently merged [experimental TIFF](../docs/executive-summary/) is **not eligible for submission**. Its SHA-256 is `592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33`. Of its 34,564 in-footprint dots, **99.3838%** are within three pixels of the registered binary lattice, exceeding the 70% stop. The fully positive continuous prior gives 100% under the shared literal support definition, subject to the stated interpretation caveat. Its zero NoData tag masks 5,132,809 in-footprint cells despite finite raw numbers. The nine-file-only novelty claim was not a full-registry pass. The pre-placement surface was not rechecked.
+
+The parallel source reported **HOLDOUT-DTI 0.1321**, evaluator `WBGGEMSDOE2-HIDE-RECOVER-v2.0`, 58,016 withheld positives, reported 95% CI [0.1290, 0.1349]. This is **source-reported and not reproduced here**, uses a private rather than the required shared evaluator, reports canaries only for fold 0, and its interval is not reproduced by the committed lane script. It is not a leaderboard score or an approved same-fold incumbent comparison. The uncalibrated live-score extrapolation is not accepted as an estimate. See [the byte-level review](../evidence/parallel_review.json) and preserved [original records](../evidence/parallel_archive/).
 
 ## Why the GEMSDOE32 B2 history is plausible, not proven
 

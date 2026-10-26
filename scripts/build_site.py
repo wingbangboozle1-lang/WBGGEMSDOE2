@@ -17,7 +17,12 @@ run = json.loads((DOCS / 'data/run-card.json').read_text())
 # candidate cannot silently inherit a green button by editing a JSON boolean.
 if run.get('verdict') != 'negative' or run.get('ok_to_submit') is not False or run.get('raster_sha256') is not None:
     raise ValueError('This dashboard renders only the audited negative run; review and implement a byte-bound release before changing status.')
-for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json', 'dense_prior_certificate.json'):
+review = json.loads((ROOT / 'evidence/parallel_review.json').read_text())
+if (review.get('ok_to_submit') is not False or review.get('sha256') != run.get('parallel_session', {}).get('rejected_candidate_sha256')
+        or review.get('format', {}).get('masked_inside') != 5132809
+        or round(review.get('literal_overlap_3px', {}).get('lattice', 0), 6) != 0.993838):
+    raise ValueError('Parallel-file evidence changed; review the static narrative before publishing.')
+for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json', 'dense_prior_certificate.json', 'parallel_review.json'):
     source = ROOT / 'evidence' / name
     if source.is_file():
         shutil.copyfile(source, DOCS / 'data' / name)
@@ -62,7 +67,7 @@ def intro(label, title, subtitle):
 
 
 def decision():
-    return f'''<section class="banner" aria-labelledby="decision-heading"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Current recommendation · negative</p><h2 id="decision-heading">No file is approved for submission.</h2><p>No new TIFF was generated: the literal registry gate stops this run before placement. No weekly slot was spent.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="executive-summary.html">See the checklist →</a></div></section>'''
+    return f'''<section class="banner" aria-labelledby="decision-heading"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Current recommendation · negative</p><h2 id="decision-heading">No file is approved for submission.</h2><p>This review lane generated no TIFF. A parallel experimental file failed the literal registry gate and masked-footprint check; it is not approved for upload.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="executive-summary.html">See the checklist →</a></div></section>'''
 
 
 def freshness():
@@ -109,7 +114,7 @@ def focus_table():
 
 def home():
     body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + decision() + stats() + compare_section() + focus_table()
-    body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Research the next lane</h3><p>Four ranked geological proposals, their layers, possible mimics and a blocked-validation protocol.</p><a href="research.html">View research →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/run-card.json">Read the negative run card →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
+    body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Research the next lane</h3><p>Four ranked geological proposals, their layers, possible mimics and a blocked-validation protocol.</p><a href="research.html">View research →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/run-card.json">Read the negative run card →</a> · <a href="executive-summary/">See the rejected parallel file →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
     return page('Overview','index.html',body,'Evidence-first DOE GEMS Prize research and submission status.')
 
 

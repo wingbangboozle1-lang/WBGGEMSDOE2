@@ -1,6 +1,6 @@
 # Preregistered research options — no experiment cleared
 
-**Status, 26 October 2026:** proposals, not results. The incoming prompt refers to a “single method paragraph” but supplies no explicit named lane. We provisionally choose **H1** as this project's only lane; it has **not** been run. The overlap feasibility test stops the familiar 37,654-dot budget before a surface or TIFF is constructed. No weekly slot is selected. The qualitative order is a judgment about potential signal versus cost, not a numerical score forecast. This repository was empty at checkout; “new here” does **not** prove absence from all other sites or unpublished parallel work.
+**Status, 26 October 2026:** proposals, not results. The incoming prompt refers to a “single method paragraph” but supplies no explicit named lane. We provisionally choose **H1** as this project's only lane; it has **not** been run in this review lane. A separate parallel lane reported three experiments and was independently rejected. The overlap feasibility test stops the familiar 37,654-dot budget before a surface or TIFF is constructed. No weekly slot is selected. The qualitative order is a judgment about potential signal versus cost, not a numerical score forecast. This repository was empty at checkout; “new here” does **not** prove absence from all other sites or unpublished parallel work.
 
 | Order | Hypothesis, layers and physical signature | Why it might find an uncatalogued fault; named non-fault mimic | Difference from reviewed approaches; data and cost |
 |---|---|---|---|

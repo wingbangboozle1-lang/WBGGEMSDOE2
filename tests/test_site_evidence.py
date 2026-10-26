@@ -21,7 +21,7 @@ class Links(HTMLParser):
 
 
 def test_all_internal_links_resolve():
-    pages = list(SITE.rglob('*.html')) + list((ROOT / 'docs').glob('*.html')) + [ROOT / 'index.html']
+    pages = list(SITE.rglob('*.html')) + list((ROOT / 'docs').rglob('*.html')) + [ROOT / 'index.html']
     for page in pages:
         parser = Links()
         parser.feed(page.read_text())
@@ -42,6 +42,7 @@ def test_published_evidence_is_fail_closed_and_synced():
     source_card = json.loads((ROOT / 'evidence/run_card.json').read_text())
     published_card = json.loads((SITE / 'data/run_card.json').read_text())
     assert source_card == published_card == json.loads((ROOT / 'docs/data/run-card.json').read_text())
+    assert source_card == json.loads((ROOT / 'docs/data/run_card.json').read_text())
     assert source_card['verdict'] == 'negative' and source_card['ok_to_submit'] is False
     assert source_card['holdout']['dti'] is None and source_card['raster_sha256'] is None
     assert source_card['submission_name'] is None and len(source_card['note']) <= 140
