@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WBGGEMSDOE2 — GEMS Prize Challenge submission pipeline</title>
+<style>
+  :root{--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;
+        --ok:#166534;--bad:#b91c1c;--warn:#b45309;--card:#f8fafc;}
+  *{box-sizing:border-box} body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;color:var(--ink);line-height:1.5;}
+  header{background:#0b1220;color:#fff;padding:28px 24px;} header h1{margin:0 0 8px 0;font-size:22px;}
+  header p{margin:0;font-size:14px;color:#cbd5e1;}
+  .container{max-width:980px;margin:0 auto;padding:0 20px;}
+  .banner{margin:16px 0;padding:16px;border-radius:8px;border:1px solid var(--line);background:#fffcf2;}
+  .banner.red{background:#fef2f2;border-color:#fecaca;} .banner.green{background:#f0fdf4;border-color:#bbf7d0;}
+  .banner .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+  .banner.red .tag{color:var(--bad);} .banner.green .tag{color:var(--ok);}
+  .download-row{margin:18px 0;display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  a.btn{display:inline-flex;align-items:center;gap:8px;background:#111827;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;}
+  a.btn:hover{background:#1f2937;} a.btn.secondary{background:#f1f5f9;color:#0f172a;border:1px solid var(--line);}
+  a.btn.secondary:hover{background:#e2e8f0;}
+  .btn .kbd{font-family:monospace;font-size:12.5px;margin-left:6px;opacity:.9;}
+  h2{font-size:17px;margin:26px 0 10px 0;border-bottom:1px solid var(--line);padding-bottom:6px;}
+  h3{font-size:14px;margin:18px 0 6px 0;color:var(--muted);}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+  th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;}
+  th{background:#f1f5f9;font-weight:600;}
+  tr:nth-child(even)td{background:#fafbfc;}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;word-break:break-all;}
+  .tag-ok{color:var(--ok);font-weight:700;} .tag-no{color:var(--bad);font-weight:700;}
+  .tag-warn{color:var(--warn);font-weight:700;}
+  ul{margin:6px 0 10px 0;padding-left:20px;}
+  li{margin:3px 0;}
+  .small{font-size:12.5px;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0;}
+  .metric{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;}
+  .metric .v{font-size:21px;font-weight:700;margin:6px 0 2px 0;} .metric .l{font-size:12px;color:var(--muted);}
+  .nowrap{white-space:nowrap;}
+  footer{margin:34px 0;padding-bottom:40px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:16px;}
+  a{color:#0b57d0;} a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>WBGGEMSDOE2 · GEMS Prize Challenge (DOE / DrivenData #306)</h1>
+    <p>Fault-discovery submission pipeline · unique GeoTIFF generation · format validation · lane-uniqueness audit · executive summary</p>
+  </header>
+
+  <div class="banner red">
+    <div class="tag">Status: research / audit — NOT cleared for upload</div>
+    <strong>Generated submission:</strong>
+    <span class="mono">wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif</span>
+    — format <span class="tag-ok">VALID</span>, lane-unique
+    <span class="tag-ok">PASS</span> (max \|ρ\| = 0.0021 vs registry; max 3-px dot overlap 21.72% ≤ 70%),
+    but <strong>DO NOT SUBMIT</strong> yet: HOLDEOUT-DTI is blocked because <em>labels.tif</em> requires a DrivenData login.
+    <strong>Download: yes. Submit to DrivenData: no — not until holdout-DTI beats the repo best.</strong>
+    <p style="margin:10px 0 0 0"><strong>No file is approved for submission.</strong> This page publishes a format-valid, lane-unique
+    research raster only. <strong>No submission file</strong> on this site is authorized for upload to DrivenData.</p>
+  </div>
+
+  <div class="download-row">
+    <a class="btn" href="../downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif" download>
+      ⬇ Download submission TIF
+      <span class="kbd">wbg-h1-...-a1b2c3d4-zeros.tif</span>
+    </a>
+    <a class="btn secondary" href="../downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.zip">
+      ⬇ .zip (single TIFF inside)
+    </a>
+    <a class="btn secondary" href="../reports/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros_run_card.json">JSON run card</a>
+    <a class="btn secondary" href="../reports/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros_audit.json">Uniqueness audit</a>
+  </div>
+  <p class="small">SHA-256 (TIF): <span class="mono">95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad</span> &nbsp;·&nbsp; 17.5 MB · single-band float32 GeoTIFF · values in [0,1] · no NaN · zeros outside footprint</p>
+
+  <h2>What this is</h2>
+  <p>WBGGEMSDOE2 is a reproducible pipeline for the <a>GEMS Prize Challenge</a> (geological fault detection for geothermal
+  resource mapping, DrivenData competition #306). It generates a <strong>unique</strong> submission TIF from hypothesis
+  <strong>H1 — blind-conduit hydrothermal breach</strong> (geophysical-edge detection on cross-cutting structural trends,
+  decayed with the competition's 300 m triangular kernel; <em>not</em> seeded from any USGS/INGENIOUS catalogue fault, so it can
+  catch faults missing from the catalogue — the privately labeled test set). Full method: <code>scripts/make_submission.py</code>,
+  rationale: <code>hypotheses.md</code>.</p>
+
+  <div class="grid">
+    <div class="metric"><div class="l">Submission name</div><div class="v mono">wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros</div></div>
+    <div class="metric"><div class="l">Format validator</div><div class="v tag-ok">PASS — 13/13 checks</div></div>
+    <div class="metric"><div class="l">Lane uniqueness vs registry</div><div class="v tag-ok">PASS — 58 rasters</div></div>
+    <div class="metric"><div class="l">Holdout-DTI</div><div class="v tag-warn">BLOCKED — labels.tif needs DrivenData login</div></div>
+    <div class="metric"><div class="l">Verdict</div><div class="v tag-no">negative — do not submit</div></div>
+  </div>
+
+  <h2>Focus sites — best submission per site (owner-reported scores)</h2>
+  <table>
+    <thead><tr><th>Site</th><th>Best file</th><th>Live score</th><th>Estimate (projection, not a score)</th><th>Unique vs listed GEMSDOE sites</th></tr></thead>
+    <tbody>
+      <tr><td>GEMSDOE32</td><td><a>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE32/8953b986b2ce6eb5ee8b7eda23fe3ad529720986/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif)</a></td><td><b>0.2778</b> <span class="small">(owner-report)</span></td><td class="small">0.285 projection</td><td class="tag-no">No — duplicate family</td></tr>
+      <tr><td>GEMSDOE36</td><td><a>anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE36/b90418f852615aa0974cf9a53b92fa569ed133fc/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif)</a></td><td><b>0.2750</b> <span class="small">(owner-report)</span></td><td class="small">0.283 projection</td><td class="tag-no">No — duplicate family</td></tr>
+      <tr><td>GEMSDOE28</td><td><a>h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE28/9c1be21e8f1be707347f737e42abf62ea669c819/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif)</a></td><td><b>0.2710</b> <span class="small">(owner-report)</span></td><td class="small">0.277 projection</td><td class="tag-no">No — duplicate family</td></tr>
+      <tr><td>GEMSDOE31</td><td><a>h27-4-solo-d28-20261004-8acb75e1-nan</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE31/78f9bf3ae82e5c78ca348aa37c0660c339e72f0e/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif)</a></td><td><b>0.2708</b> <span class="small">(owner-report)</span></td><td class="small">0.279 projection</td><td class="tag-no">No — byte-identical to GEMSDOE28 file</td></tr>
+      <tr><td>GEMSDOE33</td><td><a>h33d-analog-tip-stepover-r30-20261004-cb490425926e</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE33/a24fb7c5031ee08b12440af4593057858fecef8e/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif)</a></td><td><b>0.2632</b> <span class="small">(owner-report)</span></td><td class="small">0.278 projection</td><td class="tag-no">No — duplicate family</td></tr>
+      <tr><td>GEMSDOE25</td><td><a>dotted-h19-5-d2-8-20261002-e56ea318af89-nan</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE25/bfb2dfdbdf1b87d67afc6facd422180f56ebc455/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif)</a></td><td><b>0.2600</b> <span class="small">(owner-report)</span></td><td class="small">0.271 projection</td><td class="tag-no">No — byte-identical to GEMSDOE29 file</td></tr>
+      <tr><td>GEMSDOE30</td><td><a>d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE30/35ce8911e2c3287eed973eacd12c252e8cb3f34c/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif)</a></td><td><b>0.2600</b> <span class="small">(owner-report)</span></td><td class="small">0.271 projection</td><td class="tag-no">No — byte-identical to GEMSDOE25 file</td></tr>
+      <tr><td>GEMSDOE24</td><td><a>h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE24/5cfab74597cd1d0a271e4640b4cc34511e56ca59/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif)</a></td><td><b>0.2477</b> <span class="small">(owner-report)</span></td><td class="small">0.268 projection</td><td class="tag-no">No — duplicate family</td></tr>
+      <tr><td>GEMSDOE27</td><td><a>topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan</a> · <a class="mono small">[TIF](https://raw.githubusercontent.com/buffedlizard55-lab/GEMSDOE27/f1e32af867d9cf0081af20866c8241ec8678a432/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif)</a></td><td><b>0.2449</b> <span class="small">(owner-report)</span></td><td class="small">0.266 projection</td><td class="tag-no">No — duplicate family</td></tr>
+      <tr><td><b>WBGGEMSDOE2 (this repo)</b></td><td><a>wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif</a></td><td>unscored</td><td class="small">blocked — no labels.tif</td><td class="tag-ok">Yes — audited vs 58-raster registry</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Scores are owner-reported live scores from the GEMSDOE submission pages (no organizer receipts linking raster hash → score are present in those repositories). Estimates are source-page LLI leave-one-out projections — <strong>not scores</strong>. Live public leaderboard (fetched 2026-10-26): #1 <b>0.4437</b> DW-Tversky — note round 1 is scored on a <em>private</em> expert-labeled test set.</p>
+
+  <h2>How to submit (no manual inspection needed)</h2>
+  <ol>
+    <li>Sign in to DrivenData at the <a>competition data page</a> (login required to download <code>sample_submission.tif</code>, <code>training_features.tif</code>, <code>labels.tif</code>).</li>
+    <li>Download <code>sample_submission.tif</code> — this is your format template (CRS EPSG:32611, 100 m, bounds, transform).</li>
+    <li>Generate predictions as a <strong>single-band float32 GeoTIFF</strong> matching the sample's CRS/shape/geotransform exactly, values in <code>[0, 1]</code>, no NaN (use 0 outside the survey footprint).</li>
+    <li>Validate locally before uploading — this catches the "Predicted values must be in range [0, 1]" error:
+      <div class="mono small" style="background:#f1f5f9;padding:8px;border-radius:6px;margin-top:6px;">python scripts/submission_writer.py --check your_file.tif --reference data/sample_submission.tif</div></li>
+    <li>On the submission page, upload the <code>.tif</code> (or a <code>.zip</code> containing one <code>.tif</code>), enter a Note (≤ 140 chars, e.g. "clustering with k=25"), and submit.</li>
+    <li>Pick the <strong>single</strong> submission to score across both prize rounds before the deadline.</li>
+  </ol>
+
+  <h2>Validation gate results (this build)</h2>
+  <ul>
+    <li>Format gate (CRS/shape/transform/float32, all cells finite in [0,1], zeros outside footprint): <span class="tag-ok">PASS</span> — <code>scripts/submission_writer.py</code> re-reads the saved bytes and ground-truths them.</li>
+    <li>Lane-UNIQUENESS gate (parallel-run protocol §1): Spearman \|ρ\| ≤ 0.90 on the surface <strong>and</strong> ≤ 70% of dots within 3 px of any one registry raster — <span class="tag-ok">PASS</span> against all 58 GEMSDOE32 registry rasters (max \|ρ\| = 0.0021; max 3-px overlap = 21.72%).</li>
+    <li>HOLDEOUT-DTI gate (hide/recover whole fault segments, α=0.2, β=0.8, 300 m triangular kernel, 95% spatial-block CI): <span class="tag-warn">BLOCKED</span> — <code>labels.tif</code> is not available without a DrivenData login (<code>scripts/download_competition_data.sh</code>). A projection is never written as a score.</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul class="small">
+    <li>Problem &amp; metric: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/</a></li>
+    <li>Data (login required): <a>https://www.drivendata.org/competitions/306/competition-doe-gems/data/</a></li>
+    <li>Leaderboard: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/</a> (focus-site entries below are <strong>USER-REPORTED</strong> live scores, not organizer receipts) · Rules: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/rules/</a></li>
+    <li>Reference solution: <a>https://github.com/drivendataorg/gems-prize-reference-solution</a></li>
+    <li>Submission procedure PDF: <a>https://docs.nlr.gov/docs/fy26osti/96647.pdf</a></li>
+    <li>GeoDAWN (USGS): <a>https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and</a> · INGENIOUS: <a>https://gbcge.org/current-projects/ingenious/</a> · EPSG:32611: <a>https://epsg.io/32611</a></li>
+    <li>Full executive summary: <a>executive-summary.md</a> · Hypotheses: <a>../hypotheses.md</a> · Repo README: <a>../README.md</a> · Official sources: <a href="sources.html">sources.html</a></li>
+  </ul>
+
+  <footer>
+    Generated 2026-10-26 · WBGGEMSDOE2 · branch <code>arena/3dc38570-wbggemsdoe2</code>. No DrivenData credentials available in this environment; holdout scoring and submission-slot promotion remain blocked until <code>data/labels.tif</code> is staged.
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "schema": "superseded-parallel-record-v1",
+  "status": "STOP \u2014 research only; do not submit",
+  "raster_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+  "holdout_dti": null,
+  "holdout_ci95": null,
+  "lane_unique_vs_registry": false,
+  "source_threshold_lattice_overlap_3px": 0.9987256530439265,
+  "preplacement_surface_correlation": null,
+  "local_format": {
+    "grid_match_reference": true,
+    "bands": 1,
+    "dtype": "float32",
+    "nodata": null,
+    "footprint_cells": 5167373,
+    "nonfinite_inside": 0,
+    "masked_inside": 0,
+    "all_finite": true,
+    "minimum_inside": 0.19781608879566193,
+    "maximum_inside": 1.0,
+    "failures": [],
+    "format_valid_against_reference": true
+  },
+  "organizer_acceptance": "unknown",
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "ok_to_submit": false,
+  "canonical_run_card": "evidence/run_card.json",
+  "independent_review": "evidence/conduit_review.json",
+  "original_source_record": "evidence/conduit_archive/original_run_card.json"
+}

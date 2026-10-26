@@ -10,7 +10,7 @@
     "maximum_experiments": 3,
     "maximum_hours": 2,
     "weekly_slots_used": 0,
-    "scope": "this review lane; a parallel session reported three experiments"
+    "scope": "this review lane; one parallel session reported three experiments and another reported one"
   },
   "holdout": {
     "evidence_class": "HOLDOUT-DTI",
@@ -96,5 +96,17 @@
     },
     "ok_to_submit": false,
     "reason": "Rejected: literal lattice duplication, masked interior cells, and no compliant pre-placement/holdout approval."
+  },
+  "conduit_parallel_session": {
+    "evidence": "evidence/conduit_review.json",
+    "reported_experiments": 1,
+    "rejected_candidate_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+    "lattice_overlap_3px_source_threshold": 0.9987256530439265,
+    "continuous_prior_overlap_3px": 1.0,
+    "format_valid_against_owner_mirror": true,
+    "holdout_dti": null,
+    "preplacement_surface_correlation": null,
+    "ok_to_submit": false,
+    "reason": "Rejected: lattice duplication, no validated holdout, and synthetic rather than demonstrated geophysical features."
   }
 }

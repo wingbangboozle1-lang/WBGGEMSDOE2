@@ -12,7 +12,7 @@ def test_inconsistent_card_never_publishes(tmp_path):
         (tmp_path / directory).mkdir(parents=True)
     for name in ('build_run_card.py',):
         shutil.copy(ROOT / 'scripts' / name, tmp_path / 'scripts' / name)
-    for name in ('run_card.json', 'registry_audit.json', 'parallel_review.json', 'parallel_candidate_audit.json'):
+    for name in ('run_card.json', 'registry_audit.json', 'parallel_review.json', 'parallel_candidate_audit.json', 'conduit_review.json'):
         shutil.copy(ROOT / 'evidence' / name, tmp_path / 'evidence' / name)
     shutil.copy(ROOT / 'docs/data/portfolio.json', tmp_path / 'docs/data/portfolio.json')
     path = tmp_path / 'evidence/run_card.json'

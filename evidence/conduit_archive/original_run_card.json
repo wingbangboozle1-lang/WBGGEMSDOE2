@@ -1,0 +1,52 @@
+{
+  "schema": "wbg-gems-run-card-v1",
+  "created_utc": "2026-10-26T22:10:41.039511+00:00",
+  "hypothesis": "H1-blind-conduit-hydrothermal-breach",
+  "mechanism": "Fault proximity to cross-cutting structural trends (azimuths 40.0, 52.0, 128.0, 140.0, 90.0, 10.0 deg) decayed with the 300 m triangular kernel of the DW-Tversky metric, plus smooth geothermal background and trend-intersection conduit nodes; no seeding from any USGS/INGENIOUS catalogue fault.",
+  "named_non_fault_mimic": "Lithologic magnetic/radiometric contact or alteration halo with no fault displacement (geophysical edge without kinematic signature).",
+  "layers": [
+    "RTP magnetics horizontal gradient",
+    "radiometric K and eTh/K",
+    "detrended elevation curvature",
+    "strain-rate second invariant"
+  ],
+  "difference_from_existing_lanes": "Not seeded from catalogue faults (unlike dotted-ridge, SPCP/SAR-PU, MDRC lanes); targets blind off-catalogue faults \u2014 the privately-labeled test set of this competition.",
+  "holdout_dti": null,
+  "holdout_ci95": null,
+  "holdout_note": "HOLDOUT-DTI not computable: labels.tif requires DrivenData login. A projection is never written as a score (protocol rule 3).",
+  "correlation_vs_registry": 0.0021,
+  "dot_overlap_vs_registry_3px": 0.2172,
+  "lane_unique_vs_registry": true,
+  "raster_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+  "raster_bytes": 17513077,
+  "validator": {
+    "ok": true,
+    "errors": [],
+    "checks": {
+      "single_band": true,
+      "shape_match": true,
+      "dtype_float32": true,
+      "crs_match": true,
+      "transform_match": true,
+      "values_in_01": true,
+      "no_nan": true
+    },
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "transform": "| 100.00, 0.00, 243350.00|\n| 0.00,-100.00, 4508550.00|\n| 0.00, 0.00, 1.00|",
+    "value_min": 0.0,
+    "value_max": 1.0,
+    "nan_count": 0,
+    "outside_zero_fraction": 1.0,
+    "sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad"
+  },
+  "submission_name": "wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros",
+  "submission_note": "WB-H1 blind-conduit-breach unique | format-valid | holdout-DTI blocked: labels.tif needs DrivenData login | DO NOT SUBMIT",
+  "budget_experiment": "H1 generator (experiment 1 of 3)",
+  "verdict": "negative",
+  "download_ok_to_submit": false
+}

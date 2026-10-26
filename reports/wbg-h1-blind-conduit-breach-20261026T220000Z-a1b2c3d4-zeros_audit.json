@@ -1,0 +1,20 @@
+{
+  "evidence_class": "SUPERSEDED-PARALLEL-AUDIT",
+  "status": "STOP \u2014 original PASS omitted the registered witnesses",
+  "lane_unique_vs_all": false,
+  "surface_correlation": null,
+  "source_threshold_ge_0_5_lattice_overlap_3px": {
+    "within_3px": 5087882,
+    "selected_cells": 5094374,
+    "fraction": 0.9987256530439265
+  },
+  "continuous_prior_overlap_3px": {
+    "within_3px": 5094374,
+    "selected_cells": 5094374,
+    "fraction": 1.0
+  },
+  "interpretation": "Lattice alone is decisive; continuous support requires policy clarification.",
+  "independent_review": "evidence/conduit_review.json",
+  "original_source_report": "evidence/conduit_archive/original_uniqueness_audit.json",
+  "ok_to_submit": false
+}

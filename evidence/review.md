@@ -35,3 +35,7 @@ Preserved the other session's original code and claims as explicitly superseded 
 ## Corroborating concurrent audit and public-feed fix
 
 A second independent merged audit computed the same 34,351/34,564 binary-lattice overlap, 100% literal continuous-prior overlap and 5,132,809 masked footprint cells. Its receipt is retained alongside this review. Its public-feed fix identifies DrivenData's same-origin HTMX leaderboard fragment and supports the fragment's implicit table header; both dashboard feeds now use that parser, and any network or parsing failure remains visibly stale.
+
+## Separate parallel conduit artifact
+
+The later parallel conduit candidate has SHA-256 `95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad`. Its ≥0.5 threshold selects 5,094,374 cells; 5,087,882 (99.8725653%) are within three pixels of the registered lattice. Both it and its ZIP were byte-checked. The format-only check passed against the mirror, but the original 58-file audit omitted both key witnesses. No holdout or organizer receipt exists. The generator uses synthetic geometric trends/noise, not the named features, and the private evaluator did not implement required buffered, pixel-exact pooled scoring. Original records are archived and unsafe entry points disabled. This review performed no additional experiment.

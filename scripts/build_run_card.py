@@ -10,6 +10,7 @@ audit = json.loads((ROOT / 'evidence/registry_audit.json').read_text())
 parallel = json.loads((ROOT / 'docs/data/portfolio.json').read_text())
 review = json.loads((ROOT / 'evidence/parallel_review.json').read_text())
 corroboration = json.loads((ROOT / 'evidence/parallel_candidate_audit.json').read_text())
+conduit = json.loads((ROOT / 'evidence/conduit_review.json').read_text())
 lat = audit['lattice_capacity']
 dense = audit['dense_probability_prior']
 # Stop before changing published files if the card is inconsistent with either
@@ -41,6 +42,15 @@ if not (card['verdict'] == 'negative' and card['ok_to_submit'] is False
         and card['parallel_session']['masked_inside_footprint'] == review['format']['masked_inside']
         and card['parallel_session']['source_reported_holdout'] == review['source_reported_holdout']
         and card['parallel_session']['ok_to_submit'] is False
+        and conduit['ok_to_submit'] is False and conduit['holdout_dti'] is None
+        and conduit['preplacement_surface_correlation'] is None
+        and conduit['witnesses']['13GEMSDOE']['source_threshold_ge_0_5']['fraction'] > .7
+        and card['conduit_parallel_session']['rejected_candidate_sha256'] == conduit['sha256']
+        and card['conduit_parallel_session']['lattice_overlap_3px_source_threshold'] == conduit['witnesses']['13GEMSDOE']['source_threshold_ge_0_5']['fraction']
+        and card['conduit_parallel_session']['continuous_prior_overlap_3px'] == conduit['witnesses']['17GEMSDOE_dense_prior']['source_threshold_ge_0_5']['fraction']
+        and card['conduit_parallel_session']['holdout_dti'] is None
+        and card['conduit_parallel_session']['preplacement_surface_correlation'] is None
+        and card['conduit_parallel_session']['ok_to_submit'] is False
         and len(card['note']) <= 140):
     raise ValueError('Run-card evidence changed; manual review required before publication')
 text = json.dumps(card, indent=2, allow_nan=False) + '\n'

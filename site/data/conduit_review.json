@@ -1,0 +1,72 @@
+{
+  "evidence_class": "INDEPENDENT-FORENSIC-RECHECK",
+  "checked_utc": "2026-10-26T22:29:13.769961+00:00",
+  "artifact": "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif",
+  "sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+  "zip_sha256": "205825f7a5bc3efe8de5a40c93bddf0b569bd89a9f2478d04278e4d154b788a7",
+  "zip_contains_exact_audited_tiff": true,
+  "status": "REJECTED \u2014 RESEARCH ONLY; DO NOT SUBMIT",
+  "ok_to_submit": false,
+  "positive_inside_footprint": 5167373,
+  "positive_outside_footprint": 0,
+  "format": {
+    "grid_match_reference": true,
+    "bands": 1,
+    "dtype": "float32",
+    "nodata": null,
+    "footprint_cells": 5167373,
+    "nonfinite_inside": 0,
+    "masked_inside": 0,
+    "all_finite": true,
+    "minimum_inside": 0.19781608879566193,
+    "maximum_inside": 1.0,
+    "failures": [],
+    "format_valid_against_reference": true
+  },
+  "reference_provenance": "Hash-pinned owner mirror, not an authenticated organizer file",
+  "witnesses": {
+    "13GEMSDOE": {
+      "finite_positive": {
+        "within_3px": 5160724,
+        "selected_cells": 5167373,
+        "fraction": 0.9987132726822701
+      },
+      "source_threshold_ge_0_5": {
+        "within_3px": 5087882,
+        "selected_cells": 5094374,
+        "fraction": 0.9987256530439265
+      }
+    },
+    "17GEMSDOE_dense_prior": {
+      "finite_positive": {
+        "within_3px": 5167373,
+        "selected_cells": 5167373,
+        "fraction": 1.0
+      },
+      "source_threshold_ge_0_5": {
+        "within_3px": 5094374,
+        "selected_cells": 5094374,
+        "fraction": 1.0
+      }
+    }
+  },
+  "limit": 0.7,
+  "dense_support_definition": "Finite positive in the shared literal gate; whether a continuous field counts as dots needs policy clarification. The binary lattice fails independently at the source threshold.",
+  "preplacement_surface_correlation": null,
+  "preplacement_status": "not independently replayed; original scan omitted at least both registered witnesses",
+  "source_reported_uniqueness": {
+    "tested": 58,
+    "max_overlap_3px": 0.2172,
+    "claim": "PASS is superseded: binary lattice is a counterexample"
+  },
+  "holdout_dti": null,
+  "organizer_receipt": null,
+  "source_reported_experiments": 1,
+  "source_code_review": [
+    "Generator uses synthetic geometric trend fields and seeded smooth noise, not the listed geophysical feature arrays.",
+    "Its calculated decay variable is unused in final output, so the claimed 300 m decay is not established.",
+    "The private evaluator does not apply the buffer argument, mask visible faults pixel-exactly, or compute the required pooled metric."
+  ],
+  "source_run_card_verdict": "negative",
+  "conclusion": "Fails the literal any-registry binary-lattice gate and has no holdout; format-only pass is not upload authorization."
+}

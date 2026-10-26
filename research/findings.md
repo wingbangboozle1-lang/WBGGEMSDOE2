@@ -43,3 +43,8 @@ The public mirrored reference has the right-looking CRS/grid but its 60,988 posi
 ## Links
 
 [Sources, data access and licenses](sources.md) · [Ranked hypotheses](hypotheses.md) · [Run card](../evidence/run_card.json) · [Official leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) · [Official rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf).
+
+
+### Separate conduit parallel TIFF
+
+A second parallel session reported one experiment and a 58-file uniqueness pass. Its audit omitted the registered binary lattice: an independent byte recheck found **5,087,882/5,094,374 = 99.8726%** overlap at its own ≥0.5 threshold. This is a decisive STOP. Its HOLDOUT-DTI is null and its organizer acceptance unknown. The original generator used synthetic trend fields and seeded noise rather than the listed feature arrays; its private evaluator did not implement the required buffered pooled protocol. The original source and claims are archived, while [the forensic receipt](../evidence/conduit_review.json) is authoritative for the recheck. No further experiment was performed here.
