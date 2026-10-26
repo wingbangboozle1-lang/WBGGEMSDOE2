@@ -2,7 +2,7 @@ name: Audit and test
 
 on:
   push:
-    branches: ['arena/**']
+    branches: ['main', 'arena/**']
   pull_request:
   workflow_dispatch:
 
