@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-26T22:10:17Z",
+  "verdict": "negative",
+  "submission_allowed": false,
+  "hypothesis": "Provisional cross-scale magnetic contact-displacement aligned with detrended topography in covered basins.",
+  "mechanism": "Seek displaced magnetic edges and compatible surface gradients; no model or candidate was built.",
+  "named_non_fault_process_that_could_mimic_it": "Lithologic contacts without fault displacement or acquisition/levelling artifacts.",
+  "lane_status": "No single method paragraph was explicitly assigned; this is a provisional, untested hypothesis.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "value": null,
+    "withheld_positives": null,
+    "ci95": null,
+    "status": "not run; registry pre-placement STOP"
+  },
+  "leakage_canary": {
+    "status": "not run",
+    "features_tested": 0,
+    "auc_limit": 0.9
+  },
+  "correlation_overlap_vs_registry": {
+    "candidate_surface_spearman": null,
+    "candidate_final_dot_overlap": null,
+    "candidate_status": "No candidate surface or dots generated.",
+    "universal_witness": {
+      "repo": "buffedlizard55-lab/GEMSDOE48",
+      "ref": "268ec599f51c517cc3485da077c24d83af5be81d",
+      "path": "docs/downloads/gemsdoe48-h58-continuous-pignistic-20261008T175914Z-e58.tif",
+      "sha256": "59ef8e7d8374e228bc1e41376f03fc67dd5b8a5e6804885a1ae802f399140b89",
+      "footprint_pixels": 5167373,
+      "positive_pixels_in_footprint": 5167373,
+      "uncovered_pixels_within_3px": 0,
+      "fraction_covered_within_3px": 1.0,
+      "universal_blocker": true,
+      "indexed_registry": {
+        "index_sha256": "846eddb9459f0e5b67f33da519bbd62c966bf5f539545ba3dad262fbfbc308c2",
+        "source": "GEMSDOE48:docs/downloads/gemsdoe48-h58-continuous-pignistic-20261008T175914Z-e58.tif",
+        "git_blob": "2ef0c06c25cdab62ba3381a1b43db230776fc631"
+      }
+    },
+    "lattice_witness": {
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "footprint_pixels": 5167373,
+      "positive_pixels_in_footprint": 206895,
+      "uncovered_pixels_within_3px": 6649,
+      "fraction_covered_within_3px": 0.9987132726822701,
+      "universal_blocker": false,
+      "minimum_overlap_for_37654_dots": 0.8234184947150369
+    },
+    "literal_limit": 0.7
+  },
+  "raster_sha256": null,
+  "submission_name": null,
+  "submission_note": null,
+  "validator_output": {
+    "status": "not run: no new raster",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null
+  },
+  "experiments_run": 0,
+  "submission_slots_used": 0,
+  "reason": "Universal positive-support witness covers the entire mirrored footprint; any nonempty candidate necessarily exceeds the literal overlap limit. Mandatory pre-placement STOP."
+}

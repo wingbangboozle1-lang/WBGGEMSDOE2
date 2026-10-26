@@ -1,0 +1,48 @@
+name: Publish research dashboard
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore last leaderboard observation
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: .feed-cache
+          key: public-feed-${{ github.run_id }}
+          restore-keys: public-feed-
+      - name: Refresh public leaderboard (failure stays visibly stale)
+        run: python3 scripts/refresh_leaderboard.py --cache .feed-cache/leaderboard.json
+      - name: Preserve latest feed observation
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: .feed-cache
+          key: public-feed-${{ github.run_id }}
+      - name: Prepare static Pages artifact
+        run: |
+          mkdir _site
+          cp index.html executive-summary.html research.html _site/
+          cp -r assets site-data reports _site/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,10 @@
+# Competition data and generated caches are large and may have access restrictions.
+.cache/
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.partial
+/data/raw/
+/data/prepared/
+/data/official/
