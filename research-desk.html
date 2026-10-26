@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An evidence-first research dashboard for the DOE GEMS Prize.">
+  <title>GEMS Research Desk | WBGGEMSDOE2</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav-row">
+    <a class="brand" href="research-desk.html" aria-label="GEMS Research Desk home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>GEMS</strong><small>RESEARCH DESK</small></span></a>
+    <nav aria-label="Main navigation"><a class="active" href="research-desk.html" aria-current="page">Overview</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Research &amp; data</a></nav>
+    <a class="header-link" href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Competition <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<main id="main">
+  <section class="hero container">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> DOE GEMS PRIZE <span class="eyebrow-divider">/</span> RESEARCH INTELLIGENCE</div>
+      <h1>Finding faults.<br><em>Keeping the evidence clear.</em></h1>
+      <p class="hero-lede">A practical research desk for building better geothermal fault predictions—with a clear distinction between a promising idea and a file ready to submit.</p>
+      <div class="hero-actions"><a class="button button-primary" href="executive-summary.html">Read the executive summary <span aria-hidden="true">↗</span></a><a class="text-link" href="research.html">Explore the research <span aria-hidden="true">→</span></a></div>
+      <div class="review-meta"><span><span class="tiny-dot"></span> AUDIT SNAPSHOT</span><span>26 OCT 2026 · UTC</span><a href="reports/run-card.json">View run card ↗</a></div>
+    </div>
+    <aside class="decision-card" aria-labelledby="decision-title">
+      <div class="decision-top"><span class="mini-label">SUBMISSION READINESS</span><span class="status-pill status-blocked"><span></span> BLOCKED</span></div>
+      <div class="decision-icon" aria-hidden="true">!</div>
+      <h2 id="decision-title">No new file is<br>cleared to submit.</h2>
+      <p>A prior registry raster covers the entire valid footprint. Under the required overlap rule, every nonempty candidate fails before placement.</p>
+      <div class="decision-rule"><div><span>Maximum allowed overlap</span><strong>70%</strong></div><div><span>Unavoidable overlap</span><strong class="red-text">100%</strong></div><div class="progress-track"><span></span><i></i></div><small>Literal support rule · pre-placement proof</small></div>
+      <a class="decision-link" href="executive-summary.html#blocker">Understand the blocker <span aria-hidden="true">→</span></a>
+    </aside>
+  </section>
+
+  <section class="metrics-band" aria-label="Research status at a glance">
+    <div class="container metrics-grid">
+      <div class="metric"><span class="metric-label">FOCUS SITES REVIEWED</span><strong>09</strong><small>Historical files audited</small></div>
+      <div class="metric"><span class="metric-label">HIGHEST REPORTED CLAIM</span><strong>0.2778</strong><small>GEMSDOE32 · unverified attribution</small></div>
+      <div class="metric"><span class="metric-label">PUBLIC LEADERBOARD #1</span><strong id="leaderboard-score">0.4437</strong><small id="leaderboard-caption">Public observation · 26 Oct 2026 UTC</small></div>
+      <div class="metric"><span class="metric-label">NEW CANDIDATES</span><strong>None</strong><small>0 experiments · 0 slots used</small></div>
+    </div>
+  </section>
+
+  <section class="container section-space" id="findings">
+    <div class="section-heading"><div><div class="eyebrow">THE CURRENT PICTURE</div><h2>What the evidence tells us</h2></div><a class="text-link" href="executive-summary.html">Full analysis <span aria-hidden="true">→</span></a></div>
+    <div class="finding-grid">
+      <article class="finding-card"><div class="finding-num">01 <span>THE RASTER</span></div><h3>A hard stop, not a guess.</h3><p>A pinned prior is positive throughout the mirrored footprint, so it defeats the literal uniqueness test for every nonempty prediction.</p><a href="executive-summary.html#blocker">See the proof <span aria-hidden="true">→</span></a></article>
+      <article class="finding-card"><div class="finding-num">02 <span>THE CLAIM</span></div><h3>The 0.2778 needs a receipt.</h3><p>GEMSDOE32’s original audit labeled the file “unscored.” The user-reported attribution remains unverified, not an organizer-confirmed result.</p><a href="executive-summary.html#h33">Examine H33 <span aria-hidden="true">→</span></a></article>
+      <article class="finding-card"><div class="finding-num">03 <span>THE PATH FORWARD</span></div><h3>Data is restored. Testing is gated.</h3><p>The shared 19-band stack was restored from a hash-pinned team mirror. A valid lane and consistent uniqueness policy are needed before a new experiment.</p><a href="research.html">View research plan <span aria-hidden="true">→</span></a></article>
+    </div>
+  </section>
+
+  <section class="container split-section">
+    <div><div class="eyebrow">NINE-SITE REVIEW</div><h2>One family.<br>Many filenames.</h2><p>Each historical focus raster exceeds the requested 70% near-overlap threshold against at least one other focus raster. Different names or byte encodings do not establish a unique prediction.</p><a class="button button-light" href="executive-summary.html#focus-table">Compare all nine sites <span aria-hidden="true">→</span></a></div>
+    <div class="comparison-panel"><div class="panel-head"><span class="mini-label">HIGHEST USER-REPORTED ATTRIBUTIONS</span><span class="muted">Not receipts</span></div><div class="comparison-row"><span><b>01</b> GEMSDOE32</span><strong>0.2778</strong><i>UNVERIFIED</i></div><div class="comparison-row"><span><b>02</b> GEMSDOE36</span><strong>0.2750</strong><i>UNVERIFIED</i></div><div class="comparison-row"><span><b>03</b> GEMSDOE28</span><strong>0.2710</strong><i>UNVERIFIED</i></div><p>These are owner-reported claims, not evidence of a new candidate’s score.</p></div>
+  </section>
+
+  <section class="container section-space bottom-cta"><div><div class="eyebrow">BUILT FOR A BETTER DECISION</div><h2>Know what is ready.<br>Know what still needs work.</h2><p>Open the executive summary for the complete site-by-site review, validation gates, and a conditional submission guide.</p></div><a class="button button-primary" href="executive-summary.html">Open executive summary <span aria-hidden="true">↗</span></a></section>
+</main>
+<footer class="site-footer"><div class="container footer-row"><div><a class="footer-brand" href="research-desk.html">GEMS <span>RESEARCH DESK</span></a><p>Evidence before upload. Discovery before assumptions.</p></div><div class="footer-links"><a href="research.html#sources">Sources</a><a href="reports/run-card.json">Run card</a><a href="docs/index.html">Main dashboard</a><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">Repository ↗</a></div></div><div class="container footer-bottom"><span>INDEPENDENT RESEARCH · NOT AFFILIATED WITH DRIVENDATA OR DOE</span><span id="feed-status">Leaderboard observation: 26 Oct 2026 · UTC</span></div></footer>
+</body>
+</html>

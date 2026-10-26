@@ -61,3 +61,15 @@ def test_unofficial_redirect_is_not_accepted(tmp_path, monkeypatch):
     path = tmp_path / 'out.json'
     assert not feed.refresh(path)
     assert json.loads(path.read_text())['status'] == 'stale'
+
+
+def test_corrupt_cache_falls_back_to_checked_in_observation(tmp_path, monkeypatch):
+    output, cache = tmp_path / 'out.json', tmp_path / 'cache.json'
+    previous = {'captured_utc': '2026-10-01T01:00:00Z', 'top_public_dti': 0.4, 'source_url': feed.URL}
+    output.write_text(json.dumps(previous))
+    cache.write_text('{bad json')
+    monkeypatch.setattr(feed, 'urlopen', lambda *a, **kw: (_ for _ in ()).throw(URLError('blocked')))
+    assert not feed.refresh(output, cache)
+    result = json.loads(output.read_text())
+    assert result['captured_utc'] == previous['captured_utc'] and result['top_public_dti'] == .4
+    assert result['status'] == 'stale' and json.loads(cache.read_text()) == result

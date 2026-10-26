@@ -4,9 +4,13 @@
 __pycache__/
 .pytest_cache/
 *.py[cod]
-data/official/
-data/bridge/
-data/external/
-out/
 *.partial
+/data/raw/
+/data/prepared/
+/data/official/
+/data/bridge/
+/data/external/
+/out/
+/_site/
+.feed-cache/
 .DS_Store

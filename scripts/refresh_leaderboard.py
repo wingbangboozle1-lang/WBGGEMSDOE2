@@ -78,11 +78,31 @@ def parse_top(html: str) -> tuple[float, str | None]:
     raise ValueError("No unambiguous rank-one public DTI row found; page layout may have changed")
 
 
-def refresh(output: Path) -> bool:
+def load_previous(output: Path, cache: Path | None = None) -> dict:
+    """Prefer a valid last-known observation; a corrupt cache cannot break publishing."""
+    for path in (cache, output):
+        if path is None:
+            continue
+        try:
+            value = json.loads(path.read_text(encoding="utf-8"))
+            score = value.get("top_public_dti")
+            captured = value.get("captured_utc")
+            if (isinstance(score, bool) or not isinstance(score, (int, float)) or not 0 <= score <= 1
+                    or not isinstance(captured, str) or not captured.strip()
+                    or (value.get("source_url") is not None and value["source_url"] != URL)):
+                continue
+            parsed = dt.datetime.fromisoformat(captured.replace('Z', '+00:00'))
+            if parsed.tzinfo is None:
+                continue
+            return value
+        except (OSError, ValueError, TypeError, AttributeError):
+            continue
+    return {}
+
+
+def refresh(output: Path, cache: Path | None = None) -> bool:
     now = dt.datetime.now(dt.timezone.utc).isoformat()
-    previous = {}
-    if output.exists():
-        previous = json.loads(output.read_text(encoding="utf-8"))
+    previous = load_previous(output, cache)
     try:
         req = Request(URL, headers={"User-Agent": "WBGGEMSDOE2/1.0 public leaderboard monitor"})
         with urlopen(req, timeout=25) as response:
@@ -111,14 +131,20 @@ def refresh(output: Path) -> bool:
     temp = output.with_suffix(output.suffix + ".tmp")
     temp.write_text(json.dumps(data, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     temp.replace(output)
+    if cache is not None:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache_temp = cache.with_suffix(cache.suffix + ".tmp")
+        cache_temp.write_text(json.dumps(data, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        cache_temp.replace(cache)
     return ok
 
 
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--output", type=Path, default=ROOT / "docs/data/leaderboard.json")
+    p.add_argument("--cache", type=Path, help="optional last-known observation across scheduled builds")
     args = p.parse_args()
-    if refresh(args.output):
+    if refresh(args.output, args.cache):
         print("Official public leaderboard snapshot refreshed.")
     else:
         print("WARNING: leaderboard refresh failed; the snapshot is explicitly stale.", file=sys.stderr)

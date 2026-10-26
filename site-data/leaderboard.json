@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "evidence_class": "PUBLIC-LEADERBOARD-OBSERVATION",
+  "participant": "xiaofanhu",
+  "score": 0.4437,
+  "observed_at_utc": "2026-10-26T21:52:00Z",
+  "observation_method": "Public leaderboard page read via Arena web retrieval; not a submission-page receipt.",
+  "last_attempt_at_utc": null,
+  "last_attempt_result": "not run from deployment",
+  "warning": "Public leaderboard rows do not identify the file submitted and do not establish a private or final score."
+}

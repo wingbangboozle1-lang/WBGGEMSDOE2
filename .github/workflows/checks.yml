@@ -1,0 +1,52 @@
+name: Verify audit and dashboard
+on:
+  push:
+    branches: [main, 'arena/**']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  audit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install test dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Restore the immutable shared template
+        run: |
+          if ! scripts/bootstrap_template.sh > "$RUNNER_TEMP/bootstrap.log" 2>&1; then
+            cat "$RUNNER_TEMP/bootstrap.log"
+            msg=$(tail -c 500 "$RUNNER_TEMP/bootstrap.log" | tr '\r\n' ' ' | sed 's/%/%25/g')
+            echo "::error title=Template bootstrap failed::$msg"
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/bootstrap.log"
+      - name: Restore pinned research inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! python scripts/restore_audit_inputs.py > "$RUNNER_TEMP/inputs.log" 2>&1; then
+            cat "$RUNNER_TEMP/inputs.log"
+            msg=$(tail -c 500 "$RUNNER_TEMP/inputs.log" | tr '\r\n' ' ' | sed 's/%/%25/g')
+            echo "::error title=Research input restore failed::$msg"
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/inputs.log"
+      - name: Reproduce registry audit and rendered comparison
+        run: |
+          python scripts/run_preflight.py
+          python scripts/build_focus_table.py
+          git diff --exit-code -- executive-summary.html
+      - name: Test fail-closed gates and public feed
+        run: |
+          python -m pytest -q
+          PYTHONPATH=.cache/template/src python -m pytest -q \
+            .cache/template/tests/test_evaluate_holdout.py \
+            .cache/template/tests/test_evaluate_holdout_shared.py \
+            .cache/template/tests/test_submission_format.py \
+            .cache/template/tests/test_uniqueness.py \
+            .cache/template/tests/test_literal_gate_witness.py

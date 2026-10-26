@@ -18,7 +18,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATE = ROOT / ".cache" / "shared-template"
+TEMPLATE = ROOT / ".cache" / "template"
 PINS = ROOT / "registry" / "template_pins.json"
 PREPARE_SHA = "73c743e8ab7238b44ce82b9a8d4f9c7a17312fc023ee894ebd0e3788a456d7d6"
 

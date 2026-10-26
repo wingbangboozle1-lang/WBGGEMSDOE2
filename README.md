@@ -12,6 +12,12 @@
 - Zero candidate experiments and zero submission slots were used. No candidate holdout DTI, confidence interval, final uniqueness scan, candidate hash, or organizer-confirmed score is claimed.
 - The timestamped official public leaderboard is a snapshot, **not** a prediction for a candidate. Scheduled refresh marks failed observations stale and never fabricates an observation time. Historical claims remain explicitly USER-REPORTED.
 
+## Independent research desk and three-pass audit
+
+The concurrently developed [independent research desk](research-desk.html) and its [executive summary](executive-summary.html) preserve a second byte-level proof, nine-site table, four provisional hypotheses and the [three-pass review log](knowledge/review-passes.md). The blocking GEMSDOE48 bytes were verified as a member of the pinned shared registry inventory, not merely as an unrelated image. The full prompt text preserved in that parallel pass is available at [knowledge/prompt-archive.md](knowledge/prompt-archive.md); historical values there remain unverified user reports.
+
+The additional `scripts/run_preflight.py` independently regenerates [reports/focus-review.json](reports/focus-review.json) and [reports/run-card.json](reports/run-card.json) without creating a candidate. `scripts/validate_raster.py` invokes the shared format validator for research files, verifies the witness and returns exit code **2 / blocked** even when a historical file passes the local format check. A local format pass is never upload authorization.
+
 ## Reproduce locally
 
 Python 3.11+, GitHub CLI access to the public owner mirrors, and disk/RAM for a roughly 419 MB 19-band feature TIFF are needed. For a repeatable setup:
@@ -19,6 +25,8 @@ Python 3.11+, GitHub CLI access to the public owner mirrors, and disk/RAM for a 
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
+# Bootstrap first so both audit suites use the same complete, hash-pinned template.
+scripts/bootstrap_template.sh
 # Restores and SHA-256 verifies the pinned shared template and owner-hosted data,
 # assembles the 19-band feature TIFF, and populates the unchanged shared band cache.
 .venv/bin/python scripts/prepare_data.py --fetch --cache-bands
@@ -40,9 +48,9 @@ To test a historical raster's local format only, run `python scripts/validate_su
 2. Check fresh registry inventories and all actual raster bytes; test pre-placement surfaces and final predictions against **every** registered raster. The automatic HEAD feed detects drift only and does not replace this audit.
 3. Implement the agreed lane in the unchanged shared-template workflow. Derive catalogue-based features only from visible faults after withholding whole segments with buffers; mask visible faults exactly; run each feature leakage canary, a leakage-free spatial holdout, and a matched control. Promotion requires a statistically supported improvement, passing full uniqueness and file validation, and a separate slot selector.
 4. Obtain organizer clarification/acceptance for exterior null/NaN versus finite zero and official access/data provenance. No real submission without the above gates and eligibility checks.
-5. The pinned shared `metric.py` documents `delta_T <= k`; a multi-truth fixture in `checks/test_shared_template.py` shows this is not generally true. The scorer matched a brute-force oracle on tested fixtures, but the documentation must be corrected **upstream in the shared template**, not patched as a private fork here.
+5. The pinned shared `metric.py` documents `delta_T <= k`; a multi-truth fixture in `checks/test_shared_template.py` shows this is not generally true. The scorer matched a brute-force oracle on tested fixtures, but the documentation must be corrected **upstream in the shared template**, not patched as a private fork here. This session has read-only permission on that repository; an attempt to file an upstream issue was rejected by the GitHub integration, so the owner still needs to correct it.
 
-GitHub Actions rebuilds and publishes the static site on main and every six hours; leaderboard and commit-HEAD refreshes can fail closed to stale/unknown. Pages is currently also configured for legacy `main /` deployment: both publishers succeeded, but may race after a main push, so an older snapshot can appear until the next scheduled refresh. Switching Pages → Build and deployment → Source to GitHub Actions removes that race; the current GitHub integration returned HTTP 403 when asked to change this setting. CI restores only the hash-pinned shared code before small synthetic tests. The pytest checks live in `checks/`; the merged legacy unittest suite remains in `tests/`. It does not train a model, rerun the historical raster audit, access an authenticated organizer portal, or use competition slots.
+GitHub Actions rebuilds and publishes the static site on main and every six hours; leaderboard and commit-HEAD refreshes can fail closed to stale/unknown. Pages is currently also configured for legacy `main /` deployment: both publishers succeeded, but may race after a main push, so an older snapshot can appear until the next scheduled refresh. Switching Pages → Build and deployment → Source to GitHub Actions removes that race; the current GitHub integration returned HTTP 403 when asked to change this setting. CI includes a hash-pinned shared-code test job and a separate job that restores the public research rasters and reproduces the independent historical audit. The pytest checks live in `checks/` and `tests/`; the pinned evaluator, writer and uniqueness tests are also run. CI does not train a model, access an authenticated organizer portal, or use competition slots.
 
 ## Standing project brief
 
