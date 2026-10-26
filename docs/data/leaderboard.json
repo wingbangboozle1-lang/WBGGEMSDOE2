@@ -1,0 +1,10 @@
+{
+  "evidence_class": "OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT",
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "captured_utc": "2026-10-26T21:55:19Z",
+  "last_attempt_utc": "2026-10-26T21:55:19Z",
+  "status": "snapshot",
+  "top_public_dti": 0.4437,
+  "top_participant": "xiaofanhu",
+  "note": "Public page observed via the research web tool; this is not a per-file submission receipt. Values may change."
+}

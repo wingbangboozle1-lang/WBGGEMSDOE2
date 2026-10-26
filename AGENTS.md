@@ -1,0 +1,3 @@
+# Working agreement
+
+Before changes, read `README.md`, especially the current decision, reproduction instructions, and preserved standing project brief, and read `docs/PROJECT_CHARTER.md`, `docs/data/run-card.json`, and `docs/research/evidence-and-sources.md`. Treat historical owner scores as unverified; do not fabricate a candidate, holdout score, registry pass, or organizer receipt. Keep the literal fail-closed decision until the protocol owner resolves the continuous-prior ambiguity, supplies the method lane, and a separately reviewed full run supports a different result. Use the pinned shared template, fix shared tools upstream rather than silently forking them, and retain a fresh/stale distinction for public observations.

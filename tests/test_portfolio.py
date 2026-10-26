@@ -76,4 +76,5 @@ def test_negative_card_has_no_fake_file_or_score():
     assert card['raster_sha256'] is None
     assert card['holdout_dti']['value'] is None and card['holdout_dti']['ci95'] is None
     assert card['validator']['status'].startswith('not run')
-    assert len(card['note']) <= 140
+    assert card['submission_name'] is None and card['note'] is None
+    assert card['holdout_dti']['withheld_positives'] is None

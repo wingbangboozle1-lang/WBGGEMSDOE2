@@ -1,9 +1,15 @@
+# Large competition inputs and reconstructed feature caches are reproducible, not deliverables.
 .cache/
 .venv/
 __pycache__/
 .pytest_cache/
 *.py[cod]
+data/official/
+data/bridge/
+data/external/
 data/raw/
 data/prepared/
+out/
 *.part
 *.partial
+.DS_Store

@@ -11,7 +11,7 @@
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2 (not run)",
     "value": null,
-    "withheld_positives": 0,
+    "withheld_positives": null,
     "ci95": null,
     "reason": "Duplicate-by-construction stop occurs before a model experiment. Proxy truth and hidden leaderboard truth are unavailable."
   },
@@ -37,11 +37,12 @@
     "crs_shape_transform_match": null,
     "organizer_acceptance": null
   },
-  "submission_name": "WBG-RCSO-20261026-NOT-GENERATED",
-  "note": "RCSO research stopped: literal registry overlap is unsatisfiable; no submission.",
+  "submission_name": null,
+  "note": null,
   "ok_to_download_submission": false,
   "ok_to_submit": false,
   "experiments_used": 0,
   "competition_slots_used": 0,
-  "next_step": "Obtain a protocol decision on how dense surfaces and calibration lattices are compared before another lane builds a file. Then run leakage canaries, fold-local holdout and a complete registry audit."
+  "next_step": "Obtain a protocol decision on how dense surfaces and calibration lattices are compared before another lane builds a file. Then run leakage canaries, fold-local holdout and a complete registry audit.",
+  "decision_note": "RCSO research stopped at the literal registry gate; no candidate was generated."
 }

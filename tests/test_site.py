@@ -51,7 +51,7 @@ def test_guide_reports_format_and_current_stop():
 
 def test_legacy_pages_root_redirects_to_committed_site():
     landing = (ROOT / 'index.html').read_text(encoding='utf8')
-    assert 'url=docs/index.html' in landing
+    assert 'url=./docs/' in landing and (ROOT / 'docs/index.html').is_file()
     assert (DOCS / 'index.html').is_file()
 
 
@@ -62,3 +62,12 @@ def test_guides_include_evidence_and_newer_research_only_links():
     evidence = json.loads((DOCS / 'data/current-candidates-audit.json').read_text())
     assert len(evidence['results']) == 3
     assert all(row['verdict'] == 'DO NOT SUBMIT' for row in evidence['results'])
+
+
+def test_primary_dashboard_links_to_independently_audited_research():
+    primary = (ROOT / 'docs/index.html').read_text(encoding='utf8')
+    assert 'Newer external research files' in primary
+    assert 'deep-review/index.html' in primary
+    assert 'current-candidates-audit.json' in primary
+    data = json.loads((ROOT / 'docs/data/current-candidates-audit.json').read_text())
+    assert all(not row['ok_to_submit'] for row in data['results'])

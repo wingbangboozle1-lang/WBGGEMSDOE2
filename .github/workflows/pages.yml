@@ -1,4 +1,5 @@
-name: Publish research site
+name: Publish GEMS dashboard
+
 on:
   push:
     branches: [main]
@@ -18,38 +19,35 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    outputs:
-      mode: ${{ steps.pages-mode.outputs.mode }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Check configured Pages source
-        id: pages-mode
+      - name: Refresh public leaderboard (stale on failure)
+        run: python scripts/refresh_leaderboard.py
+      - name: Check priority-site commit freshness (no new raster audit)
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          mode=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type' 2>/dev/null || echo unavailable)
-          echo "mode=$mode" >> "$GITHUB_OUTPUT"
-          if [ "$mode" != workflow ]; then
-            echo "::warning::Pages is not configured for GitHub Actions. Legacy main-root Pages can serve the committed site via index.html, but scheduled feed changes will not be published."
-          fi
-      - uses: actions/configure-pages@v5
-        if: steps.pages-mode.outputs.mode == 'workflow'
-      - name: Refresh public observations without changing submission status
+        run: python scripts/refresh_registry_refs.py
+      - name: Refresh independent public observation feed
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/refresh_feed.py
-      - name: Build the static site from the recorded audit
-        run: python scripts/build_site.py
+      - name: Rebuild evidence-first static sites
+        run: |
+          python scripts/build_site.py
+          python scripts/build_research_site.py
+      - name: Stage the same URL layout as legacy Pages
+        run: |
+          mkdir -p _site/docs
+          cp -R docs/. _site/docs/
+          cp index.html .nojekyll _site/
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
-        if: steps.pages-mode.outputs.mode == 'workflow'
         with:
-          path: docs
+          path: _site
   deploy:
-    if: needs.build.outputs.mode == 'workflow'
     needs: build
     runs-on: ubuntu-latest
     environment:
