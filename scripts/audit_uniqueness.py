@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""Uniqueness audit vs registry rasters (protocol lane rule):
-FAIL/drift if Spearman rank-corr(surface, registry surface) > 0.90 OR
+"""Historical, limited overlap diagnostics; never a full registry or surface gate.
+
+The earlier invocation checked only selected focus files and a dot-density proxy,
+not every prior or the actual pre-placement surface. It cannot authorize upload.
+
+A failure is reported if rank correlation > 0.90 OR
 >70% of candidate dots lie within 3 px of a registry raster's dots.
 Dots = pixels > 0. Surface = candidate values (for binary, the dot-density
 surface smoothed by the 300 m triangular kernel is used for rank-corr)."""
@@ -33,5 +37,5 @@ def audit(cand_path, registry_paths):
 
 if __name__=="__main__":
     res=audit(sys.argv[1], sys.argv[2:])
-    print(json.dumps(res,indent=2))
-    sys.exit(1 if any(r["drift"] for r in res) else 0)
+    print(json.dumps({"status":"INCOMPLETE: selected priors and dot-density proxy only", "ok_to_submit":False, "results":res},indent=2))
+    sys.exit(1)  # a limited diagnostic is not a full registry pass

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""WBGGEMSDOE2 assigned lane (this session): H1
+"""Historical parallel-run H1 code, preserved but blocked from execution.
+
+The lane was self-assigned, not supplied in this session's instructions. Its
+saved candidate fails the literal any-registry gate. Its private holdout also
+uses withheld catalogue labels when selecting training negatives and has not
+passed the shared evaluator protocol. See evidence/parallel_candidate_audit.json.
+
 'Magnetic/radiometric step x lidar cross-slope asymmetry interaction'.
 
 WHY this can catch a catalogue-missing fault: a buried/blind normal fault may
@@ -108,6 +114,7 @@ def segments_and_folds(labels):
     return lab, n, foldmap
 
 def main(final_budget=None, experiments=("E1","E2","E3")):
+    raise RuntimeError("STOP: the parallel H1 candidate fails the literal registry gate; this legacy lane also requires shared-evaluator and leakage review. See evidence/parallel_candidate_audit.json.")
     labels_raw, prof = load("labels.tif")
     labels_raw = labels_raw[0]
     footprint = labels_raw >= 0

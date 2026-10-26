@@ -1,4 +1,6 @@
 {
+  "status": "SUPERSEDED \u2014 binary-lattice duplicate / STOP; no submission approval",
+  "independent_audit": "parallel_candidate_audit.json",
   "name": "wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros",
   "file": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
   "dots": 34564,
@@ -34,7 +36,8 @@
     "mass": 34564.0,
     "sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
     "matches_reference": true,
-    "verdict": "PASS"
+    "verdict": "LOCAL RAW FORMAT PASS ONLY \u2014 interior nodata mask and organizer acceptance unresolved",
+    "submission_authorized": false
   },
   "features": [
     "lidar_ex_max",

@@ -6,33 +6,65 @@
     "label": "HOLDOUT-DTI",
     "evaluator": "WBGGEMSDOE2-HIDE-RECOVER-v2.0 (alpha0.2 beta0.8 R300m triangular, whole-segment withholding by 256px checkerboard centroid block, 15px training buffer, per-cell pooled DTI)",
     "experiments": {
-      "E1_full_plus_catalogue_distance": {"dti": 0.0227, "fold_bootstrap_95ci": [0.0181, 0.0299]},
-      "E2_lane_no_catalogue_distance": {"dti": 0.1321, "fold_bootstrap_95ci": [0.1290, 0.1349]},
-      "E3_E1_surface_sep3.4": {"dti": 0.0187, "fold_bootstrap_95ci": [0.0148, 0.0242]}
+      "E1_full_plus_catalogue_distance": {
+        "dti": 0.0227,
+        "fold_bootstrap_95ci": [
+          0.0181,
+          0.0299
+        ]
+      },
+      "E2_lane_no_catalogue_distance": {
+        "dti": 0.1321,
+        "fold_bootstrap_95ci": [
+          0.129,
+          0.1349
+        ]
+      },
+      "E3_E1_surface_sep3.4": {
+        "dti": 0.0187,
+        "fold_bootstrap_95ci": [
+          0.0148,
+          0.0242
+        ]
+      }
     },
     "n_withheld_positives_pooled": 58016,
     "leakage_canary_max_auc_fold0": 0.5927,
-    "canary_rule": "all features <= 0.90 PASS",
-    "champion_proxy_note": "GEMSDOE32 champion raster scored 0.0066 on catalogue recovery - expected and NOT comparable: it targets off-catalogue truth, so it is not a catalogue-recovery baseline. No paired live-truth comparison is possible without organizer labels."
+    "canary_rule": "INCOMPLETE \u2014 only fold 0 was reported",
+    "champion_proxy_note": "GEMSDOE32 champion raster scored 0.0066 on catalogue recovery - expected and NOT comparable: it targets off-catalogue truth, so it is not a catalogue-recovery baseline. No paired live-truth comparison is possible without organizer labels.",
+    "protocol_status": "NOT ACCEPTED: non-shared evaluator; withheld labels used for negative selection; canaries reported only for fold 0."
   },
   "correlation_overlap_vs_registry": {
     "method": "300m-kernel dot-density surface Spearman (200k sampled px) + fraction of candidate dots within 3px, vs the 9 focus-site best rasters",
     "max_abs_rank_corr": 0.3157,
     "max_dot_overlap_frac": 0.4141,
     "registry_rasters": 9,
-    "lane_limits": {"rank_corr_max": 0.90, "dot_overlap_max": 0.70},
-    "result": "PASS - inside lane"
+    "lane_limits": {
+      "rank_corr_max": 0.9,
+      "dot_overlap_max": 0.7
+    },
+    "result": "FAIL \u2014 99.3837518806% of candidate dots are within 3px of the registered binary lattice",
+    "historical_nine_focus_only_result": "PASS - inside lane",
+    "binary_lattice_overlap_fraction": 0.9938375188056938,
+    "continuous_prior_overlap_fraction_literal": 1.0,
+    "all_registry_rasters_checked": false,
+    "true_preplacement_surface_checked": false,
+    "independent_audit": "parallel_candidate_audit.json"
   },
   "raster_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
-  "validator": "PASS (re-opened saved bytes: single band float32, EPSG:32611, 3730x3292, transform matches sample_submission, 0 NaN, min 0.0 max 1.0, 34564 dots)",
+  "validator": "Raw values passed local range/grid checks; nodata=0 masks 5,132,809 in-footprint cells. Organizer acceptance unknown; format check does not authorize upload.",
   "submission_name": "wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
-  "submission_note_140c": "WBG2 H1 stepXasym E2 34564d holdout0.1321 no-catdist unique rho0.32 ov41pct",
+  "submission_note_140c": null,
   "live_projection": {
-    "label": "PROJECTION (not a score)",
-    "estimate": "0.15-0.24",
+    "label": "RETIRED UNCALIBRATED PROJECTION \u2014 not a score or decision basis",
+    "estimate": null,
     "method": "anchored on champion 0.2778 (OWNER-REPORTED) and GEMSDOE32 H47 unique-candidate LLI projection 0.240-0.248 at 65% max registry overlap, extrapolated to this file's 41% max overlap and widened for evaluator mismatch; low confidence",
-    "organizer_confirmed_scores": "none - every score in this repo is OWNER-REPORTED or HOLDOUT-DTI or PROJECTION"
+    "organizer_confirmed_scores": "none - every score in this repo is OWNER-REPORTED or HOLDOUT-DTI or PROJECTION",
+    "historical_unvalidated_estimate": "0.15-0.24"
   },
   "verdict": "negative",
-  "verdict_reason": "Valid + unique + strong catalogue-recovery holdout, but projected below the 0.2778 champion on live off-catalogue truth. Do not spend a weekly slot expecting a champion-beating score; promotion is a separate selector decision."
+  "verdict_reason": "DUPLICATE / STOP under the literal binary-lattice overlap rule. Holdout is not protocol-valid; no upload is approved.",
+  "historical_note_do_not_use": "WBG2 H1 stepXasym E2 34564d holdout0.1321 no-catdist unique rho0.32 ov41pct",
+  "ok_to_submit": false,
+  "superseding_audit": "parallel_candidate_audit.json"
 }

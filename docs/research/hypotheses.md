@@ -1,6 +1,6 @@
 # Geological hypotheses — ranked proposals, not completed experiments
 
-**Status:** 0 model experiments run. The request refers to an assigned “single method paragraph,” but none is specified. In addition, the strict registry gate is blocked before placement. These are desk proposals, not selected lanes, observed gains, or claims that nobody outside this repository has tried them. The local repository initially contained only a README. The rankings below are qualitative judgments of potential value versus implementation effort, not score projections.
+**Status:** this review ran 0 model experiments. A separate parallel run reported 3 experiments, but its holdout does not satisfy the shared protocol and its candidate failed the binary-lattice gate. No additional experiments are authorized under that budget. The request refers to an assigned “single method paragraph,” but none is specified. In addition, the strict registry gate is blocked before placement. These are desk proposals, not selected lanes, observed gains, or claims that nobody outside this repository has tried them. The local repository initially contained only a README. The rankings below are qualitative judgments of potential value versus implementation effort, not score projections.
 
 | Rank | Proposed layers and testable signature | Why it might detect an unmapped fault | Differentiator / cost | Named non-fault mimic & falsification |
 |---|---|---|---|---|
