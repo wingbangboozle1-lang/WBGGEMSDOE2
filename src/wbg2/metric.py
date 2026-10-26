@@ -1,6 +1,9 @@
-"""Distance-weighted Tversky index (DTI), DOE GEMS Prize.
+"""Historical parallel-run binary DTI implementation, not the shared evaluator.
 
-Verified against the competition problem description
+This code is retained for forensic comparison only. It does not authorize an
+experiment or replace the pinned shared metric/evaluate_holdout implementation.
+
+Compared against the competition problem description
 (https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/):
 alpha=0.2 (FP weight), beta=0.8 (FN weight), triangular kernel
 k(d)=max(1-d/R,0), R=300 m = 3 px at 100 m/px.

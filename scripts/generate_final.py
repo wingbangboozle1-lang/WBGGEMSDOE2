@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""Final TIF: E2 recipe (winner of holdout) trained on the full catalogue.
-Bands = all except dist_visible_fault_log (holdout showed catalogue-proximity
-destroys recovery: E1 0.0227 vs E2 0.1321). Emission: greedy 2.8px-separated
-packing, 44,090 budget (family-optimal range on the live ledger), dots
-forbidden within 2px of catalogue faults (known faults are masked in scoring).
-Output values are binary {0,1} float32 -> cannot trigger '[0,1]' error."""
-import sys, os, json, hashlib, datetime
+"""Historical parallel candidate generator, blocked after the strict registry STOP.
+
+The old output failed the binary-lattice uniqueness rule and its holdout was
+not assessed with the shared, leakage-free protocol. See
+``evidence/parallel_candidate_audit.json``. Do not generate or upload another
+candidate from this recipe without resolving and reimplementing the protocol.
+"""
+import sys
+if __name__ == "__main__":
+    raise SystemExit("STOP: parallel candidate failed the registry gate; generation is disabled.")
+import os, json, hashlib, datetime
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 sys.path.insert(0, os.path.dirname(__file__))
 import numpy as np, rasterio
@@ -16,6 +20,7 @@ from submission_writer import write_submission
 from validate_submission import validate
 
 def main(budget=44090):
+    raise RuntimeError("STOP: candidate failed registry uniqueness; generation is disabled.")
     labels_raw,_ = load("labels.tif"); labels_raw=labels_raw[0]
     footprint = labels_raw>=0; labels = labels_raw==1
     bands, names = build_features(labels)

@@ -32,6 +32,8 @@ def run(path: Path, sample: Path) -> dict:
         footprint = np.isfinite(ds.read(1))
     result = format_report(path, sample, footprint=footprint)
     result.update(
+        shared_format_ok=bool(result["ok"]),
+        project_mask_check="not yet checked",
         evidence_class="LOCAL-FORMAT-MEASUREMENT",
         reference_provenance="Hash-pinned third-party mirror; not organizer authenticated",
         sample_sha256=SAMPLE_SHA,
@@ -45,13 +47,23 @@ def run(path: Path, sample: Path) -> dict:
     )
     with rasterio.open(path) as ds:
         a = ds.read(1)
+        mask = ds.dataset_mask()
     if a.shape == footprint.shape:
         values = a[footprint]
         result["no_nan_inside_footprint"] = bool(np.isfinite(values).all())
         result["inside_values_in_0_1"] = bool(np.isfinite(values).all() and
                                                (values >= 0).all() and (values <= 1).all())
+        masked = int((footprint & (mask == 0)).sum())
+        result["dataset_mask_invalid_inside_footprint"] = masked
+        result["project_mask_check"] = "pass" if masked == 0 else "fail: invalid/nodata cells inside footprint"
+        if masked:
+            # Supplemental local policy, not a private modification of the shared checker.
+            result["ok"] = False
     else:
         result["inside_values_in_0_1"] = False
+        result["dataset_mask_invalid_inside_footprint"] = None
+        result["project_mask_check"] = "not checked: shape mismatch"
+        result["ok"] = False
     return result
 
 

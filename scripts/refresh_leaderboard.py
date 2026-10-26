@@ -13,12 +13,16 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 URL = "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/"
+# The public page loads this same-origin HTMX fragment after the initial page.
+PARTIAL_URL = "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard_partial/?page=1"
 
 
 class TableRows(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.in_table = 0
+        self.in_thead = False
+        self.implicit_head = False
         self.row = None
         self.cell = None
         self.rows = []
@@ -29,8 +33,15 @@ class TableRows(HTMLParser):
             if not self.in_table:
                 self.rows = []
             self.in_table += 1
+        if self.in_table and tag == "thead":
+            self.in_thead = True
         if self.in_table and tag == "tr":
             self.row = []
+            self.implicit_head = False
+        # The organizer's fragment uses <th> directly inside <thead>, with no <tr>.
+        if self.in_table and self.in_thead and self.row is None and tag == "th":
+            self.row = []
+            self.implicit_head = True
         if self.row is not None and tag in ("td", "th"):
             self.cell = []
         if self.cell is not None and tag in ("br", "p", "div"):
@@ -47,6 +58,12 @@ class TableRows(HTMLParser):
         if tag == "tr" and self.row is not None:
             self.rows.append(self.row)
             self.row = None
+        if tag == "thead" and self.in_thead:
+            if self.implicit_head and self.row is not None:
+                self.rows.append(self.row)
+                self.row = None
+            self.in_thead = False
+            self.implicit_head = False
         if tag == "table" and self.in_table:
             self.in_table -= 1
             if not self.in_table:
@@ -84,18 +101,18 @@ def refresh(output: Path) -> bool:
     if output.exists():
         previous = json.loads(output.read_text(encoding="utf-8"))
     try:
-        req = Request(URL, headers={"User-Agent": "WBGGEMSDOE2/1.0 public leaderboard monitor"})
+        req = Request(PARTIAL_URL, headers={"User-Agent": "WBGGEMSDOE2/1.0 public leaderboard monitor", "HX-Request": "true"})
         with urlopen(req, timeout=25) as response:
             parsed = urlparse(response.geturl())
-            if parsed.scheme != "https" or parsed.hostname != "www.drivendata.org":
-                raise ValueError("Leaderboard redirected outside the official host")
+            if parsed.scheme != "https" or parsed.hostname != "www.drivendata.org" or response.geturl() != PARTIAL_URL:
+                raise ValueError("Leaderboard fragment redirected away from the official endpoint")
             body = response.read(4_000_001)
             if len(body) > 4_000_000:
                 raise ValueError("Unexpectedly large leaderboard response")
             html = body.decode("utf-8", errors="strict")
         value, participant = parse_top(html)
         data = {"evidence_class": "OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT", "source_url": URL,
-                "captured_utc": now, "last_attempt_utc": now, "status": "fresh",
+                "data_url": PARTIAL_URL, "captured_utc": now, "last_attempt_utc": now, "status": "fresh",
                 "top_public_dti": value, "top_participant": participant,
                 "note": "Official public leaderboard; not a receipt for any project raster. Values can change."}
         ok = True
