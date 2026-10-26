@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 import json
 import pytest
-from refresh_feed import parse_leaderboard, refresh
+from refresh_feed import PARTIAL_URL, parse_leaderboard, refresh
 
 HTML = '''<table><thead><tr><th>Rank</th><th>Participant</th>
 <th>Best<br>public<br>DW-Tversky (in descending order)</th></tr></thead>
@@ -36,6 +36,7 @@ def test_fresh_feed_unknown_github_and_unlisted_site():
     def fetch(url, *, github=False):
         if github:
             raise OSError('offline')
+        assert url == PARTIAL_URL
         return HTML
     result = refresh({}, snapshots, fetch=fetch)
     assert result['leaderboard']['status'] == 'fresh' and result['leaderboard']['value'] == .4437
@@ -43,3 +44,10 @@ def test_fresh_feed_unknown_github_and_unlisted_site():
     snapshots['sites'][0]['site'] = 'NOT-ALLOWED'
     with pytest.raises(ValueError):
         refresh({}, snapshots, fetch=fetch)
+
+
+def test_fragment_implicit_header_and_ambiguous_tables():
+    fragment = HTML.replace('<thead><tr>', '<thead>').replace('</tr></thead>', '</thead>')
+    assert parse_leaderboard(fragment) == .4437
+    with pytest.raises(ValueError):
+        parse_leaderboard(fragment + fragment)

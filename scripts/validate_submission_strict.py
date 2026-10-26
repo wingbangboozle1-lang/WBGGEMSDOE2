@@ -13,13 +13,19 @@ import sys
 from validate_submission import ROOT, run
 
 
+def validate(path, ref=None):
+    """Return the shared plus supplemental report; never authorize upload."""
+    sample = Path(ref) if ref else ROOT / 'data/official/sample_submission.tif'
+    return run(Path(path), sample)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('raster', type=Path)
     parser.add_argument('reference', type=Path, nargs='?', default=ROOT / 'data/official/sample_submission.tif')
     args = parser.parse_args()
     try:
-        report = run(args.raster, args.reference)
+        report = validate(args.raster, args.reference)
         print(json.dumps(report, indent=2, allow_nan=False))
         return 0 if report['ok'] else 1
     except (OSError, ValueError, RuntimeError) as exc:

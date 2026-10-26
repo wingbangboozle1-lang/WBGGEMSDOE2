@@ -1,0 +1,43 @@
+{
+  "evidence_class": "INDEPENDENT-POST-MERGE-RASTER-AUDIT",
+  "audited_utc": "2026-10-26T22:27:21.338999+00:00",
+  "candidate_path": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
+  "candidate_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+  "candidate_origin": "Parallel PR #10; file retained for research only",
+  "positive_pixels_inside_footprint": 34564,
+  "witnesses": {
+    "lattice": {
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "source": "https://github.com/buffedlizard55-lab/13GEMSDOE/blob/92ee6f074323f161eed837b80ec3ee5b662e26f5/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "candidate_dots_within_3px": 34351,
+      "candidate_dot_count": 34564,
+      "overlap_fraction": 0.9938375188056938,
+      "passes_70_percent_limit": false
+    },
+    "dense_probability": {
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "source": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "candidate_dots_within_3px": 34564,
+      "candidate_dot_count": 34564,
+      "overlap_fraction": 1.0,
+      "passes_70_percent_limit": false
+    }
+  },
+  "surface_rank_correlation": null,
+  "preplacement_surface_checked": false,
+  "all_registry_rasters_checked": false,
+  "result": "DUPLICATE / STOP: more than 70% of candidate dots are near the binary lattice",
+  "continuous_prior_caveat": "The continuous prior gives 100% under the unchanged finite-positive support definition; whether continuous probabilities count as dots is unresolved. The binary-lattice failure is independent of that ambiguity.",
+  "format": {
+    "shared_local_format_report_ok": true,
+    "supplemental_project_mask_check_ok": false,
+    "no_nan_inside_footprint": true,
+    "inside_values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "nodata_tag": 0.0,
+    "dataset_mask_invalid_inside_footprint": 5132809,
+    "mask_caveat": "The raw values are finite, but nodata=0 marks interior zero-valued pixels invalid in the dataset mask. The shared local format report does not reject this mask; organizer handling is unknown."
+  },
+  "holdout_caveat": "Parallel run used a non-shared evaluator; The archived training mask references the full catalogue, and evaluation cells were not removed from the training zone; canaries report only fold 0. No independent protocol-valid holdout has been established.",
+  "ok_to_submit": false
+}

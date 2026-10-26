@@ -92,7 +92,7 @@
         0.129,
         0.1349
       ],
-      "limitations": "Four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight."
+      "limitations": "Evaluation cells were not excluded from the training zone; the four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight."
     },
     "ok_to_submit": false,
     "reason": "Rejected: literal lattice duplication, masked interior cells, and no compliant pre-placement/holdout approval."

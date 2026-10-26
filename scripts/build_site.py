@@ -22,7 +22,7 @@ if (review.get('ok_to_submit') is not False or review.get('sha256') != run.get('
         or review.get('format', {}).get('masked_inside') != 5132809
         or round(review.get('literal_overlap_3px', {}).get('lattice', 0), 6) != 0.993838):
     raise ValueError('Parallel-file evidence changed; review the static narrative before publishing.')
-for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json', 'dense_prior_certificate.json', 'parallel_review.json'):
+for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json', 'dense_prior_certificate.json', 'parallel_review.json', 'parallel_candidate_audit.json'):
     source = ROOT / 'evidence' / name
     if source.is_file():
         shutil.copyfile(source, DOCS / 'data' / name)

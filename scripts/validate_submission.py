@@ -42,6 +42,11 @@ def run(path: Path, sample: Path) -> dict:
     result["shared_format_ok"] = shared_ok
     result["supplemental_mask_and_format_ok"] = supplemental_ok
     result["masked_inside_footprint"] = supplemental.get("masked_inside")
+    # Compatibility fields for the independently developed parallel audit.
+    result["dataset_mask_invalid_inside_footprint"] = supplemental.get("masked_inside")
+    masked = supplemental.get("masked_inside")
+    result["project_mask_check"] = ("not checked: shape mismatch" if masked is None else
+                                    "pass" if masked == 0 else "fail: invalid/nodata cells inside footprint")
     result["supplemental_failures"] = supplemental["failures"]
     result["ok"] = shared_ok and supplemental_ok
     result.update(

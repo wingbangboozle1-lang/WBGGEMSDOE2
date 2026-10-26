@@ -9,6 +9,7 @@ card = json.loads(card_path.read_text())
 audit = json.loads((ROOT / 'evidence/registry_audit.json').read_text())
 parallel = json.loads((ROOT / 'docs/data/portfolio.json').read_text())
 review = json.loads((ROOT / 'evidence/parallel_review.json').read_text())
+corroboration = json.loads((ROOT / 'evidence/parallel_candidate_audit.json').read_text())
 lat = audit['lattice_capacity']
 dense = audit['dense_probability_prior']
 # Stop before changing published files if the card is inconsistent with either
@@ -28,6 +29,10 @@ if not (card['verdict'] == 'negative' and card['ok_to_submit'] is False
         and parallel['dense_probability_witness']['universal_overlap_blocker'] is True
         and card['registry']['dense_probability_prior_full_footprint'] is True
         and review['ok_to_submit'] is False
+        and corroboration['ok_to_submit'] is False
+        and corroboration['candidate_sha256'] == review['sha256']
+        and corroboration['witnesses']['lattice']['overlap_fraction'] == review['literal_overlap_3px']['lattice']
+        and corroboration['format']['dataset_mask_invalid_inside_footprint'] == review['format']['masked_inside']
         and review['literal_overlap_3px']['lattice'] > .7
         and review['format']['format_valid_against_reference'] is False
         and card['parallel_session']['rejected_candidate_sha256'] == review['sha256']

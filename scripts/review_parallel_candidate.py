@@ -80,7 +80,7 @@ def run():
             'evaluator_version': 'WBGGEMSDOE2-HIDE-RECOVER-v2.0 (private parallel implementation, not the required shared evaluator)',
             'withheld_positive_pixels': original['holdout']['n_withheld_positives_pooled'],
             'dti': stated['dti'], 'reported_95ci': stated['fold_bootstrap_95ci'],
-            'limitations': 'Four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight.'},
+            'limitations': 'Evaluation cells were not excluded from the training zone; the four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight.'},
         'source_reported_experiments': 3, 'organizer_receipt': None,
         'conclusion': 'Fails the literal any-registry gate on the binary lattice alone; its zero NoData tag also masks most footprint cells. No submission, estimated live score, or promotion is authorized.'
     }
