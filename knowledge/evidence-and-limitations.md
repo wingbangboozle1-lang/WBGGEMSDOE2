@@ -36,3 +36,7 @@ The nine focus-site analyses compare **directional three-pixel support overlap**
 * Resolve the incompatible literal uniqueness definition and provide/identify the assigned lane without silently excluding a witness; the present instructions prohibit producing any nonempty candidate.
 * Verify the source grid and training data from an authenticated competition download and check the current account quota. Review source licensing and generative-AI disclosure.
 * Once the protocol allows a candidate, pre-register and validate only the top hypothesis with the unmodified shared tools, canaries, fold-local features and paired holdout baseline. Stop if either uniqueness gate fails; promote only through a separate selector after all gates pass.
+
+## Shared documentation defect found in the parallel review
+
+The pinned shared `metric.py` claims a new dot's total marginal truth credit `dT <= k`, where `k` is its nearest-truth self-credit. A five-truth cross with a single central unit dot gives `dT = 11/3` while `k = 1`; see `checks/test_shared_template.py`. The tested scorer and exact finite-change algebra are not alleged to be wrong. The upstream prose needs correction once in the shared template. This session has read-only access there; an attempt to report it as an upstream GitHub issue was rejected by the integration, and no private copy was patched.

@@ -1,5 +1,5 @@
 import pytest
-from scripts.refresh_leaderboard import parse_leaderboard, update_snapshot
+from scripts.refresh_desk_leaderboard import parse_leaderboard, update_snapshot
 
 HTML = '''<!doctype html><table><thead><tr><th>Rank</th><th>Team members</th><th>Participant</th>
 <th>Best<br>public<br>DW-Tversky</th><th>Shared work</th></tr></thead><tbody>
@@ -43,7 +43,7 @@ def test_success_advances_observation_and_does_not_mutate_previous():
 
 def test_corrupt_cache_falls_back_to_valid_snapshot(tmp_path):
     import json
-    from scripts.refresh_leaderboard import load_previous, URL
+    from scripts.refresh_desk_leaderboard import load_previous, URL
     valid = {'score': 0.42, 'participant': 'example', 'observed_at_utc': '2026-10-26T00:00:00Z',
              'source_url': URL, 'evidence_class': 'PUBLIC-LEADERBOARD-OBSERVATION'}
     output, cache = tmp_path / 'source.json', tmp_path / 'cache.json'

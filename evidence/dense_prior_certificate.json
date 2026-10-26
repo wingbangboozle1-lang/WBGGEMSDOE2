@@ -1,0 +1,18 @@
+{
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "witness_file": ".cache/priority-audit/dense-prior.tif",
+  "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+  "positive_pixels": 5167373,
+  "allowed_pixels": 5167373,
+  "uncovered_allowed_pixels": 0,
+  "covered_allowed_fraction": 1.0,
+  "universal_overlap_blocker": true,
+  "overlap_limit": 0.7,
+  "support_definition": "finite prediction > 0 (inherited literal support rule)",
+  "implication": "Every nonempty candidate dot set in the allowed domain has forward overlap 1.0 with this prior; therefore it cannot pass the 0.70 gate.",
+  "prior_repo": "buffedlizard55-lab/17GEMSDOE",
+  "prior_commit": "6fc71d19d49dca4960d5434bd81b6dd06fcc030a",
+  "prior_path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+  "registry_evidence": "https://github.com/buffedlizard55-lab/57GEMSDOE/blob/822a0ce5546c7b6749cdd82eb145b6b3e616603d/evidence/registry_profile_session6.json",
+  "definition_caveat": "This is a continuous probability raster; the shared literal gate defines all finite positive pixels as dots. Whether continuous prior support should count as dots is unresolved; no exemption applied."
+}

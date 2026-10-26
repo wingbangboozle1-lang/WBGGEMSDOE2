@@ -1,48 +1,70 @@
-name: Publish research dashboard
+name: Publish GEMS dashboard
+
 on:
   push:
     branches: [main]
   schedule:
-    - cron: '23 */6 * * *'
+    - cron: '17 */6 * * *'
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: false
+
 jobs:
-  publish:
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Restore last leaderboard observation
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore last public observations
         uses: actions/cache/restore@v4
         continue-on-error: true
         with:
           path: .feed-cache
-          key: public-feed-${{ github.run_id }}
-          restore-keys: public-feed-
-      - name: Refresh public leaderboard (failure stays visibly stale)
-        run: python3 scripts/refresh_leaderboard.py --cache .feed-cache/leaderboard.json
-      - name: Preserve latest feed observation
+          key: public-feeds-${{ github.run_id }}
+          restore-keys: public-feeds-
+      - name: Refresh public feeds (failures stay visibly stale)
+        run: |
+          python scripts/refresh_leaderboard.py --cache .feed-cache/main.json
+          python scripts/refresh_desk_leaderboard.py --cache .feed-cache/desk.json
+      - name: Preserve latest public observations
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
           path: .feed-cache
-          key: public-feed-${{ github.run_id }}
-      - name: Prepare static Pages artifact
+          key: public-feeds-${{ github.run_id }}
+      - name: Check priority-site commit freshness (no new raster audit)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/refresh_registry_refs.py
+      - name: Rebuild both evidence-first views
         run: |
-          mkdir _site
-          cp index.html executive-summary.html research.html _site/
-          cp -r assets site-data reports _site/
+          python scripts/build_site.py
+          python scripts/build_focus_table.py
+      - name: Stage the same URL layout as legacy Pages
+        run: |
+          mkdir -p _site/docs
+          cp -R docs/. _site/docs/
+          cp index.html .nojekyll research-desk.html executive-summary.html research.html _site/
+          cp -R assets site-data reports knowledge _site/
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-      - name: Deploy
-        id: deploy
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
         uses: actions/deploy-pages@v4

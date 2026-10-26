@@ -12,7 +12,7 @@ Date: 2026-10-26 UTC. This is an audit record, not a competition score or an org
 - Repeated a fresh template bootstrap and the shared data preparation; all data pins and all 19 feature-band hashes verified. Tested missing/tampered dependencies, invalid grids and ranges, NaNs, Euclidean boundary behavior, wrong registry snapshots and the 70% rule.
 - Added a shared-template format inspector that exits **2 / blocked** even for the locally format-valid historical H33 raster. The historical file has 100% forward overlap with the indexed universal witness. This is inspection for learning only, not a candidate or organizer acceptance.
 - Hardened the leaderboard stale-data fallback against corrupt caches; the disconnected-network test retained the last observation and original timestamp. Exercised site navigation on desktop/mobile and checked the generated nine-row table, local links, script errors and mobile overflow.
-- Final local results: 24 project tests and 24 pinned shared evaluator/writer/uniqueness tests passed. Rasterio emitted pending-deprecation warnings, with no test failures. A GitHub Actions workflow repeats the lightweight audit and both test suites; the deployed workflow/site must be verified from Actions.
+- Before integrating the concurrent main work, 24 project tests and 24 pinned shared evaluator/writer/uniqueness tests passed. After integration, the combined local project suite passed 67 tests; the 24 pinned shared tests are run separately. Rasterio emitted pending-deprecation warnings, with no test failures. A GitHub Actions workflow repeats the lightweight audit and both test suites; the deployed workflow/site must be verified from Actions.
 
 ## Pass 3 — original requirements cross-check
 

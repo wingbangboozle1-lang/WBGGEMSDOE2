@@ -16,12 +16,26 @@ jobs:
           cache: pip
       - name: Install test dependencies
         run: python -m pip install -r requirements.txt
-      - name: Restore the immutable shared template and research inputs
+      - name: Restore the immutable shared template
+        run: |
+          if ! scripts/bootstrap_template.sh > "$RUNNER_TEMP/bootstrap.log" 2>&1; then
+            cat "$RUNNER_TEMP/bootstrap.log"
+            msg=$(tail -c 500 "$RUNNER_TEMP/bootstrap.log" | tr '\r\n' ' ' | sed 's/%/%25/g')
+            echo "::error title=Template bootstrap failed::$msg"
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/bootstrap.log"
+      - name: Restore pinned research inputs
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          scripts/bootstrap_template.sh
-          python scripts/restore_audit_inputs.py
+          if ! python scripts/restore_audit_inputs.py > "$RUNNER_TEMP/inputs.log" 2>&1; then
+            cat "$RUNNER_TEMP/inputs.log"
+            msg=$(tail -c 500 "$RUNNER_TEMP/inputs.log" | tr '\r\n' ' ' | sed 's/%/%25/g')
+            echo "::error title=Research input restore failed::$msg"
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/inputs.log"
       - name: Reproduce registry audit and rendered comparison
         run: |
           python scripts/run_preflight.py

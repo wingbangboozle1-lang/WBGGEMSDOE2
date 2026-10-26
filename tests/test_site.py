@@ -4,7 +4,7 @@ import json
 from urllib.parse import urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = [ROOT / x for x in ('index.html', 'executive-summary.html', 'research.html')]
+PAGES = [ROOT / x for x in ('research-desk.html', 'executive-summary.html', 'research.html')]
 
 
 class Links(HTMLParser):
@@ -49,7 +49,7 @@ def test_focus_table_matches_audit_and_never_offers_upload():
 
 
 def test_critical_status_visible_without_javascript():
-    home = (ROOT / 'index.html').read_text()
+    home = (ROOT / 'research-desk.html').read_text()
     summary = (ROOT / 'executive-summary.html').read_text()
     assert 'No new file is' in home and 'cleared to submit' in home
     assert 'Do not submit. There is no new eligible GeoTIFF.' in summary
