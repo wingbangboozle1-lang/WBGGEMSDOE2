@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 from scipy.ndimage import binary_dilation
 
-from audit_portfolio import disk, dot_overlap, minimum_overlap
+from audit_nine_sites import disk, dot_overlap, minimum_overlap
 
 ROOT = Path(__file__).resolve().parents[1]
 

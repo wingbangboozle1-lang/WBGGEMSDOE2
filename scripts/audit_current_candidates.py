@@ -13,7 +13,7 @@ import numpy as np
 from scipy import ndimage
 import rasterio
 
-from audit_portfolio import disk, sha256 as digest, _grid, _same_grid
+from audit_nine_sites import disk, sha256 as digest, _grid, _same_grid
 from fetch_inputs import fetch
 
 ROOT = Path(__file__).resolve().parents[1]

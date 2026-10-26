@@ -28,11 +28,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          python scripts/audit_portfolio.py
+          python scripts/audit_nine_sites.py
           python scripts/audit_current_candidates.py
           python scripts/verify_shared_tools.py
-          python scripts/build_site.py
+          python scripts/build_research_site.py
       - name: Automated tests
         run: python -m pytest -q
       - name: Check site JavaScript
-        run: node --check docs/assets/app.js
+        run: node --check docs/deep-review/assets/app.js

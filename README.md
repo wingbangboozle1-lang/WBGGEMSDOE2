@@ -6,7 +6,7 @@
 
 The literal parallel-run uniqueness gate is blocked. The pinned shared template defines registry support as finite values greater than zero. A registered [17GEMSDOE probability raster](https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif) is positive on every mirror-derived footprint pixel, making the requested 70% overlap rule impossible for every nonempty in-footprint candidate under that definition. This is a **comparison-policy conflict**, not evidence of geological copying. No candidate TIFF was generated, no feature/holdout result was fabricated, and no competition slot was used. See [the independently re-read audit](evidence/portfolio_audit.json) and [shared-template certificate](evidence/shared_tool_checks.json).
 
-- [Open the site](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) · [Submission guide](docs/executive-summary.html) · [Research](research/preregistration.md)
+- [Open the site](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) · [Submission guide](docs/deep-review/executive-summary.html) · [Research](research/preregistration.md)
 - The focus-site high of **0.2778 is user-reported, not organizer-confirmed**. Its byte-level relation to the GEMSDOE25 file is independently measured; the hidden test labels and upload receipt are not available.
 - The [official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) is a changing public snapshot, not a receipt for our files. A proxy holdout or projection is not a leaderboard score.
 - The original checkout had only a README. Publicly accessible mirror inputs and a pinned shared template can be restored automatically, but hashes do not authenticate them as organizer-provided files.
@@ -21,15 +21,15 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 python scripts/fetch_template.py
 python scripts/fetch_inputs.py
-python scripts/audit_portfolio.py
+python scripts/audit_nine_sites.py
 python scripts/audit_current_candidates.py
 python scripts/verify_shared_tools.py
-python scripts/build_site.py
+python scripts/build_research_site.py
 python -m pytest -q
 python -m http.server 4173 --bind 0.0.0.0 --directory docs
 ```
 
-`fetch_inputs.py` verifies the mirrored sample, catalogue and registry witness hashes, and Git blob IDs for the nine focus references. `audit_portfolio.py` reopens the raster bytes and recomputes directional overlaps and the H33-B2 lineage. `audit_current_candidates.py` restores three newer external research files by pinned SHA-256 and checks both literal witnesses; these are not files produced by this run. `verify_shared_tools.py` uses the upstream `vendor/gems57/evaluate_holdout.py`, `submission_writer.py` and uniqueness code; it does not fork them. The site is static; it does not upload submissions or generate a model in the browser. The Pages workflow attempts to refresh the public leaderboard periodically and retains a visibly stale snapshot if it cannot. Scheduled refreshes are deployed only when the repository's Pages source is set to GitHub Actions; the legacy main-root setup serves the committed snapshot through `index.html` instead and cannot publish scheduled feed refreshes. The focus-site comparisons remain pinned snapshots until a new raster audit is run.
+`fetch_inputs.py` verifies the mirrored sample, catalogue and registry witness hashes, and Git blob IDs for the nine focus references. `audit_nine_sites.py` reopens the raster bytes and recomputes directional overlaps and the H33-B2 lineage. `audit_current_candidates.py` restores three newer external research files by pinned SHA-256 and checks both literal witnesses; these are not files produced by this run. `verify_shared_tools.py` uses the upstream `vendor/gems57/evaluate_holdout.py`, `submission_writer.py` and uniqueness code; it does not fork them. The site is static; it does not upload submissions or generate a model in the browser. The Pages workflow attempts to refresh the public leaderboard periodically and retains a visibly stale snapshot if it cannot. Scheduled refreshes are deployed only when the repository's Pages source is set to GitHub Actions; the legacy main-root setup serves the committed snapshot through `index.html` instead and cannot publish scheduled feed refreshes. The focus-site comparisons remain pinned snapshots until a new raster audit is run.
 
 The **GEMSDOE32 wrapper CLIs** for evaluation and writing binarize arbitrary positive probabilities; their upstream issue is documented in [findings](research/findings.md). They were not used as probability evaluators or writers. The pinned shared `gems57` implementations are checked against small analytic fixtures; no model HOLDOUT-DTI was run.
 

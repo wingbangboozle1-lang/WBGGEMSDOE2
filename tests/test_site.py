@@ -4,7 +4,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / 'docs'
+DOCS = ROOT / 'docs' / 'deep-review'
 
 
 class Links(HTMLParser):

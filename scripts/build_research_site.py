@@ -7,7 +7,7 @@ from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / 'docs'
+DOCS = ROOT / 'docs' / 'deep-review'
 H = html.escape
 
 LOGO = '''<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 14.5 7 9.4l3.1 2.5L16.8 5M2 18l5.3-5.4 3.2 2.4L17.8 8" stroke="#c8e4d0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'''

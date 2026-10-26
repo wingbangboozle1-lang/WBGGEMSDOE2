@@ -133,7 +133,7 @@ def check_refs(config: dict) -> list[dict]:
 
 
 def main():
-    dst = ROOT / 'docs/data/feed.json'
+    dst = ROOT / 'docs/deep-review/data/feed.json'
     dst.parent.mkdir(parents=True, exist_ok=True)
     try:
         base = json.loads(dst.read_text()) if dst.exists() else json.loads((ROOT / 'data/leaderboard_snapshot.json').read_text())

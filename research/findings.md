@@ -2,7 +2,7 @@
 
 ## Scope and evidence
 
-The repository was initially an empty scaffold: no old model, feature cache, evaluator, or submission writer existed in this checkout. We inspected the nine focus sites and the official problem page, restored hash-pinned public mirror files, and ran `scripts/audit_portfolio.py`. Byte hashes prove consistency with the selected mirror, not that the files were downloaded directly from DrivenData. The focus scores are **USER-REPORTED / UNVERIFIED**: no organizer submission receipts connect them to these exact bytes. A public leaderboard snapshot is official for the public leaderboard, but it is not a receipt for these files. No private ground truth or actual current weekly quota was accessible.
+The repository was initially an empty scaffold: no old model, feature cache, evaluator, or submission writer existed in this checkout. We inspected the nine focus sites and the official problem page, restored hash-pinned public mirror files, and ran `scripts/audit_nine_sites.py`. Byte hashes prove consistency with the selected mirror, not that the files were downloaded directly from DrivenData. The focus scores are **USER-REPORTED / UNVERIFIED**: no organizer submission receipts connect them to these exact bytes. A public leaderboard snapshot is official for the public leaderboard, but it is not a receipt for these files. No private ground truth or actual current weekly quota was accessible.
 
 ## Why the reported GEMSDOE32 result may be stronger
 
