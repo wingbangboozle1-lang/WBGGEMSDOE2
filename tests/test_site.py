@@ -57,6 +57,12 @@ def test_internal_site_links_and_anchors_resolve(tmp_path):
                 assert url.fragment in dest.ids, f"Missing anchor {link} in {page.name}"
 
 
+def test_branch_published_pages_match_generated_output(tmp_path):
+    build_site.build(tmp_path)
+    for name in ("index.html", "executive-summary.html"):
+        assert (ROOT / name).read_text() == (tmp_path / name).read_text(), f"Regenerate {name} for branch-based Pages"
+
+
 def test_builder_fails_closed_if_evidence_changes():
     manifest = json.loads((ROOT / "data/focus-inputs.json").read_text())
     audit = json.loads((ROOT / "docs/data/focus-audit.json").read_text())

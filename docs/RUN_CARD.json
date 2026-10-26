@@ -1,0 +1,40 @@
+{
+  "card_version": "1.0",
+  "run_id": "WBGGEMSDOE2-2026-10-26-review",
+  "status": "historical_superseded",
+  "superseded_by": "data/run-card.json",
+  "superseded_note": "Earlier parallel-session record. The current pinned-witness preflight and no-TIFF decision are in the newer run card.",
+  "hypothesis": null,
+  "mechanism": null,
+  "named_non_fault_process_that_could_mimic_it": null,
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "score": null,
+    "ci_95": null,
+    "status": "NOT RUN: shared evaluator and data are absent"
+  },
+  "registry_comparison": {
+    "correlation_limit": 0.9,
+    "overlap_limit": 0.7,
+    "surface_correlation": null,
+    "preplacement_dot_overlap": null,
+    "final_correlation": null,
+    "final_dot_overlap": null,
+    "status": "NOT CHECKED: no actual raster registry is present"
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "NOT RUN ON A SUBMISSION",
+    "local_validator_unit_tests": "PASS",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "verdict_reason": "No candidate was generated or promoted. The method lane, competition data, shared cached feature stack, shared evaluator/writer, reference raster, and complete registry are absent from this checkout. This is a blocked/no-experiment disposition, not a measured negative HOLDOUT-DTI result.",
+  "weekly_submission_slot_spent": false
+}

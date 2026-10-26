@@ -1,7 +1,7 @@
 {
   "schema": "wbggems.run-card.v1",
   "created_utc": "2026-10-26T21:54:00Z",
-  "lane": "Ridge-Break Continuity (RBC), provisional because the prompt did not identify a specific method paragraph",
+  "lane": "Unassigned; Ridge-Break Continuity (RBC) is a provisional research idea, not an authorized experiment",
   "hypothesis": "An along-strike break in a persistent magnetic ridge, corroborated by a continuing or offset gravity edge, may reveal an unmapped buried fault or splay.",
   "mechanism": "A structural discontinuity can disrupt a magnetic body while a gravity edge reflects offset basement; the proposed transform was not implemented or tested.",
   "named_non_fault_process_that_could_mimic_it": "An igneous dike termination or lithologic contact, volcanic flow boundary, or magnetic survey leveling artifact.",
@@ -10,7 +10,7 @@
     "scientific_experiments_run": 0,
     "maximum_experiments": 3,
     "time_limit_hours": 2,
-    "stop_reason": "The literal registry preflight proves a duplicate at the planned dot budget before model fitting or placement."
+    "stop_reason": "No method lane was assigned; the literal registry preflight also proves a duplicate at the hypothetical dot budget before model fitting or placement."
   },
   "holdout_dti": {
     "label": "HOLDOUT-DTI",
@@ -30,6 +30,7 @@
     "witness": "GEMSDOE24 registry-039: registered 13GEMSDOE spacing-5 lattice",
     "witness_sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
     "planned_distinct_dots": 37654,
+    "budget_status": "Hypothetical research preflight only; no experimental lane or dot budget was authorized.",
     "uncovered_footprint_pixels": 6649,
     "minimum_possible_overlap_fraction": 0.8234184947150369,
     "threshold_fraction": 0.7,

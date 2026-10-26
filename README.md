@@ -1,6 +1,6 @@
 # WBGGEMSDOE2 · GEMS field notes
 
-> **Start every session here.** Read this README, the original project request below, the [preregistration](research/preregistration.md), the [decision brief](research/decision-brief.md), and the current [run card](docs/data/run-card.json) before changing a model or spending a submission slot. Preserve **Maximize P(Win)** and **Own the Outcome**; evidence, reproducibility, and a useful negative result take precedence over an invented score or a misleading download.
+> **Start every session here.** Read this README, the original project request below, the [project charter](docs/PROJECT_CHARTER.md), the [preregistration](research/preregistration.md), the [decision brief](research/decision-brief.md), and the current [run card](docs/data/run-card.json) before changing a model or spending a submission slot. Preserve **Maximize P(Win)** and **Own the Outcome**; evidence, reproducibility, and a useful negative result take precedence over an invented score or a misleading download.
 
 ## Current decision: DO NOT SUBMIT
 
@@ -19,10 +19,12 @@ python -m venv .venv
 .venv/bin/python scripts/check_shared_template.py --restore --output .work/template-diagnostic.json
 .venv/bin/pytest -q
 python scripts/build_site.py
+# Regenerate branch-published Pages HTML after changing templates/evidence:
+cp .site/index.html .site/executive-summary.html .
 python -m http.server 8000 --directory .site
 ```
 
-`--restore` downloads only hash-pinned historical references and the sample/label mirrors from GitHub; those files are ignored by Git. This is an audit, **not a training or generation pipeline**. The shared cached feature stack, authenticated DrivenData originals, private test labels, and portal access were not available. The [published executive summary](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/executive-summary.html) includes the nine-site table and submission instructions; its source is `site/executive-summary.html`. GitHub Pages is built from `site/` by `.github/workflows/pages.yml`; its scheduled public leaderboard refresh fails closed and is not a submission receipt.
+`--restore` downloads only hash-pinned historical references and the sample/label mirrors from GitHub; those files are ignored by Git. The parallel branch's `scripts/validate_submission.py` is retained as a separate, format-only checker. It tests a pinned grid, finite [0, 1] values, a matching footprint mask and a standalone TIFF; the reference must still be authenticated. Its conservative all-finite policy is not proof of portal acceptance, and a local PASS never authorizes an upload. This is an audit, **not a training or generation pipeline**. The shared cached feature stack, authenticated DrivenData originals, private test labels, and portal access were not available. The [published executive summary](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/executive-summary.html) includes the nine-site table and submission instructions; its source is `site/executive-summary.html`. The existing GitHub Pages source is the `main` branch root, so the two generated HTML pages are committed there. `.github/workflows/pages.yml` also attempts an artifact-based scheduled refresh, but the current GitHub integration was denied permission to switch Pages to workflow publishing; automatic deployment has not been verified. A failed or stale snapshot is displayed as unavailable, not a submission receipt; the official live leaderboard link remains available.
 
 ## Evidence and future work
 

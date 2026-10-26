@@ -1,7 +1,11 @@
 .venv/
 .work/
-__pycache__/
-.pytest_cache/
 .site/
-data/raw/
-*.pyc
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+# Keep competition data out of the repository; only the small public manifest is tracked.
+data/*
+!data/focus-inputs.json
+outputs/

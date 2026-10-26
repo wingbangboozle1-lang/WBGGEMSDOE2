@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An evidence-led DOE GEMS competition research brief and submission decision.">
+  <title>GEMS Field Notes | Submission status</title><link rel="stylesheet" href="assets/style.css"><script src="assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="shell"><div class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">G</span><span class="brand-copy"><strong>GEMS FIELD NOTES</strong><small>Western Great Basin · research desk</small></span></a>
+  <nav aria-label="Main navigation"><a href="index.html" aria-current="page">Overview</a><a href="executive-summary.html#site-review">Site review</a><a href="executive-summary.html#submission-guide">How to submit</a><a class="top-link" href="executive-summary.html">Executive summary <span aria-hidden="true">↗</span></a></nav>
+</div></header>
+<main id="main" class="shell">
+  <section class="hero" aria-labelledby="hero-title">
+    <div><div class="eyebrow">DOE GEMS · decision brief</div><h1 id="hero-title">The next submission?<br><em>Not yet.</em></h1>
+      <p class="lead">A strong submission needs evidence, not just a downloadable file. The current run stopped before writing a TIFF because it cannot satisfy the requested uniqueness rule at the planned dot budget.</p>
+      <span class="notice"><span class="dot"></span>No file approved for submission</span>
+      <div class="actions"><a class="button" href="executive-summary.html">Read the executive summary <span aria-hidden="true">↗</span></a><a class="button secondary" href="docs/data/run-card.json">View run card <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <aside class="card gate-card" aria-label="Submission gate status"><div class="card-top"><strong>Submission gate</strong><span class="tiny">Current run</span></div>
+      <ul class="gate-list"><li><span class="gate-icon">×</span> Literal uniqueness bound <span>Fail</span></li><li><span class="gate-icon">–</span> Feature canaries &amp; holdout <span>Not run</span></li><li><span class="gate-icon">–</span> New TIFF &amp; format validator <span>Not run</span></li><li><span class="gate-icon">–</span> Independent slot selector <span>Not run</span></li></ul>
+    </aside>
+  </section>
+  <section class="stats" aria-label="Key observations">
+    <div class="stat"><span class="label">Our candidate</span><strong>No TIFF</strong><small>Negative preflight result; no slot spent.</small></div>
+    <div class="stat"><span class="label">Best historical claim</span><strong>0.2778</strong><small>USER-REPORTED claim · GEMSDOE32 · not an authenticated score receipt.</small></div>
+    <div class="stat"><span class="label">Minimum forced overlap</span><strong>≥ 82.34%</strong><small>Geometry bound at 37,654 dots · not an observed candidate.</small></div>
+    <div class="stat"><span class="label">Official public board</span><strong data-board-value>Checking…</strong><small data-board-detail>Opening snapshot…</small><small><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Open official live leaderboard ↗</a></small><noscript><small>Enable JavaScript for the snapshot, or open the official board.</small></noscript></div>
+  </section>
+  <section class="content-section" id="analysis">
+    <div class="section-head"><div><div class="eyebrow">What the evidence says</div><h2>Understand the result.<br>Protect the next attempt.</h2></div><p>Historical files are useful for learning, but a renamed or lightly changed copy is not a new scientific submission.</p></div>
+    <div class="split"><article class="card explain"><div class="section-num">01 / HISTORICAL LINEAGE</div><h3>Why did the B2 file stand out?</h3><p>On the pinned owner mirrors, its 37,654 dots are a strict subset of the 40,199-dot R1 file, itself a subset of the 44,090-dot D2.8 file. Dots near the known-fault catalogue were removed in successive steps. That can improve the distance-weighted precision/recall trade-off, but hidden labels and a score receipt are unavailable, so causation and the claimed score are not proven.</p></article>
+      <article class="bound"><div class="section-num">02 / LITERAL REGISTRY STOP</div><h3>A mathematical blocker, not a guess.</h3><p>A registered historical lattice covers nearly the whole footprint within three pixels. At our chosen budget, even the most favorable arrangement must exceed the requested overlap ceiling.</p><strong>≥ 82.34%</strong><div class="progress" role="img" aria-label="Minimum overlap 82.34 percent, above 70 percent limit"><span></span></div><small>Lower bound, not measured candidate overlap. Fewer dots are not automatically unique; no exception for lattice controls was assumed.</small></article></div>
+  </section>
+  <section class="content-section" id="next"><div class="callout"><div><div class="eyebrow">Next responsible step</div><h3>Resolve the literal registry rule before training.</h3><p>Then restore the shared cached stack and run a fresh, leakage-safe holdout. A selector—not this run—decides whether to use a slot.</p></div><a class="button secondary" href="executive-summary.html#next-steps">See the evidence &amp; next steps <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<footer class="shell"><div class="footer"><span><strong>GEMS FIELD NOTES</strong><br>Maximize P(Win) · Own the Outcome</span><span>Research status, not geological confirmation.<br><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem description ↗</a></span></div></footer>
+</body></html>
