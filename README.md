@@ -854,3 +854,16 @@ Do not stop after the first pass. Each pass must build on the previous one. Befo
 Go ahead and create a pull request and then merge the pull request onto the main. Make suggestions for what work still needs to be done and any limitations that is in the way of a successful project.  It should be worked on in this next session or the next session.  Work line by line verify everything no hallucinations.
 
 </details>
+
+---
+
+## Lane H1 addition (WBGGEMSDOE2 session, 2026-10-26)
+Unique candidate `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif`
+(sha256 592c74f2…): HOLDOUT-DTI (WBGGEMSDOE2-HIDE-RECOVER-v2.0, 58,016 withheld)
+E2 0.1321 vs E1 0.0227; uniqueness PASS (rho<=0.316, overlap<=41.4% vs 9 focus
+bests); **PROJECTION 0.15-0.24 < 0.2778 champion -> DO NOT SUBMIT as a
+champion-beater.** See `docs/executive-summary/index.html`,
+`evidence/run_card.json`, `docs/HYPOTHESES.md`, `scripts/run_lane.py`.
+This lane's own strict validator (values in [0,1] on saved bytes) is retained
+as `scripts/validate_submission_strict.py`; the shared
+`scripts/validate_submission.py` above remains the template validator.

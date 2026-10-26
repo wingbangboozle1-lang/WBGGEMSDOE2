@@ -10,3 +10,4 @@ data/external/
 out/
 *.partial
 .DS_Store
+*.npy
