@@ -1,0 +1,33 @@
+{
+  "observed_date_utc": "2026-10-26",
+  "status": "Three externally produced research artifacts, not candidates from this run; none approved. The scores and method descriptions are the respective sites' claims, not independently replayed.",
+  "candidates": [
+    {
+      "site": "GEMSDOE24",
+      "label": "S3DEP1",
+      "ref": "3dfe2dec1e7d9359858e835733ff0d64bb1b3fd1",
+      "path": "docs/downloads/gems24-s3dep1-negative-10m-monoclinal-20261026-464fa34b4091-zeros.tif",
+      "sha256": "86516533fb525ebce792152ae4ed852e88ae4feda0bd596710c7319a238b8071",
+      "source": "https://buffedlizard55-lab.github.io/GEMSDOE24/",
+      "reported_outcome": "Site reports prior HOLDOUT-DTI 0.16606 [0.15186, 0.18034] using gems-segment-pooled-v1 and 60,988 withheld positives; paired CI versus DPRF1 includes zero. Not independently rerun."
+    },
+    {
+      "site": "GEMSDOE27",
+      "label": "H31-1",
+      "ref": "21687996529d4e3bcb83e7d8ac56fa29864acf97",
+      "path": "docs/downloads/gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite.tif",
+      "sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+      "source": "https://buffedlizard55-lab.github.io/GEMSDOE27/",
+      "reported_outcome": "Site reports passing a narrower 27-raster uniqueness set and local holdout. Its current banner says not authorized for a slot, but older body text urges upload. No holdout was independently rerun here."
+    },
+    {
+      "site": "GEMSDOE28",
+      "label": "S22-SIGN",
+      "ref": "ec1d501fd12c8dee9dc062726003639dec9382ff",
+      "path": "docs/downloads/gems28-s22-signed-piedmont-20261026-08703322d2af-allfinite.tif",
+      "sha256": "d9c235709d100e292f77293dd0fa94eeb5cc68728f2bacd49f97411fb1241229",
+      "source": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+      "reported_outcome": "Site reports a local holdout failure and no upload, alongside uniqueness against 22 prior rasters. Its session banner is dated 2026-10-27 although observed on 2026-10-26 UTC; timestamps are not proof of creation time. No holdout was independently rerun here."
+    }
+  ]
+}

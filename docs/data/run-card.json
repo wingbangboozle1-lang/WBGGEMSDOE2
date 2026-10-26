@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "run_id": "WBG-RCSO-20261026",
+  "verdict": "negative",
+  "hypothesis": "Radiometric contact offsets across LiDAR scarp strikes may locate unmapped faults.",
+  "mechanism": "Compare tangential shifts of potassium and thorium contacts across coherent topographic steps.",
+  "named_non_fault_process": "Fluvial terrace formation; also roads, stratigraphic pinch-outs, and radiometric survey artefacts.",
+  "lane_status": "Provisional research idea only: prompt contains no explicit lane paragraph.",
+  "stop_reason": "Under shared finite-positive support semantics, the registered 17GEMSDOE soft-probability raster is positive at every mirror-derived footprint pixel. Every nonempty in-footprint dot set therefore overlaps it by 100%; the 70% rule requires STOP before placement.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2 (not run)",
+    "value": null,
+    "withheld_positives": 0,
+    "ci95": null,
+    "reason": "Duplicate-by-construction stop occurs before a model experiment. Proxy truth and hidden leaderboard truth are unavailable."
+  },
+  "leakage_canary": {
+    "status": "not run",
+    "reason": "No feature surface was built after the duplicate stop."
+  },
+  "registry": {
+    "candidate_surface_correlation": null,
+    "candidate_final_overlap": null,
+    "universal_overlap_lower_bound": 1.0,
+    "threshold": 0.7,
+    "comparison": "17GEMSDOE E-proba multiscale (dense soft field; do not interpret overlap as proof of copying)",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "lattice_lower_bound_for_37654_dots": 0.8234184947150369,
+    "scope": "One sufficient witness; not a complete inventory and not a uniqueness pass."
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "not run: no candidate TIFF exists",
+    "inside_footprint_no_nan": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "organizer_acceptance": null
+  },
+  "submission_name": "WBG-RCSO-20261026-NOT-GENERATED",
+  "note": "RCSO research stopped: literal registry overlap is unsatisfiable; no submission.",
+  "ok_to_download_submission": false,
+  "ok_to_submit": false,
+  "experiments_used": 0,
+  "competition_slots_used": 0,
+  "next_step": "Obtain a protocol decision on how dense surfaces and calibration lattices are compared before another lane builds a file. Then run leakage canaries, fold-local holdout and a complete registry audit."
+}

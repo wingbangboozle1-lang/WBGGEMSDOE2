@@ -1,0 +1,124 @@
+{
+  "input_manifest": "data/current_candidates.json",
+  "observed_date_utc": "2026-10-26",
+  "scope": "Local read-back against a hash-pinned mirrored sample and two registry witnesses only. No official portal acceptance, complete registry clearance, pre-placement surface correlation, organizer score or independent scientific holdout is established.",
+  "distance": "Euclidean center-to-center distance <= 3 pixels",
+  "overlap_denominator": "positive candidate pixels within mirrored footprint",
+  "footprint_pixels": 5167373,
+  "results": [
+    {
+      "site": "GEMSDOE24",
+      "label": "S3DEP1",
+      "ref": "3dfe2dec1e7d9359858e835733ff0d64bb1b3fd1",
+      "path": "docs/downloads/gems24-s3dep1-negative-10m-monoclinal-20261026-464fa34b4091-zeros.tif",
+      "sha256": "86516533fb525ebce792152ae4ed852e88ae4feda0bd596710c7319a238b8071",
+      "source": "https://buffedlizard55-lab.github.io/GEMSDOE24/",
+      "reported_outcome": "Site reports prior HOLDOUT-DTI 0.16606 [0.15186, 0.18034] using gems-segment-pooled-v1 and 60,988 withheld positives; paired CI versus DPRF1 includes zero. Not independently rerun.",
+      "reference_download": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/3dfe2dec1e7d9359858e835733ff0d64bb1b3fd1/docs/downloads/gems24-s3dep1-negative-10m-monoclinal-20261026-464fa34b4091-zeros.tif?raw=1",
+      "byte_sha256_verified": "86516533fb525ebce792152ae4ed852e88ae4feda0bd596710c7319a238b8071",
+      "local_format_checks": {
+        "one_float32_band": true,
+        "same_crs_shape_transform_as_mirror": true,
+        "no_nonfinite_inside_mirror_footprint": true,
+        "all_cells_finite": true,
+        "all_cells_in_0_1": true,
+        "all_zero_outside_mirror_footprint": true
+      },
+      "overlap": {
+        "positive_pixels_in_footprint": 37654,
+        "lattice": {
+          "within_3_pixels": 37537,
+          "fraction": 0.9968927603973018
+        },
+        "dense_probability": {
+          "within_3_pixels": 37654,
+          "fraction": 1.0
+        }
+      },
+      "literal_duplicate_witnesses": [
+        "lattice",
+        "dense_probability"
+      ],
+      "surface_rank_correlation": null,
+      "full_registry_pass": false,
+      "ok_to_submit": false,
+      "verdict": "DO NOT SUBMIT"
+    },
+    {
+      "site": "GEMSDOE27",
+      "label": "H31-1",
+      "ref": "21687996529d4e3bcb83e7d8ac56fa29864acf97",
+      "path": "docs/downloads/gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite.tif",
+      "sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+      "source": "https://buffedlizard55-lab.github.io/GEMSDOE27/",
+      "reported_outcome": "Site reports passing a narrower 27-raster uniqueness set and local holdout. Its current banner says not authorized for a slot, but older body text urges upload. No holdout was independently rerun here.",
+      "reference_download": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/21687996529d4e3bcb83e7d8ac56fa29864acf97/docs/downloads/gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite.tif?raw=1",
+      "byte_sha256_verified": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+      "local_format_checks": {
+        "one_float32_band": true,
+        "same_crs_shape_transform_as_mirror": true,
+        "no_nonfinite_inside_mirror_footprint": true,
+        "all_cells_finite": true,
+        "all_cells_in_0_1": true,
+        "all_zero_outside_mirror_footprint": true
+      },
+      "overlap": {
+        "positive_pixels_in_footprint": 37654,
+        "lattice": {
+          "within_3_pixels": 37509,
+          "fraction": 0.9961491475009295
+        },
+        "dense_probability": {
+          "within_3_pixels": 37654,
+          "fraction": 1.0
+        }
+      },
+      "literal_duplicate_witnesses": [
+        "lattice",
+        "dense_probability"
+      ],
+      "surface_rank_correlation": null,
+      "full_registry_pass": false,
+      "ok_to_submit": false,
+      "verdict": "DO NOT SUBMIT"
+    },
+    {
+      "site": "GEMSDOE28",
+      "label": "S22-SIGN",
+      "ref": "ec1d501fd12c8dee9dc062726003639dec9382ff",
+      "path": "docs/downloads/gems28-s22-signed-piedmont-20261026-08703322d2af-allfinite.tif",
+      "sha256": "d9c235709d100e292f77293dd0fa94eeb5cc68728f2bacd49f97411fb1241229",
+      "source": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+      "reported_outcome": "Site reports a local holdout failure and no upload, alongside uniqueness against 22 prior rasters. Its session banner is dated 2026-10-27 although observed on 2026-10-26 UTC; timestamps are not proof of creation time. No holdout was independently rerun here.",
+      "reference_download": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/ec1d501fd12c8dee9dc062726003639dec9382ff/docs/downloads/gems28-s22-signed-piedmont-20261026-08703322d2af-allfinite.tif?raw=1",
+      "byte_sha256_verified": "d9c235709d100e292f77293dd0fa94eeb5cc68728f2bacd49f97411fb1241229",
+      "local_format_checks": {
+        "one_float32_band": true,
+        "same_crs_shape_transform_as_mirror": true,
+        "no_nonfinite_inside_mirror_footprint": true,
+        "all_cells_finite": true,
+        "all_cells_in_0_1": true,
+        "all_zero_outside_mirror_footprint": true
+      },
+      "overlap": {
+        "positive_pixels_in_footprint": 37692,
+        "lattice": {
+          "within_3_pixels": 37652,
+          "fraction": 0.9989387668470763
+        },
+        "dense_probability": {
+          "within_3_pixels": 37692,
+          "fraction": 1.0
+        }
+      },
+      "literal_duplicate_witnesses": [
+        "lattice",
+        "dense_probability"
+      ],
+      "surface_rank_correlation": null,
+      "full_registry_pass": false,
+      "ok_to_submit": false,
+      "verdict": "DO NOT SUBMIT"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "purpose": "analytical fixture and independent shared-template uniqueness verification; not a model score",
+  "template_ref": "07806249f4ed3efe70b4fbf866183c32392b7853",
+  "holdout_evaluator_version": "gems57-pooled-hide-v2",
+  "implementation_sha256": {
+    "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+    "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+    "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+    "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+  },
+  "soft_metric_fixture": {
+    "prediction": 0.25,
+    "truth": 1,
+    "expected": 0.2941176470588235,
+    "actual": 0.2941176470584775,
+    "pass": true
+  },
+  "writer_rejects_invalid": {
+    "over_one": true,
+    "negative": true,
+    "nan": true
+  },
+  "shared_literal_saturation_witness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "witness_file": "17GEMSDOE:docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "positive_pixels": 5167373,
+    "allowed_pixels": 5167373,
+    "uncovered_allowed_pixels": 0,
+    "covered_allowed_fraction": 1.0,
+    "universal_overlap_blocker": true,
+    "overlap_limit": 0.7,
+    "support_definition": "finite prediction > 0 (inherited literal support rule)",
+    "implication": "Every nonempty candidate dot set in the allowed domain has forward overlap 1.0 with this prior; therefore it cannot pass the 0.70 gate."
+  },
+  "note": "Actual holdout DTI, confidence interval, and candidate validator are not available; no candidate was built."
+}

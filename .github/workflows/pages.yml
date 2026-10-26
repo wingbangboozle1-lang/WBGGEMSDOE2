@@ -1,0 +1,60 @@
+name: Publish research site
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      mode: ${{ steps.pages-mode.outputs.mode }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check configured Pages source
+        id: pages-mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mode=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type' 2>/dev/null || echo unavailable)
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          if [ "$mode" != workflow ]; then
+            echo "::warning::Pages is not configured for GitHub Actions. Legacy main-root Pages can serve the committed site via index.html, but scheduled feed changes will not be published."
+          fi
+      - uses: actions/configure-pages@v5
+        if: steps.pages-mode.outputs.mode == 'workflow'
+      - name: Refresh public observations without changing submission status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/refresh_feed.py
+      - name: Build the static site from the recorded audit
+        run: python scripts/build_site.py
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.pages-mode.outputs.mode == 'workflow'
+        with:
+          path: docs
+  deploy:
+    if: needs.build.outputs.mode == 'workflow'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

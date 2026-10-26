@@ -1,0 +1,9 @@
+.cache/
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+data/raw/
+data/prepared/
+*.part
+*.partial

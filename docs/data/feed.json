@@ -1,0 +1,69 @@
+{
+  "kind": "OFFICIAL PUBLIC LEADERBOARD SNAPSHOT \u2014 not a submission receipt",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "observed_date_utc": "2026-10-26",
+  "observed_at_utc": null,
+  "top_score": "0.4437",
+  "top_participant": "xiaofanhu",
+  "status": "stale",
+  "caveat": "Public leaderboard observation only; may have changed. It does not verify any specific local submission or private-set outcome.",
+  "site_refs": [
+    {
+      "site": "GEMSDOE24",
+      "archival_file_ref": "5cfab74597cd1d0a271e4640b4cc34511e56ca59",
+      "current_ref": "3dfe2dec1e7d9359858e835733ff0d64bb1b3fd1",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE25",
+      "archival_file_ref": "606eef45e669a6da061ec24be4a3d870addadb0f",
+      "current_ref": "c04766ff224f879d7204d2e6c45bffd8c7f01966",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE27",
+      "archival_file_ref": "f1e32af867d9cf0081af20866c8241ec8678a432",
+      "current_ref": "21687996529d4e3bcb83e7d8ac56fa29864acf97",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE28",
+      "archival_file_ref": "9c1be21e8f1be707347f737e42abf62ea669c819",
+      "current_ref": "ec1d501fd12c8dee9dc062726003639dec9382ff",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE30",
+      "archival_file_ref": "35ce8911e2c3287eed973eacd12c252e8cb3f34c",
+      "current_ref": "9c0d637c0171407196b61b780444bc772ce75438",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE31",
+      "archival_file_ref": "78f9bf3ae82e5c78ca348aa37c0660c339e72f0e",
+      "current_ref": "063704b18b62ca06a6ae915d36b1ac7182b4a9b3",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE32",
+      "archival_file_ref": "45ee207185f72804497f7a7a392ad2c43e168f02",
+      "current_ref": "400b60d4a6d99f425ee90504e6c4552227556dd1",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE33",
+      "archival_file_ref": "a24fb7c5031ee08b12440af4593057858fecef8e",
+      "current_ref": "efa438d3104893c3e8aedf3817ac22167b1c681a",
+      "status": "different_from_archival_file_ref"
+    },
+    {
+      "site": "GEMSDOE36",
+      "archival_file_ref": "b90418f852615aa0974cf9a53b92fa569ed133fc",
+      "current_ref": "23ad503204288fd48681beacc67d83563c4cbf3b",
+      "status": "different_from_archival_file_ref"
+    }
+  ],
+  "last_attempt_utc": "2026-10-26T22:10:22.876289+00:00",
+  "last_error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
+  "site_refs_checked_at_utc": "2026-10-26T22:10:26.555172+00:00"
+}
