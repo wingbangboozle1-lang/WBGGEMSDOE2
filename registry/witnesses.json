@@ -1,0 +1,19 @@
+{
+  "evidence_class": "OWNER-MIRROR-PINS",
+  "lattice": {
+    "repository": "buffedlizard55-lab/13GEMSDOE",
+    "ref": "92ee6f074323f161eed837b80ec3ee5b662e26f5",
+    "path": "docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+    "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+    "registry_evidence": "https://github.com/buffedlizard55-lab/57GEMSDOE/blob/822a0ce5546c7b6749cdd82eb145b6b3e616603d/evidence/registry_full_index.json",
+    "source": "https://github.com/buffedlizard55-lab/13GEMSDOE/blob/92ee6f074323f161eed837b80ec3ee5b662e26f5/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif"
+  },
+  "dense_probability": {
+    "repository": "buffedlizard55-lab/17GEMSDOE",
+    "ref": "6fc71d19d49dca4960d5434bd81b6dd06fcc030a",
+    "path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "registry_evidence": "https://github.com/buffedlizard55-lab/57GEMSDOE/blob/822a0ce5546c7b6749cdd82eb145b6b3e616603d/evidence/registry_profile_session6.json",
+    "source": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif"
+  }
+}

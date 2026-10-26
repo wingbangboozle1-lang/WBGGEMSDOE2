@@ -1,4 +1,6 @@
-# Executive summary — nine-site review and evidence-gated next steps
+# Executive summary — earlier snapshot
+
+> **Historical snapshot (superseded).** This earlier concurrent review predates the restored owner-mirrored data and independent raster audit. Some statements below about missing data and unexamined files were true at the earlier review, but are no longer the current status. For the current decision and measured evidence, see the [live executive summary](executive-summary.html), [source notes](research/evidence-and-sources.md), and [current run card](data/run-card.json). No candidate is approved.
 
 **Reviewed:** 2026-10-26 UTC
 **Decision:** 🔴 **NO NEW TIFF IS CLEARED TO DOWNLOAD AND SUBMIT.** This repository has no submission artifact, no competition data, no model/pipeline, and no run from which to measure HOLDOUT-DTI. No file has been generated. Do not submit copied or renamed historical artifacts.

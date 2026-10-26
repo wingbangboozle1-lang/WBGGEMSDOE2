@@ -6,7 +6,7 @@ import numpy as np
 import rasterio
 from affine import Affine
 
-from scripts.validate_submission import validate
+from scripts.legacy_format_validator import validate
 
 
 class ValidateSubmissionTests(unittest.TestCase):

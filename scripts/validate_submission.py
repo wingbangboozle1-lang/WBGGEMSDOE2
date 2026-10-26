@@ -1,153 +1,78 @@
 #!/usr/bin/env python3
-"""Fail-closed local GeoTIFF format check for DOE GEMS submissions.
+"""Byte-check a GeoTIFF with the pinned shared format validator, never authorize a slot.
 
-This checks only the organizer's file-format/grid constraints against a local
-reference raster. A PASS is not a holdout result, uniqueness result, or upload
-approval. Registry and scientific gates are intentionally not inferred here.
+This cannot establish novelty, a holdout win, or portal acceptance. All-finite
+outside-footprint encoding is a local range precaution and may not match the
+literal public specification's null/NaN wording; organizer acceptance is unknown.
 """
 from __future__ import annotations
-
 import argparse
-import hashlib
 import json
-import sys
-from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+import sys
 
 import numpy as np
 import rasterio
 
-VALIDATOR_VERSION = "wbg-gems-tif-format-v1"
+from prepare_data import ROOT, TEMPLATE, digest, restore_template
+
+SAMPLE_SHA = "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
 
 
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+def run(path: Path, sample: Path) -> dict:
+    if not path.is_file():
+        raise FileNotFoundError(f"No such raster: {path}")
+    if not sample.is_file() or digest(sample) != SAMPLE_SHA:
+        raise ValueError("The owner-mirrored sample is absent or hash-mismatched")
+    # Verify each cached upstream file before importing; no evaluator/writer fork.
+    restore_template(False)
+    sys.path.insert(0, str(TEMPLATE / "src"))
+    from gems57.gates import format_report
+    with rasterio.open(sample) as ds:
+        footprint = np.isfinite(ds.read(1))
+    result = format_report(path, sample, footprint=footprint)
+    result.update(
+        evidence_class="LOCAL-FORMAT-MEASUREMENT",
+        reference_provenance="Hash-pinned third-party mirror; not organizer authenticated",
+        sample_sha256=SAMPLE_SHA,
+        no_nan_inside_footprint=None,
+        organizer_acceptance="unknown",
+        official_outside_footprint_nodata_compliance="not established by all-finite check",
+        scientific_holdout="not checked by this command",
+        registry_surface_and_final="not checked by this command",
+        ok_to_submit=False,
+        verdict="research-only; local format is not promotion or slot selection",
+    )
+    with rasterio.open(path) as ds:
+        a = ds.read(1)
+    if a.shape == footprint.shape:
+        values = a[footprint]
+        result["no_nan_inside_footprint"] = bool(np.isfinite(values).all())
+        result["inside_values_in_0_1"] = bool(np.isfinite(values).all() and
+                                               (values >= 0).all() and (values <= 1).all())
+    else:
+        result["inside_values_in_0_1"] = False
+    return result
 
 
-def validate(candidate_path: Path, reference_path: Path) -> dict[str, Any]:
-    """Validate candidate bytes against a reference grid and return a receipt."""
-    checks: dict[str, Any] = {}
-    errors: list[str] = []
-
-    with rasterio.open(reference_path) as reference, rasterio.open(candidate_path) as candidate:
-        reference_footprint = reference.dataset_mask() != 0
-        values = candidate.read(1, masked=False) if candidate.count >= 1 else np.empty((0, 0))
-
-        checks["readable"] = True
-        checks["geotiff"] = candidate.driver == "GTiff" and candidate_path.suffix.lower() in {".tif", ".tiff"}
-        checks["single_band"] = candidate.count == 1
-        checks["float32"] = candidate.count == 1 and candidate.dtypes[0] == "float32"
-        checks["crs_match"] = reference.crs is not None and candidate.crs == reference.crs
-        checks["shape_match"] = (candidate.height, candidate.width) == (reference.height, reference.width)
-        checks["transform_match"] = tuple(candidate.transform) == tuple(reference.transform)
-        same_shape = values.shape == reference_footprint.shape
-        checks["reference_footprint_available"] = bool(reference_footprint.any())
-        checks["reference_footprint_shape_match"] = same_shape
-
-        if same_shape and values.size:
-            inside_values = values[reference_footprint]
-            all_finite = bool(np.isfinite(values).all())
-            inside_finite = bool(np.isfinite(inside_values).all())
-            all_in_range = bool(all_finite and np.all((values >= 0.0) & (values <= 1.0)))
-            inside_in_range = bool(inside_finite and np.all((inside_values >= 0.0) & (inside_values <= 1.0)))
-            checks["finite_all_pixels"] = all_finite
-            checks["finite_inside_footprint"] = inside_finite
-            checks["range_0_1_all_pixels"] = all_in_range
-            checks["range_0_1_inside_footprint"] = inside_in_range
-            checks["array_shape"] = list(values.shape)
-            checks["footprint_pixels"] = int(reference_footprint.sum())
-            if all_finite:
-                checks["minimum"] = float(values.min())
-                checks["maximum"] = float(values.max())
-            else:
-                checks["minimum"] = None
-                checks["maximum"] = None
-        else:
-            checks["finite_all_pixels"] = False
-            checks["finite_inside_footprint"] = False
-            checks["range_0_1_all_pixels"] = False
-            checks["range_0_1_inside_footprint"] = False
-            checks["array_shape"] = list(values.shape)
-            checks["footprint_pixels"] = int(reference_footprint.sum())
-            checks["minimum"] = None
-            checks["maximum"] = None
-
-        if checks["geotiff"] is False:
-            errors.append("candidate must be a GeoTIFF with a .tif or .tiff extension")
-        if checks["single_band"] is False:
-            errors.append("candidate must contain exactly one band")
-        if checks["float32"] is False:
-            errors.append("candidate band must be 32-bit float")
-        if checks["crs_match"] is False:
-            errors.append("candidate CRS does not match reference CRS")
-        if checks["shape_match"] is False:
-            errors.append("candidate raster shape does not match reference shape")
-        if checks["transform_match"] is False:
-            errors.append("candidate geotransform does not exactly match reference geotransform")
-        if checks["reference_footprint_available"] is False:
-            errors.append("reference raster has no valid footprint")
-        if checks["reference_footprint_shape_match"] is False:
-            errors.append("candidate array shape does not match reference footprint")
-        if checks["finite_all_pixels"] is False:
-            errors.append("candidate contains NaN or infinity; all cells are checked to guard against range-validator errors")
-        if checks["finite_inside_footprint"] is False:
-            errors.append("candidate contains NaN or infinity inside the reference footprint")
-        if checks["range_0_1_all_pixels"] is False:
-            errors.append("candidate values are not all within [0, 1]")
-
-    passed = not errors
-    return {
-        "validator": VALIDATOR_VERSION,
-        "checked_at_utc": datetime.now(timezone.utc).isoformat(),
-        "candidate": candidate_path.name,
-        "candidate_sha256": sha256_file(candidate_path),
-        "reference": reference_path.name,
-        "status": "PASS" if passed else "FAIL",
-        "checks": checks,
-        "errors": errors,
-        "submission_authorized": False,
-        "authorization_note": "Format validation alone cannot establish holdout performance, leakage safety, registry uniqueness, organizer acceptance, or selector approval.",
-    }
-
-
-def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--candidate", required=True, type=Path, help="candidate single-band GeoTIFF")
-    parser.add_argument("--reference", required=True, type=Path, help="official sample/reference GeoTIFF defining the required grid")
-    parser.add_argument("--json-out", type=Path, help="optional path for a machine-readable receipt")
-    args = parser.parse_args(argv)
-
-    for path in (args.candidate, args.reference):
-        if not path.is_file():
-            parser.error(f"file does not exist: {path}")
-
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("raster", type=Path)
+    p.add_argument("--sample", type=Path, default=ROOT / "data/official/sample_submission.tif")
+    p.add_argument("--output", type=Path, help="optional JSON receipt (never overwrites an existing file)")
+    args = p.parse_args()
     try:
-        receipt = validate(args.candidate, args.reference)
-    except Exception as exc:  # readable fail-closed diagnostic for GDAL/raster errors
-        receipt = {
-            "validator": VALIDATOR_VERSION,
-            "checked_at_utc": datetime.now(timezone.utc).isoformat(),
-            "candidate": args.candidate.name,
-            "reference": args.reference.name,
-            "status": "FAIL",
-            "checks": {"readable": False},
-            "errors": [f"could not read/validate rasters: {type(exc).__name__}: {exc}"],
-            "submission_authorized": False,
-            "authorization_note": "Format validation alone cannot establish holdout performance, leakage safety, registry uniqueness, organizer acceptance, or selector approval.",
-        }
-
-    rendered = json.dumps(receipt, indent=2, sort_keys=True, allow_nan=False)
-    print(rendered)
-    if args.json_out:
-        args.json_out.parent.mkdir(parents=True, exist_ok=True)
-        args.json_out.write_text(rendered + "\n", encoding="utf-8")
-    return 0 if receipt["status"] == "PASS" else 1
+        report = run(args.raster, args.sample)
+        text = json.dumps(report, indent=2, allow_nan=False) + "\n"
+        if args.output:
+            with args.output.open("x", encoding="utf-8") as stream:
+                stream.write(text)
+        print(text, end="")
+        return 0 if report["ok"] else 1
+    except (OSError, ValueError, RuntimeError) as e:
+        print(f"STOP: {e}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())
