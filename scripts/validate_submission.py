@@ -1,34 +1,78 @@
 #!/usr/bin/env python3
-"""Strict validator: re-opens the SAVED bytes. Fixes the reported
-'Predicted values must be in range [0, 1]' failure by construction + check.
-Usage: validate_submission.py FILE.tif [REFERENCE.tif]
-Exit 0 = PASS. No human inspection involved."""
-import sys, json, hashlib
-import numpy as np, rasterio
+"""Byte-check a GeoTIFF with the pinned shared format validator, never authorize a slot.
 
-def validate(path, ref=None):
-    out={"file":path}
+This cannot establish novelty, a holdout win, or portal acceptance. All-finite
+outside-footprint encoding is a local range precaution and may not match the
+literal public specification's null/NaN wording; organizer acceptance is unknown.
+"""
+from __future__ import annotations
+import argparse
+import json
+from pathlib import Path
+import sys
+
+import numpy as np
+import rasterio
+
+from prepare_data import ROOT, TEMPLATE, digest, restore_template
+
+SAMPLE_SHA = "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
+
+
+def run(path: Path, sample: Path) -> dict:
+    if not path.is_file():
+        raise FileNotFoundError(f"No such raster: {path}")
+    if not sample.is_file() or digest(sample) != SAMPLE_SHA:
+        raise ValueError("The owner-mirrored sample is absent or hash-mismatched")
+    # Verify each cached upstream file before importing; no evaluator/writer fork.
+    restore_template(False)
+    sys.path.insert(0, str(TEMPLATE / "src"))
+    from gems57.gates import format_report
+    with rasterio.open(sample) as ds:
+        footprint = np.isfinite(ds.read(1))
+    result = format_report(path, sample, footprint=footprint)
+    result.update(
+        evidence_class="LOCAL-FORMAT-MEASUREMENT",
+        reference_provenance="Hash-pinned third-party mirror; not organizer authenticated",
+        sample_sha256=SAMPLE_SHA,
+        no_nan_inside_footprint=None,
+        organizer_acceptance="unknown",
+        official_outside_footprint_nodata_compliance="not established by all-finite check",
+        scientific_holdout="not checked by this command",
+        registry_surface_and_final="not checked by this command",
+        ok_to_submit=False,
+        verdict="research-only; local format is not promotion or slot selection",
+    )
     with rasterio.open(path) as ds:
-        a=ds.read(1); out.update(shape=list(ds.shape),crs=str(ds.crs),
-            transform=list(ds.transform),dtype=str(ds.dtypes[0]),count=ds.count,
-            nodata=ds.nodata)
-        prof=dict(shape=ds.shape,crs=str(ds.crs),transform=ds.transform)
-    finite=np.isfinite(a)
-    out.update(all_finite=bool(finite.all()), nan_count=int((~finite).sum()),
-        min=float(a.min()), max=float(a.max()),
-        in_01=bool(a.min()>=0.0 and a.max()<=1.0),
-        dots=int((a>0).sum()), mass=float(a.sum()))
-    out["sha256"]=hashlib.sha256(open(path,'rb').read()).hexdigest()
-    ok = ds.count==1 and out["all_finite"] and out["in_01"]
-    if ref:
-        with rasterio.open(ref) as r:
-            match = (r.shape==prof["shape"] and str(r.crs)==prof["crs"]
-                     and r.transform==prof["transform"])
-        out["matches_reference"]=bool(match); ok = ok and match
-    # footprint check if reference sample given separately is caller's job
-    out["verdict"]="PASS" if ok else "FAIL"
-    return out
+        a = ds.read(1)
+    if a.shape == footprint.shape:
+        values = a[footprint]
+        result["no_nan_inside_footprint"] = bool(np.isfinite(values).all())
+        result["inside_values_in_0_1"] = bool(np.isfinite(values).all() and
+                                               (values >= 0).all() and (values <= 1).all())
+    else:
+        result["inside_values_in_0_1"] = False
+    return result
 
-if __name__=="__main__":
-    r=validate(sys.argv[1], sys.argv[2] if len(sys.argv)>2 else None)
-    print(json.dumps(r,indent=2)); sys.exit(0 if r["verdict"]=="PASS" else 1)
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("raster", type=Path)
+    p.add_argument("--sample", type=Path, default=ROOT / "data/official/sample_submission.tif")
+    p.add_argument("--output", type=Path, help="optional JSON receipt (never overwrites an existing file)")
+    args = p.parse_args()
+    try:
+        report = run(args.raster, args.sample)
+        text = json.dumps(report, indent=2, allow_nan=False) + "\n"
+        if args.output:
+            with args.output.open("x", encoding="utf-8") as stream:
+                stream.write(text)
+        print(text, end="")
+        return 0 if report["ok"] else 1
+    except (OSError, ValueError, RuntimeError) as e:
+        print(f"STOP: {e}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

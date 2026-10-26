@@ -54,7 +54,7 @@ result — it does not by itself prove off-catalogue live skill, hence the red v
 
 <h2>How to submit (if the selector ever promotes a file)</h2>
 <ol><li>Download the .tif above. Do not rename the dots; renaming does not change content.</li>
-<li>Run <code>python3 scripts/validate_submission.py FILE.tif</code> — must print PASS (values in [0,1], CRS/shape/transform match).</li>
+<li>Run <code>python3 scripts/validate_submission_strict.py FILE.tif</code> — must print PASS (values in [0,1], CRS/shape/transform match).</li>
 <li>On DrivenData: New submission → upload the single-band GeoTIFF → paste the 140-char note from the run card → Create.</li>
 <li>Record the returned score here as ORGANIZER-CONFIRMED only when copied from the submission-page receipt.</li></ol>
 
