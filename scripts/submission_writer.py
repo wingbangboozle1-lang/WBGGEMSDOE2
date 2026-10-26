@@ -156,7 +156,15 @@ def write_submission(
     """Write a validated GEMS submission GeoTIFF.
 
     Raises ValueError if validation fails (nothing is written).
+    Placeholder (None) calls are refused with STOP: this writer must not be
+    invoked to produce a new file without a real array, output path, and
+    reference grid.
     """
+    if arr is None or out_path is None or reference_path is None:
+        raise RuntimeError(
+            "STOP: submission_writer.write_submission is stopped — "
+            "refusing placeholder call (arr=None/out_path=None/reference_path=None)"
+        )
     if footprint is None:
         footprint = footprint_mask(reference_path)
     report = validate_array(arr, reference_path, footprint)
