@@ -1,6 +1,6 @@
 {
   "evidence_class": "GITHUB-HEAD-FRESHNESS-ONLY",
-  "checked_utc": "2026-10-26T22:02:53.018368+00:00",
+  "checked_utc": "2026-10-26T22:18:24.418144+00:00",
   "changed_count": 9,
   "unknown_count": 0,
   "scope": "HEAD comparison only; newer rasters are not downloaded or audited by this check",
@@ -8,14 +8,14 @@
     {
       "site": "GEMSDOE24",
       "audited_ref": "5cfab74597cd1d0a271e4640b4cc34511e56ca59",
-      "current_head": "a433b430b74b813a9118ebd4ec438b12cbc69f46",
+      "current_head": "a97aefe1287bed996e4d6dcdbf379de99e7ddd5c",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE25",
       "audited_ref": "606eef45e669a6da061ec24be4a3d870addadb0f",
-      "current_head": "b9dc627b767b052ca6963e175ef43ad2d0831ebd",
+      "current_head": "c04766ff224f879d7204d2e6c45bffd8c7f01966",
       "changed": true,
       "status": "checked"
     },
@@ -29,7 +29,7 @@
     {
       "site": "GEMSDOE28",
       "audited_ref": "9c1be21e8f1be707347f737e42abf62ea669c819",
-      "current_head": "ec1d501fd12c8dee9dc062726003639dec9382ff",
+      "current_head": "63851bca9f3e98b4fc7a79616aeb9fb0dd3baf7f",
       "changed": true,
       "status": "checked"
     },
@@ -43,7 +43,7 @@
     {
       "site": "GEMSDOE31",
       "audited_ref": "78f9bf3ae82e5c78ca348aa37c0660c339e72f0e",
-      "current_head": "e14b466b88601149e30ed8decb2fa753ca040beb",
+      "current_head": "307553d15ac7c020505fc6b270949bedc5a22fa2",
       "changed": true,
       "status": "checked"
     },
@@ -64,7 +64,7 @@
     {
       "site": "GEMSDOE36",
       "audited_ref": "b90418f852615aa0974cf9a53b92fa569ed133fc",
-      "current_head": "79ddf4aa6fd5fa93887345f4bffeb6edd9d76401",
+      "current_head": "23ad503204288fd48681beacc67d83563c4cbf3b",
       "changed": true,
       "status": "checked"
     }

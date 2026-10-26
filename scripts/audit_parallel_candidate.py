@@ -58,7 +58,7 @@ def audit(fetch=False):
                   'inside_values_in_0_1':report['inside_values_in_0_1'], 'crs_shape_transform_match':True,
                   'nodata_tag':nodata, 'dataset_mask_invalid_inside_footprint':masked_inside,
                   'mask_caveat':'The raw values are finite, but nodata=0 marks interior zero-valued pixels invalid in the dataset mask. The shared local format report does not reject this mask; organizer handling is unknown.'},
-        'holdout_caveat':'Parallel run used a non-shared evaluator; run_lane.py samples training negatives using the full catalogue including withheld labels, and canaries report only fold 0. No independent protocol-valid holdout has been established.',
+        'holdout_caveat':'Parallel run used a non-shared evaluator; The archived training mask references the full catalogue, and evaluation cells were not removed from the training zone; canaries report only fold 0. No independent protocol-valid holdout has been established.',
         'ok_to_submit':False,
     }
 

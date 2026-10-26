@@ -1,5 +1,5 @@
 {
-  "protocol_status": "HISTORICAL ONLY \u2014 non-shared evaluator and withheld-label-dependent negative sampling; not a protocol-valid holdout",
+  "review_status": "SOURCE-REPORTED / NOT REPRODUCED; does not meet required shared-evaluator and preflight gates. See parallel_review.json.",
   "evaluator": "WBGGEMSDOE2-HIDE-RECOVER-v2.0 (alpha0.2 beta0.8 R300m triangular, whole-segment withholding by 256px checkerboard centroid block, 15px training buffer, per-cell pooled DTI)",
   "folds": {
     "E1": [

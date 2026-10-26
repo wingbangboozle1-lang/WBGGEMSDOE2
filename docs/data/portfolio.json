@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T21:54:30.505640+00:00",
+  "generated_utc": "2026-10-26T22:15:46.376179+00:00",
   "evidence_class": "HISTORICAL-MIRROR-MEASUREMENT + USER-REPORTED",
   "score_evidence": "User-reported claims, no organizer submission-page receipts",
   "score_forecast": "Unavailable: no verified cross-family leaderboard calibration",
@@ -396,7 +396,7 @@
   },
   "dense_probability_witness": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "witness_file": "/home/user/WBGGEMSDOE2/.cache/priority-audit/ab0a0a62eecf066a.tif",
+    "witness_file": ".cache/priority-audit/ab0a0a62eecf066a.tif",
     "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
     "positive_pixels": 5167373,
     "allowed_pixels": 5167373,

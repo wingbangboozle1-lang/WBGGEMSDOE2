@@ -1,4 +1,4 @@
-name: Publish GEMS dashboard
+name: Publish GEMS dashboards
 
 on:
   push:
@@ -30,12 +30,20 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/refresh_registry_refs.py
-      - name: Rebuild evidence-first static site
-        run: python scripts/build_site.py
+      - name: Refresh fieldnotes feed (stale on failure)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/refresh_feed.py
+      - name: Rebuild both evidence-first static sites
+        run: |
+          python scripts/build_run_card.py
+          python scripts/build_site.py
+          python scripts/build_site_data.py
       - name: Stage the same URL layout as legacy Pages
         run: |
-          mkdir -p _site/docs
+          mkdir -p _site/docs _site/site
           cp -R docs/. _site/docs/
+          cp -R site/. _site/site/
           cp index.html .nojekyll _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

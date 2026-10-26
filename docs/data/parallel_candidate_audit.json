@@ -1,6 +1,6 @@
 {
   "evidence_class": "INDEPENDENT-POST-MERGE-RASTER-AUDIT",
-  "audited_utc": "2026-10-26T22:23:33.128324+00:00",
+  "audited_utc": "2026-10-26T22:27:21.338999+00:00",
   "candidate_path": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
   "candidate_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
   "candidate_origin": "Parallel PR #10; file retained for research only",
@@ -38,6 +38,6 @@
     "dataset_mask_invalid_inside_footprint": 5132809,
     "mask_caveat": "The raw values are finite, but nodata=0 marks interior zero-valued pixels invalid in the dataset mask. The shared local format report does not reject this mask; organizer handling is unknown."
   },
-  "holdout_caveat": "Parallel run used a non-shared evaluator; run_lane.py samples training negatives using the full catalogue including withheld labels, and canaries report only fold 0. No independent protocol-valid holdout has been established.",
+  "holdout_caveat": "Parallel run used a non-shared evaluator; The archived training mask references the full catalogue, and evaluation cells were not removed from the training zone; canaries report only fold 0. No independent protocol-valid holdout has been established.",
   "ok_to_submit": false
 }

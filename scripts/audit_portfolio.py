@@ -174,6 +174,7 @@ def portfolio() -> tuple[dict, dict]:
     with rasterio.open(sample_path) as sample:
         dense = saturation_certificate(dense_path, footprint,
                                         expected_grid=(sample.shape, sample.crs, sample.transform))
+    dense["witness_file"] = str(dense_path.relative_to(ROOT))
     dense.update(source=dense_record["source"], registry_evidence=dense_record["registry_evidence"],
                  definition_caveat="Continuous prior: shared literal implementation defines finite >0 as support; no exemption applied.")
     result = {

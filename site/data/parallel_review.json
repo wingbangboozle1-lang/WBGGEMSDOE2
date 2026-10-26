@@ -1,0 +1,50 @@
+{
+  "evidence_class": "INDEPENDENT-FORENSIC-RECHECK",
+  "checked_utc": "2026-10-26T22:22:22.417649+00:00",
+  "artifact": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
+  "sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+  "status": "REJECTED \u2014 RESEARCH ONLY; DO NOT SUBMIT",
+  "ok_to_submit": false,
+  "is_this_review_lane_candidate": false,
+  "positive_inside_footprint": 34564,
+  "positive_outside_footprint": 0,
+  "format": {
+    "grid_match_reference": true,
+    "bands": 1,
+    "dtype": "float32",
+    "nodata": "0.0",
+    "footprint_cells": 5167373,
+    "nonfinite_inside": 0,
+    "masked_inside": 5132809,
+    "all_finite": true,
+    "minimum_inside": 0.0,
+    "maximum_inside": 1.0,
+    "failures": [
+      "reference-footprint cells are marked nodata/masked"
+    ],
+    "format_valid_against_reference": false
+  },
+  "reference_provenance": "Hash-pinned owner mirror, not an authenticated organizer file",
+  "literal_overlap_3px": {
+    "lattice": 0.9938375188056938,
+    "continuous_prior": 1.0,
+    "limit": 0.7,
+    "dense_support_definition": "finite value > 0 in shared literal gate; whether a continuous field should count as dots needs policy clarification"
+  },
+  "preplacement_surface_correlation": null,
+  "preplacement_status": "not replayed; source audit compared only nine final dot-density surfaces",
+  "source_reported_holdout": {
+    "evidence_class": "HOLDOUT-DTI (SOURCE-REPORTED, NOT REPRODUCED)",
+    "evaluator_version": "WBGGEMSDOE2-HIDE-RECOVER-v2.0 (private parallel implementation, not the required shared evaluator)",
+    "withheld_positive_pixels": 58016,
+    "dti": 0.1321,
+    "reported_95ci": [
+      0.129,
+      0.1349
+    ],
+    "limitations": "Evaluation cells were not excluded from the training zone; the four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight."
+  },
+  "source_reported_experiments": 3,
+  "organizer_receipt": null,
+  "conclusion": "Fails the literal any-registry gate on the binary lattice alone; its zero NoData tag also masks most footprint cells. No submission, estimated live score, or promotion is authorized."
+}

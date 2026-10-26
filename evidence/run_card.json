@@ -1,70 +1,112 @@
 {
-  "hypothesis": "H1: coincidence of a GeoDAWN TMI/ThK gradient step with lidar cross-slope asymmetry marks buried normal faults missing from the USGS/INGENIOUS catalogue",
-  "mechanism": "HistGBM on 23 non-catalogue bands (11 lidar scarp, 8 GeoDAWN radiometric/magnetic, 4 H1 interaction products); greedy 2.8px-separated DTI packing; dots forbidden within 2px of catalogue faults",
-  "named_nonfault_mimic": "Lithologic contact with erosional escarpment (e.g. basalt flow edge): magnetic step + slope asymmetry with no fault",
+  "schema": "wbggems.run-card.v1",
+  "generated_utc": "2026-10-26T22:00:04.530607+00:00",
+  "hypothesis": "H1: depth-shifted, multiscale gravity and magnetic discontinuities may indicate concealed basin faults.",
+  "mechanism": "Paired signed gravity\u2013magnetic gradients, displaced using an unvalidated conductive-base-depth/dip proxy; both magnetic polarities are possible.",
+  "non_fault_mimic": "Unfaulted lithologic contact, intrusive dike, and acquisition striping.",
+  "lane_status": "Provisionally named; no explicit single method lane was supplied; no candidate produced.",
+  "experiment_budget": {
+    "experiments_run": 0,
+    "maximum_experiments": 3,
+    "maximum_hours": 2,
+    "weekly_slots_used": 0,
+    "scope": "this review lane; one parallel session reported three experiments and another reported one"
+  },
   "holdout": {
-    "label": "HOLDOUT-DTI",
-    "evaluator": "WBGGEMSDOE2-HIDE-RECOVER-v2.0 (alpha0.2 beta0.8 R300m triangular, whole-segment withholding by 256px checkerboard centroid block, 15px training buffer, per-cell pooled DTI)",
-    "experiments": {
-      "E1_full_plus_catalogue_distance": {
-        "dti": 0.0227,
-        "fold_bootstrap_95ci": [
-          0.0181,
-          0.0299
-        ]
-      },
-      "E2_lane_no_catalogue_distance": {
-        "dti": 0.1321,
-        "fold_bootstrap_95ci": [
-          0.129,
-          0.1349
-        ]
-      },
-      "E3_E1_surface_sep3.4": {
-        "dti": 0.0187,
-        "fold_bootstrap_95ci": [
-          0.0148,
-          0.0242
-        ]
-      }
-    },
-    "n_withheld_positives_pooled": 58016,
-    "leakage_canary_max_auc_fold0": 0.5927,
-    "canary_rule": "INCOMPLETE \u2014 only fold 0 was reported",
-    "champion_proxy_note": "GEMSDOE32 champion raster scored 0.0066 on catalogue recovery - expected and NOT comparable: it targets off-catalogue truth, so it is not a catalogue-recovery baseline. No paired live-truth comparison is possible without organizer labels.",
-    "protocol_status": "NOT ACCEPTED: non-shared evaluator; withheld labels used for negative selection; canaries reported only for fold 0."
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "status": "not run: the literal registry preflight blocks placement and the method lane was not assigned",
+    "intended_evaluator_version": "gems57-pooled-hide-v2"
   },
-  "correlation_overlap_vs_registry": {
-    "method": "300m-kernel dot-density surface Spearman (200k sampled px) + fraction of candidate dots within 3px, vs the 9 focus-site best rasters",
-    "max_abs_rank_corr": 0.3157,
-    "max_dot_overlap_frac": 0.4141,
-    "registry_rasters": 9,
-    "lane_limits": {
-      "rank_corr_max": 0.9,
-      "dot_overlap_max": 0.7
-    },
-    "result": "FAIL \u2014 99.3837518806% of candidate dots are within 3px of the registered binary lattice",
-    "historical_nine_focus_only_result": "PASS - inside lane",
-    "binary_lattice_overlap_fraction": 0.9938375188056938,
-    "continuous_prior_overlap_fraction_literal": 1.0,
-    "all_registry_rasters_checked": false,
-    "true_preplacement_surface_checked": false,
-    "independent_audit": "parallel_candidate_audit.json"
+  "feature_canary": {
+    "status": "not run; no surface or features were evaluated"
   },
-  "raster_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
-  "validator": "Raw values passed local range/grid checks; nodata=0 masks 5,132,809 in-footprint cells. Organizer acceptance unknown; format check does not authorize upload.",
-  "submission_name": "wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
-  "submission_note_140c": null,
-  "live_projection": {
-    "label": "RETIRED UNCALIBRATED PROJECTION \u2014 not a score or decision basis",
-    "estimate": null,
-    "method": "anchored on champion 0.2778 (OWNER-REPORTED) and GEMSDOE32 H47 unique-candidate LLI projection 0.240-0.248 at 65% max registry overlap, extrapolated to this file's 41% max overlap and widened for evaluator mismatch; low confidence",
-    "organizer_confirmed_scores": "none - every score in this repo is OWNER-REPORTED or HOLDOUT-DTI or PROJECTION",
-    "historical_unvalidated_estimate": "0.15-0.24"
+  "uniqueness": {
+    "registry_scope": "13 pinned raster references including a binary lattice and a continuous prior; incomplete inventory",
+    "candidate_surface_correlation": null,
+    "candidate_final_overlap": null,
+    "status": "no candidate constructed",
+    "witness": "13GEMSDOE stride-5 lattice",
+    "standard_budget": 37654,
+    "minimum_overlap_bound": 0.8234184947150369,
+    "limit": 0.7,
+    "observed_other_site_H31_overlap": 0.9961491475009295,
+    "dense_prior_witness": "17GEMSDOE continuous probability prior",
+    "dense_prior_full_footprint_positive": true,
+    "dense_prior_policy_caveat": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
   },
-  "verdict": "negative",
-  "verdict_reason": "DUPLICATE / STOP under the literal binary-lattice overlap rule. Holdout is not protocol-valid; no upload is approved.",
-  "historical_note_do_not_use": "WBG2 H1 stepXasym E2 34564d holdout0.1321 no-catdist unique rho0.32 ov41pct",
+  "raster_sha256": null,
+  "validator": {
+    "status": "not run; no candidate raster",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "reference": "owner mirror; not authenticated"
+  },
+  "submission_name": null,
+  "proposed_research_name": "WBGGEMSDOE2-H1-RESEARCH-20261026",
+  "note": "H1 untested; research only. Literal registry preflight blocked. DO NOT SUBMIT.",
   "ok_to_submit": false,
-  "superseding_audit": "parallel_candidate_audit.json"
+  "verdict": "negative",
+  "experiment_count": 0,
+  "weekly_submission_slots_used": 0,
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "NOT RUN",
+    "evaluator_version": null,
+    "intended_evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": null,
+    "value": null,
+    "ci95": null,
+    "reason": "No assigned lane and literal registry preflight blocked."
+  },
+  "registry": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "surface_rank_correlation": null,
+    "final_dot_overlap": null,
+    "all_current_registry_rasters_checked": false,
+    "binary_lattice_example_budget": 37654,
+    "binary_lattice_minimum_overlap_at_budget": 0.8234184947150369,
+    "dense_probability_prior_full_footprint": true,
+    "interpretation": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
+  },
+  "submission_note": null,
+  "ok_to_download_new_tif": false,
+  "updated_utc": "2026-10-26T22:23:22.025194+00:00",
+  "parallel_session": {
+    "evidence": "evidence/parallel_review.json",
+    "reported_experiments": 3,
+    "rejected_candidate_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+    "lattice_overlap_3px": 0.9938375188056938,
+    "continuous_prior_overlap_3px": 1.0,
+    "masked_inside_footprint": 5132809,
+    "source_reported_holdout": {
+      "evidence_class": "HOLDOUT-DTI (SOURCE-REPORTED, NOT REPRODUCED)",
+      "evaluator_version": "WBGGEMSDOE2-HIDE-RECOVER-v2.0 (private parallel implementation, not the required shared evaluator)",
+      "withheld_positive_pixels": 58016,
+      "dti": 0.1321,
+      "reported_95ci": [
+        0.129,
+        0.1349
+      ],
+      "limitations": "Evaluation cells were not excluded from the training zone; the four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight."
+    },
+    "ok_to_submit": false,
+    "reason": "Rejected: literal lattice duplication, masked interior cells, and no compliant pre-placement/holdout approval."
+  },
+  "conduit_parallel_session": {
+    "evidence": "evidence/conduit_review.json",
+    "reported_experiments": 1,
+    "rejected_candidate_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+    "lattice_overlap_3px_source_threshold": 0.9987256530439265,
+    "continuous_prior_overlap_3px": 1.0,
+    "format_valid_against_owner_mirror": true,
+    "holdout_dti": null,
+    "preplacement_surface_correlation": null,
+    "ok_to_submit": false,
+    "reason": "Rejected: lattice duplication, no validated holdout, and synthetic rather than demonstrated geophysical features."
+  }
 }

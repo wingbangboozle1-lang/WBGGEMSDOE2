@@ -1,8 +1,7 @@
 {
-  "status": "INCOMPLETE \u2014 nine selected prior rasters and dot-density proxy only; not a full registry or preplacement check",
+  "status": "SUPERSEDED: nine-file-only check was incomplete and is NOT a uniqueness pass",
   "ok_to_submit": false,
-  "superseding_audit": "parallel_candidate_audit.json",
-  "results": [
+  "original_nine_file_results": [
     {
       "registry": "/tmp/reg/GEMSDOE32/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
       "rank_corr": 0.3044,
@@ -57,5 +56,12 @@
       "cand_dots_within3px_frac": 0.4141,
       "drift": false
     }
-  ]
+  ],
+  "independent_recheck": "parallel_review.json",
+  "measured_literal_overlap_3px": {
+    "lattice": 0.9938375188056938,
+    "continuous_prior": 1.0,
+    "limit": 0.7,
+    "dense_support_definition": "finite value > 0 in shared literal gate; whether a continuous field should count as dots needs policy clarification"
+  }
 }

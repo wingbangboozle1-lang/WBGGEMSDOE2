@@ -1,8 +1,14 @@
-.venv/
+# Restorable competition inputs, research rasters and generated local state
+/data/
+/scratch/
+/.venv/
+/.cache/
+/out/
+/_site/
 __pycache__/
-*.pyc
-.env
+*.py[cod]
+*.partial
+.pytest_cache/
+.coverage
 .DS_Store
-data/
-.cache/
 *.npy

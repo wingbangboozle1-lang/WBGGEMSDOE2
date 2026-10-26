@@ -122,3 +122,22 @@ def test_literal_novelty_has_no_saturation_exemption(shared):
     u=shared['uniqueness'];mine=np.zeros((8,8));mine[2,2]=1
     full=np.ones((8,8))
     assert u.dot_overlap(mine,full)==1
+
+
+def test_masked_interior_known_shared_gap_is_a_supplemental_stop(shared, tmp_path, monkeypatch):
+    # Shared gate sees finite zeros but ignores their in-footprint nodata mask.
+    # Do not patch the pinned code here: upstream fix is still required.
+    import validate_submission
+    tr = from_origin(243350, 4508550, 100, 100)
+    sample = tmp_path / 'sample.tif'
+    candidate = tmp_path / 'candidate.tif'
+    _raster(sample, np.ones((5, 6)), tr)
+    with rasterio.open(candidate, 'w', driver='GTiff', height=5, width=6, count=1,
+                       dtype='float32', crs='EPSG:32611', transform=tr, nodata=0) as ds:
+        ds.write(np.zeros((5, 6), np.float32), 1)
+    monkeypatch.setattr(validate_submission, 'SAMPLE_SHA', validate_submission.digest(sample))
+    report = validate_submission.run(candidate, sample)
+    assert report['shared_format_ok'] is True  # gap in the pinned upstream version
+    assert report['masked_inside_footprint'] == 30
+    assert report['supplemental_mask_and_format_ok'] is False
+    assert report['ok'] is False and report['ok_to_submit'] is False

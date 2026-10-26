@@ -1,57 +1,112 @@
 {
-  "schema_version": 1,
-  "generated_utc": "2026-10-26T22:23:33.196244+00:00",
-  "hypothesis": "This review proposed multiscale gravity-magnetic gradient alignment residualized against detrended elevation; no lane was supplied and this review ran no model.",
-  "mechanism": "Buried faulted contacts might produce coincident persistent gravity and magnetic edges even where surface expression is weak.",
-  "named_non_fault_process": "Lithologic contacts or igneous dikes can produce aligned potential-field gradients; terrain-related survey artifacts can mimic structure.",
+  "schema": "wbggems.run-card.v1",
+  "generated_utc": "2026-10-26T22:00:04.530607+00:00",
+  "hypothesis": "H1: depth-shifted, multiscale gravity and magnetic discontinuities may indicate concealed basin faults.",
+  "mechanism": "Paired signed gravity\u2013magnetic gradients, displaced using an unvalidated conductive-base-depth/dip proxy; both magnetic polarities are possible.",
+  "non_fault_mimic": "Unfaulted lithologic contact, intrusive dike, and acquisition striping.",
+  "lane_status": "Provisionally named; no explicit single method lane was supplied; no candidate produced.",
+  "experiment_budget": {
+    "experiments_run": 0,
+    "maximum_experiments": 3,
+    "maximum_hours": 2,
+    "weekly_slots_used": 0,
+    "scope": "this review lane; one parallel session reported three experiments and another reported one"
+  },
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "status": "not run: the literal registry preflight blocks placement and the method lane was not assigned",
+    "intended_evaluator_version": "gems57-pooled-hide-v2"
+  },
+  "feature_canary": {
+    "status": "not run; no surface or features were evaluated"
+  },
+  "uniqueness": {
+    "registry_scope": "13 pinned raster references including a binary lattice and a continuous prior; incomplete inventory",
+    "candidate_surface_correlation": null,
+    "candidate_final_overlap": null,
+    "status": "no candidate constructed",
+    "witness": "13GEMSDOE stride-5 lattice",
+    "standard_budget": 37654,
+    "minimum_overlap_bound": 0.8234184947150369,
+    "limit": 0.7,
+    "observed_other_site_H31_overlap": 0.9961491475009295,
+    "dense_prior_witness": "17GEMSDOE continuous probability prior",
+    "dense_prior_full_footprint_positive": true,
+    "dense_prior_policy_caveat": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "not run; no candidate raster",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "reference": "owner mirror; not authenticated"
+  },
+  "submission_name": null,
+  "proposed_research_name": "WBGGEMSDOE2-H1-RESEARCH-20261026",
+  "note": "H1 untested; research only. Literal registry preflight blocked. DO NOT SUBMIT.",
+  "ok_to_submit": false,
+  "verdict": "negative",
   "experiment_count": 0,
   "weekly_submission_slots_used": 0,
-  "scope": "This review only; a separate parallel run generated and evaluated a candidate, independently audited below.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "status": "NOT RUN",
-    "evaluator_version": "gems57-pooled-hide-v2",
+    "evaluator_version": null,
+    "intended_evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positives": null,
     "value": null,
     "ci95": null,
-    "reason": "No assigned method and strict novelty preflight obstructed"
-  },
-  "single_feature_leakage_canaries": {
-    "status": "NOT RUN",
-    "reason": "No candidate or feature matrix evaluated"
+    "reason": "No assigned lane and literal registry preflight blocked."
   },
   "registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
     "surface_rank_correlation": null,
     "final_dot_overlap": null,
-    "scope": "Nine pinned historical rasters, a registered lattice and a registered continuous prior; not a current exhaustive registry scan",
     "all_current_registry_rasters_checked": false,
     "binary_lattice_example_budget": 37654,
     "binary_lattice_minimum_overlap_at_budget": 0.8234184947150369,
     "dense_probability_prior_full_footprint": true,
-    "interpretation": "Shared literal finite-positive definition makes the continuous prior a universal blocker; binary lattice bound holds at the stated budget only."
+    "interpretation": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
   },
-  "raster_sha256": null,
-  "validator_output": {
-    "status": "NOT RUN FOR A CANDIDATE",
-    "no_nan_inside_footprint": null,
-    "range_0_1": null,
-    "crs_shape_transform_match": null,
-    "historical_b2_format_receipt": "b2_local_format.json"
-  },
-  "submission_name": null,
   "submission_note": null,
   "ok_to_download_new_tif": false,
-  "ok_to_submit": false,
-  "verdict": "negative",
-  "reason": "No candidate produced in this review; the separately generated parallel candidate fails the strict registry STOP. No assigned single method was supplied. Do not spend a slot.",
-  "parallel_candidate": {
-    "status": "DUPLICATE / STOP; research only",
-    "raster_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
-    "binary_lattice_overlap": 0.9938375188056938,
-    "continuous_prior_overlap_literal": 1.0,
-    "preplacement_surface_checked": false,
-    "evidence": "parallel_candidate_audit.json",
-    "ok_to_submit": false
+  "updated_utc": "2026-10-26T22:23:22.025194+00:00",
+  "parallel_session": {
+    "evidence": "evidence/parallel_review.json",
+    "reported_experiments": 3,
+    "rejected_candidate_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+    "lattice_overlap_3px": 0.9938375188056938,
+    "continuous_prior_overlap_3px": 1.0,
+    "masked_inside_footprint": 5132809,
+    "source_reported_holdout": {
+      "evidence_class": "HOLDOUT-DTI (SOURCE-REPORTED, NOT REPRODUCED)",
+      "evaluator_version": "WBGGEMSDOE2-HIDE-RECOVER-v2.0 (private parallel implementation, not the required shared evaluator)",
+      "withheld_positive_pixels": 58016,
+      "dti": 0.1321,
+      "reported_95ci": [
+        0.129,
+        0.1349
+      ],
+      "limitations": "Evaluation cells were not excluded from the training zone; the four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight."
+    },
+    "ok_to_submit": false,
+    "reason": "Rejected: literal lattice duplication, masked interior cells, and no compliant pre-placement/holdout approval."
+  },
+  "conduit_parallel_session": {
+    "evidence": "evidence/conduit_review.json",
+    "reported_experiments": 1,
+    "rejected_candidate_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+    "lattice_overlap_3px_source_threshold": 0.9987256530439265,
+    "continuous_prior_overlap_3px": 1.0,
+    "format_valid_against_owner_mirror": true,
+    "holdout_dti": null,
+    "preplacement_surface_correlation": null,
+    "ok_to_submit": false,
+    "reason": "Rejected: lattice duplication, no validated holdout, and synthetic rather than demonstrated geophysical features."
   }
 }

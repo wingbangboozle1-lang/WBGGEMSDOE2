@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Byte-check a GeoTIFF with the pinned shared format validator, never authorize a slot.
+"""Byte-check with the pinned shared gate AND an independent mask check; never authorize a slot.
 
 This cannot establish novelty, a holdout win, or portal acceptance. All-finite
 outside-footprint encoding is a local range precaution and may not match the
@@ -31,9 +31,25 @@ def run(path: Path, sample: Path) -> dict:
     with rasterio.open(sample) as ds:
         footprint = np.isfinite(ds.read(1))
     result = format_report(path, sample, footprint=footprint)
+    # The pinned shared version reports mask presence but can accept finite
+    # NoData=0 pixels within the footprint. Until that is fixed upstream, an
+    # additional independent read-back is a STOP only, never a private fork.
+    sys.path.insert(0, str(ROOT / "src"))
+    from wbggems.validate import inspect_tif
+    supplemental = inspect_tif(path, sample, strict_all_finite=True)
+    shared_ok = bool(result["ok"])
+    supplemental_ok = bool(supplemental["format_valid_against_reference"])
+    result["shared_format_ok"] = shared_ok
+    result["supplemental_mask_and_format_ok"] = supplemental_ok
+    result["masked_inside_footprint"] = supplemental.get("masked_inside")
+    # Compatibility fields for the independently developed parallel audit.
+    result["dataset_mask_invalid_inside_footprint"] = supplemental.get("masked_inside")
+    masked = supplemental.get("masked_inside")
+    result["project_mask_check"] = ("not checked: shape mismatch" if masked is None else
+                                    "pass" if masked == 0 else "fail: invalid/nodata cells inside footprint")
+    result["supplemental_failures"] = supplemental["failures"]
+    result["ok"] = shared_ok and supplemental_ok
     result.update(
-        shared_format_ok=bool(result["ok"]),
-        project_mask_check="not yet checked",
         evidence_class="LOCAL-FORMAT-MEASUREMENT",
         reference_provenance="Hash-pinned third-party mirror; not organizer authenticated",
         sample_sha256=SAMPLE_SHA,
@@ -47,23 +63,13 @@ def run(path: Path, sample: Path) -> dict:
     )
     with rasterio.open(path) as ds:
         a = ds.read(1)
-        mask = ds.dataset_mask()
     if a.shape == footprint.shape:
         values = a[footprint]
         result["no_nan_inside_footprint"] = bool(np.isfinite(values).all())
         result["inside_values_in_0_1"] = bool(np.isfinite(values).all() and
                                                (values >= 0).all() and (values <= 1).all())
-        masked = int((footprint & (mask == 0)).sum())
-        result["dataset_mask_invalid_inside_footprint"] = masked
-        result["project_mask_check"] = "pass" if masked == 0 else "fail: invalid/nodata cells inside footprint"
-        if masked:
-            # Supplemental local policy, not a private modification of the shared checker.
-            result["ok"] = False
     else:
         result["inside_values_in_0_1"] = False
-        result["dataset_mask_invalid_inside_footprint"] = None
-        result["project_mask_check"] = "not checked: shape mismatch"
-        result["ok"] = False
     return result
 
 

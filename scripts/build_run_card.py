@@ -1,52 +1,61 @@
 #!/usr/bin/env python3
-"""Build one machine-readable negative run card from the checked-in evidence."""
-import datetime as dt
+"""Validate and mirror the single canonical negative run card, not a new run."""
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-portfolio = json.loads((ROOT / "docs/data/portfolio.json").read_text())
-lat = portfolio["literal_registry_witness"]
-dense = portfolio["dense_probability_witness"]
-card = {
-    "schema_version": 1,
-    "generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
-    "hypothesis": "This review proposed multiscale gravity-magnetic gradient alignment residualized against detrended elevation; no lane was supplied and this review ran no model.",
-    "mechanism": "Buried faulted contacts might produce coincident persistent gravity and magnetic edges even where surface expression is weak.",
-    "named_non_fault_process": "Lithologic contacts or igneous dikes can produce aligned potential-field gradients; terrain-related survey artifacts can mimic structure.",
-    "experiment_count": 0,
-    "weekly_submission_slots_used": 0,
-    "scope": "This review only; a separate parallel run generated and evaluated a candidate, independently audited below.",
-    "holdout_dti": {"evidence_class": "HOLDOUT-DTI", "status": "NOT RUN", "evaluator_version": "gems57-pooled-hide-v2", "withheld_positives": None, "value": None, "ci95": None, "reason": "No assigned method and strict novelty preflight obstructed"},
-    "single_feature_leakage_canaries": {"status": "NOT RUN", "reason": "No candidate or feature matrix evaluated"},
-    "registry": {"evidence_class": "REGISTRY-MEASUREMENT", "surface_rank_correlation": None, "final_dot_overlap": None,
-                 "scope": portfolio["audited_scope"], "all_current_registry_rasters_checked": False,
-                 "binary_lattice_example_budget": lat["example_budget_distinct_dots"],
-                 "binary_lattice_minimum_overlap_at_budget": lat["minimum_possible_overlap_at_example_budget"],
-                 "dense_probability_prior_full_footprint": dense["universal_overlap_blocker"],
-                 "interpretation": "Shared literal finite-positive definition makes the continuous prior a universal blocker; binary lattice bound holds at the stated budget only."},
-    "raster_sha256": None,
-    "validator_output": {"status": "NOT RUN FOR A CANDIDATE", "no_nan_inside_footprint": None, "range_0_1": None, "crs_shape_transform_match": None,
-                         "historical_b2_format_receipt": "b2_local_format.json"},
-    "submission_name": None,
-    "submission_note": None,
-    "ok_to_download_new_tif": False,
-    "ok_to_submit": False,
-    "verdict": "negative",
-    "reason": "No candidate produced in this review; the separately generated parallel candidate fails the strict registry STOP. No assigned single method was supplied. Do not spend a slot.",
-}
-parallel_path = ROOT / "evidence/parallel_candidate_audit.json"
-if parallel_path.is_file():
-    parallel = json.loads(parallel_path.read_text())
-    card["parallel_candidate"] = {
-        "status": "DUPLICATE / STOP; research only",
-        "raster_sha256": parallel["candidate_sha256"],
-        "binary_lattice_overlap": parallel["witnesses"]["lattice"]["overlap_fraction"],
-        "continuous_prior_overlap_literal": parallel["witnesses"]["dense_probability"]["overlap_fraction"],
-        "preplacement_surface_checked": parallel["preplacement_surface_checked"],
-        "evidence": "parallel_candidate_audit.json",
-        "ok_to_submit": False,
-    }
-out = ROOT / "docs/data/run-card.json"
-out.write_text(json.dumps(card, indent=2, allow_nan=False) + "\n")
-print(out)
+card_path = ROOT / 'evidence/run_card.json'
+card = json.loads(card_path.read_text())
+audit = json.loads((ROOT / 'evidence/registry_audit.json').read_text())
+parallel = json.loads((ROOT / 'docs/data/portfolio.json').read_text())
+review = json.loads((ROOT / 'evidence/parallel_review.json').read_text())
+corroboration = json.loads((ROOT / 'evidence/parallel_candidate_audit.json').read_text())
+conduit = json.loads((ROOT / 'evidence/conduit_review.json').read_text())
+lat = audit['lattice_capacity']
+dense = audit['dense_probability_prior']
+# Stop before changing published files if the card is inconsistent with either
+# independently reopened audit or any null/non-promotion invariant.
+if not (card['verdict'] == 'negative' and card['ok_to_submit'] is False
+        and card['ok_to_download_new_tif'] is False and card['raster_sha256'] is None
+        and card['submission_name'] is None and card['submission_note'] is None
+        and card['holdout']['dti'] is None and card['holdout']['ci95'] is None
+        and card['holdout_dti']['value'] is None and card['holdout_dti']['ci95'] is None
+        and card['experiment_count'] == 0 and card['weekly_submission_slots_used'] == 0
+        and card['uniqueness']['candidate_surface_correlation'] is None
+        and card['uniqueness']['candidate_final_overlap'] is None
+        and card['uniqueness']['minimum_overlap_bound'] == lat['minimum_overlap']
+        and card['registry']['binary_lattice_minimum_overlap_at_budget'] == lat['minimum_overlap']
+        and lat['minimum_overlap'] == parallel['literal_registry_witness']['minimum_possible_overlap_at_example_budget']
+        and dense['full_footprint_positive'] is True
+        and parallel['dense_probability_witness']['universal_overlap_blocker'] is True
+        and card['registry']['dense_probability_prior_full_footprint'] is True
+        and review['ok_to_submit'] is False
+        and corroboration['ok_to_submit'] is False
+        and corroboration['candidate_sha256'] == review['sha256']
+        and corroboration['witnesses']['lattice']['overlap_fraction'] == review['literal_overlap_3px']['lattice']
+        and corroboration['format']['dataset_mask_invalid_inside_footprint'] == review['format']['masked_inside']
+        and review['literal_overlap_3px']['lattice'] > .7
+        and review['format']['format_valid_against_reference'] is False
+        and card['parallel_session']['rejected_candidate_sha256'] == review['sha256']
+        and card['parallel_session']['lattice_overlap_3px'] == review['literal_overlap_3px']['lattice']
+        and card['parallel_session']['continuous_prior_overlap_3px'] == review['literal_overlap_3px']['continuous_prior']
+        and card['parallel_session']['masked_inside_footprint'] == review['format']['masked_inside']
+        and card['parallel_session']['source_reported_holdout'] == review['source_reported_holdout']
+        and card['parallel_session']['ok_to_submit'] is False
+        and conduit['ok_to_submit'] is False and conduit['holdout_dti'] is None
+        and conduit['preplacement_surface_correlation'] is None
+        and conduit['witnesses']['13GEMSDOE']['source_threshold_ge_0_5']['fraction'] > .7
+        and card['conduit_parallel_session']['rejected_candidate_sha256'] == conduit['sha256']
+        and card['conduit_parallel_session']['lattice_overlap_3px_source_threshold'] == conduit['witnesses']['13GEMSDOE']['source_threshold_ge_0_5']['fraction']
+        and card['conduit_parallel_session']['continuous_prior_overlap_3px'] == conduit['witnesses']['17GEMSDOE_dense_prior']['source_threshold_ge_0_5']['fraction']
+        and card['conduit_parallel_session']['holdout_dti'] is None
+        and card['conduit_parallel_session']['preplacement_surface_correlation'] is None
+        and card['conduit_parallel_session']['ok_to_submit'] is False
+        and len(card['note']) <= 140):
+    raise ValueError('Run-card evidence changed; manual review required before publication')
+text = json.dumps(card, indent=2, allow_nan=False) + '\n'
+for rel in ('docs/data/run-card.json', 'docs/data/run_card.json', 'site/data/run_card.json'):
+    out = ROOT / rel
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(text)
+    print('Mirrored canonical card:', out)

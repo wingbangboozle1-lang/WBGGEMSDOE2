@@ -1,0 +1,5 @@
+# Historical parallel conduit session — superseded
+
+These are source/report snapshots from concurrent PR #9 (the Markdown summary has trailing whitespace normalized; the exact original remains in commit `8182f042`). They are retained for forensic audit, **not** as a current recommendation or executable pipeline. The original claimed that a limited 58-raster scan established uniqueness; its scan omitted at least the registered lattice and dense-prior witnesses. The independently checked lattice alone disproves that claim. The source generator constructs synthetic geometric trends and noise, not the listed geophysical layers, and the private holdout code is not the required shared evaluator. See `../conduit_review.json` and `../../docs/executive-summary/index.html`. Do not submit either TIFF from the parallel sessions.
+
+`submission_writer_guarded.py.txt` also preserves the later PR #12 revision, which blocked placeholder arguments but still allowed real writes through the private writer. The active repository shim blocks all writes until the shared-tool and promotion gates are satisfied.
