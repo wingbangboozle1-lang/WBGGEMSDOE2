@@ -32,10 +32,15 @@ jobs:
         run: python scripts/refresh_registry_refs.py
       - name: Rebuild evidence-first static site
         run: python scripts/build_site.py
+      - name: Stage the same URL layout as legacy Pages
+        run: |
+          mkdir -p _site/docs
+          cp -R docs/. _site/docs/
+          cp index.html .nojekyll _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: _site
   deploy:
     needs: build
     runs-on: ubuntu-latest

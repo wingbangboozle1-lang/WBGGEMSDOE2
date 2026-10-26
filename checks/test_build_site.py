@@ -15,3 +15,11 @@ def test_builder_refuses_unreviewed_promotion(tmp_path):
     result=subprocess.run([sys.executable,str(tmp_path/'scripts/build_site.py')],capture_output=True,text=True)
     assert result.returncode != 0 and 'renders only the audited negative run' in result.stderr
     assert not (tmp_path/'docs/index.html').exists()
+
+
+def test_scheduled_and_legacy_pages_share_url_layout():
+    workflow=(ROOT/'.github/workflows/pages.yml').read_text()
+    assert 'cp -R docs/. _site/docs/' in workflow and 'path: _site' in workflow
+    assert 'url=./docs/' in (ROOT/'index.html').read_text()
+    assert 'href="sources.html"' in (ROOT/'docs/index.html').read_text()
+    assert 'Official source inventory' in (ROOT/'docs/sources.html').read_text()
