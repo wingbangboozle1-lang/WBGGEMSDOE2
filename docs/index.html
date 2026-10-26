@@ -56,18 +56,20 @@
     <span class="tag-ok">PASS</span> (max \|ρ\| = 0.0021 vs registry; max 3-px dot overlap 21.72% ≤ 70%),
     but <strong>DO NOT SUBMIT</strong> yet: HOLDEOUT-DTI is blocked because <em>labels.tif</em> requires a DrivenData login.
     <strong>Download: yes. Submit to DrivenData: no — not until holdout-DTI beats the repo best.</strong>
+    <p style="margin:10px 0 0 0"><strong>No file is approved for submission.</strong> This page publishes a format-valid, lane-unique
+    research raster only. <strong>No submission file</strong> on this site is authorized for upload to DrivenData.</p>
   </div>
 
   <div class="download-row">
-    <a class="btn" href="downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif" download>
+    <a class="btn" href="../downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif" download>
       ⬇ Download submission TIF
       <span class="kbd">wbg-h1-...-a1b2c3d4-zeros.tif</span>
     </a>
-    <a class="btn secondary" href="downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.zip">
+    <a class="btn secondary" href="../downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.zip">
       ⬇ .zip (single TIFF inside)
     </a>
-    <a class="btn secondary" href="reports/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros_run_card.json">JSON run card</a>
-    <a class="btn secondary" href="reports/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros_audit.json">Uniqueness audit</a>
+    <a class="btn secondary" href="../reports/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros_run_card.json">JSON run card</a>
+    <a class="btn secondary" href="../reports/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros_audit.json">Uniqueness audit</a>
   </div>
   <p class="small">SHA-256 (TIF): <span class="mono">95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad</span> &nbsp;·&nbsp; 17.5 MB · single-band float32 GeoTIFF · values in [0,1] · no NaN · zeros outside footprint</p>
 
@@ -108,7 +110,8 @@
   <h2>How to submit (no manual inspection needed)</h2>
   <ol>
     <li>Sign in to DrivenData at the <a>competition data page</a> (login required to download <code>sample_submission.tif</code>, <code>training_features.tif</code>, <code>labels.tif</code>).</li>
-    <li>Produce a <strong>single-band float32 GeoTIFF</strong> matching <code>sample_submission.tif</code> exactly: CRS <code>EPSG:32611</code>, 100 m, same bounds/geotransform, values in <code>[0, 1]</code>, no NaN (write 0 outside the survey footprint).</li>
+    <li>Download <code>sample_submission.tif</code> — this is your format template (CRS EPSG:32611, 100 m, bounds, transform).</li>
+    <li>Generate predictions as a <strong>single-band float32 GeoTIFF</strong> matching the sample's CRS/shape/geotransform exactly, values in <code>[0, 1]</code>, no NaN (use 0 outside the survey footprint).</li>
     <li>Validate locally before uploading — this catches the "Predicted values must be in range [0, 1]" error:
       <div class="mono small" style="background:#f1f5f9;padding:8px;border-radius:6px;margin-top:6px;">python scripts/submission_writer.py --check your_file.tif --reference data/sample_submission.tif</div></li>
     <li>On the submission page, upload the <code>.tif</code> (or a <code>.zip</code> containing one <code>.tif</code>), enter a Note (≤ 140 chars, e.g. "clustering with k=25"), and submit.</li>
@@ -126,11 +129,11 @@
   <ul class="small">
     <li>Problem &amp; metric: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/</a></li>
     <li>Data (login required): <a>https://www.drivendata.org/competitions/306/competition-doe-gems/data/</a></li>
-    <li>Leaderboard: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/</a> · Rules: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/rules/</a></li>
+    <li>Leaderboard: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/</a> (focus-site entries below are <strong>USER-REPORTED</strong> live scores, not organizer receipts) · Rules: <a>https://www.drivendata.org/competitions/306/competition-doe-gems/rules/</a></li>
     <li>Reference solution: <a>https://github.com/drivendataorg/gems-prize-reference-solution</a></li>
     <li>Submission procedure PDF: <a>https://docs.nlr.gov/docs/fy26osti/96647.pdf</a></li>
     <li>GeoDAWN (USGS): <a>https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and</a> · INGENIOUS: <a>https://gbcge.org/current-projects/ingenious/</a> · EPSG:32611: <a>https://epsg.io/32611</a></li>
-    <li>Full executive summary: <a>docs/executive-summary.md</a> · Hypotheses: <a>../hypotheses.md</a> · Repo README: <a>../README.md</a></li>
+    <li>Full executive summary: <a>executive-summary.md</a> · Hypotheses: <a>../hypotheses.md</a> · Repo README: <a>../README.md</a> · Official sources: <a href="sources.html">sources.html</a></li>
   </ul>
 
   <footer>
