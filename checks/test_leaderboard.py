@@ -20,6 +20,11 @@ def test_parses_organizer_thead_without_a_tr():
     assert feed.parse_top(fragment) == (.4437, None)
 
 
+def test_parses_explicit_thead_row_too():
+    explicit = TABLE.replace('<table><tr>', '<table><thead><tr>', 1).replace('</tr>\n<tr><td>#1', '</tr></thead><tbody>\n<tr><td>#1', 1).replace('</tr></table>', '</tr></tbody></table>', 1)
+    assert feed.parse_top(explicit) == (.4437, None)
+
+
 @pytest.mark.parametrize('body', [
     '<html>please log in</html>',
     '<table><tr><th>Rank</th><th>Score</th></tr><tr><td>#1</td><td>0.7</td></tr></table>',

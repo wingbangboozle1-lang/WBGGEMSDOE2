@@ -22,7 +22,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: PYTHONPATH=scripts python -c 'from prepare_data import restore_template; restore_template(True)'
-      - name: Inspect public leaderboard layout (temporary diagnostic)
-        run: PYTHONPATH=scripts python scripts/_inspect_public_leaderboard.py
       - run: python -m pytest -q
       - run: python scripts/build_site.py
