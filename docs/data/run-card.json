@@ -1,0 +1,55 @@
+{
+  "schema": "wbggems.run-card.v1",
+  "created_utc": "2026-10-26T21:54:00Z",
+  "lane": "Ridge-Break Continuity (RBC), provisional because the prompt did not identify a specific method paragraph",
+  "hypothesis": "An along-strike break in a persistent magnetic ridge, corroborated by a continuing or offset gravity edge, may reveal an unmapped buried fault or splay.",
+  "mechanism": "A structural discontinuity can disrupt a magnetic body while a gravity edge reflects offset basement; the proposed transform was not implemented or tested.",
+  "named_non_fault_process_that_could_mimic_it": "An igneous dike termination or lithologic contact, volcanic flow boundary, or magnetic survey leveling artifact.",
+  "preregistration": "research/preregistration.md",
+  "experiment_budget": {
+    "scientific_experiments_run": 0,
+    "maximum_experiments": 3,
+    "time_limit_hours": 2,
+    "stop_reason": "The literal registry preflight proves a duplicate at the planned dot budget before model fitting or placement."
+  },
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI",
+    "status": "NOT RUN",
+    "requested_evaluator": "gems-segment-pooled-v1",
+    "withheld_positives": null,
+    "value": null,
+    "ci95": null,
+    "reason": "Preflight stop; no candidate surface and no valid holdout experiment."
+  },
+  "single_feature_leakage_canaries": {"status": "NOT RUN", "maximum_auc": null},
+  "registry": {
+    "surface_rank_correlation": null,
+    "surface_rank_status": "NOT RUN; no surface was made",
+    "final_dot_overlap": null,
+    "final_dot_status": "NOT RUN; no dots were placed",
+    "witness": "GEMSDOE24 registry-039: registered 13GEMSDOE spacing-5 lattice",
+    "witness_sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+    "planned_distinct_dots": 37654,
+    "uncovered_footprint_pixels": 6649,
+    "minimum_possible_overlap_fraction": 0.8234184947150369,
+    "threshold_fraction": 0.7,
+    "decision": "STOP: guaranteed literal duplicate at this budget; not a measured candidate overlap",
+    "scope": "A single witness proves failure; it is not a full registry audit or a pass at lower budgets."
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "NOT RUN: no new candidate raster exists",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "outside_footprint_null": null
+  },
+  "submission_name": "wbggemsdoe2-rbc-preflight-20261026-NOT-CREATED",
+  "submission_name_status": "Planned identifier only; no corresponding file exists",
+  "submission_note": "RBC preflight stopped by registry overlap bound; no raster created; do not submit.",
+  "verdict": "negative",
+  "ok_to_submit": false,
+  "selector_status": "Not eligible; no slot selected or spent",
+  "organizer_confirmed_candidate_score": null,
+  "estimated_leaderboard_score": null
+}

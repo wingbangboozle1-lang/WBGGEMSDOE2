@@ -1,0 +1,9 @@
+{
+  "schema": "wbggems.public-leaderboard.v1",
+  "checked_utc": "2026-10-26T21:54:03Z",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "status": "ok",
+  "top_public_dti": "0.4437",
+  "evidence_class": "Official public leaderboard observation, not a submission-page receipt or candidate score",
+  "method": "Public page retrieved through the page reader; timestamp approximate to the minute. Scheduled builds attempt a fresh automated fetch."
+}
