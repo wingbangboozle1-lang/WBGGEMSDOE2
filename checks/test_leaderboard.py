@@ -13,6 +13,13 @@ def test_parses_only_rank_one_official_column():
     assert feed.parse_top(TABLE) == (0.4437, None)
 
 
+def test_parses_organizer_thead_without_a_tr():
+    fragment = '''<table id="leaderTable"><thead><th>Rank</th><th>Team members</th><th>Participant</th>
+    <th><span>Best public</span><br><span>DW-Tversky</span><div>(in descending order)</div></th><th>Shared work</th></thead>
+    <tbody><tr><td>#1</td><td></td><td>Alice</td><td>0.4437</td><td></td></tr></tbody></table>'''
+    assert feed.parse_top(fragment) == (.4437, None)
+
+
 @pytest.mark.parametrize('body', [
     '<html>please log in</html>',
     '<table><tr><th>Rank</th><th>Score</th></tr><tr><td>#1</td><td>0.7</td></tr></table>',
@@ -41,14 +48,17 @@ def test_fresh_observation_uses_official_url_and_timestamp(tmp_path, monkeypatch
     class Response:
         def __enter__(self): return self
         def __exit__(self, *args): pass
-        def geturl(self): return feed.URL
+        def geturl(self): return feed.PARTIAL_URL
         def read(self, *args): return TABLE.encode()
-    monkeypatch.setattr(feed, 'urlopen', lambda *a, **kw: Response())
+    def official_request(req, **kwargs):
+        assert req.full_url == feed.PARTIAL_URL and req.get_header('Hx-request') == 'true'
+        return Response()
+    monkeypatch.setattr(feed, 'urlopen', official_request)
     path = tmp_path / 'leaderboard.json'
     assert feed.refresh(path)
     result = json.loads(path.read_text())
     assert result['status'] == 'fresh' and result['top_public_dti'] == .4437
-    assert result['source_url'] == feed.URL
+    assert result['source_url'] == feed.URL and result['data_url'] == feed.PARTIAL_URL
     assert result['captured_utc'] == result['last_attempt_utc']
 
 
@@ -61,3 +71,14 @@ def test_unofficial_redirect_is_not_accepted(tmp_path, monkeypatch):
     path = tmp_path / 'out.json'
     assert not feed.refresh(path)
     assert json.loads(path.read_text())['status'] == 'stale'
+
+
+def test_same_host_wrong_endpoint_is_not_accepted(tmp_path, monkeypatch):
+    class Response:
+        def __enter__(self): return self
+        def __exit__(self,*args): pass
+        def geturl(self): return feed.URL
+    monkeypatch.setattr(feed, 'urlopen', lambda *a, **kw: Response())
+    path=tmp_path/'out.json'
+    assert not feed.refresh(path)
+    assert json.loads(path.read_text())['status']=='stale'
