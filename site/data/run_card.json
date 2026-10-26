@@ -1,0 +1,49 @@
+{
+  "schema": "wbggems.run-card.v1",
+  "generated_utc": "2026-10-26T22:00:04.530607+00:00",
+  "hypothesis": "H1: depth-shifted, multiscale gravity and magnetic discontinuities may indicate concealed basin faults.",
+  "mechanism": "Paired signed cross-normal gradients, displaced using a bounded basement-depth/dip proxy; both polarities are possible.",
+  "non_fault_mimic": "Unfaulted lithologic contact, intrusive dike, and acquisition striping.",
+  "lane_status": "Provisionally named; no explicit single method lane was supplied; no candidate produced.",
+  "experiment_budget": {
+    "experiments_run": 0,
+    "maximum_experiments": 3,
+    "maximum_hours": 2,
+    "weekly_slots_used": 0
+  },
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "status": "not run: preregistered budget fails the literal registry feasibility gate"
+  },
+  "feature_canary": {
+    "status": "not run; no surface or features were evaluated"
+  },
+  "uniqueness": {
+    "registry_scope": "12 pinned rasters; incomplete inventory; a lattice witness suffices to disprove the standard budget",
+    "candidate_surface_correlation": null,
+    "candidate_final_overlap": null,
+    "status": "no candidate constructed",
+    "witness": "13GEMSDOE stride-5 lattice",
+    "standard_budget": 37654,
+    "minimum_overlap_bound": 0.8234184947150369,
+    "limit": 0.7,
+    "observed_other_site_H31_overlap": 0.9961491475009295
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "not run; no candidate raster",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "reference": "owner mirror; not authenticated"
+  },
+  "submission_name": null,
+  "proposed_research_name": "WBGGEMSDOE2-H1-RESEARCH-20261026",
+  "note": "H1 untested; research only. Literal registry gate blocks the standard budget. DO NOT SUBMIT.",
+  "ok_to_submit": false,
+  "verdict": "negative"
+}

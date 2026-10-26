@@ -1,0 +1,19 @@
+{
+  "schema": "wbggems.candidate-check.v1",
+  "surface_sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+  "preview_sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+  "pre_placement": {
+    "status": "duplicate-stop",
+    "witness": "13GEMSDOE",
+    "overlap_3px": 0.9961491475009295,
+    "spearman": null,
+    "reason": "overlap exceeds 70%"
+  },
+  "final": {
+    "status": "not-run"
+  },
+  "inventory_complete": false,
+  "ok_to_emit": false,
+  "ok_to_submit": false,
+  "note": "No local format or novelty check alone authorizes a weekly slot."
+}

@@ -1,0 +1,37 @@
+# Executive audit: what is safe to submit?
+
+**Decision: no new file is approved.** This was a research and repository audit, not a competition submission. No new prediction, canary AUC, holdout experiment or leaderboard forecast was generated. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
+
+## The nine focus sites
+
+The table is generated from [`config/registry_inputs.json`](../config/registry_inputs.json) and the measured [`evidence/registry_audit.json`](../evidence/registry_audit.json); the [dashboard](../site/index.html) links each exact pinned historical TIFF for research only. A reported value is an **owner/user claim**, not an organizer-confirmed receipt. No estimated leaderboard score is defensible for these archived files. The best *claimed* historical value among the nine is the GEMSDOE32 B2 claim, not proof of the score of the audited bytes.
+
+All nine named historical rasters have more than 70% of their positive dots within three pixels of at least one other named focus-site raster. This is a directional test: it counts the proportion of the **candidate's** dots near the reference, not a symmetric intersection-over-union. The source pre-placement surfaces were not available and their rank correlations were not independently tested.
+
+## Why the GEMSDOE32 B2 history is plausible, not proven
+
+On the hash-verified owner mirrors, the GEMSDOE25 and GEMSDOE30 d2.8 prediction masks are identical inside the footprint. The GEMSDOE32 B2 mask is exactly that mask after deleting every dot at Euclidean distance ≤2 pixels from the mirrored mapped-fault catalogue: 44,090 → 37,654 dots. GEMSDOE36 adds 1,200 dots to B2 and removes none. Reproduce with `python scripts/audit_registry.py --fetch`. These are measured relationships, not evidence of an organizer score receipt.
+
+The [official metric](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#performance-metric) rewards truth coverage inside a triangular 300 m kernel and penalizes excess mass through its false-positive term, with a larger coefficient on false negatives. Sparsifying a correlated ridge can preserve some proximity credit while reducing false-positive mass; pruning may help if the removed points have low marginal truth coverage. But the private/public truth, per-dot contributions and authenticated receipts are unavailable. We **cannot** establish the causal reason for the claimed value, reliably estimate a new leaderboard score, or say a new idea beats it. Repeated leaderboard probing also risks public-set overfitting and does not establish private or final-round performance. Staff says only the exact known fault pixels are masked; it does not confirm a surrounding buffer.
+
+## Literal registry stop: an actionable contradiction
+
+The [registered 13GEMSDOE stride-5 lattice](https://github.com/buffedlizard55-lab/13GEMSDOE/blob/92ee6f074323f161eed837b80ec3ee5b662e26f5/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif?raw=1) (SHA-256 `b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2`) lies within the inclusive three-pixel radius of 5,160,724 of the 5,167,373 mirrored-footprint cells. Only 6,649 are outside. For **any** 37,654 distinct dots inside that footprint, at least `(37,654 - 6,649) / 37,654 = 82.34%` must lie within that radius, above the prompt's 70% stop. This is a mathematical bound, not an experiment or a leaderboard estimate. It does **not** rule out every possible smaller-budget map: for example, the bound ceases to force failure below 22,164 dots. Most uncovered positions (6,485 of 6,649) are within three pixels of a footprint edge or hole. Exploiting these exceptions merely to pass the gate would confound acquisition geometry with geology.
+
+At review time, the GEMSDOE27 site labeled H31 as approved after a 27-raster audit; we reopened its exact SHA-256 `2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe` and measured 99.61% of its dots within three pixels of the lattice. Its approval used a different, incomplete scope and **does not satisfy this prompt**. GEMSDOE32 H47 similarly has 99.79% overlap with the lattice despite an audit that exempts space-filling controls; the current prompt permits no such exemption. These are byte-level witness failures, not full reruns of the other sites' science. [Machine receipt](../evidence/registry_audit.json); [stop-check demonstration](../evidence/h31_preflight.json). The latter treats the already-existing H31 final raster as a preview for demonstration; it is not H31's original pre-placement surface.
+
+## Grid/range irregularity
+
+The public mirrored reference has the right-looking CRS/grid but its 60,988 positive cells exactly equal the public fault mirror; the organizer's problem page describes an example predicting total fault absence. We cannot tell why, and we cannot authenticate the mirror against the login-protected official file. Never infer portal acceptance from our mirror. We also cannot diagnose the user's `[0,1]` rejection without the exact rejected TIFF: negative/greater-than-one values, infinities, or NaNs may be involved. `scripts/validate_tif.py` reports every condition without clipping or silently changing data. The official description allows null/NaN outside bounds, whereas an optional all-finite diagnostic is stricter and not proof that the portal accepts that encoding.
+
+## Next session
+
+1. Reconcile the literal “any registry raster” rule with the calibration lattice as a **policy decision**, or develop a physically justified smaller-budget lane that passes it without gaming footprint edges. Do not quietly exclude controls.
+2. Authenticate the official sample, catalogue, feature bytes, license and available weekly quota. The public owner mirror is restored and hash checked, but does not prove organizer provenance. The shared derived feature bank is not present in the pinned public template tree.
+3. Restore a complete, fresh, hash-pinned registry. A subset can prove a duplicate but cannot prove uniqueness. Recompute all catalogue-derived fold features from visible faults only.
+4. Preregister one lane, run each feature canary, and use the **same** buffered component folds and shared evaluator for candidate/control. Report pooled HOLDOUT-DTI, evaluator, withheld positives, and block-bootstrap confidence intervals. A holdout score is a proxy, not an organizer score.
+5. Only after every gate passes, use the shared writer, validate the saved bytes and ZIP, and let a separate selector check the current quota. The project deliberately has no automatic competition upload.
+
+## Links
+
+[Sources, data access and licenses](sources.md) · [Ranked hypotheses](hypotheses.md) · [Run card](../evidence/run_card.json) · [Official leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) · [Official rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf).

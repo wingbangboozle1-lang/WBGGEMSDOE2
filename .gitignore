@@ -1,0 +1,10 @@
+# Re-creatable datasets, registry downloads, Python and local runtime state
+/data/
+/scratch/
+/.venv/
+/.cache/
+/out/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
