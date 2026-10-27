@@ -1,6 +1,6 @@
 {
   "name": "wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros",
-  "file": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
+  "file": "docs/downloads/_superseded/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
   "dots": 34564,
   "budget": 44090,
   "surface_sha256": "efd46877e570ba63bfc8a9f447abe1faf6e8b250e62130027c43556706f38730",
@@ -31,7 +31,7 @@
   ],
   "note": "REJECTED; RESEARCH ONLY. DO NOT SUBMIT.",
   "original_validator_report": {
-    "file": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
+    "file": "docs/downloads/_superseded/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
     "shape": [
       3730,
       3292

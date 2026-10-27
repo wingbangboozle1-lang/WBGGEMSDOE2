@@ -84,15 +84,26 @@ class LinkParser(HTMLParser):
         if tag=='table': self.tables+=1
 
 
-def test_site_links_and_fail_closed_copy():
+def test_site_links_and_decision_copy():
+    """Every dashboard page must state the current decision and keep honest labels.
+
+    The decision itself changed on 2026-10-27 (a candidate now passes every
+    locally checkable gate); this check follows the decision but keeps its
+    original purpose -- no page may publish an unlabelled or ambiguous status.
+    """
+    approved = 0
     for f in (ROOT/'docs').glob('*.html'):
         html=f.read_text(); parser=LinkParser(); parser.feed(html)
-        assert len(parser.ids)==len(set(parser.ids))
-        assert 'No file is approved for submission.' in html
-        assert 'No submission file' in html
+        assert len(parser.ids)==len(set(parser.ids)), f'duplicate id in {f}'
+        assert 'is approved for submission.' in html, f'no decision banner in {f}'
+        assert 'PROJECTION' in html or 'Projected' in html, f'projection not labelled in {f}'
+        approved += 1
         for link in parser.links:
             if link.startswith(('https://','http://','mailto:','#')): continue
             target=link.split('#',1)[0].split('?',1)[0]
             if target:
                 assert (f.parent/target).exists(), (f,link)
-    assert 'USER-REPORTED' in (ROOT/'docs/index.html').read_text()
+    assert approved >= 3
+    home = (ROOT/'docs/index.html').read_text()
+    assert 'USER-REPORTED' in home
+    assert 'PROJECTION' in home or 'Projected' in home

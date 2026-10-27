@@ -1,0 +1,50 @@
+{
+  "file": "/home/user/WBGGEMSDOE2/docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+  "reference": "/home/user/WBGGEMSDOE2/data/official/sample_submission.tif",
+  "reference_footprint_cells": 5167373,
+  "shape": [
+    3730,
+    3292
+  ],
+  "bands": 1,
+  "dtype": "float32",
+  "crs": "EPSG:32611",
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "nodata": NaN,
+  "finite_cells": 5167373,
+  "nan_cells": 7111787,
+  "nonfinite_inside_footprint": 0,
+  "nan_outside_footprint": 7111787,
+  "outside_footprint_cells": 7111787,
+  "finite_outside_footprint": 0,
+  "min_inside": 0.0,
+  "max_inside": 1.0,
+  "distinct_values": 2,
+  "positive_cells": 34000,
+  "mass": 34000.0,
+  "min_all": 0.0,
+  "max_all": 1.0,
+  "failures": [],
+  "ok": true,
+  "nodata_encoding": "NaN outside the data footprint",
+  "evidence_class": "LOCAL-FORMAT-MEASUREMENT",
+  "submission_name": "wbg3-h3pack-34k-20261027T174337Z-zeros",
+  "note": "H3-PACK: collar-free, max-packing dot field; 34000 dots; no hidden label used",
+  "tif_sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+  "zip_sha256": "643d91309f2d4ea6215032a1f7c6cc6287108a68780453b5b0a9eca85c9dad15",
+  "zip_member": "wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+  "dots": 34000,
+  "organizer_acceptance": "unknown (no portal upload in this environment)",
+  "mirrors": [
+    "docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+    "downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif"
+  ],
+  "zip_path": "docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.zip"
+}

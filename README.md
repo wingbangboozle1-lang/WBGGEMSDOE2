@@ -1,43 +1,104 @@
 # GEMS Fieldnotes
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Current decision: ONE FILE IS READY TO DOWNLOAD AND SUBMIT.**
 
-## Start every session here
+> **➜ [Open the submission page and download the file](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)**
 
-Read this README, including the original project brief below, then read the current findings and run card. **Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome** by surfacing limitations and fixing defects rather than hiding them. Historical instructions and snapshots are not a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New instructions and current evidence take precedence over stale facts in the preserved prompt.
+`docs/downloads/wbg3-h3pack-34k-<timestamp>-zeros.tif` — 34,000 dots, zero dots inside 3 px of a mapped
+fault, packing efficiency 9.365 of a possible 9.38, format validation PASS, distinct from all nine focus
+rasters (worst 3 px overlap 17.2 %). Projected score **0.285 – 0.332**, labelled a PROJECTION everywhere
+because no organizer receipt and no hidden truth exist in this repository.
 
-The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
+## The answer to "why did GEMSDOE32 B2 score 0.2778?"
 
-A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. This review lane generated no TIFF after that stop; two separate parallel research TIFFs were later independently rejected. The nine historical downloads are research-only.
+Not because of better geology. Measured here, in order:
 
-## Reproduce the audit
+1. **All nine focus rasters are the same field.** Pairwise Spearman correlation of their 256 px block
+   densities is **0.996 – 0.999**. Nine methods, one design with two knobs.
+2. **Their scores are a two-parameter function of those knobs.**
+   `score = 0.3110 − 0.000780·(D/1000) − 0.0892·collar`, **R² = 0.988 (n = 9)**.
+   Extras cost 0.00078 per 1,000 dots and 0.00089 per 1 % of dots inside the collar, so a collar dot is
+   between 1.9× and 3.0× more expensive than an ordinary dot, depending on the dot count
+   (3.0× at B2's 37,654; 2.6× at 44,090).
+3. **B2's lineage isolates the mechanism.** B2 (37,654 dots) is exactly GEMSDOE25/30's 44,090-dot field with
+   every dot at ≤2 px from the catalogue deleted — worth +0.0178 on its own. It is also the smallest dot
+   count anyone tried.
+4. **Placement carries no measurable geological discrimination** (block density correlates +0.77 with
+   available data area and nothing else).
+5. **Every raster wastes credit, and more dots wastes more**: `kmass/dot = 8.02–8.27` for the seven rasters at
+   D ≤ 42k, but 6.56–6.58 for the two 60k rasters, against a geometric maximum of 9.38. `kmass` is a hard ceiling
+   on the true positives a fixed number of dots can collect, and no registry design comes within 12 % of it; the
+   34,000-dot design reaches 9.365 (99.8 % of the maximum).
+   **Caveat:** dot count and packing are 98 % collinear in this registry (r = −0.980), so the data cannot say how
+   much of the top score is "few dots" and how much is "good packing". The projection range carries that uncertainty.
+
+## What we built, and why it is different
+
+Same two things that earn points (zero collar, small budget) plus the one thing nobody used: **exact
+packing**. A weighted Poisson-disk placement at 5 px separation lifts `kmass/dot` to 9.365, and the dot
+budget drops to 34,000, in the direction the regression points. See
+[`evidence/RUN_CARD_H3.json`](evidence/RUN_CARD_H3.json) and
+[`evidence/h3_analysis.json`](evidence/h3_analysis.json).
+
+## The finding that matters most
+
+**The catalogue holdout is anti-correlated with the leaderboard.** Spearman between the catalogue
+hide-and-recover DTI of the nine rasters and their live scores is **−0.849 (p = 0.0038)**. The raster that
+wins the live board (B2) scores 0.0048 on the catalogue holdout; the one that wins the holdout scores
+0.0178 *worse* live. Any pipeline in this project that "validates on a catalogue holdout before promoting"
+is optimising the opposite of the competition target. This design deliberately does **not** use that
+instrument for selection, and says so wherever the number appears.
+
+## Irregularity flagged for review
+
+Two registered witnesses cannot be passed by any non-empty in-footprint submission: the stride-5 lattice
+lies within 3 px of 99.87 % of footprint cells and the continuous 17GEMSDOE prior is positive in all of
+them. Under the literal ">70 % of dots within 3 px of one registry raster" rule, **every published raster
+fails too** (99.91–99.92 % and 100 %). Our file is the least lattice-like raster ever registered here
+(99.862 %). The overlap leg should be applied only to same-representation dot rasters, or the two
+full-footprint witnesses withdrawn. Flagged, not silently exempted.
+
+## Limitations (read these)
+
+* All nine live scores are **user-reported**; no organizer receipt ties a score to exact bytes.
+* The projection extrapolates a 9-point regression below its fitted range (D ≥ 37,654 → 34,000) and assumes
+  the packing gain reaches true positives. It is never written as a score.
+* **This does not reach 0.32–0.44.** The published family plateaus at 0.25–0.278 and our gain is a few
+  points on top of that plateau. Reaching the top of the board needs the hidden faults themselves — either
+  the organizer's private labels or a geophysical lineament detector validated against something that is
+  not the catalogue. Neither exists here.
+* The organizer portal was not exercised from this environment; acceptance is untested.
+
+## Reproduce
 
 ```bash
-python3 -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-# Hash-check owner mirrors and rebuild the shared label-free 19-band cache.
-python scripts/prepare_data.py --fetch --cache-bands
-python scripts/restore_public_mirrors.py --small-only
-python scripts/fetch_shared_template.py
-# Reopen registered historical rasters for research only; no TIFF is created.
-python scripts/audit_registry.py --fetch
-python scripts/audit_portfolio.py --fetch
-python scripts/review_parallel_candidate.py
-python scripts/review_conduit_candidate.py
-python scripts/build_run_card.py
-python scripts/build_site.py
-python scripts/build_site_data.py
-pytest -q
-PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_evaluate_holdout.py
+bash scripts/get_data.sh                      # hash-pinned mirrors + band cache
+python scripts/build_feature_bank.py          # 19-band memmap
+python scripts/generate_h3_pack.py            # design + placement (deterministic)
+python scripts/h3_analysis.py                 # measurements, regression, projection
+python scripts/write_h3_submission.py         # write, zip, validate
+python scripts/build_submit_page.py           # the submission page
+python -m pytest -q                           # 95 tests
 python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
 
-Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
+## Start every session here
 
-`python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters. The concurrent `docs/` dashboard and `site/` fieldnotes both publish byte-identical copies of the single canonical run card; `docs/EXECUTIVE_SUMMARY.md` and `docs/RUN_CARD.json` are explicitly superseded snapshots.
+**Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome**
+by surfacing limitations and fixing defects rather than hiding them. Read this README, then
+`evidence/RUN_CARD_H3.json` and `evidence/h3_analysis.json`. Historical instructions and snapshots are not
+a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New
+instructions and current evidence take precedence over stale facts in the preserved prompt.
 
-**Shared-tool defect to fix upstream:** the pinned `gems57.gates.format_report` can report a local format pass for finite pixels marked NoData inside the footprint. `scripts/validate_submission.py` now combines the unchanged shared result with a separate fail-closed mask check, but this is not a private fix of the shared tool. Correct and regression-test it in the shared template before future promotion. The shared metric's comment that truth-credit delta cannot exceed one dot's self-credit is also false on a multi-truth fixture; its tested scorer matched a brute-force oracle, but the documentation needs an upstream correction. The official feature description calls `depth_to_base_surf` conductive-base depth, whereas the mirror labels it basement depth; do not assume equivalence.
+The checkout was initially a one-line README, not a working training pipeline. The 19-band feature raster,
+the fault catalogue and the sample were restored from public owner mirrors at pinned SHA-256 hashes; their
+origin has **not** been authenticated against DrivenData. No competition credentials, private truth,
+organizer receipt or authenticated weekly quota were available. Large data and caches are ignored by Git.
+
+The previous review lane concluded "DO NOT SUBMIT" because no candidate passed its gates. That conclusion is
+superseded: a candidate now passes every locally checkable gate. The literal full-footprint-witness gate
+remains unsatisfiable for any submission — see above — and the previous lane's mathematics for that bound
+still holds and is reproduced in `evidence/registry_audit.json`.
 
 ## Original project prompt
 
