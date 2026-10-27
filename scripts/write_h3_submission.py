@@ -35,6 +35,7 @@ def sha256(path: Path) -> str:
 
 
 def main() -> int:
+    raise RuntimeError("STOP: this historical lane is blocked by a measured registry duplicate. No new placement or TIFF; see evidence/release_recheck_20261027.json and evidence/RUN_CARD_MSPTCD.json.")
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dots", default="scratch/h3_dots_final.npy")
     ap.add_argument("--name", default=None)

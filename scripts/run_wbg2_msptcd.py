@@ -222,6 +222,7 @@ def run_canaries(
 
 
 def main() -> int:
+    raise RuntimeError("STOP: this historical lane is blocked by a measured registry duplicate. No new placement or TIFF; see evidence/release_recheck_20261027.json and evidence/RUN_CARD_MSPTCD.json.")
     t_start = time.perf_counter()
     prepare_data.restore_template(False)
     sys.path.insert(0, str(prepare_data.TEMPLATE / "src"))

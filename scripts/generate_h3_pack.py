@@ -208,6 +208,7 @@ def budget_curve(margins, n_truth_candidates=(10000, 20000, 40000, 80000)):
 
 
 def main() -> int:
+    raise RuntimeError("STOP: this historical lane is blocked by a measured registry duplicate. No new placement or TIFF; see evidence/release_recheck_20261027.json and evidence/RUN_CARD_MSPTCD.json.")
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--budget", type=int, default=BUDGET)
     ap.add_argument("--min-sep", type=float, default=MIN_SEP_PX)

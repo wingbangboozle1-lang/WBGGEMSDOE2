@@ -1,9 +1,4 @@
-"""Guardrails for the one file this repository clears for submission.
-
-These tests fail closed: if any validator check, hash, grid property or audit
-verdict regresses, the approval claim on the site becomes unsupportable and the
-suite fails.
-"""
+"""Historical candidate integrity checks; format validity is not submission approval."""
 from __future__ import annotations
 
 import hashlib
@@ -25,22 +20,13 @@ def _load(name):
     return json.loads((ROOT / 'data_public' / name).read_text())
 
 
-def test_exactly_one_file_is_cleared_and_the_rest_are_labeled_rejected():
-    """Rejected binaries stay only because audit records bind to their hashes.
-
-    Every TIF in docs/downloads must be either the cleared candidate or one that a
-    repository record explicitly marks rejected, and docs/downloads/README.txt must
-    name the cleared file.
-    """
+def test_existing_candidate_is_explicitly_rejected():
     cand = _load('candidate.json')
-    cleared = Path(cand['file']).name
-    tifs = {p.name for p in (ROOT / 'docs' / 'downloads').glob('*.tif')}
-    assert cleared in tifs
-    rejected = json.loads((ROOT / 'evidence' / 'final_candidate.json').read_text())
-    marked = {Path(rejected['file']).name}
-    assert tifs - {cleared} <= marked | {'wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif'}
-    note = (ROOT / 'docs' / 'downloads' / 'README.txt').read_text()
-    assert cleared in note and 'DO NOT SUBMIT' in note
+    assert (ROOT / cand['file']).is_file()
+    note = (ROOT / 'docs/downloads/README.txt').read_text()
+    assert Path(cand['file']).name in note and 'NO FILE CLEARED' in note
+    assert 'DO NOT SUBMIT' in note
+    assert _load('run_card.json')['ok_to_submit'] is False
 
 
 def test_candidate_sha256_matches_the_bytes_on_disk():
@@ -51,7 +37,7 @@ def test_candidate_sha256_matches_the_bytes_on_disk():
         (ROOT / cand['file']).read_bytes()
 
 
-def test_candidate_satisfies_every_official_format_rule():
+def test_historical_candidate_matches_recorded_grid_and_raw_value_limits():
     cand = _load('candidate.json')
     assert all(cand['checks'].values()), cand['checks']
     with rasterio.open(ROOT / cand['file']) as src:
@@ -61,7 +47,7 @@ def test_candidate_satisfies_every_official_format_rule():
         assert (src.height, src.width) == (3730, 3292)
         assert tuple(round(float(v), 6) for v in list(src.transform)[:6]) == \
             (100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)
-    assert np.isfinite(arr).all(), 'the portal rejects NaN with "values must be in [0,1]"'
+    assert np.isfinite(arr).all(), 'this artifact claims an all-finite encoding'
     assert arr.min() >= 0.0 and arr.max() <= 1.0
     assert int((arr > 0).sum()) == cand['dots']
 
@@ -82,25 +68,25 @@ def test_candidate_satisfies_every_official_format_rule():
     assert np.isfinite(inside).all() and inside.min() >= 0.0 and inside.max() <= 1.0
 
 
-def test_candidate_has_no_redundant_mass():
-    """No two dots may share a 300 m support neighbourhood (mass economy)."""
-    from scipy import ndimage as ndi
+def test_candidate_dots_have_disjoint_positive_kernel_support():
+    # A self-inclusive maximum_filter times support was a tautology. Query the
+    # actual nearest OTHER dot instead; positive radius-3 kernels cannot overlap
+    # if the dot centres are separated by at least six pixels.
+    from scipy.spatial import cKDTree
     cand = _load('candidate.json')
     with rasterio.open(ROOT / cand['file']) as src:
-        sup = src.read(1) > 0
-    # each dot must have at least one empty pixel between it and its neighbours at 1 px
-    pairs = int((ndi.maximum_filter(sup.astype(np.uint8), size=3) * sup).sum())
-    touching = pairs - int(sup.sum())
-    assert touching == 0, f'{touching} dots touch another dot'
+        points = np.argwhere(src.read(1) > 0)
+    distances, _ = cKDTree(points).query(points, k=2)
+    assert distances[:, 1].min() >= 6
 
 
 def test_uniqueness_verdicts_are_internally_consistent():
     audit = _load('final_audit.json')
     v = audit['verdicts']
-    ok = (v['normalized_rule']['result'] == 'PASS'
-          and v['surface_rule']['result'] == 'PASS'
-          and v['exact_bytes']['result'] == 'PASS')
-    assert audit['ok_to_submit'] is ok
+    assert audit['ok_to_submit'] is False
+    assert audit['verdict'] == 'negative'
+    assert v['literal_rule']['result'] == 'FAIL'
+    # A normalized diagnostic PASS cannot override the literal rule.
     assert audit['scope']['rasters_measured'] >= 90
     assert audit['focus_overlap_summary']['max'] < 0.70, 'must be clearly distinct from the focus files'
     # the literal-rule failure must stay documented, with its measured justification
