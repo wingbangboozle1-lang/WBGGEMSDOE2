@@ -35,6 +35,33 @@ GREEN = bool(
 if release['ok_to_submit'] and not GREEN:
     raise ValueError('Renders only a fully receipted release; manual review required before publication')
 
+# Concurrent-lane safety: historical negative cards and their five triaged
+# artifacts must stay byte-identical. A tampered artifact or resurrected
+# approval must stop the whole build, even though THIS release is a promotion.
+final_path = ROOT / 'evidence/RUN_CARD_FINAL.json'
+triage_path = ROOT / 'evidence/release_triage_20261027.json'
+if final_path.is_file() and triage_path.is_file():
+    final = json.loads(final_path.read_text())
+    triage = json.loads(triage_path.read_text())
+    if (final.get('verdict') != 'negative' or final.get('ok_to_submit') is not False
+            or final.get('raster_sha256') is not None
+            or len(triage.get('records', [])) != 5
+            or any(r.get('ok_to_submit') is not False
+                   or r.get('literal_witness_result') != 'duplicate-stop'
+                   or r.get('final_dot_overlap_3px_vs_13GEMSDOE', 0) <= .7
+                   for r in triage.get('records', []))):
+        raise ValueError('Release evidence changed; the negative-only dashboard refuses to publish.')
+    for row in triage['records']:
+        source = (ROOT / row['path']).resolve()
+        if (not source.is_relative_to(ROOT) or not source.is_file()
+                or hashlib.sha256(source.read_bytes()).hexdigest() != row['sha256']):
+            raise ValueError('Historical artifact does not match its triage hash; do not publish stale evidence.')
+    for extra in ('RUN_CARD_FINAL.json', 'release_triage_20261027.json',
+                  'input_metadata_20261027.json', 'RUN_CARD_MSPTCD.json', 'RUN_CARD_H3.json'):
+        extra_src = ROOT / 'evidence' / extra
+        if extra_src.is_file():
+            shutil.copyfile(extra_src, DOCS / 'data' / extra)
+
 for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json',
              'dense_prior_certificate.json', 'parallel_review.json',
              'parallel_candidate_audit.json', 'conduit_review.json',
@@ -123,7 +150,7 @@ def home():
 <li><span class="gate-icon">✓</span><div><div class="gate-title">Paired win over the matched collar-only control</div><div class="gate-desc">+{release['paired_delta_vs_control']:.4f} DTI, 95% CI [{release['paired_delta_ci95'][0]:.4f}, {release['paired_delta_ci95'][1]:.4f}]; control {release['control_dti']:.4f}. Same folds, budget and evaluator.</div></div><span class="gate-state">PASS</span></li>
 <li><span class="gate-icon">✓</span><div><div class="gate-title">Like-for-like registry clearance</div><div class="gate-desc">{release['registry_rasters_checked']} accessible rasters checked; worst dot overlap {release['like_for_like_worst_overlap']*100:.2f}% (limit 70%); worst |Spearman| {release['worst_rank_correlation']:.3f} (limit 0.90); unique vs all nine focus sites.</div></div><span class="gate-state">PASS</span></li>
 <li><span class="gate-icon">✓</span><div><div class="gate-title">Canaries, format and byte identity</div><div class="gate-desc">Max single-feature directed AUC {release['canary_max_directed_auc']:.4f} (alarm 0.90); float32, EPSG:32611, 100 m, one band, values in [0,1], no NaN/NoData inside the footprint; SHA-256 pinned.</div></div><span class="gate-state">PASS</span></li></ul></div></article>
-<article class="card"><div class="card-body"><div class="section-header"><div><h2>Read this before you upload</h2><p>Honest limits, not marketing.</p></div><span class="tag amber">CAVEAT</span></div><p style="font-size:12px;color:#64756a">The official public leader showed <strong>0.4544</strong> at rank 1 when observed; the request's 0.3195 / 0.4413 values are stale. No organizer receipt ties any historical claim to exact bytes. A HOLDOUT-DTI on withheld <em>mapped catalogue</em> components is a proxy for hidden expert faults, not a forecast of public or private leaderboard DW-Tversky.</p><p style="font-size:12px;color:#64756a">The literal duplicate rule is mathematically unsatisfiable here: a registered stride-5 lattice halo covers 99.87% of the footprint and a continuous prior is positive on 100% of it. The green decision uses the documented <strong>like-for-like</strong> reading; the literal reading still fires on {release['literal_overlap_firings']} control rasters. If your reviewer requires literal compliance, treat this file as research-only.</p><p style="font-size:12px;color:#64756a">We do not upload. Check the submission page's displayed weekly allowance; staff say that limit prevails. Record the organizer receipt after submitting.</p></div></article></div>'''
+<article class="card"><div class="card-body"><div class="section-header"><div><h2>Read this before you upload</h2><p>Honest limits, not marketing.</p></div><span class="tag amber">CAVEAT</span></div><p style="font-size:12px;color:#64756a">The official public leader showed <strong>0.4544</strong> at rank 1 when observed; the request's 0.3195 / 0.4413 values are stale. No organizer receipt ties any historical claim to exact bytes. A HOLDOUT-DTI on withheld <em>mapped catalogue</em> components is a proxy for hidden expert faults, not a forecast of public or private leaderboard DW-Tversky.</p><p style="font-size:12px;color:#64756a">The literal duplicate rule is mathematically unsatisfiable here: a registered stride-5 lattice halo covers 99.87% of the footprint and a continuous prior is positive on 100% of it. The green decision uses the documented <strong>like-for-like</strong> reading; the literal reading still fires on {release['literal_overlap_firings']} control rasters. If your reviewer requires literal compliance, DO NOT SUBMIT this file — treat it as research-only.</p><p style="font-size:12px;color:#64756a">We do not upload. Check the submission page's displayed weekly allowance; staff say that limit prevails. Record the organizer receipt after submitting.</p></div></article></div>'''
     body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Executive summary</h3><p>The download, the nine-site scorecard and the exact submission steps, including the short note and the [0,1] range check.</p><a href="executive-summary.html">Open the guide →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Research</h3><p>Five preregistered geological hypotheses, official USGS grounding, the leakage fix and the negative hard-cap experiment.</p><a href="research.html">View research →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Sources</h3><p>Line-by-line official competition and science sources, plus every irregularity found during verification.</p><a href="sources.html">Browse sources →</a></article></section>'''
     body += '<section class="dark-card"><p class="eyebrow">Next</p><h2>Submit one file. Keep the receipt.</h2><p>Download the first row of the table, verify its SHA-256, then use the submission name and note on the executive-summary page. <a href="executive-summary.html">Submission guide →</a> · <a href="research/why-b2-scored-2778.html">Why GEMSDOE32 B2 may have scored 0.2778 →</a> · <a href="../site/">Nine individual site briefs →</a> · <a href="executive-summary/">Previously rejected parallel TIFFs (research only) →</a></p></section>'
     return page('Executive overview', 'index.html', body, 'One downloadable submission, nine-site executive summary and measured evidence.')
@@ -195,6 +222,23 @@ def sources():
     return page('Sources', 'sources.html', body, 'Official competition and USGS sources with irregularities and evidence labels.')
 
 
+def historical_decision(suffix: str) -> str:
+    """Red banner for retired parallel-session artifacts (never our green one)."""
+    return f'''<section class="banner" aria-labelledby="decision-heading{suffix}"><div class="banner-copy"><p class="banner-label">Historical parallel-session lane</p><h2 id="decision-heading{suffix}">DO NOT SUBMIT these files.</h2><p>These artifacts failed the literal duplicate stop; they are research-only, even though a separate 27 Oct 2026 candidate is available on the main dashboard.</p></div></section>'''
+
+
+def focus_table() -> str:
+    rows = ''
+    for row in portfolio['sites']:
+        rows += (f'<tr><td data-label="Site / file"><a class="site-name" href="../site/sites/{e(row["site"])}.html">{e(row["site"])} ↗</a>'
+                 f'<a class="file-link" href="{e(row["download_url"])}">{e(Path(row["path"]).name)} ↗</a></td>'
+                 f'<td data-label="Reported DTI"><span class="score">{e(row["user_reported_score"])}</span><span class="small-meta">USER-REPORTED</span></td>'
+                 f'<td data-label="Estimate"><span class="status-muted">Unavailable</span><span class="small-meta">no valid forecast</span></td>'
+                 f'<td data-label="Unique vs peers?"><span class="status-no">No</span><span class="small-meta">{row["max_3px_overlap_vs_other_focus"]*100:.2f}% near {e(row["max_overlap_witness_site"])}</span></td>'
+                 f'<td data-label="Action"><span class="status-no">Do not submit</span><span class="small-meta">historical reference</span></td></tr>')
+    return f'''<section class="card table-card"><div class="table-heading"><div><h2>Nine historical focus sites</h2><p>Research-only references; claims are user-reported, not organizer-confirmed receipts.</p></div><span class="tag red">Historical</span></div><div class="table-scroll"><table class="data-table"><thead><tr><th>Site / file</th><th>Reported DTI</th><th>Estimate</th><th>Unique?</th><th>Action</th></tr></thead><tbody>{rows}</tbody></table></div></section>'''
+
+
 for name, content in [('index.html', home()), ('executive-summary.html', guide()),
                       ('research.html', research()), ('sources.html', sources())]:
     (DOCS / name).write_text(content, encoding='utf-8')
@@ -202,7 +246,7 @@ for name, content in [('index.html', home()), ('executive-summary.html', guide()
 
 # Preserve existing public URLs but render every former approval page from the
 # same fail-closed source. A previous H3 or DZ-16 promotion is not inherited.
-compatibility_body = decision('-compat') + \
+compatibility_body = historical_decision('-compat') + \
     '''<section class="card guide-card"><h1>Submission decision</h1><p><strong>Research only:</strong> DZ-16, H3-PACK, MSPTCD and two parallel files all fail the literal duplicate stop. Their historical hashes and overlap measurements are preserved in the triage receipt; surface checks were not replayed.</p><p><strong>STEPXASYM:</strong> 99.3838% of its dots overlap the lattice and 5,132,809 mirrored-footprint cells are masked. <strong>CONDUIT:</strong> 99.8726% overlap at its historical ≥0.5 threshold; its finite-positive support overlaps by 99.8713%. Research-only download — DO NOT SUBMIT. <a href="data/parallel_candidate_audit.json">STEPXASYM audit →</a> · <a href="data/conduit_review.json">CONDUIT audit →</a>.</p><p>Scores in the table are <strong>USER-REPORTED</strong>, not organizer-confirmed receipts; no reliable new-file score estimate exists. No submission filename or note was produced.</p><p><a href="data/release_triage_20261027.json">Read independent release triage →</a> · <a href="executive-summary.html">Full executive summary →</a> · <a href="research.html">Untested hypotheses →</a></p></section><div style="height:20px"></div>''' + focus_table()
 for rel in ('submission/index.html', 'submission/executive-summary.html',
             'submission/methodology.html', 'submission/parallel-lanes.html',
@@ -216,14 +260,14 @@ for rel in ('submission/index.html', 'submission/executive-summary.html',
 for row in portfolio['sites']:
     site = row['site']
     filename = row['path'].rsplit('/', 1)[-1]
-    content = decision('-site') + f'''<section class="card guide-card"><h1>{e(site)} — historical evidence</h1><p><strong>DO NOT SUBMIT.</strong> The best file named for this site is <code>{e(filename)}</code>, with USER-REPORTED value <strong>{e(row['user_reported_score'])}</strong>; no organizer receipt ties that claim to these bytes. No defensible leaderboard estimate is available for a new file.</p><p>The candidate has {row['max_3px_overlap_vs_other_focus'] * 100:.2f}% of its dots within three pixels of {e(row['max_overlap_witness_site'])}, above the 70% stop. Original pre-placement surfaces were not independently replayed. Historical file links below are for research only.</p><p><a href="{e(row['download_url'])}">Pinned historical research file ↗</a> · <a href="executive-summary.html">All nine sites →</a> · <a href="data/portfolio.json">Audit JSON →</a></p></section>'''
+    content = historical_decision('-site') + f'''<section class="card guide-card"><h1>{e(site)} — historical evidence</h1><p><strong>DO NOT SUBMIT.</strong> The best file named for this site is <code>{e(filename)}</code>, with USER-REPORTED value <strong>{e(row['user_reported_score'])}</strong>; no organizer receipt ties that claim to these bytes. No defensible leaderboard estimate is available for a new file.</p><p>The candidate has {row['max_3px_overlap_vs_other_focus'] * 100:.2f}% of its dots within three pixels of {e(row['max_overlap_witness_site'])}, above the 70% stop. Original pre-placement surfaces were not independently replayed. Historical file links below are for research only.</p><p><a href="{e(row['download_url'])}">Pinned historical research file ↗</a> · <a href="executive-summary.html">All nine sites →</a> · <a href="data/portfolio.json">Audit JSON →</a></p></section>'''
     for folder, base in (('sites', '../'), ('submission/sites', '../../')):
         target = DOCS / folder / f'{site}.html'
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(page(f'{site} research only', 'executive-summary.html', content,
                                'Historical reference, not approved for submission.', base=base), encoding='utf-8')
 
-method_body = decision('-method') + '''<section class="card guide-card"><h1>Method and metric</h1><p>Fault predictions are evaluated using pooled distance-weighted Tversky (α=0.2, β=0.8) with a 300 m triangular kernel. This metric description is not a leaderboard prediction. Known catalogue pixels are excluded, but a surrounding neighborhood is not confirmed excluded.</p><p>Use buffered whole-segment holdouts, derive catalogue features from visible faults only, run feature-alone canaries and compare with a matched incumbent using the pinned shared evaluator. Canary passes cannot prove absence of leakage. A separate selector checks the real quota.</p><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem and metric ↗</a> · <a href="msptcd/index.html">Corrected historical campaign →</a> · <a href="data/RUN_CARD_FINAL.json">Negative run card →</a></p></section>'''
+method_body = historical_decision('-method') + '''<section class="card guide-card"><h1>Method and metric</h1><p>Fault predictions are evaluated using pooled distance-weighted Tversky (α=0.2, β=0.8) with a 300 m triangular kernel. This metric description is not a leaderboard prediction. Known catalogue pixels are excluded, but a surrounding neighborhood is not confirmed excluded.</p><p>Use buffered whole-segment holdouts, derive catalogue features from visible faults only, run feature-alone canaries and compare with a matched incumbent using the pinned shared evaluator. Canary passes cannot prove absence of leakage. A separate selector checks the real quota.</p><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem and metric ↗</a> · <a href="msptcd/index.html">Corrected historical campaign →</a> · <a href="data/RUN_CARD_FINAL.json">Negative run card →</a></p></section>'''
 (DOCS / 'methodology.html').write_text(page('Method', 'research.html', method_body, 'Metric and validation limitations.'), encoding='utf-8')
 
 # Render the byte-audited B2 explanation at the existing nested URL.

@@ -93,8 +93,12 @@ def test_site_regeneration_cannot_restore_a_historical_approval(tmp_path):
     for page in pages:
         text = page.read_text(encoding='utf-8').lower()
         assert all(phrase not in text for phrase in rejected_phrases), page
-    for rel in ('docs/index.html', 'docs/executive-summary.html',
-                'docs/submit/index.html', 'docs/submission/index.html',
+    # 27 Oct 2026: the two current entrypoints promote ONE receipted file;
+    # the three historical parallel-session entrypoints remain negative.
+    for rel in ('docs/index.html', 'docs/executive-summary.html'):
+        text = (tmp_path / rel).read_text(encoding='utf-8')
+        assert 'OK TO DOWNLOAD AND SUBMIT' in text, rel
+    for rel in ('docs/submit/index.html', 'docs/submission/index.html',
                 'docs/msptcd/index.html'):
         text = (tmp_path / rel).read_text(encoding='utf-8')
         assert 'No file is approved for submission.' in text and 'DO NOT SUBMIT' in text, rel
