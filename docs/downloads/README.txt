@@ -1,13 +1,13 @@
-WHICH FILE TO SUBMIT
-====================
+NO FILE IS APPROVED FOR SUBMISSION
+==================================
 
-SUBMIT:  wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif
-         sha256 a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912
-         the only file cleared in this repository (see ../index.html)
+All TIFFs and ZIPs in this directory, including DZ-16, H3-PACK, MSPTCD and the
+CBS/D19-DOTTED artifact under cbs/, are
+historical RESEARCH-ONLY artifacts. Do not upload them or spend a competition
+slot. The literal any-registry 3-pixel overlap stop failed for each of the five
+files independently checked in evidence/release_triage_20261027.json; one
+also fails local mirror-format checks. A partial focus-site pass, an enrichment
+calculation or a format pass cannot replace the full novelty gate.
 
-DO NOT SUBMIT either of the other two files here:
-  * wbg2-h1-stepxasym-e2-34564dots-...-zeros.tif  -- rejected: masked interior cells,
-    99.4% lattice duplication, no validated holdout (see ../../evidence/final_candidate.json)
-  * ../downloads/wbg-h1-blind-conduit-breach-...    -- rejected: duplicate of the registered lattice
-
-They are retained only because audit records bind to their hashes.
+No new submission TIFF, name or submission note was produced by this review.
+See ../index.html and ../../evidence/RUN_CARD_FINAL.json for the current decision.

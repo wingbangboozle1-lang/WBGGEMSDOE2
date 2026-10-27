@@ -2,6 +2,7 @@
 """Build the static, evidence-first GitHub Pages site without a web framework."""
 from __future__ import annotations
 import datetime as dt
+import hashlib
 from html import escape
 import json
 from pathlib import Path
@@ -14,11 +15,23 @@ portfolio = json.loads((DOCS / 'data/portfolio.json').read_text())
 leader = json.loads((DOCS / 'data/leaderboard.json').read_text())
 fresh = json.loads((DOCS / 'data/focus-freshness.json').read_text())
 run = json.loads((DOCS / 'data/run-card.json').read_text())
-hypothesis_data = json.loads((ROOT / 'config/research_hypotheses.json').read_text())
-# Fail closed: this renderer is specifically a negative-run dashboard. A future
-# candidate cannot silently inherit a green button by editing a JSON boolean.
+# Never render a promotion by changing one machine flag. Check before writes.
 if run.get('verdict') != 'negative' or run.get('ok_to_submit') is not False or run.get('raster_sha256') is not None:
     raise ValueError('This dashboard renders only the audited negative run; review and implement a byte-bound release before changing status.')
+final = json.loads((ROOT / 'evidence/RUN_CARD_FINAL.json').read_text())
+triage = json.loads((ROOT / 'evidence/release_triage_20261027.json').read_text())
+if (final.get('verdict') != 'negative' or final.get('ok_to_submit') is not False
+        or final.get('raster_sha256') is not None or len(triage.get('records', [])) != 5
+        or any(r.get('ok_to_submit') is not False or r.get('literal_witness_result') != 'duplicate-stop'
+               or r.get('final_dot_overlap_3px_vs_13GEMSDOE', 0) <= .7 for r in triage.get('records', []))):
+    raise ValueError('Release evidence changed; the negative-only dashboard refuses to publish.')
+for row in triage['records']:
+    source = (ROOT / row['path']).resolve()
+    if not source.is_relative_to(ROOT) or not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != row['sha256']:
+        raise ValueError('Historical artifact does not match its triage hash; do not publish stale evidence.')
+for name in ('RUN_CARD_FINAL.json', 'release_triage_20261027.json', 'input_metadata_20261027.json', 'RUN_CARD_MSPTCD.json', 'RUN_CARD_H3.json'):
+    shutil.copyfile(ROOT / 'evidence' / name, DOCS / 'data' / name)
+hypothesis_data = json.loads((ROOT / 'config/research_hypotheses.json').read_text())
 if (hypothesis_data.get('method_lane', {}).get('status') != 'UNASSIGNED'
         or not 3 <= len(hypothesis_data.get('hypotheses', [])) <= 5):
     raise ValueError('Research hypotheses or lane status changed; update the reviewed narrative before publishing.')
@@ -64,7 +77,7 @@ def header(current: str) -> str:
 
 
 def footer() -> str:
-    return '''<footer class="footer"><div class="shell"><div><strong>GEMS RESEARCH</strong> · Evidence before submission</div><div><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition ↗</a> &nbsp;·&nbsp; <a href="data/run-card.json">Run card</a> &nbsp;·&nbsp; <a href="data/portfolio.json">Audit data</a></div></div></footer>'''
+    return '''<footer class="footer"><div class="shell"><div><strong>GEMS RESEARCH</strong> · Evidence before submission</div><div><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition ↗</a> &nbsp;·&nbsp; <a href="data/RUN_CARD_FINAL.json">Run card</a> &nbsp;·&nbsp; <a href="data/portfolio.json">Audit data</a></div></div></footer>'''
 
 
 def page(title: str, current: str, body: str, description: str, *, base: str = '') -> str:
@@ -77,32 +90,17 @@ def intro(label, title, subtitle):
     return f'''<div class="intro"><div><p class="eyebrow">{e(label)}</p><h1>{title}</h1><p>{e(subtitle)}</p></div><div class="intro-meta">Pinned-raster audit<br><strong>{stamp}</strong></div></div>'''
 
 
-H3_SUB = json.loads((ROOT / 'evidence/h3_submission.json').read_text())
-H3_CARD = json.loads((ROOT / 'evidence/RUN_CARD_H3.json').read_text())
-H3_ANALYSIS = json.loads((ROOT / 'evidence/h3_analysis.json').read_text())
-H3_COMPARE = json.loads((ROOT / 'evidence/h3_registry_comparison.json').read_text())
-H3_NAME = H3_SUB['file'].rsplit('/', 1)[-1].removesuffix('.tif')
-H3_TIF = H3_SUB['file'].rsplit('/', 1)[-1]
-
-
-def h3_banner(suffix: str = '') -> str:
-    """The lane that actually produced a file, kept separate from the older negative lane."""
-    proj = H3_ANALYSIS['candidate']['projection']
-    return f'''<section class="banner" aria-labelledby="h3-heading{suffix}"><div class="banner-icon">{icon('download')}</div><div class="banner-copy"><p class="banner-label">Lane H3 · {e(H3_CARD['verdict'].upper())}</p><h2 id="h3-heading{suffix}">One file is ready to download and submit.</h2><p><span class="mono">{e(H3_NAME)}</span> — {H3_SUB['dots']:,} dots, zero inside 3 px of a mapped fault, format validation PASS, distinct from all nine focus rasters (worst overlap {max(v['overlap_3px'] for v in H3_COMPARE['rows'] if v['name'].startswith('GEMSDOE'))*100:.1f}&nbsp;%). Projection <strong>{proj['regression_only']:.3f} – {proj['full_packing_transfer']:.3f}</strong>, a PROJECTION and not a score.</p><p>This is a measured-leaderboard-optimum placement, <strong>not</strong> a geological discovery.</p></div><div class="banner-actions"><a class="button" href="submission/index.html">{icon('download')} Download and verify</a><a class="text-link" href="submit/">Five ranked hypotheses →</a></div></section>'''
-
-
 MSPTCD_CARD = json.loads((DOCS / 'data/RUN_CARD_MSPTCD.json').read_text())
 
 
 def msptcd_banner(suffix: str = '') -> str:
-    """Real 19-band + 12-operator geophysical campaign lane, fail-closed under literal all-registry rule."""
+    """Prior exploratory proxy, expressly not proof of leaderboard performance."""
     h = MSPTCD_CARD['holdout']
-    rc = MSPTCD_CARD['research_candidate']
-    return f'''<section class="banner" aria-labelledby="msptcd-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Lane WBG2-MSPTCD · 31-Feature Real Geophysics · {e(MSPTCD_CARD['verdict'].upper())} (0 slots)</p><h2 id="msptcd-heading{suffix}">+81.8% zero-leakage HOLDOUT-DTI ({h['dti']:.4f} vs {h['control_19b_dti']:.4f}), halted fail-closed on literal registry.</h2><p><span class="mono">{e(rc['name'])}</span> ({rc['emitted_dots']:,} off-catalogue dots, 124/124 leakage canaries PASS) is distinct from all 9 focus champions (&le;{MSPTCD_CARD['uniqueness']['candidate_max_focus_final_overlap']*100:.2f}&nbsp;% 3-px overlap) and both sibling lanes (27.36&nbsp;% vs DZ-16, 20.59&nbsp;% vs H3-PACK), and stops fail-closed on literal 13GEMSDOE/17GEMSDOE witnesses.</p></div><div class="banner-actions"><a class="text-link" href="msptcd/index.html">Open WBG2-MSPTCD campaign &amp; 5 hypotheses →</a><a class="text-link" href="msptcd/executive-summary.html">Band 6 forensic &amp; cross-lane report →</a></div></section>'''
+    return f'''<section class="banner" aria-labelledby="msptcd-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Historical MSPTCD · negative · research only</p><h2 id="msptcd-heading{suffix}">Mapped-fault proxy, not a submission.</h2><p>Selected EXP3 exploratory HOLDOUT-DTI <strong>{h['dti']:.6f}</strong> (95% CI [{h['ci95'][0]:.6f}, {h['ci95'][1]:.6f}]); control {h['control_19b_dti']:.6f} (95% CI [{h['control_19b_ci95'][0]:.6f}, {h['control_19b_ci95'][1]:.6f}]), evaluator <code>gems57-pooled-hide-v2</code>, 60,988 withheld positives. Same-fold selection, mirrored labels and other leakage limitations prevent an independent-win claim. Canaries do not prove no leakage. Final dots overlap the lattice by 100%; pre-placement check was not performed.</p></div><div class="banner-actions"><a class="text-link" href="msptcd/index.html">Read corrected campaign findings →</a></div></section>'''
 
 
 def decision(suffix: str = ''):
-    return f'''<section class="banner" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Prior lane · negative, superseded by H3</p><h2 id="decision-heading{suffix}">Prior lane: no file was approved.</h2><p>This review lane generated no TIFF. Two parallel research files failed the literal registry gate; one also masks most footprint cells. Neither is approved for upload.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="executive-summary.html">See the checklist →</a></div></section>'''
+    return f'''<section class="banner" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Current decision · negative</p><h2 id="decision-heading{suffix}">No file is approved for submission.</h2><p>DO NOT SUBMIT. No submission file was generated in this review. Five existing TIFFs fail the literal lattice duplicate stop; a format pass or a partial novelty check is not approval.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="data/RUN_CARD_FINAL.json">Read the negative run card →</a></div></section>'''
 
 
 def leaderboard_stale():
@@ -152,7 +150,7 @@ def compare_section():
     bar_a = 100 * score / denominator if score is not None else 0
     bar_b = min(100,.2778/denominator*100)
     return f'''<div class="grid"><article class="card"><div class="card-body"><div class="section-header"><div><h2>What the best result tells us</h2><p>Historical context, not a prediction.</p></div><span class="tag">Evidence review</span></div><div class="compare"><div class="compare-text"><h3>0.2778 <span style="font-size:12px;color:#97a69b;letter-spacing:0">user-reported</span></h3><p>The GEMSDOE32 B2 reference is the strongest result supplied across the nine sites. Its sparse dots may reduce redundant false-positive cost, but the hidden labels and upload receipt are unavailable.</p><div class="meter"><div class="meter-label"><span>{'Stale' if leaderboard_stale() else 'Recorded'} public-leaderboard snapshot</span><strong>{leader_txt}</strong></div><div class="track"><span class="fill" style="width:{bar_a:.2f}%"></span></div></div><div class="meter"><div class="meter-label"><span>GEMSDOE32 B2 · user-reported</span><strong>0.2778</strong></div><div class="track"><span class="fill muted" style="width:{bar_b:.2f}%"></span></div></div></div><div class="contour" aria-hidden="true"><svg viewBox="0 0 150 150" fill="none"><g stroke="#8ebfa1" stroke-width="1" opacity=".7"><path d="M-10 105C20 104 19 56 53 59c31 3 25 45 58 42 17-1 30-21 50-14"/><path d="M-12 114c38-1 36-56 66-51 28 5 23 45 58 43 21-2 33-24 50-15"/><path d="M-12 123c44-1 40-61 68-56 26 5 22 45 57 44 25-1 35-26 50-16"/><path d="M-15 132c50-1 44-66 72-61 24 5 21 45 56 45 29 0 37-28 52-17"/><path d="M-15 140c56-1 48-71 74-65 23 5 21 44 55 46 32 1 39-30 53-18"/><path d="M-12 96c24 0 28-47 64-42 33 4 28 45 58 42 14-1 27-20 49-13"/></g><circle cx="77" cy="76" r="21" fill="#fff" stroke="#c5ddca"/><path d="m68 79 6-10 5 8 3-5 5 7" stroke="#3c8b67" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="88" cy="65" r="3" fill="#d0a55a"/></svg></div></div></div><div class="note-strip">The exact B2 array is D2.8 with all pixels within 2 catalogue pixels removed. <a href="research/why-b2-scored-2778.html">Read the forensic analysis →</a></div></article>
-<article class="card"><div class="card-body"><div class="section-header"><div><h2>Submission pipeline</h2><p>Each gate needs evidence; a format pass is not approval.</p></div><span class="tag red">Not ready</span></div><ul class="gate-list"><li><span class="gate-icon">✓</span><div><div class="gate-title">Data restored</div><div class="gate-desc">Hash-pinned owner mirror, not an authenticated official copy</div></div><span class="gate-state">Checked</span></li><li><span class="gate-icon">✓</span><div><div class="gate-title">Historical priority-site audit</div><div class="gate-desc">Nine pinned files plus two registry witnesses</div></div><span class="gate-state">Checked</span></li><li><span class="gate-icon block">!</span><div><div class="gate-title">Literal novelty preflight</div><div class="gate-desc">Registered positive support prevents clearance</div></div><span class="gate-state block">Stop</span></li><li><span class="gate-icon wait">–</span><div><div class="gate-title">Canary, holdout and candidate TIFF</div><div class="gate-desc">Not run after the preflight stop</div></div><span class="gate-state">Not run</span></li></ul></div></article></div>'''
+<article class="card"><div class="card-body"><div class="section-header"><div><h2>Submission pipeline</h2><p>Each gate needs evidence; a format pass is not approval.</p></div><span class="tag red">Not ready</span></div><ul class="gate-list"><li><span class="gate-icon">✓</span><div><div class="gate-title">Data restored</div><div class="gate-desc">Hash-pinned owner mirror, not an authenticated official copy</div></div><span class="gate-state">Checked</span></li><li><span class="gate-icon">✓</span><div><div class="gate-title">Historical priority-site audit</div><div class="gate-desc">Nine pinned files plus two registry witnesses</div></div><span class="gate-state">Checked</span></li><li><span class="gate-icon block">!</span><div><div class="gate-title">Literal novelty preflight</div><div class="gate-desc">Registered positive support prevents clearance</div></div><span class="gate-state block">Stop</span></li><li><span class="gate-icon wait">–</span><div><div class="gate-title">New-proposal canary, holdout and TIFF</div><div class="gate-desc">Not run in this review; prior MSPTCD campaign is reported separately</div></div><span class="gate-state">Not run</span></li></ul></div></article></div>'''
 
 
 def focus_table():
@@ -171,20 +169,21 @@ def focus_table():
 
 
 def home():
-    body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + h3_banner() + msptcd_banner() + decision() + stats() + score_evidence_notice() + compare_section() + focus_table()
-    body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Review the research shortlist</h3><p>Four ranked, untested proposals. No single method lane has been assigned; no experiment or submission slot is authorized.</p><a href="research.html">View proposals →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/run-card.json">Read the negative run card →</a> · <a href="executive-summary/">See both rejected parallel files →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
-    body += f'''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>Download and submit</h2><p>Verified byte-for-byte against its receipt.</p></div><span class="tag">Lane H3</span></div><p><span class="mono">{e(H3_NAME)}</span> · sha256 <span class="mono">{e(H3_SUB['tif_sha256'][:16])}…</span> · {H3_SUB['dots']:,} dots · float32 · EPSG:32611 · NaN outside the footprint.</p><p><a class="button" href="downloads/h3-pack/{e(H3_TIF[:-4])}.zip">{icon('download')} Download ZIP</a> &nbsp; <a class="text-link" href="downloads/h3-pack/{e(H3_TIF)}">or the raw GeoTIFF →</a> &nbsp; <a class="text-link" href="submit/">Format report and per-site table →</a></p></div></section>'''
+    body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + decision() + stats() + msptcd_banner() + score_evidence_notice() + compare_section() + focus_table()
+    body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Review the research shortlist</h3><p>Four ranked, untested proposals. No single method lane has been assigned; no new experiment or submission slot is authorized.</p><a href="research.html">View proposals →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/RUN_CARD_FINAL.json">Read the negative run card →</a> · <a href="executive-summary/">See both rejected parallel files →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
+    body += '''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>Submission download unavailable</h2><p>No file is cleared; no slot has been selected.</p></div><span class="tag red">DO NOT SUBMIT</span></div><p>Historical TIFFs are retained only as research artifacts. All five reopened local candidates fail the literal duplicate stop.</p><p><a href="data/release_triage_20261027.json">Read the byte-level triage →</a> · <a href="downloads/README.txt">Research-only download notice →</a> · <a href="submission/index.html">Current submission decision →</a></p></div></section>'''
+
     return page('Overview','index.html',body,'Evidence-first DOE GEMS Prize research and submission status.')
 
 
 def guide():
     w = portfolio['literal_registry_witness']
     d = portfolio['dense_probability_witness']
-    body = intro('Executive summary','From research to <span>submission.</span>','A practical checklist for the moment a candidate actually clears every gate.') + h3_banner('-guide') + msptcd_banner('-guide') + decision('-guide') + score_evidence_notice()
+    body = intro('Executive summary','From research to <span>submission.</span>','A practical checklist for the moment a candidate actually clears every gate.') + decision('-guide') + msptcd_banner('-guide') + score_evidence_notice()
     body += f'''<div class="guide-layout"><article class="card guide-card"><div class="section-header"><div><h2>How to submit, when approved</h2><p>No file is currently eligible. These steps do not authorize the historical references.</p></div><span class="tag red">Currently locked</span></div><ol><li><strong>Check the decision first.</strong> A new candidate must pass the surface and final-dot registry checks, every leakage canary, a comparable blocked holdout, and byte-bound format validation. Promotion to a weekly slot is a separate selector step.</li><li><strong>Download the exact approved file.</strong> Use the future candidate's single-band GeoTIFF or a ZIP containing only that GeoTIFF. Verify its SHA-256 against its receipt. There is no approved file to download today.</li><li><strong>Confirm the local format receipt.</strong> The official page requires EPSG:32611, 100 m, matching shape and transform, one float32 layer and values in [0,1]. The pinned shared gate has a known finite-NoData-in-footprint gap; our supplemental check blocks it but the upstream tool still needs a fix. Our conservative all-finite check is not proof that zero-outside meets the official null/NaN wording or that the portal will accept it.</li><li><strong>Open DrivenData.</strong> Sign in, enroll, choose <em>Submit → Make new submission</em>, select the approved file and enter the byte-bound short note (at most 140 characters for this project). Check the actual remaining weekly allowance on the submission page.</li><li><strong>Keep the receipt.</strong> Record the exact filename, hash, note, timestamp and organizer result. A local HOLDOUT-DTI or an unvalidated projection is never a live score.</li></ol><div class="callout">A previous upload returned “Predicted values must be in range [0, 1]”. Its actual cause is unknown without the rejected bytes. The read-back validator reports NaN, infinity, below-zero, above-one and masked-cell counts separately inside and outside the reference footprint. It never clips or silently repairs a raster.</div><p><a class="text-link" href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">Read the official format ↗</a></p></article>
 <aside class="card guide-card" id="novelty"><div class="section-header"><div><h2>Why the gate is blocked</h2><p>Two independently reopened prior files.</p></div></div><p><strong>Binary lattice witness.</strong> {w['within_3px_pixels']:,} of {w['footprint_pixels']:,} footprint cells are within three pixels of a registered lattice dot. Only {w['outside_3px_pixels']:,} are outside. For {w['example_budget_distinct_dots']:,} distinct in-footprint dots, the minimum possible overlap is <strong>{w['minimum_possible_overlap_at_example_budget']*100:.2f}%</strong>, above the 70% limit.</p><p><strong>Continuous-prior witness.</strong> The shared literal implementation counts any finite positive prior pixel as support. A registered continuous prior is positive across the entire footprint. Under that implementation every nonempty candidate overlaps it completely; whether a continuous field should count as “dots” is unresolved, not silently exempted.</p><p><a href="{e(w['source'])}">Lattice source ↗</a> · <a href="{e(d['source'])}">Continuous prior ↗</a> · <a href="data/portfolio.json">Measured proof ↗</a></p><div class="callout">The binary-lattice budget bound does not prove every smaller raster fails. The continuous-prior result depends on the explicitly stated shared support definition.</div></aside></div>'''
     body += '<div style="height:20px"></div>' + focus_table()
-    body += '''<section class="card guide-card"><h2>What remains unknown</h2><p>Private fault labels, a submission-page receipt linking each historical score to its exact bytes, organizer acceptance of the local export policy, the current weekly quota and a defensible cross-family leaderboard forecast are unavailable. The cached competition inputs are a hash-pinned owner mirror, not an independently authenticated download.</p><p><a href="data/run-card.json">Download the run card ↗</a> · <a href="data/b2_local_format.json">Historical B2 format receipt ↗</a> · <a href="sources.html">Official sources and irregularities ↗</a></p></section>'''
+    body += '''<section class="card guide-card"><h2>What remains unknown</h2><p>Private fault labels, a submission-page receipt linking each historical score to its exact bytes, organizer acceptance of the local export policy, the current weekly quota and a defensible cross-family leaderboard forecast are unavailable. The cached competition inputs are a hash-pinned owner mirror, not an independently authenticated download.</p><p><a href="data/RUN_CARD_FINAL.json">Download the run card ↗</a> · <a href="data/b2_local_format.json">Historical B2 format receipt ↗</a> · <a href="sources.html">Official sources and irregularities ↗</a></p></section>'''
     return page('Executive summary','executive-summary.html',body,'Decision, nine-site scorecard, novelty proof, and submission instructions.')
 
 
@@ -206,7 +205,7 @@ def research():
     return page('Research','research.html',body,'Ranked geothermal fault-mapping hypotheses, mimics, sources and safeguards.')
 
 def sources():
-    body = intro('Evidence & sources','Trace each <span>claim.</span>','Official requirements, scientific references, and the limits of our own measurements.') + h3_banner('-sources') + decision('-sources')
+    body = intro('Evidence & sources','Trace each <span>claim.</span>','Official requirements, scientific references, and the limits of our own measurements.') + decision('-sources')
     rows = [
       ('Target', 'Predict previously unmapped faults indicative of geothermal resources; a fault prediction is not proof of a geothermal vent.', 'DrivenData problem description', 'https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/'),
       ('Format', 'Single float32 band, EPSG:32611, 100 m grid, matching bounds and values in [0,1]; the public text describes null/NaN outside bounds.', 'Official submission format', 'https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format'),
@@ -229,6 +228,32 @@ def sources():
 for name, content in [('index.html',home()),('executive-summary.html',guide()),('research.html',research()),('sources.html',sources())]:
     (DOCS / name).write_text(content,encoding='utf-8')
     print(f'built {DOCS / name}')
+
+# Preserve existing public URLs but render every former approval page from the
+# same fail-closed source. A previous H3 or DZ-16 promotion is not inherited.
+compatibility_body = decision('-compat') + \
+    '''<section class="card guide-card"><h1>Submission decision</h1><p><strong>Research only:</strong> DZ-16, H3-PACK, MSPTCD and two parallel files all fail the literal duplicate stop. Their historical hashes and overlap measurements are preserved in the triage receipt; surface checks were not replayed.</p><p><strong>STEPXASYM:</strong> 99.3838% of its dots overlap the lattice and 5,132,809 mirrored-footprint cells are masked. <strong>CONDUIT:</strong> 99.8726% overlap at its historical ≥0.5 threshold; its finite-positive support overlaps by 99.8713%. Research-only download — DO NOT SUBMIT. <a href="data/parallel_candidate_audit.json">STEPXASYM audit →</a> · <a href="data/conduit_review.json">CONDUIT audit →</a>.</p><p>Scores in the table are <strong>USER-REPORTED</strong>, not organizer-confirmed receipts; no reliable new-file score estimate exists. No submission filename or note was produced.</p><p><a href="data/release_triage_20261027.json">Read independent release triage →</a> · <a href="executive-summary.html">Full executive summary →</a> · <a href="research.html">Untested hypotheses →</a></p></section><div style="height:20px"></div>''' + focus_table()
+for rel in ('submission/index.html', 'submission/executive-summary.html',
+            'submission/methodology.html', 'submission/parallel-lanes.html',
+            'submission/sources.html', 'submit/index.html', 'executive-summary/index.html'):
+    destination = DOCS / rel
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(page('Submission decision', 'executive-summary.html', compatibility_body,
+                                'No file is approved for submission.', base='../'), encoding='utf-8')
+    print('built', destination)
+# Replace historical per-site approvals at both legacy URL layouts.
+for row in portfolio['sites']:
+    site = row['site']
+    filename = row['path'].rsplit('/', 1)[-1]
+    content = decision('-site') + f'''<section class="card guide-card"><h1>{e(site)} — historical evidence</h1><p><strong>DO NOT SUBMIT.</strong> The best file named for this site is <code>{e(filename)}</code>, with USER-REPORTED value <strong>{e(row['user_reported_score'])}</strong>; no organizer receipt ties that claim to these bytes. No defensible leaderboard estimate is available for a new file.</p><p>The candidate has {row['max_3px_overlap_vs_other_focus'] * 100:.2f}% of its dots within three pixels of {e(row['max_overlap_witness_site'])}, above the 70% stop. Original pre-placement surfaces were not independently replayed. Historical file links below are for research only.</p><p><a href="{e(row['download_url'])}">Pinned historical research file ↗</a> · <a href="executive-summary.html">All nine sites →</a> · <a href="data/portfolio.json">Audit JSON →</a></p></section>'''
+    for folder, base in (('sites', '../'), ('submission/sites', '../../')):
+        target = DOCS / folder / f'{site}.html'
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(page(f'{site} research only', 'executive-summary.html', content,
+                               'Historical reference, not approved for submission.', base=base), encoding='utf-8')
+
+method_body = decision('-method') + '''<section class="card guide-card"><h1>Method and metric</h1><p>Fault predictions are evaluated using pooled distance-weighted Tversky (α=0.2, β=0.8) with a 300 m triangular kernel. This metric description is not a leaderboard prediction. Known catalogue pixels are excluded, but a surrounding neighborhood is not confirmed excluded.</p><p>Use buffered whole-segment holdouts, derive catalogue features from visible faults only, run feature-alone canaries and compare with a matched incumbent using the pinned shared evaluator. Canary passes cannot prove absence of leakage. A separate selector checks the real quota.</p><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem and metric ↗</a> · <a href="msptcd/index.html">Corrected historical campaign →</a> · <a href="data/RUN_CARD_FINAL.json">Negative run card →</a></p></section>'''
+(DOCS / 'methodology.html').write_text(page('Method', 'research.html', method_body, 'Metric and validation limitations.'), encoding='utf-8')
 
 # Render the byte-audited B2 explanation at the existing nested URL.
 b2_source = DOCS / 'research/why-b2-scored-2778.md'

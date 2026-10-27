@@ -29,7 +29,10 @@ def run(path: Path, sample: Path) -> dict:
     sys.path.insert(0, str(TEMPLATE / "src"))
     from gems57.gates import format_report
     with rasterio.open(sample) as ds:
-        footprint = np.isfinite(ds.read(1))
+        # Finite NoData sentinels are common in GeoTIFFs. A numerical
+        # isfinite() test alone incorrectly treats those masked cells as part
+        # of the footprint, so use the reference's band mask as well.
+        footprint = np.isfinite(ds.read(1)) & (ds.read_masks(1) > 0)
     result = format_report(path, sample, footprint=footprint)
     # The pinned shared version reports mask presence but can accept finite
     # NoData=0 pixels within the footprint. Until that is fixed upstream, an

@@ -1,84 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Why GEMSDOE32 scored 0.2778, Band 6 tc forensic proof, and 4-lane WBGGEMSDOE2 synthesis.">
-  <meta name="theme-color" content="#0b5d4d">
-  <title>Executive Summary · WBG2-MSPTCD · GEMS Research</title>
-  <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="shell">
-      <a href="index.html" class="brand" aria-label="WBG2-MSPTCD home">
-        <span class="brandmark">
-          <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none">
-            <path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/>
-          </svg>
-        </span>
-        GEMS <small>WBG2-MSPTCD</small>
-      </a>
-      <nav class="nav" aria-label="MSPTCD navigation"><a href="index.html">MSPTCD Overview</a><a href="executive-summary.html" aria-current="page">Executive Summary</a><a href="research.html">5 Hypotheses & Holdout</a><a href="sources.html">Sources & Receipts</a><a href="../index.html">← Main Dashboard</a></nav>
-      <div class="top-right">
-        <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a>
-        <span class="top-status"><span class="dot"></span> Research-only · 0 slots</span>
-      </div>
-    </div>
-  </header>
-  <main id="main" class="shell main">
-    <div class="intro">
-      <div>
-        <p class="eyebrow">Executive Summary · WBG2-MSPTCD Lane</p>
-        <h1>Why GEMSDOE32 Scored 0.2778, Band 6 Forensic Proof, and Cross-Lane Synthesis</h1>
-        <p>Verified line-by-line against raw GeoTIFF pixels, unmodified upstream holdout code, and the 144-row 2026-10-27 fleet ledger (<a href="../data/user-reported-ledger-20261027.csv">CSV download ↓</a>).</p>
-      </div>
-      <div class="intro-meta">Evidence standard<br><strong>Zero Projections</strong></div>
-    </div>
-
-    <section class="card" id="why-b2">
-      <h2>1. Why GEMSDOE32 (<code>0.2778</code> USER-REPORTED) Scored Highest Among the Nine — and How to Beat It</h2>
-      <ul>
-        <li><strong>Exact pixel-set identity:</strong> Across all <code>5,167,373</code> in-footprint pixels, <code>GEMSDOE25</code> and <code>GEMSDOE30</code> decode to the exact same <code>44,090</code> dots (<code>0.2600</code> USER-REPORTED). <code>GEMSDOE32</code> (<code>37,654</code> dots, <code>0.2778</code> USER-REPORTED) equals <code>GEMSDOE25/30</code> minus the exact <code>6,436</code> dots within Euclidean distance <code>&lt;= 2 px</code> (<code>200 m</code>) of <code>existing_faults.tif</code>, with <code>0</code> pixels added.</li>
-        <li><strong>DTI denominator physics:</strong> Under <code>DTI = TP_w / (TP_w + 0.2·FP_w + 0.8·FN_w + ε)</code>, hidden test fault segments exclude the public catalogue. Removing <code>6,436</code> near-catalogue dots trimmed pure false-positive kernel mass (<code>0.2·ΔFP_w ≈ 12,074</code> mass units) while sacrificing almost zero hidden truth, lifting DTI by <code>+0.0178</code>. Adding <code>1,200</code> lower-precision dots back in <code>GEMSDOE36</code> diluted DTI to <code>0.2725</code>.</li>
-        <li><strong>Post-upload proof against leaky private holdouts:</strong> When the earlier rejected parallel file <code>wbg2-h1-stepxasym</code> (which claimed <code>0.1321</code> on a private unbuffered evaluator) was uploaded on 2026-10-26, its user-reported public DTI was <strong><code>0.0725</code></strong> — confirming why strict 8 km-buffered whole-segment holdout + 124 leakage canaries are mandatory.</li>
-        <li><strong>Can <code>0.2778</code> be beaten?</strong> Yes — live public Rank #1 is <strong><code>0.4544</code></strong> (<code>xiaofanhu</code>, 2026-10-27 UTC). Bridging the gap from collar-pruned catalogue proximity (<code>~0.28</code>) to <code>0.45+</code> requires recovering <strong>concealed basin-interior faults</strong> using real subsurface potential-field and EM gradients plus submodular 300 m kernel packing — which is why <code>WBG2-MSPTCD</code> improved buffered <code>HOLDOUT-DTI</code> by <strong>+81.8%</strong> (and detached-splay <code>HOLDOUT-DTI</code> by <strong>+82.1%</strong>).</li>
-      </ul>
-    </section>
-
-    <section class="card" id="band6-forensic">
-      <h2>2. Critical Metadata Discrepancy Resolved: Band 6 (<code>tc</code>) Is Positive Radiometric Total Counts</h2>
-      <p>Earlier literature/repo summaries labeled Band 6 as <em>“Tilt angle or total curvature”</em>, whereas the official DrivenData problem page lists <strong>total airborne gamma-ray radiometric counts (<code>tc</code>)</strong> alongside K, U, and Th. Direct measurement over all <code>5,167,373</code> finite in-footprint cells of <code>training_features.tif</code> settles it unambiguously:</p>
-      <ul>
-        <li><code>Band 6 (tc)</code> quantiles: <strong>q01 = 7.637</strong>, <strong>median = 18.490</strong>, <strong>q99 = 29.020</strong>, <strong>negative pixels = 0</strong>.</li>
-        <li>A Miller &amp; Singh (1994) magnetic tilt angle <code>arctan(VDR / THDR)</code> spans <code>[-π/2, +π/2] ≈ [-1.57, +1.57] rad</code> with ~50% negative values. Band 6 is strictly positive airborne radiometric count rate; true potential-field tilt derivatives had never been computed in raw bands and are explicitly derived from first principles in <code>src/wbggems/msptcd.py</code>.</li>
-      </ul>
-    </section>
-
-    <section class="card" id="four-lanes">
-      <h2>3. Four-Lane Synthesis in WBGGEMSDOE2</h2>
-      <p>Four independent lanes exist in this repository without overwriting one another:</p>
-      <ol>
-        <li><strong>Baseline Review Lane (<a href="../index.html"><code>docs/index.html</code></a>):</strong> Strict preflight audit &amp; 4-proposal shortlist; 0 experiments run, fail-closed negative.</li>
-        <li><strong>DZ-16 Damage-Zone Lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue geometry collar (34,500 dots) built without <code>training_features.tif</code>; cleared under a calibrated enrichment gate.</li>
-        <li><strong>H3-PACK 34k Lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots) maximizing kernel mass per dot; cleared under focus-site uniqueness.</li>
-        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator, verified 124 leakage canaries, proved +81.8% buffered <code>HOLDOUT-DTI</code>, verified uniqueness vs all 9 focus champions (<code>&lt;=68.06%</code>) and both sibling lanes (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and applied the strict fail-closed stop under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
-      </ol>
-    </section>
-    </main>
-  <footer class="footer">
-    <div class="shell">
-      <div><strong>WBG2-MSPTCD LANE</strong> · 31-Feature Real-Geophysics Campaign · Zero competition slots spent</div>
-      <div>
-        <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
-        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
-        <a href="../submit/index.html">Sibling H3-PACK lane</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Corrected historical MSPTCD campaign evidence; no submission approved."><title>B2 lineage and metric · GEMS Research</title><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><div class="shell"><a class="brand" href="index.html">GEMS <small>RESEARCH</small></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Research</a><a href="sources.html">Sources</a></nav></div></header><main id="main" class="shell main"><section class="banner"><div class="banner-copy"><p class="banner-label">Historical campaign · NEGATIVE</p><h2>No file is approved for submission.</h2><p>DO NOT SUBMIT. The TIFF failed the literal duplicate stop. These are exploratory proxy results, not organizer scores or proof of no leakage.</p></div><div class="actions"><button class="button" disabled>No submission file</button><a class="text-link" href="data/RUN_CARD_FINAL.json">Current negative run card →</a></div></section><nav aria-label="MSPTCD research"><a href="msptcd/index.html">Findings</a> · <a href="msptcd/executive-summary.html">B2 explanation</a> · <a href="msptcd/research.html">Hypotheses</a> · <a href="msptcd/sources.html">Sources</a></nav><article class="card guide-card research-prose"><h1>Why GEMSDOE32 B2 may have reached 0.2778</h1>
+<p><strong>The 0.2778 value is a USER-REPORTED historical claim, not tied to these bytes by an authenticated organizer receipt. Its cause is unknown.</strong> The public leaderboard is not a per-file receipt. No defensible score estimate is available for a new method; this explanation is not proof that it will score higher.</p>
+<h2>What is reproducible</h2>
+<p>Using the hash-pinned historical files and an <strong>owner-mirrored</strong>, not authenticated organizer, catalogue:</p>
+<ul>
+<li>GEMSDOE25 and GEMSDOE30 have identical in-footprint prediction arrays despite different TIFF bytes.</li>
+<li>GEMSDOE32 B2 is that 44,090-dot array after removing <strong>6,436</strong> dots within two pixels of the mirrored catalogue, leaving <strong>37,654</strong>. GEMSDOE36 adds <strong>1,200</strong> dots to B2 and removes none. See <a href="data/portfolio.json">the portfolio audit</a>.</li>
+<li>The pinned binary lattice covers 5,160,724 of 5,167,373 footprint cells within three pixels. At 37,654 distinct dots, at least <strong>82.34%</strong> must be within that lattice halo; the required threshold is 70%, so this budget cannot pass that witness. The same arithmetic does not prove all smaller budgets fail. The separate continuous-prior witness would block every nonempty map if its finite-positive support is treated as dots; that interpretation is unresolved and no exemption is assumed.</li>
+</ul>
+<h2>What could explain the reported difference</h2>
+<p>The <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official metric</a> uses a 300 m triangular kernel with α=0.2 and β=0.8. Removing redundant predictions <strong>might</strong> reduce false-positive mass while retaining coverage near hidden fault truth; it could also remove useful true-positive coverage. <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Organizer staff</a> say known fault pixels are masked; 1–2 pixels away are <strong>not</strong> known to be masked, so nearby withheld truth may matter. Without hidden labels, per-dot contributions and receipts, there is no verified causal decomposition or reliable score estimate. Repeated leaderboard probing can overfit a public set.</p>
+<p>For a fixed truth set, write weighted true positives as <code>T</code>, weighted false positives as <code>F</code>, its positive count as <code>N</code>, and <code>FN = N−T</code>. Then <code>DTI = T / [(1−β)T + αF + βN + ε]</code>. For an old score <code>s</code> and finite changes ΔT and ΔF, the new value improves exactly when <code>[1−(1−β)s] ΔT &gt; αs ΔF</code>, assuming the denominator stays positive. Both lost truth coverage and removed false positives matter; these terms were not measured for B2. This identity is not a score estimate.</p>
+<p>An older claim that the removal of 6,436 binary dots yielded <code>0.2 × ΔFP ≈ 12,074</code> is withdrawn as mathematically impossible. Even under the upper bound of one unit of false-positive mass per removed dot, the weighted reduction could not exceed 1,287.2. The actual contribution is unmeasured.</p>
+<h2>Can a new method beat it?</h2>
+<p><strong>Unknown.</strong> A prior three-experiment MSPTCD campaign produced an exploratory mapped-fault proxy result, not organizer performance: selected EXP3 <strong>HOLDOUT-DTI 0.042554</strong>, 95% CI [0.032059, 0.054765], shared evaluator <code>gems57-pooled-hide-v2</code>, 60,988 withheld positive pixels. It was selected on the same folds, uses mirrored labels equal to the mapped catalogue, has globally prepared label-free features and an invalidated separate detached-splay interpretation. The 124 canaries below the alarm threshold do not prove the absence of leakage. Its saved TIFF fails the literal lattice stop. See <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/research/msptcd_findings.md">corrected findings</a>.</p>
+<p>The method lane remains <strong>UNASSIGNED</strong>; no proposal is authorized to run. The <a href="research.html">ranked proposal shortlist</a> includes repeated cross-drainage patterns, multi-depth conductance, flight-line repeatability and multi-epoch deformation. They are plausible mechanisms with named non-fault mimics, <strong>not tested results</strong>, and their relevant external binary coverage has not been verified. Earlier depth-shift and conductivity-flank proposals are not described as untried: MSPTCD implemented closely related features.</p>
+<h2>Decision</h2>
+<p><strong>No file is approved for submission. DO NOT SUBMIT.</strong> No new TIFF, filename or submission note was created in this review. Five historical local TIFFs fail the lattice duplicate stop, regardless of whether a format test against the mirror passes. See the <a href="data/release_triage_20261027.json">release triage receipt</a> and <a href="data/RUN_CARD_FINAL.json">negative run card</a>.</p>
+<p>The user's earlier upload error, “Predicted values must be in range [0, 1],” cannot be diagnosed without the exact rejected file. Check actual values, non-finite values, masks, grid and metadata without clipping; a local pass is not portal acceptance. Future work additionally requires an assigned lane, a complete fresh registry, authenticated input data, and the prescribed matched buffered-holdout, pre-placement, final-dot and shared-writer gates. A separate quota-aware selector decides any real submission.</p></article></main><footer class="footer"><div class="shell"><strong>GEMS RESEARCH · Evidence before submission</strong><a href="data/release_triage_20261027.json">Release triage</a></div></footer></body></html>

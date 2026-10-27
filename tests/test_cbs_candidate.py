@@ -39,9 +39,14 @@ def test_run_card_gates_and_labels():
     assert u["max_abs_surface_spearman_vs_discrete_peers"] <= 0.90
     assert len(CARD["candidate"]["note_le_140_chars"]) <= 140
     assert CARD["weekly_slots_used"] == 0
+    # Merged main governs fail-closed: no promotion without an owner ruling
+    # on the space-filling witnesses; the file is research-only meanwhile.
+    assert CARD["verdict"] == "negative" and CARD["ok_to_submit"] is False
+    assert "Literal any-registry" in CARD["blocking_gate"]
 
 def test_cbs_pages_link_the_exact_file():
     for p in ("docs/cbs/index.html", "docs/cbs/executive-summary.html"):
         txt = (ROOT / p).read_text()
         assert TIF.name in txt and CARD["candidate"]["sha256"] in txt
         assert "USER-REPORTED" in txt  # historical scores never labelled as receipts
+        assert "DO NOT SUBMIT" in txt

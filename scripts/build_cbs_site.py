@@ -59,9 +59,11 @@ run_card = {
       "empirical_estimate": e_final["empirical_estimate"], "empirical_interval95": e_final["empirical_interval95"],
       "score_law_projection": e_final["score_law_projection"],
       "mass_balance_band_N20000": e_final["mass_balance_band_if_best_lineage_hit_rate"]["20000"]}},
-  "verdict": "promote",
-  "ok_to_submit": True,
-  "ok_to_submit_basis": "Calibrated uniqueness gate (<=70% 3-px overlap and |rho|<=0.90 vs every discrete peer raster measured) + strict saved-byte format validation + holdout win over the previous same-evaluator best. Under the literal all-registry rule the two space-filling witnesses flag ANY dot field (coverage 99.87% and 100% of footprint; candidate enrichment ~1.0); that literal reading also flags all nine historical champions. The project owner makes the final slot decision (separate selector step; this campaign spent 0 slots).",
+  "verdict": "negative",
+  "ok_to_submit": False,
+  "scientific_gates_passed": {"holdout_beats_previous_repo_best": True, "calibrated_uniqueness_vs_discrete_peers": True, "saved_byte_format_strict_finite_0_1": True},
+  "blocking_gate": "Literal any-registry rule as governed on main (merged fail-closed dashboard policy, PRs #21/#25): 13GEMSDOE lattice 3-px coverage is 99.87% of the footprint and the 17GEMSDOE continuous prior is positive on 100%, so this candidate (like every >=22k-dot field and every historical champion) exceeds the 70% literal stop. Promotion requires an explicit project-owner ruling on space-filling-control / continuous-prior support interpretation; no silent exemption is applied here.",
+  "ok_to_submit_basis": "Fail-closed under the repo\u2019s current merged policy. Scientifically the file is the best-measured candidate in the repo (holdout win, calibrated uniqueness vs every discrete peer \u226470%/\u03c1\u22640.90, strict finite-[0,1] format), and its enrichment over the space-filling witnesses\u2019 own coverage is \u22481.0, but the literal gate on main permits no calibrated exemption. Retained for research; the one decision that can unblock it is an owner ruling documented in research/cbs_findings.md.",
   "weekly_slots_used": 0}
 (ROOT / "evidence/RUN_CARD_CBS.json").write_text(json.dumps(run_card, indent=2, default=float) + "\n")
 (ROOT / "docs/data/RUN_CARD_CBS.json").write_text(json.dumps(run_card, indent=2, default=float) + "\n")
@@ -78,8 +80,8 @@ for s in sites:
                   f"<td><strong>DO NOT SUBMIT</strong> (already-submitted lineage file)</td></tr>\n")
 
 cand_rows = ""
-labels = [("wbg2-d19dotted", "D19-DOTTED (this lane, control arm)", "OK TO DOWNLOAD AND SUBMIT"),
-          ("wbg2-dz16", "DZ-16 (submission lane)", "OK as alternate (zeros, validated)"),
+labels = [("wbg2-d19dotted", "D19-DOTTED (this lane, control arm)", "DO NOT SUBMIT (literal gate on main; best-measured, pending owner ruling)"),
+          ("wbg2-dz16", "DZ-16 (submission lane)", "DO NOT SUBMIT (former approval superseded on main)"),
           ("wbg3-h3pack", "H3-PACK (third lane)", "DO NOT SUBMIT AS-IS — NaN outside footprint"),
           ("wbg2-msptcd", "MSPTCD-E3 (fourth lane)", "DO NOT SUBMIT (ridge emission; lane verdict negative)")]
 for key, label, verdict in labels:
@@ -93,7 +95,7 @@ for key, label, verdict in labels:
 
 CSS = "body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;color:#14231c;background:#f6f9f7}.shell{max-width:1060px;margin:auto;padding:24px}table{border-collapse:collapse;width:100%;background:#fff;font-size:13px}th,td{border:1px solid #d7e2da;padding:7px;text-align:left;vertical-align:top}th{background:#0b5d4d;color:#fff}.mono{font-family:ui-monospace,monospace;font-size:11px;word-break:break-all}.banner{background:#e4f4ea;border:2px solid #0b5d4d;border-radius:12px;padding:18px;margin:16px 0}.warn{background:#fff4e5;border-color:#b7791f}.btn{display:inline-block;background:#0b5d4d;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:700}small{color:#5a6e62}h1,h2{color:#0b5d4d}"
 head = f"<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>CBS / D19-DOTTED · GEMS Research</title><style>{CSS}</style></head><body><div class=\"shell\">"
-download = f"""<div class="banner"><h2>✅ OK TO DOWNLOAD AND SUBMIT — one file</h2>
+download = f"""<div class="banner warn"><h2>⛔ DO NOT SUBMIT under current repo policy — best-measured research candidate</h2><p>No file is approved for submission. This file passes the holdout, calibrated-uniqueness and strict-format gates, but the literal any-registry stop on main flags it via two space-filling witnesses (99.87%/100% footprint coverage; enrichment ≈1.0). <strong>Download for research: yes. Submit: no</strong>, unless the project owner records a ruling on that interpretation. </p>
 <p><span class="mono">{stem}.tif</span></p>
 <p><a class="btn" href="../downloads/cbs/{stem}.tif">⬇ Download GeoTIFF</a> <a class="btn" href="../downloads/cbs/{stem}.zip">⬇ Single-TIFF ZIP</a></p>
 <table><tr><th>SHA-256</th><td class="mono">{art['sha256']}</td></tr>
@@ -108,7 +110,7 @@ index = head + f"""<p><a href="../index.html">← Overview</a> · <a href="execu
 <h1>CBS lane → D19-DOTTED candidate</h1>
 <p>The geological hypothesis tested this session (covered basement steps visible only to subsurface geophysics) <strong>lost</strong> to its own control on the shared hide-and-recover holdout — that negative result is the deliverable of the CBS experiments. The winning arm, a 19-band model emitted for the first time as collar-free spaced dots, tripled the repo's previous same-evaluator holdout best and is the file below.</p>
 {download}
-<h2>How to submit (exactly)</h2>
+<h2>If and when the owner ruling clears a slot — how to submit (exactly)</h2>
 <ol><li>Download the GeoTIFF (or ZIP) above. Do not rename the file inside the ZIP.</li>
 <li>Open the DrivenData submission page for competition 306 and choose the downloaded <span class="mono">.tif</span> (or the single-TIFF <span class="mono">.zip</span>).</li>
 <li>Paste the note shown above (85 chars).</li>

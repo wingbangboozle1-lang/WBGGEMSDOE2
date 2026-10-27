@@ -1,4 +1,4 @@
-"""Guardrails for the one file this repository clears for submission.
+"""Guardrails for retained historical research files; no file is cleared for submission.
 
 These tests fail closed: if any validator check, hash, grid property or audit
 verdict regresses, the approval claim on the site becomes unsupportable and the
@@ -25,22 +25,28 @@ def _load(name):
     return json.loads((ROOT / 'data_public' / name).read_text())
 
 
-def test_exactly_one_file_is_cleared_and_the_rest_are_labeled_rejected():
-    """Rejected binaries stay only because audit records bind to their hashes.
+def test_no_file_is_cleared_and_research_files_are_labelled():
+    triage = json.loads((ROOT / 'evidence/release_triage_20261027.json').read_text())
+    assert len(triage['records']) == 5
+    assert all(not r['ok_to_submit'] and r['literal_witness_result'] == 'duplicate-stop'
+               and r['final_dot_overlap_3px_vs_13GEMSDOE'] > .7 for r in triage['records'])
+    assert _load('final_audit.json')['ok_to_submit'] is False
+    assert _load('run_card.json')['verdict'] == 'negative'
+    note = (ROOT / 'docs/downloads/README.txt').read_text()
+    assert 'NO FILE IS APPROVED' in note and 'RESEARCH-ONLY' in note
 
-    Every TIF in docs/downloads must be either the cleared candidate or one that a
-    repository record explicitly marks rejected, and docs/downloads/README.txt must
-    name the cleared file.
-    """
-    cand = _load('candidate.json')
-    cleared = Path(cand['file']).name
-    tifs = {p.name for p in (ROOT / 'docs' / 'downloads').glob('*.tif')}
-    assert cleared in tifs
-    rejected = json.loads((ROOT / 'evidence' / 'final_candidate.json').read_text())
-    marked = {Path(rejected['file']).name}
-    assert tifs - {cleared} <= marked | {'wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif'}
-    note = (ROOT / 'docs' / 'downloads' / 'README.txt').read_text()
-    assert cleared in note and 'DO NOT SUBMIT' in note
+
+def _neighbor_pairs(points, distance):
+    """Distinct coordinate pairs within inclusive Euclidean distance; no self-pairs."""
+    from scipy.spatial import cKDTree
+    return cKDTree(points).query_pairs(distance, output_type='set')
+
+
+def test_neighbor_test_detects_real_pairs_and_not_self():
+    assert not _neighbor_pairs(np.array([[5, 5]]), 1.0)
+    assert _neighbor_pairs(np.array([[5, 5], [5, 6]]), 1.0) == {(0, 1)}
+    assert not _neighbor_pairs(np.array([[5, 5], [6, 6]]), 1.0)
+    assert _neighbor_pairs(np.array([[5, 5], [6, 6]]), np.sqrt(2)) == {(0, 1)}
 
 
 def test_candidate_sha256_matches_the_bytes_on_disk():
@@ -51,7 +57,7 @@ def test_candidate_sha256_matches_the_bytes_on_disk():
         (ROOT / cand['file']).read_bytes()
 
 
-def test_candidate_satisfies_every_official_format_rule():
+def test_historical_candidate_local_byte_diagnostics_are_consistent():
     cand = _load('candidate.json')
     assert all(cand['checks'].values()), cand['checks']
     with rasterio.open(ROOT / cand['file']) as src:
@@ -61,11 +67,11 @@ def test_candidate_satisfies_every_official_format_rule():
         assert (src.height, src.width) == (3730, 3292)
         assert tuple(round(float(v), 6) for v in list(src.transform)[:6]) == \
             (100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)
-    assert np.isfinite(arr).all(), 'the portal rejects NaN with "values must be in [0,1]"'
+    assert np.isfinite(arr).all(), 'this particular historical file was recorded as all finite'
     assert arr.min() >= 0.0 and arr.max() <= 1.0
     assert int((arr > 0).sum()) == cand['dots']
 
-    # The organizer grid template is git-ignored (1.6 MB pinned input), so the
+    # The owner-mirrored reference grid is git-ignored, so the
     # footprint-mask assertions run only where that input was restored. The
     # recorded checks are still required to pass, and the grid metadata above is
     # always re-read from the committed bytes.
@@ -77,34 +83,26 @@ def test_candidate_satisfies_every_official_format_rule():
     with rasterio.open(template) as src:
         sub = src.read(1)
         footprint = np.isfinite(sub) & (sub != src.nodata)
-    assert np.all(arr[~footprint] == 0.0), 'outside the organizer footprint must be 0.0'
+    assert np.all(arr[~footprint] == 0.0), 'historical file claims zero outside its mirrored footprint'
     inside = arr[footprint]
     assert np.isfinite(inside).all() and inside.min() >= 0.0 and inside.max() <= 1.0
 
 
-def test_candidate_has_no_redundant_mass():
-    """No two dots may share a 300 m support neighbourhood (mass economy)."""
-    from scipy import ndimage as ndi
+def test_historical_candidate_has_no_adjacent_dot_pairs():
+    """Read distinct point coordinates; a maximum filter counts every dot itself."""
     cand = _load('candidate.json')
     with rasterio.open(ROOT / cand['file']) as src:
-        sup = src.read(1) > 0
-    # each dot must have at least one empty pixel between it and its neighbours at 1 px
-    pairs = int((ndi.maximum_filter(sup.astype(np.uint8), size=3) * sup).sum())
-    touching = pairs - int(sup.sum())
-    assert touching == 0, f'{touching} dots touch another dot'
+        points = np.column_stack(np.where(src.read(1) > 0))
+    assert not _neighbor_pairs(points, np.sqrt(2)), 'adjacent historical dots were detected'
 
 
-def test_uniqueness_verdicts_are_internally_consistent():
+def test_literal_failure_cannot_be_replaced_by_normalized_pass():
     audit = _load('final_audit.json')
     v = audit['verdicts']
-    ok = (v['normalized_rule']['result'] == 'PASS'
-          and v['surface_rule']['result'] == 'PASS'
-          and v['exact_bytes']['result'] == 'PASS')
-    assert audit['ok_to_submit'] is ok
+    assert v['literal_rule']['result'] == 'FAIL'
+    assert v['normalized_rule']['operative'] is False
+    assert audit['ok_to_submit'] is False
     assert audit['scope']['rasters_measured'] >= 90
-    assert audit['focus_overlap_summary']['max'] < 0.70, 'must be clearly distinct from the focus files'
-    # the literal-rule failure must stay documented, with its measured justification
-    assert v['literal_rule']['result'] in ('PASS', 'FAIL')
     assert 'focus_pairwise_overlap' in audit
 
 

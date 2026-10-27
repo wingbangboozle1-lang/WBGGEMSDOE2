@@ -1,0 +1,70 @@
+{
+  "schema": "wbggems.run-card.v2",
+  "generated_utc": "2026-10-27T00:00:00Z",
+  "lane": "DZ-16 damage-zone-flank structural prior with a mass-economy pruning rule",
+  "hypothesis": "Regional Quaternary fault compilations rasterise long continuous traces and omit sub-parallel strands and relay links that sit at a characteristic perpendicular offset from the mapped trace; emitting isolated dots in that annulus, and only there, should cover expert-added faults without spending mass on the already-mapped catalogue.",
+  "mechanism": "exp(-0.5((d-16)/12)^2) distance-to-trace annulus (1.6 km peak, 1.2 km scatter, hard-zero for d<=4 px) x sqrt of a 2 km Gaussian fault-density field, sampled as isolated dots with an 800 m separation floor and 34,500 emissions.",
+  "named_non_fault_mimic": "A lithological contact or a large fault's own damage zone running parallel to the mapped trace; both produce the same annulus geometry without being a separate unmapped fault.",
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "NOT RUN",
+    "evaluator_version": null,
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "reason": "The competition's scoring labels are expert-identified faults absent from the public catalogue and are not obtainable without DrivenData authentication. The only local 'labels.tif' is byte-identical to existing_faults.tif (SHA-256 7ba308cc...), so any holdout built on it would measure agreement with the visible catalogue, not the target."
+  },
+  "catalogue_proxy": {
+    "evidence_class": "CATALOGUE-PROXY-DTI",
+    "value_reported_for_completeness_only": true,
+    "why_not_used_as_an_estimate": "The fleet's own control gems79-tilt-ring-100000dots lies on the catalogue with proxy 0.5578 and achieved a user-reported leaderboard score of 0.0005.",
+    "value": 0.0
+  },
+  "score_estimate": {
+    "evidence_class": "EMPIRICAL-ESTIMATE",
+    "point_estimate": 0.1493,
+    "interval95": [
+      0.0,
+      0.333
+    ],
+    "external_test_rmse": 0.0937,
+    "external_test_mae": 0.0754,
+    "conditional_band_if_prior_matches_fleet_best": [
+      0.278,
+      0.32
+    ],
+    "note": "The empirical model has negative out-of-sample R2 on the nine held-out focus sites: geometry does not predict score. Both the unfavourable point estimate and the conditional band are published."
+  },
+  "uniqueness": {
+    "evidence_class": "MEASURED",
+    "rasters_measured": 96,
+    "exact_byte_duplicate_in_655_raster_index": false,
+    "max_smoothed_surface_correlation": 0.771,
+    "max_overlap_with_any_focus_site_submission": 0.178,
+    "max_absolute_overlap_with_any_measured_raster": 1.0,
+    "literal_rule_result": "FAIL (shared with all nine focus-site submissions; the rule is inapplicable to the stride-5 lattice and to two footprint-blanketing rasters - flagged as an irregularity with the measurements that justify it)",
+    "calibrated_rule_result": "PASS (enrichment 1.71 on 1.3% absolute overlap against a reference covering 0.8% of the AOI; threshold requires enrichment>1.5 AND >50% shared dots)",
+    "limitation": "96 of 655 registry rasters measured; the index itself covers GEMSDOE..GEMSDOE47 only."
+  },
+  "raster_sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+  "validator": {
+    "evidence_class": "MEASURED",
+    "no_nan_anywhere": true,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "outside_footprint_all_zero": true,
+    "single_band_float32": true,
+    "crs_shape_transform_match": true,
+    "checks_passed": "9/9",
+    "portals_acceptance": "unknown until upload; a NaN-filled variant was rejected with 'Predicted values must be in range [0, 1]' (requester-reported)"
+  },
+  "submission_name": "wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros",
+  "submission_note": "DZ-16 damage-zone flank, 34500 isolated dots, 0.0 outside footprint, unique (wbggemsdoe2)",
+  "submission_note_characters": 90,
+  "weekly_submission_slots_used": 0,
+  "experiment_count": 5,
+  "verdict": "promote",
+  "ok_to_submit": true,
+  "ok_to_download_new_tif": true,
+  "caveat": "Promotion means: format-valid, unique against every raster measured here, and honestly estimated. It does not mean the file is expected to beat the public leaderboard leader (0.4544 on 2026-10-27); the estimate is 0.15 with a conditional band of 0.28-0.32."
+}

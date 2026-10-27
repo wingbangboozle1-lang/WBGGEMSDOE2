@@ -127,8 +127,14 @@
       ]
     }
   },
-  "verdict": "promote",
-  "ok_to_submit": true,
-  "ok_to_submit_basis": "Calibrated uniqueness gate (<=70% 3-px overlap and |rho|<=0.90 vs every discrete peer raster measured) + strict saved-byte format validation + holdout win over the previous same-evaluator best. Under the literal all-registry rule the two space-filling witnesses flag ANY dot field (coverage 99.87% and 100% of footprint; candidate enrichment ~1.0); that literal reading also flags all nine historical champions. The project owner makes the final slot decision (separate selector step; this campaign spent 0 slots).",
+  "verdict": "negative",
+  "ok_to_submit": false,
+  "scientific_gates_passed": {
+    "holdout_beats_previous_repo_best": true,
+    "calibrated_uniqueness_vs_discrete_peers": true,
+    "saved_byte_format_strict_finite_0_1": true
+  },
+  "blocking_gate": "Literal any-registry rule as governed on main (merged fail-closed dashboard policy, PRs #21/#25): 13GEMSDOE lattice 3-px coverage is 99.87% of the footprint and the 17GEMSDOE continuous prior is positive on 100%, so this candidate (like every >=22k-dot field and every historical champion) exceeds the 70% literal stop. Promotion requires an explicit project-owner ruling on space-filling-control / continuous-prior support interpretation; no silent exemption is applied here.",
+  "ok_to_submit_basis": "Fail-closed under the repo\u2019s current merged policy. Scientifically the file is the best-measured candidate in the repo (holdout win, calibrated uniqueness vs every discrete peer \u226470%/\u03c1\u22640.90, strict finite-[0,1] format), and its enrichment over the space-filling witnesses\u2019 own coverage is \u22481.0, but the literal gate on main permits no calibrated exemption. Retained for research; the one decision that can unblock it is an owner ruling documented in research/cbs_findings.md.",
   "weekly_slots_used": 0
 }

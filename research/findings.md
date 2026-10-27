@@ -1,4 +1,18 @@
+# Current release reconciliation — 27 October 2026
+
+**NO FILE CLEARED.** The later DZ-16 and H3-PACK approvals are withdrawn after this session's
+[byte-level recheck](../evidence/release_recheck_20261027.json). Both exceed the binary lattice's
+70% duplicate stop; no enrichment-based exemption is authorized. The 19-band owner mirror and raw
+band cache were restored again, not authenticated against DrivenData. The [new shortlist](hypotheses.md)
+replaces previously implemented depth-shift/conductive-flank proposals; no new lane or experiment was
+assigned. See the [three-pass review](release-review-20261027.md). Below are historical earlier-review
+findings; their old H1 labels do not refer to the current untested drainage proposal.
+
+---
+
 # Executive audit: what is safe to submit?
+
+> **Current release review, 2026-10-27:** All five independently reopened local TIFFs fail the pinned binary-lattice overlap stop, so prior DZ-16/H3-PACK promotions are superseded; no submission is approved. Original pre-placement surfaces were not replayed and the registry is incomplete. The prior MSPTCD mapped-fault proxy is exploratory, was selected on its reporting folds, and does not prove no leakage or a leaderboard score. See the [release triage](../evidence/release_triage_20261027.json), [corrected campaign findings](msptcd_findings.md), and [current negative run card](../evidence/RUN_CARD_FINAL.json).
 
 **Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
 

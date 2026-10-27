@@ -2,6 +2,7 @@ import csv
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+from urllib.parse import urljoin, urlsplit, unquote
 
 import numpy as np
 from scipy.ndimage import binary_dilation
@@ -76,9 +77,10 @@ def test_broad_ledger_has_provenance_and_empty_values_not_zeroed():
 
 
 class LinkParser(HTMLParser):
-    def __init__(self): super().__init__(); self.links=[]; self.ids=[]; self.tables=0
+    def __init__(self): super().__init__(); self.links=[]; self.ids=[]; self.tables=0; self.base=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if tag=='base' and a.get('href'): self.base=a['href']
         if tag=='a' and a.get('href'): self.links.append(a['href'])
         if 'id' in a: self.ids.append(a['id'])
         if tag=='table': self.tables+=1
@@ -95,25 +97,19 @@ def test_site_links_and_approval_copy_match_the_audit_artifact():
     audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())
     # this lane's landing page; the dashboard lane keeps its own fail-closed page
     index = (ROOT / 'docs' / 'submission' / 'index.html').read_text()
-    if audit['ok_to_submit']:
-        assert 'approved to download and submit' in index
-        assert audit['sha256'] in index, 'landing page must show the audited SHA-256'
-        checks = json.loads((ROOT / 'data_public/candidate.json').read_text())['checks']
-        assert all(checks.values()), 'approval requires every validator check to pass'
-    else:
-        assert 'No file is approved for submission.' in index
-        assert 'No submission file' in index
-    dashboard = (ROOT / 'docs' / 'index.html').read_text()
-    assert 'submission/index.html' in dashboard, 'the dashboard must link to the cleared file'
-    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs' / 'submission').glob('*.html')):
+    assert audit['ok_to_submit'] is False
+    assert audit['verdicts']['literal_rule']['result'] == 'FAIL'
+    assert 'No file is approved for submission.' in index and 'No submission file' in index
+    dashboard = (ROOT / 'docs/index.html').read_text()
+    assert 'submission/index.html' in dashboard
+    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs/submission').glob('*.html')):
         html = f.read_text(); parser = LinkParser(); parser.feed(html)
         assert len(parser.ids) == len(set(parser.ids)), f
         if 'No file is approved for submission.' in html:
             assert 'No submission file' in html, f
+        base = urljoin(f.as_uri(), parser.base) if parser.base else f.as_uri()
         for link in parser.links:
-            if link.startswith(('https://', 'http://', 'mailto:', '#')):
-                continue
-            target = link.split('#', 1)[0].split('?', 1)[0]
-            if target:
-                assert (f.parent / target).exists(), (f, link)
+            target = urlsplit(urljoin(base, link))
+            if target.scheme == 'file' and target.netloc == '':
+                assert Path(unquote(target.path)).exists(), (f, link)
     assert 'USER-REPORTED' in index

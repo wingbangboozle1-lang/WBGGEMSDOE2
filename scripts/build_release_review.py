@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""Validate the independent concurrent release recheck without overriding the site.
+
+The canonical negative-only renderer is build_site.py. This extra, independently
+hash-bound review keeps its own measured evidence and refuses contradictory
+promotion or stale bytes; it never makes a submission decision or creates TIFFs.
+"""
+from hashlib import sha256
+import json
+from pathlib import Path
+import shutil
+
+ROOT = Path(__file__).resolve().parents[1]
+DOCS = ROOT / 'docs'
+
+
+def load(rel):
+    return json.loads((ROOT / rel).read_text())
+
+
+def check_evidence(report):
+    if report.get('ok_to_submit') is not False or len(report['candidates']) != 2:
+        raise ValueError('Only audited negative release decisions can be published')
+    for row in report['candidates']:
+        if (row.get('ok_to_submit') is not False or row.get('verdict') != 'negative'
+                or row.get('literal_duplicate_stop') is not True
+                or not row['final_dot_overlap_3px']['13GEMSDOE'] > .70):
+            raise ValueError('Release decision contradicts literal duplicate stop')
+        if sha256((ROOT / row['file']).read_bytes()).hexdigest() != row['sha256']:
+            raise ValueError('Candidate bytes changed; re-audit before publication')
+    for rel in ('data_public/final_audit.json', 'data_public/run_card.json',
+                'evidence/RUN_CARD_H3.json'):
+        record = load(rel)
+        if record.get('ok_to_submit') is not False or record.get('verdict') != 'negative':
+            raise ValueError(f'Conflicting approval: {rel}')
+    final_audit = load('data_public/final_audit.json')
+    if (final_audit['verdicts']['literal_rule']['result'] != 'FAIL'
+            or final_audit['verdicts']['normalized_rule']['operative'] is not False):
+        raise ValueError('Historical normalized diagnostic cannot override literal stop')
+
+
+def main():
+    report = load('evidence/release_recheck_20261027.json')
+    check_evidence(report)
+    registry = load('evidence/registry_recheck_20261027.json')
+    for item in load('config/registry_inputs.json')['inputs'][:9]:
+        measurement = registry['items'][item['id']]
+        if measurement['sha256'] != item['sha256'] or not measurement['literal_lattice_duplicate']:
+            raise ValueError('Focus evidence changed; review before publication')
+    # Synchronize independent audit receipts and the current negative cards. The
+    # canonical renderer must already have built all pages; never overwrite them
+    # with a competing narrative or resurrect retired approval markup.
+    for name in ('release_recheck_20261027.json', 'registry_recheck_20261027.json'):
+        shutil.copyfile(ROOT / 'evidence' / name, DOCS / 'data' / name)
+    for source, name in (('evidence/RUN_CARD_H3.json', 'RUN_CARD_H3.json'),
+                         ('data_public/run_card.json', 'run-card-current.json')):
+        shutil.copyfile(ROOT / source, DOCS / 'data' / name)
+    for rel in ('index.html', 'executive-summary.html', 'submission/index.html',
+                'submission/executive-summary.html', 'submit/index.html'):
+        page = (DOCS / rel).read_text()
+        if 'DO NOT SUBMIT' not in page:
+            raise ValueError(f'Unsafe or missing release banner: {rel}')
+    print('Validated independent negative review; canonical release pages remain unchanged')
+
+
+if __name__ == '__main__':
+    main()

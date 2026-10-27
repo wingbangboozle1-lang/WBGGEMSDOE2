@@ -1,9 +1,9 @@
 {
   "schema": "wbggems.run-card.v1",
   "generated_utc": "2026-10-27T17:24:02.594108+00:00",
-  "hypothesis": "No experiment hypothesis was assigned to this lane. H1 is the highest-ranked research proposal only; it was not selected or tested.",
-  "mechanism": "Not evaluated. H1 proposes a bounded depth-conditioned offset between multiscale signed gravity and magnetic edge responses; no candidate surface was constructed.",
-  "non_fault_mimic": "For the untested H1 proposal: an unfaulted lithologic contact, intrusive dike, or acquisition/gridding artefact can produce aligned gravity and magnetic edges.",
+  "hypothesis": "No experiment hypothesis was assigned to this lane. Current shortlist H1 proposes repeated catchment-normalized cross-drainage deflections; it was not tested.",
+  "mechanism": "Untested: multiple independent streams deflect or change bed gradient consistently across a candidate line, compared with random orientations and lithological boundaries.",
+  "non_fault_mimic": "Lithological boundaries, terraces, alluvial fans, drainage capture, roads and inherited drainage.",
   "lane_status": "UNASSIGNED: the prompt does not identify one method paragraph as the assigned lane; H1 is a ranked proposal, not authorization.",
   "experiment_budget": {
     "experiments_run": 0,
@@ -75,7 +75,7 @@
   },
   "submission_note": null,
   "ok_to_download_new_tif": false,
-  "updated_utc": "2026-10-27T17:48:48.076904+00:00",
+  "updated_utc": "2026-10-27T19:04:57.374390+00:00",
   "parallel_session": {
     "evidence": "evidence/parallel_review.json",
     "reported_experiments": 3,
@@ -133,5 +133,17 @@
     "shared_template_issue_report": "research/shared-template-format-report.md",
     "candidate_experiments": 0,
     "competition_slots_used": 0
+  },
+  "release_reconciliation": {
+    "evidence": "evidence/release_recheck_20261027.json",
+    "old_approvals_withdrawn": [
+      "DZ-16",
+      "H3-PACK"
+    ],
+    "new_experiments": 0,
+    "new_tiffs": 0,
+    "weekly_slots_used": 0,
+    "data_restore": "19 owner-mirrored raw feature bands restored; provenance unauthenticated; no derived feature stack built",
+    "upstream_issue_attempt": "createIssue denied: Resource not accessible by integration; shared code remains unchanged"
   }
 }

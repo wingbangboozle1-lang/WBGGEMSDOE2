@@ -1,5 +1,16 @@
 # CBS campaign findings — 2026-10-27 (fifth lane)
 
+> **Governance update (merge reconciliation, 2026-10-27):** while this lane ran,
+> main merged the fail-closed dashboard policy (PRs #21/#25) revoking all calibrated
+> uniqueness exemptions. The D19-DOTTED file below is therefore retained
+> **RESEARCH-ONLY — DO NOT SUBMIT** under current repo policy, exactly like DZ-16,
+> H3-PACK and MSPTCD-E3. It remains the best-measured candidate; the single decision
+> that can unblock it is a documented project-owner ruling on whether space-filling
+> registry controls (a stride-5 lattice covering 99.87% of the footprint and a
+> continuous prior positive on 100%) count as "dots" under the 70% rule. Enrichment
+> over their own coverage for this candidate is ≈1.0 (chance level).
+
+
 Full machine records: `evidence/cbs_results.json`, `evidence/cbs_final.json`,
 `evidence/cbs_canaries.json`, `evidence/RUN_CARD_CBS.json`. Pre-registration:
 `research/cbs_preregistration_20261027.md` (including its amendment).
