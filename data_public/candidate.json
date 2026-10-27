@@ -1,20 +1,24 @@
 {
- "name": "wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros",
- "file": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
- "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
- "bytes": 243576,
- "dots": 34500,
- "mass": 34500.0,
- "lane": "DZ-16 damage-zone-flank structural prior, isolated binary dots",
+ "name": "wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros",
+ "file": "docs/downloads/wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif",
+ "zip_file": "docs/downloads/hvgf/wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.zip",
+ "zip_sha256": "dce3f3728c67ea23a780c312561bf998a2773596b9a0fbc66fe3fbabf54acc9e",
+ "sha256": "2262aa7e543690c27a307efdd3a0bd15357cd917bac265da32b8a3cf792c4080",
+ "bytes": 136232,
+ "dots": 37654,
+ "mass": 37654.0,
+ "submission_note": "WBG2-HVGF E3: OOF hydrothermal vent back-proj + K/Th-demag + 1m/10m scarp/chi + 2-host relay submod (37654d, 0 NaN).",
+ "lane": "WBG2-HVGF (Hydrothermal Vent-Guided Structural-Tensor & Two-Host Relay Submodular Fault Discovery)",
  "parameters": {
-  "offset_peak_px": 16.0,
-  "offset_sigma_px": 12.0,
-  "density_sigma_px": 20.0,
-  "min_separation_px": 8,
-  "prior_min": 0.0,
-  "prior_max": 0.6091950931940001,
-  "prior_mean_in_footprint": 0.06974398059759498,
-  "mapped_trace_exclusion_px": 4
+  "features_total": 91,
+  "label_free_features": 88,
+  "fold_visible_relay_features": 3,
+  "mapped_trace_exclusion_px": 2.8,
+  "min_non_touching_separation_px": 2.83,
+  "target_dots": 37654,
+  "holdout_dti_quadrant_8km": 0.11563541035795659,
+  "holdout_dti_component_network": 0.020667520034307805,
+  "holdout_dti_sgmc_piedmont": 0.05284241707088758
  },
  "grid": {
   "shape": [
@@ -46,5 +50,5 @@
   "dots_recovered": true
  },
  "all_checks_pass": true,
- "fill_policy": "0.0 outside the organizer footprint; nodata unset. The portal rejected a NaN-filled variant with 'Predicted values must be in range [0, 1]' (requester-reported), so zeros are used everywhere."
+ "fill_policy": "0.0 outside the organizer footprint; nodata unset (None). Built via shared gems57.submission_writer. The portal rejected a legacy NaN-filled file (wbg3-h3pack-34k, 7,111,787 outside-footprint NaNs) with 'Predicted values must be in range [0, 1]', so all-finite zeros outside footprint are enforced everywhere."
 }

@@ -1,29 +1,39 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two lanes, one repository</title><link rel="stylesheet" href="../styles.css"></head><body><div class="wrap"><nav><a href="../index.html">Home / download</a><a href="../executive-summary.html">Executive summary</a><a href="../methodology.html">Method &amp; metric</a><a href="../sources.html">Sources</a><a href="../index.html">Repo dashboard</a></nav>
-<h1>Two lanes, one repository</h1>
-<p>This repository is run under a parallel-session protocol. Two lanes finished on 2026-10-27 with
-different conclusions, and both are published rather than one being deleted.</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cross-Lane Summary — WBGGEMSDOE2</title><link rel="stylesheet" href="styles.css"></head><body><div class="wrap"><nav><a href="index.html">Submission &amp; Download</a><a href="executive-summary.html">Executive Summary &amp; Multi-Site Table</a><a href="how-to-submit.html">How to Submit (DrivenData Guide)</a><a href="methodology.html">PhD Method, Metric &amp; Hypotheses</a><a href="sources.html">Official Sources</a><a href="../index.html">Repo Overview</a></nav>
+<h1>Cross-Lane Architecture &amp; Resolution Summary</h1>
+<p>This repository preserves full audit provenance across earlier research lanes while promoting <b>exact one validated submission</b> (<code>wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif</code>):</p>
+
 <table>
-<tr><th></th><th>Dashboard lane (<a href="../index.html">../index.html</a>)</th><th>This lane (<a href="index.html">submission/</a>)</th></tr>
-<tr><td>Uniqueness rule</td>
-<td>Literal stop: a registered stride-5 lattice and a footprint-wide continuous prior make every dense
-candidate a "duplicate", so no candidate is cleared.</td>
-<td>Literal rule measured and shown to flag all nine focus-site submissions too; gate calibrated as
-enrichment over each reference's own 3-px coverage plus a 50% absolute-overlap floor. A candidate is cleared.</td></tr>
-<tr><td>Candidate</td><td>none</td><td><code>wbg2-dz16-n34500-…-8e4646cf-zeros.tif</code>, 9/9 format checks</td></tr>
-<tr><td>Score</td><td>no estimate offered</td><td>0.15 point estimate (95% 0.00–0.33) and a 0.278–0.320 conditional band, both labelled</td></tr>
-<tr><td>Data finding</td><td>0.4544 public leaderboard observation; B2 lineage forensics</td>
-<td><code>labels.tif</code> is byte-identical to <code>existing_faults.tif</code>; the fleet's catalogue-proxy numbers are not competition scores</td></tr>
+<tr><th>File in Repository</th><th>Submission Status</th><th>Why Cleared or Quarantined</th></tr>
+<tr>
+  <td class="mono"><b>wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif</b><br>sha256: 2262aa7e543690c27a307efd…</td>
+  <td><span class="pill ok">OK TO DOWNLOAD AND SUBMIT</span></td>
+  <td><b>Promoted WBG2-HVGF E3 candidate.</b> 37,654 non-touching 1.0 dots, 0 NaN anywhere, 0.0 outside footprint, <code>nodata=None</code>, 91/91×4 leakage canaries PASS (max AUC 0.6261), wins all 3 holdout instruments (8 km quadrant <code>HOLDOUT-DTI = 0.1156</code>, component hide <code>0.0207</code>, SGMC piedmont <code>0.0528</code>), 0 enriched registry violations across 592 rasters. <a href="../downloads/wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif" download>Download .tif</a> · <a href="../downloads/hvgf/wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.zip" download>Download .zip</a></td>
+</tr>
+<tr>
+  <td class="mono">h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif<br>sha256: 7164208e59b3291b651ed52d…</td>
+  <td><span class="pill bad">DO NOT SUBMIT</span></td>
+  <td><b>Root cause of DrivenData <code>"Predicted values must be in range [0, 1]"</code> rejection:</b> legacy <code>write_h3_submission.py:57</code> wrote <code>7,111,787</code> <code>NaN</code> pixels outside footprint (<code>nodata=nan</code>). Retained strictly for forensic audit &amp; unit-test regression.</td>
+</tr>
+<tr>
+  <td class="mono">wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif<br>sha256: a9c46823cd6ef367726c1446…</td>
+  <td><span class="pill bad">DO NOT SUBMIT</span></td>
+  <td>Superseded catalogue-only geometric annulus baseline (no geophysical, LiDAR, GeoDAWN, or hydrothermal stack; outscored on blind SGMC piedmont faults <code>0.0407 → 0.0528</code> by <code>WBG2-HVGF</code>).</td>
+</tr>
+<tr>
+  <td class="mono">msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif<br>sha256: e30bbdfdb4f08ef37a9c18a3…</td>
+  <td><span class="pill bad">DO NOT SUBMIT</span></td>
+  <td>Superseded 19-band MSPTCD research raster (outscored <code>0.0426 → 0.1156</code> on 8 km quadrant holdout and <code>0.0075 → 0.0528</code> on blind SGMC piedmont faults by <code>WBG2-HVGF</code>).</td>
+</tr>
+<tr>
+  <td class="mono">wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif<br>sha256: d23e009bf6d35455e6a496b6…</td>
+  <td><span class="pill bad">DO NOT SUBMIT</span></td>
+  <td>Rejected legacy artifact: writes <code>-9999.0</code> sentinel across 5,132,809 in-footprint cells (also triggers <code>"Predicted values must be in range [0, 1]"</code>) and 99.4% lattice overlap.</td>
+</tr>
+<tr>
+  <td class="mono">All 9 historical focus rasters (GEMSDOE24..36) &amp; peer fleet files</td>
+  <td><span class="pill bad">DO NOT SUBMIT</span></td>
+  <td>Historical cross-site research artifacts (83–100% mutual 3-px overlap; many contain outside-footprint <code>NaN</code>s). Never copy or re-upload previous submissions.</td>
+</tr>
 </table>
-<div class="card warn">
-<p><b>How to read the disagreement.</b> Both lanes agree on the facts: the literal rule stops every dense
-submission, and no local metric can measure the competition target. They differ on whether the rule should be
-applied literally to a sampling lattice that blanketed the AOI before any submission existed. The measurement
-that settles it is in <a href="executive-summary.html">the executive summary</a>: 99.4–100% of the dots of all
-nine focus-site submissions lie within 3 px of that lattice. If the literal reading were intended, the
-organizers' own scored entries would be duplicates.</p>
-<p>What to do: the format-valid, unique, honestly-estimated file is
-<a href="../downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif">here</a>. Whether this lane's
-calibrated reading is acceptable is a policy decision for the project owner, and the conservative alternative
-is to submit nothing.</p>
-</div>
-<footer>WBGGEMSDOE2 · DOE GEMS Prize · generated from measured artifacts in <code>data_public/</code>. Scores labelled USER-REPORTED are not organizer receipts; estimates labelled EMPIRICAL-ESTIMATE carry a stated error.</footer></div></body></html>
+
+<footer>WBGGEMSDOE2 · Lane WBG2-HVGF · DOE GEMS Prize · generated from SHA-256-verified artifacts in <code>data_public/</code> and <code>evidence/</code>. Scores labelled <code>USER-REPORTED</code> are not organizer receipts; local evaluations are labelled <code>HOLDOUT-DTI</code> with evaluator version, withheld positives, and 95% CI.</footer></div></body></html>

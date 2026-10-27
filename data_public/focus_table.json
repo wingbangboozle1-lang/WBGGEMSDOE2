@@ -18,7 +18,7 @@
    "model_estimate": 0.2531,
    "max_overlap_vs_other_focus_sites": 1.0,
    "min_overlap_vs_other_focus_sites": 0.999,
-   "overlap_with_wbg2_candidate": 0.2107,
+   "overlap_with_wbg2_candidate": 0.1953,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -38,7 +38,7 @@
    "model_estimate": 0.2734,
    "max_overlap_vs_other_focus_sites": 0.976,
    "min_overlap_vs_other_focus_sites": 0.973,
-   "overlap_with_wbg2_candidate": 0.2127,
+   "overlap_with_wbg2_candidate": 0.1976,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -58,7 +58,7 @@
    "model_estimate": 0.2657,
    "max_overlap_vs_other_focus_sites": 1.0,
    "min_overlap_vs_other_focus_sites": 0.955,
-   "overlap_with_wbg2_candidate": 0.198,
+   "overlap_with_wbg2_candidate": 0.1943,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -78,7 +78,7 @@
    "model_estimate": 0.2584,
    "max_overlap_vs_other_focus_sites": 1.0,
    "min_overlap_vs_other_focus_sites": 0.954,
-   "overlap_with_wbg2_candidate": 0.1988,
+   "overlap_with_wbg2_candidate": 0.1937,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -98,7 +98,7 @@
    "model_estimate": 0.2537,
    "max_overlap_vs_other_focus_sites": 0.997,
    "min_overlap_vs_other_focus_sites": 0.926,
-   "overlap_with_wbg2_candidate": 0.1925,
+   "overlap_with_wbg2_candidate": 0.1934,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -118,7 +118,7 @@
    "model_estimate": 0.2544,
    "max_overlap_vs_other_focus_sites": 1.0,
    "min_overlap_vs_other_focus_sites": 0.882,
-   "overlap_with_wbg2_candidate": 0.1812,
+   "overlap_with_wbg2_candidate": 0.1851,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -138,7 +138,7 @@
    "model_estimate": 0.2544,
    "max_overlap_vs_other_focus_sites": 1.0,
    "min_overlap_vs_other_focus_sites": 0.882,
-   "overlap_with_wbg2_candidate": 0.1812,
+   "overlap_with_wbg2_candidate": 0.1851,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -158,7 +158,7 @@
    "model_estimate": 0.2418,
    "max_overlap_vs_other_focus_sites": 1.0,
    "min_overlap_vs_other_focus_sites": 0.885,
-   "overlap_with_wbg2_candidate": 0.1803,
+   "overlap_with_wbg2_candidate": 0.1887,
    "unique_vs_other_focus_sites": false
   },
   {
@@ -178,7 +178,7 @@
    "model_estimate": 0.243,
    "max_overlap_vs_other_focus_sites": 0.98,
    "min_overlap_vs_other_focus_sites": 0.867,
-   "overlap_with_wbg2_candidate": 0.1817,
+   "overlap_with_wbg2_candidate": 0.1866,
    "unique_vs_other_focus_sites": false
   }
  ]

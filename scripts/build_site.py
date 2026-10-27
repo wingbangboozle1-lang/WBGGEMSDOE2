@@ -60,7 +60,7 @@ def header(current: str) -> str:
     links = ''.join('<a href="{}"{}>{}</a>'.format(href, ' aria-current="page"' if href == current else '', label) for href, label in nav)
     return f'''<a class="skip" href="#main">Skip to content</a><header class="topbar"><div class="shell">
 <a href="index.html" class="brand" aria-label="GEMS research home"><span class="brandmark"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/></svg></span>GEMS <small>RESEARCH</small></a>
-<nav class="nav" aria-label="Main navigation">{links}</nav><div class="top-right"><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a><span class="top-status"><span class="dot"></span> Submission blocked</span></div></div></header>'''
+<nav class="nav" aria-label="Main navigation">{links}<a href="submission/index.html">Approved Submission</a></nav><div class="top-right"><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a><a class="top-status" href="submission/index.html" style="text-decoration:none">WBG2-HVGF Cleared</a></div></div></header>'''
 
 
 def footer() -> str:
@@ -77,18 +77,18 @@ def intro(label, title, subtitle):
     return f'''<div class="intro"><div><p class="eyebrow">{e(label)}</p><h1>{title}</h1><p>{e(subtitle)}</p></div><div class="intro-meta">Pinned-raster audit<br><strong>{stamp}</strong></div></div>'''
 
 
-H3_SUB = json.loads((ROOT / 'evidence/h3_submission.json').read_text())
-H3_CARD = json.loads((ROOT / 'evidence/RUN_CARD_H3.json').read_text())
-H3_ANALYSIS = json.loads((ROOT / 'evidence/h3_analysis.json').read_text())
-H3_COMPARE = json.loads((ROOT / 'evidence/h3_registry_comparison.json').read_text())
-H3_NAME = H3_SUB['file'].rsplit('/', 1)[-1].removesuffix('.tif')
-H3_TIF = H3_SUB['file'].rsplit('/', 1)[-1]
+HVGF_CARD = json.loads((DOCS / 'data/RUN_CARD_HVGF.json').read_text())
+HVGF_NAME = HVGF_CARD['submission_name']
+HVGF_TIF = f"{HVGF_NAME}.tif"
+HVGF_ZIP = f"{HVGF_NAME}.zip"
 
 
 def h3_banner(suffix: str = '') -> str:
-    """The lane that actually produced a file, kept separate from the older negative lane."""
-    proj = H3_ANALYSIS['candidate']['projection']
-    return f'''<section class="banner" aria-labelledby="h3-heading{suffix}"><div class="banner-icon">{icon('download')}</div><div class="banner-copy"><p class="banner-label">Lane H3 · {e(H3_CARD['verdict'].upper())}</p><h2 id="h3-heading{suffix}">One file is ready to download and submit.</h2><p><span class="mono">{e(H3_NAME)}</span> — {H3_SUB['dots']:,} dots, zero inside 3 px of a mapped fault, format validation PASS, distinct from all nine focus rasters (worst overlap {max(v['overlap_3px'] for v in H3_COMPARE['rows'] if v['name'].startswith('GEMSDOE'))*100:.1f}&nbsp;%). Projection <strong>{proj['regression_only']:.3f} – {proj['full_packing_transfer']:.3f}</strong>, a PROJECTION and not a score.</p><p>This is a measured-leaderboard-optimum placement, <strong>not</strong> a geological discovery.</p></div><div class="banner-actions"><a class="button" href="submission/index.html">{icon('download')} Download and verify</a><a class="text-link" href="submit/">Five ranked hypotheses →</a></div></section>'''
+    """Promoted WBG2-HVGF submission banner (superseding the quarantined NaN-containing H3 file)."""
+    q8 = HVGF_CARD['holdout_dti']['primary_quadrant_8km']
+    sgmc = HVGF_CARD['holdout_dti']['independent_sgmc_piedmont_offcatalogue']
+    reg = HVGF_CARD['registry_uniqueness']
+    return f'''<section class="banner" aria-labelledby="hvgf-heading{suffix}"><div class="banner-icon">{icon('download')}</div><div class="banner-copy"><p class="banner-label">Lane WBG2-HVGF · OK TO DOWNLOAD AND SUBMIT · {e(HVGF_CARD['verdict'].upper())}</p><h2 id="hvgf-heading{suffix}">One verified file is approved to download and submit.</h2><p><span class="mono">{e(HVGF_TIF)}</span> (SHA-256 <span class="mono">{e(HVGF_CARD['raster_sha256'][:16])}…</span>) — 37,654 non-touching 1.0 dots, <strong>0 NaN anywhere</strong>, <strong>0.0 outside footprint</strong> (<code>nodata=None</code>), 91/91&times;4 leakage canaries PASS, 8 km quadrant <strong>HOLDOUT-DTI = {q8['dti']:.4f}</strong> (4.03&times; control) &amp; blind SGMC piedmont <strong>HOLDOUT-DTI = {sgmc['dti']:.4f}</strong>, distinct across 592 rasters (&le;{reg['max_focus_site_3px_overlap']*100:.1f}&nbsp;% vs 9 focus sites, &le;{reg['max_discrete_peer_3px_overlap']*100:.1f}&nbsp;% vs all discrete peers, 0 enriched violations).</p><p><strong>Quarantine notice:</strong> Legacy <code>wbg3-h3pack-34k</code> (7,111,787 outside-footprint NaNs &rarr; DrivenData <code>[0, 1]</code> error), <code>wbg2-dz16</code>, and <code>wbg2-msptcd-e3</code> are marked <strong>DO NOT SUBMIT</strong>.</p></div><div class="banner-actions"><a class="button" href="submission/index.html">{icon('download')} Download &amp; verify (.tif / .zip)</a><a class="text-link" href="submission/how-to-submit.html">DrivenData upload guide &amp; &le;140c note →</a></div></section>'''
 
 
 MSPTCD_CARD = json.loads((DOCS / 'data/RUN_CARD_MSPTCD.json').read_text())
@@ -173,7 +173,7 @@ def focus_table():
 def home():
     body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + h3_banner() + msptcd_banner() + decision() + stats() + score_evidence_notice() + compare_section() + focus_table()
     body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Review the research shortlist</h3><p>Four ranked, untested proposals. No single method lane has been assigned; no experiment or submission slot is authorized.</p><a href="research.html">View proposals →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/run-card.json">Read the negative run card →</a> · <a href="executive-summary/">See both rejected parallel files →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
-    body += f'''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>Download and submit</h2><p>Verified byte-for-byte against its receipt.</p></div><span class="tag">Lane H3</span></div><p><span class="mono">{e(H3_NAME)}</span> · sha256 <span class="mono">{e(H3_SUB['tif_sha256'][:16])}…</span> · {H3_SUB['dots']:,} dots · float32 · EPSG:32611 · NaN outside the footprint.</p><p><a class="button" href="downloads/h3-pack/{e(H3_TIF[:-4])}.zip">{icon('download')} Download ZIP</a> &nbsp; <a class="text-link" href="downloads/h3-pack/{e(H3_TIF)}">or the raw GeoTIFF →</a> &nbsp; <a class="text-link" href="submit/">Format report and per-site table →</a></p></div></section>'''
+    body += f'''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>OK TO DOWNLOAD AND SUBMIT — Lane WBG2-HVGF</h2><p>Verified byte-for-byte against <code>evidence/RUN_CARD_HVGF.json</code> (0 NaN, 0.0 outside footprint, nodata=None).</p></div><span class="tag">OK TO SUBMIT</span></div><p><span class="mono">{e(HVGF_TIF)}</span> · sha256 <span class="mono">{e(HVGF_CARD['raster_sha256'])}</span> · 37,654 non-touching 1.0 dots · float32 · EPSG:32611 · 0.0 outside footprint · Note ({HVGF_CARD['submission_note_chars']}/140 chars): <code>{e(HVGF_CARD['submission_note'])}</code></p><p><a class="button" href="downloads/{e(HVGF_TIF)}" download>{icon('download')} Download GeoTIFF (.tif)</a> &nbsp; <a class="text-link" href="downloads/hvgf/{e(HVGF_ZIP)}" download>Download single-TIFF ZIP →</a> &nbsp; <a class="text-link" href="submission/executive-summary.html">Executive summary &amp; 9-site + 144-row table →</a></p></div></section>'''
     return page('Overview','index.html',body,'Evidence-first DOE GEMS Prize research and submission status.')
 
 

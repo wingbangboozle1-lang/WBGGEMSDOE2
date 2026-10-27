@@ -1,0 +1,147 @@
+{
+  "schema": "wbggems2.hvgf.hypotheses.v1",
+  "formulated_utc": "2026-10-27T19:15:00Z",
+  "formulated_before_experiments": true,
+  "assigned_lane": {
+    "id": "WBG2-HVGF",
+    "name": "Hydrothermal Vent-Guided Structural-Tensor & Relay Submodular Fault Discovery",
+    "max_experiments_budget": 3,
+    "shared_evaluator": "gems57-pooled-hide-v2"
+  },
+  "hypotheses": [
+    {
+      "rank": 1,
+      "id": "H-HVGF-1",
+      "title": "Structurally Guided Anisotropic Hydrothermal Plume Back-Projection & Vent-Alteration Coupling",
+      "layers": [
+        "training_features.tif: iso_grav_anom_hg (B18), tmi_hg (B3), depth_to_base_surf (B15), cond_surf (B17), det_elev (B12), det_elev_slope (B19)",
+        "DOE GDR #1391: gdr_wellspring_in_footprint.csv (temp_c, geothermquartz_c, geothermchalc_c, geothermcat_c; dist_known_fault_px blocked)",
+        "DOE GDR #1391: 2m_temperature_probe_INGENIOUS_regional_data.zip (T2m, F2mDAB)",
+        "DOE GDR #1391: paleo_geothermal_regional.zip (sinter, travertine, tufa, silicified fault breccias) + gdr_volcanic_vents_in_footprint.csv",
+        "USGS GeoDAWN (DOI 10.5066/P93LGLVQ): geodawn_rad_u8.tif (K, Th, U, TC) + geodawn_extensions_u8.tif (Th/K, U/K, U/Th, ext_TMI_up150)",
+        "USGS 3DEP: lidar_scarp_features_u8.tif (with explicit has_lidar mask), topo_10m_derived_100m_u8.tif, dem10_chi_100m_i16.tif",
+        "gems57 visible-only two-host relay anatomy (two_host_frame C1!=C2 + trace_segments_utm11.csv)"
+      ],
+      "physical_signature": "Anisotropic strike-aligned and up-gradient back-projected hydrothermal thermal/geothermometer/sinter plumes coupled with 150 m upward-continued aeromagnetic magnetite-destruction troughs, K/Th adularia-illite metasomatism halos, and smectite clay-cap conductivity along concealed Cenozoic piedmont fault relays and tips.",
+      "why_missing_from_catalogues": "Rapid Holocene alluvial-fan aggradation, eolian/playa cover, and hydrothermal silica/carbonate self-sealing obscure <1.5 m surface scarps over >75% of blind Great Basin geothermal conduits.",
+      "difference_from_existing_repo": "Zero prior WBGGEMSDOE2 lanes load DOE GDR #1391 thermal/sinter/2m-probe data, USGS GeoDAWN radiometrics, 1 m LiDAR scarps, or 10 m fluvial chi; unlike peer isotropic blurs (GEMSDOE70), H-HVGF-1 applies hydraulic up-gradient back-projection, structure-tensor strike anisotropy, coupled K/Th-demagnetization-clay-cap alteration, visible-only two-host C1!=C2 relay anatomy, and cross-strike ridge skeletonization.",
+      "non_fault_mimic": "Distal down-fan lateral groundwater outflow plumes into unfaulted playas; unfaulted high-K felsic ash-flow tuffs; Pleistocene Lake Lahontan (1332 m) and Lake Bonneville (1463 m / 1552 m) wave-cut shorelines.",
+      "expected_dti_impact": "Highest (Rank 1)",
+      "implementation_cost": "Moderate (~10 min CPU with float32 memmap)",
+      "external_sources": [
+        {
+          "name": "DOE Geothermal Data Repository #1391 (INGENIOUS Regional Data)",
+          "url": "https://gdr.openei.org/submissions/1391",
+          "doi": "https://doi.org/10.15121/1881483",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "name": "USGS GeoDAWN Airborne Magnetic and Radiometric Surveys, NW Great Basin",
+          "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+          "doi": "https://doi.org/10.5066/P93LGLVQ",
+          "license": "CC0 / US Public Domain"
+        },
+        {
+          "name": "USGS 3D Elevation Program (3DEP 1 m LiDAR & 10 m Seamless DEM)",
+          "url": "https://www.usgs.gov/3d-elevation-program",
+          "license": "US Public Domain"
+        }
+      ],
+      "status": "Tested in bounded 3-experiment ablation (E1-E3)"
+    },
+    {
+      "rank": 2,
+      "id": "H-HVGF-2",
+      "title": "Mohr-Coulomb Geodetic Principal-Strain Dilation & Slip Tendency on Subsurface Potential-Field Fault Planes",
+      "layers": [
+        "training_features.tif: geod_2ndinv (B4), geod_shearrate (B7), geod_dilatrate (B8), deq_n100a15 (B10), ieq_n100a15 (B16), iso_grav_anom_hg (B18), tmi_hg (B3), depth_to_base_surf (B15)",
+        "INGENIOUS visible-only trace_segments_utm11.csv (SLIPSENSE: RL, LL, N)"
+      ],
+      "physical_signature": "Critically stressed permeable conduits at transtensional Walker Lane / Basin-and-Range strain-transfer zones where fault-plane azimuth aligns with high geodetic shear-to-dilatation partitioning and microseismic swarm efficiency.",
+      "why_missing_from_catalogues": "Distributed transtensional shear belts (e.g., 2020 Mw 6.5 Monte Cristo Range rupture) partition slip across short discontinuous en-echelon strands below aerial-photo scarp thresholds.",
+      "difference_from_existing_repo": "WBG2-MSPTCD summed isotropic scalar strain z-scores without strike-dependent geomechanical coupling, transtensional shear-dilatation products, or visible RL/LL/N slip-sense transition fields.",
+      "non_fault_mimic": "Long-wavelength GPS station interpolation lobes and agricultural/mining groundwater pumping subsidence bowls.",
+      "expected_dti_impact": "High (Rank 2)",
+      "implementation_cost": "Low (~2 min CPU)",
+      "external_sources": [
+        {
+          "name": "GBCGE INGENIOUS Quaternary Fault & Geodetic Strain Compilation",
+          "url": "https://gbcge.org/current-projects/ingenious/",
+          "doi": "https://doi.org/10.1785/0220200371",
+          "license": "CC-BY-4.0 / Public Domain"
+        }
+      ],
+      "status": "Tested as Experiment E2 ablation increment"
+    },
+    {
+      "rank": 3,
+      "id": "H-HVGF-3",
+      "title": "Cross-Fan Fluvial Chi-ksn Disequilibrium & Interfluve 1 m LiDAR Graben Scarp Polarity",
+      "layers": [
+        "USGS 3DEP 10 m dem10_chi_100m_i16.tif (chi_step_max, chi_ksn_max, chi_log10_area, chi_zmean_m)",
+        "USGS 3DEP 10 m topo_10m_derived_100m_u8.tif (curv_prof_absmax, aspect_coherence, hs_lineament)",
+        "USGS 3DEP 1 m lidar_scarp_features_u8.tif (lidar_lapneg_max, lidar_lappos_max, lidar_upface_max, lidar_downface_max, has_lidar)"
+      ],
+      "physical_signature": "Aligned channel-steepness (ksn) and chi steps across parallel ephemeral washes paired with preserved interfluve 1 m LiDAR crest-toe Laplacian scarp dipoles and synthetic-antithetic graben polarity.",
+      "why_missing_from_catalogues": "Active desert wash braiding erases continuous scarps across channels, leaving isolated interfluve bevels omitted by photogeologic mapping.",
+      "difference_from_existing_repo": "No existing WBGGEMSDOE2 script reads 1 m LiDAR scarp polarity bands or 10 m fluvial chi/ksn grids.",
+      "non_fault_mimic": "Resistant welded-tuff / basalt caprock knickpoints and Pleistocene pluvial highstand benches (Lahontan 1332 m, Bonneville 1463 m / 1552 m).",
+      "expected_dti_impact": "Moderate-High (Rank 3)",
+      "implementation_cost": "Low-Moderate (~3 min CPU)",
+      "external_sources": [
+        {
+          "name": "USGS 3D Elevation Program (3DEP)",
+          "url": "https://www.usgs.gov/3d-elevation-program",
+          "license": "US Public Domain"
+        }
+      ],
+      "status": "Integrated in E1 geomorphology block with pluvial shoreline suppression"
+    },
+    {
+      "rank": 4,
+      "id": "H-HVGF-4",
+      "title": "Multi-Altitude Potential-Field Tilt-Angle Zero-Crossing & Upward-Continued Worm Persistence",
+      "layers": [
+        "training_features.tif: rtp (B2), tmi_hg (B3), tmi_vg (B9), iso_grav_anom_vg (B11), iso_grav_anom (B13), tmi (B14), iso_grav_anom_hg (B18), depth_to_base_surf (B15)",
+        "USGS GeoDAWN: ext_TMI_up150"
+      ],
+      "physical_signature": "Amplitude-normalized Miller-Singh tilt-angle zero-crossings (arctan(VG/HG)=0) and upward-continued horizontal-gradient worm persistence from surface TMI through 150 m to 800 m over buried intra-basin horsts.",
+      "why_missing_from_catalogues": "Intra-basin geothermal horsts (McGinness Hills / Desert Peak / Soda Lake analogs) sit beneath 300-1,500 m of unconsolidated valley fill with no surface scarp.",
+      "difference_from_existing_repo": "WBG2-MSPTCD multiplied unnormalized HG Hessian ridges without tilt-angle depth normalization or multi-altitude upward-continuation decay filtering.",
+      "non_fault_mimic": "Mesozoic pluton margins, pre-Cenozoic thrust contacts, and buried Neogene basalt flow edges.",
+      "expected_dti_impact": "Moderate (Rank 4)",
+      "implementation_cost": "Low (~2 min CPU)",
+      "external_sources": [
+        {
+          "name": "USGS GeoDAWN Aeromagnetic Data Release",
+          "url": "https://doi.org/10.5066/P93LGLVQ",
+          "license": "CC0 / US Public Domain"
+        }
+      ],
+      "status": "Integrated in E1 potential-field depth-persistence block"
+    },
+    {
+      "rank": 5,
+      "id": "H-HVGF-5",
+      "title": "3-D Magnetotelluric Mid-Crustal Fluid-Ascent Chimneys Coupled to Shallow Clay-Cap Conductivity",
+      "layers": [
+        "training_features.tif: cond_surf (B17), iso_grav_anom_hg (B18), depth_to_base_surf (B15), deq_n100a15 (B10)",
+        "USGS ScienceBase / EarthScope USArray Great Basin 3-D Magnetotelluric Resistivity Models"
+      ],
+      "physical_signature": "Sub-vertical mid-crustal low-resistivity (<10 ohm-m at 5-15 km) fluid chimneys feeding shallow smectite clay caps along deep basement transfer faults.",
+      "why_missing_from_catalogues": "Deep magmatic-hydrothermal roots and ductile-brittle accommodation corridors lack sharp surface scarps.",
+      "difference_from_existing_repo": "Existing scripts only inspect shallow cond_surf (B17) without 3-D crustal MT depth slices.",
+      "non_fault_mimic": "Saline evaporitic lithium/borate playas and Paleozoic graphitic marine black shales (Roberts Mountains allochthon).",
+      "expected_dti_impact": "Low-Moderate at 300 m DTI due to 15-70 km MT station spacing (Rank 5)",
+      "implementation_cost": "High (3-D voxel regridding; sciencebase.gov host blocked inside sandbox)",
+      "external_sources": [
+        {
+          "name": "USGS Great Basin 3-D Magnetotelluric Models & EarthScope USArray EMTF",
+          "url": "https://www.sciencebase.gov/catalog/item/5fb70a9fd34eb413d5e14977",
+          "license": "US Public Domain / CC0"
+        }
+      ],
+      "status": "Deferred (documented future work)"
+    }
+  ]
+}

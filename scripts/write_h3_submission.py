@@ -59,20 +59,30 @@ def main() -> int:
         raise SystemExit(f"{bad} dots fall outside the data footprint")
 
     data = np.where(footprint & dots, 1.0, 0.0).astype(np.float32)
-    data[~footprint] = np.nan
-    profile.update(dtype="float32", count=1, nodata=float("nan"), compress="deflate")
 
-    outs = [ROOT / "docs/downloads" / f"{name}.tif", ROOT / "downloads" / f"{name}.tif"]
-    for out in outs:
-        out.parent.mkdir(parents=True, exist_ok=True)
-        with rasterio.open(out, "w", **profile) as dst:
-            dst.write(data, 1)
-            dst.update_tags(COMMENT=note, RUN="H3-PACK")
+    # Delegate to the shared gems57.submission_writer (no NaN outside footprint; nodata=None)
+    from prepare_data import TEMPLATE, restore_template
+    restore_template(False)
+    sys.path.insert(0, str(TEMPLATE / "src"))
+    from gems57 import submission_writer
+    with rasterio.open(ROOT / "data/official/existing_faults.tif") as cf:
+        cat = (cf.read(1) > 0) & footprint
 
-    tif = outs[0]
+    tif = ROOT / "docs/downloads" / f"{name}.tif"
+    submission_writer.write_submission(
+        path=tif,
+        prediction=data,
+        sample=SAMPLE,
+        footprint=footprint,
+        note=note,
+        name=name,
+        catalogue=cat,
+    )
+    dl_copy = ROOT / "downloads" / f"{name}.tif"
+    dl_copy.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(tif, dl_copy)
+    outs = [tif, dl_copy]
     zpath = tif.with_suffix(".zip")
-    with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.write(tif, arcname=tif.name)
 
     report = validate_submission(tif, SAMPLE)
     report.update(

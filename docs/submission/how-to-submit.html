@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How to Submit to DrivenData — WBGGEMSDOE2</title><link rel="stylesheet" href="styles.css"></head><body><div class="wrap"><nav><a href="index.html">Submission &amp; Download</a><a href="executive-summary.html">Executive Summary &amp; Multi-Site Table</a><a href="how-to-submit.html">How to Submit (DrivenData Guide)</a><a href="methodology.html">PhD Method, Metric &amp; Hypotheses</a><a href="sources.html">Official Sources</a><a href="../index.html">Repo Overview</a></nav>
+<h1>How to Submit to DrivenData — Step-by-Step Guide &amp; Pre-Upload Verification</h1>
+<p class="dim">Official competition portal: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">https://www.drivendata.org/competitions/306/competition-doe-gems/</a> · Official format specification: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">Problem Page #submission-format</a>.</p>
+
+<div class="card verdict">
+  <p style="margin:0 0 6px"><span class="pill ok">OK TO DOWNLOAD AND SUBMIT</span></p>
+  <h2 style="margin:0 0 8px;border:0;padding:0">1. Download the Single Approved Submission File</h2>
+  <p>Download either the standalone GeoTIFF or the single-TIFF ZIP archive below (DrivenData accepts either a single <code>.tif</code> or a <code>.zip</code> containing one <code>.tif</code>):</p>
+  <a class="dl" href="../downloads/wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif" download>⬇ Download wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif</a>
+  <a class="dl sec" href="../downloads/hvgf/wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.zip" download>⬇ Download wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.zip</a>
+  <ul>
+    <li><b>Unique Submission Name:</b> <code>wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros</code> (encodes lane <code>wbg2-hvgf</code>, mechanism <code>vent-relay-submod</code>, support <code>37654d</code>, UTC timestamp <code>20261027T194500Z</code>, surface hash prefix <code>543811e3</code>, and outside-footprint policy <code>zeros</code>).</li>
+    <li><b>Expected GeoTIFF SHA-256:</b> <code>2262aa7e543690c27a307efdd3a0bd15357cd917bac265da32b8a3cf792c4080</code> (136,232 bytes)</li>
+    <li><b>Expected Single-TIFF ZIP SHA-256:</b> <code>dce3f3728c67ea23a780c312561bf998a2773596b9a0fbc66fe3fbabf54acc9e</code></li>
+  </ul>
+</div>
+
+<h2>2. Optional Local Checksum Verification (1 Command)</h2>
+<p>Before uploading, you can confirm your browser did not alter or re-save the bytes:</p>
+<div class="note-box">shasum -a 256 wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif
+# Expected: 2262aa7e543690c27a307efdd3a0bd15357cd917bac265da32b8a3cf792c4080</div>
+<p class="warn"><b>Important:</b> Never open and re-save the GeoTIFF in Preview, Photoshop, or a GIS GUI with default NoData export settings — doing so can inject <code>NaN</code> or <code>-9999</code> NoData pixels and trigger <code>"Predicted values must be in range [0, 1]"</code>.</p>
+
+<h2>3. Upload on DrivenData &amp; Paste the &le;140-Character Note</h2>
+<ol>
+  <li>Sign in to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData — Find the Fault: DOE GEMS Prize</a> and open <b>Submissions → Make new submission</b>.</li>
+  <li>Check your remaining weekly submission allowance on the upload form before clicking Submit (this repository spent <b>0</b> live competition slots).</li>
+  <li>Attach <code>wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.tif</code> (or <code>wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros.zip</code>).</li>
+  <li>Paste this exact <b>116-character</b> note (&le;140-character limit) into the optional submission comment/description box so the run is uniquely identifiable on your Submissions page:
+    <div class="note-box">WBG2-HVGF E3: OOF hydrothermal vent back-proj + K/Th-demag + 1m/10m scarp/chi + 2-host relay submod (37654d, 0 NaN).</div>
+  </li>
+  <li>Click <b>Submit</b> and save the timestamp + organizer-confirmed score receipt once scoring completes.</li>
+</ol>
+
+<h2>4. Why This File Cannot Trigger <code>"Predicted values must be in range [0, 1]"</code></h2>
+<table>
+<tr><th>Official DrivenData Requirement</th><th>Legacy Broken H3 File (<code>DO NOT SUBMIT</code>)</th><th>Promoted <code>WBG2-HVGF</code> File (<code>OK TO SUBMIT</code>)</th></tr>
+<tr><td>CRS = <code>EPSG:32611</code></td><td>EPSG:32611</td><td class="ok">EPSG:32611 (PASS)</td></tr>
+<tr><td>Dimensions = <code>3730 × 3292</code>, 100 m pixel grid</td><td>3730 × 3292</td><td class="ok">3730 × 3292, exact affine match (PASS)</td></tr>
+<tr><td>Single band, <code>float32</code></td><td>1 band, float32</td><td class="ok">1 band, float32 (PASS)</td></tr>
+<tr><td>All values in <code>[0.0, 1.0]</code> across raw raster array</td><td class="bad">FAIL — 7,111,787 <code>NaN</code> pixels outside footprint (<code>NaN &gt;= 0</code> is <code>False</code>!)</td><td class="ok">PASS — min = 0.0, max = 1.0, 0 NaN, 0 Inf anywhere, <code>nodata=None</code></td></tr>
+</table>
+<footer>WBGGEMSDOE2 · Lane WBG2-HVGF · DOE GEMS Prize · generated from SHA-256-verified artifacts in <code>data_public/</code> and <code>evidence/</code>. Scores labelled <code>USER-REPORTED</code> are not organizer receipts; local evaluations are labelled <code>HOLDOUT-DTI</code> with evaluator version, withheld positives, and 95% CI.</footer></div></body></html>

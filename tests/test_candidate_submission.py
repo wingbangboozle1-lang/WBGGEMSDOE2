@@ -38,9 +38,14 @@ def test_exactly_one_file_is_cleared_and_the_rest_are_labeled_rejected():
     assert cleared in tifs
     rejected = json.loads((ROOT / 'evidence' / 'final_candidate.json').read_text())
     marked = {Path(rejected['file']).name}
-    assert tifs - {cleared} <= marked | {'wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif'}
+    superseded_or_rejected = marked | {
+        'wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif',
+        'wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif',
+    }
+    assert tifs - {cleared} <= superseded_or_rejected
     note = (ROOT / 'docs' / 'downloads' / 'README.txt').read_text()
     assert cleared in note and 'DO NOT SUBMIT' in note
+    assert 'wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif' in note
 
 
 def test_candidate_sha256_matches_the_bytes_on_disk():

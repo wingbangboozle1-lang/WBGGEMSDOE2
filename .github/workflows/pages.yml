@@ -58,6 +58,8 @@ jobs:
           python scripts/build_hypotheses.py
           python scripts/build_run_card.py
           python scripts/build_site.py
+          python scripts/build_site_v2.py
+          python scripts/build_submit_page.py
           python scripts/build_site_data.py
           python scripts/build_msptcd_site.py
       - name: Stage the same URL layout as legacy Pages

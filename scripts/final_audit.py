@@ -68,6 +68,18 @@ def main() -> int:
     reg = json.loads((ROOT / "data_public" / "registry_index_snapshot.json").read_text())
     exact_registry_hit = cand["sha256"] in {r["sha256"] for r in reg["rasters"]}
 
+    dy_g, dx_g = np.mgrid[-RADIUS : RADIUS + 1, -RADIUS : RADIUS + 1]
+    d_pairs = [(int(dy), int(dx)) for dy, dx in zip(dy_g.ravel(), dx_g.ravel()) if dy * dy + dx * dx <= RADIUS * RADIUS]
+    H_g, W_g = mine.shape
+
+    def _halo_r(sup: np.ndarray) -> np.ndarray:
+        out = np.zeros((H_g, W_g), dtype=bool)
+        for dy, dx in d_pairs:
+            ys0, ys1 = max(0, dy), min(H_g, H_g + dy)
+            xs0, xs1 = max(0, dx), min(W_g, W_g + dx)
+            out[ys0:ys1, xs0:xs1] |= sup[max(0, -dy) : min(H_g, H_g - dy), max(0, -dx) : min(W_g, W_g - dx)]
+        return out
+
     rows = []
     for path in sorted((ROOT / "data_public" / "rasters").glob("*.tif")):
         try:
@@ -80,9 +92,9 @@ def main() -> int:
         support = np.isfinite(other) & (other > 0)
         if not support.any():
             continue
-        dist = ndi.distance_transform_edt(~support)
-        coverage = float((dist[footprint] <= RADIUS).sum()) / footprint_n
-        overlap = float((dist[my_support] <= RADIUS).mean())
+        within_r = _halo_r(support)
+        coverage = float(within_r[footprint].sum()) / footprint_n
+        overlap = float(within_r[my_support].mean())
         b = ndi.gaussian_filter(np.nan_to_num(other.astype(np.float32)), SMOOTH_SIGMA_PX).ravel()[sample]
         corr = float(np.corrcoef(a, b)[0, 1]) if a.std() > 0 and b.std() > 0 else 0.0
         is_focus = any(t.lower() in path.name.lower() for t in FOCUS_TOKENS.values())

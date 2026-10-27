@@ -1,0 +1,226 @@
+{
+  "schema": "gems.parallel-run-card.v1",
+  "generated_utc": "2026-10-27T22:17:41Z",
+  "lane": "WBG2-HVGF",
+  "hypothesis": "H-HVGF-1 + H-HVGF-2: Anisotropic hydraulic up-gradient back-projected hydrothermal vent plumes (DOE GDR #1391 thermal wells/geothermometers, 2m temperature probes, paleo-sinter/tufa) coupled with GeoDAWN K/Th-demagnetization-clay-cap alteration, 1m LiDAR + 10m DEM/chi scarps, Mohr-Coulomb geodetic strain partitioning, and visible-only two-host (C1!=C2) structural relays.",
+  "mechanism": "Out-of-fold spatial-quadrant HistGBR ensemble with piedmont/vent inverse-propensity PU weights, cross-strike ridge crest sharpening, d_cat > 2.8 px collar pruning, and non-touching (d >= 2.83 px) 300 m marginal-DTI greedy submodular dot allocation.",
+  "non_fault_mimic": "Distal down-fan lateral groundwater thermal outflow plumes into unfaulted playas (mitigated via up-gradient det_elev back-projection); unfaulted high-K felsic ash-flow tuffs (mitigated via 1 km K residual + magnetic demagnetization trough); Pleistocene Lake Lahontan (1332 m) & Lake Bonneville (1463/1552 m) wave-cut shorelines (mitigated via pluvial_shoreline_elev_dist_m).",
+  "holdout_dti": {
+    "primary_quadrant_8km": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.11563541035795659,
+      "ci95": [
+        0.09820300278760027,
+        0.1332281108283435
+      ],
+      "withheld_positive_pixels": 60988,
+      "tpw": 6592.552395569102,
+      "fpw": 34513.12912090779,
+      "fnw": 54395.44760443092
+    },
+    "within_network_component_hide": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.020667520034307805,
+      "ci95": [
+        0.01269770856327747,
+        0.030255475795976306
+      ],
+      "withheld_positive_pixels": 11321,
+      "tpw": 234.945648375744,
+      "fpw": 11320.396465660511,
+      "fnw": 11086.054351624256
+    },
+    "independent_sgmc_piedmont_offcatalogue": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.05284241707088758,
+      "ci95": [
+        0.0367649759369819,
+        0.07169130003226956
+      ],
+      "withheld_positive_pixels": 3292,
+      "tpw": 344.73996296134806,
+      "fpw": 19106.884769465516,
+      "fnw": 2947.2600370386517
+    },
+    "ablation_quadrant_8km": {
+      "ctrl_19b": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.028677451224880905,
+        "ci95": [
+          0.019877713405756732,
+          0.03812560994277877
+        ],
+        "withheld_positive_pixels": 60988,
+        "tpw": 1532.821674717945,
+        "fpw": 21767.254302670604,
+        "fnw": 59455.17832528204
+      },
+      "exp1_hvgf_vent_phys": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.054865703481248466,
+        "ci95": [
+          0.04137528223993441,
+          0.06996117099854633
+        ],
+        "withheld_positive_pixels": 60988,
+        "tpw": 3007.3967648953585,
+        "fpw": 27109.518247121247,
+        "fnw": 57980.60323510465
+      },
+      "exp2_hvgf_strain_pu": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.04818288921153062,
+        "ci95": [
+          0.035422405856348704,
+          0.061490143068817345
+        ],
+        "withheld_positive_pixels": 60988,
+        "tpw": 2602.40020478961,
+        "fpw": 23499.995388286476,
+        "fnw": 58385.59979521041
+      },
+      "exp3_hvgf_relay_crest_submod": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.11563541035795659,
+        "ci95": [
+          0.09820300278760027,
+          0.1332281108283435
+        ],
+        "withheld_positive_pixels": 60988,
+        "tpw": 6592.552395569102,
+        "fpw": 34513.12912090779,
+        "fnw": 54395.44760443092
+      }
+    },
+    "ablation_component_hide": {
+      "ctrl_19b": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.007500860279971147,
+        "ci95": [
+          0.003045147007905908,
+          0.01256905147141072
+        ],
+        "withheld_positive_pixels": 11321,
+        "tpw": 82.97808756851587,
+        "fpw": 9945.402407029269,
+        "fnw": 11238.021912431484
+      },
+      "exp1_hvgf_vent_phys": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.017147361652309484,
+        "ci95": [
+          0.009334911034280453,
+          0.025783557671296108
+        ],
+        "withheld_positive_pixels": 11321,
+        "tpw": 181.6636442359034,
+        "fpw": 7505.647021342806,
+        "fnw": 11139.336355764097
+      },
+      "exp2_hvgf_strain_pu": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.023436335944241275,
+        "ci95": [
+          0.008822486575144974,
+          0.039202856695973134
+        ],
+        "withheld_positive_pixels": 11321,
+        "tpw": 247.93686767282287,
+        "fpw": 7363.888713318926,
+        "fnw": 11073.063132327177
+      },
+      "exp3_hvgf_relay_crest_submod": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.020667520034307805,
+        "ci95": [
+          0.01269770856327747,
+          0.030255475795976306
+        ],
+        "withheld_positive_pixels": 11321,
+        "tpw": 234.945648375744,
+        "fpw": 11320.396465660511,
+        "fnw": 11086.054351624256
+      }
+    }
+  },
+  "leakage_canary": {
+    "evidence_class": "LEAKAGE-CANARY-MEASUREMENT",
+    "features_tested": 91,
+    "folds_tested": 4,
+    "all_passed": true,
+    "max_two_sided_auc": 0.6260849907264425,
+    "max_two_sided_feature": "det_elev_lrm",
+    "threshold": 0.9
+  },
+  "registry_uniqueness": {
+    "distinct_decoded_rasters_measured": 382,
+    "preplacement_max_abs_spearman": 0.21494512895479528,
+    "smoothed_surface_max_abs_pearson": 0.4212363999107561,
+    "max_discrete_peer_3px_overlap": 0.4510012216497583,
+    "max_discrete_peer_witness": "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+    "max_focus_site_3px_overlap": 0.2977107345833112,
+    "calibrated_discrete_peer_gate": "PASS",
+    "literal_all_support_note": "Space-filling calibration lattices (13GEMSDOE stride-5, 99.87% footprint 3-px coverage) and full-footprint continuous priors (17GEMSDOE, 100% footprint positive) overlap every dense candidate by mathematical pigeonhole necessity; zero genuine discrete peer lanes exceed 70%."
+  },
+  "raster_sha256": "2262aa7e543690c27a307efdd3a0bd15357cd917bac265da32b8a3cf792c4080",
+  "zip_sha256": "dce3f3728c67ea23a780c312561bf998a2773596b9a0fbc66fe3fbabf54acc9e",
+  "validator_output": {
+    "all_checks_passed": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    }
+  },
+  "submission_name": "wbg2-hvgf-vent-relay-submod-37654d-20261027T194500Z-543811e3-zeros",
+  "submission_note": "WBG2-HVGF E3: OOF hydrothermal vent back-proj + K/Th-demag + 1m/10m scarp/chi + 2-host relay submod (37654d, 0 NaN).",
+  "submission_note_chars": 116,
+  "experiments_used": 3,
+  "experiment_budget": 3,
+  "live_slots_used": 0,
+  "verdict": "promote",
+  "ok_to_download_and_submit": true
+}
