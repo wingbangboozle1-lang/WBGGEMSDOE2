@@ -8,7 +8,7 @@ No experiment was run in this review lane. The qualitative ranking below is a ju
 
 The proposals below are not implemented or tested as described in the reviewed MSPTCD campaign or this review lane. They are not claims of fleet-wide or scientific novelty: the pinned registry is incomplete and all nine priority repositories have changed since their last audited refs. Previous H1 depth-shifted gravity/magnetics and H2 conductive-flank asymmetry are retired from this untried shortlist because MSPTCD actually implemented closely related features.
 
-The supplied feature-layer names are from the hash-checked owner-mirrored 19-band manifest, not an authenticated DrivenData download. This session reverified the owner-mirrored stack and 19 raw bands in ignored local storage, which may not persist; the derived shared feature bank remains absent. The official feature description and owner-mirror band metadata disagree about the depth layer; retain the official term ‘depth to conductive base’ unless original metadata resolves it.
+The supplied feature-layer names are from the hash-checked owner-mirrored 19-band manifest, not an authenticated DrivenData download. The release-review session restored and reverified the owner-mirrored stack and 19 raw bands in ignored local storage, which may not persist; the derived shared feature bank remains absent. The official feature description and owner-mirror band metadata disagree about the depth layer; retain the official term ‘depth to conductive base’ unless original metadata resolves it.
 
 ## Qualitative ranking
 
