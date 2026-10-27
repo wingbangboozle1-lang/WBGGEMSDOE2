@@ -124,6 +124,31 @@ def test_literal_novelty_has_no_saturation_exemption(shared):
     assert u.dot_overlap(mine,full)==1
 
 
+def test_finite_reference_nodata_is_not_part_of_footprint(shared, tmp_path, monkeypatch):
+    import validate_submission
+    tr = from_origin(243350, 4508550, 100, 100)
+    sample, candidate = tmp_path / 'sample.tif', tmp_path / 'candidate.tif'
+    reference = np.ones((5, 6), np.float32)
+    reference[0, 0] = -9999.0  # finite but explicitly masked by the reference
+    with rasterio.open(sample, 'w', driver='GTiff', height=5, width=6, count=1,
+                       dtype='float32', crs='EPSG:32611', transform=tr, nodata=-9999) as ds:
+        ds.write(reference, 1)
+    _raster(candidate, np.zeros((5, 6), np.float32), tr)
+    monkeypatch.setattr(validate_submission, 'SAMPLE_SHA', validate_submission.digest(sample))
+    report = validate_submission.run(candidate, sample)
+    assert report['ok'] is True
+    assert report['no_nan_inside_footprint'] is True
+    assert report['ok_to_submit'] is False
+    # A positive value at the finite, masked reference cell is outside the
+    # footprint and must be rejected. An isfinite-only reference misses it.
+    outside_positive = np.zeros((5, 6), np.float32)
+    outside_positive[0, 0] = 1
+    _raster(candidate, outside_positive, tr)
+    report = validate_submission.run(candidate, sample)
+    assert report['mass_outside_footprint'] == 1
+    assert report['ok'] is False
+
+
 def test_masked_interior_known_shared_gap_is_a_supplemental_stop(shared, tmp_path, monkeypatch):
     # Shared gate sees finite zeros but ignores their in-footprint nodata mask.
     # Do not patch the pinned code here: upstream fix is still required.

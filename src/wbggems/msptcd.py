@@ -1,16 +1,17 @@
 """Multi-Scale Potential-Field Tilt-Curvature & Conductive-Base Discontinuity (MSPTCD).
 
-Implements label-free geophysical, topographic, radiometric, electrical, and geodetic
-structural transforms on the cached 19-band GeoDAWN 100 m stack (EPSG:32611).
+Implements historical label-free structural transforms on an owner-mirrored
+19-band stack; this module is not an authorized candidate-generation entry point.
 
-Crucial metadata/provenance notes verified from the raw raster bytes:
-- Band 6 (labeled ``tc`` in mirror descriptions as 'Tilt angle or total curvature')
-  has strictly positive values (q01=7.64, median=18.49, q99=29.02), matching the
-  official DrivenData problem page's GeoDAWN *total radiometric counts per second*
-  channel rather than a [-pi/2, pi/2] magnetic tilt angle. True potential-field
-  tilt angles (Miller & Singh, 1994) are therefore computed directly from vertical
-  and horizontal potential-field derivatives (Bands 2, 3, 9 for magnetics; Bands 5,
-  11, 13, 18 for isostatic gravity).
+Metadata/provenance caveat: Band 6 is labeled ``tc`` and described as tilt or
+curvature in the mirror, while the official page illustrates a radiometric tc
+layer. The identity and units remain unresolved without authenticated metadata.
+There are 3,073 masked NoData cells within the reference footprint; among the
+5,164,300 valid cells none is negative. Those numbers do not prove physical band
+identity or that a tilt angle must have any particular sign distribution. The
+historical name ``tc_radiometric`` is retained for receipt reproducibility only.
+Potential-field tilt transforms below are computed from potential-field
+horizontal/vertical derivatives; they do not authenticate band 6.
 - Band 15 (``depth_to_base_surf``) is described on the official competition page as
   depth to conductive base surface (mirror text says basement); no geological
   equivalence is assumed, so all transforms treat it strictly as an electrical/cover
@@ -29,7 +30,7 @@ RAW_BAND_NAMES: tuple[str, ...] = (
     "tmi_hg",               # 03
     "geod_2ndinv",          # 04
     "iso_grav_anom_slope",  # 05
-    "tc_radiometric",       # 06 (GeoDAWN total radiometric counts; see module note)
+    "tc_radiometric",       # 06 historical variable name; physical identity unverified
     "geod_shearrate",       # 07
     "geod_dilaterate",      # 08
     "tmi_vg",               # 09

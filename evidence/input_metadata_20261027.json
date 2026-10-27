@@ -1,0 +1,30 @@
+{
+  "feature_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+  "feature_bytes": 418912844,
+  "feature_bands": 19,
+  "band_6_description_from_mirror": "tc - Tilt angle or total curvature - magnetic field derivative for edge detection",
+  "band_6_nodata": -3.4028234663852886e+38,
+  "reference_footprint_cells": 5167373,
+  "band_6_masked_inside_reference_footprint": 3073,
+  "band_6_raw_negative_inside_reference_footprint": 3073,
+  "band_6_valid_negative_inside_reference_footprint": 0,
+  "band_6_valid_cells_inside_reference_footprint": 5164300,
+  "band_6_valid_min": 2.9534237384796143,
+  "band_6_valid_max": 88.56654357910156,
+  "band_6_valid_q01_median_q99": [
+    7.722299365997313,
+    18.48169994354248,
+    29.100453147888167
+  ],
+  "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "catalogue_sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+  "sample_positive_pixels": 60988,
+  "catalogue_positive_pixels": 60988,
+  "sample_positives_equal_catalogue_positives": true,
+  "evidence_class": "LOCAL-OWNER-MIRROR-MEASUREMENT",
+  "authenticated_organizer_copy": false,
+  "band_6_identity": "UNRESOLVED: mirrored metadata says tilt/curvature; valid values and the official radiometric illustration do not independently identify this band",
+  "sample_warning": "Official problem page describes its sample as predicting fault absence; this owner-mirror sample's positive mask equals the mirrored catalogue. Identity with current organizer sample is not verified.",
+  "experiments_run": 0,
+  "generated_utc": "2026-10-27T19:01:48.913651+00:00"
+}
