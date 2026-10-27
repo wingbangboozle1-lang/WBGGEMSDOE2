@@ -49,6 +49,21 @@ def test_hypothesis_sources_are_consistent_across_site_surfaces():
     assert load('site/data/research_hypotheses.json') == data
 
 
+def test_b2_score_explainer_separates_lineage_from_claims_and_keeps_stop():
+    html = (ROOT / 'docs/research/why-b2-scored-2778.html').read_text()
+    markdown = (ROOT / 'docs/research/why-b2-scored-2778.md').read_text()
+    archive = (ROOT / 'docs/research/hypotheses_v2.md').read_text()
+    assert 'USER-REPORTED historical claim' in html
+    assert 'not a per-file receipt' in html
+    assert 'No defensible score estimate' in html
+    assert 'DO NOT SUBMIT' in html and 'UNASSIGNED' in html
+    assert 'nearby withheld truth may matter' in html
+    assert 'the method lane remains UNASSIGNED' in markdown
+    assert 'H1 is not nominated or authorized' in markdown
+    assert 'H1 is not nominated or authorized' in archive
+    assert 'no next experiment or slot is selected' in archive.lower()
+
+
 def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():
     ledger = load('docs/data/leaderboard.json')
     assert ledger['status'] == 'stale'

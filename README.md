@@ -1,6 +1,6 @@
 # GEMS Fieldnotes
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [B2 lineage and score-claim analysis](docs/research/why-b2-scored-2778.html), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
 
 ## Start every session here
 
@@ -40,7 +40,7 @@ PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_ev
 python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
 
-Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
+Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DrivenData credentials are never requested or stored.
 
 `python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters. The concurrent `docs/` dashboard and `site/` fieldnotes both publish byte-identical copies of the single canonical run card; `docs/EXECUTIVE_SUMMARY.md` and `docs/RUN_CARD.json` are explicitly superseded snapshots.
 
