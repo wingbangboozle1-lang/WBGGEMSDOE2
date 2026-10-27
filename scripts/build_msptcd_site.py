@@ -66,8 +66,8 @@ def render_shell(title: str, current: str, body: str, desc: str) -> str:
         <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
         <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
         <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
-        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
-        <a href="../submit/index.html">Sibling H3-PACK lane</a>
+        <a href="../submission/index.html">Historical DZ-16 research archive</a> &nbsp;·&nbsp;
+        <a href="../submit/index.html">Historical H3-PACK research archive</a>
       </div>
     </div>
   </footer>
@@ -98,6 +98,7 @@ def main() -> int:
     d2 = res["paired_vs_ctrl_19b"]["exp2_msptcd_strain_pu"]
     d3 = res["paired_vs_ctrl_19b"]["exp3_msptcd_submod_greedy"]
     art = res["artifact"]
+    holdout = card["holdout"]
     tif_rel = "../" + art["tif_path"].removeprefix("docs/")
     zip_rel = "../" + art["zip_path"].removeprefix("docs/")
     rcpt_rel = "../" + art["receipt_path"].removeprefix("docs/")
@@ -154,7 +155,7 @@ def main() -> int:
     <div class="intro">
       <div>
         <p class="eyebrow">Fourth Lane · 31-Feature Real-Geophysics Campaign</p>
-        <h1>WBG2-MSPTCD: +81.8% Zero-Leakage HOLDOUT-DTI</h1>
+        <h1>WBG2-MSPTCD research — not submission-ready</h1>
         <p>Full 19-band GeoDAWN/USGS/DOE geophysical training + 12 multi-scale subsurface potential-field tilt, cross-physics concordance, flank asymmetry, and Hessian ridge operators, evaluated on the unmodified <code>57GEMSDOE@822a0ce5</code> buffered whole-segment holdout harness.</p>
       </div>
       <div class="intro-meta">Campaign completed<br><strong>2026-10-27 UTC</strong></div>
@@ -164,20 +165,20 @@ def main() -> int:
       <div class="banner-copy">
         <p class="banner-label">Fail-Closed Protocol Verdict · NEGATIVE STOP (0 Competition Slots Spent)</p>
         <h2 id="msptcd-decision">DO NOT SUBMIT under literal all-registry gate — Research GeoTIFF verified &amp; archived</h2>
-        <p><code>{e(art['stem'])}</code> (<code>{art['dots']:,}</code> off-catalogue dots, SHA-256 <code>{e(art['tif_sha256'][:16])}…</code>) passes all 9 official GeoTIFF byte checks, passes <strong>124 / 124</strong> single-feature holdout leakage canaries (max two-sided ROC-AUC <code>{can['max_two_sided_auc']:.4f} &lt;= 0.90</code>), is distinct under the 70% 3-px rule from <strong>all 9 focus champions</strong> (max <code>68.06%</code> on <code>GEMSDOE27</code>, <code>64.45%</code> on <code>GEMSDOE32</code>) and <strong>both sibling WBGGEMSDOE2 lanes</strong> (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and achieves <strong>+81.8% HOLDOUT-DTI</strong> over the 19-band control. Under the literal all-registry rule it halts fail-closed on <code>13GEMSDOE</code> (<code>100.00%</code> stride-5 lattice), continuous priors (<code>17GEMSDOE</code>/<code>WBGGEMSDOE1</code> <code>100.00%</code>), and <code>GEMSDOE27_H31</code> (<code>78.34%</code>).</p>
+        <p><code>{e(art['stem'])}</code> (<code>{art['dots']:,}</code> off-catalogue dots, SHA-256 <code>{e(art['tif_sha256'][:16])}…</code>) passes the recorded local GeoTIFF byte checks and <strong>124 / 124</strong> single-feature leakage canaries (max two-sided ROC-AUC <code>{can['max_two_sided_auc']:.4f} &lt;= 0.90</code>). Its measured overlap is below 70% against all nine focus champions and both sibling research candidates, but the complete literal-registry check stops on <code>13GEMSDOE</code>, continuous-prior witnesses, and <code>GEMSDOE27_H31</code>. The research-lane <strong>HOLDOUT-DTI = {holdout['dti']:.6f}</strong> vs matched control <strong>{holdout['control_19b_dti']:.6f}</strong>, evaluator <code>{e(holdout['evaluator_version'])}</code>, <code>{holdout['withheld_positive_pixels']:,}</code> withheld positives, candidate 95% CI <code>[{holdout['ci95'][0]:.6f}, {holdout['ci95'][1]:.6f}]</code>; control 95% CI <code>[{holdout['control_19b_ci95'][0]:.6f}, {holdout['control_19b_ci95'][1]:.6f}]</code>. This is local validation only—not a leaderboard score or authorization. The TIFF and ZIP links below are <strong>RESEARCH ARTIFACTS — DO NOT SUBMIT</strong>.</p>
       </div>
       <div class="actions">
         <a class="button" href="{e(zip_rel)}">Research ZIP (DO NOT SUBMIT)</a>
-        <a class="text-link" href="{e(tif_rel)}">Raw GeoTIFF (71 KB) →</a>
+        <a class="text-link" href="{e(tif_rel)}">Research GeoTIFF — DO NOT SUBMIT (71 KB) →</a>
         <a class="text-link" href="{e(rcpt_rel)}">JSON Receipt →</a>
       </div>
     </section>
 
     <section class="stats" aria-label="Key WBG2-MSPTCD metrics">
       <article class="stat">
-        <div class="stat-top">Winning Holdout Arm (EXP-3)</div>
+        <div class="stat-top">EXP-3 local holdout result</div>
         <div class="stat-value">{exp3['dti']:.4f}</div>
-        <div class="stat-sub"><strong>HOLDOUT-DTI</strong> · 95% CI [{exp3['ci95'][0]:.4f}, {exp3['ci95'][1]:.4f}] · +81.8% vs 19-band control ({ctrl['dti']:.4f})</div>
+        <div class="stat-sub"><strong>HOLDOUT-DTI</strong> · evaluator {e(holdout['evaluator_version'])} · {holdout['withheld_positive_pixels']:,} withheld positives · 95% CI [{exp3['ci95'][0]:.4f}, {exp3['ci95'][1]:.4f}] · control HOLDOUT-DTI {ctrl['dti']:.4f}, CI [{holdout['control_19b_ci95'][0]:.4f}, {holdout['control_19b_ci95'][1]:.4f}]</div>
       </article>
       <article class="stat">
         <div class="stat-top">Leakage Canary Gate</div>
@@ -190,9 +191,9 @@ def main() -> int:
         <div class="stat-sub">64.45% vs GEMSDOE32 · 27.36% vs DZ-16 · 20.59% vs H3-PACK</div>
       </article>
       <article class="stat">
-        <div class="stat-top">Live Public Leaderboard #1</div>
+        <div class="stat-top">Public leaderboard value observed</div>
         <div class="stat-value">0.4544</div>
-        <div class="stat-sub">ORGANIZER-PUBLISHED SNAPSHOT (2026-10-27 · xiaofanhu)</div>
+        <div class="stat-sub">ORGANIZER-PUBLISHED · observed 2026-10-27 (exact retrieval time unavailable); not a per-file receipt</div>
       </article>
     </section>
 
@@ -207,8 +208,7 @@ def main() -> int:
               <th>Method Summary</th>
               <th>Pooled HOLDOUT-DTI</th>
               <th>95% Spatial CI</th>
-              <th>Paired Δ vs CTRL-19B (95% CI)</th>
-              <th>Detached Splay DTI (≥400 m)</th>
+              <th>Paired HOLDOUT-DTI Δ vs CTRL-19B (95% CI)</th>
             </tr>
           </thead>
           <tbody>
@@ -218,7 +218,6 @@ def main() -> int:
               <td><strong>{ctrl['dti']:.6f}</strong></td>
               <td>[{ctrl['ci95'][0]:.6f}, {ctrl['ci95'][1]:.6f}]</td>
               <td>Baseline (0.000000)</td>
-              <td>{res['detached_splay_diagnostic']['ctrl_19b']['detached']['pooled_dti']:.6f}</td>
             </tr>
             <tr>
               <td><code>exp1_msptcd_core</code></td>
@@ -226,7 +225,6 @@ def main() -> int:
               <td><strong>{exp1['dti']:.6f}</strong> (+49.4%)</td>
               <td>[{exp1['ci95'][0]:.6f}, {exp1['ci95'][1]:.6f}]</td>
               <td>+{d1['delta']:.6f} [{d1['ci95'][0]:+.6f}, {d1['ci95'][1]:+.6f}] (wins 4/4 folds)</td>
-              <td>{res['detached_splay_diagnostic']['exp1_msptcd_core']['detached']['pooled_dti']:.6f} (+61.2%)</td>
             </tr>
             <tr>
               <td><code>exp2_msptcd_strain_pu</code></td>
@@ -234,7 +232,6 @@ def main() -> int:
               <td><strong>{exp2['dti']:.6f}</strong> (+22.1%)</td>
               <td>[{exp2['ci95'][0]:.6f}, {exp2['ci95'][1]:.6f}]</td>
               <td>+{d2['delta']:.6f} [{d2['ci95'][0]:+.6f}, {d2['ci95'][1]:+.6f}]</td>
-              <td>{res['detached_splay_diagnostic']['exp2_msptcd_strain_pu']['detached']['pooled_dti']:.6f}</td>
             </tr>
             <tr>
               <td><code>exp3_msptcd_submod_greedy</code></td>
@@ -242,7 +239,6 @@ def main() -> int:
               <td><strong>{exp3['dti']:.6f}</strong> (+81.8%)</td>
               <td>[{exp3['ci95'][0]:.6f}, {exp3['ci95'][1]:.6f}]</td>
               <td><strong>+{d3['delta']:.6f} [{d3['ci95'][0]:+.6f}, {d3['ci95'][1]:+.6f}]</strong></td>
-              <td><strong>{res['detached_splay_diagnostic']['exp3_msptcd_submod_greedy']['detached']['pooled_dti']:.6f}</strong> (+82.1%)</td>
             </tr>
           </tbody>
         </table>
@@ -301,13 +297,14 @@ def main() -> int:
     </div>
 
     <section class="card" id="why-b2">
-      <h2>1. Why GEMSDOE32 (<code>0.2778</code> USER-REPORTED) Scored Highest Among the Nine — and How to Beat It</h2>
+      <h2>1. GEMSDOE32 B2 (0.2778 USER-REPORTED): measured lineage, not a causal score explanation</h2>
       <ul>
-        <li><strong>Exact pixel-set identity:</strong> Across all <code>5,167,373</code> in-footprint pixels, <code>GEMSDOE25</code> and <code>GEMSDOE30</code> decode to the exact same <code>44,090</code> dots (<code>0.2600</code> USER-REPORTED). <code>GEMSDOE32</code> (<code>37,654</code> dots, <code>0.2778</code> USER-REPORTED) equals <code>GEMSDOE25/30</code> minus the exact <code>6,436</code> dots within Euclidean distance <code>&lt;= 2 px</code> (<code>200 m</code>) of <code>existing_faults.tif</code>, with <code>0</code> pixels added.</li>
-        <li><strong>DTI denominator physics:</strong> Under <code>DTI = TP_w / (TP_w + 0.2·FP_w + 0.8·FN_w + ε)</code>, hidden test fault segments exclude the public catalogue. Removing <code>6,436</code> near-catalogue dots trimmed pure false-positive kernel mass (<code>0.2·ΔFP_w ≈ 12,074</code> mass units) while sacrificing almost zero hidden truth, lifting DTI by <code>+0.0178</code>. Adding <code>1,200</code> lower-precision dots back in <code>GEMSDOE36</code> diluted DTI to <code>0.2725</code>.</li>
-        <li><strong>Post-upload proof against leaky private holdouts:</strong> When the earlier rejected parallel file <code>wbg2-h1-stepxasym</code> (which claimed <code>0.1321</code> on a private unbuffered evaluator) was uploaded on 2026-10-26, its user-reported public DTI was <strong><code>0.0725</code></strong> — confirming why strict 8 km-buffered whole-segment holdout + 124 leakage canaries are mandatory.</li>
-        <li><strong>Can <code>0.2778</code> be beaten?</strong> Yes — live public Rank #1 is <strong><code>0.4544</code></strong> (<code>xiaofanhu</code>, 2026-10-27 UTC). Bridging the gap from collar-pruned catalogue proximity (<code>~0.28</code>) to <code>0.45+</code> requires recovering <strong>concealed basin-interior faults</strong> using real subsurface potential-field and EM gradients plus submodular 300 m kernel packing — which is why <code>WBG2-MSPTCD</code> improved buffered <code>HOLDOUT-DTI</code> by <strong>+81.8%</strong> (and detached-splay <code>HOLDOUT-DTI</code> by <strong>+82.1%</strong>).</li>
+        <li><strong>Exact pixel-set lineage:</strong> Across all <code>5,167,373</code> in-footprint cells, <code>GEMSDOE25</code> and <code>GEMSDOE30</code> decode to the same <code>44,090</code> dots (both scores are USER-REPORTED at <code>0.2600</code>). <code>GEMSDOE32</code> has <code>37,654</code> dots and a USER-REPORTED score of <code>0.2778</code>; its decoded set equals the GEMSDOE25/30 set minus <code>6,436</code> dots within <code>&lt;= 2 px</code> of the mirrored <code>existing_faults.tif</code>, with no added pixels. This is a reproducible byte-level lineage observation, not proof of the exact uploaded file or of why its score differed.</li>
+        <li><strong>Metric suggests a mechanism, but hidden truth is unavailable:</strong> Under the official distance-weighted Tversky objective, reducing redundant false-positive mass could help. The amount of hidden truth intersected by the removed dots is unknown here, so the lineage comparison cannot establish a causal score gain or a new-score forecast.</li>
+        <li><strong>Reported private-holdout/public-score mismatch:</strong> A separate parallel artifact was source-reported at <code>0.1321</code> on a private, unbuffered evaluator and later listed with a USER-REPORTED public DTI of <code>0.0725</code>. This is not an organizer receipt and is not a controlled comparison; it motivates using the shared buffered holdout protocol but does not validate a leaderboard model.</li>
+        <li><strong>Does MSPTCD beat the public leaderboard?</strong> Not established. The WBG2-MSPTCD result is <strong>HOLDOUT-DTI</strong> under a local evaluator, not a projection or live score. Its improvement over a matched control cannot be compared numerically to the public leaderboard or GEMSDOE32's USER-REPORTED score.</li>
       </ul>
+      <p>The separate detached-splay single-seed diagnostic does not have a spatial-bootstrap 95% CI, so it is intentionally excluded from score reporting here; it is not presented as HOLDOUT-DTI.</p>
     </section>
 
     <section class="card" id="band6-forensic">
@@ -324,9 +321,9 @@ def main() -> int:
       <p>Four independent lanes exist in this repository without overwriting one another:</p>
       <ol>
         <li><strong>Baseline Review Lane (<a href="../index.html"><code>docs/index.html</code></a>):</strong> Strict preflight audit &amp; 4-proposal shortlist; 0 experiments run, fail-closed negative.</li>
-        <li><strong>DZ-16 Damage-Zone Lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue geometry collar (34,500 dots) built without <code>training_features.tif</code>; cleared under a calibrated enrichment gate.</li>
-        <li><strong>H3-PACK 34k Lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots) maximizing kernel mass per dot; cleared under focus-site uniqueness.</li>
-        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator, verified 124 leakage canaries, proved +81.8% buffered <code>HOLDOUT-DTI</code>, verified uniqueness vs all 9 focus champions (<code>&lt;=68.06%</code>) and both sibling lanes (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and applied the strict fail-closed stop under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
+        <li><strong>Historical DZ-16 lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue-geometry collar (34,500 dots) built without <code>training_features.tif</code>; its older calibrated-gate promotion is not current authorization (holdout not run; literal novelty failed).</li>
+        <li><strong>Historical H3-PACK lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots); its old lane-level promotion does not override the current literal-registry stop.</li>
+        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator and completed three buffered experiments. EXP-3 HOLDOUT-DTI is fully specified in the experiment table (evaluator, withheld-positive count, spatial CI); its relative improvement over the matched control is local-validation evidence only. It verified uniqueness vs all 9 focus champions (&lt;=68.06%) and both sibling lanes (27.36% vs DZ-16, 20.59% vs H3-PACK), but stopped fail-closed under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
       </ol>
     </section>
     """
@@ -396,7 +393,7 @@ def main() -> int:
       <h2>1. Trusted Official Sources</h2>
       <ul>
         <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData GEMS Problem Description &amp; Official DTI Metric Specification ↗</a> — verifies <code>α=0.2, β=0.8</code>, <code>R=300 m</code> triangular kernel, <code>EPSG:32611</code>, <code>float32</code>, <code>[0, 1]</code>, and Band 6 <code>tc</code> radiometric counts.</li>
-        <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">DrivenData Live Public Leaderboard ↗</a> — verified <code>0.4544</code> Rank #1 (<code>xiaofanhu</code>) on 2026-10-27 UTC.</li>
+        <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">DrivenData Public Leaderboard ↗</a> — fetched 2026-10-27 and displayed <code>0.4544</code> for <code>xiaofanhu</code>; exact retrieval time was not returned. This is not a timestamped feed observation or a per-file receipt.</li>
         <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">DOE GEMS Official Prize Rules PDF (Sept 2026, $300K pool) ↗</a>.</li>
         <li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN Airborne Magnetic &amp; Radiometric Surveys ↗</a>.</li>
         <li><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository — Great Basin INGENIOUS Release 1391 ↗</a>.</li>
@@ -407,7 +404,7 @@ def main() -> int:
       <h2>2. Committed WBG2-MSPTCD Artifacts &amp; Reproducibility</h2>
       <ul>
         <li>Research GeoTIFF (DO NOT SUBMIT): <a href="{e(tif_rel)}"><code>{e(art['tif_path'])}</code></a> — <code>{art['tif_bytes']:,}</code> bytes, SHA-256 <code>{e(art['tif_sha256'])}</code></li>
-        <li>Single-TIFF Research ZIP: <a href="{e(zip_rel)}"><code>{e(art['zip_path'])}</code></a> — <code>{art['zip_bytes']:,}</code> bytes, SHA-256 <code>{e(art['zip_sha256'])}</code></li>
+        <li>Research ZIP — DO NOT SUBMIT: <a href="{e(zip_rel)}"><code>{e(art['zip_path'])}</code></a> — <code>{art['zip_bytes']:,}</code> bytes, SHA-256 <code>{e(art['zip_sha256'])}</code></li>
         <li>Run Card JSON: <a href="../data/RUN_CARD_MSPTCD.json"><code>docs/data/RUN_CARD_MSPTCD.json</code></a></li>
         <li>3-Experiment Holdout &amp; 21-Raster Audit JSON: <a href="../data/wbg2_msptcd_results.json"><code>docs/data/wbg2_msptcd_results.json</code></a></li>
         <li>124 Single-Feature Canary JSON: <a href="../data/wbg2_msptcd_canaries.json"><code>docs/data/wbg2_msptcd_canaries.json</code></a></li>

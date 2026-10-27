@@ -26,8 +26,8 @@ def main() -> int:
     delta_exp1 = msptcd["paired_vs_ctrl_19b"]["exp1_msptcd_core"]
 
     note = (
-        "Negative/DO NOT SUBMIT: WBG2-MSPTCD HOLDOUT-DTI 0.0426 (+81.8% vs 19B), "
-        "unique vs 9 focus, stopped by literal 13GEMSDOE/17GEMSDOE >70% gate."
+        "Negative/DO NOT SUBMIT: local research campaign stopped by the literal all-registry "
+        "novelty gate; no weekly competition slot was used."
     )
     assert len(note) <= 140
 
@@ -82,8 +82,7 @@ def main() -> int:
             "exp2_msptcd_strain_pu_ci95": exp2_sc["ci95"],
             "paired_delta_vs_ctrl_19b": delta_ctrl["delta"],
             "paired_delta_ci95": delta_ctrl["ci95"],
-            "detached_splay_dti": msptcd["detached_splay_diagnostic"][best_arm]["detached"]["pooled_dti"],
-            "control_detached_splay_dti": msptcd["detached_splay_diagnostic"]["ctrl_19b"]["detached"]["pooled_dti"],
+            "detached_splay_diagnostic_status": "Exploratory single-seed subset diagnostic without a spatial-bootstrap 95% CI; excluded from HOLDOUT-DTI score reporting.",
             "status": "completed on unmodified gems57.evaluate_holdout (1,000 paired 20 km spatial-cluster draws)",
         },
         "holdout_dti": {

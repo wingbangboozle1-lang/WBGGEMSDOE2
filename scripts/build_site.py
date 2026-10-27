@@ -7,18 +7,26 @@ import json
 from pathlib import Path
 import shutil
 import markdown
+from submission_status import load_submission_status
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs'
 portfolio = json.loads((DOCS / 'data/portfolio.json').read_text())
 leader = json.loads((DOCS / 'data/leaderboard.json').read_text())
 fresh = json.loads((DOCS / 'data/focus-freshness.json').read_text())
+canonical_run = json.loads((ROOT / 'evidence/run_card.json').read_text())
 run = json.loads((DOCS / 'data/run-card.json').read_text())
 hypothesis_data = json.loads((ROOT / 'config/research_hypotheses.json').read_text())
-# Fail closed: this renderer is specifically a negative-run dashboard. A future
-# candidate cannot silently inherit a green button by editing a JSON boolean.
-if run.get('verdict') != 'negative' or run.get('ok_to_submit') is not False or run.get('raster_sha256') is not None:
-    raise ValueError('This dashboard renders only the audited negative run; review and implement a byte-bound release before changing status.')
+project_status = load_submission_status(ROOT)
+# Fail closed: this renderer produces the current negative dashboard only. It
+# must never turn a research-lane verdict or stale JSON boolean into a download.
+if run != canonical_run:
+    raise ValueError('The published run-card mirror differs from evidence/run_card.json; rebuild the canonical card first.')
+if project_status['approved']:
+    raise ValueError('A separate selector release exists; this negative-only renderer must be reviewed before publishing.')
+if (run.get('verdict') != 'negative' or run.get('ok_to_submit') is not False
+        or run.get('ok_to_download_new_tif') is not False or run.get('raster_sha256') is not None):
+    raise ValueError('This dashboard renders only the audited negative run; review a byte-bound release before changing status.')
 if (hypothesis_data.get('method_lane', {}).get('status') != 'UNASSIGNED'
         or not 3 <= len(hypothesis_data.get('hypotheses', [])) <= 5):
     raise ValueError('Research hypotheses or lane status changed; update the reviewed narrative before publishing.')
@@ -77,32 +85,25 @@ def intro(label, title, subtitle):
     return f'''<div class="intro"><div><p class="eyebrow">{e(label)}</p><h1>{title}</h1><p>{e(subtitle)}</p></div><div class="intro-meta">Pinned-raster audit<br><strong>{stamp}</strong></div></div>'''
 
 
-H3_SUB = json.loads((ROOT / 'evidence/h3_submission.json').read_text())
-H3_CARD = json.loads((ROOT / 'evidence/RUN_CARD_H3.json').read_text())
-H3_ANALYSIS = json.loads((ROOT / 'evidence/h3_analysis.json').read_text())
-H3_COMPARE = json.loads((ROOT / 'evidence/h3_registry_comparison.json').read_text())
-H3_NAME = H3_SUB['file'].rsplit('/', 1)[-1].removesuffix('.tif')
-H3_TIF = H3_SUB['file'].rsplit('/', 1)[-1]
-
-
-def h3_banner(suffix: str = '') -> str:
-    """The lane that actually produced a file, kept separate from the older negative lane."""
-    proj = H3_ANALYSIS['candidate']['projection']
-    return f'''<section class="banner" aria-labelledby="h3-heading{suffix}"><div class="banner-icon">{icon('download')}</div><div class="banner-copy"><p class="banner-label">Lane H3 · {e(H3_CARD['verdict'].upper())}</p><h2 id="h3-heading{suffix}">One file is ready to download and submit.</h2><p><span class="mono">{e(H3_NAME)}</span> — {H3_SUB['dots']:,} dots, zero inside 3 px of a mapped fault, format validation PASS, distinct from all nine focus rasters (worst overlap {max(v['overlap_3px'] for v in H3_COMPARE['rows'] if v['name'].startswith('GEMSDOE'))*100:.1f}&nbsp;%). Projection <strong>{proj['regression_only']:.3f} – {proj['full_packing_transfer']:.3f}</strong>, a PROJECTION and not a score.</p><p>This is a measured-leaderboard-optimum placement, <strong>not</strong> a geological discovery.</p></div><div class="banner-actions"><a class="button" href="submission/index.html">{icon('download')} Download and verify</a><a class="text-link" href="submit/">Five ranked hypotheses →</a></div></section>'''
+def submission_status_banner(suffix: str = '') -> str:
+    """Current project-level decision; historical lane cards cannot unlock a TIFF."""
+    return f'''<section class="banner" aria-labelledby="submission-status{suffix}"><div class="banner-icon">{icon('lock')}</div><div class="banner-copy"><p class="banner-label">CURRENT PROJECT DECISION · NEGATIVE</p><h2 id="submission-status{suffix}">DO NOT SUBMIT — no candidate is cleared for download.</h2><p>The canonical run card is negative, the method lane is unassigned, and the separate weekly-slot selector record is absent. Earlier DZ-16 and H3-PACK “promote” cards are historical lane records, not current authorization. The WBG2-MSPTCD holdout campaign is research-only and stopped by the literal all-registry novelty gate.</p><p><a class="text-link" href="data/run-card.json">Read the canonical negative run card →</a> · <a class="text-link" href="downloads/">Research-artifact archive and reasons →</a></p></div><div class="banner-actions"><button class="button" disabled>{icon('download')} No approved TIFF</button><a class="text-link" href="executive-summary.html">Review the nine-site scorecard →</a></div></section>'''
 
 
 MSPTCD_CARD = json.loads((DOCS / 'data/RUN_CARD_MSPTCD.json').read_text())
 
 
 def msptcd_banner(suffix: str = '') -> str:
-    """Real 19-band + 12-operator geophysical campaign lane, fail-closed under literal all-registry rule."""
+    """A measured holdout result that remains research-only under the literal registry gate."""
     h = MSPTCD_CARD['holdout']
     rc = MSPTCD_CARD['research_candidate']
-    return f'''<section class="banner" aria-labelledby="msptcd-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Lane WBG2-MSPTCD · 31-Feature Real Geophysics · {e(MSPTCD_CARD['verdict'].upper())} (0 slots)</p><h2 id="msptcd-heading{suffix}">+81.8% zero-leakage HOLDOUT-DTI ({h['dti']:.4f} vs {h['control_19b_dti']:.4f}), halted fail-closed on literal registry.</h2><p><span class="mono">{e(rc['name'])}</span> ({rc['emitted_dots']:,} off-catalogue dots, 124/124 leakage canaries PASS) is distinct from all 9 focus champions (&le;{MSPTCD_CARD['uniqueness']['candidate_max_focus_final_overlap']*100:.2f}&nbsp;% 3-px overlap) and both sibling lanes (27.36&nbsp;% vs DZ-16, 20.59&nbsp;% vs H3-PACK), and stops fail-closed on literal 13GEMSDOE/17GEMSDOE witnesses.</p></div><div class="banner-actions"><a class="text-link" href="msptcd/index.html">Open WBG2-MSPTCD campaign &amp; 5 hypotheses →</a><a class="text-link" href="msptcd/executive-summary.html">Band 6 forensic &amp; cross-lane report →</a></div></section>'''
+    ci = h['ci95']
+    ctrl_ci = h['control_19b_ci95']
+    return f'''<section class="banner" aria-labelledby="msptcd-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">WBG2-MSPTCD RESEARCH LANE · NEGATIVE · 0 SLOTS</p><h2 id="msptcd-heading{suffix}">HOLDOUT-DTI {h['dti']:.4f} vs control {h['control_19b_dti']:.4f}; candidate stopped by the literal registry gate.</h2><p>Evaluator <code>{e(h['evaluator_version'])}</code>; {h['withheld_positive_pixels']:,} withheld positives; candidate 95% CI [{ci[0]:.4f}, {ci[1]:.4f}]. Control is also HOLDOUT-DTI, 95% CI [{ctrl_ci[0]:.4f}, {ctrl_ci[1]:.4f}]. These are local holdout results, not ORGANIZER-CONFIRMED leaderboard scores.</p><p><span class="mono">{e(rc['name'])}</span> is distinct from the nine focus champions under the site-only comparison, but the complete literal-registry check fails on registered lattice/continuous-prior witnesses. It is a research artifact — DO NOT SUBMIT.</p></div><div class="banner-actions"><a class="text-link" href="msptcd/index.html">Open the campaign report and receipts →</a></div></section>'''
 
 
 def decision(suffix: str = ''):
-    return f'''<section class="banner" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Prior lane · negative, superseded by H3</p><h2 id="decision-heading{suffix}">Prior lane: no file was approved.</h2><p>This review lane generated no TIFF. Two parallel research files failed the literal registry gate; one also masks most footprint cells. Neither is approved for upload.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="executive-summary.html">See the checklist →</a></div></section>'''
+    return f'''<section class="banner" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">RELEASE GATE · BLOCKED</p><h2 id="decision-heading{suffix}">No current TIF is authorized for competition upload.</h2><p>Format validation alone is not approval. None of the archived candidate artifacts has both a complete current-registry pass and a byte-bound selector release. Do not infer approval from an older lane card or filename.</p></div><div class="banner-actions"><a class="text-link" href="data/run-card.json">Open the current run card →</a></div></section>'''
 
 
 def leaderboard_stale():
@@ -162,7 +163,7 @@ def focus_table():
         filename = row['path'].rsplit('/',1)[-1]
         exact = row.get('decoded_exact_matches_in_focus') or []
         explanation = ('Exact decoded match: ' + ', '.join(exact)) if exact else (f"{row['max_3px_overlap_vs_other_focus']*100:.1f}% near {row['max_overlap_witness_site']}")
-        trs.append(f'''<tr{(' class="champion"' if row['site']=='GEMSDOE32' else '')}><td data-label="Site / file"><a class="site-name" href="../site/sites/{e(row['site'])}.html">{e(row['site'])} ↗</a><a class="file-link" href="{e(row['download_url'])}" title="{e(filename)} — historical research only">{e(filename)} ↗</a></td><td data-label="Reported DTI"><span class="score">{e(row['user_reported_score'])}</span><span class="small-meta">USER-REPORTED</span></td><td data-label="Estimate"><span class="status-muted">Unavailable</span><span class="small-meta">no valid forecast</span></td><td data-label="Unique vs peers?"><span class="status-no">No</span><span class="small-meta">{e(explanation)}</span></td><td data-label="Action"><span class="status-no">Do not submit</span><span class="small-meta">historical reference</span></td></tr>''')
+        trs.append(f'''<tr{(' class="champion"' if row['site']=='GEMSDOE32' else '')}><td data-label="Site / file"><a class="site-name" href="../site/sites/{e(row['site'])}.html">{e(row['site'])} ↗</a><a class="file-link" href="{e(row['download_url'])}" title="Historical research artifact only — do not submit">Research-only artifact: {e(filename)} ↗</a><span class="small-meta">DO NOT SUBMIT</span></td><td data-label="Reported DTI"><span class="score">{e(row['user_reported_score'])}</span><span class="small-meta">USER-REPORTED</span></td><td data-label="Estimate"><span class="status-muted">Unavailable</span><span class="small-meta">no valid forecast</span></td><td data-label="Unique vs peers?"><span class="status-no">No</span><span class="small-meta">{e(explanation)}</span></td><td data-label="Action"><span class="status-no">Do not submit</span><span class="small-meta">historical reference</span></td></tr>''')
     changed = int(fresh.get('changed_count', 0))
     unknown = int(fresh.get('unknown_count', 0))
     checked = fresh.get('checked_utc', '')
@@ -171,16 +172,16 @@ def focus_table():
 
 
 def home():
-    body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + h3_banner() + msptcd_banner() + decision() + stats() + score_evidence_notice() + compare_section() + focus_table()
+    body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + submission_status_banner() + msptcd_banner() + decision() + stats() + score_evidence_notice() + compare_section() + focus_table()
     body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Review the research shortlist</h3><p>Four ranked, untested proposals. No single method lane has been assigned; no experiment or submission slot is authorized.</p><a href="research.html">View proposals →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/run-card.json">Read the negative run card →</a> · <a href="executive-summary/">See both rejected parallel files →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
-    body += f'''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>Download and submit</h2><p>Verified byte-for-byte against its receipt.</p></div><span class="tag">Lane H3</span></div><p><span class="mono">{e(H3_NAME)}</span> · sha256 <span class="mono">{e(H3_SUB['tif_sha256'][:16])}…</span> · {H3_SUB['dots']:,} dots · float32 · EPSG:32611 · NaN outside the footprint.</p><p><a class="button" href="downloads/h3-pack/{e(H3_TIF[:-4])}.zip">{icon('download')} Download ZIP</a> &nbsp; <a class="text-link" href="downloads/h3-pack/{e(H3_TIF)}">or the raw GeoTIFF →</a> &nbsp; <a class="text-link" href="submit/">Format report and per-site table →</a></p></div></section>'''
+    body += '''<section class="card guide-card" id="archive"><div class="card-body"><div class="section-header"><div><h2>Historical research artifacts</h2><p>Retained for provenance; not cleared for upload.</p></div><span class="tag red">DO NOT SUBMIT</span></div><p>Earlier DZ-16 and H3-PACK candidate files remain in the repository as research records. Their historical “promote” cards do not satisfy the current all-registry novelty stop or weekly-slot selector requirement. The MSPTCD candidate has a useful local HOLDOUT-DTI result, but its literal registry preflight is also negative.</p><p><a class="text-link" href="downloads/">Open the research-only archive index →</a> &nbsp; <a class="text-link" href="data/run-card.json">Current canonical run card →</a></p></div></section>'''
     return page('Overview','index.html',body,'Evidence-first DOE GEMS Prize research and submission status.')
 
 
 def guide():
     w = portfolio['literal_registry_witness']
     d = portfolio['dense_probability_witness']
-    body = intro('Executive summary','From research to <span>submission.</span>','A practical checklist for the moment a candidate actually clears every gate.') + h3_banner('-guide') + msptcd_banner('-guide') + decision('-guide') + score_evidence_notice()
+    body = intro('Executive summary','From research to <span>submission.</span>','A practical checklist for the moment a candidate actually clears every gate.') + submission_status_banner('-guide') + msptcd_banner('-guide') + decision('-guide') + score_evidence_notice()
     body += f'''<div class="guide-layout"><article class="card guide-card"><div class="section-header"><div><h2>How to submit, when approved</h2><p>No file is currently eligible. These steps do not authorize the historical references.</p></div><span class="tag red">Currently locked</span></div><ol><li><strong>Check the decision first.</strong> A new candidate must pass the surface and final-dot registry checks, every leakage canary, a comparable blocked holdout, and byte-bound format validation. Promotion to a weekly slot is a separate selector step.</li><li><strong>Download the exact approved file.</strong> Use the future candidate's single-band GeoTIFF or a ZIP containing only that GeoTIFF. Verify its SHA-256 against its receipt. There is no approved file to download today.</li><li><strong>Confirm the local format receipt.</strong> The official page requires EPSG:32611, 100 m, matching shape and transform, one float32 layer and values in [0,1]. The pinned shared gate has a known finite-NoData-in-footprint gap; our supplemental check blocks it but the upstream tool still needs a fix. Our conservative all-finite check is not proof that zero-outside meets the official null/NaN wording or that the portal will accept it.</li><li><strong>Open DrivenData.</strong> Sign in, enroll, choose <em>Submit → Make new submission</em>, select the approved file and enter the byte-bound short note (at most 140 characters for this project). Check the actual remaining weekly allowance on the submission page.</li><li><strong>Keep the receipt.</strong> Record the exact filename, hash, note, timestamp and organizer result. A local HOLDOUT-DTI or an unvalidated projection is never a live score.</li></ol><div class="callout">A previous upload returned “Predicted values must be in range [0, 1]”. Its actual cause is unknown without the rejected bytes. The read-back validator reports NaN, infinity, below-zero, above-one and masked-cell counts separately inside and outside the reference footprint. It never clips or silently repairs a raster.</div><p><a class="text-link" href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">Read the official format ↗</a></p></article>
 <aside class="card guide-card" id="novelty"><div class="section-header"><div><h2>Why the gate is blocked</h2><p>Two independently reopened prior files.</p></div></div><p><strong>Binary lattice witness.</strong> {w['within_3px_pixels']:,} of {w['footprint_pixels']:,} footprint cells are within three pixels of a registered lattice dot. Only {w['outside_3px_pixels']:,} are outside. For {w['example_budget_distinct_dots']:,} distinct in-footprint dots, the minimum possible overlap is <strong>{w['minimum_possible_overlap_at_example_budget']*100:.2f}%</strong>, above the 70% limit.</p><p><strong>Continuous-prior witness.</strong> The shared literal implementation counts any finite positive prior pixel as support. A registered continuous prior is positive across the entire footprint. Under that implementation every nonempty candidate overlaps it completely; whether a continuous field should count as “dots” is unresolved, not silently exempted.</p><p><a href="{e(w['source'])}">Lattice source ↗</a> · <a href="{e(d['source'])}">Continuous prior ↗</a> · <a href="data/portfolio.json">Measured proof ↗</a></p><div class="callout">The binary-lattice budget bound does not prove every smaller raster fails. The continuous-prior result depends on the explicitly stated shared support definition.</div></aside></div>'''
     body += '<div style="height:20px"></div>' + focus_table()
@@ -206,7 +207,7 @@ def research():
     return page('Research','research.html',body,'Ranked geothermal fault-mapping hypotheses, mimics, sources and safeguards.')
 
 def sources():
-    body = intro('Evidence & sources','Trace each <span>claim.</span>','Official requirements, scientific references, and the limits of our own measurements.') + h3_banner('-sources') + decision('-sources')
+    body = intro('Evidence & sources','Trace each <span>claim.</span>','Official requirements, scientific references, and the limits of our own measurements.') + submission_status_banner('-sources') + decision('-sources')
     rows = [
       ('Target', 'Predict previously unmapped faults indicative of geothermal resources; a fault prediction is not proof of a geothermal vent.', 'DrivenData problem description', 'https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/'),
       ('Format', 'Single float32 band, EPSG:32611, 100 m grid, matching bounds and values in [0,1]; the public text describes null/NaN outside bounds.', 'Official submission format', 'https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format'),

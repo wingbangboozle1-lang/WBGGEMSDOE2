@@ -39,13 +39,14 @@
     </div>
 
     <section class="card" id="why-b2">
-      <h2>1. Why GEMSDOE32 (<code>0.2778</code> USER-REPORTED) Scored Highest Among the Nine — and How to Beat It</h2>
+      <h2>1. GEMSDOE32 B2 (0.2778 USER-REPORTED): measured lineage, not a causal score explanation</h2>
       <ul>
-        <li><strong>Exact pixel-set identity:</strong> Across all <code>5,167,373</code> in-footprint pixels, <code>GEMSDOE25</code> and <code>GEMSDOE30</code> decode to the exact same <code>44,090</code> dots (<code>0.2600</code> USER-REPORTED). <code>GEMSDOE32</code> (<code>37,654</code> dots, <code>0.2778</code> USER-REPORTED) equals <code>GEMSDOE25/30</code> minus the exact <code>6,436</code> dots within Euclidean distance <code>&lt;= 2 px</code> (<code>200 m</code>) of <code>existing_faults.tif</code>, with <code>0</code> pixels added.</li>
-        <li><strong>DTI denominator physics:</strong> Under <code>DTI = TP_w / (TP_w + 0.2·FP_w + 0.8·FN_w + ε)</code>, hidden test fault segments exclude the public catalogue. Removing <code>6,436</code> near-catalogue dots trimmed pure false-positive kernel mass (<code>0.2·ΔFP_w ≈ 12,074</code> mass units) while sacrificing almost zero hidden truth, lifting DTI by <code>+0.0178</code>. Adding <code>1,200</code> lower-precision dots back in <code>GEMSDOE36</code> diluted DTI to <code>0.2725</code>.</li>
-        <li><strong>Post-upload proof against leaky private holdouts:</strong> When the earlier rejected parallel file <code>wbg2-h1-stepxasym</code> (which claimed <code>0.1321</code> on a private unbuffered evaluator) was uploaded on 2026-10-26, its user-reported public DTI was <strong><code>0.0725</code></strong> — confirming why strict 8 km-buffered whole-segment holdout + 124 leakage canaries are mandatory.</li>
-        <li><strong>Can <code>0.2778</code> be beaten?</strong> Yes — live public Rank #1 is <strong><code>0.4544</code></strong> (<code>xiaofanhu</code>, 2026-10-27 UTC). Bridging the gap from collar-pruned catalogue proximity (<code>~0.28</code>) to <code>0.45+</code> requires recovering <strong>concealed basin-interior faults</strong> using real subsurface potential-field and EM gradients plus submodular 300 m kernel packing — which is why <code>WBG2-MSPTCD</code> improved buffered <code>HOLDOUT-DTI</code> by <strong>+81.8%</strong> (and detached-splay <code>HOLDOUT-DTI</code> by <strong>+82.1%</strong>).</li>
+        <li><strong>Exact pixel-set lineage:</strong> Across all <code>5,167,373</code> in-footprint cells, <code>GEMSDOE25</code> and <code>GEMSDOE30</code> decode to the same <code>44,090</code> dots (both scores are USER-REPORTED at <code>0.2600</code>). <code>GEMSDOE32</code> has <code>37,654</code> dots and a USER-REPORTED score of <code>0.2778</code>; its decoded set equals the GEMSDOE25/30 set minus <code>6,436</code> dots within <code>&lt;= 2 px</code> of the mirrored <code>existing_faults.tif</code>, with no added pixels. This is a reproducible byte-level lineage observation, not proof of the exact uploaded file or of why its score differed.</li>
+        <li><strong>Metric suggests a mechanism, but hidden truth is unavailable:</strong> Under the official distance-weighted Tversky objective, reducing redundant false-positive mass could help. The amount of hidden truth intersected by the removed dots is unknown here, so the lineage comparison cannot establish a causal score gain or a new-score forecast.</li>
+        <li><strong>Reported private-holdout/public-score mismatch:</strong> A separate parallel artifact was source-reported at <code>0.1321</code> on a private, unbuffered evaluator and later listed with a USER-REPORTED public DTI of <code>0.0725</code>. This is not an organizer receipt and is not a controlled comparison; it motivates using the shared buffered holdout protocol but does not validate a leaderboard model.</li>
+        <li><strong>Does MSPTCD beat the public leaderboard?</strong> Not established. The WBG2-MSPTCD result is <strong>HOLDOUT-DTI</strong> under a local evaluator, not a projection or live score. Its improvement over a matched control cannot be compared numerically to the public leaderboard or GEMSDOE32's USER-REPORTED score.</li>
       </ul>
+      <p>The separate detached-splay single-seed diagnostic does not have a spatial-bootstrap 95% CI, so it is intentionally excluded from score reporting here; it is not presented as HOLDOUT-DTI.</p>
     </section>
 
     <section class="card" id="band6-forensic">
@@ -62,9 +63,9 @@
       <p>Four independent lanes exist in this repository without overwriting one another:</p>
       <ol>
         <li><strong>Baseline Review Lane (<a href="../index.html"><code>docs/index.html</code></a>):</strong> Strict preflight audit &amp; 4-proposal shortlist; 0 experiments run, fail-closed negative.</li>
-        <li><strong>DZ-16 Damage-Zone Lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue geometry collar (34,500 dots) built without <code>training_features.tif</code>; cleared under a calibrated enrichment gate.</li>
-        <li><strong>H3-PACK 34k Lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots) maximizing kernel mass per dot; cleared under focus-site uniqueness.</li>
-        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator, verified 124 leakage canaries, proved +81.8% buffered <code>HOLDOUT-DTI</code>, verified uniqueness vs all 9 focus champions (<code>&lt;=68.06%</code>) and both sibling lanes (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and applied the strict fail-closed stop under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
+        <li><strong>Historical DZ-16 lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue-geometry collar (34,500 dots) built without <code>training_features.tif</code>; its older calibrated-gate promotion is not current authorization (holdout not run; literal novelty failed).</li>
+        <li><strong>Historical H3-PACK lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots); its old lane-level promotion does not override the current literal-registry stop.</li>
+        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator and completed three buffered experiments. EXP-3 HOLDOUT-DTI is fully specified in the experiment table (evaluator, withheld-positive count, spatial CI); its relative improvement over the matched control is local-validation evidence only. It verified uniqueness vs all 9 focus champions (&lt;=68.06%) and both sibling lanes (27.36% vs DZ-16, 20.59% vs H3-PACK), but stopped fail-closed under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
       </ol>
     </section>
     </main>
@@ -75,8 +76,8 @@
         <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
         <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
         <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
-        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
-        <a href="../submit/index.html">Sibling H3-PACK lane</a>
+        <a href="../submission/index.html">Historical DZ-16 research archive</a> &nbsp;·&nbsp;
+        <a href="../submit/index.html">Historical H3-PACK research archive</a>
       </div>
     </div>
   </footer>

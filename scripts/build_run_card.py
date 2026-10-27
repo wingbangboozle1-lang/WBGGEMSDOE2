@@ -54,7 +54,7 @@ if not (card['verdict'] == 'negative' and card['ok_to_submit'] is False
         and len(card['note']) <= 140):
     raise ValueError('Run-card evidence changed; manual review required before publication')
 text = json.dumps(card, indent=2, allow_nan=False) + '\n'
-for rel in ('docs/data/run-card.json', 'docs/data/run_card.json', 'site/data/run_card.json'):
+for rel in ('docs/data/run-card.json', 'docs/data/run_card.json', 'docs/data/run-card-current.json', 'site/data/run_card.json'):
     out = ROOT / rel
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text)

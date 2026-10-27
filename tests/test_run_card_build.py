@@ -23,4 +23,5 @@ def test_inconsistent_card_never_publishes(tmp_path):
                             capture_output=True, text=True)
     assert result.returncode != 0 and 'manual review required' in result.stderr
     assert not (tmp_path / 'docs/data/run-card.json').exists()
+    assert not (tmp_path / 'docs/data/run-card-current.json').exists()
     assert not (tmp_path / 'site/data/run_card.json').exists()

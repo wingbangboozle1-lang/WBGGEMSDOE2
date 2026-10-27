@@ -66,5 +66,11 @@
   "verdict": "promote",
   "ok_to_submit": true,
   "ok_to_download_new_tif": true,
-  "caveat": "Promotion means: format-valid, unique against every raster measured here, and honestly estimated. It does not mean the file is expected to beat the public leaderboard leader (0.4544 on 2026-10-27); the estimate is 0.15 with a conditional band of 0.28-0.32."
+  "caveat": "Promotion means: format-valid, unique against every raster measured here, and honestly estimated. It does not mean the file is expected to beat the public leaderboard leader (0.4544 on 2026-10-27); the estimate is 0.15 with a conditional band of 0.28-0.32.",
+  "archive_status": {
+    "state": "HISTORICAL_ONLY",
+    "current_project_authorization": false,
+    "current_disposition": "../evidence/run_card.json",
+    "note": "The prior DZ-16 lane disposition does not authorize download or submission. Its holdout was NOT RUN, its literal uniqueness result failed, and no separate current weekly-slot selector release exists. See data_public/README.md."
+  }
 }

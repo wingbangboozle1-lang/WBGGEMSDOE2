@@ -84,32 +84,31 @@ class LinkParser(HTMLParser):
         if tag=='table': self.tables+=1
 
 
-def test_site_links_and_approval_copy_match_the_audit_artifact():
-    """The landing page may only claim approval that the audit artifact supports.
-
-    The earlier version of this test hard-coded the fail-closed sentence. That made
-    the test pass or fail on prose rather than on evidence. It now reads
-    data_public/final_audit.json and requires the page copy to agree with it, in
-    whichever direction the audit points.
-    """
-    audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())
-    # this lane's landing page; the dashboard lane keeps its own fail-closed page
+def test_site_links_and_current_disposition_are_fail_closed():
+    """Old positive candidate evidence must never create a current download CTA."""
+    card = json.loads((ROOT / 'evidence/run_card.json').read_text())
+    assert card['verdict'] == 'negative' and card['ok_to_submit'] is False
+    assert card['ok_to_download_new_tif'] is False and card['raster_sha256'] is None
     index = (ROOT / 'docs' / 'submission' / 'index.html').read_text()
-    if audit['ok_to_submit']:
-        assert 'approved to download and submit' in index
-        assert audit['sha256'] in index, 'landing page must show the audited SHA-256'
-        checks = json.loads((ROOT / 'data_public/candidate.json').read_text())['checks']
-        assert all(checks.values()), 'approval requires every validator check to pass'
-    else:
-        assert 'No file is approved for submission.' in index
-        assert 'No submission file' in index
+    assert 'DO NOT SUBMIT' in index and 'Research archive' in index
+    assert 'No candidate is cleared' in index
+    parser = LinkParser(); parser.feed(index)
+    assert not any(link.split('?', 1)[0].split('#', 1)[0].lower().endswith(('.tif', '.zip'))
+                   for link in parser.links)
     dashboard = (ROOT / 'docs' / 'index.html').read_text()
-    assert 'submission/index.html' in dashboard, 'the dashboard must link to the cleared file'
-    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs' / 'submission').glob('*.html')):
+    assert 'DO NOT SUBMIT' in dashboard and 'no candidate is cleared for download' in dashboard.lower()
+    assert 'Download the submission GeoTIFF' not in dashboard
+    submit = (ROOT / 'docs' / 'submit' / 'index.html').read_text()
+    assert 'DO NOT SUBMIT' in submit and 'No GeoTIFF is approved' in submit
+    assert '.tif' not in submit.lower() and '.zip' not in submit.lower()
+    archive = (ROOT / 'docs' / 'downloads' / 'README.txt').read_text()
+    assert 'DO NOT SUBMIT ANY FILE' in archive
+    page_files = (list((ROOT / 'docs').glob('*.html'))
+                  + list((ROOT / 'docs/submission').rglob('*.html'))
+                  + list((ROOT / 'docs/submit').rglob('*.html')))
+    for f in page_files:
         html = f.read_text(); parser = LinkParser(); parser.feed(html)
         assert len(parser.ids) == len(set(parser.ids)), f
-        if 'No file is approved for submission.' in html:
-            assert 'No submission file' in html, f
         for link in parser.links:
             if link.startswith(('https://', 'http://', 'mailto:', '#')):
                 continue

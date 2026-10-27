@@ -340,5 +340,11 @@
    "is_focus_site_submission": false
   }
  ],
- "measurement_notes": "Raw per-pixel rank correlation between sparse binary rasters is dominated by the shared zero background, so surface similarity is measured on 1 km Gaussian-smoothed density fields."
+ "measurement_notes": "Raw per-pixel rank correlation between sparse binary rasters is dominated by the shared zero background, so surface similarity is measured on 1 km Gaussian-smoothed density fields.",
+ "archive_status": {
+  "state": "HISTORICAL_ONLY",
+  "current_project_authorization": false,
+  "current_disposition": "../evidence/run_card.json",
+  "note": "The prior DZ-16 lane disposition does not authorize download or submission. Its holdout was NOT RUN, its literal uniqueness result failed, and no separate current weekly-slot selector release exists. See data_public/README.md."
+ }
 }

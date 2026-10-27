@@ -32,7 +32,7 @@
     <div class="intro">
       <div>
         <p class="eyebrow">Fourth Lane · 31-Feature Real-Geophysics Campaign</p>
-        <h1>WBG2-MSPTCD: +81.8% Zero-Leakage HOLDOUT-DTI</h1>
+        <h1>WBG2-MSPTCD research — not submission-ready</h1>
         <p>Full 19-band GeoDAWN/USGS/DOE geophysical training + 12 multi-scale subsurface potential-field tilt, cross-physics concordance, flank asymmetry, and Hessian ridge operators, evaluated on the unmodified <code>57GEMSDOE@822a0ce5</code> buffered whole-segment holdout harness.</p>
       </div>
       <div class="intro-meta">Campaign completed<br><strong>2026-10-27 UTC</strong></div>
@@ -42,20 +42,20 @@
       <div class="banner-copy">
         <p class="banner-label">Fail-Closed Protocol Verdict · NEGATIVE STOP (0 Competition Slots Spent)</p>
         <h2 id="msptcd-decision">DO NOT SUBMIT under literal all-registry gate — Research GeoTIFF verified &amp; archived</h2>
-        <p><code>wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros</code> (<code>25,594</code> off-catalogue dots, SHA-256 <code>fb11891a3a2e6c94…</code>) passes all 9 official GeoTIFF byte checks, passes <strong>124 / 124</strong> single-feature holdout leakage canaries (max two-sided ROC-AUC <code>0.6131 &lt;= 0.90</code>), is distinct under the 70% 3-px rule from <strong>all 9 focus champions</strong> (max <code>68.06%</code> on <code>GEMSDOE27</code>, <code>64.45%</code> on <code>GEMSDOE32</code>) and <strong>both sibling WBGGEMSDOE2 lanes</strong> (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and achieves <strong>+81.8% HOLDOUT-DTI</strong> over the 19-band control. Under the literal all-registry rule it halts fail-closed on <code>13GEMSDOE</code> (<code>100.00%</code> stride-5 lattice), continuous priors (<code>17GEMSDOE</code>/<code>WBGGEMSDOE1</code> <code>100.00%</code>), and <code>GEMSDOE27_H31</code> (<code>78.34%</code>).</p>
+        <p><code>wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros</code> (<code>25,594</code> off-catalogue dots, SHA-256 <code>fb11891a3a2e6c94…</code>) passes the recorded local GeoTIFF byte checks and <strong>124 / 124</strong> single-feature leakage canaries (max two-sided ROC-AUC <code>0.6131 &lt;= 0.90</code>). Its measured overlap is below 70% against all nine focus champions and both sibling research candidates, but the complete literal-registry check stops on <code>13GEMSDOE</code>, continuous-prior witnesses, and <code>GEMSDOE27_H31</code>. The research-lane <strong>HOLDOUT-DTI = 0.042554</strong> vs matched control <strong>0.023409</strong>, evaluator <code>gems57-pooled-hide-v2</code>, <code>60,988</code> withheld positives, candidate 95% CI <code>[0.032059, 0.054765]</code>; control 95% CI <code>[0.015356, 0.031895]</code>. This is local validation only—not a leaderboard score or authorization. The TIFF and ZIP links below are <strong>RESEARCH ARTIFACTS — DO NOT SUBMIT</strong>.</p>
       </div>
       <div class="actions">
         <a class="button" href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip">Research ZIP (DO NOT SUBMIT)</a>
-        <a class="text-link" href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif">Raw GeoTIFF (71 KB) →</a>
+        <a class="text-link" href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif">Research GeoTIFF — DO NOT SUBMIT (71 KB) →</a>
         <a class="text-link" href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.json">JSON Receipt →</a>
       </div>
     </section>
 
     <section class="stats" aria-label="Key WBG2-MSPTCD metrics">
       <article class="stat">
-        <div class="stat-top">Winning Holdout Arm (EXP-3)</div>
+        <div class="stat-top">EXP-3 local holdout result</div>
         <div class="stat-value">0.0426</div>
-        <div class="stat-sub"><strong>HOLDOUT-DTI</strong> · 95% CI [0.0321, 0.0548] · +81.8% vs 19-band control (0.0234)</div>
+        <div class="stat-sub"><strong>HOLDOUT-DTI</strong> · evaluator gems57-pooled-hide-v2 · 60,988 withheld positives · 95% CI [0.0321, 0.0548] · control HOLDOUT-DTI 0.0234, CI [0.0154, 0.0319]</div>
       </article>
       <article class="stat">
         <div class="stat-top">Leakage Canary Gate</div>
@@ -68,9 +68,9 @@
         <div class="stat-sub">64.45% vs GEMSDOE32 · 27.36% vs DZ-16 · 20.59% vs H3-PACK</div>
       </article>
       <article class="stat">
-        <div class="stat-top">Live Public Leaderboard #1</div>
+        <div class="stat-top">Public leaderboard value observed</div>
         <div class="stat-value">0.4544</div>
-        <div class="stat-sub">ORGANIZER-PUBLISHED SNAPSHOT (2026-10-27 · xiaofanhu)</div>
+        <div class="stat-sub">ORGANIZER-PUBLISHED · observed 2026-10-27 (exact retrieval time unavailable); not a per-file receipt</div>
       </article>
     </section>
 
@@ -85,8 +85,7 @@
               <th>Method Summary</th>
               <th>Pooled HOLDOUT-DTI</th>
               <th>95% Spatial CI</th>
-              <th>Paired Δ vs CTRL-19B (95% CI)</th>
-              <th>Detached Splay DTI (≥400 m)</th>
+              <th>Paired HOLDOUT-DTI Δ vs CTRL-19B (95% CI)</th>
             </tr>
           </thead>
           <tbody>
@@ -96,7 +95,6 @@
               <td><strong>0.023409</strong></td>
               <td>[0.015356, 0.031895]</td>
               <td>Baseline (0.000000)</td>
-              <td>0.016915</td>
             </tr>
             <tr>
               <td><code>exp1_msptcd_core</code></td>
@@ -104,7 +102,6 @@
               <td><strong>0.034975</strong> (+49.4%)</td>
               <td>[0.025587, 0.045475]</td>
               <td>+0.011566 [+0.005424, +0.018644] (wins 4/4 folds)</td>
-              <td>0.027271 (+61.2%)</td>
             </tr>
             <tr>
               <td><code>exp2_msptcd_strain_pu</code></td>
@@ -112,7 +109,6 @@
               <td><strong>0.028575</strong> (+22.1%)</td>
               <td>[0.020416, 0.038058]</td>
               <td>+0.005166 [-0.002732, +0.012803]</td>
-              <td>0.024312</td>
             </tr>
             <tr>
               <td><code>exp3_msptcd_submod_greedy</code></td>
@@ -120,7 +116,6 @@
               <td><strong>0.042554</strong> (+81.8%)</td>
               <td>[0.032059, 0.054765]</td>
               <td><strong>+0.019145 [+0.010977, +0.028755]</strong></td>
-              <td><strong>0.030799</strong> (+82.1%)</td>
             </tr>
           </tbody>
         </table>
@@ -174,8 +169,8 @@
         <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
         <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
         <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
-        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
-        <a href="../submit/index.html">Sibling H3-PACK lane</a>
+        <a href="../submission/index.html">Historical DZ-16 research archive</a> &nbsp;·&nbsp;
+        <a href="../submit/index.html">Historical H3-PACK research archive</a>
       </div>
     </div>
   </footer>

@@ -46,5 +46,11 @@
   "dots_recovered": true
  },
  "all_checks_pass": true,
- "fill_policy": "0.0 outside the organizer footprint; nodata unset. The portal rejected a NaN-filled variant with 'Predicted values must be in range [0, 1]' (requester-reported), so zeros are used everywhere."
+ "fill_policy": "0.0 outside the organizer footprint; nodata unset. The portal rejected a NaN-filled variant with 'Predicted values must be in range [0, 1]' (requester-reported), so zeros are used everywhere.",
+ "archive_status": {
+  "state": "HISTORICAL_ONLY",
+  "current_project_authorization": false,
+  "current_disposition": "../evidence/run_card.json",
+  "note": "The prior DZ-16 lane disposition does not authorize download or submission. Its holdout was NOT RUN, its literal uniqueness result failed, and no separate current weekly-slot selector release exists. See data_public/README.md."
+ }
 }

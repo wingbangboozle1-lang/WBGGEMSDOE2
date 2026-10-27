@@ -51,8 +51,7 @@
       0.01097695033438511,
       0.028755292395709373
     ],
-    "detached_splay_dti": 0.03079930088769798,
-    "control_detached_splay_dti": 0.016914952730943476,
+    "detached_splay_diagnostic_status": "Exploratory single-seed subset diagnostic without a spatial-bootstrap 95% CI; excluded from HOLDOUT-DTI score reporting.",
     "status": "completed on unmodified gems57.evaluate_holdout (1,000 paired 20 km spatial-cluster draws)"
   },
   "holdout_dti": {
@@ -168,7 +167,7 @@
   "submission_name": null,
   "submission_note": null,
   "proposed_research_name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
-  "note": "Negative/DO NOT SUBMIT: WBG2-MSPTCD HOLDOUT-DTI 0.0426 (+81.8% vs 19B), unique vs 9 focus, stopped by literal 13GEMSDOE/17GEMSDOE >70% gate.",
+  "note": "Negative/DO NOT SUBMIT: local research campaign stopped by the literal all-registry novelty gate; no weekly competition slot was used.",
   "ok_to_submit": false,
   "ok_to_download_new_tif": false,
   "ok_to_download_research_tif": true,

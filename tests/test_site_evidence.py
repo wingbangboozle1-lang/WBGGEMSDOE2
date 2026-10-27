@@ -47,6 +47,7 @@ def test_published_evidence_is_fail_closed_and_synced():
     published_card = json.loads((SITE / 'data/run_card.json').read_text())
     assert source_card == published_card == json.loads((ROOT / 'docs/data/run-card.json').read_text())
     assert source_card == json.loads((ROOT / 'docs/data/run_card.json').read_text())
+    assert source_card == json.loads((ROOT / 'docs/data/run-card-current.json').read_text())
     assert source_card['verdict'] == 'negative' and source_card['ok_to_submit'] is False
     assert source_card['holdout']['dti'] is None and source_card['raster_sha256'] is None
     assert source_card['submission_name'] is None and len(source_card['note']) <= 140
@@ -58,6 +59,11 @@ def test_published_evidence_is_fail_closed_and_synced():
     assert all(r['max_peer_overlap']['fraction'] > .7 for r in rows)
     home = (SITE / 'index.html').read_text()
     assert 'Submission download unavailable' in home and 'NO FILE CLEARED' in home
+    assert 'DO NOT SUBMIT' in home and 'cleared exactly one submission' not in home
+    executive = (SITE / 'executive.html').read_text()
+    assert 'Current project decision: DO NOT SUBMIT' in executive
+    assert 'HOLDOUT-DTI 0.042554' in executive and '60,988 withheld positives' in executive
+    assert 'failed the literal all-registry gate' in executive
     freshness = json.loads((SITE / 'data/focus-freshness.json').read_text())
     assert freshness == json.loads((ROOT / 'docs/data/focus-freshness.json').read_text())
     assert 'newer rasters are not downloaded or audited' in freshness['scope'].lower()
