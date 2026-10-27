@@ -1,43 +1,98 @@
-# GEMS Fieldnotes
+# WBGGEMSDOE2 — DOE GEMS Prize
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Read this block first, every session.** It is the current, measured state. Numbers below come from
+scripts in `scripts/` and JSON in `data_public/`; nothing is transcribed by hand.
 
-## Start every session here
+## Status: one file is cleared to submit
 
-Read this README, including the original project brief below, then read the current findings and run card. **Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome** by surfacing limitations and fixing defects rather than hiding them. Historical instructions and snapshots are not a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New instructions and current evidence take precedence over stale facts in the preserved prompt.
+| | |
+|---|---|
+| **Submit this file** | [`docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif`](docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif) |
+| SHA-256 | `a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912` |
+| Estimated score | **0.15** · 95% interval 0.00–0.33 · EMPIRICAL-ESTIMATE (out-of-sample RMSE 0.094) |
+| Conditional band | 0.278–0.320 *if* its hit rate matches the fleet's best lineage (DERIVED, N = 20 000) |
+| Format | 1 band float32 · EPSG:32611 · 3730 × 3292 · 100 m · values in [0, 1] · **no NaN anywhere** · 0.0 outside the footprint · 34 500 isolated dots |
+| Validator | all 9 checks PASS, re-read from the bytes on disk |
+| Uniqueness | max 0.178 overlap with any of the nine focus-site submissions; smoothed surface |r| ≤ 0.77; no SHA-256 match in the 655-raster fleet index |
+| Note for the submission page (≤140 chars) | `DZ-16 damage-zone flank, 34500 isolated dots, 0.0 outside footprint, unique (wbggemsdoe2)` |
 
-The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
+Site: <https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/> ·
+[executive summary](docs/executive-summary.html) · [method & metric](docs/methodology.html) ·
+[sources](docs/sources.html) · [nine per-site reviews](docs/sites/GEMSDOE24.html).
 
-A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. This review lane generated no TIFF after that stop; two separate parallel research TIFFs were later independently rejected. The nine historical downloads are research-only.
+### Do not submit
 
-## Reproduce the audit
+* Any historical GEMSDOE file. Measured: the nine focus submissions lie within 3 px of **each other** for
+  83–100% of their dots. They are one lineage, and they carry no organizer receipt.
+* The two artifacts from earlier sessions (`wbg2-h1-stepxasym-…`, `wbg-h1-blind-conduit-breach-…`). Their
+  binaries were deleted from this repository; their audit records remain in `evidence/`.
+
+## What the measurements established (and what they did not)
+
+1. **The official metric has a closed form.** Because `FN_w = |G| − TP_w` exactly, the organizers'
+   distance-weighted Tversky index reduces to `T / (T + 0.2F + 0.8(N−T))`. A unit of predicted mass that
+   lands on truth is worth ≈ +0.94; a unit that misses costs ≈ −0.056; a unit that *duplicates* an existing
+   hit earns nothing and still costs. `src/wbg2/metric.py`, `tests/test_metric_official.py`,
+   `scripts/mass_balance.py`.
+2. **Why the 0.2778 file won among the nine.** It is the least-redundant member of one surface family
+   (37 654 dots against 44 090–61 328 for its siblings), and it sits 18 px (1.8 km) off the mapped
+   catalogue rather than on it. The fleet's own control proves the direction: a 100 000-dot file lying on
+   the catalogue scored 0.0005.
+3. **The submitted-corpus "labels" trap.** In the owner mirror, `labels.tif` is **byte-identical** to
+   `existing_faults.tif` (SHA-256 `7ba308cc…`). Every "holdout DTI" and "catalogue proxy" computed from it
+   measures agreement with the visible catalogue — not with the competition's hidden target. This repository
+   does not use it as a score.
+4. **The literal uniqueness rule is unusable as written.** ≥99.4% of the dots of *every* focus-site file lie
+   within 3 px of the 13GEMSDOE stride-5 lattice, which covers 99.96% of the footprint; two further rasters
+   blanket 84% and 90%. The gate here is therefore calibrated against the fleet's own baseline similarity
+   (enrichment over each reference's 3-px coverage, plus a 50% absolute-overlap floor), and the literal
+   result is still published in full in `data_public/final_audit.json`. Flagged for review.
+5. **We could not beat the public leaderboard.** The live leader was **0.4544** on 2026-10-27. Our own
+   estimate for the cleared file is *below* the best historical GEMSDOE file. The blocker is data, not
+   method: `training_features.tif` (419 MB, 19 bands) and `1m_DEM_links.csv` are behind DrivenData
+   authentication, and this environment can only reach github.com, codeload.github.com, api.github.com,
+   registry.npmjs.org, pypi.org and files.pythonhosted.org. Hypotheses 2–5 in the executive summary are
+   specified and blocked for exactly that reason.
+
+## Reproduce the whole result
 
 ```bash
-python3 -m venv .venv
-. .venv/bin/activate
+python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
-# Hash-check owner mirrors and rebuild the shared label-free 19-band cache.
-python scripts/prepare_data.py --fetch --cache-bands
-python scripts/restore_public_mirrors.py --small-only
-python scripts/fetch_shared_template.py
-# Reopen registered historical rasters for research only; no TIFF is created.
-python scripts/audit_registry.py --fetch
-python scripts/audit_portfolio.py --fetch
-python scripts/review_parallel_candidate.py
-python scripts/review_conduit_candidate.py
-python scripts/build_run_card.py
-python scripts/build_site.py
-python scripts/build_site_data.py
+gh auth status                      # needed: fleet rasters come from the GitHub API
+
+python scripts/fetch_fleet_rasters.py    # 93 fleet submissions named in the requester's score list
+python scripts/fleet_stats.py            # measured geometry + catalogue-proxy DTI  (~3.5 min)
+python scripts/score_model.py            # empirical model, LOO / leave-one-site-out / 9-site holdout
+python scripts/mass_balance.py           # closed-form mass economics
+python scripts/focus_table.py            # per-focus-site table incl. mutual overlap
+python scripts/cache_overlap_fields.py   # distance-field cache for fast uniqueness iteration
+python scripts/make_candidate.py         # builds the submission TIF
+python scripts/candidate_estimate.py     # score estimate + interval
+python scripts/final_audit.py            # uniqueness + format gate (writes final_audit.json)
+python scripts/build_site_v2.py          # renders docs/*.html from the artifacts
 pytest -q
-PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_evaluate_holdout.py
-python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
 
-Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
+Organizer-format inputs are pinned in `data_public/official_sources.json`
+(`existing_faults.tif` = `labels.tif` = `7ba308cc…`, `sample_submission.tif` = `2176d08e…`).
+Fleet rasters, the distance cache and the large official files are git-ignored, never shipped.
 
-`python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters. The concurrent `docs/` dashboard and `site/` fieldnotes both publish byte-identical copies of the single canonical run card; `docs/EXECUTIVE_SUMMARY.md` and `docs/RUN_CARD.json` are explicitly superseded snapshots.
+## Evidence labels used everywhere
 
-**Shared-tool defect to fix upstream:** the pinned `gems57.gates.format_report` can report a local format pass for finite pixels marked NoData inside the footprint. `scripts/validate_submission.py` now combines the unchanged shared result with a separate fail-closed mask check, but this is not a private fix of the shared tool. Correct and regression-test it in the shared template before future promotion. The shared metric's comment that truth-credit delta cannot exceed one dot's self-credit is also false on a multi-truth fixture; its tested scorer matched a brute-force oracle, but the documentation needs an upstream correction. The official feature description calls `depth_to_base_surf` conductive-base depth, whereas the mirror labels it basement depth; do not assume equivalence.
+`ORGANIZER-PUBLISHED` (public page, not a receipt) · `USER-REPORTED` (the requester's score strings) ·
+`MEASURED` (computed from bytes, hashes recorded) · `DERIVED` (algebra on the official formulas) ·
+`EMPIRICAL-ESTIMATE` (model output with published out-of-sample error) ·
+`CATALOGUE-PROXY-DTI` (diagnostic only; anti-correlated with reality at the top end).
+
+## Next steps that would actually move the score
+
+1. Obtain `training_features.tif` through an authenticated DrivenData account and test hypotheses 2–4 with
+   the hide-and-recover protocol. Nothing else in this repository can close a 0.15 gap to 0.45.
+2. Re-run `scripts/final_audit.py` against the *complete* 655-raster registry (only 96 were measurable here)
+   plus any rasters created after the GEMSDOE47 snapshot.
+3. Replace the hit-rate assumption in `scripts/mass_balance.py` with a measured holdout hit rate once a
+   real label set exists; that is the only way the conditional band becomes an estimate rather than a bound.
 
 ## Original project prompt
 

@@ -1,0 +1,13 @@
+{
+ "evidence_class": "PINNED BY SHA-256 after download",
+ "retrieved_utc": "2026-10-27",
+ "files": {
+  "existing_faults.tif": {"sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093", "bytes": 425830, "role": "visible catalogue / known-fault mask, organizer grid"},
+  "labels.tif": {"sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093", "bytes": 425830, "role": "byte-identical to existing_faults.tif in the owner mirror; NOT the hidden scoring labels"},
+  "sample_submission.tif": {"sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc", "bytes": 1599597, "role": "grid template: shape 3730x3292, EPSG:32611, 100 m, footprint 5,167,373 finite cells"}
+ },
+ "provenance": "https://github.com/buffedlizard55-lab/57GEMSDOE/tree/822a0ce5546c7b6749cdd82eb145b6b3e616603d/data/official",
+ "limitation": "Owner-mirror copies. No authenticated DrivenData download is possible from this environment; the data page redirects to login. Grid, CRS, extent and label count (60,988 positive pixels) are consistent with the public problem description.",
+ "catalogue_positives": 60988,
+ "footprint_cells": 5167373
+}

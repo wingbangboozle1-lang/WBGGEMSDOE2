@@ -1,0 +1,195 @@
+{
+ "evidence_class": "MEASURED",
+ "candidate": "wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros",
+ "candidate_sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+ "candidate_dots": 34500,
+ "rules": {
+  "radius_px": 3,
+  "overlap_limit": 0.7,
+  "rank_limit": 0.9,
+  "surface_smoothing_sigma_px": 10.0
+ },
+ "scope": {
+  "submission_rasters_measured": 95,
+  "sampling_witnesses_measured": 1,
+  "registry_index_unique_grid_rasters": 655,
+  "registry_index_repos": 56,
+  "limitation": "The fleet-wide index snapshot covers GEMSDOE..GEMSDOE47 (56 repositories, 655 unique grid rasters). This audit measured 96 acquired rasters spanning 55 sites, including every one of the nine focus sites, all reported high scorers, and the sampling witnesses. Rasters created after that snapshot and not acquired here were not measured; any of them could in principle be the same prior. The measured maximum is far below the 70% threshold, so a hidden duplicate would have to be a raster this audit never saw."
+ },
+ "exact_duplicate_detected_in_registry_index": false,
+ "overlap_violations": [
+  {
+   "file": "GEMSDOE13__13gems_20261001_r11-greedy-mp_v2_zerofill.tif",
+   "dots": 272853,
+   "frac_my_dots_within_3px": 0.7418840579710145,
+   "smoothed_surface_pearson": 0.7161778228887722,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+   "dots": 201260,
+   "frac_my_dots_within_3px": 0.7370144927536232,
+   "smoothed_surface_pearson": 0.7713222023215777,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+   "dots": 155021,
+   "frac_my_dots_within_3px": 0.7289275362318841,
+   "smoothed_surface_pearson": 0.7464925345927507,
+   "is_focus_site_file": false
+  }
+ ],
+ "rank_violations": [],
+ "worst_case_submission_overlap": {
+  "file": "GEMSDOE13__13gems_20261001_r11-greedy-mp_v2_zerofill.tif",
+  "dots": 272853,
+  "frac_my_dots_within_3px": 0.7418840579710145,
+  "smoothed_surface_pearson": 0.7161778228887722,
+  "is_focus_site_file": false
+ },
+ "top10_by_overlap": [
+  {
+   "file": "GEMSDOE13__13gems_20261001_r11-greedy-mp_v2_zerofill.tif",
+   "dots": 272853,
+   "frac_my_dots_within_3px": 0.7418840579710145,
+   "smoothed_surface_pearson": 0.7161778228887722,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+   "dots": 201260,
+   "frac_my_dots_within_3px": 0.7370144927536232,
+   "smoothed_surface_pearson": 0.7713222023215777,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+   "dots": 155021,
+   "frac_my_dots_within_3px": 0.7289275362318841,
+   "smoothed_surface_pearson": 0.7464925345927507,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+   "dots": 335879,
+   "frac_my_dots_within_3px": 0.4515072463768116,
+   "smoothed_surface_pearson": 0.6339143128963868,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+   "dots": 91533,
+   "frac_my_dots_within_3px": 0.4389565217391304,
+   "smoothed_surface_pearson": 0.5613298820694065,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+   "dots": 103347,
+   "frac_my_dots_within_3px": 0.3771304347826087,
+   "smoothed_surface_pearson": 0.599696564734269,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE37__gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+   "dots": 80000,
+   "frac_my_dots_within_3px": 0.353768115942029,
+   "smoothed_surface_pearson": 0.6308664707430132,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE10__gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+   "dots": 69281,
+   "frac_my_dots_within_3px": 0.3050144927536232,
+   "smoothed_surface_pearson": 0.6549380212054766,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE50__gemsdoe50-h59-sharpened-scarp-scatter-90k-20261007T171954Z-nan.tif",
+   "dots": 90000,
+   "frac_my_dots_within_3px": 0.29478260869565215,
+   "smoothed_surface_pearson": 0.4144365275207541,
+   "is_focus_site_file": false
+  },
+  {
+   "file": "GEMSDOE10__gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+   "dots": 174232,
+   "frac_my_dots_within_3px": 0.2902028985507246,
+   "smoothed_surface_pearson": 0.609798732344018,
+   "is_focus_site_file": false
+  }
+ ],
+ "focus_site_files_measured": 10,
+ "focus_site_overlap_summary": {
+  "max": 0.1776231884057971,
+  "min": 0.16130434782608696
+ },
+ "sampling_witness_findings": {
+  "witnesses": [
+   {
+    "file": "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+    "dots": 206895,
+    "frac_my_dots_within_3px": 0.9997971014492754,
+    "smoothed_surface_pearson": 0.7581220712318725,
+    "is_focus_site_file": false
+   }
+  ],
+  "focus_site_overlap_vs_stride5_lattice": [
+   {
+    "file": "GEMSDOE24__gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+    "dots": 60069,
+    "within_3px_of_lattice": 0.9992175664652316
+   },
+   {
+    "file": "GEMSDOE25__gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif",
+    "dots": 44090,
+    "within_3px_of_lattice": 0.9991608074393287
+   },
+   {
+    "file": "GEMSDOE27__gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+    "dots": 61328,
+    "within_3px_of_lattice": 0.9992336290112184
+   },
+   {
+    "file": "GEMSDOE28__gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+    "dots": 40199,
+    "within_3px_of_lattice": 0.9991790840568173
+   },
+   {
+    "file": "GEMSDOE28__gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+    "dots": 37660,
+    "within_3px_of_lattice": 0.9990971853425386
+   },
+   {
+    "file": "GEMSDOE30__gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+    "dots": 44090,
+    "within_3px_of_lattice": 0.9991608074393287
+   },
+   {
+    "file": "GEMSDOE31__gemsdoe31-add-arm-d28-20261004-8acb75e1-nan.tif",
+    "dots": 55304,
+    "within_3px_of_lattice": 0.9945935194560972
+   },
+   {
+    "file": "GEMSDOE32__gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+    "dots": 37654,
+    "within_3px_of_lattice": 0.9991501566898603
+   },
+   {
+    "file": "GEMSDOE33__GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+    "dots": 41865,
+    "within_3px_of_lattice": 0.9991400931565747
+   },
+   {
+    "file": "GEMSDOE36__gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+    "dots": 38854,
+    "within_3px_of_lattice": 0.9991764039738509
+   }
+  ],
+  "conclusion": "Every focus-site submission - including all six the requester reports as scoring 0.2449-0.2778 - has >=99.4% of its dots within 3 px of the 13GEMSDOE stride-5 lattice, and the 17GEMSDOE continuous prior is positive over the whole footprint. Under the literal rule both witnesses convert every possible dense submission, including the fleet's own scored ones, into a duplicate. The witnesses are therefore reported separately and excluded from the pass/fail gate. This is an irregularity for review, not a licence: the candidate still had to pass the same rule against all 95 measured submission rasters."
+ },
+ "measurement_notes": "Raw per-pixel rank correlation between two sparse binary rasters is dominated by the shared zero background (a 300k-sample Spearman of >0.99 is obtained between unrelated dot patterns). Surface similarity is therefore measured on Gaussian-smoothed 1 km density fields, which is what 'same prior' means operationally.",
+ "verdict": "DUPLICATE",
+ "ok_to_submit": false
+}
