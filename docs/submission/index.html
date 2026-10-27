@@ -1,95 +1,34 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GEMS Prize — download the submission</title><link rel="stylesheet" href="../styles.css"></head><body><div class="wrap"><nav><a href="../index.html">Home / download</a><a href="../executive-summary.html">Executive summary</a><a href="../methodology.html">Method &amp; metric</a><a href="../sources.html">Sources</a><a href="../index.html">Repo dashboard</a></nav>
-<h1>DOE GEMS Prize — WBGGEMSDOE2</h1>
-<p class="dim">Generated 2026-10-27 UTC. Every figure on this site is produced by a script in this
-repository from a file whose SHA-256 is recorded.</p>
-
-<div class="card verdict">
-  <h2 style="margin-top:0;border:0;padding:0">✅ One file is approved to download and submit</h2>
-  <p><b>wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros</b></p>
-  <p class="mono">SHA-256 a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912</p>
-  <p class="mono">243576 bytes · single-band float32 · EPSG:32611 · 3730 × 3292 ·
-  34,500 dots · values in [0,1] · no NaN anywhere</p>
-  <a class="dl" href="../downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif" download>⬇ Download the submission .tif</a>
-  <a class="dl" style="background:#30363d;color:#e6edf3" href="executive-summary.html">Read why (executive summary)</a>
-  <p class="dim" style="margin-bottom:0">All nine format checks pass, and the uniqueness gate passes against
-  every raster measured. Both the literal and the calibrated uniqueness results are shown below — read them
-  before you submit.</p>
-</div>
-
-<div class="card warn">
-  <h3 style="margin-top:0">What this file is <em>not</em></h3>
-  <p>It is <b>not</b> a copy of any GEMSDOE submission. It was built from the organizer-format
-  <code>existing_faults.tif</code> and <code>sample_submission.tif</code> only, with a damage-zone-flank
-  structural prior. Its <b>estimated</b> score is <b>0.15</b> (95% interval 0.00–0.33,
-  out-of-sample RMSE 0.094). That estimate is <b>below</b> the best historical
-  GEMSDOE file (0.2778, user-reported) and far below the live leaderboard leader
-  (<b>0.4544</b>, xiaofanhu). No claim is made that this file
-  beats the public leaderboard.</p>
-</div>
-
-<h2>How to submit (5 steps)</h2>
-<ol>
-<li>Download the <code>.tif</code> above (do not unzip, do not re-save it — the editor will break the
-georeferencing and may write NaN).</li>
-<li>Open the competition page
-<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306</a>
-and choose <b>Submit → Make new submission</b>.</li>
-<li>Attach the file. The uploader accepts a single-band GeoTIFF or a .zip containing exactly one GeoTIFF.</li>
-<li>Note (≤140 characters, ours is 118):
-<div class="mono">DZ-16 damage-zone flank, 34500 isolated dots, 0.0 outside footprint, unique (wbggemsdoe2)</div></li>
-<li>Submit. If the portal answers “Predicted values must be in range [0, 1]”, you have submitted a
-re-saved or NaN-filled file — re-download the bytes above instead.</li>
-</ol>
-
-<h2>At a glance</h2>
-<table>
-<tr><th>Item</th><th>Value</th><th>Evidence class</th></tr>
-<tr><td>File</td><td class="mono">wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif</td><td>MEASURED</td></tr>
-<tr><td>Dots (positive pixels)</td><td>34,500 (mass 34,500)</td><td>MEASURED</td></tr>
-<tr><td>Format / CRS / shape</td><td>1 band float32 · EPSG:32611 · 3730 × 3292 · transform 100 m</td><td>MEASURED</td></tr>
-<tr><td>Score estimate</td><td><b>0.15</b> · 95% 0.00–0.33</td><td>EMPIRICAL-ESTIMATE</td></tr>
-<tr><td>Conditional band if the prior matches the fleet's best lineage</td>
-    <td>0.278–0.320</td>
-    <td>DERIVED (assumes hit rate, N=20 000)</td></tr>
-<tr><td>Overlap with each of the nine focus-site submissions</td>
-    <td>0.161–0.178</td>
-    <td>MEASURED</td></tr>
-<tr><td>Per-site detail</td><td><a href="sites/GEMSDOE24.html">nine measured site pages</a> ·
-<a href="sites/GEMSDOE32.html">GEMSDOE32 (the 0.2778 file)</a></td><td>MEASURED</td></tr>
-<tr><td>Live public leaderboard leader</td><td>0.4544 (xiaofanhu)</td><td>ORGANIZER-PUBLISHED (not a receipt)</td></tr>
-</table>
-
-<h2>Validator output</h2>
-<table><tr><th>Validator check (re-read from the file on disk)</th><th>Result</th></tr><tr><td><code>no_nan_anywhere</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>values_in_0_1_anywhere</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>values_in_0_1_inside_footprint</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>no_nan_inside_footprint</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>single_band_float32</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>crs_epsg32611</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>grid_matches_sample_submission</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>outside_footprint_is_zero</code></td><td><span class="pill ok">PASS</span></td></tr><tr><td><code>dots_recovered</code></td><td><span class="pill ok">PASS</span></td></tr></table>
-
-<h2>Uniqueness</h2>
-<table>
-<tr><th>Test</th><th>Result</th><th>Detail</th></tr>
-<tr><td>Exact bytes vs the 655-raster fleet index</td>
-    <td><span class="pill ok">PASS</span></td><td>no SHA-256 match</td></tr>
-<tr><td>1 km smoothed surface correlation &gt; 0.90</td>
-    <td><span class="pill ok">PASS</span></td><td>max |r| = 0.771 over 96 measured rasters</td></tr>
-<tr><td>Calibrated duplication (enrichment &gt; 1.5 <em>and</em> &gt; 50% shared dots)</td>
-    <td><span class="pill ok">PASS</span></td>
-    <td>the only reference above 1.5 covers 0.8% of the AOI (1.3% absolute overlap), so it cannot meet the 50% floor; among references sharing more than half the dots the maximum is 1.29</td></tr>
-<tr><td>Literal “&gt; 70% of dots within 3 px of one raster”</td>
-    <td><span class="pill bad">FAIL</span></td><td>4 references. <b>Every</b> focus-site submission fails this too — see below.</td></tr>
-</table>
-<div class="card warn">
-<p><b>Measured irregularity (flagged for review).</b> The literal 3-px rule cannot discriminate in this
-fleet. All nine focus-site submissions lie within 3 px of each other for
-<b>83–100%</b> of their dots, and within 3 px of the 13GEMSDOE stride-5 lattice for
-<b>≥ 99.4%</b> of theirs. Two registry rasters blanket 84% and 90% of the AOI footprint, so any
-spread-out pattern overlaps them by construction. A test that labels every submission the competition has
-scored a duplicate is not measuring duplication, so the gate here is calibrated against the fleet's own
-baseline similarity. The literal result is still shown, in full, above.</p>
-</div>
-
-<h2>Where the rejected files live</h2>
-<p>Three TIFs sit in <code>docs/downloads/</code>. Only one is cleared. The other two —
-<code>wbg2-h1-stepxasym-…-efd46877-zeros.tif</code> (masked interior cells, 99.4% lattice duplication, no
-validated holdout) and <code>wbg-h1-blind-conduit-breach-…</code> (duplicate of the registered lattice) — are
-retained only because audit records bind to their hashes, and
-<code>docs/downloads/README.txt</code> says so in the directory itself. See also
-<a href="parallel-lanes.html">the parallel-lane note</a>.</p>
-<footer>WBGGEMSDOE2 · DOE GEMS Prize · generated from measured artifacts in <code>data_public/</code>. Scores labelled USER-REPORTED are not organizer receipts; estimates labelled EMPIRICAL-ESTIMATE carry a stated error.</footer></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Submission guide — GEMS research</title>
+<style>
+:root{--ink:#18212b;--muted:#5b6672;--line:#d8dee6;--red:#a21c18;--pale:#fff0ef;--blue:#174ea6}
+*{box-sizing:border-box} body{margin:0;background:#f5f7fa;color:var(--ink);font:16px/1.55 system-ui,sans-serif}
+main{max-width:1120px;margin:auto;padding:26px 20px 70px} nav{padding:14px 20px;background:#fff;border-bottom:1px solid var(--line)}
+h1{font-size:2rem;margin:.4em 0} h2{margin-top:1.8em} a{color:var(--blue)}
+.alert{padding:18px 20px;background:var(--pale);border:3px solid var(--red);border-radius:12px;color:var(--red)}
+.alert strong{font-size:1.35rem} .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+.table-wrap{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:.9rem} th,td{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid var(--line)} th{background:#edf1f5} code{overflow-wrap:anywhere}
+small{display:block;color:var(--muted)} .no-file{font-weight:800;color:var(--red)} footer{color:var(--muted);margin-top:35px}
+</style></head><body><nav><a href="../index.html">Project home</a> · <a href="../executive-summary.html">Executive summary</a> · <a href="../sources.html">Sources</a></nav><main>
+<h1>DOE GEMS Prize — executive summary &amp; submission instructions</h1>
+<div class="alert"><strong>NO TIFF IS CLEARED — DO NOT DOWNLOAD A HISTORICAL/RESEARCH TIFF FOR SUBMISSION.</strong>
+<p>The current run card is negative. Existing GeoTIFFs are historical or research artifacts. A local format pass, a high owner-reported score, or uniqueness among only the nine named sites does not authorize submission.</p></div>
+<div class="card"><h2 style="margin-top:0">Decision and evidence</h2>
+<p><b>New submission file:</b> None. <b>Leaderboard score estimate:</b> not defensible; no validated candidate and no organizer receipt. <b>Competition slots used:</b> 0.</p>
+<p>The earlier WBG2-MSPTCD campaign's <b>HOLDOUT-DTI</b> is 0.042554 (95% CI 0.032059–0.054765), evaluator <code>gems57-pooled-hide-v2</code>, 60,988 withheld positives. This is a local hide-and-recover result, not an organizer score. Its candidate failed the literal registry gate outside the nine-site focus set. The prescribed three-experiment budget for that lane is spent.</p>
+<p>The requester/site-owner historical GEMSDOE32 B2 figure 0.2778 is <b>USER-REPORTED</b>, not independently tied to an organizer submission receipt. The strongest such reported figure among the nine is not proof of a reproducible new submission.</p>
+<p><a href="../data/run-card.json">Current negative run card</a> · <a href="../data/portfolio.json">Measured nine-site portfolio</a> · <a href="../data/RUN_CARD_MSPTCD.json">Prior MSPTCD run card</a></p></div>
+<h2>Nine-site executive table</h2>
+<p>Scores below are historical reported values. Uniqueness is measured within the pinned nine-site set only; that limited comparison cannot prove novelty against the full registry. Estimates are intentionally unavailable.</p>
+<div class="table-wrap"><table><thead><tr><th>Site</th><th>Historical file</th><th>Reported value / evidence</th><th>New candidate estimate</th><th>Unique within these nine?</th><th>Action</th></tr></thead><tbody><tr><td><a href="../sites/GEMSDOE24.html">GEMSDOE24</a></td><td><code>gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</code></td><td>0.2477 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 100.0% of this raster's dots are within 3 px of GEMSDOE25</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE25.html">GEMSDOE25</a></td><td><code>gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</code></td><td>0.2600 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 100.0% of this raster's dots are within 3 px of GEMSDOE24</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE27.html">GEMSDOE27</a></td><td><code>gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</code></td><td>0.2449 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 98.0% of this raster's dots are within 3 px of GEMSDOE24</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE28.html">GEMSDOE28</a></td><td><code>gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif</code></td><td>0.2710 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 100.0% of this raster's dots are within 3 px of GEMSDOE24</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE30.html">GEMSDOE30</a></td><td><code>gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif</code></td><td>0.2600 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 100.0% of this raster's dots are within 3 px of GEMSDOE24</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE31.html">GEMSDOE31</a></td><td><code>gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif</code></td><td>0.2708 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 100.0% of this raster's dots are within 3 px of GEMSDOE24</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE32.html">GEMSDOE32</a></td><td><code>gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code></td><td>0.2778 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 100.0% of this raster's dots are within 3 px of GEMSDOE24</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE33.html">GEMSDOE33</a></td><td><code>GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif</code></td><td>0.2632 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 99.7% of this raster's dots are within 3 px of GEMSDOE27</td><td><strong>DO NOT SUBMIT</strong></td></tr><tr><td><a href="../sites/GEMSDOE36.html">GEMSDOE36</a></td><td><code>gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif</code></td><td>0.2750 <small>USER-REPORTED; no authenticated receipt</small></td><td>Not defensible</td><td>FAIL: 97.6% of this raster's dots are within 3 px of GEMSDOE27</td><td><strong>DO NOT SUBMIT</strong></td></tr></tbody></table></div>
+<div class="card"><h2 style="margin-top:0">How to submit — only after a separate approval exists</h2>
+<ol><li>Check the current run card and the exact candidate release record. Continue only when it explicitly says <b>OK TO DOWNLOAD AND SUBMIT</b>, names the file and SHA-256, and records a passing validator, holdout and complete-registry checks.</li>
+<li>Do not treat a score estimate, projection, local format pass, or this historical table as approval. A holdout must beat a matched incumbent under the pinned evaluator and include the evaluator version, withheld positives and 95% CI.</li>
+<li>Download the exact approved GeoTIFF (or a ZIP containing exactly one GeoTIFF) and verify its SHA-256. Current project specifications require matching CRS, shape and geotransform, one band, and predictions in [0,1]. The validator must check NaNs and masks against the footprint, not silently clip or repair.</li>
+<li>On the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition page</a>, open <b>Submit → Make new submission</b>, choose the exact approved file, and paste the short release note (≤140 characters). Check the live weekly allowance and current rules; the project does not automate upload or choose a slot.</li>
+<li>Save the submission-page receipt. Only that receipt can support the label <b>ORGANIZER-CONFIRMED</b>. A public leaderboard entry alone is not a receipt for a particular file.</li></ol>
+<p><b>Current form-ready filename:</b> None. <b>Current note:</b> None. Do not submit.</p>
+<p>Official checks: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem and submission format</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/rules/">rules</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">public leaderboard</a>.</p></div>
+<footer>WBGGEMSDOE2 · evidence-first research · generated from reviewed portfolio and negative run-card artifacts.</footer>
+</main></body></html>
