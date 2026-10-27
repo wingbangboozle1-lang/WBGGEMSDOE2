@@ -173,8 +173,8 @@
   "existing_artifact_audit": {
     "evidence_class": "BYTE-LEVEL-FORENSIC-MEASUREMENT; NOT A CANDIDATE EXPERIMENT",
     "source_path": "evidence/release_audit.json",
-    "source_sha256": "cfe2b6ee4cb474181aefbe28095e41ace6befcebaa00ff726187050db126a413",
-    "recorded_utc": "2026-10-27T21:35:34.553390+00:00",
+    "source_sha256": "b7d141a303ec4af611d42663854fbfdae53f2010b351ed35927f43ccfb14655b",
+    "recorded_utc": "2026-10-27T23:46:55.524933+00:00",
     "scope": {
       "registry_rasters_opened": 13,
       "all_current_registry_rasters_checked": false,
