@@ -1,6 +1,6 @@
 ## Current disposition: negative / DO NOT SUBMIT
 
-Independent readback now covers 9 existing TIFF paths / 7 SHA-256 identities, 6 ZIP archives and 13 hash-pinned registry witnesses. Every saved identity fails the literal any-registry overlap stop. This is a rejection witness audit, not exhaustive current-registry or pre-placement-surface clearance. No new model experiment or weekly slot was used in this review.
+**Inventory reconciliation (2026-10-27):** this blocker log's original counts below have been superseded by the canonical `evidence/release_audit.json`. The current byte-bound audit covers 10 TIFF paths / 8 distinct SHA-256 identities, 7 ZIP archives and 13 hash-pinned registry witnesses. Every saved identity fails the literal any-registry overlap stop. This is a rejection witness audit, not exhaustive current-registry or pre-placement-surface clearance. No new model experiment or weekly slot was used in this review.
 
 Two artifacts arrived through concurrently merged PRs #24/#26. Their TIFF and ZIP bytes are preserved, but publication must not inherit other lane approvals:
 - D19-DOTTED SHA-256 `7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36`: 0.9914736842105263 overlap with the pinned binary lattice.
