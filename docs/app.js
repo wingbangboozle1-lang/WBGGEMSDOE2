@@ -4,7 +4,7 @@
   document.querySelectorAll('.freshness').forEach((element) => {
     const reference = element.dataset.captured || 'no timestamp';
     const captured = Date.parse(element.dataset.captured || '');
-    const failed = element.dataset.status === 'stale';
+    const failed = !['fresh', 'snapshot'].includes(element.dataset.status);
     const aged = !Number.isFinite(captured) || now - captured > 24 * 60 * 60 * 1000;
     const future = Number.isFinite(captured) && captured > now + 5 * 60 * 1000;
     if (failed || aged || future) {

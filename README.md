@@ -2,6 +2,8 @@
 
 **Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
 
+**27 October recheck:** the prior registry measurements and both rejected TIFFs were independently reopened with matching results. The public leaderboard showed **0.4544** at approximately 17:21 UTC ([dated public observation](evidence/public_leaderboard_observation_20261027.json)); this is not a submission receipt or a score for any project file. A later automated fetch failed, so the dashboard marks that snapshot stale. An older [shared registry index](evidence/shared_registry_index_summary.json) lists 695 distinct hashes, 684 outside our witness manifest; only metadata were counted, not those raster bytes. The duplicate stop and incomplete inventory prevent a new experiment or submission.
+
 ## Start every session here
 
 Read this README, including the original project brief below, then read the current findings and run card. **Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome** by surfacing limitations and fixing defects rather than hiding them. Historical instructions and snapshots are not a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New instructions and current evidence take precedence over stale facts in the preserved prompt.
@@ -23,6 +25,8 @@ python scripts/fetch_shared_template.py
 # Reopen registered historical rasters for research only; no TIFF is created.
 python scripts/audit_registry.py --fetch
 python scripts/audit_portfolio.py --fetch
+# Count the pinned upstream index's metadata; this does not inspect its raster bytes.
+python scripts/inspect_registry_index.py --fetch
 python scripts/review_parallel_candidate.py
 python scripts/review_conduit_candidate.py
 python scripts/build_run_card.py
@@ -33,11 +37,13 @@ PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_ev
 python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
 
-Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
+Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DrivenData credentials are never requested or stored. Mirror restoration now stops if any existing destination differs from the pinned mirror, and stages downloads before an atomic no-overwrite install; it does not replace authenticated files or a concurrently created file.
 
 `python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters. The concurrent `docs/` dashboard and `site/` fieldnotes both publish byte-identical copies of the single canonical run card; `docs/EXECUTIVE_SUMMARY.md` and `docs/RUN_CARD.json` are explicitly superseded snapshots.
 
-**Shared-tool defect to fix upstream:** the pinned `gems57.gates.format_report` can report a local format pass for finite pixels marked NoData inside the footprint. `scripts/validate_submission.py` now combines the unchanged shared result with a separate fail-closed mask check, but this is not a private fix of the shared tool. Correct and regression-test it in the shared template before future promotion. The shared metric's comment that truth-credit delta cannot exceed one dot's self-credit is also false on a multi-truth fixture; its tested scorer matched a brute-force oracle, but the documentation needs an upstream correction. The official feature description calls `depth_to_base_surf` conductive-base depth, whereas the mirror labels it basement depth; do not assume equivalence.
+**Shared-tool defect to fix upstream:** the pinned `gems57.gates.format_report` can report a local format pass for finite pixels marked NoData inside the footprint. `scripts/validate_submission.py` combines the unchanged shared result with a separate fail-closed mask check, but this is not a private fix of the shared tool. An upstream issue submission was denied by the GitHub integration's repository permissions; the [reproducer and proposed fix](research/shared-template-format-report.md) are preserved here. Correct and regression-test the shared template before future promotion. The shared metric's comment that truth-credit delta cannot exceed one dot's self-credit is also false on a multi-truth fixture; its tested scorer matched a brute-force oracle, but the documentation needs an upstream correction. The official feature description calls `depth_to_base_surf` conductive-base depth, whereas the mirror labels it basement depth; do not assume equivalence.
+
+Both dashboards now use one canonical public leaderboard observation. Scheduled builds restore a validated previous observation from the GitHub Actions cache before refreshing; a failed refresh remains visibly stale, and cache eviction falls back to the dated committed snapshot. These feeds cannot access private receipts or remaining weekly quota. The [27 October source recheck](research/source-verification-20261027.md) also flags a possible difference between the DrivenData overview's end time and the rules PDF's final-content cutoff; check current organizer guidance.
 
 ## Original project prompt
 

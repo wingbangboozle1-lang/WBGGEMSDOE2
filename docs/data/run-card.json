@@ -75,7 +75,7 @@
   },
   "submission_note": null,
   "ok_to_download_new_tif": false,
-  "updated_utc": "2026-10-26T22:23:22.025194+00:00",
+  "updated_utc": "2026-10-27T17:31:28.684341+00:00",
   "parallel_session": {
     "evidence": "evidence/parallel_review.json",
     "reported_experiments": 3,
@@ -108,5 +108,30 @@
     "preplacement_surface_correlation": null,
     "ok_to_submit": false,
     "reason": "Rejected: lattice duplication, no validated holdout, and synthetic rather than demonstrated geophysical features."
+  },
+  "this_session_recheck": {
+    "scope": "Repository and previously existing raster audit only; no new candidate, placement, holdout, canary or submission slot.",
+    "registry_audit_time_utc": "2026-10-27T17:19:32.655787+00:00",
+    "registry_index_evidence": "evidence/shared_registry_index_summary.json",
+    "registry_index_hash_rows": 695,
+    "index_hashes_not_in_witness_manifest": 684,
+    "index_raster_bytes_opened_for_metadata_summary": 0,
+    "all_current_registry_rasters_checked": false,
+    "format_diagnostic_evidence": "evidence/parallel_range_diagnostics_20261027.json",
+    "prior_parallel_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+    "prior_parallel_inside_masked_cells": 5132809,
+    "prior_parallel_raw_nonfinite_inside": 0,
+    "prior_parallel_format_valid_against_owner_mirror": false,
+    "public_leaderboard_observation": {
+      "evidence_class": "ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION; NOT A RECEIPT",
+      "value": 0.4544,
+      "captured_utc": "2026-10-27T17:21:43Z",
+      "latest_automated_refresh": "failed; dashboard stale",
+      "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/"
+    },
+    "shared_template_format_issue": "reproduced, upstream issue creation denied by repository integration permissions; no upstream fix",
+    "shared_template_issue_report": "research/shared-template-format-report.md",
+    "candidate_experiments": 0,
+    "competition_slots_used": 0
   }
 }

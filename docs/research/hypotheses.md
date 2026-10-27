@@ -1,4 +1,6 @@
-# Geological hypotheses — ranked proposals, not completed experiments
+# Historical alternate geological proposals — not completed experiments
+
+> **Current canonical ranking:** see [`research/hypotheses.md`](../../research/hypotheses.md). The distinct proposals below are retained as a historical parallel review, not the assigned lane or an instruction to run additional experiments. The dashboards now use the canonical list.
 
 **Status:** this review ran 0 model experiments. A separate parallel run reported 3 experiments, but its holdout does not satisfy the shared protocol and its candidate failed the binary-lattice gate. No additional experiments are authorized under that budget. The request refers to an assigned “single method paragraph,” but none is specified. In addition, the strict registry gate is blocked before placement. These are desk proposals, not selected lanes, observed gains, or claims that nobody outside this repository has tried them. The local repository initially contained only a README. The rankings below are qualitative judgments of potential value versus implementation effort, not score projections.
 

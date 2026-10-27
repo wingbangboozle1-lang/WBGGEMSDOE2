@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import re
 import sys
 import numpy as np
 import rasterio
@@ -67,23 +68,43 @@ def run(surface_path, preview_path, final_path, ref_path, manifest_path, data_di
         ref_grid = (src.shape, src.crs, src.transform)
         footprint = np.isfinite(src.read(1)) & (src.read_masks(1) > 0)
     surface = _read_grid(surface_path, ref_grid, footprint)
-    preview = _read_grid(preview_path, ref_grid, footprint)
-    if not np.isfinite(preview[footprint]).all() or not np.all((preview[footprint] == 0) | (preview[footprint] == 1)):
-        raise ValueError("preview must be binary and finite inside the footprint")
-    registry = []
+    if (not np.isfinite(surface[footprint]).all()
+            or np.any((surface[footprint] < 0) | (surface[footprint] > 1))):
+        raise ValueError("pre-placement surface must be finite and in [0,1] inside the footprint")
     entries = sorted(manifest["inputs"], key=lambda e: e["id"] != "13GEMSDOE")
-    for entry in entries:
-        path = Path(data_dir) / "registry" / (entry["id"] + ".tif")
-        if not verified(path, entry["bytes"], sha256=entry["sha256"], blob=entry["git_blob"]):
-            raise ValueError(f"missing or invalid registered raster {entry['id']}")
-        registry.append((entry["id"], _read_grid(path, ref_grid, footprint)))
-    pre = stage(surface, np.isfinite(preview) & (preview > 0), footprint, registry)
-    result = {"schema": "wbggems.candidate-check.v1", "surface_sha256": sha256(surface_path),
-              "preview_sha256": sha256(preview_path), "pre_placement": pre,
+    ids = [e["id"] for e in entries]
+    if not ids or len(set(ids)) != len(ids) or any(not re.fullmatch(r"[A-Za-z0-9_-]+", i) for i in ids):
+        raise ValueError("registry IDs must be nonempty, unique, and safe file names")
+
+    def registry():
+        # Stream witnesses: a conclusive early STOP does not depend on opening
+        # later files, but absence/invalidity can never become a passing result.
+        for entry in entries:
+            path = Path(data_dir) / "registry" / (entry["id"] + ".tif")
+            if not verified(path, entry["bytes"], sha256=entry["sha256"], blob=entry["git_blob"]):
+                raise ValueError(f"missing or invalid registered raster {entry['id']}")
+            yield entry["id"], _read_grid(path, ref_grid, footprint)
+
+    # The shared literal support definition is finite >0. Compare the actual
+    # surface BEFORE opening any preview or final-dot file, not merely a selected
+    # subset of the surface. A soft prior can therefore be a universal witness;
+    # its interpretation remains an explicit policy ambiguity, not an exemption.
+    surface_support = np.isfinite(surface) & (surface > 0) & footprint
+    pre = stage(surface, surface_support, footprint, registry())
+    pre["phase"] = "surface-before-placement"
+    result = {"schema": "wbggems.candidate-check.v2", "surface_sha256": sha256(surface_path),
+              "preview_sha256": None, "pre_placement": pre, "preview": {"status": "not-run"},
               "final": {"status": "not-run"}, "inventory_complete": inventory_complete,
               "ok_to_emit": False, "ok_to_submit": False,
               "note": "No local format or novelty check alone authorizes a weekly slot."}
     if pre["status"] == "duplicate-stop":
+        return result
+    preview = _read_grid(preview_path, ref_grid, footprint)
+    if not np.isfinite(preview[footprint]).all() or not np.all((preview[footprint] == 0) | (preview[footprint] == 1)):
+        raise ValueError("preview must be binary and finite inside the footprint")
+    result["preview_sha256"] = sha256(preview_path)
+    result["preview"] = stage(surface, np.isfinite(preview) & (preview > 0), footprint, registry())
+    if result["preview"]["status"] == "duplicate-stop":
         return result
     if not inventory_complete:
         result["final"] = {"status": "blocked-incomplete-registry"}
@@ -94,7 +115,7 @@ def run(surface_path, preview_path, final_path, ref_path, manifest_path, data_di
             result["final"] = {"status": "format-fail", "validator": validation}
             return result
         final = _read_grid(final_path, ref_grid, footprint)
-        result["final"] = stage(final, np.isfinite(final) & (final > 0), footprint, registry)
+        result["final"] = stage(final, np.isfinite(final) & (final > 0), footprint, registry())
         result["final"]["validator"] = validation
     return result
 

@@ -15,6 +15,7 @@ import re
 import urllib.request
 from urllib.parse import urlsplit
 from refresh_leaderboard import PARTIAL_URL, parse_top
+from feed_cache import validate_observation
 
 ROOT = Path(__file__).resolve().parents[1]
 LEADERBOARD = "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/"
@@ -55,16 +56,30 @@ def get_url(url, *, github=False):
         return data.decode("utf-8")
 
 
-def refresh(fallback, snapshots, *, fetch=get_url, now=None):
-    now = (now or datetime.now(timezone.utc)).isoformat()
+def refresh(fallback, snapshots, *, fetch=get_url, now=None, leaderboard_snapshot=None):
+    instant = now or datetime.now(timezone.utc)
+    timestamp = instant.isoformat()
     old = fallback.get("leaderboard", {})
     lead = {"source": LEADERBOARD, "evidence": "ORGANIZER-PUBLISHED LEADERBOARD; NOT A SUBMISSION RECEIPT",
-            "checked_at": now, "data_url": PARTIAL_URL}
-    try:
-        lead.update(status="fresh", value=parse_leaderboard(fetch(PARTIAL_URL)), observed_at=now)
-    except (OSError, ValueError, UnicodeError):
-        lead.update(status="stale", value=old.get("value"), observed_at=old.get("observed_at"),
-                    notice="Official page could not be fetched or parsed; showing dated fallback if available.")
+            "checked_at": timestamp, "data_url": PARTIAL_URL}
+    if leaderboard_snapshot is not None:
+        # Both dashboards consume exactly one canonical official observation.
+        # Do not perform a second fetch that could produce inconsistent scores.
+        try:
+            validate_observation(leaderboard_snapshot, now=instant)
+            lead.update(status=leaderboard_snapshot["status"], value=leaderboard_snapshot["top_public_dti"],
+                        observed_at=leaderboard_snapshot["captured_utc"],
+                        checked_at=leaderboard_snapshot.get("last_attempt_utc", timestamp),
+                        notice=leaderboard_snapshot.get("note", "Dated public snapshot; not a per-file receipt."))
+        except (ValueError, TypeError, OverflowError):
+            lead.update(status="stale", value=None, observed_at=None,
+                        notice="Canonical leaderboard snapshot invalid; no score is shown.")
+    else:
+        try:
+            lead.update(status="fresh", value=parse_leaderboard(fetch(PARTIAL_URL)), observed_at=timestamp)
+        except (OSError, ValueError, UnicodeError):
+            lead.update(status="stale", value=old.get("value"), observed_at=old.get("observed_at"),
+                        notice="Official page could not be fetched or parsed; showing dated fallback if available.")
 
     def site_status(item):
         # These names come from a committed allowlisted config, not arbitrary URLs.
@@ -82,7 +97,7 @@ def refresh(fallback, snapshots, *, fetch=get_url, now=None):
         return result
     with ThreadPoolExecutor(max_workers=4) as executor:
         site_results = list(executor.map(site_status, snapshots["sites"]))
-    return {"schema": "wbggems.public-feed.v1", "generated_at": now, "leaderboard": lead,
+    return {"schema": "wbggems.public-feed.v1", "generated_at": timestamp, "leaderboard": lead,
             "site_ref_notice": "Changed refs are compared with an observed HEAD baseline, not the historic raster pins; they require review and are not an automatic audit.",
             "baseline_observed_at": snapshots.get("captured_at"),
             "sites": site_results}
@@ -93,10 +108,19 @@ def main():
     parser.add_argument("--fallback", type=Path, default=ROOT / "site/data/leaderboard.json")
     parser.add_argument("--snapshots", type=Path, default=ROOT / "config/site_snapshots.json")
     parser.add_argument("--output", type=Path, default=ROOT / "site/data/leaderboard.json")
+    parser.add_argument("--leaderboard-snapshot", type=Path, default=ROOT / "docs/data/leaderboard.json",
+                        help="reuse the canonical docs snapshot instead of fetching a second score")
     args = parser.parse_args()
     old = json.loads(args.fallback.read_text()) if args.fallback.exists() else {}
     snapshots = json.loads(args.snapshots.read_text())
-    result = refresh(old, snapshots)
+    if args.leaderboard_snapshot:
+        try:
+            canonical = json.loads(args.leaderboard_snapshot.read_text())
+        except (OSError, UnicodeError, ValueError):
+            canonical = {}  # invalid snapshot must suppress, not manufacture, a score
+    else:
+        canonical = None
+    result = refresh(old, snapshots, leaderboard_snapshot=canonical)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     print(f"Leaderboard: {result['leaderboard']['status']}; site refs: " +
