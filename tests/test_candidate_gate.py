@@ -70,3 +70,37 @@ def test_stage_fails_closed_for_nonfinite_and_empty_surface():
     a = np.ones((4, 4)); a[2, 2] = np.nan
     with pytest.raises(ValueError, match='finite'):
         stage(a, dots, fp, [])
+
+
+def test_streamed_nonduplicate_witness_count():
+    fp = np.ones((9, 9), bool)
+    surface = np.zeros((9, 9)); surface[8, 8] = 1
+    reference = np.zeros((9, 9)); reference[0, 0] = 1
+    result = stage(surface, surface > 0, fp, iter([('sparse', reference)]))
+    assert result == {'status': 'no-witness-in-scope', 'registry_rasters_checked': 1}
+
+
+def test_incomplete_registry_blocks_before_preview_even_without_a_witness(tmp_path, monkeypatch):
+    import json
+    import rasterio
+    from rasterio.transform import from_origin
+    from audit_candidate import run
+
+    profile = dict(driver='GTiff', width=9, height=9, count=1, dtype='float32',
+                   crs='EPSG:32611', transform=from_origin(0, 900, 100, 100))
+    def write(path, arr):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with rasterio.open(path, 'w', **profile) as dst:
+            dst.write(arr.astype('float32'), 1)
+    ref, surface, raster = tmp_path/'ref.tif', tmp_path/'surface.tif', tmp_path/'registry/sparse.tif'
+    s = np.zeros((9, 9)); s[8, 8] = 1
+    r = np.zeros((9, 9)); r[0, 0] = 1
+    write(ref, np.zeros((9, 9))); write(surface, s); write(raster, r)
+    manifest = tmp_path/'manifest.json'
+    manifest.write_text(json.dumps({'inputs': [{'id': 'sparse', 'bytes': 1, 'sha256': 'a'*64, 'git_blob': 'b'*40}]}))
+    monkeypatch.setattr('audit_candidate.verified', lambda *args, **kwargs: True)
+    report = run(surface, tmp_path/'nonexistent-preview.tif', tmp_path/'nonexistent-final.tif', ref, manifest, tmp_path)
+    assert report['pre_placement']['status'] == 'no-witness-in-scope'
+    assert report['pre_placement']['registry_rasters_checked'] == 1
+    assert report['preview']['status'] == report['final']['status'] == 'blocked-incomplete-registry'
+    assert not report['ok_to_emit'] and not report['ok_to_submit']
