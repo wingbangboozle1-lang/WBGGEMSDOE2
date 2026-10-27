@@ -59,7 +59,8 @@ def status_banner():
 <h2 id="release-decision">No file is approved for submission. DO NOT SUBMIT.</h2>
 <p>DZ-16 and H3-PACK approvals are revoked. Every existing local TIFF exceeds the literal 70% registry overlap stop.
 No calibrated exemption, renamed file, projection, or format-only pass can override that failure.</p>
-</div><div class="actions"><button class="button" disabled>No submission file</button></div></section>'''
+</div><div class="actions"><button class="button" disabled>No submission file</button>
+<a class="button secondary" href="readiness.html">Checkout readiness &amp; blockers</a></div></section>'''
 
 
 def artifact_table(audit):

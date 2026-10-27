@@ -99,12 +99,19 @@ def msptcd_banner(suffix: str = '') -> str:
 
 
 def dphs_banner(suffix: str = '') -> str:
-    """WBG2-DPHS 60-feature multi-sensor + 300 m CELF submodular campaign & 467-raster audit (negative / DO NOT SUBMIT)."""
-    return f'''<section class="card guide-card" aria-labelledby="dphs-heading{suffix}"><h2 id="dphs-heading{suffix}">WBG2-DPHS &amp; 467-raster fleet audit: 0.1735 HOLDOUT-DTI — DO NOT SUBMIT</h2><p><strong>HOLDOUT-DTI 0.173477</strong>, 95% CI [0.152451, 0.194361], 60,988 withheld positives, evaluator <code>gems57-pooled-hide-v2</code> (61/61 feature canaries &le; 0.6180; all 15 byte/<code>[0,1]</code> zero-NaN checks PASS). Stopped fail-closed (<strong>DO NOT SUBMIT</strong>, 0 slots used) at the &gt;70% 3-px duplicate gate (95.87% vs <code>GEMSDOE12</code> scarp across 467 audited fleet rasters; 99.94% vs <code>13GEMSDOE</code> lattice; fleet empirical model LOSO R&sup2; = +0.4303 across 95 scored rasters).</p><p><a href="dphs/index.html">Open DPHS &amp; 9-site decision matrix →</a> · <a href="dphs/how-to-submit.html">Contest submission steps →</a> · <a href="dphs/executive-summary.html">Why 0.2778 won &amp; how to beat it →</a></p></section>'''
+    """Keep source-reported science separate from independently measured bytes."""
+    source = json.loads((ROOT / 'evidence/wbg2_dphs_results.json').read_text())
+    h = source['pooled_holdout_summary']['scores']['exp3_dphs_submodular']
+    saved = next(r for r in release_audit['artifacts'] if r['path'].startswith('docs/downloads/dphs/'))
+    overlap = saved['lattice_overlap_3px'] * 100
+    return f'''<section class="card guide-card" aria-labelledby="dphs-heading{suffix}"><h2 id="dphs-heading{suffix}">WBG2-DPHS: historical research — DO NOT SUBMIT</h2>
+<p><strong>SOURCE-REPORTED HOLDOUT-DTI {h['dti']:.6f}</strong>, 95% CI [{h['ci95'][0]:.6f}, {h['ci95'][1]:.6f}], {h['withheld_positive_pixels']:,} withheld positives, evaluator <code>{e(h['evaluator_version'])}</code>. This review did not replay the campaign, canaries, external-data provenance or fleet projection model; none is organizer-confirmed or a leaderboard estimate.</p>
+<p><strong>Independently measured on the saved TIFF:</strong> {overlap:.2f}% overlap within 3 px of the registered lattice, exceeding the literal 70% stop. The historical fleet audit is not a complete current-registry clearance. No weekly slot is authorized.</p>
+<p><a href="dphs/index.html">Historical DPHS report →</a> · <a href="release.html#research-downloads">Current byte-bound decision →</a> · <a href="research/why-b2-scored-2778.html">What the B2 lineage explains — and cannot prove →</a></p></section>'''
 
 
 def decision(suffix: str = ''):
-    return f'''<section class="banner" data-release-status="blocked" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Authoritative all-lane decision · NEGATIVE</p><h2 id="decision-heading{suffix}">No file is approved for submission. DO NOT SUBMIT.</h2><p>Every existing local TIFF fails the literal all-registry duplicate gate. No method lane is assigned; no new candidate or weekly slot is authorized. Former DZ-16 and H3-PACK approvals are revoked.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="release.html">Research downloads &amp; byte audit →</a></div></section>'''
+    return f'''<section class="banner" data-release-status="blocked" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Authoritative all-lane decision · NEGATIVE</p><h2 id="decision-heading{suffix}">No file is approved for submission. DO NOT SUBMIT.</h2><p>Every existing local TIFF fails the literal all-registry duplicate gate. No method lane is assigned; no new candidate or weekly slot is authorized. Former DZ-16 and H3-PACK approvals are revoked.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="release.html">Research downloads &amp; byte audit →</a><a class="text-link" href="readiness.html">Checkout readiness &amp; blockers →</a></div></section>'''
 
 
 def leaderboard_stale():

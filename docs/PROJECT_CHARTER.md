@@ -1,6 +1,8 @@
 # Project charter and session-start brief
 
-**Status update, 2026-10-27:** All saved TIFFs are **research-only / DO NOT SUBMIT**. The independent [byte audit](data/release_audit.json) reopens 10 TIFF paths / 8 identities and 13 pinned witnesses, with 7 ZIP checks; every artifact fails the literal rule. See the [repository review and current priorities](../research/repo-review-20261027.md) for the latest verified inventory and test status. Former DZ-16/H3 approvals are revoked. The full 19-band owner mirror is restored, not organizer-authenticated; corrected MSPTCD v2 has no measured holdout result. The [current run card](data/run-card.json), [download decision](release.html) and [source recheck](../research/source-verification-release-20261027.md) govern all lanes. No new candidate experiment or slot.
+**Status update, 2026-10-27:** All saved TIFFs are **research-only / DO NOT SUBMIT**. The independent [byte audit](data/release_audit.json) reopens 10 TIFF paths / 8 identities and 13 pinned witnesses, with 7 ZIP checks; every artifact fails the literal rule. Former DZ-16/H3 approvals are revoked. A prior session restored the full 19-band owner mirror; ignored inputs/caches must be checked again on each machine and are not organizer-authenticated; corrected MSPTCD v2 has no measured holdout result. The [current run card](data/run-card.json), [download decision](release.html) and [source recheck](../research/source-verification-release-20261027.md) govern all lanes. No new candidate experiment or slot.
+
+[Prior concurrent repository review](../research/repo-review-20261027.md) · [Current checkout readiness](readiness.html).
 
 **Read this file at the start of every project session.** It is the durable, actionable record of the project request, including safety/evidence constraints, the nine-site focus, the submission-format issue, and project values. The original long prompt included duplicated historical score lists; this charter consolidates repeated wording while retaining all operative requirements and the relevant site results in `EXECUTIVE_SUMMARY.md`.
 
@@ -26,7 +28,7 @@ For any permitted candidate, compare its raster rank-correlation with every regi
 
 ## Reuse and evaluation protocol
 
-- Use the shared template’s cached feature stack, `evaluate_holdout.py`, and `submission_writer.py`; do not rebuild or maintain a private fork. They have been restored in the ignored local cache from pinned owner mirrors; rerun `scripts/prepare_data.py --fetch --cache-bands` on a fresh machine and verify provenance before experiments.
+- Use the shared template’s cached feature stack, `evaluate_holdout.py`, and `submission_writer.py`; do not rebuild or maintain a private fork. A prior restoration receipt exists for ignored caches; check current availability with `python scripts/check_readiness.py --check` (exit 2 means blocked); rerun `scripts/prepare_data.py --fetch --cache-bands` on a fresh machine and verify provenance before experiments.
 - Holdout is hide-and-recover: withhold whole fault segments with a buffer, derive every catalogue-based feature from visible faults only, mask visible faults pixel-exactly, and score pooled DTI with alpha 0.2, beta 0.8, and the 300 m triangular kernel.
 - Run each feature alone through the holdout leakage canary before trusting a combined candidate. AUC above 0.90 is presumed leakage until demonstrated otherwise.
 - Report a numerical result only with its evidence class. Use `HOLDOUT-DTI` plus evaluator version, withheld-positive count, and 95% CI, or `ORGANIZER-CONFIRMED` with copied submission-page receipt. Mark historical values as owner/user-reported claims; mark projections as projections, never scores.

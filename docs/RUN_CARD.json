@@ -40,7 +40,7 @@
   },
   "raster_sha256": null,
   "validator": {
-    "status": "No new raster generated in this review. Seven existing identities (including two concurrently merged research artifacts) independently reopened; exact inside/grid and strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance.",
+    "status": "No new raster generated in this review. 10 existing TIFF paths / 8 identities independently reopened; exact inside/grid and strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance.",
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
     "crs_shape_transform_match": null,
