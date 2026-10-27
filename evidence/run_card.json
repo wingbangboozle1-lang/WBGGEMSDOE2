@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.run-card.v2",
-  "generated_utc": "2026-10-27T19:29:31.293722+00:00",
+  "generated_utc": "2026-10-27T19:30:43.355654+00:00",
   "session": "2026-10-27 blind-discontinuity campaign (3 preregistered lanes)",
   "hypothesis": "Blind faults are expressed by low-slope curvature dipoles, clay-capped conductivity/magnetic-low pairs, and strain-partition boundaries; their fusion is E3.",
   "mechanism": "Label-free multi-scale transforms of the 19 official bands (detrended elevation Laplacian dipoles; conductivity \u00d7 TMI opposed gradients and clay caps; dilatation/shear/earthquake boundaries), HistGradientBoosting trained only on visible catalogue faults, a fixed 6 px visible-catalogue collar prior, and graded registry novelty separation at emission.",
