@@ -8,7 +8,7 @@ No experiment was run in this review lane. The qualitative ranking below is a ju
 
 Not implemented or tested in this repository's present review lane. The currently observed refs for all nine priority sites have changed since the pinned rasters; their new contents have not been audited. Therefore no claim is made that these ideas have never been tried anywhere across the fleet.
 
-The supplied feature-layer names are from the hash-checked owner-mirrored 19-band manifest, not an authenticated DrivenData download. The local cache and derived shared feature bank are absent in this checkout. The official feature description and owner-mirror band metadata disagree about the depth layer; retain the official term ‘depth to conductive base’ unless original metadata resolves it.
+The supplied feature-layer names are from the hash-checked owner-mirrored 19-band manifest, not an authenticated DrivenData download. This session reverified the owner-mirrored stack and 19 raw bands in ignored local storage, which may not persist; the derived shared feature bank remains absent. The official feature description and owner-mirror band metadata disagree about the depth layer; retain the official term ‘depth to conductive base’ unless original metadata resolves it.
 
 ## Qualitative ranking
 
@@ -28,7 +28,7 @@ The supplied feature-layer names are from the hash-checked owner-mirrored 19-ban
 - **Why it might find an uncatalogued fault:** A buried structural discontinuity may juxtapose density and magnetic properties beneath basin fill where a surface trace is weak or absent. The proposal uses subsurface physical-property contrasts rather than catalogue proximity. This is a plausible target for unmapped segments, not proof that the catalogue omits only surface-visible faults.
 - **Difference from reviewed methods:** Different as proposed from the named pseudo-gravity residual, simple potential-field fusion, dotted-ridge, catalogue-gap and geothermal-PINN families: it tests a depth-conditioned spatial offset between paired signed edge responses. Related methods elsewhere are not exhaustively audited.
 - **Named non-fault mimic:** An unfaulted lithologic contact or intrusive dike can produce aligned gravity and magnetic edges; flight-line striping and gridding artefacts can also create apparent paired boundaries.
-- **Data/access status:** The 19-band feature names are recorded in a hash-checked owner mirror, not an authenticated DrivenData download. The local data/cache and derived shared feature bank are absent in this checkout; the pinned shared template must be restored and provenance rechecked before any run.
+- **Data/access status:** The 19-band feature names are recorded in a hash-checked owner mirror, not an authenticated DrivenData download. The raw owner-mirrored stack and 19 raw bands were reverified in this session’s ignored cache; they may not persist, are not organizer-authenticated, and the shared derived feature bank is absent. Verify provenance before any run.
 - **Source links for manual review:** [https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features) · [https://pubs.usgs.gov/publication/70271418](https://pubs.usgs.gov/publication/70271418) · [https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and](https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and)
 
 ### H2 — Conductive-flank asymmetry conditioned on a potential-field edge
@@ -38,7 +38,7 @@ The supplied feature-layer names are from the hash-checked owner-mirrored 19-ban
 - **Why it might find an uncatalogued fault:** A concealed fault-related fluid or alteration pathway could make the two flanks electrically asymmetric even where a mapped trace is missing. It is a conditional physical-property test, not a rule that high conductivity means a fault.
 - **Difference from reviewed methods:** The proposed statistic is a signed, edge-conditioned cross-flank contrast rather than simple co-location or a vent-proximity prior. However, the user-provided history includes conductivity/flank-labelled methods, so this is not claimed to be globally novel and should rank below H1 unless exact old code shows a meaningful distinction.
 - **Named non-fault mimic:** Saline basin fill, clay-rich strata, groundwater, and non-faulted lithologic boundaries can all create conductivity asymmetry.
-- **Data/access status:** Uses bands named in the owner-mirrored numerical feature stack; the original competition bytes and current local derived cache are not available/authenticated here.
+- **Data/access status:** Uses bands named in the owner-mirrored numerical feature stack; the restored raw owner-mirror bands are not authenticated as original competition bytes, and the shared derived feature bank is absent.
 - **Source links for manual review:** [https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features) · [https://gdr.openei.org/submissions/1391](https://gdr.openei.org/submissions/1391)
 
 ### H3 — Repeated cross-drainage deflection across a candidate structure
@@ -67,7 +67,7 @@ The supplied feature-layer names are from the hash-checked owner-mirrored 19-ban
 
 The requested literal registry gate is fail-closed. The registered stride-5 binary lattice forces more than 70% three-pixel overlap for the standard 37,654-distinct-dot budget. Separately, a registered continuous prior is positive throughout the footprint; if the pinned shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether a continuous field should count as ‘dots’ is unresolved, so no exemption is assumed. The inventory is incomplete and does not establish global uniqueness.
 
-The current checkout also lacks the competition rasters and derived feature cache. No spatial holdout, feature-alone leakage canary, matched incumbent comparison, or confidence interval can be reported. Do not substitute a projection or a previously reported parallel result for a protocol-valid HOLDOUT-DTI.
+The owner-mirrored competition inputs are not authenticated, and the shared derived feature bank is missing; ignored raw caches may not persist. No spatial holdout, feature-alone leakage canary, matched incumbent comparison, or confidence interval can be reported. Do not substitute a projection or a previously reported parallel result for a protocol-valid HOLDOUT-DTI.
 
 ## Gates before any experiment or slot selector
 
@@ -87,4 +87,4 @@ The current checkout also lacks the competition rasters and derived feature cach
 - [DOE GDR INGENIOUS release 1391](https://gdr.openei.org/submissions/1391) — regional data compilation and license information; specific files were not fetched here.
 - [USGS 3DEP products and services](https://www.usgs.gov/3d-elevation-program/about-3dep-products-services) — the official source named for H3; exact tiles/coverage remain unverified.
 
-**Evidence note:** Research/source pages were last checked in the repository's source register on 2026-10-26 UTC. This editorial review did not fetch the external non-GitHub hosts; see [`research/sources.md`](sources.md) for the recorded access status and limitations.
+**Evidence note:** Official source pages were rechecked through the research page renderer on 2026-10-27 UTC; binary access was not verified. See the [dated source recheck](source-verification-20261027.md) and [`research/sources.md`](sources.md) for the recorded access status and limitations.

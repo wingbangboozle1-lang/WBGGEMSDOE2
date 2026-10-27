@@ -58,7 +58,7 @@ def test_b2_score_explainer_separates_lineage_from_claims_and_keeps_stop():
     assert 'No defensible score estimate' in html
     assert 'DO NOT SUBMIT' in html and 'UNASSIGNED' in html
     assert 'nearby withheld truth may matter' in html
-    assert 'the method lane remains UNASSIGNED' in markdown
+    assert 'the method lane remains unassigned' in markdown.lower()
     assert 'H1 is not nominated or authorized' in markdown
     assert 'H1 is not nominated or authorized' in archive
     assert 'no next experiment or slot is selected' in archive.lower()
@@ -66,10 +66,11 @@ def test_b2_score_explainer_separates_lineage_from_claims_and_keeps_stop():
 
 def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():
     ledger = load('docs/data/leaderboard.json')
-    assert ledger['status'] == 'stale'
-    assert ledger['top_public_dti'] == 0.4437
-    assert ledger['captured_utc'] == '2026-10-26T21:55:19Z'
-    assert 'not a live value' in ledger['note'].lower()
+    assert ledger['status'] in ('fresh', 'stale')
+    assert ledger['evidence_class'] == 'OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT'
+    assert 0 <= ledger['top_public_dti'] <= 1 and ledger['captured_utc']
+    if ledger['status'] == 'stale':
+        assert 'not a live value' in ledger['note'].lower()
     legacy_feed = load('site/data/leaderboard.json')
     assert 'NOT A SUBMISSION RECEIPT' in legacy_feed['leaderboard']['evidence']
     findings = (ROOT / 'research/findings.md').read_text()

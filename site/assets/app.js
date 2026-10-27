@@ -22,12 +22,20 @@ async function loadLeaderboard() {
     if (value && meta) {
       value.textContent = typeof lead.value === 'number' && lead.value >= 0 && lead.value <= 1 ? lead.value.toFixed(4) : 'Unavailable';
       const age = Date.now() - Date.parse(lead.observed_at);
-      const stale = lead.status === 'stale' || !Number.isFinite(age) || age > 48 * 60 * 60 * 1000 || age < -300000;
+      const stale = lead.status !== 'fresh' || !Number.isFinite(age) || age > 24 * 60 * 60 * 1000 || age < -300000;
       meta.textContent = (stale ? 'Stale / unverified refresh · ' : lead.status === 'fresh' ? 'Organizer-published · ' : 'Organizer-published snapshot · ') + utcLabel(lead.observed_at);
       if (stale) meta.classList.add('stale');
     }
-    const refs = document.getElementById('ref-status');
-    if (refs) {
+  } catch (_) {
+    const meta = document.getElementById('leader-meta');
+    const value = document.getElementById('leader-value');
+    if (value) value.textContent = 'Unavailable';
+    if (meta) { meta.textContent = 'Feed unavailable · check official leaderboard'; meta.classList.add('stale'); }
+  }
+}
+async function loadRefFreshness() {
+  const refs = document.getElementById('ref-status');
+  if (refs) {
       try {
         const response = await fetch('data/focus-freshness.json', {cache: 'no-store'});
         if (!response.ok) throw new Error('unavailable');
@@ -44,12 +52,6 @@ async function loadLeaderboard() {
         refs.classList.add('stale');
       }
     }
-  } catch (_) {
-    const meta = document.getElementById('leader-meta');
-    const value = document.getElementById('leader-value');
-    if (value) value.textContent = 'Unavailable';
-    if (meta) { meta.textContent = 'Feed unavailable · check official leaderboard'; meta.classList.add('stale'); }
-  }
 }
 async function loadFocus() {
   const body = document.getElementById('focus-body');
@@ -84,4 +86,5 @@ async function loadFocus() {
   }
 }
 loadLeaderboard();
+loadRefFreshness();
 loadFocus();

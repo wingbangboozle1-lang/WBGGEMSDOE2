@@ -103,3 +103,41 @@ def test_finite_reference_nodata_is_excluded_from_footprint(tmp_path):
     write(f, p)
     result = inspect_tif(f, ref)
     assert result['footprint_cells'] == 11 and result['format_valid_against_reference']
+
+
+def test_range_diagnostics_are_location_specific_and_do_not_repair(tmp_path):
+    ref = tmp_path / 'reference.tif'
+    candidate = tmp_path / 'candidate.tif'
+    # First row is outside; all other cells are inside the reference footprint.
+    r = np.zeros((3, 4), np.float32)
+    r[0, :] = np.nan
+    write(ref, r)
+    a = np.array([
+        [np.nan, np.inf, -0.25, 1.25],
+        [np.nan, -np.inf, -0.1, 1.1],
+        [0.0, 0.5, 1.0, 0.0],
+    ], dtype=np.float32)
+    write(candidate, a)
+    original = candidate.read_bytes()
+    result = inspect_tif(candidate, ref, strict_all_finite=True)
+    assert not result['format_valid_against_reference']
+    assert (result['nan_inside'], result['nan_outside']) == (1, 1)
+    assert (result['inf_inside'], result['inf_outside']) == (1, 1)
+    assert (result['below_zero_inside'], result['below_zero_outside']) == (1, 1)
+    assert (result['above_one_inside'], result['above_one_outside']) == (1, 1)
+    assert result['positive_outside'] == 1 and result['diagnostics_band'] == 1
+    assert result['masked_inside'] == 1  # the NaN cell is marked nodata
+    assert candidate.read_bytes() == original
+    assert not result['submission_approval']
+
+
+def test_outside_nan_is_distinguished_from_an_inside_range_error(reference, tmp_path):
+    a = np.zeros((3, 4), np.float32)
+    a[0, 0] = np.nan  # official page permits null/NaN outside bounds
+    f = tmp_path / 'outside-nan.tif'
+    write(f, a)
+    result = inspect_tif(f, reference)
+    assert result['format_valid_against_reference']
+    assert result['nan_outside'] == 1 and result['nan_inside'] == 0
+    assert result['below_zero_inside'] == result['above_one_inside'] == 0
+    assert not inspect_tif(f, reference, strict_all_finite=True)['format_valid_against_reference']

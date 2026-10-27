@@ -51,3 +51,27 @@ def test_fragment_implicit_header_and_ambiguous_tables():
     assert parse_leaderboard(fragment) == .4437
     with pytest.raises(ValueError):
         parse_leaderboard(fragment + fragment)
+
+
+def test_canonical_snapshot_is_shared_and_never_refetched():
+    snapshots = {'sites': []}
+    snapshot = {'evidence_class': 'OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT',
+                'source_url': 'https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/',
+                'data_url': PARTIAL_URL, 'captured_utc': '2026-10-27T17:00:00Z',
+                'last_attempt_utc': '2026-10-27T17:10:00Z', 'status': 'stale',
+                'top_public_dti': .4544, 'note': 'refresh failed'}
+    def fetch(*args, **kwargs):
+        pytest.fail('a supplied canonical snapshot must not trigger a second fetch')
+    result = refresh({}, snapshots, fetch=fetch, now=datetime(2026, 10, 27, 18, tzinfo=timezone.utc),
+                     leaderboard_snapshot=snapshot)
+    lead = result['leaderboard']
+    assert lead['value'] == .4544 and lead['observed_at'] == snapshot['captured_utc']
+    assert lead['checked_at'] == snapshot['last_attempt_utc'] and lead['status'] == 'stale'
+
+
+def test_invalid_canonical_snapshot_suppresses_instead_of_using_old_score():
+    fallback = {'leaderboard': {'value': .9, 'observed_at': '2026-10-27T17:00:00Z'}}
+    result = refresh(fallback, {'sites': []}, leaderboard_snapshot={'top_public_dti': .99})
+    assert result['leaderboard']['value'] is None
+    assert result['leaderboard']['observed_at'] is None
+    assert result['leaderboard']['status'] == 'stale'
