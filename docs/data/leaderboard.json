@@ -1,11 +1,13 @@
 {
   "evidence_class": "OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT",
   "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-  "captured_utc": "2026-10-26T21:55:19Z",
-  "last_attempt_utc": "2026-10-26T22:18:22.995898+00:00",
-  "status": "stale",
-  "top_public_dti": 0.4437,
+  "captured_utc": "2026-10-27T17:25:00Z",
+  "last_attempt_utc": "2026-10-27T18:51:00Z",
+  "status": "fresh",
+  "top_public_dti": 0.4544,
   "top_participant": "xiaofanhu",
-  "note": "Refresh failed; showing the last successful observation if present, not a live value.",
-  "last_error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+  "note": "Official public leaderboard observed 2026-10-27 (approx. time). Not a receipt for any project raster. The scheduled refresh will mark it stale if the official fragment cannot be fetched from the runner.",
+  "last_error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
+  "data_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard_partial/?page=1",
+  "capture_method": "research fetch_page tool; sandbox urllib is restricted to github/pypi hosts"
 }

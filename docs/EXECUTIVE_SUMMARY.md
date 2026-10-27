@@ -1,3 +1,7 @@
+> **SUPERSEDED 2026-10-27.** This is the earlier negative-lane snapshot, kept for audit history.
+> The current receipted decision and downloadable TIFF are in [CURRENT_EXECUTIVE_SUMMARY.md](CURRENT_EXECUTIVE_SUMMARY.md)
+> and [executive-summary.html](executive-summary.html). Do not use this page to decide what to submit.
+
 # Executive summary — earlier snapshot
 
 > **Historical snapshot (superseded).** This earlier concurrent review predates the restored owner-mirrored data and independent raster audit. Some statements below about missing data and unexamined files were true at the earlier review, but are no longer the current status. For the current decision and measured evidence, see the [live executive summary](executive-summary.html), [source notes](research/evidence-and-sources.md), and [current run card](data/run-card.json). No candidate is approved.

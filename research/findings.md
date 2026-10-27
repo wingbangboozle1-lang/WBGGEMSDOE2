@@ -1,3 +1,13 @@
+# Current finding (2026-10-27)
+
+A new, unique, format-valid GeoTIFF was generated and audited. See
+[docs/CURRENT_EXECUTIVE_SUMMARY.md](../docs/CURRENT_EXECUTIVE_SUMMARY.md),
+[evidence/run_card.json](../evidence/run_card.json) and
+[research/hypotheses_20261027.md](hypotheses_20261027.md). The historical
+negative-lane findings below are preserved for audit continuity.
+
+---
+
 # Executive audit: what is safe to submit?
 
 **Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.

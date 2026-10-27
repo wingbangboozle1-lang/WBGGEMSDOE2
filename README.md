@@ -1,6 +1,6 @@
 # GEMS Fieldnotes
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Current decision (27 October 2026): OK TO DOWNLOAD AND SUBMIT one newly generated TIFF** — conditional on the documented [two-reading registry policy](docs/PROJECT_CHARTER.md) and on the human selector checking the weekly cap. Download [`docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif`](docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif) (SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`). The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/), [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md) and [submission guide](site/executive.html) make the decision and its caveats explicit. The single canonical [run card](evidence/run_card.json), [hypotheses](research/hypotheses_20261027.md) and [official source register](research/sources_20261027.md) document exactly what was established. **No organizer score or receipt is claimed; no upload was performed.** The 26 October negative lane is preserved below as history, not as the current decision.
 
 ## Start every session here
 
@@ -8,7 +8,81 @@ Read this README, including the original project brief below, then read the curr
 
 The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
 
-A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. This review lane generated no TIFF after that stop; two separate parallel research TIFFs were later independently rejected. The nine historical downloads are research-only.
+**Historical 26 October state (superseded).** A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels; a continuous probability prior is positive across the entire footprint. Under the purely literal reading, *any* nonempty candidate is a duplicate, so that reading is mathematically unsatisfiable. The 27 October [charter amendment](docs/PROJECT_CHARTER.md) resolves this as an explicit, published policy decision: the 70% dot test applies to geological dot fields and the 0.90 rank-correlation test applies to every raster; the literal reading is still computed and reported as firing on three controls. The 27 October lane generated and audited a new TIFF; two earlier parallel research TIFFs remain independently rejected. The nine historical downloads are research-only.
+
+## Current directive — read this first, every session (27 October 2026)
+
+The operator's latest message repeats the original brief (preserved verbatim in the
+`<details>` below) and adds the following operative instructions. They are recorded
+here so no session starts from a partial prompt. Numbers inside the quoted text are
+**claims**, not verified evidence; see `research/sources_20261027.md` for the
+line-by-line check of official pages.
+
+> "0.3195 is the highest score right now so we need to design a new strategy,
+> research, testing, analyzing, and generating submission system than the current
+> website. It should be unique, take unique approaches to generating a submission
+> that can score higher than 0.3195."
+>
+> "Put this prompt into the repo readme and read it everytime we work on the
+> project as a starting point to make sure we are building what we are aiming for
+> and have a strong base to continue building and improving on making something
+> useful for everyday use. It should solve the problem of having to manually check
+> everything ourselves and having an up to date current feed."
+>
+> "Work on the next steps from the previous sessions first." — the previous
+> session's next steps were: (1) reconcile the literal "any registry raster" rule
+> with the lattice/continuous-prior ambiguity as a **policy decision**; (2)
+> authenticate the official sample, catalogue, feature bytes, licence and weekly
+> quota; (3) restore a complete, fresh, hash-pinned registry and recompute
+> catalogue-derived fold features from visible faults only; (4) preregister one
+> lane, run each feature canary, use the same buffered folds and shared evaluator
+> for candidate/control and report pooled HOLDOUT-DTI + CI; (5) fix the shared
+> validator's masked-interior issue upstream, validate the saved bytes and ZIP,
+> and let a separate selector check the quota.
+>
+> "Run this task through multiple passes. Pass 1: Implement the task completely
+> and verify the result. Pass 2: Review your work for bugs, missing requirements,
+> incorrect assumptions, and edge cases. Fix everything you find. Pass 3: Re-check
+> the entire implementation against the original request... Do not stop after the
+> first pass."
+>
+> "Go ahead and create a pull request and then merge the pull request onto the
+> main. Make suggestions for what work still needs to be done and any limitations
+> that is in the way of a successful project."
+>
+> Core values: **Maximize P(Win)** — weigh tradeoffs, assess risk and choose the
+> path that maximizes the probability of winning; **Own the Outcome** — own
+> results end to end, treat failure and success as signals, stay accountable to
+> the final outcome.
+
+**What this session did with it.** Three preregistered geological lanes
+(`research/hypotheses_20261027.md`), one unchanged shared evaluator/writer, a
+126-file public registry scan (`evidence/registry_expanded.json`), feature
+canaries, a documented two-reading duplicate policy (`docs/PROJECT_CHARTER.md`),
+and an independently audited, newly generated TIFF. The 2026-10-27 official
+leaderboard observation (0.4544) and all other irregularities are in
+`research/sources_20261027.md`. The current decision and download link are at the
+top of the [executive summary](docs/executive-summary.html).
+
+## 27 October 2026 campaign — measured results (not scores)
+
+| Gate | Measured value | Evidence |
+|---|---|---|
+| Three preregistered lanes | E1 flexural curvature dipole, E2 clay-capped alteration edge, E3 fusion with strain partitioning; one discarded first pass (trivial catalogue-distance identity) | [`research/hypotheses_20261027.md`](research/hypotheses_20261027.md), [`evidence/holdout_20261027.json`](evidence/holdout_20261027.json) |
+| Leakage canary | 23 features + collar prior; max directed AUC **0.8179** (< 0.90 alarm); no alarms | [`evidence/canaries_20261027.json`](evidence/canaries_20261027.json) |
+| HOLDOUT-DTI (promoted E3, β=0.88) | **0.1452**, 95% CI **[0.1287, 0.1626]**, `gems57-pooled-hide-v2`, 11,321 withheld positives, 4 buffered folds, 2,000 block-bootstrap draws | [`evidence/soft_novelty_refinement.json`](evidence/soft_novelty_refinement.json) |
+| Paired control | collar-only 0.1317; delta **+0.0135**, 95% CI **[0.0068, 0.0198]** — positive lower bound | same |
+| Nine historical rasters on identical folds | HOLDOUT-DTI 0.0037–0.0919 (proxy only; they were built with the full catalogue) | [`evidence/holdout_20261027.json`](evidence/holdout_20261027.json) |
+| Registry | 127 resolved files / 121 distinct SHA-256 from 86 sites + 13 pinned witnesses; 126 checked; 8 ledger rows unresolved; worst like-for-like overlap **67.65%** (<70%); worst \|Spearman\| **0.431** (<0.90); unique vs all nine focus sites (worst 54.93%) | [`evidence/registry_expanded.json`](evidence/registry_expanded.json), [`evidence/final_uniqueness.json`](evidence/final_uniqueness.json) |
+| Format | float32, one band, EPSG:32611, 100 m, 3730×3292, transform match, all finite in [0,1], 0 masked interior cells, 100,000 dots, zeros outside footprint | [`evidence/final_format.json`](evidence/final_format.json), [`evidence/final_independent_check.json`](evidence/final_independent_check.json) |
+| Leaderboard estimate | **None.** No organizer receipt and no calibrated holdout→leaderboard mapping; exploratory bracket unavailable. Official public leader observed 0.4544 on 2026-10-27. | [`research/sources_20261027.md`](research/sources_20261027.md) |
+
+The literal duplicate reading still fires on three space-filling controls; the
+green decision is conditional on the [like-for-like policy decision](docs/PROJECT_CHARTER.md).
+A hard novelty cap was a decisive negative (HOLDOUT-DTI 0.0091) and is documented
+in [`evidence/novelty_refinement.json`](evidence/novelty_refinement.json). Negative
+results are deliverables. The [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md)
+has the download table and exact submission steps.
 
 ## Reproduce the audit
 
@@ -20,8 +94,18 @@ pip install -r requirements.txt
 python scripts/prepare_data.py --fetch --cache-bands
 python scripts/restore_public_mirrors.py --small-only
 python scripts/fetch_shared_template.py
-# Reopen registered historical rasters for research only; no TIFF is created.
+# Reopen registered historical rasters for research only.
 python scripts/audit_registry.py --fetch
+# 27 Oct campaign: expanded registry, features, 3 lanes, final TIFF, audits, site.
+python scripts/expand_registry.py && python scripts/registry_union.py
+PYTHONPATH=src python -m wbg2.features
+PYTHONPATH=src python scripts/run_campaign_20261027.py --stage canaries
+PYTHONPATH=src python scripts/run_campaign_20261027.py --stage holdout
+PYTHONPATH=src python scripts/novelty_refine.py
+PYTHONPATH=src python scripts/soft_novelty_refine.py
+PYTHONPATH=src python scripts/run_campaign_20261027.py --stage final
+PYTHONPATH=src python scripts/audit_final_candidate.py
+python scripts/build_run_card.py && python scripts/build_site.py && python scripts/build_site_data.py
 python scripts/audit_portfolio.py --fetch
 python scripts/review_parallel_candidate.py
 python scripts/review_conduit_candidate.py
@@ -951,7 +1035,7 @@ A concurrent session produced `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-e
 
 The parallel source reported **HOLDOUT-DTI 0.1321**, evaluator `WBGGEMSDOE2-HIDE-RECOVER-v2.0`, 58,016 withheld positives, reported 95% CI [0.1290, 0.1349]. That result has **not** been independently reproduced, used a private rather than the required shared evaluator, and reports canaries only for one fold, did not exclude evaluation cells from its training zone, and the committed lane script does not reproduce the reported interval. It is not a leaderboard score or proof of beating the matched incumbent. Its speculative live-score projection is not accepted. Three experiments were source-reported in that parallel lane; this review lane ran none, and no organizer receipt is available.
 
-See the [rechecked parallel brief](docs/executive-summary/index.html), [independent evidence](evidence/parallel_review.json), [preserved original records](evidence/parallel_archive/), and the single [canonical negative run card](evidence/run_card.json). The incomplete parallel generator, partial uniqueness audit and zero-NoData private writer are disabled rather than silently reused.
+See the [rechecked parallel brief](docs/executive-summary/index.html), [independent evidence](evidence/parallel_review.json), [preserved original records](evidence/parallel_archive/), and the [archived 26 Oct negative run card](evidence/run_card_20261026_negative.json) (the [current canonical card](evidence/run_card.json) is the 27 Oct promotion). The incomplete parallel generator, partial uniqueness audit and zero-NoData private writer are disabled rather than silently reused.
 
 
 ## Second parallel conduit record — STOP

@@ -4,11 +4,12 @@
   "leaderboard": {
     "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
     "evidence": "ORGANIZER-PUBLISHED LEADERBOARD; NOT A SUBMISSION RECEIPT",
-    "checked_at": "2026-10-26T22:18:24.473425+00:00",
-    "status": "stale",
-    "value": 0.4437,
-    "observed_at": "2026-10-26T21:47:34+00:00",
-    "notice": "Official page could not be fetched or parsed; showing dated fallback if available."
+    "checked_at": "2026-10-27T17:25:00Z",
+    "status": "fresh",
+    "value": 0.4544,
+    "observed_at": "2026-10-27T17:25:00Z",
+    "notice": "Observed on the official leaderboard page with the research fetch tool; sandbox urllib cannot reach this host. Not a submission receipt.",
+    "capture_method": "research fetch_page tool"
   },
   "site_ref_notice": "Changed refs are compared with an observed HEAD baseline, not the historic raster pins; they require review and are not an automatic audit.",
   "baseline_observed_at": "2026-10-26T21:56:11.098339+00:00",

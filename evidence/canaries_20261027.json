@@ -1,0 +1,243 @@
+{
+  "schema": "wbggems.leakage-canary.v1",
+  "generated_utc": "2026-10-27T18:16:55.499296+00:00",
+  "evidence_class": "LEAKAGE-CANARY",
+  "method": "Single-feature directed AUC = max(AUC, 1-AUC) on each fold's label-blind scored region; withheld component pixels vs 4x random active non-truth pixels. >0.90 is an alarm.",
+  "folds": 4,
+  "withheld_positive_pixels": 11321,
+  "alarm_threshold": 0.9,
+  "alarmed_features": [],
+  "features": {
+    "flex_dipole_s2": {
+      "per_fold_directed_auc": [
+        0.605869,
+        0.517634,
+        0.553826,
+        0.520378
+      ],
+      "max_directed_auc": 0.605869,
+      "leakage_alarm": false
+    },
+    "flex_curv_abs": {
+      "per_fold_directed_auc": [
+        0.633418,
+        0.515071,
+        0.561182,
+        0.516816
+      ],
+      "max_directed_auc": 0.633418,
+      "leakage_alarm": false
+    },
+    "flex_dipole_s4": {
+      "per_fold_directed_auc": [
+        0.619801,
+        0.525214,
+        0.567309,
+        0.514768
+      ],
+      "max_directed_auc": 0.619801,
+      "leakage_alarm": false
+    },
+    "flex_lowslope": {
+      "per_fold_directed_auc": [
+        0.668032,
+        0.541814,
+        0.574992,
+        0.555771
+      ],
+      "max_directed_auc": 0.668032,
+      "leakage_alarm": false
+    },
+    "flex_depth_grad": {
+      "per_fold_directed_auc": [
+        0.544518,
+        0.503018,
+        0.510376,
+        0.532085
+      ],
+      "max_directed_auc": 0.544518,
+      "leakage_alarm": false
+    },
+    "flex_grav_edge": {
+      "per_fold_directed_auc": [
+        0.518463,
+        0.529801,
+        0.500229,
+        0.56222
+      ],
+      "max_directed_auc": 0.56222,
+      "leakage_alarm": false
+    },
+    "flex_hinge_concord": {
+      "per_fold_directed_auc": [
+        0.601312,
+        0.505224,
+        0.551027,
+        0.525742
+      ],
+      "max_directed_auc": 0.601312,
+      "leakage_alarm": false
+    },
+    "flex_hinge_grav": {
+      "per_fold_directed_auc": [
+        0.615257,
+        0.50804,
+        0.553995,
+        0.554978
+      ],
+      "max_directed_auc": 0.615257,
+      "leakage_alarm": false
+    },
+    "alt_cond_grad": {
+      "per_fold_directed_auc": [
+        0.502798,
+        0.505958,
+        0.539093,
+        0.534119
+      ],
+      "max_directed_auc": 0.539093,
+      "leakage_alarm": false
+    },
+    "alt_mag_grad": {
+      "per_fold_directed_auc": [
+        0.559854,
+        0.526149,
+        0.525195,
+        0.506441
+      ],
+      "max_directed_auc": 0.559854,
+      "leakage_alarm": false
+    },
+    "alt_cross_opposition": {
+      "per_fold_directed_auc": [
+        0.508928,
+        0.516921,
+        0.502318,
+        0.535378
+      ],
+      "max_directed_auc": 0.535378,
+      "leakage_alarm": false
+    },
+    "alt_mag_low": {
+      "per_fold_directed_auc": [
+        0.547915,
+        0.504307,
+        0.502403,
+        0.504794
+      ],
+      "max_directed_auc": 0.547915,
+      "leakage_alarm": false
+    },
+    "alt_cond_high": {
+      "per_fold_directed_auc": [
+        0.563065,
+        0.518394,
+        0.515316,
+        0.535727
+      ],
+      "max_directed_auc": 0.563065,
+      "leakage_alarm": false
+    },
+    "alt_clay_cap": {
+      "per_fold_directed_auc": [
+        0.568237,
+        0.50632,
+        0.502829,
+        0.520918
+      ],
+      "max_directed_auc": 0.568237,
+      "leakage_alarm": false
+    },
+    "alt_cond_depth": {
+      "per_fold_directed_auc": [
+        0.53575,
+        0.559211,
+        0.528537,
+        0.57148
+      ],
+      "max_directed_auc": 0.57148,
+      "leakage_alarm": false
+    },
+    "alt_tilt_edge": {
+      "per_fold_directed_auc": [
+        0.526698,
+        0.511071,
+        0.508483,
+        0.516371
+      ],
+      "max_directed_auc": 0.526698,
+      "leakage_alarm": false
+    },
+    "strain_dil_zero": {
+      "per_fold_directed_auc": [
+        0.558957,
+        0.513912,
+        0.500774,
+        0.54908
+      ],
+      "max_directed_auc": 0.558957,
+      "leakage_alarm": false
+    },
+    "strain_shear_grad": {
+      "per_fold_directed_auc": [
+        0.517169,
+        0.500652,
+        0.523655,
+        0.527966
+      ],
+      "max_directed_auc": 0.527966,
+      "leakage_alarm": false
+    },
+    "strain_partition": {
+      "per_fold_directed_auc": [
+        0.509817,
+        0.502857,
+        0.522699,
+        0.553559
+      ],
+      "max_directed_auc": 0.553559,
+      "leakage_alarm": false
+    },
+    "strain_inv2": {
+      "per_fold_directed_auc": [
+        0.525013,
+        0.526142,
+        0.554196,
+        0.507749
+      ],
+      "max_directed_auc": 0.554196,
+      "leakage_alarm": false
+    },
+    "seis_intensity_anom": {
+      "per_fold_directed_auc": [
+        0.516424,
+        0.53455,
+        0.504792,
+        0.509597
+      ],
+      "max_directed_auc": 0.53455,
+      "leakage_alarm": false
+    },
+    "seis_distance_anom": {
+      "per_fold_directed_auc": [
+        0.533996,
+        0.507428,
+        0.534963,
+        0.506152
+      ],
+      "max_directed_auc": 0.534963,
+      "leakage_alarm": false
+    },
+    "collar_prior": {
+      "per_fold_directed_auc": [
+        0.81788,
+        0.800531,
+        0.782482,
+        0.736077
+      ],
+      "max_directed_auc": 0.81788,
+      "leakage_alarm": false
+    }
+  },
+  "code_path_note": "collar_prior is a deterministic function of the fold-visible catalogue only; no hidden label array is read. The discarded first pass trained on ctx_dist_visible and learned a trivial self-identity; that column is no longer used anywhere."
+}

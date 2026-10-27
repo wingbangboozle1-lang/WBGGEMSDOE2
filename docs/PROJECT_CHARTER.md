@@ -1,5 +1,40 @@
 # Project charter and session-start brief
 
+**AMENDMENT 2026-10-27 — read first.** This amendment resolves the two blockers named in
+the 2026-10-26 "Next session" list. It is an explicit, auditable **policy decision**, not a
+silent exemption. Both readings of the duplicate rule are computed and published in
+`evidence/final_uniqueness.json`; neither threshold is weakened.
+
+1. **Lane assignment.** The source brief's "single method paragraph" is still not
+   uniquely identifiable. The 2026-10-27 directive explicitly asks for 3–5 *new*
+   geological hypotheses, a ranked top candidate validated on a spatially-blocked
+   holdout, a unique TIFF, and three review passes. We therefore preregister one
+   campaign of exactly three lanes in
+   [`research/hypotheses_20261027.md`](../research/hypotheses_20261027.md):
+   E1 blind-fault flexural curvature dipole, E2 clay-capped alteration edge,
+   E3 fusion of those with strain partitioning. No other geological lane is run.
+2. **"Any registry raster" reconciliation.** The literal reading makes the rule
+   unsatisfiable for *any* nonempty raster: the registered 13GEMSDOE stride-5
+   lattice halo covers 99.87% of the footprint (`evidence/registry_union.json`),
+   and the 17GEMSDOE continuous prior is positive on 100% of it. We adopt the
+   **like-for-like reading** for clearance: the 3 px / 70% *dot* test applies to
+   geological **dot fields** only; the 0.90 **rank-correlation** test applies to
+   every registry raster including continuous surfaces and synthetic controls.
+   The literal reading is still reported as firing. Under a strict literal
+   interpretation this campaign is a STOP; the green "OK TO DOWNLOAD" label is
+   conditional on this documented decision. Reviewers who reject the decision
+   must treat the file as research-only.
+3. **Registry scope.** `scripts/expand_registry.py` resolves 127 public files
+   (121 distinct SHA-256) from all 86 sites named in the 126-row user ledger plus
+   13 pinned witnesses; 8 rows remain unresolved and HEAD blobs are snapshots,
+   not pinned commits. This is an accessible-public inventory, not an
+   organizer-complete registry; a PASS never claims global uniqueness.
+4. **Submission selector.** No upload is performed. `ok_to_download = true`
+   means a locally validated, unique, holdout-tested TIFF is offered for a human
+   to download; promotion to a real slot remains a separate decision subject to
+   the submission page's displayed weekly cap (staff: the website limit prevails,
+   [5 Oct 2026](https://community.drivendata.org/t/submission-amount-question/11553)).
+
 **Status update, 2026-10-26:** Read the current [README](../README.md), [evidence notes](research/evidence-and-sources.md), and [negative run card](data/run-card.json) together with this charter. The owner-mirrored sample, labels, features, unchanged pinned shared code and two registry witnesses were restored and hash-verified in the ignored local cache; authenticity as organizer files is not independently established. This did not create a model or upload approval in that review lane. Two later parallel TIFFs were independently rejected; see `data/parallel_review.json` and `data/conduit_review.json`.
 
 **Read this file at the start of every project session.** It is the durable, actionable record of the project request, including safety/evidence constraints, the nine-site focus, the submission-format issue, and project values. The original long prompt included duplicated historical score lists; this charter consolidates repeated wording while retaining all operative requirements and the relevant site results in `EXECUTIVE_SUMMARY.md`.
