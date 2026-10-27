@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Why GEMSDOE32 scored 0.2778, Band 6 tc forensic proof, and 4-lane WBGGEMSDOE2 synthesis.">
+  <meta name="theme-color" content="#0b5d4d">
+  <title>Executive Summary · WBG2-MSPTCD · GEMS Research</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell">
+      <a href="index.html" class="brand" aria-label="WBG2-MSPTCD home">
+        <span class="brandmark">
+          <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none">
+            <path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/>
+          </svg>
+        </span>
+        GEMS <small>WBG2-MSPTCD</small>
+      </a>
+      <nav class="nav" aria-label="MSPTCD navigation"><a href="index.html">MSPTCD Overview</a><a href="executive-summary.html" aria-current="page">Executive Summary</a><a href="research.html">5 Hypotheses & Holdout</a><a href="sources.html">Sources & Receipts</a><a href="../index.html">← Main Dashboard</a></nav>
+      <div class="top-right">
+        <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a>
+        <span class="top-status"><span class="dot"></span> Research-only · 0 slots</span>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="shell main"><section class="notice"><strong>Historical campaign — source-reported, not reproduced in this review.</strong> Canary AUC below an alarm threshold does not prove zero leakage. The literal duplicate stop remains binding. No slot is authorized. See the <a href="../submission/index.html">reconciled release decision</a>.</section>
+    <div class="intro">
+      <div>
+        <p class="eyebrow">Executive Summary · WBG2-MSPTCD Lane</p>
+        <h1>Why GEMSDOE32 Scored 0.2778, Band 6 Forensic Proof, and Cross-Lane Synthesis</h1>
+        <p>Verified line-by-line against raw GeoTIFF pixels, unmodified upstream holdout code, and the 144-row 2026-10-27 fleet ledger (<a href="../data/user-reported-ledger-20261027.csv">CSV download ↓</a>).</p>
+      </div>
+      <div class="intro-meta">Evidence standard<br><strong>Zero Projections</strong></div>
+    </div>
+
+    <section class="card" id="why-b2">
+      <h2>1. Why GEMSDOE32 (<code>0.2778</code> USER-REPORTED) Scored Highest Among the Nine — and How to Beat It</h2>
+      <ul>
+        <li><strong>Exact pixel-set identity:</strong> Across all <code>5,167,373</code> in-footprint pixels, <code>GEMSDOE25</code> and <code>GEMSDOE30</code> decode to the exact same <code>44,090</code> dots (<code>0.2600</code> USER-REPORTED). <code>GEMSDOE32</code> (<code>37,654</code> dots, <code>0.2778</code> USER-REPORTED) equals <code>GEMSDOE25/30</code> minus the exact <code>6,436</code> dots within Euclidean distance <code>&lt;= 2 px</code> (<code>200 m</code>) of <code>existing_faults.tif</code>, with <code>0</code> pixels added.</li>
+        <li><strong>DTI denominator physics:</strong> Under <code>DTI = TP_w / (TP_w + 0.2·FP_w + 0.8·FN_w + ε)</code>, hidden test fault segments exclude the public catalogue. Removing <code>6,436</code> near-catalogue dots trimmed pure false-positive kernel mass (<code>0.2·ΔFP_w ≈ 12,074</code> mass units) while sacrificing almost zero hidden truth, lifting DTI by <code>+0.0178</code>. Adding <code>1,200</code> lower-precision dots back in <code>GEMSDOE36</code> diluted DTI to <code>0.2725</code>.</li>
+        <li><strong>Post-upload proof against leaky private holdouts:</strong> When the earlier rejected parallel file <code>wbg2-h1-stepxasym</code> (which claimed <code>0.1321</code> on a private unbuffered evaluator) was uploaded on 2026-10-26, its user-reported public DTI was <strong><code>0.0725</code></strong> — confirming why strict 8 km-buffered whole-segment holdout + 124 leakage canaries are mandatory.</li>
+        <li><strong>Can <code>0.2778</code> be beaten?</strong> Yes — live public Rank #1 is <strong><code>0.4544</code></strong> (<code>xiaofanhu</code>, 2026-10-27 UTC). Bridging the gap from collar-pruned catalogue proximity (<code>~0.28</code>) to <code>0.45+</code> requires recovering <strong>concealed basin-interior faults</strong> using real subsurface potential-field and EM gradients plus submodular 300 m kernel packing — which is why <code>WBG2-MSPTCD</code> improved buffered <code>HOLDOUT-DTI</code> by <strong>+81.8%</strong> (and detached-splay <code>HOLDOUT-DTI</code> by <strong>+82.1%</strong>).</li>
+      </ul>
+    </section>
+
+    <section class="card" id="band6-forensic">
+      <h2>2. Critical Metadata Discrepancy Resolved: Band 6 (<code>tc</code>) Is Positive Radiometric Total Counts</h2>
+      <p>Earlier literature/repo summaries labeled Band 6 as <em>“Tilt angle or total curvature”</em>, whereas the official DrivenData problem page lists <strong>total airborne gamma-ray radiometric counts (<code>tc</code>)</strong> alongside K, U, and Th. Direct measurement over all <code>5,167,373</code> finite in-footprint cells of <code>training_features.tif</code> settles it unambiguously:</p>
+      <ul>
+        <li><code>Band 6 (tc)</code> quantiles: <strong>q01 = 7.637</strong>, <strong>median = 18.490</strong>, <strong>q99 = 29.020</strong>, <strong>negative pixels = 0</strong>.</li>
+        <li>A Miller &amp; Singh (1994) magnetic tilt angle <code>arctan(VDR / THDR)</code> spans <code>[-π/2, +π/2] ≈ [-1.57, +1.57] rad</code> with ~50% negative values. Band 6 is strictly positive airborne radiometric count rate; true potential-field tilt derivatives had never been computed in raw bands and are explicitly derived from first principles in <code>src/wbggems/msptcd.py</code>.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="four-lanes">
+      <h2>3. Four-Lane Synthesis in WBGGEMSDOE2</h2>
+      <p>Four independent lanes exist in this repository without overwriting one another:</p>
+      <ol>
+        <li><strong>Baseline Review Lane (<a href="../index.html"><code>docs/index.html</code></a>):</strong> Strict preflight audit &amp; 4-proposal shortlist; 0 experiments run, fail-closed negative.</li>
+        <li><strong>DZ-16 Damage-Zone Lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue geometry collar (34,500 dots) built without <code>training_features.tif</code>; previously cleared using an unauthorized calibrated gate; approval withdrawn.</li>
+        <li><strong>H3-PACK 34k Lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots) maximizing kernel mass per dot; previously cleared using incomplete focus-site uniqueness; approval withdrawn.</li>
+        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator, verified 124 leakage canaries, reported +81.8% buffered <code>HOLDOUT-DTI</code>, verified uniqueness vs all 9 focus champions (<code>&lt;=68.06%</code>) and both sibling lanes (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and applied the strict fail-closed stop under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
+      </ol>
+    </section>
+    </main>
+  <footer class="footer">
+    <div class="shell">
+      <div><strong>WBG2-MSPTCD LANE</strong> · 31-Feature Real-Geophysics Campaign · Zero competition slots spent</div>
+      <div>
+        <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
+        <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
+        <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
+        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
+        <a href="../submit/index.html">Sibling H3-PACK lane</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 960
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "route_count": 30,
+  "page_checks": 60,
+  "failures": [],
+  "script": "checks/browser_smoke.cjs",
+  "checks": [
+    "HTTP errors",
+    "browser JavaScript errors",
+    "main and h1 presence",
+    "horizontal page overflow",
+    "dashboard freshness and historical rows",
+    "local-link tests in pytest"
+  ],
+  "limitations": "UI smoke tests only, not an accessibility certification or organizer validation"
+}

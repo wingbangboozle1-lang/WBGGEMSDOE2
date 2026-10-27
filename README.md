@@ -1,12 +1,22 @@
-# GEMS Fieldnotes
+# WBGGEMSDOE2 — evidence before submission
 
 **Current decision (27 October 2026): OK TO DOWNLOAD AND SUBMIT one newly generated TIFF** — conditional on the documented [two-reading registry policy](docs/PROJECT_CHARTER.md) and on the human selector checking the weekly cap. Download [`docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif`](docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif) (SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`). The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/), [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md) and [submission guide](site/executive.html) make the decision and its caveats explicit. The single canonical [run card](evidence/run_card.json), [hypotheses](research/hypotheses_20261027.md) and [official source register](research/sources_20261027.md) document exactly what was established. **No organizer score or receipt is claimed; no upload was performed.** The 26 October negative lane is preserved below as history, not as the current decision.
 
-## Start every session here
+Read this README, [AGENTS.md](AGENTS.md), [current findings](research/findings.md), and
+[project charter](docs/PROJECT_CHARTER.md) at the start of every session.
+The complete original project prompt is preserved below as historical requirements, not verified evidence.
 
-Read this README, including the original project brief below, then read the current findings and run card. **Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome** by surfacing limitations and fixing defects rather than hiding them. Historical instructions and snapshots are not a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New instructions and current evidence take precedence over stale facts in the preserved prompt.
+**The DZ-16 and H3-PACK approvals were incorrect and are withdrawn.** Their local format passes
+cannot override failed literal uniqueness checks, missing pre-placement evidence or the absence of a
+compliant matched-holdout win. The earlier enrichment-based exemption was not authorized by the prompt.
+No new TIFF was generated, no experiment was run and no weekly submission slot was used in this review.
+Existing TIFFs are retained only for hash-bound research and automated audit.
 
-The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
+| Artifact | New submission download | Estimated leaderboard score | Unique under required rule? | Decision |
+|---|---|---|---|---|
+| DZ-16, 34,500 dots | None; historical TIFF retained | Unavailable; old regression unsuitable for selection | No; lattice overlap 99.9797% | DO NOT SUBMIT |
+| H3-PACK, 34,000 dots | None; historical TIFF retained | Unavailable; old transfer projection unvalidated | No; lattice overlap 99.8618% | DO NOT SUBMIT |
+| New candidate | Not generated | No HOLDOUT-DTI measured; no organizer receipt | Not tested | BLOCKED |
 
 **Historical 26 October state (superseded).** A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels; a continuous probability prior is positive across the entire footprint. Under the purely literal reading, *any* nonempty candidate is a duplicate, so that reading is mathematically unsatisfiable. The 27 October [charter amendment](docs/PROJECT_CHARTER.md) resolves this as an explicit, published policy decision: the 70% dot test applies to geological dot fields and the 0.90 rank-correlation test applies to every raster; the literal reading is still computed and reported as firing on three controls. The 27 October lane generated and audited a new TIFF; two earlier parallel research TIFFs remain independently rejected. The nine historical downloads are research-only.
 
@@ -84,10 +94,49 @@ in [`evidence/novelty_refinement.json`](evidence/novelty_refinement.json). Negat
 results are deliverables. The [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md)
 has the download table and exact submission steps.
 
-## Reproduce the audit
+The prior MSPTCD lane separately reported **HOLDOUT-DTI 0.042554**, evaluator
+`gems57-pooled-hide-v2`, 60,988 withheld positives, reported 95% CI [0.032059, 0.054765].
+This is historical source-reported evidence, not reproduced in this review or an organizer score;
+that lane spent its three-experiment budget and its candidate failed the literal registry gate.
+
+### What the fresh audit established
+
+- Re-fetched and SHA-256 verified the nine historical focus rasters plus registered witnesses. GEMSDOE25
+  and GEMSDOE30 have identical in-footprint predictions. GEMSDOE32 B2 is D2.8 after removing dots within
+  two pixels of the mirrored catalogue: 44,090 → 37,654. GEMSDOE36 adds 1,200 dots to B2. These are
+  array relations, not proof of what caused the **USER-REPORTED historical claim 0.2778**.
+- Sparse placement may reduce redundant false-positive mass, but its score depends on hidden truth.
+  No valid evidence here establishes a new file will beat B2 or the current leaderboard.
+- The literal lattice gate is a decisive failure for the existing candidates. The continuous-prior
+  interpretation is also unresolved. Do not silently substitute normalized overlap, smoothed Pearson
+  correlation, a nine-site-only audit, or a new filename for the required gates.
+- All nine tracked repository heads changed since their audited pins. Freshness checks are not raster
+  audits. We cannot certify the latest best file or fleet-wide novelty from an old partial registry.
+- Hide-and-recover on public mapped segments **is a legitimate proxy experiment** when the segments and
+  buffers are truly withheld. Hidden organizer labels are not needed for that proxy. Scoring directly
+  against the still-visible catalogue, however, is not hide-and-recover or a leaderboard estimate.
+- [The official reference README](https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md)
+  explicitly supports CPU-only setup. GPU access is not the sole training blocker.
+
+### Next experiment prerequisites, in order
+
+1. Record the missing explicit method lane; the [four ranked hypotheses](research/hypotheses.md) are
+   proposals, not an assignment. Resolve the literal continuous-prior support policy without exempting
+   a failing binary witness. Any policy change needs explicit authorization.
+2. Restore and authenticate the sample, features and catalogue; restore the **shared derived feature
+   stack**, not just raw bands. Data can be mirrored from GitHub for research; an owner mirror is not
+   authentication against DrivenData. Keep the pinned shared evaluator/writer; fix defects upstream.
+3. Restore the complete current registry and pass pre-placement checks before any experiment/placement.
+4. Run feature-alone canaries, whole-segment buffered holdouts and visible-only catalogue features.
+   Report pooled **HOLDOUT-DTI**, evaluator version, withheld positives, spatial 95% CI and a same-fold
+   incumbent. Stop at three experiments or two hours; stop earlier on duplication.
+5. Validate saved bytes and compare with the incumbent before a separate selector approves a real slot.
+   The current quota and organizer receipts require the official submission page; neither is available here.
+
+### Reproduce this review (no training or placement)
 
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
 # Hash-check owner mirrors and rebuild the shared label-free 19-band cache.
@@ -112,16 +161,26 @@ python scripts/review_conduit_candidate.py
 python scripts/build_run_card.py
 python scripts/build_site.py
 python scripts/build_site_data.py
-pytest -q
-PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_evaluate_holdout.py
-python -m http.server 8000 --bind 0.0.0.0 --directory .
+python scripts/build_msptcd_site.py
+python scripts/build_release_review.py
+python -m pytest -q
 ```
 
-Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
+`build_site_v2.py` and `build_submit_page.py` now call the same fail-closed review renderer. Scheduled
+Pages builds use it too. Retired generators stop before reading features or placing dots. The checks never
+silently clip values. A `[0,1]` portal error cannot be diagnosed without the exact rejected bytes.
 
-`python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters. The concurrent `docs/` dashboard and `site/` fieldnotes both publish byte-identical copies of the single canonical run card; `docs/EXECUTIVE_SUMMARY.md` and `docs/RUN_CARD.json` are explicitly superseded snapshots.
+### Access limitations and core values
 
-**Shared-tool defect to fix upstream:** the pinned `gems57.gates.format_report` can report a local format pass for finite pixels marked NoData inside the footprint. `scripts/validate_submission.py` now combines the unchanged shared result with a separate fail-closed mask check, but this is not a private fix of the shared tool. Correct and regression-test it in the shared template before future promotion. The shared metric's comment that truth-credit delta cannot exceed one dot's self-credit is also false on a multi-truth fixture; its tested scorer matched a brute-force oracle, but the documentation needs an upstream correction. The official feature description calls `depth_to_base_surf` conductive-base depth, whereas the mirror labels it basement depth; do not assume equivalence.
+This sandbox can access GitHub, npm and PyPI hosts, not DrivenData, Dropbox, USGS, DOE GDR or the rules-PDF
+host. No authenticated organizer data, live submission quota, or per-file receipt was available in this
+review. External-data hypotheses remain nonviable until exact source files, rights and coverage are checked.
+Earlier leaderboard observations are dated snapshots, not current verification.
+
+**Maximize P(Win):** prioritize tested evidence and save scarce slots rather than manufacture approvals.
+**Own the Outcome:** correct contradictory gates, preserve negative results, and make the release decision
+consistent across the README, generated site, JSON and CI. The competition predicts faults; a fault raster
+is not proof of geothermal vents or commercial resources.
 
 ## Original project prompt
 
@@ -1033,7 +1092,7 @@ Go ahead and create a pull request and then merge the pull request onto the main
 
 A concurrent session produced `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif` (SHA-256 `592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33`). Its nine-file novelty check was incomplete. An independent byte-level recheck found **99.3838%** of its 34,564 dots within 3 px of the registered binary lattice and 5,132,809 footprint cells marked NoData. The continuous prior gives 100% overlap under the shared finite-positive support definition, subject to the interpretation caveat above. The pre-placement surface was not replayed. This file is **research only, not a submission**.
 
-The parallel source reported **HOLDOUT-DTI 0.1321**, evaluator `WBGGEMSDOE2-HIDE-RECOVER-v2.0`, 58,016 withheld positives, reported 95% CI [0.1290, 0.1349]. That result has **not** been independently reproduced, used a private rather than the required shared evaluator, and reports canaries only for one fold, did not exclude evaluation cells from its training zone, and the committed lane script does not reproduce the reported interval. It is not a leaderboard score or proof of beating the matched incumbent. Its speculative live-score projection is not accepted. Three experiments were source-reported in that parallel lane; this review lane ran none, and no organizer receipt is available.
+The parallel source reported **HOLDOUT-DTI 0.1321**, evaluator `WBGGEMSDOE2-HIDE-RECOVER-v2.0`, 58,016 withheld positives, reported 95% CI [0.1290, 0.1349] (and when subsequently uploaded on 2026-10-26, its `USER-REPORTED` public DTI in the 2026-10-27 prompt ledger was **`0.0725`**). That result has **not** been independently reproduced, used a private rather than the required shared evaluator, and reports canaries only for one fold, did not exclude evaluation cells from its training zone, and the committed lane script does not reproduce the reported interval. It is not a leaderboard score or proof of beating the matched incumbent. Its speculative live-score projection is not accepted. Three experiments were source-reported in that parallel lane; this review lane ran none, and no organizer receipt is available.
 
 See the [rechecked parallel brief](docs/executive-summary/index.html), [independent evidence](evidence/parallel_review.json), [preserved original records](evidence/parallel_archive/), and the [archived 26 Oct negative run card](evidence/run_card_20261026_negative.json) (the [current canonical card](evidence/run_card.json) is the 27 Oct promotion). The incomplete parallel generator, partial uniqueness audit and zero-NoData private writer are disabled rather than silently reused.
 
@@ -1043,3 +1102,8 @@ See the [rechecked parallel brief](docs/executive-summary/index.html), [independ
 A concurrent session generated `downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif` (SHA-256 `95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad`). Its 58-file uniqueness PASS omitted the registered binary lattice. At its own ≥0.5 threshold, 5,087,882 of 5,094,374 cells (99.8726%) lie within three pixels of that lattice: **STOP; research only; do not submit**. The continuous-prior overlap is 100% under finite-positive support, subject to the policy caveat above. The local format check passes against the mirrored reference, not authenticated organizer bytes; no holdout or organizer receipt is available.
 
 The archived generator uses synthetic geometric trends and smooth noise, not the named geophysical feature arrays; a calculated decay term is unused. Its private evaluator does not apply the specified buffer, pixel-exact visible-fault masking, or pooled metric. The original material is preserved in [the archive](evidence/conduit_archive/), both private tools are disabled, and the [byte-bound recheck](evidence/conduit_review.json) supersedes the original uniqueness claim. This second session reported one experiment. No additional experiments or slot use were performed in this review lane.
+
+## Arena Core Values & Operating Discipline
+
+* **Maximize P(Win):** Concentrate every experiment on true subsurface physical signals, zero-leakage buffered whole-segment holdout evaluation (`gems57-pooled-hide-v2`), and exact 300 m submodular DTI kernel economics — never spending competition slots on duplicate or leaky artifacts.
+* **Own the Outcome:** Verify every claim from raw GeoTIFF bytes and official competition/USGS/DOE sources, label every metric strictly (`HOLDOUT-DTI`, `ORGANIZER-CONFIRMED`, `ORGANIZER-PUBLISHED`, `USER-REPORTED`, `MEASURED`), and preserve all four repository lanes (`docs/`, `docs/submission/`, `docs/submit/`, `docs/msptcd/`) transparently without overwriting prior audit records.

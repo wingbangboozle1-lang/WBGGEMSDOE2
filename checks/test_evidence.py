@@ -105,8 +105,9 @@ def test_site_links_and_promoted_copy():
         assert 'OK TO DOWNLOAD AND SUBMIT' in html
         assert 'wbg2-blind-discontinuity-E3-soft88' in html
         for link in parser.links:
-            if link.startswith(('https://','http://','mailto:','#')): continue
-            target=link.split('#',1)[0].split('?',1)[0]
+            if link.startswith(('https://', 'http://', 'mailto:', '#')):
+                continue
+            target = link.split('#', 1)[0].split('?', 1)[0]
             if target:
                 assert (f.parent/target).exists(), (f,link)
     assert 'USER-REPORTED' in (ROOT/'docs/index.html').read_text()

@@ -12,6 +12,19 @@ negative-lane findings below are preserved for audit continuity.
 
 **Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
 
+## Recheck on 27 October 2026
+
+The 13 hash-pinned witness files and both parallel TIFFs were reopened; the measured lattice bound, B2 lineage and rejected-file results agree with the previous audit. The shared raw-band cache was restored locally, but the organizer sample is still unauthenticated. A [pinned, older shared index](../evidence/shared_registry_index_summary.json) has 695 unique raster-hash rows, of which 684 are outside our witness manifest. Those are metadata counts, not 684 byte-level raster audits and not proof of a complete current registry.
+
+An **ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION** showed 0.4544 on 27 October at approximately 17:21 UTC ([source](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/), [record](../evidence/public_leaderboard_observation_20261027.json)). It is not a submission-page receipt or a score for a project TIFF. A subsequent automated refresh failed and the dashboard labels the snapshot stale. The historic GEMSDOE32 **USER-REPORTED** 0.2778 remains unverified; no new leaderboard estimate exists.
+
+The local mirror-restoration wrapper now prevents overwriting existing different inputs and stages atomic installs. The surface preflight now tests the surface's own literal positive support before opening any preview or final file, and saved-file diagnostics count range and mask violations separately. The shared upstream format defect remains open because the GitHub integration could not create an issue in the other repository; see the [reproducer](shared-template-format-report.md). No private shared-tool fork was made. [Official-source recheck](source-verification-20261027.md).
+
+## Concurrent review context
+
+An earlier concurrent review recorded the 26 October **0.4437 — ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT** and conflicting **USER-SUPPLIED** 0.3195 and 0.4413 claims. No current leaderboard value was independently verified in that earlier review. The later 0.4544 public observation above supersedes its snapshot, but is still not a per-file receipt. The active method lane remains **UNASSIGNED**; H1 is only a ranked proposal. The earlier review's three-pass record is historical; this session's [independent three-pass recheck](review-20261027.md) includes the later data and UI verification.
+
+
 ## The nine focus sites
 
 The table is generated from [`config/registry_inputs.json`](../config/registry_inputs.json) and the measured [`evidence/registry_audit.json`](../evidence/registry_audit.json); the [dashboard](../site/index.html) links each exact pinned historical TIFF for research only. A reported value is an **owner/user claim**, not an organizer-confirmed receipt. No estimated leaderboard score is defensible for these archived files. The best *claimed* historical value among the nine is the GEMSDOE32 B2 claim, not proof of the score of the audited bytes.

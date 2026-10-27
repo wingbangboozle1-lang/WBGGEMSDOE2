@@ -1,0 +1,42 @@
+[
+ {
+  "site": "GEMSDOE82",
+  "file_stem": "gemsdoe82-h82-submodular-punoisyor-20261021T235456Z-fe137199-zeros",
+  "reason": "no repo mapping"
+ },
+ {
+  "site": "GEMSDOE46",
+  "file_stem": "r11f-scarp-radiometric-fusion-00e049b51218-zeros",
+  "reason": "not found in docs/downloads"
+ },
+ {
+  "site": "GEMSDOE7",
+  "file_stem": "lidarscarp-ridge-top2pct-36c3a3f341c8",
+  "reason": "not found in docs/downloads"
+ },
+ {
+  "site": "GEMSDOE42",
+  "file_stem": "xscale-worm-persistence-20261006T000541Z-nan",
+  "reason": "not found in docs/downloads"
+ },
+ {
+  "site": "GEMSDOE71",
+  "file_stem": "gems71-hydro-conduit-38800-20261020T120000Z-zeros",
+  "reason": "not found in docs/downloads"
+ },
+ {
+  "site": "GEMSDOE87",
+  "file_stem": "h87-h87-cmgep-20261022T060000Z-8f394f43",
+  "reason": "not found in docs/downloads"
+ },
+ {
+  "site": "GEMSDOE46",
+  "file_stem": "r12-scarp-rad-concordance-23e807e2de9f-zeros",
+  "reason": "not found in docs/downloads"
+ },
+ {
+  "site": "GEMSDOE69",
+  "file_stem": "h69-joint-relayramp-pullapart-38669-20261020T201504Z-f29b6df5",
+  "reason": "not found in docs/downloads"
+ }
+]

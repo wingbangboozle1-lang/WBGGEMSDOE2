@@ -1,0 +1,71 @@
+{
+  "evidence_class": "DESIGN-MEASUREMENT (no hidden truth used)",
+  "generated_utc": "2026-10-27T17:48:23Z",
+  "budget": 34000,
+  "min_sep": 5.0,
+  "collar_px": 3.0,
+  "radius_px": 3.0,
+  "kmass": 318426.82110361266,
+  "kmass_per_dot": 9.36549473834155,
+  "kmass_per_dot_geometric_max": 9.38,
+  "collar_fraction": 0.0,
+  "median_dist_to_catalogue": 24.73863410949707,
+  "distance_profile": {
+    "0-3": {
+      "available_pct": 7.86,
+      "dots_pct": 0.0,
+      "enrichment": 0.0
+    },
+    "3-4": {
+      "available_pct": 2.39,
+      "dots_pct": 2.58,
+      "enrichment": 1.08
+    },
+    "4-5": {
+      "available_pct": 2.27,
+      "dots_pct": 3.52,
+      "enrichment": 1.55
+    },
+    "5-8": {
+      "available_pct": 7.67,
+      "dots_pct": 10.4,
+      "enrichment": 1.35
+    },
+    "8-12": {
+      "available_pct": 8.77,
+      "dots_pct": 10.31,
+      "enrichment": 1.18
+    },
+    "12-19": {
+      "available_pct": 13.95,
+      "dots_pct": 14.51,
+      "enrichment": 1.04
+    },
+    "19-30": {
+      "available_pct": 16.66,
+      "dots_pct": 17.09,
+      "enrichment": 1.03
+    },
+    "30-50": {
+      "available_pct": 19.73,
+      "dots_pct": 20.28,
+      "enrichment": 1.03
+    },
+    "50-100": {
+      "available_pct": 18.4,
+      "dots_pct": 18.93,
+      "enrichment": 1.03
+    },
+    "100-150": {
+      "available_pct": 1.97,
+      "dots_pct": 2.03,
+      "enrichment": 1.03
+    },
+    "150-1000000000.0": {
+      "available_pct": 0.34,
+      "dots_pct": 0.35,
+      "enrichment": 1.03
+    }
+  },
+  "seconds": 12.1
+}

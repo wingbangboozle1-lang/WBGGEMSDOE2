@@ -43,3 +43,24 @@ The later parallel conduit candidate has SHA-256 `95458ad456a01733d1e95e537557bd
 ## Final integrated checks
 
 After both parallel artifacts and the leaderboard-fragment work were integrated: 84 project tests and 8 unchanged pinned shared-evaluator tests passed; Python compilation and both JavaScript syntax checks passed. Headless Chromium loaded both dashboards and 17 mobile pages at 390 px without overflow or browser errors. All three static run-card copies were rebuilt. These checks establish the described local evidence, not scientific promotion or organizer acceptance.
+
+---
+
+# Three-pass review — 2026-10-27 (`WBG2-MSPTCD` campaign & updated fleet audit)
+
+## Pass 1 — implementation and zero-leakage experiment execution
+
+- Addressed previous-session next steps first: verified the live DrivenData public leaderboard (`0.4544` by `xiaofanhu` on 2026-10-27 UTC), updated the fleet ledger (`docs/data/user-reported-ledger.csv`, 144 rows including 17 new 2026-10-26/27 entries across `GEMSDOE28/33/36/91/92` and `KANLER/EUG/WBG/GINNY`), and empirically audited all 19 cached GeoDAWN bands—discovering from raw pixel quantiles (`q01=7.637, median=18.490, q99=29.020`, `0` negative cells) that Band 6 (`tc`) is positive airborne gamma-ray total counts rather than a `[-\pi/2, \pi/2]` magnetic tilt angle.
+- Formulated and ranked 5 physical hypotheses (`research/hypotheses.md`), implemented 12 label-free geophysical operators in `src/wbggems/msptcd.py`, ran 124 fold-local single-feature leakage canaries (`31` features × `4` buffered spatial folds, max two-sided ROC-AUC `0.6131 <= 0.90`), and executed 3 preregistered zero-leakage experiments (`EXP-1`, `EXP-2`, `EXP-3` vs `CTRL-19B`) on the unmodified shared `gems57.evaluate_holdout` (`gems57-pooled-hide-v2`, `60,988` withheld positives, `8.0 km` buffer, 1,000 paired 20 km cluster bootstrap draws).
+- `EXP-1` improved pooled `HOLDOUT-DTI` from `0.023409` (`CTRL-19B`) to `0.034975` (`+49.4%`, paired 95% CI `[+0.005424, +0.018644]`, winning all 4 quadrants), and `EXP-3` (`greedy_allocate`) reached `0.042554` (`+81.8%`, paired 95% CI `[+0.010977, +0.028755]`) plus `0.030799` vs `0.016915` (`+82.1%`) on detached splays (`>= 400 m` from visible faults).
+- Emitted the cross-fitted research GeoTIFF + ZIP (`docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.{tif,zip}`, SHA-256 `fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614`) via unmodified `gems57.submission_writer`, verified `64.45%–68.06% <= 70%` novelty against all 9 priority focus champions, and stopped fail-closed (`verdict="negative"`, `ok_to_submit=false`, `0` slots used) due to literal all-registry witnesses (`13GEMSDOE` lattice `100.00%`, `17GEMSDOE`/`WBGGEMSDOE1` continuous priors `100.00%`, `GEMSDOE27_H31` `78.34%`).
+
+## Pass 2 — bug, boundary, CI, and edge-case fixes
+
+- Fixed three edge cases in `src/wbggems/msptcd.py`: replaced `h - 1.001` boundary clamping in `_bilinear_sample` with exact `[0, h-1]` / `min(floor, h-2)` bilinear indexing (eliminating `0.001` px bias on bottom-row footprint pixels and rejecting `<2x2` grids cleanly), avoided `[::16]` decimation on small footprints (`<= 65,536` cells) in `_robust_scale`, and added explicit shape and required-band validation (`ValueError` on missing bands, mismatched shapes, or constant zero-variance inputs).
+- Rebuilt `.cache/msptcd_features/` from scratch and re-ran the full campaign end-to-end to confirm deterministic bit-identical GeoTIFF/ZIP SHA-256 hashes and receipts.
+- Fixed the shared-template pytest command in `README.md` (`data/shared_template/tests/test_evaluate_holdout.py`), updated `docs/executive-summary/index.html` with the `0.0725` user-reported post-upload outcome of the rejected parallel `stepxasym` file, and simulated the `.github/workflows/pages.yml` build in an isolated `/usr/bin/python3` stdlib-only copy without `.venv`, `.cache/`, or `/data/`.
+
+## Pass 3 — line-by-line verification against original request
+
+- Re-checked every requirement in the prompt and `AGENTS.md`: 9 priority focus sites + 2026-10-26/27 sibling updates audited with clear downloadable links and `DO NOT SUBMIT` vs research-only status; `GEMSDOE32` `0.2778` mathematical lineage explained; 5 ranked hypotheses documented with official verified links; single-lane 3-experiment budget honored (`306.3 s <= 2 h`, `0` slots used); automated `[0, 1]` and interior-mask byte validation verified; canonical `run_card.json` synced identically across all 4 locations; full test suite (`89` repo tests + `8` upstream shared-evaluator tests = `97` passed), link checks, `git diff --check`, and snapshot size check verified before opening and merging the PR onto `main`.

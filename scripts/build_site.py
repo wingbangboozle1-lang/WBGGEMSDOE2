@@ -13,6 +13,7 @@ from html import escape
 import json
 from pathlib import Path
 import shutil
+import markdown
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs'
@@ -188,3 +189,13 @@ for name, content in [('index.html', home()), ('executive-summary.html', guide()
                       ('research.html', research()), ('sources.html', sources())]:
     (DOCS / name).write_text(content, encoding='utf-8')
     print(f'built {DOCS / name}')
+
+# Render the byte-audited B2 explanation at the existing nested URL.
+b2_source = DOCS / 'research/why-b2-scored-2778.md'
+if b2_source.is_file():
+    b2_body = markdown.markdown(b2_source.read_text(encoding='utf-8'), extensions=['sane_lists'])
+    b2_page = page('Why B2 may have scored well', 'research.html',
+                   f'<article class="card guide-card research-prose">{b2_body}</article>',
+                   'An evidence-labeled B2 lineage and metric analysis.', base='../')
+    (DOCS / 'research/why-b2-scored-2778.html').write_text(b2_page, encoding='utf-8')
+    print('built', DOCS / 'research/why-b2-scored-2778.html')

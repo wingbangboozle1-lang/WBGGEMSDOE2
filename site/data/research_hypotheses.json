@@ -1,0 +1,109 @@
+{
+  "schema": "wbggems.research-hypotheses.v1",
+  "reviewed_utc": "2026-10-27",
+  "method_lane": {
+    "status": "UNASSIGNED",
+    "reason": "The brief refers to one method paragraph but does not identify a single hypothesis as the assigned lane. H1 is a ranked proposal, not an authorization.",
+    "experiments_run_in_this_review_lane": 0
+  },
+  "ranking_basis": "Qualitative prior ranking of potential improvement in a spatially blocked HOLDOUT-DTI evaluation, balanced against cost. These ranks are not scores, deltas, calibrated forecasts, or evidence of performance.",
+  "novelty_scope": "Current source review found that the prior H1 depth-shift and H2 conductive-flank proposals are already implemented in src/wbggems/msptcd.py. They are NOT new hypotheses. H1 and H2 below replace those stale proposals with unimplemented patch-displacement and physical-null-model tests. H3/H4 remain unimplemented external-data proposals. Novelty is bounded to reviewed local source, not proven across the whole fleet; all nine site heads have changed.",
+  "hypotheses": [
+    {
+      "id": "H1",
+      "title": "Cross-fault marker displacement by paired patch registration",
+      "potential_rank": 1,
+      "potential_label": "Highest qualitative potential of this shortlist; untested",
+      "implementation_cost": "Medium–high",
+      "layers": [
+        "tc total radiometric counts (owner-mirror band 6; not magnetic tilt)",
+        "det_elev (owner-mirror band 12)",
+        "rtp (owner-mirror band 2)",
+        "iso_grav_anom (owner-mirror band 13)"
+      ],
+      "signature": "Along candidate gravity/magnetic boundaries, register radiometric and detrended-terrain texture patches on opposite sides. Compare a shared nonzero along-strike translation with a zero-displacement null using held-out texture pixels; require repeated marker offsets across independent patches, not merely two parallel edges.",
+      "why_uncatalogued": "An eroded or concealed strike-slip component may displace inherited surface markers without producing a continuous mapped scarp. Coherent cross-boundary displacement is a kinematic hypothesis for an unmapped segment; it is not a fault label and may fail beneath thick cover.",
+      "difference_from_reviewed_methods": "MSPTCD uses depth-shifted edge-amplitude concordance and conductive-flank asymmetry. This proposal instead estimates displacement of repeated marker texture across a boundary, compares against a zero-offset null, and demands spatial replication. No patch-registration displacement estimator was found in the reviewed local Python source.",
+      "non_fault_mimic": "Drainage capture, terrace migration, lithological texture changes, and georegistration offsets between surveys can create apparent marker displacement.",
+      "data_status": "Raw 19-band owner-mirrored inputs were restored and SHA-256 verified in this review, with 19 raw cached bands. They are not organizer-authenticated; the shared derived feature bank and a compliant release path are still missing. No new external dataset is required, but this proposal is blocked by lane/registry gates.",
+      "external_data": null,
+      "sources": [
+        "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features",
+        "https://pubs.usgs.gov/publication/70271418",
+        "https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and"
+      ]
+    },
+    {
+      "id": "H2",
+      "title": "Basin-margin gravity-step model versus intrusive-body null",
+      "potential_rank": 2,
+      "potential_label": "Moderate qualitative potential; overlaps a previously explored family",
+      "implementation_cost": "High",
+      "layers": [
+        "iso_grav_anom (owner-mirror band 13)",
+        "iso_grav_anom_hg (owner-mirror band 18)",
+        "rtp (owner-mirror band 2)",
+        "det_elev (owner-mirror band 12)"
+      ],
+      "signature": "Fit short cross-boundary gravity profiles to competing forward-response families: an asymmetric buried density step and a compact symmetric intrusive lens, each with the same nuisance trend and penalized parameter count. Rank held-out profile likelihood improvement of the step model, requiring stable parameters along strike and at multiple window sizes; use magnetic response as a consistency check, not a fault label.",
+      "why_uncatalogued": "A buried basin-bounding fault can juxtapose density units without a visible trace. Explicitly preferring a persistent asymmetric step over a compact-body null could reject strong non-fault magnetic anomalies missed by simple edge ranking.",
+      "difference_from_reviewed_methods": "Existing code calculates derivative amplitude, tilt, Hessian ridges and orientation concordance. It does not fit competing gravity forward-model families on cross-boundary profiles with held-out residuals. This is physical model discrimination rather than another edge-fusion score. Nonunique gravity inversion remains a major limitation.",
+      "non_fault_mimic": "An unfaulted depositional basin edge or dipping lithological contact can fit a density step; regional trend removal and shallow topographic mass can mimic asymmetry.",
+      "data_status": "Raw 19-band owner-mirrored inputs were restored and SHA-256 verified in this review, with 19 raw cached bands. They are not organizer-authenticated; the shared derived feature bank and a compliant release path are still missing. No new external dataset is required, but this proposal is blocked by lane/registry gates.",
+      "external_data": null,
+      "sources": [
+        "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features",
+        "https://gdr.openei.org/submissions/1391"
+      ]
+    },
+    {
+      "id": "H3",
+      "title": "Repeated cross-drainage deflection across a candidate structure",
+      "potential_rank": 3,
+      "potential_label": "Lower qualitative potential; external-data feasibility unverified",
+      "implementation_cost": "High",
+      "layers": [
+        "USGS 3DEP bare-earth digital elevation model (specific tiles and resolution not established here)",
+        "det_elev_slope (owner-mirror band 19) for comparison only"
+      ],
+      "signature": "Derive channels from absolute elevation, measure repeated channel azimuth changes, knickzones, and opposing-bank relief across the same candidate line, and normalize by upstream contributing area; require several independent crossings rather than a single scarp.",
+      "why_uncatalogued": "A buried or eroded fault may deflect multiple channels without leaving a continuous scarp, creating a geomorphic expression beyond catalogue segment endpoints. Channel behaviour is supporting evidence, not a fault label.",
+      "difference_from_reviewed_methods": "Different from single-scarp, slope-asymmetry, chi-corridor and dotted-ridge methods because it tests repeated cross-channel geometry using an absolute DEM and catchment normalization. Fleet-wide novelty is unverified.",
+      "non_fault_mimic": "Lithologic contacts, differential erosion, alluvial fans, inherited drainage, capture, roads, and terraces can deflect channels.",
+      "data_status": "Not viable in this checkout until the exact official DEM tiles, coverage, resolution and permitted download are verified; none were downloaded.",
+      "external_data": {
+        "source": "USGS 3DEP products and services",
+        "url": "https://www.usgs.gov/3d-elevation-program/about-3dep-products-services",
+        "access_check": "The cited USGS page is recorded in the source register as describing free, unrestricted 3DEP products. Study-area tile coverage and actual binary access have not been checked; therefore the data are not yet verified obtainable for this experiment. Current sandbox allowlist excludes this host; exact binary obtainability remains unverified and the proposal is not viable here."
+      },
+      "sources": [
+        "https://www.usgs.gov/3d-elevation-program/about-3dep-products-services"
+      ]
+    },
+    {
+      "id": "H4",
+      "title": "Cross-flight-line repeatability of buried magnetic edges",
+      "potential_rank": 4,
+      "potential_label": "Lowest direct prediction potential; primarily an artefact-control experiment",
+      "implementation_cost": "High",
+      "layers": [
+        "USGS GeoDAWN magnetic flight-line observations and acquisition-direction metadata",
+        "mag_anom (owner-mirror band 1) and tmi_hg (owner-mirror band 3) for gridded comparison"
+      ],
+      "signature": "Estimate edge normals independently from crossing flight-line directions and retain only anomalies whose location and orientation are reproducible across acquisition directions; use disagreement as an artefact veto, not as a positive fault label.",
+      "why_uncatalogued": "A real subsurface physical-property boundary potentially associated with an unmapped fault should be spatially stable across independent acquisition directions, unlike some flight-line artefacts. This test improves measurement reliability; it does not establish that a stable edge is a fault.",
+      "difference_from_reviewed_methods": "This is an acquisition-geometry robustness test, not another point-density, terrain-scarp, geothermal-proximity, or catalogue-gap score. No local implementation is present; fleet-wide novelty is unverified.",
+      "non_fault_mimic": "A lithologic contact, dike, or non-fault magnetic body is also stable across flight directions; uneven line coverage can create false disagreement.",
+      "data_status": "The USGS release page is recorded as listing flight-line data and grids, but the line-level files and usable crossing coverage were not downloaded or verified in this environment. Not viable here until that check succeeds.",
+      "external_data": {
+        "source": "USGS GeoDAWN airborne magnetic and radiometric survey release",
+        "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+        "access_check": "The public release page is recorded as available and CC0 in the source register; its binary source host was not reachable in the prior sandbox check. Exact flight-line file access and spatial overlap remain unverified. Current sandbox allowlist excludes this host; exact binary obtainability remains unverified and the proposal is not viable here."
+      },
+      "sources": [
+        "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and"
+      ]
+    }
+  ],
+  "revision_note": "2026-10-27 release review: supersedes stale H1/H2; no new experiment or lane assignment."
+}

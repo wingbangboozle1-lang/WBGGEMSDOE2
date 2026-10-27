@@ -12,3 +12,9 @@ __pycache__/
 .coverage
 .DS_Store
 *.npy
+data_public/rasters/
+data_public/_listing_cache/
+data_public/official/
+data/public/
+data_public/_cache/
+data_public/rasters_focus/
