@@ -1,6 +1,6 @@
 {
-  "archive_status": "SUPERSEDED historical review; current negative card: data/run-card.json",
-  "superseded_by": "data/run-card.json",
+  "archive_status": "SUPERSEDED historical review; current receipted card: evidence/run_card.json (2026-10-27, promote-to-selector-only)",
+  "superseded_by": "evidence/run_card.json",
   "card_version": "1.0",
   "run_id": "WBGGEMSDOE2-2026-10-26-review",
   "status": "not_run_blocked",

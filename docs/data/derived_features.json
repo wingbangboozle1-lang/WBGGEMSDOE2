@@ -1,0 +1,295 @@
+{
+  "schema": "wbggems.derived-features.v1",
+  "evidence_class": "DATA-MEASUREMENT",
+  "origin": "19 label-free raw bands (owner mirror, SHA-256 4371c82e\u2026); no label input",
+  "footprint_cells": 5167373,
+  "normalization": "2nd/98th percentile clipping inside footprint to [0,1]; zero outside",
+  "features": {
+    "flex_dipole_s2": {
+      "file": ".cache/derived/flex_dipole_s2.npy",
+      "sha256": "386c3431643ac41f43b461fe77382671504fc40380ade254154c377206acae97",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 3.4656295776367188,
+        "scale": 3.4656295776367188
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 4326410
+    },
+    "flex_curv_abs": {
+      "file": ".cache/derived/flex_curv_abs.npy",
+      "sha256": "013bc2f1cbabc99d545d0eea2ce2ae904d60dfb75a96644a1376ab649310ee81",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.00069427490234375,
+        "p_hi": 3.8740008163452146,
+        "scale": 3.873306541442871
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5063770
+    },
+    "flex_dipole_s4": {
+      "file": ".cache/derived/flex_dipole_s4.npy",
+      "sha256": "814eb18f61c545af784d947f972719504fd0c5f3d3147d6859b1ff1826258327",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 1.0281347656249906,
+        "scale": 1.0281347656249906
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 3821525
+    },
+    "flex_lowslope": {
+      "file": ".cache/derived/flex_lowslope.npy",
+      "sha256": "35a7473cac1a4a3c62e9d0cd726db6863f2f225c51d0d9cf35cf38fbb2aaf076",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.007740295790135861,
+        "p_hi": 0.9793057513236999,
+        "scale": 0.971565455533564
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5064025
+    },
+    "flex_depth_grad": {
+      "file": ".cache/derived/flex_depth_grad.npy",
+      "sha256": "2fa47662d9c80614cd43ef6214208a42826540c3c63b64bf4e4f2e90d62b06f3",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.003917934317141772,
+        "p_hi": 0.15248736262321438,
+        "scale": 0.14856942830607262
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5064025
+    },
+    "flex_grav_edge": {
+      "file": ".cache/derived/flex_grav_edge.npy",
+      "sha256": "a1419169ab8778c8baa4549e5d89479773ca83a9a21a4b5a6aafdecd04dddad6",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.02662428990006447,
+        "p_hi": 0.6057319712638842,
+        "scale": 0.5791076813638197
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5064025
+    },
+    "flex_hinge_concord": {
+      "file": ".cache/derived/flex_hinge_concord.npy",
+      "sha256": "127dbf84829946324ac0ef8b1d8fec5e195ff4f57535f156997e87a03ae7208e",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.5037424564361572,
+        "scale": 0.5037424564361572
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 4238724
+    },
+    "flex_hinge_grav": {
+      "file": ".cache/derived/flex_hinge_grav.npy",
+      "sha256": "59f3d7300179960094ab6c28eec521a4aabaaa7855d04d2c030e3c2bda323e43",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.2997649180889129,
+        "scale": 0.2997649180889129
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 4236350
+    },
+    "alt_cond_grad": {
+      "file": ".cache/derived/alt_cond_grad.npy",
+      "sha256": "7fbece84403ac146766bd543496898c94b4e65cba7f7f53a471bd48a2edc69ff",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.07667989552021018,
+        "scale": 0.07667989552021018
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 3320029
+    },
+    "alt_mag_grad": {
+      "file": ".cache/derived/alt_mag_grad.npy",
+      "sha256": "2a217da6b1c5e828b7e8e11a1dfd1aaf6436b3286df2d67e3fcc59aaf31c2b6a",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.43989246129989623,
+        "p_hi": 50.60920547485351,
+        "scale": 50.16931301355361
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5064025
+    },
+    "alt_cross_opposition": {
+      "file": ".cache/derived/alt_cross_opposition.npy",
+      "sha256": "c3f1634f02924ec470efb29afc047c6c4105353868d48e629ad7b8613acc50e3",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.0354628497362136,
+        "scale": 0.0354628497362136
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 1647179
+    },
+    "alt_mag_low": {
+      "file": ".cache/derived/alt_mag_low.npy",
+      "sha256": "b2fbca66d18fd41d528fa5d731c672df9b7e81105fea0f4707a1b24135be8066",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 127.8394061279294,
+        "scale": 127.8394061279294
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 2822358
+    },
+    "alt_cond_high": {
+      "file": ".cache/derived/alt_cond_high.npy",
+      "sha256": "d65fa2516ae81dac42bd5c93b86a6a321e0ea4bddcc959a76b716630a792e08a",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.16214938163757275,
+        "scale": 0.16214938163757275
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 2587286
+    },
+    "alt_clay_cap": {
+      "file": ".cache/derived/alt_clay_cap.npy",
+      "sha256": "5f1fc89447b5ed4128b647647c68b56d5e29739bd41b0e13203cdc87fdc73735",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.1434995770454406,
+        "scale": 0.1434995770454406
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 1405369
+    },
+    "alt_cond_depth": {
+      "file": ".cache/derived/alt_cond_depth.npy",
+      "sha256": "1f48f62871fa7fd16c2fb75188df4fca7d0bb615a3ae4e8feda7715629c25c9b",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.23254008948802948,
+        "p_hi": 2.4464327812194746,
+        "scale": 2.213892691731445
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5064025
+    },
+    "alt_tilt_edge": {
+      "file": ".cache/derived/alt_tilt_edge.npy",
+      "sha256": "45a37d4c7defa2090b8c1ef8bd01e0ce9babf6369e2ced8926ff6f37972b22c9",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.02949220560491085,
+        "p_hi": 0.9635025501251218,
+        "scale": 0.9340103445202109
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5064025
+    },
+    "strain_dil_zero": {
+      "file": ".cache/derived/strain_dil_zero.npy",
+      "sha256": "731a18690c8f5aa6807e255f4623e27ab358bc3415547b67ce275fdae6988f7b",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.008850578218698502,
+        "p_hi": 0.9545370650291433,
+        "scale": 0.9456864868104448
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5062269
+    },
+    "strain_shear_grad": {
+      "file": ".cache/derived/strain_shear_grad.npy",
+      "sha256": "eed1a9bbbdbf715c0c94fe90157445cbbdef0e5f2b5bd761ad3a20d5d6cb8238",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.004941312056034786,
+        "scale": 0.004941312056034786
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 4216549
+    },
+    "strain_partition": {
+      "file": ".cache/derived/strain_partition.npy",
+      "sha256": "0658739316477fc131fdd1065e97780858b29c72b6fa8b627faefc98df55a95d",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.0,
+        "p_hi": 0.4032666623592373,
+        "scale": 0.4032666623592373
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 4216549
+    },
+    "strain_inv2": {
+      "file": ".cache/derived/strain_inv2.npy",
+      "sha256": "85898fbfcead61abc14496303661373ce6152afbf98493391f6534873876b228",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 2.0,
+        "p_hi": 52.20000076293945,
+        "scale": 50.20000076293945
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5056691
+    },
+    "seis_intensity_anom": {
+      "file": ".cache/derived/seis_intensity_anom.npy",
+      "sha256": "748128a33044d81d29f3f1fde70320685ab2d4155a0a299380ea0f3c04a41c77",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 0.00017786026000976562,
+        "p_hi": 0.03903484344482422,
+        "scale": 0.03885698318481445
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5063778
+    },
+    "seis_distance_anom": {
+      "file": ".cache/derived/seis_distance_anom.npy",
+      "sha256": "7cac818eaa30eecd9321aa4622a703d46981da14f586d88b144446ef8f596dd5",
+      "bytes": 49116768,
+      "normalizer": {
+        "p_lo": 2.193450927734375e-05,
+        "p_hi": 0.20991283416748008,
+        "scale": 0.20989089965820273
+      },
+      "min": 0.0,
+      "max": 1.0,
+      "positive_in_footprint": 5062271
+    }
+  }
+}

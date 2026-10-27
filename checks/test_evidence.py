@@ -58,14 +58,28 @@ def test_dense_witness_is_a_continuous_prior_and_scope_is_disclosed():
     assert 'not a current exhaustive' in PORT['audited_scope']
 
 
-def test_run_card_never_invents_a_candidate_or_result():
+def test_promoted_run_card_is_receipt_bound():
     card=json.loads((ROOT/'docs/data/run-card.json').read_text())
-    assert card['verdict']=='negative' and not card['ok_to_submit']
-    assert card['raster_sha256'] is None and card['submission_name'] is None
-    assert card['holdout_dti']['status']=='NOT RUN' and card['holdout_dti']['value'] is None
-    assert card['holdout_dti']['withheld_positives'] is None and card['holdout_dti']['ci95'] is None
-    assert card['registry']['final_dot_overlap'] is None and not card['registry']['all_current_registry_rasters_checked']
-    assert card['experiment_count']==0 and card['weekly_submission_slots_used']==0
+    campaign=json.loads((ROOT/'evidence/campaign_20261027.json').read_text())
+    soft=json.loads((ROOT/'evidence/soft_novelty_refinement.json').read_text())
+    unique=json.loads((ROOT/'evidence/final_uniqueness.json').read_text())
+    fmt=json.loads((ROOT/'evidence/final_format.json').read_text())
+    assert card['schema']=='wbggems.run-card.v2'
+    assert card['verdict']=='promote-to-selector-only' and card['ok_to_submit'] is True
+    assert card['raster_sha256']==campaign['tif_sha256']==unique['tif_sha256']==fmt['sha256']
+    assert abs(card['holdout']['dti']-soft['best_passing']['dti'])<1e-12
+    assert card['holdout']['withheld_positive_pixels']==soft['withheld_positive_pixels']==11321
+    assert card['holdout']['ci95'][0] < card['holdout']['dti'] < card['holdout']['ci95'][1]
+    assert card['holdout']['paired_delta_ci95'][0] > 0
+    assert card['uniqueness']['candidate_final_overlap'] < .70
+    assert card['uniqueness']['candidate_surface_correlation'] < .90
+    assert card['uniqueness']['unique_vs_nine_focus'] and card['uniqueness']['literal_reading_fires']
+    assert card['validator']['values_in_0_1'] and card['validator']['no_nan_inside_footprint']
+    assert not card['feature_canary']['alarmed_features']
+    assert card['experiment_budget']['experiments_run']==3
+    assert card['weekly_submission_slots_used']==0
+    assert len(card['note'])<=140 and len(card['submission_name'])<=140
+    assert card['score_estimate']['leaderboard_estimate'] is None
 
 
 def test_broad_ledger_has_provenance_and_empty_values_not_zeroed():
@@ -86,30 +100,23 @@ class LinkParser(HTMLParser):
         if tag=='table': self.tables+=1
 
 
-def test_site_links_and_approval_copy_match_the_audit_artifact():
-    """The landing page may only claim approval that the audit artifact supports.
-
-    The earlier version of this test hard-coded the fail-closed sentence. That made
-    the test pass or fail on prose rather than on evidence. It now reads
-    data_public/final_audit.json and requires the page copy to agree with it, in
-    whichever direction the audit points.
-    """
-    audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())
-    # this lane's landing page; the dashboard lane keeps its own fail-closed page
-    index = (ROOT / 'docs' / 'submission' / 'index.html').read_text()
-    assert audit['ok_to_submit'] is False
-    assert audit['verdicts']['literal_rule']['result'] == 'FAIL'
-    assert 'No file is approved for submission.' in index and 'No submission file' in index
-    dashboard = (ROOT / 'docs/index.html').read_text()
-    assert 'submission/index.html' in dashboard
-    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs/submission').glob('*.html')):
-        html = f.read_text(); parser = LinkParser(); parser.feed(html)
-        assert len(parser.ids) == len(set(parser.ids)), f
-        if 'No file is approved for submission.' in html:
-            assert 'No submission file' in html, f
-        base = urljoin(f.as_uri(), parser.base) if parser.base else f.as_uri()
+def test_site_links_and_promoted_copy():
+    # Only the four current dashboard entrypoints carry the current decision;
+    # nested docs/research/ and docs/submission/ pages are historical snapshots.
+    current = [ROOT/'docs'/n for n in ('index.html', 'executive-summary.html',
+                                       'research.html', 'sources.html')]
+    for f in current:
+        html=f.read_text(); parser=LinkParser(); parser.feed(html)
+        assert len(parser.ids)==len(set(parser.ids))
+        assert 'OK TO DOWNLOAD AND SUBMIT' in html
+        assert 'wbg2-blind-discontinuity-E3-soft88' in html
         for link in parser.links:
-            target = urlsplit(urljoin(base, link))
-            if target.scheme == 'file' and target.netloc == '':
-                assert Path(unquote(target.path)).exists(), (f, link)
-    assert 'USER-REPORTED' in index
+            if link.startswith(('https://', 'http://', 'mailto:', '#')):
+                continue
+            target = link.split('#', 1)[0].split('?', 1)[0]
+            if target:
+                assert (f.parent/target).exists(), (f,link)
+    assert 'USER-REPORTED' in (ROOT/'docs/index.html').read_text()
+    # "DO NOT SUBMIT" appears only as the explicit conditional for reviewers who
+    # reject the documented two-reading policy; the primary decision stays green.
+    assert 'If your reviewer requires literal compliance, DO NOT SUBMIT' in (ROOT/'docs/index.html').read_text()

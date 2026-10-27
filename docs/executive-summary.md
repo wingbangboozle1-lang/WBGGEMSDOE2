@@ -1,3 +1,7 @@
+> **SUPERSEDED 2026-10-27.** This is the earlier negative-lane snapshot, kept for audit history.
+> The current receipted decision and downloadable TIFF are in [CURRENT_EXECUTIVE_SUMMARY.md](CURRENT_EXECUTIVE_SUMMARY.md)
+> and [executive-summary.html](executive-summary.html). Do not use this page to decide what to submit.
+
 # Executive summary — superseded parallel conduit record
 
 **DO NOT SUBMIT.** The original parallel report claimed a 58-file uniqueness pass but omitted the registered binary lattice. An independent saved-byte recheck found **5,087,882 of 5,094,374** cells at its own ≥0.5 threshold within three pixels of that lattice: **99.8726%**, above the 70% stop. It has no holdout score. A format pass against the owner mirror is not organizer acceptance.

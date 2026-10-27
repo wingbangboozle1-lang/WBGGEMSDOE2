@@ -7,3 +7,4 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 /* Long historical filenames and byte hashes must wrap on narrow site briefs. */
 .page-layout>*{min-width:0}.prose,.download-row>div{min-width:0;overflow-wrap:anywhere}@media(max-width:600px){.page-layout{grid-template-columns:minmax(0,1fr)}.download-row{align-items:flex-start;flex-direction:column}}
+.pill-success{color:#225f3c;background:#e2f4e7}

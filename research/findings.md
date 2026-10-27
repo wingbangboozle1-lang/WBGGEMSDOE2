@@ -1,3 +1,18 @@
+# Current finding (2026-10-27) — new unique submission
+
+A new, unique, format-valid GeoTIFF **was generated and audited** by this session:
+`docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif`
+(SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`).
+HOLDOUT-DTI 0.1452 [0.1287, 0.1626]; paired win +0.0135 [0.0068, 0.0198] vs a
+matched control; 126-raster like-for-like uniqueness clearance. See
+[`docs/CURRENT_EXECUTIVE_SUMMARY.md`](../docs/CURRENT_EXECUTIVE_SUMMARY.md),
+[`evidence/run_card.json`](../evidence/run_card.json) and
+[`research/hypotheses_20261027.md`](hypotheses_20261027.md).
+The parallel-session negative findings below are preserved for audit continuity;
+they refer to different (rejected) artifacts, not to this file.
+
+**Verified leaderboard context (27 Oct 2026):** the user-supplied claims 0.3195 and 0.4413 are stale; the official public leaderboard showed 0.4544 (ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT) and the best family claim is 0.2778 (USER-REPORTED). No current leaderboard value was independently verified as a receipt for any project file. See `research/sources_20261027.md`.
+
 # Current release reconciliation — 27 October 2026
 
 **NO FILE CLEARED.** The later DZ-16 and H3-PACK approvals are withdrawn after this session's

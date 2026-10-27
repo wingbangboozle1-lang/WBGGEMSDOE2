@@ -1,4 +1,8 @@
-# Executive summary — current decision
+> **SUPERSEDED 2026-10-27.** This is the earlier negative-lane snapshot, kept for audit history.
+> The current receipted decision and downloadable TIFF are in [CURRENT_EXECUTIVE_SUMMARY.md](CURRENT_EXECUTIVE_SUMMARY.md)
+> and [executive-summary.html](executive-summary.html). Do not use this page to decide what to submit.
+
+# Executive summary — earlier snapshot
 
 **NO FILE IS APPROVED. DO NOT SUBMIT.** Five existing TIFFs failed the literal binary-lattice duplicate gate; no new TIFF was produced. Pre-placement surfaces were not replayed. Local mirror format checks do not establish organizer acceptance.
 
