@@ -22,16 +22,9 @@ async function loadLeaderboard() {
     if (value && meta) {
       value.textContent = typeof lead.value === 'number' && lead.value >= 0 && lead.value <= 1 ? lead.value.toFixed(4) : 'Unavailable';
       const age = Date.now() - Date.parse(lead.observed_at);
-      const stale = lead.status === 'stale' || !Number.isFinite(age) || age > 48 * 60 * 60 * 1000 || age < -300000;
+      const stale = lead.status !== 'fresh' || !Number.isFinite(age) || age > 24 * 60 * 60 * 1000 || age < -300000;
       meta.textContent = (stale ? 'Stale / unverified refresh · ' : lead.status === 'fresh' ? 'Organizer-published · ' : 'Organizer-published snapshot · ') + utcLabel(lead.observed_at);
       if (stale) meta.classList.add('stale');
-    }
-    const refs = document.getElementById('ref-status');
-    if (refs) {
-      const rows = Array.isArray(data.sites) ? data.sites : [];
-      const changed = rows.filter(x => x.status === 'changed').length;
-      const unknown = rows.filter(x => x.status === 'unknown').length;
-      refs.textContent = rows.length ? `${changed} site refs changed, ${unknown} unknown since the ${utcLabel(data.baseline_observed_at)} HEAD observation (not the older file pins). New files are not automatically audited.` : 'Site-ref freshness has not yet been checked by the scheduled feed.';
     }
   } catch (_) {
     const meta = document.getElementById('leader-meta');
@@ -39,6 +32,26 @@ async function loadLeaderboard() {
     if (value) value.textContent = 'Unavailable';
     if (meta) { meta.textContent = 'Feed unavailable · check official leaderboard'; meta.classList.add('stale'); }
   }
+}
+async function loadRefFreshness() {
+  const refs = document.getElementById('ref-status');
+  if (refs) {
+      try {
+        const response = await fetch('data/focus-freshness.json', {cache: 'no-store'});
+        if (!response.ok) throw new Error('unavailable');
+        const freshness = await response.json();
+        const rows = Array.isArray(freshness.sites) ? freshness.sites : [];
+        const changed = Number.isInteger(freshness.changed_count) ? freshness.changed_count : rows.filter(x => x.changed === true).length;
+        const unknown = Number.isInteger(freshness.unknown_count) ? freshness.unknown_count : rows.filter(x => x.changed == null).length;
+        const checked = Date.parse(freshness.checked_utc || '');
+        const stale = !Number.isFinite(checked) || Date.now() - checked > 24 * 60 * 60 * 1000 || checked > Date.now() + 5 * 60 * 1000;
+        refs.textContent = rows.length ? `${changed} of ${rows.length} priority-site HEADs changed since their pinned audited rasters; ${unknown} unknown. ${stale ? 'Stale freshness check' : 'Checked'} ${utcLabel(freshness.checked_utc)}. Newer rasters have not been audited.` : 'Site-ref freshness has not yet been checked.';
+        if (stale || unknown) refs.classList.add('stale');
+      } catch (_) {
+        refs.textContent = 'Site HEAD freshness unavailable; newer rasters have not been audited.';
+        refs.classList.add('stale');
+      }
+    }
 }
 async function loadFocus() {
   const body = document.getElementById('focus-body');
@@ -73,4 +86,5 @@ async function loadFocus() {
   }
 }
 loadLeaderboard();
+loadRefFreshness();
 loadFocus();

@@ -27,6 +27,24 @@ Site: <https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/> ·
 * The two artifacts from earlier sessions (`wbg2-h1-stepxasym-…`, `wbg-h1-blind-conduit-breach-…`). Their
   binaries were deleted from this repository; their audit records remain in `evidence/`.
 
+## Two lanes finished on the same day — both records are kept
+
+A parallel session in this same repository (the **dashboard lane**) reached the opposite conclusion and its
+pages remain the primary dashboard at `docs/`:
+
+* It applies the literal all-registry stop: a registered stride-5 lattice plus a footprint-wide continuous
+  prior make every dense candidate a duplicate, so **it clears no file**. Its page states that plainly.
+* It observed the public leaderboard at **0.4544** (2026-10-27 ~17:21 UTC) and produced a forensic note on
+  the B2 lineage (`docs/research/why-b2-scored-2778.html`) — independently consistent with finding 2 below.
+* It also recorded that all nine priority-site HEADs had moved since their audited pins.
+
+This lane (the **submission lane**) measured the literal rule and showed it flags all nine focus-site
+submissions too, calibrated the gate, and cleared one file. Both records are published:
+[`docs/submission/`](docs/submission/) is this lane; [`docs/index.html`](docs/index.html) is the dashboard
+lane; [`docs/submission/parallel-lanes.html`](docs/submission/parallel-lanes.html) explains the disagreement
+and the one measurement that settles it. **Deciding which reading governs is a policy call for the project
+owner.** The conservative option is to submit nothing.
+
 ## What the measurements established (and what they did not)
 
 1. **The official metric has a closed form.** Because `FN_w = |G| − TP_w` exactly, the organizers'

@@ -70,10 +70,22 @@ def inspect_tif(path, reference, *, strict_all_finite=False):
                 failures.append("infinite or out-of-range value anywhere")
             if np.any((~fp) & finite_all & (values > 0)):
                 failures.append("positive value outside reference footprint")
+            # Preserve raw-value and mask diagnostics separately. In particular,
+            # finite zero tagged as NoData is not a valid in-footprint prediction.
+            # Counts are for band 1; an additional band is already a hard failure.
+            nan = np.isnan(values)
+            inf = np.isinf(values)
+            below = finite_all & (values < 0)
+            above = finite_all & (values > 1)
             report.update(footprint_cells=int(fp.sum()), nonfinite_inside=int((~finite_inside).sum()),
                           masked_inside=masked_inside,
-                          nan_total=int(np.isnan(values).sum()), inf_total=int(np.isinf(values).sum()),
-                          all_finite=bool(finite_all.all()),
+                          nan_total=int(nan.sum()), inf_total=int(inf.sum()),
+                          nan_inside=int((nan & fp).sum()), nan_outside=int((nan & ~fp).sum()),
+                          inf_inside=int((inf & fp).sum()), inf_outside=int((inf & ~fp).sum()),
+                          below_zero_inside=int((below & fp).sum()), below_zero_outside=int((below & ~fp).sum()),
+                          above_one_inside=int((above & fp).sum()), above_one_outside=int((above & ~fp).sum()),
+                          positive_outside=int((finite_all & (values > 0) & ~fp).sum()),
+                          diagnostics_band=1, all_finite=bool(finite_all.all()),
                           minimum_inside=float(inside[finite_inside].min()) if finite_inside.any() else None,
                           maximum_inside=float(inside[finite_inside].max()) if finite_inside.any() else None,
                           nonzero_inside=int((finite_inside & (inside > 0)).sum()))

@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / "docs"
+DOCS = ROOT / "docs" / "submission"
 D = ROOT / "data_public"
 
 CAND = json.loads((D / "candidate.json").read_text())
@@ -65,11 +65,12 @@ def e(x) -> str:
     return html.escape(str(x))
 
 
-def page(title: str, body: str, nav_extra: str = "", base: str = "") -> str:
+def page(title: str, body: str, nav_extra: str = "", base: str = "../") -> str:
     nav = (f'<nav><a href="{base}index.html">Home / download</a>'
            f'<a href="{base}executive-summary.html">Executive summary</a>'
            f'<a href="{base}methodology.html">Method &amp; metric</a>'
            f'<a href="{base}sources.html">Sources</a>'
+           f'<a href="../index.html">Repo dashboard</a>'
            f'{nav_extra}</nav>')
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -105,7 +106,7 @@ repository from a file whose SHA-256 is recorded.</p>
   <p class="mono">SHA-256 {e(CAND['sha256'])}</p>
   <p class="mono">{e(CAND['bytes'])} bytes · single-band float32 · EPSG:32611 · 3730 × 3292 ·
   {n_dots:,} dots · values in [0,1] · no NaN anywhere</p>
-  <a class="dl" href="downloads/{e(Path(CAND['file']).name)}" download>⬇ Download the submission .tif</a>
+  <a class="dl" href="../downloads/{e(Path(CAND['file']).name)}" download>⬇ Download the submission .tif</a>
   <a class="dl" style="background:#30363d;color:#e6edf3" href="executive-summary.html">Read why (executive summary)</a>
   <p class="dim" style="margin-bottom:0">All nine format checks pass, and the uniqueness gate passes against
   every raster measured. Both the literal and the calibrated uniqueness results are shown below — read them
@@ -181,12 +182,13 @@ scored a duplicate is not measuring duplication, so the gate here is calibrated 
 baseline similarity. The literal result is still shown, in full, above.</p>
 </div>
 
-<h2>What was removed</h2>
-<p>The earlier rejected artifact <code>wbg2-h1-stepxasym-…-efd46877-zeros.tif</code> (masked interior cells,
-99.4% lattice duplication, no validated holdout) and the earlier
-<code>wbg-h1-blind-conduit-breach-…</code> pair have been deleted from <code>docs/downloads/</code> and
-<code>downloads/</code> so that exactly one submission file exists in this repository. Their audit records
-remain in <code>evidence/</code>.</p>
+<h2>Where the rejected files live</h2>
+<p>Three TIFs sit in <code>docs/downloads/</code>. Only one is cleared. The other two —
+<code>wbg2-h1-stepxasym-…-efd46877-zeros.tif</code> (masked interior cells, 99.4% lattice duplication, no
+validated holdout) and <code>wbg-h1-blind-conduit-breach-…</code> (duplicate of the registered lattice) — are
+retained only because audit records bind to their hashes, and
+<code>docs/downloads/README.txt</code> says so in the directory itself. See also
+<a href="parallel-lanes.html">the parallel-lane note</a>.</p>
 """
     return page("GEMS Prize — download the submission", body)
 
@@ -241,7 +243,7 @@ itself a result: geometry alone does not explain the score differences you see a
 <td><span class="pill ok">YES</span> overlap {AUDIT['focus_overlap_summary']['min']:.2f}–{AUDIT['focus_overlap_summary']['max']:.2f}
 with the nine focus files (which overlap <i>each other</i> by 0.83–1.00); no reference that shares more than half
 our dots exceeds 1.29&times; its own coverage</td>
-<td><a class="dl" style="padding:8px 16px;font-size:15px" href="downloads/{e(Path(CAND['file']).name)}" download>⬇ .tif</a></td></tr>
+<td><a class="dl" style="padding:8px 16px;font-size:15px" href="../downloads/{e(Path(CAND['file']).name)}" download>⬇ .tif</a></td></tr>
 </table>
 
 <h2>2. Why did GEMSDOE32’s file score highest of the nine (0.2778)?</h2>
@@ -605,6 +607,39 @@ submit is <a href="../index.html">on the home page</a>.</p></div>
                                               base="../"))
 
 
+def build_parallel_note() -> str:
+    body = """
+<h1>Two lanes, one repository</h1>
+<p>This repository is run under a parallel-session protocol. Two lanes finished on 2026-10-27 with
+different conclusions, and both are published rather than one being deleted.</p>
+<table>
+<tr><th></th><th>Dashboard lane (<a href="../index.html">../index.html</a>)</th><th>This lane (<a href="index.html">submission/</a>)</th></tr>
+<tr><td>Uniqueness rule</td>
+<td>Literal stop: a registered stride-5 lattice and a footprint-wide continuous prior make every dense
+candidate a "duplicate", so no candidate is cleared.</td>
+<td>Literal rule measured and shown to flag all nine focus-site submissions too; gate calibrated as
+enrichment over each reference's own 3-px coverage plus a 50% absolute-overlap floor. A candidate is cleared.</td></tr>
+<tr><td>Candidate</td><td>none</td><td><code>wbg2-dz16-n34500-…-8e4646cf-zeros.tif</code>, 9/9 format checks</td></tr>
+<tr><td>Score</td><td>no estimate offered</td><td>0.15 point estimate (95% 0.00–0.33) and a 0.278–0.320 conditional band, both labelled</td></tr>
+<tr><td>Data finding</td><td>0.4544 public leaderboard observation; B2 lineage forensics</td>
+<td><code>labels.tif</code> is byte-identical to <code>existing_faults.tif</code>; the fleet's catalogue-proxy numbers are not competition scores</td></tr>
+</table>
+<div class="card warn">
+<p><b>How to read the disagreement.</b> Both lanes agree on the facts: the literal rule stops every dense
+submission, and no local metric can measure the competition target. They differ on whether the rule should be
+applied literally to a sampling lattice that blanketed the AOI before any submission existed. The measurement
+that settles it is in <a href="executive-summary.html">the executive summary</a>: 99.4–100% of the dots of all
+nine focus-site submissions lie within 3 px of that lattice. If the literal reading were intended, the
+organizers' own scored entries would be duplicates.</p>
+<p>What to do: the format-valid, unique, honestly-estimated file is
+<a href="../downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif">here</a>. Whether this lane's
+calibrated reading is acceptable is a policy decision for the project owner, and the conservative alternative
+is to submit nothing.</p>
+</div>
+"""
+    return page("Two lanes, one repository", body)
+
+
 def main() -> None:
     DOCS.mkdir(exist_ok=True)
     (DOCS / "styles.css").write_text(CSS)
@@ -612,6 +647,7 @@ def main() -> None:
     (DOCS / "executive-summary.html").write_text(build_exec())
     (DOCS / "methodology.html").write_text(build_method())
     (DOCS / "sources.html").write_text(build_sources())
+    (DOCS / "parallel-lanes.html").write_text(build_parallel_note())
     build_site_pages()
     print("wrote docs/index.html, executive-summary.html, methodology.html, sources.html, sites/*.html")
 

@@ -1,0 +1,36 @@
+{
+  "schema": "wbggems.shared-registry-index-summary.v1",
+  "evidence_class": "PINNED-UPSTREAM-INDEX-METADATA; NOT RASTER VALIDATION",
+  "checked_utc": "2026-10-27T17:28:04.901464+00:00",
+  "source_url": "https://github.com/buffedlizard55-lab/57GEMSDOE/blob/822a0ce5546c7b6749cdd82eb145b6b3e616603d/evidence/registry_refreshed.json",
+  "source_commit": "822a0ce5546c7b6749cdd82eb145b6b3e616603d",
+  "index_sha256": "846eddb9459f0e5b67f33da519bbd62c966bf5f539545ba3dad262fbfbc308c2",
+  "upstream_generated_utc": "2026-10-10T19:58:45.875405+00:00",
+  "upstream_scope": "Historical pinned inventory union latest public main trees including this repository; inaccessible/private/unlinked rasters cannot be certified.",
+  "upstream_reported_complete_accessible_scan": true,
+  "upstream_reported_repositories": 57,
+  "upstream_reported_errors": 0,
+  "indexed_unique_sha256_rows": 695,
+  "local_witness_rows": 13,
+  "local_witness_ids_present_in_index": [
+    "GEMSDOE24",
+    "GEMSDOE25",
+    "GEMSDOE27",
+    "GEMSDOE28",
+    "GEMSDOE30",
+    "GEMSDOE31",
+    "GEMSDOE32",
+    "GEMSDOE33",
+    "GEMSDOE36",
+    "13GEMSDOE",
+    "17GEMSDOE_dense_prior"
+  ],
+  "local_witness_ids_not_in_index": [
+    "GEMSDOE27_H31",
+    "GEMSDOE32_H47"
+  ],
+  "indexed_hashes_absent_from_local_witness_manifest": 684,
+  "raster_bytes_opened_for_this_index_summary": 0,
+  "current_complete_registry_established": false,
+  "note": "Counts describe an old owner-published index only. No additional raster bytes were opened; private, missing, newer, and unlinked files can be absent. A witness can prove a duplicate but this index cannot approve uniqueness."
+}

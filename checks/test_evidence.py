@@ -93,7 +93,8 @@ def test_site_links_and_approval_copy_match_the_audit_artifact():
     whichever direction the audit points.
     """
     audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())
-    index = (ROOT / 'docs/index.html').read_text()
+    # this lane's landing page; the dashboard lane keeps its own fail-closed page
+    index = (ROOT / 'docs' / 'submission' / 'index.html').read_text()
     if audit['ok_to_submit']:
         assert 'approved to download and submit' in index
         assert audit['sha256'] in index, 'landing page must show the audited SHA-256'
@@ -102,7 +103,9 @@ def test_site_links_and_approval_copy_match_the_audit_artifact():
     else:
         assert 'No file is approved for submission.' in index
         assert 'No submission file' in index
-    for f in (ROOT / 'docs').glob('*.html'):
+    dashboard = (ROOT / 'docs' / 'index.html').read_text()
+    assert 'submission/index.html' in dashboard, 'the dashboard must link to the cleared file'
+    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs' / 'submission').glob('*.html')):
         html = f.read_text(); parser = LinkParser(); parser.feed(html)
         assert len(parser.ids) == len(set(parser.ids)), f
         if 'No file is approved for submission.' in html:

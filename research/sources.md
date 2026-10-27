@@ -1,6 +1,6 @@
 # Source and access register
 
-Checked 2026-10-26 UTC. “Access” distinguishes a page read through the research tool from a file successfully downloaded into this sandbox. No credentials are stored.
+Initially checked 2026-10-26 UTC; see the [27 October official-source recheck](source-verification-20261027.md) for the later public leaderboard observation, license details and timing irregularity. “Access” distinguishes a page read through the research tool from a file successfully downloaded into this sandbox. No credentials are stored.
 
 | Source | What it actually establishes | Rights/access and limitation |
 |---|---|---|
