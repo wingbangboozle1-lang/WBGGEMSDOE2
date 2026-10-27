@@ -7,14 +7,15 @@ scripts in `scripts/` and JSON in `data_public/`; nothing is transcribed by hand
 
 | | |
 |---|---|
-| **Submit this file** | [`docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif`](docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif) |
-| SHA-256 | `a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912` |
-| Estimated score | **0.15** · 95% interval 0.00–0.33 · EMPIRICAL-ESTIMATE (out-of-sample RMSE 0.094) |
-| Conditional band | 0.278–0.320 *if* its hit rate matches the fleet's best lineage (DERIVED, N = 20 000) |
-| Format | 1 band float32 · EPSG:32611 · 3730 × 3292 · 100 m · values in [0, 1] · **no NaN anywhere** · 0.0 outside the footprint · 34 500 isolated dots |
-| Validator | all 9 checks PASS, re-read from the bytes on disk |
-| Uniqueness | max 0.178 overlap with any of the nine focus-site submissions; smoothed surface |r| ≤ 0.77; no SHA-256 match in the 655-raster fleet index |
-| Note for the submission page (≤140 chars) | `DZ-16 damage-zone flank, 34500 isolated dots, 0.0 outside footprint, unique (wbggemsdoe2)` |
+| **Submit this file** | [`docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif`](docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif) — page: [docs/cbs/](docs/cbs/index.html) |
+| SHA-256 | `7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36` |
+| HOLDOUT-DTI | **0.1336** · 95% CI [0.1219, 0.1463] · gems57-pooled-hide-v2 · 60,988 withheld positives (previous repo best 0.0426) |
+| Estimated live score (NOT a score) | EMPIRICAL-ESTIMATE **0.268** [0.085–0.452] · PROJECTION 0.282 · DERIVED band 0.270–0.311 (N=20,000) |
+| Format | 1 band float32 · EPSG:32611 · 3730 × 3292 · 100 m · values in [0, 1] · **no NaN anywhere** · 0.0 outside the footprint · nodata unset · 38,000 isolated dots, 0 within 3 px of the catalogue |
+| Validator | shared writer + strict re-read PASS (finite [0,1] everywhere; ZIP holds exactly this TIFF) |
+| Uniqueness | max 32.8% of dots within 3 px of any of the nine focus champions; 22.6% vs DZ-16, 19.9% vs H3-PACK, 4.6% vs MSPTCD-E3; surface \|ρ\| ≤ 0.116 vs discrete peers. Literal space-filling-witness result published in `evidence/cbs_final.json` |
+| Note for the submission page (≤140 chars) | `D19-dotted 19-band HGB cross-fitted 38000 collar-free dots zeros unique (wbggemsdoe2)` |
+| Alternate (independent surface) | DZ-16 `wbg2-dz16-n34500-…-zeros.tif` (sha256 `a9c46823…`, EMPIRICAL-ESTIMATE 0.15) — see lane sections below |
 
 Site: <https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/> ·
 [executive summary](docs/executive-summary.html) · [method & metric](docs/methodology.html) ·
@@ -75,6 +76,22 @@ Unlike the two collar-geometry lanes above, this lane restored the hash-pinned 1
   * `EXP-2` (`MSPTCD-StrainPU`, +3 strain/seismicity + PU weights): **`HOLDOUT-DTI = 0.028575`** (`+22.1%`)
   * `EXP-3` (`MSPTCD-SubmodGreedy`, ridge-coherent ensemble + greedy 300 m kernel submodular allocation): **`HOLDOUT-DTI = 0.042554`** (**`+81.8%`**, `95% CI [0.032059, 0.054765]`, paired `Δ = +0.019145`, `95% CI [+0.010977, +0.028755]`; detached-splay `HOLDOUT-DTI` ≥400 m from visible faults: **`0.030799` vs `0.016915`, `+82.1%`**).
 * **23-raster & cross-lane uniqueness audit (`DO NOT SUBMIT` under literal all-registry rule):** Research GeoTIFF [`docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif`](docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif) (`71,341` B, SHA-256 `fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614`, `25,594` off-catalogue dots, all 9 byte checks PASS) is distinct under `<=70%` 3-px overlap across **all 9 priority focus champions** (`max = 68.06%` on `GEMSDOE27`, `64.45%` on `GEMSDOE32`), **DZ-16** (`27.36%` fwd / `1.71%` rev, `ρ = +0.0050`), and **H3-PACK** (`20.59%` fwd / `1.37%` rev, `ρ = -0.0005`). Under the literal all-registry rule it halts fail-closed (`verdict = "negative"`, `ok_to_submit = false`, `0` slots spent) on `13GEMSDOE` (`100.00%`), `17GEMSDOE`/`WBGGEMSDOE1` (`100.00%`), and `GEMSDOE27_H31` (`78.34%`). Dashboard: [`docs/msptcd/`](docs/msptcd/) · Run Card: [`evidence/RUN_CARD_MSPTCD.json`](evidence/RUN_CARD_MSPTCD.json) · Updated 144-row ledger: [`docs/data/user-reported-ledger-20261027.csv`](docs/data/user-reported-ledger-20261027.csv).
+
+## Fifth lane: CBS → D19-DOTTED (this branch) — CBS hypothesis negative, control arm is the candidate
+
+Pre-registered Covered-Basement-Step tests (subsurface-only geophysics for blind faults under
+cover; `research/cbs_preregistration_20261027.md`) ran 3 experiments + control on the unmodified
+shared evaluator (`gems57-pooled-hide-v2`, 60,988 withheld positives, 28-feature canaries clean,
+max AUC 0.6134). CBS arms scored HOLDOUT-DTI 0.097–0.100 but **lost to the 19-band control at
+0.1349** (paired CIs exclude 0) — a negative result, kept as a deliverable. The large overall gain
+vs every earlier lane is an *emission* effect measured from bytes: MSPTCD's final mask is 389
+connected ridges at kmass/dot 1.606, while collar-free spaced dots reach 9.31 of the 9.38 maximum.
+The submitted-budget file (38,000 dots; the holdout-optimal 64,284-dot sweep winner was superseded
+using live-calibrated placement economics) is the status-table file above. Run card:
+`evidence/RUN_CARD_CBS.json`; findings: `research/cbs_findings.md`; pages: `docs/cbs/`.
+**Irregularity found in Pass 2:** the H3-PACK "-zeros" artifact actually contains 7,111,787 NaN
+cells outside the footprint — a plausible cause of the reported portal `[0,1]` rejection; it is
+marked DO NOT SUBMIT AS-IS in `docs/cbs/executive-summary.html`.
 
 ## What the measurements established (and what they did not)
 

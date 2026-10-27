@@ -1,0 +1,14 @@
+{
+  "evidence_class": "ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION (not a submission-page receipt)",
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "observed_utc": "2026-10-27T19:04Z",
+  "capture_method": "Rendered fetch of the official leaderboard page during the 2026-10-27 CBS session; top rows read directly from the rank table.",
+  "top_rows": [
+    {"rank": 1, "participant": "xiaofanhu", "best_public_dti": 0.4544},
+    {"rank": 2, "participant": "cfld__", "best_public_dti": 0.3916},
+    {"rank": 3, "participant": "Batik Shirt Brothers", "best_public_dti": 0.3911},
+    {"rank": 4, "participant": "BrandenKMurray", "best_public_dti": 0.3724},
+    {"rank": 5, "participant": "No Fault of Our Own", "best_public_dti": 0.3566}
+  ],
+  "note": "The prompt-supplied 'current high' figures 0.4413 and 0.3195 are both superseded by this official-page observation of 0.4544. No project raster has an organizer-confirmed receipt."
+}

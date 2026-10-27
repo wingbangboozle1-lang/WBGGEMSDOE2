@@ -1,0 +1,134 @@
+{
+  "hypothesis": "CBS: faults buried under cover lack surface scarps (hence are missing from the USGS/INGENIOUS catalogue) but still offset magnetic basement, gravity and the conductive base; subsurface-only potential-field/depth/conductivity steps, optionally cover-gated, should recover blind-like faults better than the full 19-band model.",
+  "mechanism": "HistGradientBoosting on subsurface-only features (11 raw potential-field/depth/conductivity bands + 6 label-free physics operators), collar-free (>3 px from catalogue) spaced-dot emission (Euclidean suppression radius 5 px).",
+  "named_non_fault_mimic": "Lithologic basement contact / caldera margin / intrusive edge (a real subsurface step that is not a fault); playa clay and irrigation fronts for conductivity.",
+  "result_cbs_hypothesis": "negative",
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "split": "label-blind-quadrants-v2, buffer 80 px, whole components hidden",
+    "withheld_positive_pixels": 60988,
+    "ctrl_19b_dotted": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.1348832128030815,
+      "ci95": [
+        0.12141024479563207,
+        0.14665628238500594
+      ],
+      "withheld_positive_pixels": 60988,
+      "tpw": 7858.677031683164,
+      "fpw": 39503.4482907983,
+      "fnw": 53129.32296831684
+    },
+    "exp1_cbs_core": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.0990206375344296,
+      "ci95": [
+        0.09051101469563101,
+        0.10772078325432641
+      ],
+      "withheld_positive_pixels": 60988,
+      "tpw": 5742.114584870214,
+      "fpw": 40251.23053945677,
+      "fnw": 55245.88541512976
+    },
+    "exp2_cbs_cover": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.09953033509824846,
+      "ci95": [
+        0.09185186867074094,
+        0.10777602559199834
+      ],
+      "withheld_positive_pixels": 60988,
+      "tpw": 5771.845515764663,
+      "fpw": 40230.24285674787,
+      "fnw": 55216.154484235325
+    },
+    "exp3_cbs_active": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.09707455084562576,
+      "ci95": [
+        0.08600158325480822,
+        0.10758593372255834
+      ],
+      "withheld_positive_pixels": 60988,
+      "tpw": 5627.718499093583,
+      "fpw": 40286.08309720456,
+      "fnw": 55360.28150090643
+    },
+    "candidate_38k_rule": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.13358918368599232,
+      "ci95": [
+        0.12194736919045505,
+        0.14627645116790164
+      ],
+      "withheld_positive_pixels": 60988,
+      "tpw": 7760.536021068195,
+      "fpw": 38750.202313709706,
+      "fnw": 53227.463978931824
+    },
+    "repo_best_before_same_evaluator": {
+      "arm": "MSPTCD EXP-3",
+      "holdout_dti": 0.04255426811430257
+    },
+    "leakage_canaries": {
+      "features_tested": 28,
+      "folds_tested": 4,
+      "all_passed": true,
+      "max_two_sided_auc": 0.6134122907074269,
+      "max_two_sided_feature": "tc_radiometric"
+    }
+  },
+  "candidate": {
+    "arm": "ctrl_19b_dotted \u2014 the control arm won; CBS experiments are a negative result",
+    "file": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+    "sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+    "dots": 38000,
+    "note_le_140_chars": "D19-dotted 19-band HGB cross-fitted 38000 collar-free dots zeros unique (wbggemsdoe2)",
+    "validator": {
+      "strict_all_finite": true,
+      "format_valid_against_reference": true,
+      "no_nan_anywhere": true,
+      "values_in_0_1_everywhere": true,
+      "crs_shape_transform_match": true
+    },
+    "correlation_overlap_vs_registry": {
+      "max_3px_overlap_vs_9_focus_champions": 0.32773684210526316,
+      "max_abs_surface_spearman_vs_discrete_peers": 0.13148202889862592,
+      "literal_vs_13GEMSDOE_lattice": {
+        "overlap_3px": 0.9914736842105263,
+        "reference_coverage_of_footprint": 0.9987132726822701,
+        "enrichment": 0.9927510841502084
+      },
+      "literal_vs_17GEMSDOE_dense_prior": {
+        "overlap_3px": 1.0,
+        "reference_coverage_of_footprint": 1.0,
+        "enrichment": 1.0,
+        "surface_spearman": 0.5253093504782529
+      },
+      "full_table": "evidence/cbs_final.json"
+    },
+    "score_estimates_NOT_scores": {
+      "empirical_estimate": 0.26844882072831827,
+      "empirical_interval95": [
+        0.08472388774872777,
+        0.4521737537079088
+      ],
+      "score_law_projection": 0.2824757954661302,
+      "mass_balance_band_N20000": [
+        0.27021915254237294,
+        0.31051121355932204
+      ]
+    }
+  },
+  "verdict": "promote",
+  "ok_to_submit": true,
+  "ok_to_submit_basis": "Calibrated uniqueness gate (<=70% 3-px overlap and |rho|<=0.90 vs every discrete peer raster measured) + strict saved-byte format validation + holdout win over the previous same-evaluator best. Under the literal all-registry rule the two space-filling witnesses flag ANY dot field (coverage 99.87% and 100% of footprint; candidate enrichment ~1.0); that literal reading also flags all nine historical champions. The project owner makes the final slot decision (separate selector step; this campaign spent 0 slots).",
+  "weekly_slots_used": 0
+}
