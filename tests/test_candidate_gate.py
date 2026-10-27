@@ -24,3 +24,83 @@ def test_continuous_positive_prior_blocks_even_one_preview_dot():
     result = stage(candidate, dots, fp, [('continuous_prior', prior)])
     assert result['status'] == 'duplicate-stop'
     assert result['witness'] == 'continuous_prior' and result['overlap_3px'] == 1
+
+
+def test_surface_preflight_stops_before_opening_preview_or_later_witnesses(tmp_path, monkeypatch):
+    import json
+    import rasterio
+    from rasterio.transform import from_origin
+    from audit_candidate import run
+    shape = (9, 9)
+    profile = dict(driver='GTiff', width=9, height=9, count=1, dtype='float32',
+                   crs='EPSG:32611', transform=from_origin(0, 900, 100, 100))
+    def write(path, arr):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with rasterio.open(path, 'w', **profile) as dst:
+            dst.write(arr.astype('float32'), 1)
+    ref = tmp_path / 'ref.tif'
+    surface = tmp_path / 'surface.tif'
+    registry = tmp_path / 'registry/13GEMSDOE.tif'
+    write(ref, np.zeros(shape))
+    write(surface, np.full(shape, .2))
+    write(registry, np.ones(shape))
+    manifest = tmp_path / 'registry.json'
+    # The second witness is intentionally missing; a decisive first witness
+    # should stop without reading it, the preview, or the final candidate.
+    entry = lambda ident: {'id': ident, 'bytes': 1, 'sha256': 'a'*64, 'git_blob': 'b'*40}
+    manifest.write_text(json.dumps({'inputs': [entry('later'), entry('13GEMSDOE')]}))
+    monkeypatch.setattr('audit_candidate.verified', lambda path, *a, **kw: path == registry)
+    report = run(surface, tmp_path/'missing-preview.tif', tmp_path/'missing-final.tif',
+                 ref, manifest, tmp_path)
+    assert report['pre_placement']['status'] == 'duplicate-stop'
+    assert report['pre_placement']['phase'] == 'surface-before-placement'
+    assert report['pre_placement']['witness'] == '13GEMSDOE'
+    assert report['pre_placement']['overlap_3px'] == 1.0
+    assert report['preview']['status'] == report['final']['status'] == 'not-run'
+    assert report['preview_sha256'] is None and not report['ok_to_submit']
+
+
+def test_stage_fails_closed_for_nonfinite_and_empty_surface():
+    import pytest
+    fp = np.ones((4, 4), bool)
+    dots = np.zeros((4, 4), bool)
+    with pytest.raises(ValueError, match='nonempty'):
+        stage(np.ones((4, 4)), dots, fp, [])
+    dots[0, 0] = True
+    a = np.ones((4, 4)); a[2, 2] = np.nan
+    with pytest.raises(ValueError, match='finite'):
+        stage(a, dots, fp, [])
+
+
+def test_streamed_nonduplicate_witness_count():
+    fp = np.ones((9, 9), bool)
+    surface = np.zeros((9, 9)); surface[8, 8] = 1
+    reference = np.zeros((9, 9)); reference[0, 0] = 1
+    result = stage(surface, surface > 0, fp, iter([('sparse', reference)]))
+    assert result == {'status': 'no-witness-in-scope', 'registry_rasters_checked': 1}
+
+
+def test_incomplete_registry_blocks_before_preview_even_without_a_witness(tmp_path, monkeypatch):
+    import json
+    import rasterio
+    from rasterio.transform import from_origin
+    from audit_candidate import run
+
+    profile = dict(driver='GTiff', width=9, height=9, count=1, dtype='float32',
+                   crs='EPSG:32611', transform=from_origin(0, 900, 100, 100))
+    def write(path, arr):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with rasterio.open(path, 'w', **profile) as dst:
+            dst.write(arr.astype('float32'), 1)
+    ref, surface, raster = tmp_path/'ref.tif', tmp_path/'surface.tif', tmp_path/'registry/sparse.tif'
+    s = np.zeros((9, 9)); s[8, 8] = 1
+    r = np.zeros((9, 9)); r[0, 0] = 1
+    write(ref, np.zeros((9, 9))); write(surface, s); write(raster, r)
+    manifest = tmp_path/'manifest.json'
+    manifest.write_text(json.dumps({'inputs': [{'id': 'sparse', 'bytes': 1, 'sha256': 'a'*64, 'git_blob': 'b'*40}]}))
+    monkeypatch.setattr('audit_candidate.verified', lambda *args, **kwargs: True)
+    report = run(surface, tmp_path/'nonexistent-preview.tif', tmp_path/'nonexistent-final.tif', ref, manifest, tmp_path)
+    assert report['pre_placement']['status'] == 'no-witness-in-scope'
+    assert report['pre_placement']['registry_rasters_checked'] == 1
+    assert report['preview']['status'] == report['final']['status'] == 'blocked-incomplete-registry'
+    assert not report['ok_to_emit'] and not report['ok_to_submit']

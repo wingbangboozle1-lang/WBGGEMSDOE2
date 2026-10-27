@@ -82,6 +82,21 @@ python -m pytest -q                           # 95 tests
 python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
 
+
+**27 October public observation:** the snapshot captured at approximately 17:21 UTC showed **0.4544**, superseding the
+26 October **0.4437**. It is a dated public-leaderboard observation, not a receipt for any file here and not a
+HOLDOUT-DTI. A later automated fetch failed, so the dashboard marks that snapshot stale. The prompt's 0.3195 and 0.4413
+"current high" figures are conflicting USER-SUPPLIED claims — all three numbers are lower than the observed 0.4544,
+which is the honest frame: **this lane's projection does not reach the public top of the board.**
+
+**Lane status.** Lane H3 is `promote`: one file, `docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif`, passes
+every locally checkable gate. The prior lane's negative run card (`evidence/run_card.json`) remains valid for *its*
+two rejected files and is not overwritten; both are shown on the dashboard, clearly labelled.
+
+**Evidence freshness.** All nine priority-site HEADs changed since their audited raster pins; newer rasters were not
+re-audited. The shared derived feature bank is absent; this lane rebuilt 19 raw bands into ignored local storage
+(`scratch/fbank/`). Inputs are a hash-pinned owner mirror, not organizer-authenticated.
+
 ## Start every session here
 
 **Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome**

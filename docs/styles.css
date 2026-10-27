@@ -10,3 +10,10 @@
 .table-heading p.fresh-warning{margin-top:8px;color:#a35c39;font-size:11px}.fresh-warning a{font-weight:750}
 
 .parallel-notice{margin-top:20px}
+/* Long-form B2 analysis: readable on desktop and narrow screens. */
+.research-prose{max-width:920px;margin:0 auto;padding:clamp(20px,4vw,42px);overflow-wrap:anywhere}
+.research-prose h1{font-size:clamp(27px,3vw,38px);margin-bottom:20px}
+.research-prose h2{margin:34px 0 13px;line-height:1.3}
+.research-prose p,.research-prose li{font-size:14px;line-height:1.7}
+.research-prose a{text-decoration:underline;text-underline-offset:2px}
+.research-prose code,.guide-card code{overflow-wrap:anywhere;word-break:break-word;background:#f2f6f3;border-radius:3px;padding:1px 3px}

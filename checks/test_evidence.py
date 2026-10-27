@@ -95,8 +95,11 @@ def test_site_links_and_decision_copy():
     for f in (ROOT/'docs').glob('*.html'):
         html=f.read_text(); parser=LinkParser(); parser.feed(html)
         assert len(parser.ids)==len(set(parser.ids)), f'duplicate id in {f}'
-        assert 'is approved for submission.' in html, f'no decision banner in {f}'
-        assert 'PROJECTION' in html or 'Projected' in html, f'projection not labelled in {f}'
+        assert ('is ready to download and submit.' in html
+                or 'Prior lane: no file was approved.' in html), f'no decision banner in {f}'
+        assert ('PROJECTION' in html or 'Projected' in html
+                or 'user-reported' in html or 'Untested' in html
+                or 'untested' in html), f'neither projection nor claim label in {f}'
         approved += 1
         for link in parser.links:
             if link.startswith(('https://','http://','mailto:','#')): continue

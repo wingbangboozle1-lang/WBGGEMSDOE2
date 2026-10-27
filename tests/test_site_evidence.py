@@ -1,7 +1,7 @@
 from html.parser import HTMLParser
 import json
 from pathlib import Path
-from urllib.parse import urlsplit, unquote
+from urllib.parse import urljoin, urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
@@ -10,11 +10,14 @@ SITE = ROOT / 'site'
 class Links(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.ids, self.refs = set(), []
+        self.ids, self.refs, self.base = set(), [], None
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
         if 'id' in values:
             self.ids.add(values['id'])
+        if tag == 'base' and values.get('href'):
+            self.base = values['href']
+            return
         for key in ('href', 'src'):
             if key in values:
                 self.refs.append(values[key])
@@ -25,11 +28,12 @@ def test_all_internal_links_resolve():
     for page in pages:
         parser = Links()
         parser.feed(page.read_text())
+        base = urljoin(page.as_uri(), parser.base) if parser.base else page.as_uri()
         for link in parser.refs:
-            parts = urlsplit(link)
-            if parts.scheme or parts.netloc or link.startswith('mailto:'):
+            parts = urlsplit(urljoin(base, link))
+            if parts.scheme != 'file' or parts.netloc:
                 continue
-            path = (page.parent / unquote(parts.path)).resolve() if parts.path else page
+            path = Path(unquote(parts.path)).resolve()
             if path.is_dir():
                 path /= 'index.html'
             assert path.exists(), f'{page.name}: broken local link {link}'
@@ -54,6 +58,11 @@ def test_published_evidence_is_fail_closed_and_synced():
     assert all(r['max_peer_overlap']['fraction'] > .7 for r in rows)
     home = (SITE / 'index.html').read_text()
     assert 'Submission download unavailable' in home and 'NO FILE CLEARED' in home
+    freshness = json.loads((SITE / 'data/focus-freshness.json').read_text())
+    assert freshness == json.loads((ROOT / 'docs/data/focus-freshness.json').read_text())
+    assert 'newer rasters are not downloaded or audited' in freshness['scope'].lower()
+    app = (SITE / 'assets/app.js').read_text()
+    assert "data/focus-freshness.json" in app and 'Newer rasters have not been audited' in app
 
 
 def test_registered_continuous_witness_is_not_mislabeled_as_dots():
