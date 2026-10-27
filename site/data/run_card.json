@@ -1,34 +1,110 @@
 {
-  "schema": "wbggems.run-card.v1",
-  "generated_utc": "2026-10-26T22:00:04.530607+00:00",
-  "hypothesis": "H1: depth-shifted, multiscale gravity and magnetic discontinuities may indicate concealed basin faults.",
-  "mechanism": "Paired signed gravity\u2013magnetic gradients, displaced using an unvalidated conductive-base-depth/dip proxy; both magnetic polarities are possible.",
-  "non_fault_mimic": "Unfaulted lithologic contact, intrusive dike, and acquisition striping.",
-  "lane_status": "Provisionally named; no explicit single method lane was supplied; no candidate produced.",
+  "schema": "wbggems.run-card.v2",
+  "generated_utc": "2026-10-27T18:10:11.944590+00:00",
+  "updated_utc": "2026-10-27T18:10:11.944590+00:00",
+  "lane_id": "wbg2-msptcd",
+  "hypothesis": "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients (Miller & Singh 1994), dip-shifted gravity-magnetic concordance across depth_to_base_surf steps, cross-strike cond_surf flank asymmetry, terrain-normalized radiometric tc edges, and multi-scale Hessian scarp ridges decoded via greedy 300 m triangular-kernel submodular allocation.",
+  "mechanism": "Normal/transtensional faulting juxtaposes dense/magnetic footwall rock against basin fill while localizing clay/saline fluid alteration and degraded piedmont scarps along concealed fault projections.",
+  "non_fault_mimic": "Unfaulted pluton/dike contacts, playal clay/evaporite pans, shoreline risers, and variable airborne survey clearance.",
+  "lane_status": "Executed 3 preregistered zero-leakage experiments (EXP-1, EXP-2, EXP-3 vs CTRL-19B) on unmodified gems57-pooled-hide-v2; stopped at literal all-registry gate.",
   "experiment_budget": {
-    "experiments_run": 0,
+    "experiments_run": 3,
     "maximum_experiments": 3,
+    "runtime_seconds": 306.32,
     "maximum_hours": 2,
     "weekly_slots_used": 0,
-    "scope": "this review lane; one parallel session reported three experiments and another reported one"
+    "scope": "wbg2-msptcd single method lane; two earlier parallel-session artifacts remain archived and rejected"
   },
   "holdout": {
     "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": null,
-    "withheld_positive_pixels": null,
-    "dti": null,
-    "ci95": null,
-    "status": "not run: the literal registry preflight blocks placement and the method lane was not assigned",
-    "intended_evaluator_version": "gems57-pooled-hide-v2"
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "split_version": "label-blind-quadrants-v2 (buffer_px=80, 8.0 km buffer)",
+    "withheld_positive_pixels": 60988,
+    "winning_arm": "exp3_msptcd_submod_greedy",
+    "dti": 0.04255426811430257,
+    "ci95": [
+      0.03205871015164006,
+      0.05476536944098737
+    ],
+    "control_19b_dti": 0.023409147943953046,
+    "control_19b_ci95": [
+      0.015355945201826322,
+      0.031894669552479896
+    ],
+    "exp1_msptcd_core_dti": 0.03497487837216973,
+    "exp1_msptcd_core_ci95": [
+      0.025586887742581124,
+      0.04547489276926102
+    ],
+    "exp1_paired_delta_vs_ctrl": 0.011565730428216688,
+    "exp1_paired_delta_ci95": [
+      0.005424371981728876,
+      0.01864388784275443
+    ],
+    "exp2_msptcd_strain_pu_dti": 0.028575092885931498,
+    "exp2_msptcd_strain_pu_ci95": [
+      0.020416029419072706,
+      0.03805833626407977
+    ],
+    "paired_delta_vs_ctrl_19b": 0.01914512017034952,
+    "paired_delta_ci95": [
+      0.01097695033438511,
+      0.028755292395709373
+    ],
+    "detached_splay_dti": 0.03079930088769798,
+    "control_detached_splay_dti": 0.016914952730943476,
+    "status": "completed on unmodified gems57.evaluate_holdout (1,000 paired 20 km spatial-cluster draws)"
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "COMPLETED",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 60988,
+    "value": 0.04255426811430257,
+    "ci95": [
+      0.03205871015164006,
+      0.05476536944098737
+    ],
+    "control_19b_value": 0.023409147943953046,
+    "paired_delta_vs_control": 0.01914512017034952,
+    "paired_delta_ci95": [
+      0.01097695033438511,
+      0.028755292395709373
+    ]
+  },
+  "organizer_confirmed": {
+    "evidence_class": "ORGANIZER-CONFIRMED",
+    "value": null,
+    "receipt": null,
+    "status": "not submitted; weekly competition slots preserved"
   },
   "feature_canary": {
-    "status": "not run; no surface or features were evaluated"
+    "evidence_class": "LEAKAGE-CANARY-MEASUREMENT",
+    "status": "passed",
+    "features_tested": 31,
+    "folds_tested": 4,
+    "total_checks": 124,
+    "threshold_two_sided_auc": 0.9,
+    "max_two_sided_auc": 0.6131180129836571,
+    "max_two_sided_feature": "tc_radiometric",
+    "details_file": "evidence/wbg2_msptcd_canaries.json"
   },
   "uniqueness": {
-    "registry_scope": "13 pinned raster references including a binary lattice and a continuous prior; incomplete inventory",
-    "candidate_surface_correlation": null,
-    "candidate_final_overlap": null,
-    "status": "no candidate constructed",
+    "registry_scope": "21 verified rasters (9 focus champions, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
+    "unique_vs_all_9_focus_sites": true,
+    "candidate_max_focus_surface_correlation": 0.09036802861727491,
+    "candidate_max_focus_final_overlap": 0.680628272251309,
+    "candidate_max_focus_site": "GEMSDOE27",
+    "candidate_max_all_registry_surface_correlation": 0.6856812367070434,
+    "candidate_max_all_registry_final_overlap": 1.0,
+    "status": "unique vs all 9 focus champions (<=68.06% 3px overlap), but stopped by literal all-registry witnesses (>70%)",
+    "witnesses_exceeding_limit": [
+      "13GEMSDOE",
+      "GEMSDOE27_H31",
+      "17GEMSDOE_dense_prior",
+      "WBGGEMSDOE1_C1",
+      "WBGGEMSDOE2_PARALLEL_CONDUIT"
+    ],
     "witness": "13GEMSDOE stride-5 lattice",
     "standard_budget": 37654,
     "minimum_overlap_bound": 0.8234184947150369,
@@ -38,48 +114,62 @@
     "dense_prior_full_footprint_positive": true,
     "dense_prior_policy_caveat": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
   },
-  "raster_sha256": null,
-  "validator": {
-    "status": "not run; no candidate raster",
-    "no_nan_inside_footprint": null,
-    "values_in_0_1": null,
-    "crs_shape_transform_match": null,
-    "reference": "owner mirror; not authenticated"
-  },
-  "submission_name": null,
-  "proposed_research_name": "WBGGEMSDOE2-H1-RESEARCH-20261026",
-  "note": "H1 untested; research only. Literal registry preflight blocked. DO NOT SUBMIT.",
-  "ok_to_submit": false,
-  "verdict": "negative",
-  "experiment_count": 0,
-  "weekly_submission_slots_used": 0,
-  "holdout_dti": {
-    "evidence_class": "HOLDOUT-DTI",
-    "status": "NOT RUN",
-    "evaluator_version": null,
-    "intended_evaluator_version": "gems57-pooled-hide-v2",
-    "withheld_positives": null,
-    "value": null,
-    "ci95": null,
-    "reason": "No assigned lane and literal registry preflight blocked."
-  },
   "registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
-    "surface_rank_correlation": null,
-    "final_dot_overlap": null,
+    "rasters_checked": 21,
+    "unique_vs_all_9_focus_sites": true,
+    "max_focus_surface_rank_correlation": 0.09036802861727491,
+    "max_focus_final_dot_overlap": 0.680628272251309,
+    "all_registry_max_final_dot_overlap": 1.0,
     "all_current_registry_rasters_checked": false,
     "binary_lattice_example_budget": 37654,
     "binary_lattice_minimum_overlap_at_budget": 0.8234184947150369,
     "dense_probability_prior_full_footprint": true,
-    "interpretation": "Every nonempty candidate has 100% overlap if the shared literal finite-positive support rule is applied to continuous priors; whether this is intended requires clarification."
+    "interpretation": "WBG2-MSPTCD is genuinely novel against all 9 priority focus champions (64.45%-68.06% <= 70%), but literal all-registry witnesses (13GEMSDOE lattice, 17GEMSDOE/WBGGEMSDOE1 continuous priors, GEMSDOE27_H31) exceed 70%."
   },
+  "raster_sha256": null,
+  "research_candidate": {
+    "name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
+    "tif_path": "docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+    "zip_path": "docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip",
+    "receipt_path": "docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.json",
+    "tif_sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
+    "tif_bytes": 71341,
+    "zip_sha256": "f3e92a114c93e1fc848fb0dc405d2c8aa723f77408e9fb11b224d7aee014ff1b",
+    "zip_bytes": 21663,
+    "emitted_dots": 25594,
+    "ok_to_download_for_research": true,
+    "ok_to_submit_to_competition": false
+  },
+  "validator": {
+    "status": "passed local byte-level GeoTIFF & mask validation on research candidate",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "masked_inside_footprint": 0,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "reference": "owner mirror; not authenticated"
+  },
+  "submission_name": null,
   "submission_note": null,
+  "proposed_research_name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
+  "note": "Negative/DO NOT SUBMIT: WBG2-MSPTCD HOLDOUT-DTI 0.0426 (+81.8% vs 19B), unique vs 9 focus, stopped by literal 13GEMSDOE/17GEMSDOE >70% gate.",
+  "ok_to_submit": false,
   "ok_to_download_new_tif": false,
-  "updated_utc": "2026-10-26T22:23:22.025194+00:00",
+  "ok_to_download_research_tif": true,
+  "verdict": "negative",
+  "experiment_count": 3,
+  "weekly_submission_slots_used": 0,
   "parallel_session": {
     "evidence": "evidence/parallel_review.json",
     "reported_experiments": 3,
     "rejected_candidate_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+    "user_reported_public_dti": 0.0725,
     "lattice_overlap_3px": 0.9938375188056938,
     "continuous_prior_overlap_3px": 1.0,
     "masked_inside_footprint": 5132809,
@@ -95,7 +185,7 @@
       "limitations": "Evaluation cells were not excluded from the training zone; the four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight."
     },
     "ok_to_submit": false,
-    "reason": "Rejected: literal lattice duplication, masked interior cells, and no compliant pre-placement/holdout approval."
+    "reason": "Rejected: literal lattice duplication (99.38%), 5,132,809 masked interior cells (nodata=0), and leaky private evaluator (0.0725 user-reported when uploaded)."
   },
   "conduit_parallel_session": {
     "evidence": "evidence/conduit_review.json",
@@ -107,6 +197,6 @@
     "holdout_dti": null,
     "preplacement_surface_correlation": null,
     "ok_to_submit": false,
-    "reason": "Rejected: lattice duplication, no validated holdout, and synthetic rather than demonstrated geophysical features."
+    "reason": "Rejected: lattice duplication (99.87%), no validated holdout, and synthetic rather than geophysical features."
   }
 }

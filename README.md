@@ -1,37 +1,57 @@
-# GEMS Fieldnotes
+# GEMS Fieldnotes & `WBG2-MSPTCD` Research System
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Current competition decision: `DO NOT SUBMIT` (`verdict = "negative"`, `ok_to_submit = false`, `0` weekly slots used).**
+Our 2026-10-27 3-experiment **`WBG2-MSPTCD`** campaign (`scripts/run_wbg2_msptcd.py`, `src/wbggems/msptcd.py`) generated a genuinely novel off-catalogue research GeoTIFF (`docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif`, SHA-256 `fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614`, `25,594` dots) that:
+- Passed **124 / 124** fold-local single-feature holdout leakage canaries (`31` features × `4` spatial quadrants, max two-sided ROC-AUC = **`0.6131 <= 0.90`**);
+- Improved zero-leakage pooled **`HOLDOUT-DTI`** on the **unmodified shared `gems57.evaluate_holdout` (`gems57-pooled-hide-v2`, `60,988` withheld positives, `8.0 km` buffer)** from **`0.0234`** (`19`-band baseline control, 95% CI `[0.0154, 0.0319]`) to **`0.0350`** (`EXP-1`, `+49.4%`, paired $\Delta = +0.0116$, 95% CI `[+0.0054, +0.0186]`) and **`0.0426`** (`EXP-3`, **`+81.8%`**, 95% CI `[0.0321, 0.0548]`, paired $\Delta = +0.0191$, 95% CI `[+0.0110, +0.0288]`), and boosted detached unlinked-splay DTI (`>= 400 m` from visible faults) by **`+82.1%`** (`0.0308` vs `0.0169`);
+- Proved **genuine novelty against all 9 priority focus champions (`GEMSDOE24..36`)** (`64.45%–68.06% <= 70%` forward 3-px overlap; `64.45%` vs `GEMSDOE32 B2`; surface $|\rho| \le 0.0904 \le 0.90$) and all 2026-10-26 discrete sibling rasters (`32.92%–59.12%`);
+- Passed automated byte-level `[0, 1]` and mask validation (`float32`, `EPSG:32611`, `3730×3292`, `min=0.0`, `max=1.0`, `0` NaN/Inf, `0` interior NoData masks);
+- **Stopped fail-closed before competition promotion** because under the literal all-registry 3-px `<= 70%` overlap rule, blanket registry witnesses (`13GEMSDOE` stride-5 lattice at `100.00%`, `17GEMSDOE` & `WBGGEMSDOE1_C1` continuous priors at `100.00%`, and `GEMSDOE27_H31` unpruned halo at `78.34%`) exceed `70%`, the local `sample_submission.tif` comes from a public mirror rather than an authenticated DrivenData download, and competition slot selection belongs to a separate selector.
+
+The [main dashboard (`docs/`)](docs/index.html), [executive summary (`docs/executive-summary.html`)](docs/executive-summary.html), [fieldnotes (`site/`)](site/index.html), [executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and single canonical [run card](evidence/run_card.json) document every measurement and provenance label.
 
 ## Start every session here
 
-Read this README, including the original project brief below, then read the current findings and run card. **Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome** by surfacing limitations and fixing defects rather than hiding them. Historical instructions and snapshots are not a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New instructions and current evidence take precedence over stale facts in the preserved prompt.
+Read this README, including the original project brief and **Arena Core Values** below, then read [research/findings.md](research/findings.md) and [evidence/run_card.json](evidence/run_card.json).
+- **Maximize P(Win):** Weigh tradeoffs dispassionately, protect scarce weekly competition slots (max 3/week per official rules §3.2), test every geophysical idea against a matched zero-leakage control on unmodified shared evaluation code, and never confuse projections or leaky local numbers with organizer receipts.
+- **Own the Outcome:** Verify raw raster bytes end-to-end (for example, catching empirically that Band 6 `tc` has `q01=7.64, median=18.49, q99=29.02` positive radiometric total counts rather than a `[-\pi/2, \pi/2]` magnetic tilt angle, and catching `nodata=0` interior masks that caused the earlier parallel TIFF to score `0.0725` user-reported).
 
-The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
+Historical instructions and snapshots are not a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New instructions and current evidence take precedence over stale facts in the preserved prompt.
 
-A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. This review lane generated no TIFF after that stop; two separate parallel research TIFFs were later independently rejected. The nine historical downloads are research-only.
-
-## Reproduce the audit
+## Reproduce the entire campaign, audits, and dashboards
 
 ```bash
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
-# Hash-check owner mirrors and rebuild the shared label-free 19-band cache.
+# 1. Restore & SHA-256 verify public mirrors, 19-band cache, and shared template (57GEMSDOE@822a0ce5)
 python scripts/prepare_data.py --fetch --cache-bands
 python scripts/restore_public_mirrors.py --small-only
 python scripts/fetch_shared_template.py
-# Reopen registered historical rasters for research only; no TIFF is created.
+# 2. Audit pinned registry & 9 priority focus sites
 python scripts/audit_registry.py --fetch
 python scripts/audit_portfolio.py --fetch
-python scripts/review_parallel_candidate.py
-python scripts/review_conduit_candidate.py
+# 3. Run the 3-experiment WBG2-MSPTCD campaign, 124 leakage canaries, & 21-raster novelty audit
+python scripts/run_wbg2_msptcd.py
+python scripts/sync_msptcd_evidence.py
+# 4. Validate saved research GeoTIFF bytes without human intervention
+python scripts/validate_submission.py docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif --sample data/official/sample_submission.tif
+python scripts/validate_tif.py docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif --reference data/official/sample_submission.tif
+# 5. Rebuild canonical run-card mirrors and both static dashboards
 python scripts/build_run_card.py
 python scripts/build_site.py
 python scripts/build_site_data.py
+# 6. Run full project & upstream shared-evaluator test suites
 pytest -q
 PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_evaluate_holdout.py
-python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
+
+## Remaining work & current limitations for the next session
+
+1. **Clarify the registry policy on blanket non-competitive witnesses (`13GEMSDOE` stride-5 lattice & `17GEMSDOE`/`WBGGEMSDOE1` continuous surfaces):** `WBG2-MSPTCD` is already `< 70%` (`64.45%–68.06%`) against all 9 priority focus champions, but literal comparison against a stride-5 calibration lattice (`99.87%` footprint coverage) or positive continuous fields (`100%` support) blocks any normal-budget submission unless exempted by explicit protocol amendment or restricted to ultra-sparse (`<= 22,163` dot) boundary-aware budgets.
+2. **Authenticate DrivenData input & template bytes:** Direct login-gated DrivenData downloads and Dropbox/USGS binary hosts are blocked in this sandbox. Verify `training_features.tif` and `sample_submission.tif` against an authenticated portal download (especially outside-footprint `NaN` vs `0.0` policy).
+3. **Execute Hypothesis H5 on an unrestricted machine with USGS 3DEP 1 m LiDAR & raw GeoDAWN line CSVs:** Ingest `1m_DEM_links.csv` (DOE GDR `#1391`) and USGS GeoDAWN flight/tie-line CSVs to add catchment-normalized drainage deflection and cross-line leveling vetoes on top of `WBG2-MSPTCD`.
+4. **Upstream `gems57` fixes:** Land the interior finite-NoData mask check in `57GEMSDOE/src/gems57/gates.py` (`format_report`) and correct the stale comment on `delta_T` bounds in `gems57/metric.py`.
 
 Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
 
@@ -703,13 +723,87 @@ gems91-s17-cwpc-e3-37654dots-20261025T150000Z-4d124f1d-zeros:0.1367
 
 gems91-s17-lftg-20261025T160014Z-7b6bf90844-zeros:0.1823
 
-gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405:
+gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405: 0.1578
+
+gems91-s20-cws-submod-20261026-zeros:0.1302
 
 ....
 
 [https://buffedlizard55-lab.github.io/GEMSDOE92/](https://buffedlizard55-lab.github.io/GEMSDOE92/)
 
 gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros:0.0255
+
+....
+
+[https://kanlerxz87-cyber.github.io/KANLERGEMSDOE1/](https://kanlerxz87-cyber.github.io/KANLERGEMSDOE1/)
+
+kanler1-hgb32-pu-submod-37654-20261025T211045Z-ef679563-zeros:0.1753
+
+....
+
+[https://kanlerxz87-cyber.github.io/KANLERGEMSDOE2/](https://kanlerxz87-cyber.github.io/KANLERGEMSDOE2/)
+
+kanler2-h3-offcat-scarp-stepover-36518-20261025T233818Z-39f9a38b-zeros:0.1939
+
+kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros:0.1973
+
+....
+
+[https://kanlerxz87-cyber.github.io/KANLERGEMSDOE3/](https://kanlerxz87-cyber.github.io/KANLERGEMSDOE3/)
+
+kanlergems3-h1b-conduit-stepover-37654-20261026T002552Z-6b9bd4e1-zeros:0.0366
+
+....
+
+[https://eugenewoo99-design.github.io/EUGGEMSDOE1/](https://eugenewoo99-design.github.io/EUGGEMSDOE1/)
+
+euggems1-h2-2-bcal-submod-37654-20261026T001534Z-731e4107-zeros:0.1731
+
+....
+
+[https://eugenewoo99-design.github.io/EUGGEMSDOE2/](https://eugenewoo99-design.github.io/EUGGEMSDOE2/)
+
+euggems2-h1-curv-asym-submod-37541-20261026T025042Z-zeros:0.1636
+
+....
+
+[https://eugenewoo99-design.github.io/EUGGEMSDOE3/](https://eugenewoo99-design.github.io/EUGGEMSDOE3/)
+
+eug3-c3-29-exp2-oobisotonic-dink37654-20261026T054000Z-zeros:0.1782
+
+....
+
+[https://wingbangboozle1-lang.github.io/WBGGEMSDOE1/](https://wingbangboozle1-lang.github.io/WBGGEMSDOE1/)
+
+wbg1-m3-listric-worm-aniso-37654-20261026T161500Z-zeros:0.0882
+
+wbg-c1-commutator-research-surface-20261026-acea88448272:
+
+....
+
+[https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)
+
+wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros:0.0725
+
+....
+
+[https://wingbangboozle1-lang.github.io/WBGGEMSDOE3/](https://wingbangboozle1-lang.github.io/WBGGEMSDOE3/)
+
+wbggems3-h1-aniso-37654-20261026T162925Z-7eb0461a-zeros:0.1149
+
+wbggems3-lst1-hybrid-20261026-0a0229da-zeros:0.1597
+
+....
+
+[https://ginnyfudge133-star.github.io/GINNYGEMSDOE1/](https://ginnyfudge133-star.github.io/GINNYGEMSDOE1/)
+
+ginny1-exp3-listric-paired-submod-20261026T214500Z-zeros:0.0956
+
+....
+
+[https://ginnyfudge133-star.github.io/GINNYGEMSDOE2/](https://ginnyfudge133-star.github.io/GINNYGEMSDOE2/)
+
+ginny2-e3-splay-hybrid-20261026-1b9cc3110df4-zeros:0.1045
 
 ....
 
@@ -751,6 +845,8 @@ h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan: 0.2707
 
 gems28-s18-mxtp-20261025-3e95505c011a-allfinite:0.0217
 
+gems28-s21-puhgb-20261026-16bbf281ba9b-allfinite:0.1628
+
 ....
 
 [https://buffedlizard55-lab.github.io/GEMSDOE30/](https://buffedlizard55-lab.github.io/GEMSDOE30/)
@@ -777,11 +873,15 @@ h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778
 
 h33d-analog-tip-stepover-r30-20261004-cb490425926e: 0.2632
 
+gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros:0.0363
+
 ....
 
 [https://buffedlizard55-lab.github.io/GEMSDOE36/docs/](https://buffedlizard55-lab.github.io/GEMSDOE36/docs/)
 
 anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros: 0.2750
+
+gemsdoe36-kpl36-exp3-20261026-fc869911e88c-zeros:0.2314
 
 ....
 

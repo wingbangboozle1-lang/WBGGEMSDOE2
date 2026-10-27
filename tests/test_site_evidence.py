@@ -44,7 +44,10 @@ def test_published_evidence_is_fail_closed_and_synced():
     assert source_card == published_card == json.loads((ROOT / 'docs/data/run-card.json').read_text())
     assert source_card == json.loads((ROOT / 'docs/data/run_card.json').read_text())
     assert source_card['verdict'] == 'negative' and source_card['ok_to_submit'] is False
-    assert source_card['holdout']['dti'] is None and source_card['raster_sha256'] is None
+    assert source_card['raster_sha256'] is None
+    assert source_card['holdout']['evaluator_version'] == 'gems57-pooled-hide-v2'
+    assert source_card['holdout']['withheld_positive_pixels'] == 60988
+    assert 0.03 < source_card['holdout']['dti'] < 0.06
     assert source_card['submission_name'] is None and len(source_card['note']) <= 140
     rows = json.loads((SITE / 'data/focus.json').read_text())['entries']
     assert len(rows) == 9 and len({r['site'] for r in rows}) == 9
