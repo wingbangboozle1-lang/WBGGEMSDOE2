@@ -7,8 +7,8 @@
     "checked_at": "2026-10-26T22:18:24.473425+00:00",
     "status": "stale",
     "value": 0.4437,
-    "observed_at": "2026-10-26T21:47:34+00:00",
-    "notice": "Official page could not be fetched or parsed; showing dated fallback if available."
+    "observed_at": "2026-10-26T21:55:19Z",
+    "notice": "Refresh failed; showing the latest recorded official public-leaderboard snapshot available in this repository, not a live value or per-file receipt."
   },
   "site_ref_notice": "Changed refs are compared with an observed HEAD baseline, not the historic raster pins; they require review and are not an automatic audit.",
   "baseline_observed_at": "2026-10-26T21:56:11.098339+00:00",

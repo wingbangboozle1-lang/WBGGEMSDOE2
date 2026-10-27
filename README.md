@@ -1,6 +1,6 @@
 # GEMS Fieldnotes
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [B2 lineage and score-claim analysis](docs/research/why-b2-scored-2778.html), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
 
 ## Start every session here
 
@@ -9,6 +9,12 @@ Read this README, including the original project brief below, then read the curr
 The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
 
 A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. This review lane generated no TIFF after that stop; two separate parallel research TIFFs were later independently rejected. The nine historical downloads are research-only.
+
+## Current-session freshness note — 2026-10-27 UTC
+
+The committed leaderboard feed's last successful observation is **0.4437 — ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT**, observed on 2026-10-26 and now explicitly stale. The prompt's **0.3195** and **0.4413** “current high” figures conflict and are **USER-SUPPLIED claims**. None is a per-file organizer receipt or a HOLDOUT-DTI result. A GitHub API freshness check on 2026-10-27 found all nine priority-site heads changed since their audited file pins; those newer rasters have **not** been audited. See [current findings](research/findings.md).
+
+The large competition raster, label/grid files, and cached feature arrays are ignored/generated state, not tracked deliverables, and are **absent from this checkout**. I restored only the hash-pinned shared evaluator source under ignored `.cache/` to run unit tests; it contains no competition data or derived feature bank and may not persist. The hashes in the evidence files record an earlier mirror-restoration run and do not imply those rasters or feature arrays are currently present. They were not restored again because the current registry/policy stop and missing assigned lane prevent a compliant candidate experiment.
 
 ## Reproduce the audit
 
@@ -25,6 +31,7 @@ python scripts/audit_registry.py --fetch
 python scripts/audit_portfolio.py --fetch
 python scripts/review_parallel_candidate.py
 python scripts/review_conduit_candidate.py
+python scripts/build_hypotheses.py
 python scripts/build_run_card.py
 python scripts/build_site.py
 python scripts/build_site_data.py
@@ -33,7 +40,7 @@ PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_ev
 python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
 
-Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
+Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DrivenData credentials are never requested or stored.
 
 `python scripts/validate_tif.py file.tif --reference authenticated_sample.tif` checks the saved file without repair; `--strict-all-finite` adds a stricter diagnostic. A validation pass is **not** a uniqueness, scientific or organizer approval. `scripts/audit_candidate.py` checks a proposed surface/preview against pinned registry witnesses and stops on a duplicate; its current inventory is incomplete and deliberately cannot approve an emission or upload. The shared template's full-catalogue geometry features must not be used in a hide-and-recover fold; recompute catalogue-derived features using visible faults only. The scheduled Pages workflow refreshes public leaderboard observations and reports stale/changed refs; it cannot access private receipts or automatically re-audit new rasters. The concurrent `docs/` dashboard and `site/` fieldnotes both publish byte-identical copies of the single canonical run card; `docs/EXECUTIVE_SUMMARY.md` and `docs/RUN_CARD.json` are explicitly superseded snapshots.
 

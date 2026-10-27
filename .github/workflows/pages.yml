@@ -34,8 +34,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/refresh_feed.py
-      - name: Rebuild both evidence-first static sites
+      - name: Rebuild research notes and both evidence-first static sites
         run: |
+          python scripts/build_hypotheses.py
           python scripts/build_run_card.py
           python scripts/build_site.py
           python scripts/build_site_data.py

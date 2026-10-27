@@ -28,10 +28,21 @@ async function loadLeaderboard() {
     }
     const refs = document.getElementById('ref-status');
     if (refs) {
-      const rows = Array.isArray(data.sites) ? data.sites : [];
-      const changed = rows.filter(x => x.status === 'changed').length;
-      const unknown = rows.filter(x => x.status === 'unknown').length;
-      refs.textContent = rows.length ? `${changed} site refs changed, ${unknown} unknown since the ${utcLabel(data.baseline_observed_at)} HEAD observation (not the older file pins). New files are not automatically audited.` : 'Site-ref freshness has not yet been checked by the scheduled feed.';
+      try {
+        const response = await fetch('data/focus-freshness.json', {cache: 'no-store'});
+        if (!response.ok) throw new Error('unavailable');
+        const freshness = await response.json();
+        const rows = Array.isArray(freshness.sites) ? freshness.sites : [];
+        const changed = Number.isInteger(freshness.changed_count) ? freshness.changed_count : rows.filter(x => x.changed === true).length;
+        const unknown = Number.isInteger(freshness.unknown_count) ? freshness.unknown_count : rows.filter(x => x.changed == null).length;
+        const checked = Date.parse(freshness.checked_utc || '');
+        const stale = !Number.isFinite(checked) || Date.now() - checked > 24 * 60 * 60 * 1000 || checked > Date.now() + 5 * 60 * 1000;
+        refs.textContent = rows.length ? `${changed} of ${rows.length} priority-site HEADs changed since their pinned audited rasters; ${unknown} unknown. ${stale ? 'Stale freshness check' : 'Checked'} ${utcLabel(freshness.checked_utc)}. Newer rasters have not been audited.` : 'Site-ref freshness has not yet been checked.';
+        if (stale || unknown) refs.classList.add('stale');
+      } catch (_) {
+        refs.textContent = 'Site HEAD freshness unavailable; newer rasters have not been audited.';
+        refs.classList.add('stale');
+      }
     }
   } catch (_) {
     const meta = document.getElementById('leader-meta');

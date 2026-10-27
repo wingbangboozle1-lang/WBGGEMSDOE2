@@ -8,8 +8,9 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def test_builder_refuses_unreviewed_promotion(tmp_path):
-    (tmp_path/'scripts').mkdir();(tmp_path/'docs').mkdir()
+    (tmp_path/'scripts').mkdir();(tmp_path/'docs').mkdir();(tmp_path/'config').mkdir()
     shutil.copy(ROOT/'scripts/build_site.py',tmp_path/'scripts/build_site.py')
+    shutil.copy(ROOT/'config/research_hypotheses.json',tmp_path/'config/research_hypotheses.json')
     shutil.copytree(ROOT/'docs/data',tmp_path/'docs/data')
     card=tmp_path/'docs/data/run-card.json';data=json.loads(card.read_text());data['verdict']='promote';card.write_text(json.dumps(data))
     result=subprocess.run([sys.executable,str(tmp_path/'scripts/build_site.py')],capture_output=True,text=True)

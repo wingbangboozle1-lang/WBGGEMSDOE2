@@ -2,6 +2,21 @@
 
 **Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
 
+## Current evidence and leaderboard freshness — reviewed 2026-10-27 UTC
+
+- The prompt gives **0.3195** and **0.4413** as current leaderboard highs. These are conflicting **USER-SUPPLIED claims**, not independently verified observations.
+- The last successful value in the committed public feed is **0.4437 — ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT**, observed at `2026-10-26T21:55:19Z`. The feed is explicitly marked **stale** because its subsequent refresh failed. This is a team-level public leaderboard observation, not an `ORGANIZER-CONFIRMED` receipt for any TIFF and not `HOLDOUT-DTI`.
+- On 2026-10-27, the GitHub HEAD check found all nine priority-site refs had changed since their audited raster pins. This is **GITHUB-HEAD-FRESHNESS-ONLY** evidence; no newer rasters were fetched or audited. The findings and scores below continue to describe only the pinned historical files.
+- The score estimate for a new raster remains unavailable. The user/owner-reported **0.2778** for GEMSDOE32 B2 is a historical claim, not a local HOLDOUT-DTI or an organizer-confirmed submission receipt.
+
+No current leaderboard value was independently verified in this review. This review did not fetch DrivenData, USGS, or GDR hosts; current allowlisted outbound access does not include those domains. Do not present a stale snapshot as “right now.”
+
+## Three review passes completed — 2026-10-27
+
+1. **Evidence and scope:** Reconciled the current brief, README, charter, run card, score feed, nine pinned historical rows, and source register. Confirmed the lane remains unassigned, the public `0.4437` observation is stale, `0.3195`/`0.4413` are conflicting user-supplied claims, and all nine current GitHub refs differ from the audited raster pins. No new raster bytes or official live pages were fetched.
+2. **Requirements and defects:** Reviewed the four proposals for layer provenance, physical mechanism, mimics, novelty scope, cost/rank, and data-access caveats. Corrected the homepage to avoid assigning H1, made proposal data downloadable, aligned both research pages, labelled the 25/30 → 32 → 36 raster lineage as owner-mirror measurement, refreshed site HEAD notices, and repaired the broken legacy `#lineage` link.
+3. **Final build and validation:** Rebuilt the hypothesis record, negative run card, and both sites; verified all local links, score provenance, lane/decision language, and source-data copies. Restored only hash-pinned shared evaluator source (no competition inputs/features) for tests. Final result: **89 passed, 0 skipped**; `compileall`, JavaScript syntax checks when Node is available, and `git diff --check` completed. No experiment, holdout, canary, TIFF, slot, or submission receipt was produced.
+
 ## The nine focus sites
 
 The table is generated from [`config/registry_inputs.json`](../config/registry_inputs.json) and the measured [`evidence/registry_audit.json`](../evidence/registry_audit.json); the [dashboard](../site/index.html) links each exact pinned historical TIFF for research only. A reported value is an **owner/user claim**, not an organizer-confirmed receipt. No estimated leaderboard score is defensible for these archived files. The best *claimed* historical value among the nine is the GEMSDOE32 B2 claim, not proof of the score of the audited bytes.
