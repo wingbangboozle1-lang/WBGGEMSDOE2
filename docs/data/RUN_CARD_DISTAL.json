@@ -1,0 +1,171 @@
+{
+  "schema": "wbggems.run-card.v1",
+  "generated_utc": "2026-10-27T23:49:25.675625+00:00",
+  "hypothesis": "N5 \u2014 Distal piedmont blind-fault allocation outside 30 px (3 km) from known faults, road-deconfounded",
+  "mechanism": "EDT>30px distal mask excludes near-catalogue FP waste; lattice-uncovered edge priority achieves 67.2% overlap (\u226470%) at 6k budget; distal interior targeting (median 45.5px) captures blind intrabasin faults missed by 1:100k mapping",
+  "non_fault_mimic": "Pleistocene Lake Lahontan shorelines (1332\u00b115m) and highway causeways (<250m TIGER) can mimic steps; mitigated by elevation notch and road-weight",
+  "lane_status": "WBG2-DPHS-N5 distal blind-piedmont (single method paragraph: EDT>30px distal allocation)",
+  "experiment_budget": {
+    "experiments_run": 1,
+    "maximum_experiments": 3,
+    "maximum_hours": 2,
+    "weekly_slots_used": 0
+  },
+  "holdout": {
+    "evidence_class": "NOT RUN",
+    "evaluator_version": null,
+    "intended_evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": null,
+    "dti": null,
+    "ci95": null,
+    "status": "NOT RUN: requires full 19-band cache and 2h; empirical estimate used"
+  },
+  "empirical_estimate": {
+    "evidence_class": "EMPIRICAL-ESTIMATE (fleet regression, not HOLDOUT-DTI or ORGANIZER-CONFIRMED)",
+    "point": 0.23,
+    "interval95": [
+      0.0,
+      0.35
+    ],
+    "rmse": 0.094,
+    "method": "Fleet OLS on log10_support, median_px_to_catalogue, frac_within_3px (n=93, LOSO R2 0.28). B2 predicted 0.25\u00b10.09; this candidate's distal geometry (median 45.5px vs B2 18.0px) places it in the high-variance extrapolation tail.",
+    "caveat": "Wide PI; cannot certify beating 0.2778 USER-REPORTED. Only a buffered hide-and-recover holdout can rank it."
+  },
+  "feature_canary": {
+    "status": "not run; EDT is catalogue-derived but strictly fold-visible; AUC must be \u22640.90 per-fold"
+  },
+  "uniqueness": {
+    "registry_manifest_sha256": "364e413a9fabd319cbb380c34cf108a8be5bf675c9dfd92c10f0e0b7d041a409",
+    "registry_rasters_checked": 13,
+    "all_current_registry_rasters_checked": false,
+    "note": "13 binary witnesses checked via 3px dot overlap; 1 continuous prior via Spearman. 684 indexed fleet hashes not checked; full fleet audit unavailable.",
+    "lattice_overlap_3px": 0.6716666666666666,
+    "lattice_capacity": {
+      "footprint_cells": 5167373,
+      "covered_cells": 5160724,
+      "uncovered_cells": 6649,
+      "budget": 6000,
+      "minimum_overlap": 0.0,
+      "feasible_under_limit": true
+    },
+    "focus_sites_overlap": {
+      "GEMSDOE24": {
+        "overlap_3px": 0.16,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE25": {
+        "overlap_3px": 0.1535,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE27": {
+        "overlap_3px": 0.16,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE28": {
+        "overlap_3px": 0.1455,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE30": {
+        "overlap_3px": 0.1535,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE31": {
+        "overlap_3px": 0.14683333333333334,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE32": {
+        "overlap_3px": 0.14266666666666666,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE33": {
+        "overlap_3px": 0.151,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE36": {
+        "overlap_3px": 0.143,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE27_H31": {
+        "overlap_3px": 0.195,
+        "spearman": null,
+        "method": "dot_overlap"
+      },
+      "GEMSDOE32_H47": {
+        "overlap_3px": 0.2648333333333333,
+        "spearman": null,
+        "method": "dot_overlap"
+      }
+    },
+    "dense_prior_spearman": -0.01561238260747912,
+    "dense_prior_abs_spearman": 0.01561238260747912,
+    "verdict": "PASS: all checked binary overlaps <=0.70 and all absolute Spearman <=0.90; no 3px duplicate witness among 13 checked",
+    "interpretation": "This is a file-level uniqueness check against 13 pinned rasters, not a pre-placement surface check and not a complete fleet certification. Under the literal finite-positive support rule, the continuous prior would be 100% overlap; we report Spearman instead, with caveat that policy requires clarification."
+  },
+  "raster_sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+  "validator": {
+    "status": "PASS",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "details": {
+      "path": "docs/downloads/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif",
+      "sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+      "grid_match_reference": true,
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "bands": 1,
+      "dtype": "float32",
+      "nodata": null,
+      "strict_all_finite_requested": true,
+      "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "organizer_acceptance": "unknown",
+      "submission_approval": false,
+      "footprint_cells": 5167373,
+      "nonfinite_inside": 0,
+      "masked_inside": 0,
+      "nan_total": 0,
+      "inf_total": 0,
+      "nan_inside": 0,
+      "nan_outside": 0,
+      "inf_inside": 0,
+      "inf_outside": 0,
+      "below_zero_inside": 0,
+      "below_zero_outside": 0,
+      "above_one_inside": 0,
+      "above_one_outside": 0,
+      "positive_outside": 0,
+      "diagnostics_band": 1,
+      "all_finite": true,
+      "minimum_inside": 0.0,
+      "maximum_inside": 1.0,
+      "nonzero_inside": 6000,
+      "failures": [],
+      "format_valid_against_reference": true
+    }
+  },
+  "submission_name": "wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros",
+  "note": "wbg2 distal 6k \u2014 blind piedmont, EDT>30px, road-deconfounded (research candidate, holdout not run)",
+  "ok_to_submit": false,
+  "verdict": "negative \u2014 research candidate: format+uniqueness PASS (13 checked) but HOLDOUT-DTI not measured; DO NOT SUBMIT without holdout win",
+  "experiment_count": 1
+}
