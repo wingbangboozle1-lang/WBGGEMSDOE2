@@ -1,0 +1,82 @@
+{
+ "evaluated": 11,
+ "radius_px": 3.0,
+ "overlap_limit": 0.7,
+ "correlation_limit": 0.9,
+ "worst_overlap": {
+  "name": "dense_probability",
+  "dots": 5167373,
+  "overlap_3px": 1.0,
+  "overlap_fail": true
+ },
+ "any_overlap_fail": true,
+ "rows": [
+  {
+   "name": "GEMSDOE24",
+   "dots": 60069,
+   "overlap_3px": 0.1675,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE25",
+   "dots": 44090,
+   "overlap_3px": 0.158471,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE27",
+   "dots": 61328,
+   "overlap_3px": 0.171824,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE28",
+   "dots": 37660,
+   "overlap_3px": 0.155794,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE30",
+   "dots": 44090,
+   "overlap_3px": 0.158471,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE31",
+   "dots": 40199,
+   "overlap_3px": 0.157529,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE32",
+   "dots": 37654,
+   "overlap_3px": 0.155647,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE33",
+   "dots": 41865,
+   "overlap_3px": 0.160265,
+   "overlap_fail": false
+  },
+  {
+   "name": "GEMSDOE36",
+   "dots": 38854,
+   "overlap_3px": 0.159206,
+   "overlap_fail": false
+  },
+  {
+   "name": "dense_probability",
+   "dots": 5167373,
+   "overlap_3px": 1.0,
+   "overlap_fail": true
+  },
+  {
+   "name": "lattice",
+   "dots": 206895,
+   "overlap_3px": 0.998618,
+   "overlap_fail": true
+  }
+ ],
+ "scope_note": "A partial registry can prove a duplicate, never uniqueness. This receipt covers only the rasters listed in rows."
+}

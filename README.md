@@ -45,6 +45,25 @@ lane; [`docs/submission/parallel-lanes.html`](docs/submission/parallel-lanes.htm
 and the one measurement that settles it. **Deciding which reading governs is a policy call for the project
 owner.** The conservative option is to submit nothing.
 
+
+## Third lane: H3-PACK (this branch) — independent, and it disagrees with the estimate above
+
+This branch started from the same prompt and reached a different, also-measured conclusion, kept here rather than
+overwritten:
+
+* **Same score law, fitted independently.** Refitting the nine reported scores on their own measured dot counts and
+  collar fractions gives `score = 0.3110 − 0.000780·(D/1000) − 0.0892·collar`, **R² = 0.988, n = 9**, residuals
+  ≤ 0.0023 for every raster — including reproducing GEMSDOE32 at 0.2765 vs its reported 0.2778.
+* **One thing this lane adds:** the nine rasters are 98 % collinear in (dot count, packing) — they are not independent
+  observations, so the fit constrains *placement*, not *geology*, and the projection band 0.285–0.332 inherits that.
+* **Its own file:** [`docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif`](docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif),
+  sha256 `5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2`, 34,000 dots, zero inside 3 px of the
+  catalogue, kmass/dot 9.365 of a possible 9.38, worst 3 px overlap with the nine focus rasters 17.2 %. Page:
+  [`docs/submit/`](docs/submit/). Projection labelled PROJECTION throughout; no organizer receipt.
+* **Why it may still be wrong:** the catalogue holdout is *anti*-correlated with the live board (Spearman −0.849,
+  p = 0.0038), so no local instrument can pick between this file, the DZ-16 file above, or doing nothing. That
+  unresolved choice is the project owner's, and doing nothing remains the conservative option.
+
 ## What the measurements established (and what they did not)
 
 1. **The official metric has a closed form.** Because `FN_w = |G| − TP_w` exactly, the organizers'
