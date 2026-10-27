@@ -17,14 +17,17 @@ repository from a file whose SHA-256 is recorded.</p>
 </div>
 
 <div class="card warn">
-  <h3 style="margin-top:0">What this file is <em>not</em></h3>
+  <h3 style="margin-top:0">What this file is <em>not</em> — and 2026-10-27 467-raster &amp; WBG2-DPHS update</h3>
   <p>It is <b>not</b> a copy of any GEMSDOE submission. It was built from the organizer-format
   <code>existing_faults.tif</code> and <code>sample_submission.tif</code> only, with a damage-zone-flank
   structural prior. Its <b>estimated</b> score is <b>0.15</b> (95% interval 0.00–0.33,
   out-of-sample RMSE 0.094). That estimate is <b>below</b> the best historical
-  GEMSDOE file (0.2778, user-reported) and far below the live leaderboard leader
+  GEMSDOE file (0.2778, USER-REPORTED) and far below the live leaderboard leader
   (<b>0.4544</b>, xiaofanhu). No claim is made that this file
   beats the public leaderboard.</p>
+  <p style="margin-bottom:0"><b>New 2026-10-27 WBG2-DPHS &amp; 467-Raster Fleet Audit (<a href="../dphs/index.html">open full DPHS dashboard →</a>):</b>
+  Our new 60-feature multi-sensor hydrothermal + LiDAR/3DEP submodular lane (<code>WBG2-DPHS EXP-3</code>) achieved
+  <b><code>HOLDOUT-DTI = 0.1735</code></b> (<code>95% CI [0.1525, 0.1944]</code>, <code>60,988</code> withheld positives) — a 5.9&times; leap over <code>WBG2-MSPTCD</code> — and passes all 15 byte/<code>[0,1]</code> zero-NaN gates, <b>but is marked <code>DO NOT SUBMIT</code></b> because it exceeds the <code>&gt;70%</code> 3-px overlap gate against 45 discrete fleet range-front rasters (max <code>95.87%</code> vs <code>GEMSDOE12</code>). Across all 467 audited rasters, <code>DZ-16</code> above remains the <b>only</b> repository file with <code>0</code> enriched discrete duplicates (normalized rule <code>PASS</code>, literal blanket rule <code>FAIL</code>), whereas <code>WBG2-DPHS</code>, <code>WBG2-MSPTCD</code>, and <code>WBG3-H3PACK</code> are all <b>DO NOT SUBMIT</b>. See <a href="../dphs/how-to-submit.html">step-by-step preflight &amp; candidate comparison →</a></p>
 </div>
 
 <h2>How to submit (5 steps)</h2>

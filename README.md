@@ -1,9 +1,53 @@
 # WBGGEMSDOE2 — DOE GEMS Prize
 
-**Read this block first, every session.** It is the current, measured state. Numbers below come from
-scripts in `scripts/` and JSON in `data_public/`; nothing is transcribed by hand.
+**Read this block first, every session.** Numbers below come directly from checked-in scripts (`scripts/`) and JSON receipts (`evidence/`, `data_public/`); nothing is transcribed by hand.
 
-## Status: one file is cleared to submit
+## Current 2026-10-27 Synthesis (`WBG2-DPHS` + 467-Raster Multi-Org Audit)
+
+* **Primary Pages Dashboard:** [`docs/dphs/index.html`](docs/dphs/index.html) · **How to Submit (Contest Steps):** [`docs/dphs/how-to-submit.html`](docs/dphs/how-to-submit.html) · **Why `0.2778` Won & How to Beat It:** [`docs/dphs/executive-summary.html`](docs/dphs/executive-summary.html) · **Full Findings:** [`research/dphs_findings.md`](research/dphs_findings.md)
+* **Unmistakable Slot Decision (`0` weekly slots spent):**
+  * **`WBG2-DPHS EXP-3` ([`docs/downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif`](docs/downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif), SHA-256 `31f3d8e61d195dd5ac09f380815cd08ea072d8812e2f5021d2c41fa423e6ccd9`, `36,500` non-touching dots):** **`DO NOT SUBMIT` (`status = "negative"` — Research Download Only).** Achieves repository-best spatially blocked **`HOLDOUT-DTI = 0.1735` (`95% CI [0.1525, 0.1944]`, `gems57-pooled-hide-v2`, `60,988` withheld positives — `+486%` / `+0.1439` over `WBG2-MSPTCD`)**, passes all 15 byte/`[0, 1]` zero-NaN checks, 61-feature leakage canary (`max AUC = 0.61795 <= 0.90`), pre-placement surface Spearman (`0.8608 <= 0.90`), and 9-focus-site 3-px overlap (`42.68%–58.23% <= 70%`), **but stops fail-closed at the `>70%` 3-px fleet duplicate gate** (`max = 95.87%` vs `GEMSDOE12` `dem10-scarp`; `45` discrete range-front rasters + `48` blanket rasters `>70%`; `EMPIRICAL-ESTIMATE = 0.0713`, `95% PI [0.0000, 0.1941]`).
+  * **`WBG2-DZ16` ([`docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif`](docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif), SHA-256 `a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912`, `34,500` dots):** **`OK TO DOWNLOAD AND SUBMIT` *only* under the normalized non-blanket uniqueness rule** (`0` enriched discrete duplicates across 467 rasters; `16.1%–24.2%` vs 9 focus sites; `EMPIRICAL-ESTIMATE = 0.15`, `95% PI [0.00, 0.33]`, below `0.2778`); **`DO NOT SUBMIT`** under strict literal blanket-inclusive overlap (`99.9%+` vs `13GEMSDOE` stride-5 lattice) or if conserving slots strictly to beat `0.2778`.
+  * **`WBG2-MSPTCD EXP-3` (`HOLDOUT-DTI = 0.0296`, `50` discrete fleet duplicates `>70%`) & `WBG3-H3PACK` (uniform zero-geology lattice, `HOLDOUT-DTI = 0.0720`, literal lattice duplicate):** **`DO NOT SUBMIT`.**
+  * **All 9 Priority Focus Sites (`GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36`):** **`DO NOT SUBMIT`** — historical champions (`0.2449–0.2778 USER-REPORTED`) are already submitted (`86.7%–100.0%` shared `19GEMSDOE H19-5` lineage; 5/9 `-nan.tif` variants contain outside-footprint `NaN`s), and all 9 site HEADs as of `2026-10-27` explicitly report `DO NOT SUBMIT`.
+
+| Site / Candidate | Primary / Audited GeoTIFF | Reported Score (`USER-REPORTED`) | Local `HOLDOUT-DTI` / Fleet `EMPIRICAL-ESTIMATE` | 467-Raster Uniqueness & `[0,1]` Check | Action |
+|---|---|---:|---|---|---|
+| **WBG2-DPHS EXP-3** *(New)* | `docs/downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif` | — | **`0.1735` HOLDOUT-DTI** (`[0.1525, 0.1944]`) · `0.0713` EMPIRICAL-ESTIMATE | `[0,1]` 0-NaN PASS · 9-focus `<=58.2%` · **45 discrete fleet `>70%` (`95.9%` max)** | **DO NOT SUBMIT** *(research only)* |
+| **WBG2-DZ16** | `docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif` | — | `0.1510` EMPIRICAL-ESTIMATE (`[0.000, 0.335]`) | `[0,1]` 0-NaN PASS · **Normalized PASS (`0` enriched dups)** · Literal FAIL | **OK TO DOWNLOAD AND SUBMIT** *(Normalized Rule Only)* |
+| **WBG2-MSPTCD EXP-3** | `docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif` | — | `0.0296` HOLDOUT-DTI · `0.0812` EMPIRICAL-ESTIMATE | `[0,1]` 0-NaN PASS · 50 discrete fleet `>70%` (`94.7%` max) | **DO NOT SUBMIT** |
+| **WBG3-H3PACK** | `docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif` | — | `0.0720` HOLDOUT-DTI (zero-geology lattice) | `[0,1]` 0-NaN PASS · Literal `13GEMSDOE` lattice duplicate | **DO NOT SUBMIT** |
+| **GEMSDOE32** | `gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif` | **0.2778** | `0.2118` LOSO EMPIRICAL-ESTIMATE (`C_pied=0.0888`, `34.0% >32 px`) | `-zeros` PASS · Already submitted + `97.4–100%` `H19-5` peer lineage | **DO NOT SUBMIT** |
+| **GEMSDOE36** | `gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif` | **0.2750** | `0.2104` LOSO EMPIRICAL-ESTIMATE (`KPL36`: `0.1647`) | `-zeros` PASS · Already submitted + `97.4%` `H33` overlap | **DO NOT SUBMIT** |
+| **GEMSDOE28** | `gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif` | **0.2710** | `0.2069` LOSO EMPIRICAL-ESTIMATE (`s21-puhgb`: `0.0206`) | `-nan` FAIL (outside NaNs) · Already submitted + `H33` lineage | **DO NOT SUBMIT** |
+| **GEMSDOE31** | `gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif` | **0.2708** | `0.1972` LOSO EMPIRICAL-ESTIMATE (`PGR31`: `0.0176`) | `-nan` FAIL (outside NaNs) · `100%` `GEMSDOE28` `H27-4` match | **DO NOT SUBMIT** |
+| **GEMSDOE33** | `GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif` | **0.2632** | `0.2015` LOSO EMPIRICAL-ESTIMATE (`S33`: `0.0963`) | `0.0` outside PASS · Already submitted + `99.7%` `D28` lineage | **DO NOT SUBMIT** |
+| **GEMSDOE25** | `gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif` | **0.2600** | `0.2002` LOSO EMPIRICAL-ESTIMATE (`H66`: `0.0742`) | `-zeros` PASS · Exact `100.0%` dot twin of `GEMSDOE30` | **DO NOT SUBMIT** |
+| **GEMSDOE30** | `gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif` | **0.2600** | `0.2002` LOSO EMPIRICAL-ESTIMATE (`MSDB1`: `0.1462`) | `0.0` outside PASS · Exact `100.0%` dot twin of `GEMSDOE25` | **DO NOT SUBMIT** |
+| **GEMSDOE24** | `gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif` | **0.2477** | `0.1936` LOSO EMPIRICAL-ESTIMATE (`GVC1`: `0.0859`) | `-nan` FAIL (outside NaNs) · Already submitted + `H19-5` lineage | **DO NOT SUBMIT** |
+| **GEMSDOE27** | `gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif` | **0.2449** | `0.1809` LOSO EMPIRICAL-ESTIMATE (`H31`: `0.2250`) | `-nan` FAIL (outside NaNs) · Already submitted + `98.0%` `GEMSDOE24` | **DO NOT SUBMIT** |
+
+### Fifth Lane (`WBG2-DPHS`) JSON Run Card ([`evidence/RUN_CARD_DPHS.json`](evidence/RUN_CARD_DPHS.json))
+
+```json
+{
+  "run_id": "wbg2-dphs-20261027T203110Z",
+  "hypothesis": "DPHS-H1..H5: Dual-regime calibrated PU-HGBR combining 1 m LiDAR residual scarps, 10 m 3DEP multi-scale DoG curvature, GeoDAWN aeromagnetic/radiometric lineaments, and Great Basin Play Fairway / GDR hydrothermal + Quaternary contacts, decoded via 300 m triangular-kernel CELF submodular max-cover outside a 2.05 px catalogue collar.",
+  "method_lane": "WBG2-DPHS (Multi-Sensor Piedmont-Hydrothermal PU-HGBR + 300 m CELF Submodular Allocation)",
+  "holdout_dti": 0.173477,
+  "incumbent_dti": 0.029605,
+  "ci95": [0.152451, 0.194361],
+  "leakage_canary_max_auc": 0.6179,
+  "max_registry_corr": 0.86524,
+  "max_registry_dot_overlap": 0.95866,
+  "format_valid": true,
+  "status": "negative"
+}
+```
+
+---
+
+## Historical Lane 1 Status (DZ-16 Normalized-Rule Archive)
 
 | | |
 |---|---|
@@ -1044,6 +1088,25 @@ Pass 3: Re-check the entire implementation against the original request. Improve
 Do not stop after the first pass. Each pass must build on the previous one. Before finishing, verify that the final result fully satisfies the original request.  Work line by line verify everything no hallucinations.
 
 Go ahead and create a pull request and then merge the pull request onto the main. Make suggestions for what work still needs to be done and any limitations that is in the way of a successful project.  It should be worked on in this next session or the next session.  Work line by line verify everything no hallucinations.
+
+### 2026-10-27 Prompt Addendum (Preserved)
+
+- Updated reported scores in prompt ledger:
+  - `gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite:0.2250` (`GEMSDOE27`)
+  - `gems28-s21-puhgb-20261026-16bbf281ba9b-allfinite:0.0206` (`GEMSDOE28`)
+  - `gemsdoe31-pgr31-piedmont-grav-20261026-a7f863b8-zeros:0.0176` (`GEMSDOE31`)
+  - `gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros:0.0963` (`GEMSDOE33`)
+  - `gemsdoe36-kpl36-exp3-20261026-fc869911e88c-zeros:0.1647` (`GEMSDOE36`)
+  - `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros:0.0725` (`WBGGEMSDOE2`)
+- Leaderboard high reference in prompt: `0.4413 is the highest score right now on the competition leaderboard` (alongside `0.3195` fleet ledger high and `0.4544` dated public leaderboard snapshot).
+- Hypothesis requirement addition: also name at least one **non-fault mimic** (e.g., shoreline, fluvial channel, caldera rim, lithologic contact) and how to avoid/de-confound it.
+- **GEMS Parallel-Run Protocol:**
+  - Stay inside your assigned method lane; before dot placement, check surface rank-correlation against registry rasters (`> 0.90 = duplicate`); on final dots, check fraction within 3 px of any registry raster (`> 70% = duplicate`); log duplicate and STOP.
+  - Reuse shared cached feature stack, `evaluate_holdout.py`, and `submission_writer.py` (no private evaluator or GeoTIFF writer forks).
+  - Hide-and-recover buffered holdout (`alpha=0.2, beta=0.8`, 300 m triangular kernel), pixel-mask visible faults during scoring, label every number (`HOLDOUT-DTI` + evaluator version + withheld positives + 95% CI, or `ORGANIZER-CONFIRMED`; never write a projection as a score).
+  - Run single-feature holdout leakage canary (`AUC > 0.90 = leakage`).
+  - Stop after 3 experiments or 2 hours; do not spend a real weekly submission slot (separate selector step).
+  - End with 1 JSON Run Card: `run_id`, `hypothesis`, `method_lane`, `holdout_dti`, `incumbent_dti`, `ci95`, `leakage_canary_max_auc`, `max_registry_corr`, `max_registry_dot_overlap`, `format_valid`, `status` (`promote` / `negative`).
 
 </details>
 

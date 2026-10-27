@@ -1,0 +1,86 @@
+{
+  "schema": "wbggems.dphs-hypotheses.v1",
+  "preregistered_utc": "2026-10-27T19:15:00Z",
+  "assigned_method_lane": "WBG2-DPHS (Dual-Regime Piedmont & Hydrothermal-Structural Synthesis)",
+  "experiment_cap": 3,
+  "evaluator_pin": "gems57-pooled-hide-v2 (buffedlizard55-lab/57GEMSDOE@822a0ce5, unchanged)",
+  "hypotheses": [
+    {
+      "rank": 1,
+      "id": "DPHS-H1",
+      "title": "Dual-Scale 1 m / 10 m De-Confounded Piedmont Fault-Scarp Morphology with Native Missingness Routing",
+      "expected_holdout_dti_gain": "High (primary spatial localization driver across 100% of footprint)",
+      "implementation_cost": "Low-Moderate (~120 LOC; cached 1m LiDAR + 10m 3DEP + TIGER road de-confounder)",
+      "specific_layers": [
+        "Competition bands: det_elev (Band 12), det_elev_slope (Band 19), depth_to_base_surf (Band 15)",
+        "USGS 3DEP 1 m LiDAR scarp features (ex_max, ex_mean, step_max, lapneg_max, lappos_max, downface_max, upface_max, coh100) — https://www.usgs.gov/3d-elevation-program/about-3dep-products-services",
+        "USGS 3DEP 1/3 arc-second (~10 m) seamless DEM gradients (slope_max, steep_ratio_max, hgm20_max, hgm50_max, curv_absmax, onesided3) — https://apps.nationalmap.gov/downloader/",
+        "US Census Bureau TIGER/Line road distance (tiger_road_distance_m) — https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html"
+      ],
+      "physical_signature": "Quaternary Basin-and-Range normal faults cutting unconsolidated piedmont alluvial fans produce 0.5-8 m asymmetric topographic steps with paired crest-convex / toe-concave Laplacian dipoles, persistent 100 m linear strike coherence, and one-sided cross-strike elevation jumps.",
+      "why_catches_uncatalogued_faults": "Pre-3DEP mapping missed low-throw (<3 m) Holocene/late-Pleistocene piedmont scarps, synthetic/antithetic graben splays 250-3,000 m basinward of range fronts, and scarps in the 24.7% un-flown 1 m LiDAR gaps where LiDAR-only models collapse to zero. Encoding q==0 as NaN lets HistGBR route 75.3% 1 m LiDAR cells natively while seamless 10 m 3DEP bridges 100% of the footprint.",
+      "non_fault_mimic": "Highway/railroad causeway embankments (<250 m from TIGER roads), Pleistocene Lake Lahontan wave-cut shorelines (1,315-1,348 m highstand benches), and symmetric incised fan arroyos.",
+      "difference_from_repo": "DZ-16 used only 19 coarse 100 m bands truncated at d<=32 px; H3-PACK used zero geology; WBG2-MSPTCD used only 19 coarse 100 m bands without 1 m LiDAR, 10 m 3DEP, or road/shoreline de-confounding."
+    },
+    {
+      "rank": 2,
+      "id": "DPHS-H2",
+      "title": "Fold-Visible-Only En-Echelon Stepover Relay-Breach & Strike-Projected Tip Continuation",
+      "expected_holdout_dti_gain": "Moderate-High (captures unmapped breaching cross-faults and plunging tip splays without catalogue leakage)",
+      "implementation_cost": "Low (~85 LOC; exact 2-component Voronoi EDT + thinned-skeleton tip projection per fold)",
+      "specific_layers": [
+        "Strictly fold-visible fault mask (fold['visible'] during buffered 4-quadrant CV; existing_faults.tif only at final full-map inference)",
+        "Competition structure-tensor strike from det_elev/det_elev_slope (Bands 12, 19) plus iso_grav_anom_hg (Band 18) and cond_surf (Band 17)"
+      ],
+      "physical_signature": "Normal faults grow by radial tip propagation and mechanical linkage across 0.3-3.0 km en-echelon relay ramps and stepovers (Faulds & Hinz, 2015), concentrating Coulomb shear stress along the inter-strand Voronoi medial bridge between distinct fault components and along strike-projected tip lobes.",
+      "why_catches_uncatalogued_faults": "1:100k-1:250k compilations map long master range-front strands cleanly but systematically omit short breaching cross-faults inside relay ramps and plunging tip splays under young fan cover.",
+      "non_fault_mimic": "Isotropic radial halos around known faults (like DZ-16's d<=32 px) falsely illuminate barren footwall granite and hanging-wall playas perpendicular to fault strike where no tip or relay strain exists.",
+      "difference_from_repo": "DZ-16 used isotropic distance truncation (d<=32 px); WBG2-MSPTCD was zero-catalogue (0.0329 HOLDOUT-DTI). Neither computed distinct-component Voronoi relay-breach bridges or strike-projected tip lobes strictly inside each CV fold."
+    },
+    {
+      "rank": 3,
+      "id": "DPHS-H3",
+      "title": "Shallow Hydrothermal Magnetite-Destruction (RTP - TMI_up150) & GeoDAWN K/Th Alteration",
+      "expected_holdout_dti_gain": "Moderate (discriminates mineralized fault damage zones from barren volcanic scarps across 99.98% of footprint)",
+      "implementation_cost": "Low (~60 LOC; cached GeoDAWN K/Th/U + TMI_up150 + Gallardo-Meju cross-gradient)",
+      "specific_layers": [
+        "Competition bands: rtp (Band 2), tmi_hg (Band 3), tmi (Band 14), iso_grav_anom_hg (Band 18), tc_radiometric (Band 6)",
+        "USGS GeoDAWN Airborne Magnetic & Radiometric Survey (K, Th, U, ThK, TMI_up150; doi:10.5066/P9X8K366) — https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and"
+      ],
+      "physical_signature": "Hydrothermal fluids ascending permeable fault gouge oxidize/sulfidize ferromagnetic magnetite into non-magnetic hematite/pyrite (narrow shallow magnetic troughs in z(RTP) - z(TMI_up150)) and precipitate potassium-rich adularia/illite (elevated K/Th) along co-planar gravity-magnetic structural contacts.",
+      "why_catches_uncatalogued_faults": "Faults cutting Tertiary volcanic plateaus or concealed under thin colluvium often lack crisp topographic scarps due to talus shedding yet preserve permanent shallow demagnetization troughs and K/Th metasomatic halos.",
+      "non_fault_mimic": "Unaltered felsic rhyolite domes/tuffs (high K and high Th, cancelled by K/Th normalization), broad reversed-polarity basalt flows (persist in TMI_up150), and K-evaporite playas.",
+      "difference_from_repo": "WBG2-MSPTCD only had unseparated gamma total-count (Band 6) and lacked 150 m upward-continued magnetic vertical differencing."
+    },
+    {
+      "rank": 4,
+      "id": "DPHS-H4",
+      "title": "Blind Geothermal Upflow Conduits from Shallow 2 m Temperature Probes, Geothermometers & Paleo-Sinter",
+      "expected_holdout_dti_gain": "Moderate (recovers zero-scarp intrabasin blind faults missed by LiDAR/DEM)",
+      "implementation_cost": "Low (~70 LOC; GDR #1391 CSV/raster halos with dist_known_fault_px stripped at ingest)",
+      "specific_layers": [
+        "Competition bands: depth_to_base_surf (Band 15), cond_surf (Band 17), iso_grav_anom_hg (Band 18), ieq_n100a15 (Band 16)",
+        "DOE Geothermal Data Repository (GDR) #1391 INGENIOUS thermal wells/springs (row, col, temp_c, geothermquartz_c, geothermchalc_c), shallow 2 m temperature probes, paleo-sinter/travertine/tufa deposits, and volcanic vents — https://gdr.openei.org/submissions/1391"
+      ],
+      "physical_signature": "Blind intrabasin normal faults leak buoyant fluids into shallow 2 m temperature surveys, elevate silica geothermometer temperatures in gradient wells, and precipitate opaline sinter / travertine mounds above conductive MT roots.",
+      "why_catches_uncatalogued_faults": "Over 40% of Great Basin geothermal systems are blind (zero surface scarp or hot spring) beneath >200 m of Quaternary basin fill and are systematically absent from 1:100k surface fault maps.",
+      "non_fault_mimic": "Lateral shallow-aquifer thermal outflow plumes kilometres down-gradient from the feeder fault, mitigated by requiring tree-interaction coupling with cba_hgm / mt2000 structural roots.",
+      "difference_from_repo": "No model in WBGGEMSDOE2 ingested DOE GDR #1391 thermal wells/springs, 2 m probes, or paleo-sinter deposits; our loader strips dist_known_fault_px to guarantee zero catalogue leakage."
+    },
+    {
+      "rank": 5,
+      "id": "DPHS-H5",
+      "title": "Lazy-Greedy 300 m Submodular Max-Cover Decoding Outside the 2-Pixel Masked-Catalogue Collar",
+      "expected_holdout_dti_gain": "High (eliminates 3x-6x collinear FP redundancy and masked-corridor waste on DW-Tversky)",
+      "implementation_cost": "Low (~90 LOC; Minoux CELF max-heap over exact 25-pixel r<3 triangular kernel)",
+      "specific_layers": [
+        "Isotonically calibrated OOF fault probability surface p(y, x)",
+        "Fold-visible Euclidean distance transform EDT(~visible) > 2.05 px and R=300 m (3.0 px) triangular kernel K(r)=max(0, 1-r/3)"
+      ],
+      "physical_signature": "Couples multi-strand graben/relay probability mass directly to the organizer's asymmetric DW-Tversky metric (alpha=0.2, beta=0.8) where existing_faults pixels are masked before evaluation.",
+      "why_catches_uncatalogued_faults": "Maximizes expected covered uncatalogued fault mass E[TP_w(S)] across both near-corridor splays (2-32 px) and distal intrabasin faults (>32 px, 34% of budget) without DZ-16's distal starvation or H33's unweighted isotropic spacing.",
+      "non_fault_mimic": "Uniform lattice packing over barren playas (H3-PACK fallacy) when probabilities are uncalibrated; prevented by marginal-gain stopping threshold against OOF-calibrated p(y, x).",
+      "difference_from_repo": "Replaces uniform H3 packing, DZ-16's hard d<=32 px cutoff, and MSPTCD's unweighted 3.0 px greedy disks with exact CELF submodular max-cover over calibrated multi-sensor probabilities."
+    }
+  ]
+}

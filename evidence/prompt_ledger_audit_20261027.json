@@ -1,0 +1,40 @@
+{
+  "schema": "wbggems.prompt-ledger-audit.v1",
+  "generated_utc": "2026-10-27T19:10:03.948274+00:00",
+  "csv_path": "docs/data/user-reported-ledger-20261027.csv",
+  "csv_sha256": "b3a5cf7627d436597b98f63bd6097359ba60bdab7c6b5d06d12516781d5503c8",
+  "total_distinct_entries": 144,
+  "scored_entries": 128,
+  "blank_entries": 16,
+  "max_reported_score": 0.2778,
+  "min_reported_score": 0.0,
+  "verified_github_orgs": {
+    "buffedlizard55-lab": {
+      "sample_repo": "buffedlizard55-lab/11GEMSDOE",
+      "verified_exists": true
+    },
+    "eugboogieman123-ops": {
+      "sample_repo": "eugboogieman123-ops/EUGGEMSDOE1",
+      "verified_exists": true
+    },
+    "ginnymcfiner23-ux": {
+      "sample_repo": "ginnymcfiner23-ux/GINNYGEMSDOE1",
+      "verified_exists": true
+    },
+    "kanlerxz87-cyber": {
+      "sample_repo": "kanlerxz87-cyber/KANLERGEMSDOE1",
+      "verified_exists": true
+    },
+    "wingbangboozle1-lang": {
+      "sample_repo": "wingbangboozle1-lang/WBGGEMSDOE1",
+      "verified_exists": true
+    }
+  },
+  "irregularities_flagged_and_corrected": [
+    "Purged hallucinated non-existent GitHub orgs eugenewoo99-design and ginnyfudge133-star from PR #20's CSV; verified real orgs eugboogieman123-ops and ginnymcfiner23-ux via GitHub API.",
+    "Corrected PR #20 fabricated scores to exact prompt values: GEMSDOE28 gems28-s21-puhgb (0.0206, not 0.1628), GEMSDOE33 gemsdoe33-s33-seisdil (0.0963, not 0.0363), GEMSDOE36 gemsdoe36-kpl36-exp3 (0.1647, not 0.2314), and removed invented 0.0725 on wbg2-h1-stepxasym.",
+    "Added missing prompt entries: GEMSDOE27 gems27-h31-drcg-wl-celf28 (0.2250), GEMSDOE91 gems91-s22-omtj-e1 (0.0298), GEMSDOE88 DO-NOT-SUBMIT, KANLERGEMSDOE3, WBGGEMSDOE3 skarpline-union, and WBGGEMSDOE2 wbg2-offcatalogue-density-36k.",
+    "Flagged prompt cross-repo misattributions: wbg3-h3pack-34k-20261027T174337Z-zeros (listed under WBGGEMSDOE3 in prompt) originated in WBGGEMSDOE2 PR #16, and wbg2-offcatalogue-density-36k-20261027 (listed under WBGGEMSDOE2 in prompt) resides in WBGGEMSDOE1/docs/downloads/.",
+    "Flagged conflicting 'current high score' numbers in prompt text (0.4413 vs 0.3195) vs dated DrivenData public leaderboard snapshot (0.4544 by xiaofanhu on 2026-10-27T17:21:43Z)."
+  ]
+}
