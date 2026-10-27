@@ -60,6 +60,10 @@ release = load_negative_release(ROOT)
 if (card['release_reconciliation']['owned_tif_paths'] != release['scope']['owned_tif_paths']
         or card['release_reconciliation']['distinct_raster_sha256'] != release['scope']['distinct_tif_sha256']):
     raise ValueError('Research inventory changed; review the canonical disposition')
+# Keep secondary inventory counts derived from the same byte-bound audit. These
+# are descriptive counts, not approval gates; stale counts still mislead readers.
+card['release_reconciliation']['zip_archives'] = len(release['zip_archives'])
+card['release_reconciliation']['pinned_witnesses'] = release['scope']['registry_rasters_opened']
 # Derive exact existing-artifact diagnostics from the independently generated
 # audit; never populate the null NEW-candidate or score fields.
 card['existing_artifact_audit'] = {

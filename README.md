@@ -1,6 +1,6 @@
 # WBGGEMSDOE2 — DOE GEMS Prize
 
-**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), and the [canonical run card](evidence/run_card.json). The original prompt is preserved below; it is not a receipt or permission to bypass a failed gate.
+**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The latest code/repository review and next-step priorities are in [repo-review-20261027.md](research/repo-review-20261027.md). The original prompt is preserved below; it is not a receipt or permission to bypass a failed gate.
 
 ## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
