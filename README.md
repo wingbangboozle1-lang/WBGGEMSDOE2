@@ -13,6 +13,14 @@
 
 No new candidate, dot placement, model experiment, competition upload, or weekly slot was used in this review. No eligible submission name/note or leaderboard estimate is fabricated. New-file fields remain `null`.
 
+### Current checkout readiness — run before research
+
+**[Readiness and blockers](docs/readiness.html)** · [JSON snapshot](evidence/checkout_readiness.json) · [this review's three passes](research/session-review-035d0f43.md).
+
+Run `python scripts/check_readiness.py --check` after installing requirements. Exit **2** means research is blocked; exit **1** is an audit error. Without `--check`, exit 0 means only that a diagnostic was written, **not** permission to train or submit. This read-only command checks current input, raw-band-cache and unchanged shared-code hashes and validates the existing negative release inventory. A historical restoration receipt does not establish that ignored files survived in a new checkout. The generated page is a **dated checkout snapshot**, not a live data-access guarantee.
+
+The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The current public leader and account quota cannot be freshly verified from this sandbox's GitHub/package-only network access. Prior public observations remain dated evidence, not new per-file receipts.
+
 ### What was independently measured
 
 The audit reopened **10 existing TIFF paths / 8 distinct SHA-256 identities**, checked their **7 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses** (plus a full **467-raster multi-org fleet audit** in [`evidence/dphs_uniqueness_and_fleet_audit.json`](evidence/dphs_uniqueness_and_fleet_audit.json)). Every saved TIFF has a decisive literal duplicate witness (`DO NOT SUBMIT`).

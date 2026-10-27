@@ -77,6 +77,12 @@ card['existing_artifact_audit'] = {
     'zip_archives': release['zip_archives'],
 }
 
+card['validator']['status'] = (
+    f"No new raster generated in this review. {release['scope']['owned_tif_paths']} existing TIFF paths / "
+    f"{release['scope']['distinct_tif_sha256']} identities independently reopened; exact inside/grid and "
+    "strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance."
+)
+
 text = json.dumps(card, indent=2, allow_nan=False) + '\n'
 for rel in CANONICAL_RUN_CARDS:
     out = ROOT / rel
