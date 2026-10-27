@@ -1,27 +1,9 @@
 #!/usr/bin/env python3
-"""Final gate for the candidate: uniqueness (raw + normalized), format, score estimate.
+"""Legacy geometry diagnostics only; never a submission approval.
 
-Uniqueness is reported twice, because the two readings disagree and the
-disagreement is itself a measured finding:
-
-RAW (literal session rule: >70% of dots within 3 px of one registry raster).
-  The candidate fails against three rasters. So does every other submission in
-  the fleet: measured in `focus_pairwise_overlap`, the nine focus-site
-  submissions lie within 3 px of each other for 86-100% of their dots, and
-  95-100% of their dots lie within 3 px of each of those three rasters. Two of
-  the three rasters blanket 84-90% of the footprint; the third is a 5-px
-  sampling lattice covering 99.96% of it. A test that returns "duplicate" for
-  every submission the competition has ever scored is not a uniqueness test.
-
-NORMALIZED (enrichment over the reference's own coverage).
-  For reference raster R with 3-px coverage c (fraction of the footprint within
-  3 px of its dots), an independent point pattern has expected overlap c. The
-  quantifiable statement of "this is a copy" is overlap substantially above c.
-  Enrichment e = overlap / c. Measured here: the nine focus submissions are
-  3.9-6.0x enriched against each other (same lineage); the candidate is
-  approximately 1.0x enriched against every blanket raster and 0.5-0.9x against
-  the focus submissions, i.e. statistically indistinguishable from, or less
-  similar than, an independently drawn pattern.
+Normalized overlap and smoothed Pearson correlation are exploratory diagnostics,
+not substitutes for the required literal overlap and pre-placement Spearman gates.
+The complete registry, compliant holdout win and assigned lane are missing.
 """
 from __future__ import annotations
 
@@ -153,7 +135,7 @@ def main() -> int:
                          "violations": [r["file"] for r in rank_violations]},
         "exact_bytes": {"result": "FAIL" if exact_registry_hit else "PASS"},
     }
-    ok = (not enriched) and (not rank_violations) and (not exact_registry_hit)
+    ok = False  # Diagnostics cannot establish complete-registry / holdout approval.
 
     report = {
         "candidate": cand["name"], "sha256": cand["sha256"], "dots": cand["dots"],
@@ -169,6 +151,8 @@ def main() -> int:
                                  "were not measured.")},
         "verdicts": verdict,
         "ok_to_submit": bool(ok),
+        "verdict": "negative",
+        "review_status": "DIAGNOSTIC ONLY; literal rule remains binding; no compliant holdout win",
         "focus_site_overlap": focus,
         "focus_overlap_summary": {
             "min": focus[0]["candidate_overlap_within_3px"],
@@ -183,8 +167,8 @@ def main() -> int:
                          "GEMSDOE33_vs_GEMSDOE32": 0.94},
             "conclusion": ("Every focus submission is within 3 px of the stride-5 lattice for "
                            ">=99.4% of its dots and within 3 px of pindrop-v4-nodes for >=94.7%. "
-                           "The literal rule therefore classifies all nine as duplicates of each "
-                           "other. It cannot be the operative reading."),
+                           "All nine fail a registry witness. The literal rule remains binding; "
+                           "no calibrated exemption is authorized."),
         },
         "blanket_references": [r for r in rows if r["reference_3px_footprint_coverage"] > 0.70],
         "candidate_geometry": geo,

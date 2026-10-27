@@ -109,4 +109,4 @@ def test_all_submission_entrypoints_fail_closed_and_keep_links_valid():
         assert 'Current form-ready filename:</b> None' in text
     dashboard = (ROOT / 'docs/index.html').read_text(encoding='utf-8')
     assert 'href="submit/"' in dashboard
-    assert 'submission/index.html' not in dashboard
+    assert 'submission/index.html' in dashboard  # now a hash-bound negative review, not an approval page

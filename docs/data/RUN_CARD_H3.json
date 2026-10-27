@@ -41,7 +41,7 @@
     "report": "evidence/h3_submission.json"
   },
   "submission_name": "wbg3-h3pack-34k-20261027T174337Z-zeros",
-  "submission_note": "H3-PACK: collar-free, max-packing dot field; 34000 dots; no hidden label used",
+  "submission_note": "REJECTED: literal registry duplicate; no compliant holdout win. Research only. DO NOT SUBMIT.",
   "projection": {
     "regression_only": 0.2847,
     "full_packing_transfer": 0.3323,
@@ -50,8 +50,8 @@
     "headline": "0.285 (base, regression only) to 0.332 (upside, full packing transfer); 0.308 central",
     "caution": "Dot count and packing efficiency are 98% collinear across the registry (r=-0.980), so the registry cannot separate the two mechanisms. The base case uses the regression alone, which already absorbs whatever packing effect exists inside the fitted range."
   },
-  "verdict": "promote",
-  "verdict_reason": "Passes every locally checkable gate; is distinct from all nine focus rasters by a wide margin; and applies the only improvement in the registry that is both unused and provable. The score remains a PROJECTION (0.285-0.332) because no organizer receipt exists and the hidden truth is unavailable.",
+  "verdict": "negative",
+  "verdict_reason": "SUPERSEDED APPROVAL: DO NOT SUBMIT; literal duplicate stop, incomplete registry, no compliant holdout win.",
   "weekly_submission_slot_spent": false,
   "limitations": [
     "All nine live scores are user-reported; no organizer receipt ties any score to exact bytes.",
@@ -60,5 +60,9 @@
     "The catalogue holdout is anti-correlated with the target and was not used to select this design.",
     "Organizer portal acceptance is untested from this environment."
   ],
-  "generated_utc": "2026-10-27T17:46:05Z"
+  "generated_utc": "2026-10-27T17:46:05Z",
+  "ok_to_submit": false,
+  "ok_to_download_new_tif": false,
+  "review_status": "SUPERSEDED APPROVAL: DO NOT SUBMIT; literal duplicate stop, incomplete registry, no compliant holdout win.",
+  "review_evidence": "evidence/release_recheck_20261027.json"
 }

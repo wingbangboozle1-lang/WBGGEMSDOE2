@@ -1,0 +1,152 @@
+{
+  "schema": "wbg.release-recheck.v1",
+  "generated_utc": "2026-10-27T18:58:11.366941+00:00",
+  "scope": "Existing-file forensic review only; no experiment, new placement or upload.",
+  "evidence_class": "REGISTRY-MEASUREMENT + LOCAL-FORMAT-MEASUREMENT",
+  "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "reference_authenticated": false,
+  "continuous_prior_caveat": "Finite-positive support is the shared literal rule; no exemption is assumed.",
+  "witnesses": {
+    "13GEMSDOE": {
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "source": "https://github.com/buffedlizard55-lab/13GEMSDOE/blob/92ee6f074323f161eed837b80ec3ee5b662e26f5/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif?raw=1"
+    },
+    "17GEMSDOE_dense_prior": {
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "source": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif?raw=1"
+    }
+  },
+  "candidates": [
+    {
+      "id": "DZ-16",
+      "file": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
+      "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+      "dots": 34500,
+      "validator": {
+        "path": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
+        "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+        "grid_match_reference": true,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "bands": 1,
+        "dtype": "float32",
+        "nodata": null,
+        "strict_all_finite_requested": false,
+        "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "organizer_acceptance": "unknown",
+        "submission_approval": false,
+        "footprint_cells": 5167373,
+        "nonfinite_inside": 0,
+        "masked_inside": 0,
+        "nan_total": 0,
+        "inf_total": 0,
+        "nan_inside": 0,
+        "nan_outside": 0,
+        "inf_inside": 0,
+        "inf_outside": 0,
+        "below_zero_inside": 0,
+        "below_zero_outside": 0,
+        "above_one_inside": 0,
+        "above_one_outside": 0,
+        "positive_outside": 0,
+        "diagnostics_band": 1,
+        "all_finite": true,
+        "minimum_inside": 0.0,
+        "maximum_inside": 1.0,
+        "nonzero_inside": 34500,
+        "failures": [],
+        "format_valid_against_reference": true
+      },
+      "final_dot_overlap_3px": {
+        "13GEMSDOE": 0.9997971014492754,
+        "17GEMSDOE_dense_prior": 1.0
+      },
+      "preplacement_surface_rank_correlation": null,
+      "preplacement_status": "NOT REPRODUCED; original surfaces unavailable",
+      "all_registry_rasters_checked": false,
+      "literal_duplicate_stop": true,
+      "compliant_holdout_win": false,
+      "leaderboard_estimate": null,
+      "ok_to_submit": false,
+      "verdict": "negative"
+    },
+    {
+      "id": "H3-PACK",
+      "file": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+      "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+      "dots": 34000,
+      "validator": {
+        "path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+        "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+        "grid_match_reference": true,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "bands": 1,
+        "dtype": "float32",
+        "nodata": "nan",
+        "strict_all_finite_requested": false,
+        "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "organizer_acceptance": "unknown",
+        "submission_approval": false,
+        "footprint_cells": 5167373,
+        "nonfinite_inside": 0,
+        "masked_inside": 0,
+        "nan_total": 7111787,
+        "inf_total": 0,
+        "nan_inside": 0,
+        "nan_outside": 7111787,
+        "inf_inside": 0,
+        "inf_outside": 0,
+        "below_zero_inside": 0,
+        "below_zero_outside": 0,
+        "above_one_inside": 0,
+        "above_one_outside": 0,
+        "positive_outside": 0,
+        "diagnostics_band": 1,
+        "all_finite": false,
+        "minimum_inside": 0.0,
+        "maximum_inside": 1.0,
+        "nonzero_inside": 34000,
+        "failures": [],
+        "format_valid_against_reference": true
+      },
+      "final_dot_overlap_3px": {
+        "13GEMSDOE": 0.9986176470588235,
+        "17GEMSDOE_dense_prior": 1.0
+      },
+      "preplacement_surface_rank_correlation": null,
+      "preplacement_status": "NOT REPRODUCED; original surfaces unavailable",
+      "all_registry_rasters_checked": false,
+      "literal_duplicate_stop": true,
+      "compliant_holdout_win": false,
+      "leaderboard_estimate": null,
+      "ok_to_submit": false,
+      "verdict": "negative"
+    }
+  ],
+  "experiments_run": 0,
+  "slots_used": 0,
+  "ok_to_submit": false
+}

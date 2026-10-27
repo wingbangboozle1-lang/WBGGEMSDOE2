@@ -118,6 +118,7 @@ def select_dots(prior: np.ndarray, target: int, min_sep: int, stride: int, seed:
 
 
 def main() -> int:
+    raise RuntimeError("STOP: this historical lane is blocked by a measured registry duplicate. No new placement or TIFF; see evidence/release_recheck_20261027.json and evidence/RUN_CARD_MSPTCD.json.")
     cat, footprint, profile, cat_profile, count = load_grid()
     assert cat.shape == footprint.shape == (3730, 3292), cat.shape
     prior, stats = build_prior(cat, footprint)

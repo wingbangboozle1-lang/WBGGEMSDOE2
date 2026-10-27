@@ -30,6 +30,6 @@ def test_scheduled_and_legacy_pages_share_url_layout():
     assert 'No submission download is available' in home
     assert 'href="downloads/h3-pack/' not in home
     sub=(ROOT/'docs/submission/index.html').read_text()
-    assert 'href="../sites/GEMSDOE32.html"' in sub
+    assert 'href="sites/GEMSDOE32.html"' in sub
     assert (ROOT/'docs/submission/sites/GEMSDOE32.html').is_file()
     assert 'Official source inventory' in (ROOT/'docs/submission/sources.html').read_text()

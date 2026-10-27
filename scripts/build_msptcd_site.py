@@ -58,7 +58,7 @@ def render_shell(title: str, current: str, body: str, desc: str) -> str:
       </div>
     </div>
   </header>
-  <main id="main" class="shell main">{body}</main>
+  <main id="main" class="shell main"><section class="notice"><strong>Historical campaign — source-reported, not reproduced in this review.</strong> Canary AUC below an alarm threshold does not prove zero leakage. The literal duplicate stop remains binding. No slot is authorized. See the <a href="../submission/index.html">reconciled release decision</a>.</section>{body}</main>
   <footer class="footer">
     <div class="shell">
       <div><strong>WBG2-MSPTCD LANE</strong> · 31-Feature Real-Geophysics Campaign · Zero competition slots spent</div>
@@ -154,7 +154,7 @@ def main() -> int:
     <div class="intro">
       <div>
         <p class="eyebrow">Fourth Lane · 31-Feature Real-Geophysics Campaign</p>
-        <h1>WBG2-MSPTCD: +81.8% Zero-Leakage HOLDOUT-DTI</h1>
+        <h1>WBG2-MSPTCD: Source-Reported HOLDOUT-DTI · Duplicate Stop</h1>
         <p>Full 19-band GeoDAWN/USGS/DOE geophysical training + 12 multi-scale subsurface potential-field tilt, cross-physics concordance, flank asymmetry, and Hessian ridge operators, evaluated on the unmodified <code>57GEMSDOE@822a0ce5</code> buffered whole-segment holdout harness.</p>
       </div>
       <div class="intro-meta">Campaign completed<br><strong>2026-10-27 UTC</strong></div>
@@ -197,7 +197,7 @@ def main() -> int:
     </section>
 
     <section class="card" id="experiments">
-      <h2>1. Three-Experiment Zero-Leakage Holdout Progression</h2>
+      <h2>1. Three-Experiment Canary-Screened Holdout Progression</h2>
       <p>Evaluated on unmodified <code>gems57.evaluate_holdout</code> (<code>gems57-pooled-hide-v2</code>, <code>label-blind-quadrants-v2</code>, <code>buffer_px=80</code> / 8.0 km buffer, <code>60,988</code> withheld fault pixels, 1,000 paired 20 km spatial-cluster bootstrap draws, seed <code>520810</code>). Every number below is a strict <strong>HOLDOUT-DTI</strong>, never a leaderboard score projection.</p>
       <div class="table-wrap">
         <table>
@@ -324,9 +324,9 @@ def main() -> int:
       <p>Four independent lanes exist in this repository without overwriting one another:</p>
       <ol>
         <li><strong>Baseline Review Lane (<a href="../index.html"><code>docs/index.html</code></a>):</strong> Strict preflight audit &amp; 4-proposal shortlist; 0 experiments run, fail-closed negative.</li>
-        <li><strong>DZ-16 Damage-Zone Lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue geometry collar (34,500 dots) built without <code>training_features.tif</code>; cleared under a calibrated enrichment gate.</li>
-        <li><strong>H3-PACK 34k Lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots) maximizing kernel mass per dot; cleared under focus-site uniqueness.</li>
-        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator, verified 124 leakage canaries, proved +81.8% buffered <code>HOLDOUT-DTI</code>, verified uniqueness vs all 9 focus champions (<code>&lt;=68.06%</code>) and both sibling lanes (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and applied the strict fail-closed stop under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
+        <li><strong>DZ-16 Damage-Zone Lane (<a href="../submission/index.html"><code>docs/submission/</code></a>):</strong> Catalogue geometry collar (34,500 dots) built without <code>training_features.tif</code>; previously cleared using an unauthorized calibrated gate; approval withdrawn.</li>
+        <li><strong>H3-PACK 34k Lane (<a href="../submit/index.html"><code>docs/submit/</code></a>):</strong> Lattice-packed off-catalogue collar (34,000 dots) maximizing kernel mass per dot; previously cleared using incomplete focus-site uniqueness; approval withdrawn.</li>
+        <li><strong>WBG2-MSPTCD 31-Feature Real-Geophysics Lane (this page):</strong> Restored the full 19-band <code>training_features.tif</code> + shared <code>57GEMSDOE@822a0ce5</code> evaluator, verified 124 leakage canaries, reported +81.8% buffered <code>HOLDOUT-DTI</code>, verified uniqueness vs all 9 focus champions (<code>&lt;=68.06%</code>) and both sibling lanes (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and applied the strict fail-closed stop under the literal all-registry <code>13GEMSDOE</code>/<code>17GEMSDOE</code> rule.</li>
       </ol>
     </section>
     """
@@ -373,7 +373,7 @@ def main() -> int:
     research_body = f"""
     <div class="intro">
       <div>
-        <p class="eyebrow">Hypotheses &amp; Zero-Leakage Validation</p>
+        <p class="eyebrow">Hypotheses &amp; Canary-Screened Validation</p>
         <h1>Five Ranked Geological Hypotheses &amp; 124-Canary Audit</h1>
         <p>Ranked by expected buffered <code>HOLDOUT-DTI</code> upside vs implementation/data cost; H1–H4 implemented in <code>src/wbggems/msptcd.py</code> and tested within the strict 3-experiment cap.</p>
       </div>
@@ -426,7 +426,7 @@ def main() -> int:
         encoding="utf-8",
     )
     (OUT / "research.html").write_text(
-        render_shell("5 Ranked Geological Hypotheses", "research.html", research_body, "Five ranked geological fault-mapping hypotheses and 124 zero-leakage canary checks."),
+        render_shell("5 Ranked Geological Hypotheses", "research.html", research_body, "Five ranked geological fault-mapping hypotheses and 124 canary-screened canary checks."),
         encoding="utf-8",
     )
     (OUT / "sources.html").write_text(

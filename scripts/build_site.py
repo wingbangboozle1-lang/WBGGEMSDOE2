@@ -78,12 +78,18 @@ def intro(label, title, subtitle):
 
 
 H3_SUB = json.loads((ROOT / 'evidence/h3_submission.json').read_text())
+H3_CARD = json.loads((ROOT / 'evidence/RUN_CARD_H3.json').read_text())
+H3_ANALYSIS = json.loads((ROOT / 'evidence/h3_analysis.json').read_text())
+H3_COMPARE = json.loads((ROOT / 'evidence/h3_registry_comparison.json').read_text())
 H3_NAME = H3_SUB['file'].rsplit('/', 1)[-1].removesuffix('.tif')
+H3_TIF = H3_SUB['file'].rsplit('/', 1)[-1]
 
 
 def h3_banner(suffix: str = '') -> str:
-    """Display the H3 artifact as research-only; it fails the literal registry rule."""
-    return f'''<section class="banner" aria-labelledby="h3-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Historical H3-PACK lane · RESEARCH ONLY · DO NOT SUBMIT</p><h2 id="h3-heading{suffix}">No candidate has cleared the all-registry gate.</h2><p><span class="mono">{e(H3_NAME)}</span> has a local format pass and was compared against the nine focus rasters, but its own audit records overlap failures against the stride-5 lattice and a continuous prior. It has no validated HOLDOUT-DTI against the hidden competition target and no organizer receipt.</p></div><div class="banner-actions"><a class="text-link" href="submit/">Open submission checklist →</a></div></section>'''
+    """One consistent decision; format checks cannot override a duplicate stop."""
+    if H3_CARD.get('verdict') != 'negative' or H3_CARD.get('ok_to_submit') is not False:
+        raise ValueError('H3 approval contradicts the measured literal duplicate stop')
+    return f'''<section class="banner" aria-labelledby="h3-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Release audit · DO NOT SUBMIT</p><h2 id="h3-heading{suffix}">No file meets every submission gate.</h2><p>DZ-16 and H3-PACK were incorrectly advertised as approved. Both fail the literal registry overlap gate and lack a compliant holdout win. Their prior approvals are withdrawn. Existing TIFFs remain research-only; no new TIFF or weekly slot was used.</p></div><div class="banner-actions"><a class="button" href="submission/index.html">Read the release decision</a><a class="text-link" href="submit/">Submission instructions →</a></div></section>'''
 
 
 MSPTCD_CARD = json.loads((DOCS / 'data/RUN_CARD_MSPTCD.json').read_text())
@@ -93,11 +99,11 @@ def msptcd_banner(suffix: str = '') -> str:
     """Real 19-band + 12-operator geophysical campaign lane, fail-closed under literal all-registry rule."""
     h = MSPTCD_CARD['holdout']
     rc = MSPTCD_CARD['research_candidate']
-    return f'''<section class="banner" aria-labelledby="msptcd-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Lane WBG2-MSPTCD · 31-Feature Real Geophysics · {e(MSPTCD_CARD['verdict'].upper())} (0 slots)</p><h2 id="msptcd-heading{suffix}">Prior experiment: HOLDOUT-DTI {h['dti']:.6f} (evaluator {e(h['evaluator_version'])}, {h['withheld_positive_pixels']:,} withheld positives; 95% CI [{h['ci95'][0]:.6f}, {h['ci95'][1]:.6f}]); candidate halted by literal registry.</h2><p><span class="mono">{e(rc['name'])}</span> ({rc['emitted_dots']:,} off-catalogue dots, 124/124 leakage canaries PASS) is distinct from all 9 focus champions (&le;{MSPTCD_CARD['uniqueness']['candidate_max_focus_final_overlap']*100:.2f}&nbsp;% 3-px overlap) and both sibling lanes (27.36&nbsp;% vs DZ-16, 20.59&nbsp;% vs H3-PACK), and stops fail-closed on literal 13GEMSDOE/17GEMSDOE witnesses.</p></div><div class="banner-actions"><a class="text-link" href="msptcd/index.html">Open WBG2-MSPTCD campaign &amp; 5 hypotheses →</a><a class="text-link" href="msptcd/executive-summary.html">Band 6 forensic &amp; cross-lane report →</a></div></section>'''
+    return f'''<section class="banner" aria-labelledby="msptcd-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Lane WBG2-MSPTCD · 31-Feature Real Geophysics · {e(MSPTCD_CARD['verdict'].upper())} (0 slots)</p><h2 id="msptcd-heading{suffix}">Source-reported HOLDOUT-DTI ({h['dti']:.4f} vs {h['control_19b_dti']:.4f}), halted fail-closed on literal registry.</h2><p>Historical result, not reproduced in this review: evaluator {e(h['evaluator_version'])}; {h['withheld_positive_pixels']:,} withheld positives; 95% CI [{h['ci95'][0]:.4f}, {h['ci95'][1]:.4f}]. Not a leaderboard score.</p><p><span class="mono">{e(rc['name'])}</span> ({rc['emitted_dots']:,} off-catalogue dots, 124/124 canaries reported below the alarm threshold; not proof of zero leakage) is distinct from all 9 focus champions (&le;{MSPTCD_CARD['uniqueness']['candidate_max_focus_final_overlap']*100:.2f}&nbsp;% 3-px overlap) and both sibling lanes (27.36&nbsp;% vs DZ-16, 20.59&nbsp;% vs H3-PACK), and stops fail-closed on literal 13GEMSDOE/17GEMSDOE witnesses.</p></div><div class="banner-actions"><a class="text-link" href="msptcd/index.html">Open WBG2-MSPTCD campaign &amp; 5 hypotheses →</a><a class="text-link" href="msptcd/executive-summary.html">Band 6 forensic &amp; cross-lane report →</a></div></section>'''
 
 
 def decision(suffix: str = ''):
-    return f'''<section class="banner" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Current project decision · NEGATIVE</p><h2 id="decision-heading{suffix}">No file is approved for submission.</h2><p>Do not submit historical or research TIFFs. Prior candidates failed the literal all-registry novelty gate; local format validation and uniqueness among the nine focus sites do not override that failure.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="executive-summary.html">See the checklist →</a></div></section>'''
+    return f'''<section class="banner" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Review lane · negative; no superseding approval</p><h2 id="decision-heading{suffix}">Current decision: no file is approved.</h2><p>This review lane generated no TIFF. Two parallel research files failed the literal registry gate; one also masks most footprint cells. Neither is approved for upload.</p></div><div class="actions"><button class="button" disabled>{icon('download')} No submission file</button><a class="text-link" href="executive-summary.html">See the checklist →</a></div></section>'''
 
 
 def leaderboard_stale():
