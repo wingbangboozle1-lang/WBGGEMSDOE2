@@ -1,6 +1,7 @@
 {
-  "archive_status": "SUPERSEDED historical review; current negative card: data/run-card.json",
-  "superseded_by": "data/run-card.json",
+  "archive_status": "SUPERSEDED historical review; CURRENT decision (OK TO DOWNLOAD AND SUBMIT): data/decision.json and data/h1_run_card.json",
+  "superseded_by": "data/decision.json",
+  "current_decision_note": "As of 2026-10-27 a new, unique, machine-validated TIF exists (verdict promote). This old negative review-lane card is preserved as history. See data/decision.json, data/decision_validation.json and data/h1_run_card.json.",
   "card_version": "1.0",
   "run_id": "WBGGEMSDOE2-2026-10-26-review",
   "status": "not_run_blocked",

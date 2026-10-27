@@ -1,7 +1,16 @@
 {
-  "schema": "wbggems.focus.v1",
-  "generated_utc": "2026-10-26T22:18:22.775014+00:00",
-  "note": "Claims are unverified; historical TIFFs are for research only.",
+  "schema": "wbggems.focus.v2",
+  "generated_utc": "2026-10-27T19:34:36.504906+00:00",
+  "note": "One cleared NEW candidate (HOLDOUT-DTI proxy, leaderboard score unknown) plus 9 unverified historical claims; historical TIFFs are for research only.",
+  "candidate": {
+    "site_url": "../docs/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+    "file": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+    "claimed_value": "HOLDOUT-DTI 0.0966",
+    "claim_evidence": "LABELLED PROXY \u00b7 95% CI 0.0877-0.1051",
+    "leaderboard_estimate": null,
+    "unique_note": "<= 29% dot overlap, |rho| <= 0.22",
+    "ok_to_submit": true
+  },
   "entries": [
     {
       "site": "GEMSDOE32",

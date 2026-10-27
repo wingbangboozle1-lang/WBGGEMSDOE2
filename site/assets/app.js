@@ -49,6 +49,26 @@ async function loadFocus() {
     const data = await response.json();
     if (!Array.isArray(data.entries) || data.entries.length !== 9) throw new Error('incomplete');
     body.replaceChildren();
+    // Current, cleared candidate first (byte-bound to decision.json); historical refs below.
+    if (data.candidate && data.candidate.site_url) {
+      const c = data.candidate;
+      const crow = document.createElement('tr');
+      crow.className = 'candidate-row';
+      const ct = document.createElement('td');
+      const ca = document.createElement('a');
+      ca.textContent = '★ NEW · unique candidate (download)';
+      ca.className = 'site-name';
+      if (!/^\.\.\/docs\/downloads\/[A-Za-z0-9._-]+\.tif$/.test(c.site_url)) throw new Error('unexpected candidate url');
+      ca.href = c.site_url; ct.append(ca);
+      const cf = document.createElement('a');
+      cf.textContent = c.file; cf.className = 'file-link'; cf.href = c.site_url;
+      cf.title = 'Machine-validated new submission'; ct.append(cf); crow.append(ct);
+      const ccl = document.createElement('td'); ccl.append(element('strong', c.claimed_value), element('small', c.claim_evidence)); crow.append(ccl);
+      const ces = document.createElement('td'); ces.append(element('strong', c.leaderboard_estimate === null ? 'LB unknown' : c.leaderboard_estimate), element('small', 'NOT A LEADERBOARD SCORE')); crow.append(ces);
+      const cu = document.createElement('td'); cu.append(element('span', 'YES', 'pill pill-neutral'), element('small', c.unique_note)); crow.append(cu);
+      const cd = document.createElement('td'); cd.append(element('span', 'OK TO SUBMIT', 'pill pill-neutral'), element('small', 'New, byte-validated')); crow.append(cd);
+      body.append(crow);
+    }
     for (const entry of data.entries) {
       const row = document.createElement('tr');
       const title = document.createElement('td');

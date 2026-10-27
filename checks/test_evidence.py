@@ -88,11 +88,20 @@ def test_site_links_and_fail_closed_copy():
     for f in (ROOT/'docs').glob('*.html'):
         html=f.read_text(); parser=LinkParser(); parser.feed(html)
         assert len(parser.ids)==len(set(parser.ids))
-        assert 'No file is approved for submission.' in html
-        assert 'No submission file' in html
+        # The current, byte-bound decision is shown on every page; no stale "blocked" copy.
+        assert 'OK TO DOWNLOAD AND SUBMIT' in html
+        assert 'OK TO SUBMIT' in html
         for link in parser.links:
             if link.startswith(('https://','http://','mailto:','#')): continue
             target=link.split('#',1)[0].split('?',1)[0]
             if target:
                 assert (f.parent/target).exists(), (f,link)
-    assert 'USER-REPORTED' in (ROOT/'docs/index.html').read_text()
+    home=(ROOT/'docs/index.html').read_text()
+    assert 'USER-REPORTED' in home
+    # The decision is byte-bound and honest about score uncertainty.
+    dec=json.loads((ROOT/'docs/data/decision.json').read_text())
+    assert dec['verdict']=='promote' and dec['ok_to_submit'] is True
+    assert dec['estimated_score']['leaderboard_dti'] is None
+    import hashlib
+    tif=ROOT/'docs/downloads'/(dec['candidate']['submission_name']+'.tif')
+    assert hashlib.sha256(tif.read_bytes()).hexdigest()==dec['candidate']['raster_sha256']

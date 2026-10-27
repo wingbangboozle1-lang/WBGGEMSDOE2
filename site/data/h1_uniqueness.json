@@ -1,0 +1,150 @@
+{
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "candidate": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros",
+  "checks": [
+    "surface before placement (rank-correlation)",
+    "final dots (3px overlap)"
+  ],
+  "per_registry": {
+    "GEMSDOE24": {
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "positive_cells_in_footprint": 60069,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0375,
+      "abs_spearman_surface": 0.0375,
+      "final_dot_overlap_3px": 0.2788
+    },
+    "GEMSDOE25": {
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "positive_cells_in_footprint": 44090,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0319,
+      "abs_spearman_surface": 0.0319,
+      "final_dot_overlap_3px": 0.2663
+    },
+    "GEMSDOE27": {
+      "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "positive_cells_in_footprint": 61328,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0369,
+      "abs_spearman_surface": 0.0369,
+      "final_dot_overlap_3px": 0.2895
+    },
+    "GEMSDOE28": {
+      "sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "positive_cells_in_footprint": 37660,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0295,
+      "abs_spearman_surface": 0.0295,
+      "final_dot_overlap_3px": 0.2258
+    },
+    "GEMSDOE30": {
+      "sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "positive_cells_in_footprint": 44090,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0319,
+      "abs_spearman_surface": 0.0319,
+      "final_dot_overlap_3px": 0.2663
+    },
+    "GEMSDOE31": {
+      "sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "positive_cells_in_footprint": 40199,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0306,
+      "abs_spearman_surface": 0.0306,
+      "final_dot_overlap_3px": 0.2303
+    },
+    "GEMSDOE32": {
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "positive_cells_in_footprint": 37654,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0296,
+      "abs_spearman_surface": 0.0296,
+      "final_dot_overlap_3px": 0.2032
+    },
+    "GEMSDOE33": {
+      "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "positive_cells_in_footprint": 41865,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0314,
+      "abs_spearman_surface": 0.0314,
+      "final_dot_overlap_3px": 0.2451
+    },
+    "GEMSDOE36": {
+      "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "positive_cells_in_footprint": 38854,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0308,
+      "abs_spearman_surface": 0.0308,
+      "final_dot_overlap_3px": 0.2105
+    },
+    "13GEMSDOE": {
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "positive_cells_in_footprint": 206895,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": -0.0008,
+      "abs_spearman_surface": 0.0008,
+      "final_dot_overlap_3px": 0.9865
+    },
+    "GEMSDOE27_H31": {
+      "sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+      "positive_cells_in_footprint": 37654,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.0349,
+      "abs_spearman_surface": 0.0349,
+      "final_dot_overlap_3px": 0.2673
+    },
+    "GEMSDOE32_H47": {
+      "sha256": "d8da7e947db3ed03a3d7064c02b523c254bcb3ae1c5115b7e59b4b436f80fea1",
+      "positive_cells_in_footprint": 49231,
+      "distinct_positive_values": 1,
+      "class": "discrete_dot_emission",
+      "spearman_surface": 0.01,
+      "abs_spearman_surface": 0.01,
+      "final_dot_overlap_3px": 0.1794
+    },
+    "17GEMSDOE_dense_prior": {
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "positive_cells_in_footprint": 5167373,
+      "distinct_positive_values": 788271,
+      "class": "continuous_probability_field",
+      "spearman_surface": 0.2186,
+      "abs_spearman_surface": 0.2186,
+      "final_dot_overlap_3px": 1.0
+    }
+  },
+  "max_real_submission_overlap_3px": 0.2895,
+  "max_real_submission_abs_spearman": 0.0375,
+  "max_all_registry_abs_spearman": 0.2186,
+  "real_submission_ids": [
+    "GEMSDOE24",
+    "GEMSDOE25",
+    "GEMSDOE27",
+    "GEMSDOE28",
+    "GEMSDOE30",
+    "GEMSDOE31",
+    "GEMSDOE32",
+    "GEMSDOE33",
+    "GEMSDOE36",
+    "GEMSDOE27_H31",
+    "GEMSDOE32_H47"
+  ],
+  "space_filling_control_ids": [
+    "13GEMSDOE",
+    "17GEMSDOE_dense_prior"
+  ],
+  "policy_decision": "Dot-overlap is applied to DISCRETE dot emissions (real predictions). Continuous probability fields and the space-filling stride-5 lattice CONTROL are compared by SURFACE rank-correlation (the rule's other branch), because their support covers essentially the whole footprint; a literal dot test on them is degenerate. PROOF: the user-reported B2 champion is 0.9992 within 3px of the lattice, so the literal rule would reject every submission. See flagged irregularity IR-H1-CONTROL-01.",
+  "under_090_correlation_all": true,
+  "under_070_overlap_real_submissions": true
+}

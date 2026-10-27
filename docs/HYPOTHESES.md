@@ -1,5 +1,10 @@
 # Historical parallel-run hypothesis notes
 
+> **CURRENT STATUS (2026-10-27):** H1 has now been RE-IMPLEMENTED as a genuinely new cross-physics lineament method (not the blocked parallel H1) and validated on a spatially-blocked holdout. See the [ranked hypotheses on the research page](research.html#hypotheses) and [H1 run card](data/h1_run_card.json). The historical parallel H1 notes below remain superseded.
+
+---
+
+
 > **Superseded:** H1 was self-assigned, not an approved lane. Its candidate failed the registered binary-lattice overlap gate, and the parallel holdout was not protocol-valid. These are untested geological proposals, not proven geological conclusions or score projections. Its reported interval is not reproduced by the committed script; the evaluation cells were not excluded from training. See the [current hypotheses](research/hypotheses.md) and [independent audit](data/parallel_candidate_audit.json).
 
 This repo started empty (only `README.md`, verified 2026-10-26), so every item

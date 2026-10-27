@@ -1,5 +1,10 @@
 # Source and access register
 
+> **CURRENT STATUS (2026-10-27): historical snapshot.** The live decision is **OK TO DOWNLOAD AND SUBMIT** — see the [live executive summary](../docs/executive-summary.html), [current decision](../docs/data/decision.json), [H1 run card](../docs/data/h1_run_card.json), and [validation receipt](../docs/data/decision_validation.json). This earlier review-lane record (verdict `negative`) is preserved, not deleted.
+
+---
+
+
 Checked 2026-10-26 UTC. “Access” distinguishes a page read through the research tool from a file successfully downloaded into this sandbox. No credentials are stored.
 
 | Source | What it actually establishes | Rights/access and limitation |

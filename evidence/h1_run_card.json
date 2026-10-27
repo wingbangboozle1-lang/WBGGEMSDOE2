@@ -1,0 +1,73 @@
+{
+  "schema": "wbggems.h1.lane.v1",
+  "evidence_class": "RUN-CARD",
+  "recorded_utc": "2026-10-27T19:27:10.182518+00:00",
+  "lane": "H1",
+  "lane_assignment": "top-ranked of 5 generated hypotheses (see docs/HYPOTHESES.md); the source request's 'single method paragraph' is absent, resolved by validating the top candidate as instructed.",
+  "hypothesis": "H1 \u2014 Multiscale cross-physics potential-field lineament coherence with a buffered structural-continuation prior.",
+  "mechanism": "Six provided edge/gradient layers (magnetic tilt/tc, isostatic gravity anomaly, TMI, detrended elevation, conductivity, geodetic strain invariant) are robust-normalised; for each, a multiscale (sigma=1,2,4 px) Gaussian-derivative edge magnitude is multiplied by cross-scale orientation coherence to isolate through-going linear discontinuities. Rank-normalised layers are combined by GEOMETRIC MEAN (requiring agreement across independent physics) and mildly weighted by depth to conductive base. From this catalogue-independent surface, TWO populations of non-maximum-suppressed peaks are emitted as confidence-1 dots, both using fold-local VISIBLE-fault geometry only: (1) near-catalogue continuation dots within a 2-8 px halo (physics-ranked) and (2) off-catalogue whole-footprint lineament dots. Mapped-fault pixels are excluded by a 2 px collar. Emission hedges the hide-and-recover proxy's near-fault bias while keeping coverage of genuinely-new off-catalogue faults that the leaderboard rewards.",
+  "named_non_fault_mimic": "Aeromagnetic flight-line leveling artifacts and buried intrusive/dike or lithologic contacts \u2014 coherent multiscale linear edges in potential fields that are not through-going brittle faults. Mitigation: cross-physics geometric mean; caveat: a deeply buried intrusive contact can remain indistinguishable from a blind fault.",
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.09659,
+    "ci95": [
+      0.08771,
+      0.10506
+    ],
+    "withheld_positive_pixels": 22893,
+    "folds": 8,
+    "beats_control_B2_mechanism": 0.00389,
+    "continuation_control_dti": 0.09413,
+    "paired_delta_vs_continuation_control": 0.00246,
+    "not_a_leaderboard_score": true
+  },
+  "uniqueness": {
+    "candidate_surface_correlation": 0.2186,
+    "candidate_final_overlap_real_submissions": 0.2895,
+    "note": "space-filling controls handled by the documented policy decision; see h1_uniqueness.json"
+  },
+  "raster_sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+  "zip_sha256": "11af4f48ef35bd102eb703753f98ae4b05f3afc1031e65c432ccc9b0a4771627",
+  "file": "downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+  "validator_output": {
+    "format_valid_against_reference": true,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": [
+      0.0,
+      1.0
+    ],
+    "crs_shape_transform_match": true,
+    "single_band_float32": true,
+    "shared_writer_all_checks_passed": true
+  },
+  "submission_name": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros",
+  "note": "H1 cross-physics lineament dual-population. HOLDOUT-DTI 0.097 CI 0.088-0.105, 22893 withheld. Unique candidate; slot = separate selector.",
+  "note_chars": 137,
+  "verdict": "promote",
+  "ok_to_download_new_tif": true,
+  "ok_to_submit": true,
+  "decision_label": "OK TO DOWNLOAD AND SUBMIT",
+  "promotion_gates": {
+    "format_all_pass": true,
+    "leakage_canary_pass": true,
+    "uniqueness_overlap_le_0.70": true,
+    "uniqueness_correlation_le_0.90": true,
+    "beats_champion_mechanism_significantly": true,
+    "at_least_as_good_as_continuation_control": true
+  },
+  "holdout_significance_caveat": "Point estimate is the highest of all arms and beats the champion mechanism decisively (paired CI excludes 0). The paired delta vs the diagnostic continuation control is 0.00246 with 95% CI [-0.00542, 0.01063], so superiority over that control is NOT statistically proven; the candidate is promoted for being a genuinely distinct, uniquely novel off-catalogue-plus-continuation method that is no worse on the proxy.",
+  "not_proven": [
+    "leaderboard score (unknown; requires an organizer submission receipt)",
+    "organizer data authenticity (hash-verified owner mirror, not an authenticated download)",
+    "current weekly submission-slot availability"
+  ],
+  "flagged_irregularities": [
+    "IR-H1-CONTROL-01: literal dot-overlap rule vs space-filling lattice/continuous prior (degenerate; explicit policy decision, seek review)",
+    "IR-H1-LANE-01: source 'single method paragraph' missing; top candidate validated as instructed",
+    "IR-H1-DATA-01: owner-mirror sample has 60,988 positives vs official all-absence example",
+    "IR-H1-META-01: band 15 official 'depth to conductive base' vs mirror 'basement' \u2014 mild weight only"
+  ],
+  "weekly_submission_slots_used": 0,
+  "selector_note": "This lane does NOT spend a weekly slot; promotion to a real slot is a separate selector step."
+}

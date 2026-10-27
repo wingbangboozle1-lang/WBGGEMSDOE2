@@ -1,5 +1,10 @@
 # Executive audit: what is safe to submit?
 
+> **CURRENT STATUS (2026-10-27): historical snapshot.** The live decision is **OK TO DOWNLOAD AND SUBMIT** — see the [live executive summary](../docs/executive-summary.html), [current decision](../docs/data/decision.json), [H1 run card](../docs/data/h1_run_card.json), and [validation receipt](../docs/data/decision_validation.json). This earlier review-lane record (verdict `negative`) is preserved, not deleted.
+
+---
+
+
 **Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
 
 ## The nine focus sites

@@ -34,7 +34,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/refresh_feed.py
-      - name: Rebuild both evidence-first static sites
+      - name: Install validation dependencies
+        run: python -m pip install --quiet -r requirements.txt
+      - name: Machine-validate the submission decision (fail-closed, no human inspection)
+        run: python scripts/wbg_verify_decision.py --quiet
+      - name: Rebuild both decision-driven static sites
         run: |
           python scripts/build_run_card.py
           python scripts/build_site.py

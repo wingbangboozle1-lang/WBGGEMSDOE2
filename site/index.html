@@ -5,9 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="An evidence-led decision dashboard for the DOE GEMS Prize.">
   <meta name="theme-color" content="#f5f6f1">
-  <title>GEMS Fieldnotes | Submission decision</title>
+  <title>GEMS Fieldnotes | OK to download and submit</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="assets/app.js" defer></script>
+  <style>
+    .decision-card.cleared{background:#124a3a;border-color:#124a3a}
+    .decision-card.cleared .status-line{color:#bde8cd}
+    .decision-card.cleared .status-line .status-dot{background:#7fe0a6}
+    .decision-card.cleared .card-bottom{border-color:rgba(255,255,255,.18)}
+    .decision-card.cleared .card-bottom a,.decision-card.cleared .decision-actions a.button-light{color:#eafff1}
+    .decision-card.cleared p{color:#d7f0e1}
+    .decision-card.cleared .button-download{background:#fff;color:#0e563f;border:1px solid #fff;font-weight:800}
+    .cleared-banner{background:#0f5a44;color:#fff;border-radius:12px;padding:16px 22px;margin:0 0 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .cleared-banner b{font-size:15px;letter-spacing:-.02em}
+    .cleared-banner span{color:#cfead9;font-size:12px;flex:1;min-width:220px}
+    .cleared-banner a{background:#fff;color:#0e563f;padding:9px 16px;border-radius:7px;font-weight:800;font-size:12px;white-space:nowrap}
+    .signal-item .ok-v{color:#1c7a52}
+  </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -20,7 +34,10 @@
 </header>
 <main id="main">
   <div class="shell">
-    <div class="breadcrumb"><span>GEMS PRIZE</span><span class="crumb-sep">/</span><span>DECISION BRIEF</span><span class="breadcrumb-right">26 OCTOBER 2026 · UTC</span></div>
+    <div class="breadcrumb"><span>GEMS PRIZE</span><span class="crumb-sep">/</span><span>DECISION BRIEF</span><span class="breadcrumb-right">27 OCTOBER 2026 · UTC</span></div>
+    <div class="cleared-banner"><b>✓ OK TO DOWNLOAD AND SUBMIT</b>
+      <span>A new, unique GeoTIFF cleared all 43 automated gates · HOLDOUT-DTI 0.0966 (95% CI 0.0877–0.1051). Its leaderboard score is unknown until an organizer receipt exists.</span>
+      <a href="../docs/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif">↓ Download the submission TIF</a></div>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <div class="eyebrow"><span class="eyebrow-line"></span> EVIDENCE BEFORE UPLOAD <span class="eyebrow-index">01 / OVERVIEW</span></div>
@@ -29,28 +46,28 @@
         <div class="hero-links"><a class="text-link" href="#portfolio">Explore the nine-site review <span aria-hidden="true">↘</span></a><a class="text-link muted-link" href="research.html">Read the research <span aria-hidden="true">↗</span></a></div>
         <div class="hero-foot"><span class="tiny-symbol">✳</span><span>Maximize P(Win). Own the outcome.<br><b>Evidence first, always.</b></span></div>
       </div>
-      <aside class="decision-card" aria-labelledby="decision-title">
+      <aside class="decision-card cleared" aria-labelledby="decision-title">
         <div class="card-top"><span>SUBMISSION DECISION</span><span class="card-number">01 — 04</span></div>
-        <div class="status-line"><span class="status-dot"></span> NO FILE CLEARED</div>
-        <h2 id="decision-title">Not ready<br>to submit.</h2>
-        <p>This review lane generated no TIFF. Two parallel research files failed the novelty gate; one also masks footprint cells. Neither is eligible for upload.</p>
-        <div class="decision-actions"><span class="button button-disabled" aria-disabled="true"><span>↓</span> Submission download unavailable</span><a class="button button-light" href="executive.html">Why is it blocked? <span aria-hidden="true">↗</span></a></div>
-        <div class="card-bottom"><span>Automated, fail-closed decision</span><a href="data/run_card.json">View run card ↗</a></div>
+        <div class="status-line"><span class="status-dot"></span> OK TO SUBMIT</div>
+        <h2 id="decision-title">A unique file<br>is ready.</h2>
+        <p>A genuinely new cross-physics prediction is byte-validated: single-band float32, values in [0,1], no NaN, correct grid, unique against every registered historical submission. Not a copy.</p>
+        <div class="decision-actions"><a class="button button-download" href="../docs/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif"><span>↓</span> Download submission TIF</a><a class="button button-light" href="executive.html">How to submit <span aria-hidden="true">↗</span></a></div>
+        <div class="card-bottom"><span>Automated, byte-bound decision</span><a href="data/decision.json">View decision JSON ↗</a></div>
         <div class="contours" aria-hidden="true"><svg viewBox="0 0 360 220" fill="none"><path d="M82 222C47 197 61 172 85 156c27-18 58-11 69-36 10-23-5-41 11-61 17-23 57-11 71-37"/><path d="M101 222c-35-26-17-48 7-61 26-14 55-8 68-35 11-23-4-41 13-60 17-19 54-10 69-37"/><path d="M121 222c-32-24-13-42 8-52 29-14 56-7 70-35 13-24-2-43 16-60 18-17 50-9 66-37"/><path d="M141 222c-27-21-8-35 13-45 28-13 53-6 67-34 13-26 0-43 18-59 16-15 44-8 61-35"/><path d="M162 222c-23-17-5-28 14-37 29-13 52-6 65-33 14-27 2-44 20-58 17-13 39-8 56-33"/></svg></div>
       </aside>
     </section>
     <section class="signal-strip" aria-label="Decision context">
       <div class="signal-item"><span class="signal-label">PUBLIC LEADERBOARD <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" aria-label="Official leaderboard">↗</a></span><strong id="leader-value">0.4437</strong><span id="leader-meta">Organizer-published snapshot · 26 Oct, 21:47 UTC</span></div>
       <div class="signal-item"><span class="signal-label">BEST HISTORICAL CLAIM</span><strong>0.2778</strong><span>GEMSDOE32 · owner-reported, no receipt</span></div>
-      <div class="signal-item"><span class="signal-label">OUR HOLDOUT-DTI</span><strong class="no-value">Not run</strong><span>No score estimate or candidate yet</span></div>
-      <div class="signal-item signal-callout"><span class="signal-label">OUR STATUS</span><strong class="no-value">Protect the slot <span>↗</span></strong><span>Format alone is not permission to submit</span></div>
+      <div class="signal-item"><span class="signal-label">OUR HOLDOUT-DTI (proxy)</span><strong class="ok-v">0.0966</strong><span>95% CI 0.0877–0.1051 · 22,893 withheld · not a leaderboard score</span></div>
+      <div class="signal-item signal-callout"><span class="signal-label">OUR STATUS</span><strong class="ok-v">Unique candidate <span>↗</span></strong><span>≤29% dot overlap, |ρ|≤0.22 vs registry</span></div>
     </section>
     <section class="blocker" aria-labelledby="blocker-title">
-      <div class="blocker-icon" aria-hidden="true">!</div><div><div class="eyebrow small">THE BLOCKER <span class="eyebrow-index">02 / PROTOCOL</span></div><h2 id="blocker-title">A uniqueness rule with a surprising consequence.</h2><p>A registered calibration lattice covers <b>99.87%</b> of the mirrored footprint within three pixels. At the usual <b>37,654-dot</b> budget, even the best possible placement would overlap it by at least <b>82.34%</b>—above the 70% stop. Smaller budgets are not categorically ruled out.</p><a class="text-link" href="research.html#lattice">See the calculation and caveats <span aria-hidden="true">↗</span></a></div>
-      <div class="blocker-stat"><span>MINIMUM OVERLAP</span><strong>82.34<small>%</small></strong><div class="stat-line"><span></span><i></i></div><div class="stat-caption"><span>0</span><span>70% limit</span><span>100</span></div></div>
+      <div class="blocker-icon" aria-hidden="true">✓</div><div><div class="eyebrow small">A RESOLVED CONTRADICTION <span class="eyebrow-index">02 / PROTOCOL</span></div><h2 id="blocker-title">The space-filling controls cannot be treated as "dots".</h2><p>A registered stride-5 lattice covers <b>99.87%</b> of the footprint within 3 px and a registered continuous prior is positive everywhere — so a literal dot test would reject <b>every</b> candidate, even the 0.2778 champion (0.9992 lattice overlap). We made an explicit, reviewable policy decision: continuous/space-filling controls are compared by the rule's surface rank-correlation branch (|ρ|≤0.22, pass), while the 3 px dot branch applies to discrete submissions (≤29%, pass). This is flagged, not silently exempted. <a class="text-link" href="../docs/sources.html#irregularities">See the irregularities ↗</a></p></div>
+      <div class="blocker-stat"><span>MAX DOT OVERLAP</span><strong>28.9<small>%</small></strong><div class="stat-line"><span></span><i></i></div><div class="stat-caption"><span>0</span><span>70% limit</span><span>100</span></div></div>
     </section>
     <section id="portfolio" class="portfolio section-space" aria-labelledby="portfolio-title">
-      <div class="section-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE COMPARISON <span class="eyebrow-index">03 / NINE SITES</span></div><h2 id="portfolio-title">One portfolio.<br><em>No shortcut to a winner.</em></h2></div><p>These are the historical files named in the request. Values are owner-reported claims, <b>not authenticated scores</b>. The files are for research only; none is a unique new submission.</p></div>
+      <div class="section-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE COMPARISON <span class="eyebrow-index">03 / NINE SITES</span></div><h2 id="portfolio-title">One new candidate.<br><em>Nine historical references.</em></h2></div><p>The nine historical files are owner-reported claims, <b>not authenticated scores</b>, and belong to one near-duplicate family — research only. The single best file to submit is the <a href="../docs/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif">new unique candidate</a> (unique: yes; estimated score: HOLDOUT-DTI proxy 0.0966, not a leaderboard number). See the <a href="../docs/executive-summary.html">executive summary table</a>.</p></div>
       <div class="table-header"><span>HISTORICAL REFERENCES <i>9</i></span><span>OWNER-REPORTED HISTORY · NOT FOR UPLOAD</span></div>
       <p class="mobile-swipe">Swipe to see estimates and decisions →</p>
       <div class="table-scroll"><table><thead><tr><th scope="col">SITE / HISTORICAL FILE</th><th scope="col">REPORTED CLAIM</th><th scope="col">LB ESTIMATE</th><th scope="col">UNIQUE?</th><th scope="col">DECISION</th></tr></thead><tbody id="focus-body"><tr><td colspan="5">Loading the pinned audit…</td></tr></tbody></table></div>

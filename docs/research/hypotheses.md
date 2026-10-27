@@ -1,5 +1,10 @@
 # Geological hypotheses — ranked proposals, not completed experiments
 
+> **CURRENT STATUS (2026-10-27): historical snapshot.** The live decision is **OK TO DOWNLOAD AND SUBMIT** — see the [live executive summary](../executive-summary.html), [current decision](../data/decision.json), [H1 run card](../data/h1_run_card.json), and [validation receipt](../data/decision_validation.json). This earlier review-lane record (verdict `negative`) is preserved, not deleted.
+
+---
+
+
 **Status:** this review ran 0 model experiments. A separate parallel run reported 3 experiments, but its holdout does not satisfy the shared protocol and its candidate failed the binary-lattice gate. No additional experiments are authorized under that budget. The request refers to an assigned “single method paragraph,” but none is specified. In addition, the strict registry gate is blocked before placement. These are desk proposals, not selected lanes, observed gains, or claims that nobody outside this repository has tried them. The local repository initially contained only a README. The rankings below are qualitative judgments of potential value versus implementation effort, not score projections.
 
 | Rank | Proposed layers and testable signature | Why it might detect an unmapped fault | Differentiator / cost | Named non-fault mimic & falsification |

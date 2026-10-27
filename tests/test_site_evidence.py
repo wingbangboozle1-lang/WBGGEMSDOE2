@@ -39,6 +39,7 @@ def test_all_internal_links_resolve():
 
 
 def test_published_evidence_is_fail_closed_and_synced():
+    # The ARCHIVED review-lane run card (negative) stays byte-synced across all mirrors.
     source_card = json.loads((ROOT / 'evidence/run_card.json').read_text())
     published_card = json.loads((SITE / 'data/run_card.json').read_text())
     assert source_card == published_card == json.loads((ROOT / 'docs/data/run-card.json').read_text())
@@ -53,7 +54,16 @@ def test_published_evidence_is_fail_closed_and_synced():
     assert all(r['leaderboard_estimate'] is None and len(r['sha256']) == 64 for r in rows)
     assert all(r['max_peer_overlap']['fraction'] > .7 for r in rows)
     home = (SITE / 'index.html').read_text()
-    assert 'Submission download unavailable' in home and 'NO FILE CLEARED' in home
+    # The CURRENT decision is a separate, byte-bound promote artifact; homepage shows it.
+    assert 'OK TO DOWNLOAD AND SUBMIT' in home and 'OK TO SUBMIT' in home
+    decision = json.loads((ROOT / 'evidence/decision.json').read_text())
+    assert decision['verdict'] == 'promote' and decision['ok_to_submit'] is True
+    assert decision['estimated_score']['leaderboard_dti'] is None
+    assert decision == json.loads((SITE / 'data/decision.json').read_text())
+    assert decision == json.loads((ROOT / 'docs/data/decision.json').read_text())
+    import hashlib
+    tif = ROOT / 'docs/downloads' / (decision['candidate']['submission_name'] + '.tif')
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == decision['candidate']['raster_sha256']
 
 
 def test_registered_continuous_witness_is_not_mislabeled_as_dots():

@@ -1,0 +1,95 @@
+{
+  "schema": "wbggems.current_decision.v1",
+  "evidence_class": "CURRENT-DECISION",
+  "recorded_utc": "2026-10-27T19:34:36.504906+00:00",
+  "decision_label": "OK TO DOWNLOAD AND SUBMIT",
+  "verdict": "promote",
+  "ok_to_download_new_tif": true,
+  "ok_to_submit": true,
+  "is_a_copy_of_any_previous_submission": false,
+  "what_this_decision_means": "The generated GeoTIFF is a genuinely new, format-valid, single-band float32 raster with values in [0,1] (including outside the footprint), correct EPSG:32611 CRS/shape/transform, no NaN/Inf, no positive mass on mapped faults. It is unique against every locally-pinned historical submission. It is a research candidate cleared for download; it is NOT an organizer-confirmed result, and its leaderboard score is UNKNOWN until a real submission returns a receipt.",
+  "candidate": {
+    "file": "downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+    "docs_file": "docs/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+    "zip": "downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.zip",
+    "docs_zip": "docs/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.zip",
+    "raster_sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+    "zip_sha256": "11af4f48ef35bd102eb703753f98ae4b05f3afc1031e65c432ccc9b0a4771627",
+    "submission_name": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros",
+    "note": "H1 cross-physics lineament dual-population. HOLDOUT-DTI 0.097 CI 0.088-0.105, 22893 withheld. Unique candidate; slot = separate selector.",
+    "note_chars": 137,
+    "positive_dots": 46887
+  },
+  "estimated_score": {
+    "leaderboard_dti": null,
+    "leaderboard_forecast_available": false,
+    "why": "No leaderboard score can be projected: the scoring truth (expert-labelled NEW faults, public + private split) is not published, and there is no organizer receipt for this file. A projection is never written as a score.",
+    "holdout_proxy": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.09659,
+      "ci95": [
+        0.08771,
+        0.10506
+      ],
+      "withheld_positive_pixels": 22893,
+      "folds": 8,
+      "note": "Local hide-and-recover proxy on an owner-mirrored catalogue; NOT comparable to leaderboard DTI."
+    }
+  },
+  "promotion_gates": {
+    "format_all_pass": true,
+    "leakage_canary_pass": true,
+    "uniqueness_overlap_le_0.70": true,
+    "uniqueness_correlation_le_0.90": true,
+    "beats_champion_mechanism_significantly": true,
+    "at_least_as_good_as_continuation_control": true
+  },
+  "uniqueness": {
+    "max_real_submission_dot_overlap_3px": 0.2895,
+    "max_all_registry_abs_spearman": 0.2186,
+    "real_submission_ids_checked": [
+      "GEMSDOE24",
+      "GEMSDOE25",
+      "GEMSDOE27",
+      "GEMSDOE28",
+      "GEMSDOE30",
+      "GEMSDOE31",
+      "GEMSDOE32",
+      "GEMSDOE33",
+      "GEMSDOE36",
+      "GEMSDOE27_H31",
+      "GEMSDOE32_H47"
+    ],
+    "space_filling_control_ids": [
+      "13GEMSDOE",
+      "17GEMSDOE_dense_prior"
+    ],
+    "registry_completeness_caveat": "Uniqueness is verified against all 13 byte-verified locally-pinned registry rasters (9 focus sites + H31 + H47 + 2 space-filling controls). The broader ~126-row user-reported fleet was NOT exhaustively byte-audited; global uniqueness across every historical file is therefore not proven."
+  },
+  "flagged_irregularities": [
+    "IR-H1-CONTROL-01: literal dot-overlap rule vs space-filling lattice/continuous prior (degenerate; explicit policy decision, seek review)",
+    "IR-H1-LANE-01: source 'single method paragraph' missing; top candidate validated as instructed",
+    "IR-H1-DATA-01: owner-mirror sample has 60,988 positives vs official all-absence example",
+    "IR-H1-META-01: band 15 official 'depth to conductive base' vs mirror 'basement' \u2014 mild weight only",
+    "IR-DECISION-01: literal dot-overlap rule vs space-filling lattice/continuous prior is an unsatisfiable control (even the 0.2778 champion is 0.9992 within 3px of the lattice). Explicit policy decision: apply the rule's SURFACE rank-correlation branch to continuous/space-filling controls, and the 3px dot branch to discrete dot submissions. Requires organizer/owner review.",
+    "IR-DECISION-02: owner-mirror sample has 60,988 positives vs official 'all absence' example; grid geometry matches the official EPSG:32611 100m spec but sample bytes are not organizer-authenticated.",
+    "IR-DECISION-03: leaderboard high score inconsistent in the brief (0.3195 in one place, 0.4413 in another). Both are user-reported observations, not receipts."
+  ],
+  "weekly_submission_slots_used": 0,
+  "selector_note": "This lane produced and validated ONE candidate; it did NOT spend a weekly slot. The actual upload and the single-final-submission selection remain a separate selector decision within the weekly cap.",
+  "archived_review_lane": {
+    "run_card": "evidence/run_card.json",
+    "verdict": "negative",
+    "note": "Historical review-lane card (2026-10-26) that rejected two parallel TIFFs; superseded as the current decision."
+  },
+  "evidence_links": [
+    "evidence/h1_run_card.json",
+    "evidence/h1_experiments.json",
+    "evidence/h1_canary.json",
+    "evidence/h1_uniqueness.json",
+    "evidence/h1_holdout.json",
+    "evidence/h1_format.json",
+    "evidence/registry_audit.json"
+  ]
+}

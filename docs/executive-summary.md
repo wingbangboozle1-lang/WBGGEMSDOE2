@@ -1,5 +1,10 @@
 # Executive summary — superseded parallel conduit record
 
+> **CURRENT STATUS (2026-10-27): this is a historical snapshot.** The live decision is **OK TO DOWNLOAD AND SUBMIT** — a new, unique, machine-validated TIF now exists. See the [live executive summary](executive-summary.html), [how to submit](submit.html), [current decision JSON](data/decision.json), [H1 run card](data/h1_run_card.json), and [validation receipt](data/decision_validation.json). Everything below is preserved as the earlier review-lane record (verdict `negative`); it is superseded, not deleted.
+
+---
+
+
 **DO NOT SUBMIT.** The original parallel report claimed a 58-file uniqueness pass but omitted the registered binary lattice. An independent saved-byte recheck found **5,087,882 of 5,094,374** cells at its own ≥0.5 threshold within three pixels of that lattice: **99.8726%**, above the 70% stop. It has no holdout score. A format pass against the owner mirror is not organizer acceptance.
 
 The generator constructed synthetic geometric trends and noise, not the geophysical feature arrays named in its report. Its private evaluator did not apply the required buffer and pooled metric. The original materials are preserved as historical records, not instructions or submission approval.

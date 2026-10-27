@@ -1,0 +1,178 @@
+{
+  "evidence_class": "LOCAL-FORMAT-MEASUREMENT",
+  "sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+  "zip_sha256": "11af4f48ef35bd102eb703753f98ae4b05f3afc1031e65c432ccc9b0a4771627",
+  "bytes": 167957,
+  "submission_name": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros",
+  "note": "H1 cross-physics lineament dual-population. HOLDOUT-DTI 0.097 CI 0.088-0.105, 22893 withheld. Unique candidate; slot = separate selector.",
+  "note_chars": 137,
+  "independent_inspect_tif": {
+    "path": "/home/user/WBGGEMSDOE2/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+    "sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+    "grid_match_reference": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "bands": 1,
+    "dtype": "float32",
+    "nodata": null,
+    "strict_all_finite_requested": true,
+    "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "organizer_acceptance": "unknown",
+    "submission_approval": false,
+    "footprint_cells": 5167373,
+    "nonfinite_inside": 0,
+    "masked_inside": 0,
+    "nan_total": 0,
+    "inf_total": 0,
+    "all_finite": true,
+    "minimum_inside": 0.0,
+    "maximum_inside": 1.0,
+    "nonzero_inside": 46887,
+    "failures": [],
+    "format_valid_against_reference": true
+  },
+  "shared_writer_receipt": {
+    "file": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+    "sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+    "bytes": 167957,
+    "submission_name": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros",
+    "note": "H1 cross-physics lineament dual-population. HOLDOUT-DTI 0.097 CI 0.088-0.105, 22893 withheld. Unique candidate; slot = separate selector.",
+    "note_chars": 137,
+    "validator": {
+      "file": "/home/user/WBGGEMSDOE2/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+      "bytes": 167957,
+      "sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+      "meta": {
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "nodata": null,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "profile_compress": "deflate"
+      },
+      "band_description": [
+        null
+      ],
+      "n_finite": 12279160,
+      "n_nan": 0,
+      "n_infinite": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0038184206932783127,
+      "emitted_positive_pixels": 46887,
+      "checks": {
+        "single_band": true,
+        "dtype_float32": true,
+        "dimensions_3730x3292": true,
+        "crs_epsg_32611": true,
+        "transform_matches_sample_submission": true,
+        "no_nan_anywhere": true,
+        "no_inf_anywhere": true,
+        "no_sentinel_values": true,
+        "range_0_1_guaranteed": true,
+        "min_ge_0": true,
+        "max_le_1": true,
+        "in_footprint_all_finite": true,
+        "in_footprint_range_0_1": true,
+        "outside_footprint_zero": true,
+        "zero_dots_on_mapped_catalogue": true
+      },
+      "all_checks_passed": true,
+      "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+      "on_catalogue_positive_pixels": 0,
+      "in_footprint_positive_pixels": 46887,
+      "footprint_fraction": 0.009073662768296386
+    },
+    "template_report": {
+      "path": "/home/user/WBGGEMSDOE2/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif",
+      "bytes": 167957,
+      "sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+      "bands": 1,
+      "dtype": "float32",
+      "crs": "EPSG:32611",
+      "width": 3292,
+      "height": 3730,
+      "bounds": [
+        243350.0,
+        4135550.0,
+        572550.0,
+        4508550.0
+      ],
+      "ref_bounds": [
+        243350.0,
+        4135550.0,
+        572550.0,
+        4508550.0
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "nodata": null,
+      "blocksize": [
+        256,
+        256
+      ],
+      "fixture_grid": false,
+      "has_validity_mask": false,
+      "nan_pixels": 0,
+      "infinity_pixels": 0,
+      "n_nan": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0038184206932783127,
+      "n_nonzero": 46887,
+      "mass": 46887.0,
+      "mass_outside_footprint": 0,
+      "problems": [],
+      "ok": true,
+      "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+    },
+    "zip_file": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.zip",
+    "zip_sha256": "11af4f48ef35bd102eb703753f98ae4b05f3afc1031e65c432ccc9b0a4771627",
+    "approved_for_weekly_slot": false,
+    "promoted": false,
+    "submission_slots_used": 0,
+    "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+    "metadata": {
+      "lane": "H1",
+      "holdout_dti": 0.09659,
+      "ci95": [
+        0.08771,
+        0.10506
+      ],
+      "evaluator": "gems57-pooled-hide-v2",
+      "arm": "dual_population"
+    }
+  },
+  "no_nan_inside_footprint": true,
+  "values_in_0_1": true,
+  "crs_shape_transform_match": true,
+  "organizer_acceptance": "unknown; local format pass is not portal acceptance"
+}

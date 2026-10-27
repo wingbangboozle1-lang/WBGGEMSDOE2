@@ -1,0 +1,140 @@
+{
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "promoted_arm": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.09659,
+    "ci95": [
+      0.08771,
+      0.10506
+    ],
+    "withheld_positive_pixels": 22893,
+    "tpw": 3271.58,
+    "fpw": 74513.0,
+    "fnw": 19621.42
+  },
+  "all_arms": {
+    "physics_only": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.06399,
+      "ci95": [
+        0.05624,
+        0.07134
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 2204.0,
+      "fpw": 78441.58,
+      "fnw": 20689.0
+    },
+    "continuation_halo": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.09542,
+      "ci95": [
+        0.08591,
+        0.10472
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 2837.1,
+      "fpw": 54251.04,
+      "fnw": 20055.9
+    },
+    "physics_plus_boost": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.06829,
+      "ci95": [
+        0.06015,
+        0.0762
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 2350.2,
+      "fpw": 78155.88,
+      "fnw": 20542.8
+    },
+    "dual_population": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.09659,
+      "ci95": [
+        0.08771,
+        0.10506
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 3271.58,
+      "fpw": 74513.0,
+      "fnw": 19621.42
+    },
+    "control_B2_mechanism": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.00389,
+      "ci95": [
+        0.00328,
+        0.00445
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 126.11,
+      "fpw": 70593.85,
+      "fnw": 22766.89
+    },
+    "control_continuation_only": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.09413,
+      "ci95": [
+        0.08283,
+        0.10534
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 3288.54,
+      "fpw": 79824.43,
+      "fnw": 19604.46
+    }
+  },
+  "paired_differences_vs_promoted": {
+    "physics_only": {
+      "delta": 0.0326,
+      "ci95": [
+        0.0248,
+        0.04106
+      ],
+      "withheld_positive_pixels": 22893
+    },
+    "continuation_halo": {
+      "delta": 0.00117,
+      "ci95": [
+        -0.00199,
+        0.0045
+      ],
+      "withheld_positive_pixels": 22893
+    },
+    "physics_plus_boost": {
+      "delta": 0.0283,
+      "ci95": [
+        0.02102,
+        0.0371
+      ],
+      "withheld_positive_pixels": 22893
+    },
+    "control_B2_mechanism": {
+      "delta": 0.0927,
+      "ci95": [
+        0.08397,
+        0.10119
+      ],
+      "withheld_positive_pixels": 22893
+    },
+    "control_continuation_only": {
+      "delta": 0.00246,
+      "ci95": [
+        -0.00542,
+        0.01063
+      ],
+      "withheld_positive_pixels": 22893
+    }
+  },
+  "caveat": "Conditional on fitted folds, the mirrored catalogue labels and a fixed 44,090-dot budget; NOT a leaderboard interval."
+}

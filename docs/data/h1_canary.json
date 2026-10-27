@@ -1,0 +1,45 @@
+{
+  "evidence_class": "LEAKAGE-CANARY",
+  "limit": 0.9,
+  "fold": "draw20_NW",
+  "note": "FULL-catalogue halo is a deliberate leakage demonstration (expected FAIL); it is NOT used by any arm.",
+  "all_real_features_pass": true,
+  "features": {
+    "band_06_tc": {
+      "auc_two_sided": 0.5114,
+      "pass": true
+    },
+    "band_13_iso_grav_anom": {
+      "auc_two_sided": 0.5037,
+      "pass": true
+    },
+    "band_14_tmi": {
+      "auc_two_sided": 0.5033,
+      "pass": true
+    },
+    "band_12_det_elev": {
+      "auc_two_sided": 0.6337,
+      "pass": true
+    },
+    "band_17_cond_surf": {
+      "auc_two_sided": 0.5665,
+      "pass": true
+    },
+    "band_04_geod_2ndinv": {
+      "auc_two_sided": 0.5224,
+      "pass": true
+    },
+    "h1_surface": {
+      "auc_two_sided": 0.6032,
+      "pass": true
+    },
+    "halo_from_VISIBLE_foldlocal": {
+      "auc_two_sided": 0.7937,
+      "pass": true
+    },
+    "halo_from_FULL_catalogue_LEAK_DEMO": {
+      "auc_two_sided": 0.9813,
+      "pass": false
+    }
+  }
+}

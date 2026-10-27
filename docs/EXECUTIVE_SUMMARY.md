@@ -1,5 +1,10 @@
 # Executive summary — earlier snapshot
 
+> **CURRENT STATUS (2026-10-27): this is a historical snapshot.** The live decision is **OK TO DOWNLOAD AND SUBMIT** — a new, unique, machine-validated TIF now exists. See the [live executive summary](executive-summary.html), [how to submit](submit.html), [current decision JSON](data/decision.json), [H1 run card](data/h1_run_card.json), and [validation receipt](data/decision_validation.json). Everything below is preserved as the earlier review-lane record (verdict `negative`); it is superseded, not deleted.
+
+---
+
+
 > **Historical snapshot (superseded).** This earlier concurrent review predates the restored owner-mirrored data and independent raster audit. Some statements below about missing data and unexamined files were true at the earlier review, but are no longer the current status. For the current decision and measured evidence, see the [live executive summary](executive-summary.html), [source notes](research/evidence-and-sources.md), and [current run card](data/run-card.json). No candidate is approved.
 
 **Reviewed:** 2026-10-26 UTC

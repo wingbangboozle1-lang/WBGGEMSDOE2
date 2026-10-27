@@ -7,3 +7,8 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 /* Long historical filenames and byte hashes must wrap on narrow site briefs. */
 .page-layout>*{min-width:0}.prose,.download-row>div{min-width:0;overflow-wrap:anywhere}@media(max-width:600px){.page-layout{grid-template-columns:minmax(0,1fr)}.download-row{align-items:flex-start;flex-direction:column}}
+
+/* Current cleared candidate row in the comparison table */
+#focus-body tr.candidate-row{background:#eef8f0}
+#focus-body tr.candidate-row .pill-neutral{background:#d7efdd;color:#1c6b45;font-weight:800}
+#focus-body tr.candidate-row .site-name{color:#136143;font-weight:800}

@@ -1,0 +1,311 @@
+{
+  "schema": "wbggems.review_passes.v1",
+  "evidence_class": "MULTI-PASS-VERIFICATION",
+  "recorded_utc": "2026-10-27T20:48:38.144643+00:00",
+  "decision": "OK TO DOWNLOAD AND SUBMIT",
+  "all_passes_green": true,
+  "passes": [
+    {
+      "pass": 1,
+      "name": "BYTE INTEGRITY",
+      "checks": [
+        {
+          "check": "raster_sha_matches_decision",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "raster_sha_matches_run_card",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "raster_sha_matches_format_receipt",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "zip_sha_matches",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "zip_single_tiff",
+          "pass": true,
+          "detail": "['wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif']"
+        },
+        {
+          "check": "zip_tiff_bytes_equal",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "docs_copy_identical",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "docs_zip_identical",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "single_band_float32",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "crs_epsg_32611",
+          "pass": true,
+          "detail": "EPSG:32611"
+        },
+        {
+          "check": "shape_3730x3292",
+          "pass": true,
+          "detail": "(3730, 3292)"
+        },
+        {
+          "check": "transform_exact",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "no_nan_inf",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "all_values_in_0_1",
+          "pass": true,
+          "detail": "[0.0,1.0]"
+        },
+        {
+          "check": "no_masked_interior",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "nodata_unset",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "format_receipt_all_pass",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "independent_inspector_pass",
+          "pass": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "pass": 2,
+      "name": "SCIENTIFIC INTEGRITY",
+      "checks": [
+        {
+          "check": "verdict_promote",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "all_promotion_gates",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "leakage_canary_all_real_pass",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "leakage_demo_correctly_flagged",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "surface_corr_le_0_90",
+          "pass": true,
+          "detail": "0.2186"
+        },
+        {
+          "check": "dot_overlap_le_0_70",
+          "pass": true,
+          "detail": "0.2895"
+        },
+        {
+          "check": "holdout_evaluator_labeled",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "holdout_withheld_positives",
+          "pass": true,
+          "detail": "22893"
+        },
+        {
+          "check": "holdout_ci_present",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "beats_champion_mechanism",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "holdout_not_a_leaderboard_score",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "no_invented_leaderboard_score",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "irregularities_flagged",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "no_weekly_slot_spent",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "name_note_le_140",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "archived_negative_lane_synced",
+          "pass": true,
+          "detail": ""
+        }
+      ],
+      "passed": true
+    },
+    {
+      "pass": 3,
+      "name": "PUBLICATION INTEGRITY",
+      "checks": [
+        {
+          "check": "decision_mirrors_identical",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "promote_copy::docs/index.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "promote_copy::docs/executive-summary.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "promote_copy::docs/submit.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "promote_copy::docs/research.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "promote_copy::docs/sources.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "no_stale_blocked::docs/index.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "no_stale_blocked::site/index.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "no_stale_blocked::site/executive.html",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "fieldnotes_promote",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "fieldnotes_guide_actionable",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "download_button_present",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "download_target_exists",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "exec_table_has_score_and_unique",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "nine_site_pages",
+          "pass": true,
+          "detail": "9"
+        },
+        {
+          "check": "all_sites_have_exec_banner",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "all_sites_have_table",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "all_local_links_resolve",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "readme_current_decision",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "readme_preserved_prompt",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "check": "verifier_script_pass",
+          "pass": true,
+          "detail": "OK TO DOWNLOAD AND SUBMIT\n"
+        },
+        {
+          "check": "pytest_all_green",
+          "pass": true,
+          "detail": "93 passed"
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "note": "Three independent passes: byte integrity, scientific integrity, publication integrity. A single pass cannot green-light the submission. Leaderboard score remains UNKNOWN."
+}

@@ -1,0 +1,228 @@
+{
+  "evidence_class": "MACHINE-VALIDATION",
+  "verdict": "OK TO DOWNLOAD AND SUBMIT",
+  "ok_to_submit": true,
+  "raster_sha256": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd",
+  "submission_name": "wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros",
+  "positive_dots": 46887,
+  "checks_passed": 43,
+  "checks_total": 43,
+  "checks": [
+    {
+      "check": "raster_exists",
+      "pass": true,
+      "detail": "/home/user/WBGGEMSDOE2/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif"
+    },
+    {
+      "check": "zip_exists",
+      "pass": true,
+      "detail": "/home/user/WBGGEMSDOE2/downloads/wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.zip"
+    },
+    {
+      "check": "raster_sha_matches_decision",
+      "pass": true,
+      "detail": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd"
+    },
+    {
+      "check": "raster_sha_matches_run_card",
+      "pass": true,
+      "detail": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd"
+    },
+    {
+      "check": "raster_sha_matches_format_receipt",
+      "pass": true,
+      "detail": "239d98d90ec254ace8b5a0fcf819710c9fac18500e8b267d67b823f533f6ecbd"
+    },
+    {
+      "check": "zip_sha_matches",
+      "pass": true,
+      "detail": "11af4f48ef35bd102eb703753f98ae4b05f3afc1031e65c432ccc9b0a4771627"
+    },
+    {
+      "check": "zip_holds_exactly_one_tiff",
+      "pass": true,
+      "detail": "['wbg2-h1-crossphysics-dualpop-20261027T173000Z-laneh1-zeros.tif']"
+    },
+    {
+      "check": "zip_tiff_bytes_equal_raster",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "docs_download_is_identical_bytes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "docs_zip_is_identical_bytes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "independent_format_valid",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no_nan_inside_footprint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no_masked_cells_inside_footprint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "single_band_float32",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "crs_epsg_32611",
+      "pass": true,
+      "detail": "EPSG:32611"
+    },
+    {
+      "check": "transform_matches_grid",
+      "pass": true,
+      "detail": "[100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]"
+    },
+    {
+      "check": "no_nan_inf_anywhere",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "all_values_in_0_1",
+      "pass": true,
+      "detail": "min=0.0 max=1.0"
+    },
+    {
+      "check": "shape_transform_match_sample",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no_positive_mass_outside_footprint",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no_positive_mass_on_mapped_faults",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "shared_writer_all_checks_passed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "dot_count_matches_receipt",
+      "pass": true,
+      "detail": "46887"
+    },
+    {
+      "check": "verdict_promote",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "decision_flags_true",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "declared_not_a_copy",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "all_promotion_gates_true",
+      "pass": true,
+      "detail": "{'format_all_pass': True, 'leakage_canary_pass': True, 'uniqueness_overlap_le_0.70': True, 'uniqueness_correlation_le_0.90': True, 'beats_champion_mechanism_significantly': True, 'at_least_as_good_as_continuation_control': True}"
+    },
+    {
+      "check": "name_and_note_le_140",
+      "pass": true,
+      "detail": "note=137 name=58"
+    },
+    {
+      "check": "irregularities_flagged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no_invented_leaderboard_score",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no_weekly_slot_spent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "leakage_canary_all_pass",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "every_real_feature_auc_le_0_90",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "surface_correlation_le_0_90",
+      "pass": true,
+      "detail": "0.2186"
+    },
+    {
+      "check": "final_dot_overlap_le_0_70",
+      "pass": true,
+      "detail": "0.2895"
+    },
+    {
+      "check": "registry_inventory_declared",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "holdout_labeled_as_proxy",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "evaluator_version_consistent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "holdout_ci_contains_dti",
+      "pass": true,
+      "detail": "[0.08771, 0.10506]"
+    },
+    {
+      "check": "holdout_beats_champion_mechanism",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "promoted_arm_is_evaluated_arm",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "paired_win_over_champion_significant",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "archived_review_lane_still_negative",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "caveat": "Byte-bound local validation only. NOT an organizer receipt and NOT a leaderboard score. The two space-filling controls are handled by a flagged, reviewable policy decision; data are a hash-verified owner mirror. See flagged_irregularities in decision.json."
+}

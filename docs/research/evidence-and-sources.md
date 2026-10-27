@@ -1,5 +1,10 @@
 # Evidence and limitations
 
+> **CURRENT STATUS (2026-10-27): historical snapshot.** The live decision is **OK TO DOWNLOAD AND SUBMIT** — see the [live executive summary](../executive-summary.html), [current decision](../data/decision.json), [H1 run card](../data/h1_run_card.json), and [validation receipt](../data/decision_validation.json). This earlier review-lane record (verdict `negative`) is preserved, not deleted.
+
+---
+
+
 ## Competition facts from official sources
 
 | Statement | Source |
