@@ -40,7 +40,7 @@
    "result": "PASS"
   }
  },
- "ok_to_submit": true,
+ "ok_to_submit": false,
  "focus_site_overlap": [
   {
    "file": "GEMSDOE28__gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
@@ -340,5 +340,13 @@
    "is_focus_site_submission": false
   }
  ],
- "measurement_notes": "Raw per-pixel rank correlation between sparse binary rasters is dominated by the shared zero background, so surface similarity is measured on 1 km Gaussian-smoothed density fields."
+ "measurement_notes": "Raw per-pixel rank correlation between sparse binary rasters is dominated by the shared zero background, so surface similarity is measured on 1 km Gaussian-smoothed density fields.",
+ "verdict": "negative",
+ "approval_revoked": {
+  "evidence": "evidence/release_audit.json",
+  "reason": "The original approval used a non-authorized normalized novelty rule despite its own literal FAIL, incomplete registry and no compliant surface/holdout release.",
+  "previous_ok_to_submit": true,
+  "normalized_rule_authorizes_submission": false,
+  "surface_rule_caveat": "Historical Gaussian-smoothed Pearson correlation is not the required pre-placement rank-correlation audit."
+ }
 }

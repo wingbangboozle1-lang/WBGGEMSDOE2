@@ -1,6 +1,6 @@
 # Project charter and session-start brief
 
-**Status update, 2026-10-27:** Read the current [README](../README.md), [evidence notes](research/evidence-and-sources.md), and [negative run card](data/run-card.json) together with this charter. This session reverified pinned owner-mirror inputs, the unchanged shared template and 19 raw-band caches in ignored local storage; those files may not persist, the separate derived feature bank is absent, and the mirrors are not authenticated as organizer copies. A 2026-10-27 GitHub HEAD check found all nine focus-site refs changed since their pinned audited rasters; it did not fetch or audit the newer rasters. This review created no model, TIFF, holdout result, or upload approval. Two parallel TIFFs were independently rejected; see `data/parallel_review.json` and `data/conduit_review.json`.
+**Status update, 2026-10-27:** All saved TIFFs are **research-only / DO NOT SUBMIT**. The independent [byte audit](data/release_audit.json) reopens 6 paths / 5 identities and 13 pinned witnesses, with 3 ZIP checks; every artifact fails the literal rule. Former DZ-16/H3 approvals are revoked. The full 19-band owner mirror is restored, not organizer-authenticated; corrected MSPTCD v2 has no measured holdout result. The [current run card](data/run-card.json), [download decision](release.html) and [source recheck](../research/source-verification-release-20261027.md) govern all lanes. No new candidate experiment or slot.
 
 **Read this file at the start of every project session.** It is the durable, actionable record of the project request, including safety/evidence constraints, the nine-site focus, the submission-format issue, and project values. The original long prompt included duplicated historical score lists; this charter consolidates repeated wording while retaining all operative requirements and the relevant site results in `EXECUTIVE_SUMMARY.md`.
 
@@ -10,7 +10,7 @@ Build a scientifically defensible, auditable system for discovering previously u
 
 ## Nine-site focus
 
-Review the strongest reported results for **GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33, and GEMSDOE36**. For each, keep an executive-summary record of file name, evidence class/score, score-estimate status, exact-file availability, and uniqueness audit status. Historical score claims must not be presented as verified receipts. The current comparison and measured overlaps are in `executive-summary.html` and `data/portfolio.json`; `EXECUTIVE_SUMMARY.md` is an earlier snapshot.
+Review the strongest reported results for **GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33, and GEMSDOE36**. For each, keep an executive-summary record of file name, evidence class/score, score-estimate status, exact-file availability, and uniqueness audit status. Historical score claims must not be presented as verified receipts. The current comparison and measured overlaps are in `executive-summary.html` and `data/portfolio.json`; `EXECUTIVE_SUMMARY.md` mirrors the current nine-site decision.
 
 ## Highest-priority requirement: unique and validated GeoTIFF
 

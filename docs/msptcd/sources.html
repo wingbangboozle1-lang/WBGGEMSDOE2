@@ -1,78 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Official GEMS DOE sources, SHA-256 byte receipts, and reproducible pipeline scripts.">
-  <meta name="theme-color" content="#0b5d4d">
-  <title>Sources &amp; Receipts · WBG2-MSPTCD · GEMS Research</title>
-  <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="shell">
-      <a href="index.html" class="brand" aria-label="WBG2-MSPTCD home">
-        <span class="brandmark">
-          <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none">
-            <path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/>
-          </svg>
-        </span>
-        GEMS <small>WBG2-MSPTCD</small>
-      </a>
-      <nav class="nav" aria-label="MSPTCD navigation"><a href="index.html">MSPTCD Overview</a><a href="executive-summary.html">Executive Summary</a><a href="research.html">5 Hypotheses & Holdout</a><a href="sources.html" aria-current="page">Sources & Receipts</a><a href="../index.html">← Main Dashboard</a></nav>
-      <div class="top-right">
-        <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a>
-        <span class="top-status"><span class="dot"></span> Research-only · 0 slots</span>
-      </div>
-    </div>
-  </header>
-  <main id="main" class="shell main">
-    <div class="intro">
-      <div>
-        <p class="eyebrow">Official Sources &amp; Reproducibility</p>
-        <h1>Verified Sources, Byte Receipts &amp; Rebuild Commands</h1>
-        <p>Every external claim, hash, and metric in the WBG2-MSPTCD lane is tied to an official URL or a reproducible local JSON/GeoTIFF receipt.</p>
-      </div>
-      <div class="intro-meta">Artifact SHA-256<br><strong>fb11891a3a2e…</strong></div>
-    </div>
-
-    <section class="card" id="official-sources">
-      <h2>1. Trusted Official Sources</h2>
-      <ul>
-        <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData GEMS Problem Description &amp; Official DTI Metric Specification ↗</a> — verifies <code>α=0.2, β=0.8</code>, <code>R=300 m</code> triangular kernel, <code>EPSG:32611</code>, <code>float32</code>, <code>[0, 1]</code>, and Band 6 <code>tc</code> radiometric counts.</li>
-        <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">DrivenData Live Public Leaderboard ↗</a> — verified <code>0.4544</code> Rank #1 (<code>xiaofanhu</code>) on 2026-10-27 UTC.</li>
-        <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">DOE GEMS Official Prize Rules PDF (Sept 2026, $300K pool) ↗</a>.</li>
-        <li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN Airborne Magnetic &amp; Radiometric Surveys ↗</a>.</li>
-        <li><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository — Great Basin INGENIOUS Release 1391 ↗</a>.</li>
-      </ul>
-    </section>
-
-    <section class="card" id="receipts">
-      <h2>2. Committed WBG2-MSPTCD Artifacts &amp; Reproducibility</h2>
-      <ul>
-        <li>Research GeoTIFF (DO NOT SUBMIT): <a href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif"><code>docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif</code></a> — <code>71,341</code> bytes, SHA-256 <code>fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614</code></li>
-        <li>Single-TIFF Research ZIP: <a href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip"><code>docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip</code></a> — <code>21,663</code> bytes, SHA-256 <code>f3e92a114c93e1fc848fb0dc405d2c8aa723f77408e9fb11b224d7aee014ff1b</code></li>
-        <li>Run Card JSON: <a href="../data/RUN_CARD_MSPTCD.json"><code>docs/data/RUN_CARD_MSPTCD.json</code></a></li>
-        <li>3-Experiment Holdout &amp; 21-Raster Audit JSON: <a href="../data/wbg2_msptcd_results.json"><code>docs/data/wbg2_msptcd_results.json</code></a></li>
-        <li>124 Single-Feature Canary JSON: <a href="../data/wbg2_msptcd_canaries.json"><code>docs/data/wbg2_msptcd_canaries.json</code></a></li>
-        <li>Cross-Lane Overlap JSON (vs DZ-16 &amp; H3-PACK): <a href="../data/wbg2_msptcd_cross_lane_audit.json"><code>docs/data/wbg2_msptcd_cross_lane_audit.json</code></a></li>
-        <li>Updated 144-Row Fleet Ledger CSV (through 2026-10-27): <a href="../data/user-reported-ledger-20261027.csv"><code>docs/data/user-reported-ledger-20261027.csv</code></a></li>
-      </ul>
-    </section>
-    </main>
-  <footer class="footer">
-    <div class="shell">
-      <div><strong>WBG2-MSPTCD LANE</strong> · 31-Feature Real-Geophysics Campaign · Zero competition slots spent</div>
-      <div>
-        <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
-        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
-        <a href="../submit/index.html">Sibling H3-PACK lane</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MSPTCD sources · Historical MSPTCD · GEMS Research</title><meta name="description" content="Historical MSPTCD evidence with corrections and a negative submission verdict.">
+<link rel="stylesheet" href="../styles.css"></head><body><a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="shell"><a class="brand" href="../index.html">GEMS <small>RESEARCH</small></a><nav class="nav" aria-label="Main navigation">
+<a href="index.html">Historical overview</a><a href="executive-summary.html">Review findings</a><a href="research.html">Actual features</a><a href="sources.html">Sources</a><a href="../release.html">Download status</a></nav></div></header>
+<main id="main" class="shell main"><section class="banner" data-release-status="blocked"><div class="banner-copy">
+<p class="banner-label">Historical source-reported campaign · not independently reproduced</p>
+<h2>DO NOT SUBMIT. No current approval.</h2><p>All local TIFFs fail the literal registry gate. The corrected v2 orientation feature has no measured holdout result.
+Passing AUC canaries is not proof of zero leakage. <a href="../release.html">Current byte-bound release decision →</a></p></div></section><div class="intro"><div><p class="eyebrow">Official and measured evidence</p><h1>Sources and provenance</h1></div></div>
+<section class="card guide-card"><h2>What official sources support</h2><ul class="source-list">
+<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem, metric and format</a> — fault target, listed feature families, single float32 band, EPSG:32611, 100 m and [0,1]. It does not authenticate the mirror's band numbering.</li>
+<li><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/2">DrivenData staff clarification</a> — known fault pixels excluded; no broader collar confirmed.</li>
+<li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN release, DOI 10.5066/P93LGLVQ</a> — magnetic/radiometric data, flight geometry, variable clearance; release marked CC0.</li>
+<li><a href="https://pubs.usgs.gov/publication/70271418">USGS Argenta Rise study</a> — multi-physics structural interpretation, not validation of our transforms.</li>
+<li><a href="https://gdr.openei.org/submissions/1391">DOE GDR INGENIOUS compilation</a> — regional resources and attribution terms, not proof of binary availability or study-area coverage here.</li>
+<li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official rules</a> — quota, single final choice and AI disclosure.</li></ul>
+<h2>Audit data</h2><p><a href="../data/feature_cache.json">Restored raw-band cache receipt</a> · <a href="../data/release_audit.json">Independent raster recheck</a> ·
+<a href="../data/wbg2_msptcd_canaries.json">Historical feature-canary results</a> · <a href="../data/RUN_CARD_MSPTCD.json">Historical card with review</a> ·
+<a href="../sources.html">Full source register</a></p><p>The public mirror was restored by SHA-256, not by authenticated DrivenData access. Neither a good canary nor a local format pass proves competition performance.</p></section></main><footer class="footer"><div class="shell"><strong>Research only · DO NOT SUBMIT</strong>
+<a href="../data/RUN_CARD_MSPTCD.json">Historical card with correction</a> · <a href="../data/run-card.json">Current review card</a></div></footer></body></html>

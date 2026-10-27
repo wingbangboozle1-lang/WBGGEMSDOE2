@@ -1,13 +1,6 @@
-WHICH FILE TO SUBMIT
-====================
+RESEARCH ONLY — DO NOT SUBMIT
 
-SUBMIT:  wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif
-         sha256 a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912
-         the only file cleared in this repository (see ../index.html)
-
-DO NOT SUBMIT either of the other two files here:
-  * wbg2-h1-stepxasym-e2-34564dots-...-zeros.tif  -- rejected: masked interior cells,
-    99.4% lattice duplication, no validated holdout (see ../../evidence/final_candidate.json)
-  * ../downloads/wbg-h1-blind-conduit-breach-...    -- rejected: duplicate of the registered lattice
-
-They are retained only because audit records bind to their hashes.
+No TIFF in this directory is approved. Former DZ-16 and H3-PACK approvals are revoked.
+Every existing file exceeds the literal all-registry overlap gate.
+See ../release.html and ../data/release_audit.json for exact hashes and read-back diagnostics.
+A format pass is not uniqueness, organizer acceptance or slot-selector authorization.

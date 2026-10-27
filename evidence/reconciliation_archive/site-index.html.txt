@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An evidence-led decision dashboard for the DOE GEMS Prize.">
+  <meta name="theme-color" content="#f5f6f1">
+  <title>GEMS Fieldnotes | Submission decision</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body><div style="background:#3d2b00;border:2px solid #d29922;border-radius:8px;padding:14px 18px;font-family:system-ui,sans-serif;color:#ffd98a;margin:0 0 18px"><b>Archive — superseded.</b> This page documents a review round in which no file was cleared. A later, measured round cleared exactly one submission: see the current dashboard at <a style="color:#58a6ff" href="../docs/index.html">../docs/index.html</a>.</div>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="./" aria-label="GEMS Fieldnotes home"><span class="brand-mark" aria-hidden="true"><span></span></span><span>GEMS <b>FIELDNOTES</b><small>RESEARCH WORKSPACE</small></span></a>
+    <nav aria-label="Main navigation"><a class="active" href="./">Overview</a><a href="#portfolio">Portfolio</a><a href="research.html">Research</a><a href="executive.html">Submission guide <span aria-hidden="true">↗</span></a></nav>
+    <a class="header-github" href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">View repository <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<main id="main">
+  <div class="shell">
+    <div class="breadcrumb"><span>GEMS PRIZE</span><span class="crumb-sep">/</span><span>DECISION BRIEF</span><span class="breadcrumb-right">EVIDENCE SNAPSHOT · UTC</span></div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> EVIDENCE BEFORE UPLOAD <span class="eyebrow-index">01 / OVERVIEW</span></div>
+        <h1 id="hero-title">Make the next<br><em>upload count.</em></h1>
+        <p class="hero-lede">A clear decision on what to submit, what the data really says, and where the next discovery might come from.</p>
+        <div class="hero-links"><a class="text-link" href="#portfolio">Explore the nine-site review <span aria-hidden="true">↘</span></a><a class="text-link muted-link" href="research.html">Read the research <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-foot"><span class="tiny-symbol">✳</span><span>Maximize P(Win). Own the outcome.<br><b>Evidence first, always.</b></span></div>
+      </div>
+      <aside class="decision-card" aria-labelledby="decision-title">
+        <div class="card-top"><span>SUBMISSION DECISION</span><span class="card-number">01 — 04</span></div>
+        <div class="status-line"><span class="status-dot"></span> NO FILE CLEARED</div>
+        <h2 id="decision-title">Not ready<br>to submit.</h2>
+        <p>This review lane generated no TIFF. Two parallel research files failed the novelty gate; one also masks footprint cells. Neither is eligible for upload.</p>
+        <div class="decision-actions"><span class="button button-disabled" aria-disabled="true"><span>↓</span> Submission download unavailable</span><a class="button button-light" href="executive.html">Why is it blocked? <span aria-hidden="true">↗</span></a></div>
+        <div class="card-bottom"><span>Automated, fail-closed decision</span><a href="data/run_card.json">View run card ↗</a></div>
+        <div class="contours" aria-hidden="true"><svg viewBox="0 0 360 220" fill="none"><path d="M82 222C47 197 61 172 85 156c27-18 58-11 69-36 10-23-5-41 11-61 17-23 57-11 71-37"/><path d="M101 222c-35-26-17-48 7-61 26-14 55-8 68-35 11-23-4-41 13-60 17-19 54-10 69-37"/><path d="M121 222c-32-24-13-42 8-52 29-14 56-7 70-35 13-24-2-43 16-60 18-17 50-9 66-37"/><path d="M141 222c-27-21-8-35 13-45 28-13 53-6 67-34 13-26 0-43 18-59 16-15 44-8 61-35"/><path d="M162 222c-23-17-5-28 14-37 29-13 52-6 65-33 14-27 2-44 20-58 17-13 39-8 56-33"/></svg></div>
+      </aside>
+    </section>
+    <section class="signal-strip" aria-label="Decision context">
+      <div class="signal-item"><span class="signal-label">LAST PUBLIC-LEADERBOARD SNAPSHOT <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" aria-label="Official leaderboard">↗</a></span><strong id="leader-value">Unavailable</strong><span id="leader-meta">Loading dated snapshot · check the official source</span></div>
+      <div class="signal-item"><span class="signal-label">BEST HISTORICAL CLAIM</span><strong>0.2778</strong><span>GEMSDOE32 · owner-reported, no receipt</span></div>
+      <div class="signal-item"><span class="signal-label">OUR HOLDOUT-DTI</span><strong class="no-value">Not run</strong><span>No score estimate or candidate yet</span></div>
+      <div class="signal-item signal-callout"><span class="signal-label">OUR STATUS</span><strong class="no-value">Protect the slot <span>↗</span></strong><span>Format alone is not permission to submit</span></div>
+    </section>
+    <div class="notice" role="status"><b>Leaderboard freshness and source conflict.</b> The prompt's 0.3195 and 0.4413 “current high” values are conflicting USER-SUPPLIED claims. The public leader was observed at 0.4544 on 27 October at about 17:21 UTC; a subsequent automated refresh failed. The dated snapshot above is not an ORGANIZER-CONFIRMED receipt for a specific TIFF or a HOLDOUT-DTI. Check the official source for the latest value.</div>
+    <section class="blocker" aria-labelledby="blocker-title">
+      <div class="blocker-icon" aria-hidden="true">!</div><div><div class="eyebrow small">THE BLOCKER <span class="eyebrow-index">02 / PROTOCOL</span></div><h2 id="blocker-title">A uniqueness rule with a surprising consequence.</h2><p>A registered calibration lattice covers <b>99.87%</b> of the mirrored footprint within three pixels. At the usual <b>37,654-dot</b> budget, even the best possible placement would overlap it by at least <b>82.34%</b>—above the 70% stop. Smaller budgets are not categorically ruled out.</p><a class="text-link" href="research.html#lattice">See the calculation and caveats <span aria-hidden="true">↗</span></a></div>
+      <div class="blocker-stat"><span>MINIMUM OVERLAP</span><strong>82.34<small>%</small></strong><div class="stat-line"><span></span><i></i></div><div class="stat-caption"><span>0</span><span>70% limit</span><span>100</span></div></div>
+    </section>
+    <section id="portfolio" class="portfolio section-space" aria-labelledby="portfolio-title">
+      <div class="section-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE COMPARISON <span class="eyebrow-index">03 / NINE SITES</span></div><h2 id="portfolio-title">One portfolio.<br><em>No shortcut to a winner.</em></h2></div><p>These are the historical files named in the request. Values are owner-reported claims, <b>not authenticated scores</b>. The files are for research only; none is a unique new submission.</p></div>
+      <p id="ref-status" role="status">Priority-site HEAD freshness unavailable until checked; newer rasters are not automatically audited.</p>
+      <div class="table-header"><span>HISTORICAL REFERENCES <i>9</i></span><span>OWNER-REPORTED HISTORY · NOT FOR UPLOAD</span></div>
+      <p class="mobile-swipe">Swipe to see estimates and decisions →</p>
+      <div class="table-scroll"><table><thead><tr><th scope="col">SITE / HISTORICAL FILE</th><th scope="col">REPORTED CLAIM</th><th scope="col">LB ESTIMATE</th><th scope="col">UNIQUE?</th><th scope="col">DECISION</th></tr></thead><tbody id="focus-body"><tr><td colspan="5">Loading the pinned audit…</td></tr></tbody></table></div>
+      <div class="table-footer"><span>Peer overlap is directional within three pixels. Surfaces were not independently replayed.</span><a href="data/registry_audit.json">Download audit JSON ↗</a></div>
+    </section>
+    <section class="explanation section-space" aria-labelledby="why-title"><div><div class="eyebrow"><span class="eyebrow-line"></span> INTERPRETATION <span class="eyebrow-index">04 / WHAT WE KNOW</span></div><h2 id="why-title">Why did B2<br><em>look promising?</em></h2><p>The B2 historical mask is exactly a catalogue-distance-pruned subset of the GEMSDOE25/30 dotted mask on the mirrored grid. Fewer low-yield dots can reduce false-positive mass while the metric still gives nearby predictions partial credit.</p><p>That mechanism is plausible—not proof of causation. Hidden truth and authenticated per-file receipts are unavailable, so there is no defensible estimate that a new file will beat it.</p><a class="text-link" href="research.html#lineage">Explore the lineage <span aria-hidden="true">↗</span></a></div><div class="lineage-card"><div class="mini-label">OBSERVED RASTER LINEAGE <span>RESEARCH ONLY</span></div><div class="lineage-row"><span class="lineage-tag">01</span><div><strong>D2.8 · GEMSDOE25 / 30</strong><small>Identical prediction masks inside the footprint</small></div><b>44,090</b></div><div class="lineage-connector"></div><div class="lineage-row"><span class="lineage-tag">02</span><div><strong>B2 · GEMSDOE32</strong><small>D2.8, minus dots ≤2 px from mirrored catalogue</small></div><b>37,654</b></div><div class="lineage-connector"></div><div class="lineage-row"><span class="lineage-tag">03</span><div><strong>GEMSDOE36</strong><small>B2 plus 1,200 dots; no B2 dots removed</small></div><b>38,854</b></div><div class="lineage-note">Observed dot counts, not scores or proof of hidden truth.</div></div></section>
+    <section class="next-section"><div><div class="eyebrow inverse"><span class="eyebrow-line"></span> NEXT, NOT GUESSWORK</div><h2>Build a stronger<br><em>case for discovery.</em></h2><p>Four untested proposals; method lane: UNASSIGNED. No experiment or slot is authorized.</p><a class="button button-white" href="research.html">Read the research brief <span aria-hidden="true">↗</span></a></div><div class="next-list"><div><span>01</span><p><b>Resolve the registry conflict.</b><br>No unannounced exemptions.</p><span>↗</span></div><div><span>02</span><p><b>Authenticate inputs and cache.</b><br>A mirror is not an organizer receipt.</p><span>↗</span></div><div><span>03</span><p><b>Run a fair holdout.</b><br>Visible-only features and paired confidence intervals.</p><span>↗</span></div></div></section>
+  </div>
+</main>
+<footer><div class="shell footer-inner"><div><a class="brand footer-brand" href="./"><span class="brand-mark"><span></span></span><span>GEMS <b>FIELDNOTES</b><small>RESEARCH WORKSPACE</small></span></a><p>Built for careful decisions, not leaderboard promises.</p></div><div class="footer-links"><a href="../docs/">Main dashboard</a><a href="executive.html">Submission guide</a><a href="research.html">Research & sources</a><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem ↗</a><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official rules ↗</a></div><p class="footer-note">DATA SNAPSHOT · UTC<br><b>Always verify the live source.</b></p></div></footer>
+</body>
+</html>

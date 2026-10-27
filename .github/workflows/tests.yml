@@ -28,3 +28,4 @@ jobs:
       - run: python scripts/build_site.py
       - run: python scripts/build_site_data.py
       - run: python scripts/build_msptcd_site.py
+      - run: python scripts/build_release.py

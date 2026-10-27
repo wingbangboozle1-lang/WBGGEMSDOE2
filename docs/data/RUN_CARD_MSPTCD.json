@@ -6,7 +6,7 @@
   "hypothesis": "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients (Miller & Singh 1994), dip-shifted gravity-magnetic concordance across depth_to_base_surf steps, cross-strike cond_surf flank asymmetry, terrain-normalized radiometric tc edges, and multi-scale Hessian scarp ridges decoded via greedy 300 m triangular-kernel submodular allocation.",
   "mechanism": "Normal/transtensional faulting juxtaposes dense/magnetic footwall rock against basin fill while localizing clay/saline fluid alteration and degraded piedmont scarps along concealed fault projections.",
   "non_fault_mimic": "Unfaulted pluton/dike contacts, playal clay/evaporite pans, shoreline risers, and variable airborne survey clearance.",
-  "lane_status": "Executed 3 preregistered zero-leakage experiments (EXP-1, EXP-2, EXP-3 vs CTRL-19B) on unmodified gems57-pooled-hide-v2; stopped at literal all-registry gate.",
+  "lane_status": "Historical source-reported campaign: 3 experiments; not independently rerun in this review; no current lane authorization.",
   "experiment_budget": {
     "experiments_run": 3,
     "maximum_experiments": 3,
@@ -168,7 +168,7 @@
   "submission_name": null,
   "submission_note": null,
   "proposed_research_name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
-  "note": "Negative/DO NOT SUBMIT: WBG2-MSPTCD HOLDOUT-DTI 0.0426 (+81.8% vs 19B), unique vs 9 focus, stopped by literal 13GEMSDOE/17GEMSDOE >70% gate.",
+  "note": "Historical MSPTCD research only; literal duplicate stop. Old HOLDOUT-DTI does not validate corrected v2 features. DO NOT SUBMIT.",
   "ok_to_submit": false,
   "ok_to_download_new_tif": false,
   "ok_to_download_research_tif": true,
@@ -185,5 +185,22 @@
     "evidence": "evidence/conduit_review.json",
     "rejected_candidate_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
     "ok_to_submit": false
+  },
+  "post_review": {
+    "review_date": "2026-10-27",
+    "independently_reproduced_in_this_review": false,
+    "historical_feature_source": "evidence/reconciliation_archive/msptcd.py.txt",
+    "current_feature_version": "msptcd-v2-axial-cos-squared",
+    "orientation_defect": "The v1 abs(cos(2*delta)) feature rated perpendicular and parallel edge normals equally coherent. v2 uses cos-squared alignment; old model/holdout statistics do not describe v2.",
+    "cache_defect": "v1 reused outputs based on file existence alone. v2 binds feature implementation, raw inputs, footprint and output bytes in a manifest.",
+    "canary_caveat": "AUC <=0.90 is necessary under the protocol, not proof that leakage is absent.",
+    "preplacement_defect": "The historical script placed dots before its registry comparisons and wrote a research TIFF after the duplicate stop; it is now guarded before any run.",
+    "detached_diagnostic_caveat": "Same OOF predictions were rescored under different segment masks without refitting; not an independent confirmation.",
+    "metadata_caveat": "Band 6 values inconsistent with unscaled tilt radians support a radiometric interpretation but do not prove channel identity or units. Band 15 is not authenticated geological basement.",
+    "publication_correction": "The former rendered hypotheses invented heat_flow and other band indices absent from this stack. The renderer now uses the actual 19-band receipt and source operator names.",
+    "promotion_evidence_valid": false,
+    "authoritative_release_audit": "evidence/release_audit.json",
+    "raw_feature_diagnostic": "evidence/feature_semantics_review.json",
+    "raw_feature_discrepancy": "Restored hash 4371c82e...: Band 6 has 5,164,300 finite in-footprint cells, 3,073 missing, q01=7.7223, median=18.4817, q99=29.1005. Prior rendered quantiles/counts differed; no feature-source hash is bound to the historical campaign metrics."
   }
 }

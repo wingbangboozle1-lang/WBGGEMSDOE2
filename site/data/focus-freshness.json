@@ -1,6 +1,6 @@
 {
   "evidence_class": "GITHUB-HEAD-FRESHNESS-ONLY",
-  "checked_utc": "2026-10-27T17:26:08.167014+00:00",
+  "checked_utc": "2026-10-27T18:58:08.627729+00:00",
   "changed_count": 9,
   "unknown_count": 0,
   "scope": "HEAD comparison only; newer rasters are not downloaded or audited by this check",
@@ -8,63 +8,63 @@
     {
       "site": "GEMSDOE24",
       "audited_ref": "5cfab74597cd1d0a271e4640b4cc34511e56ca59",
-      "current_head": "2521cb676e172c141a4417e4925b73b6a896c1eb",
+      "current_head": "4ac957757f8494439e2dc51b58ca62c380550e44",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE25",
       "audited_ref": "606eef45e669a6da061ec24be4a3d870addadb0f",
-      "current_head": "5a60fb475b7171af93cfce795abe6d96c4021ea2",
+      "current_head": "3a1d548c6a187d50899095e29f5c022101edefc5",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE27",
       "audited_ref": "f1e32af867d9cf0081af20866c8241ec8678a432",
-      "current_head": "5ee301149eb525ed0fde740fe18261bf6ec9efab",
+      "current_head": "59246f662cd6492976599597cd754a7c730d92f0",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE28",
       "audited_ref": "9c1be21e8f1be707347f737e42abf62ea669c819",
-      "current_head": "67dbdf4da84fc92a98dd9644ab816ed18ae36bcc",
+      "current_head": "191a5608af3fc2a7412853d5642e7494a3238f05",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE30",
       "audited_ref": "35ce8911e2c3287eed973eacd12c252e8cb3f34c",
-      "current_head": "3c3d7255fdbb3a94375eff086522463a8eaca449",
+      "current_head": "d21ddd9502f3c3911e8d77b8f1e6abfaadffc876",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE31",
       "audited_ref": "78f9bf3ae82e5c78ca348aa37c0660c339e72f0e",
-      "current_head": "abd9a45cc7adf046d7d3829eb6e8c980943f462d",
+      "current_head": "88ec212955353f7590e94b8ef2a9763ffa035d45",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE32",
       "audited_ref": "45ee207185f72804497f7a7a392ad2c43e168f02",
-      "current_head": "1398109a23f04a2ace71c1bd2f527cfba87860b5",
+      "current_head": "6a28a39a2bca6bbb49cd8a56292c78d474c9ef91",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE33",
       "audited_ref": "a24fb7c5031ee08b12440af4593057858fecef8e",
-      "current_head": "122e2240a835c9c84831943ee3489dbb48fd6e85",
+      "current_head": "844f514819041c7be9efd345a24cf5cd70263f00",
       "changed": true,
       "status": "checked"
     },
     {
       "site": "GEMSDOE36",
       "audited_ref": "b90418f852615aa0974cf9a53b92fa569ed133fc",
-      "current_head": "7576942352382c557f074bae3f2c6eb72750fa44",
+      "current_head": "6306b61ba11339d534e9356c5b8ec78b65ac4d3a",
       "changed": true,
       "status": "checked"
     }

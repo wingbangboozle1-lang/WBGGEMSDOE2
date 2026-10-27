@@ -163,5 +163,8 @@
   ]
  },
  "residual_sd_all_rows": 0.07258966464437017,
- "interpretation": "Estimates are only meaningful inside the observed family: binary, isolated, roughly 3-6e4-pixel dot emissions at 1-2 km median offset from the visible catalogue. The model cannot certify a score above the observed maximum (0.2778) and gives no evidence about the 0.33-0.45 leaderboard band, which requires the geophysical feature stack that is not obtainable here."
+ "interpretation": "Estimates are only meaningful inside the observed family: binary, isolated, roughly 3-6e4-pixel dot emissions at 1-2 km median offset from the visible catalogue. The model cannot certify a score above the observed maximum (0.2778) and gives no evidence about the 0.33-0.45 leaderboard band, which requires the geophysical feature stack that is not obtainable here.",
+ "archive_status": "Historical research diagnostic; not a current release estimate or submission authorization",
+ "ok_to_submit": false,
+ "superseded_by": "evidence/release_audit.json"
 }

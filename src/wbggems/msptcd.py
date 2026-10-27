@@ -3,14 +3,14 @@
 Implements label-free geophysical, topographic, radiometric, electrical, and geodetic
 structural transforms on the cached 19-band GeoDAWN 100 m stack (EPSG:32611).
 
-Crucial metadata/provenance notes verified from the raw raster bytes:
+Metadata/provenance notes (mirror observations, not organizer authentication):
 - Band 6 (labeled ``tc`` in mirror descriptions as 'Tilt angle or total curvature')
-  has strictly positive values (q01=7.64, median=18.49, q99=29.02), matching the
+  has positive values (current mirror q01=7.72, median=18.48, q99=29.10), consistent with the
   official DrivenData problem page's GeoDAWN *total radiometric counts per second*
-  channel rather than a [-pi/2, pi/2] magnetic tilt angle. True potential-field
-  tilt angles (Miller & Singh, 1994) are therefore computed directly from vertical
-  and horizontal potential-field derivatives (Bands 2, 3, 9 for magnetics; Bands 5,
-  11, 13, 18 for isostatic gravity).
+  channel, and inconsistent with an unscaled [-pi/2, pi/2] magnetic tilt angle.
+  Positive values alone do NOT prove physical identity or units. The transforms
+  below are robustly rescaled derivative ratios, not a calibrated inversion or
+  a verification that the supplied vertical derivative belongs to RTP magnetics.
 - Band 15 (``depth_to_base_surf``) is described on the official competition page as
   depth to conductive base surface (mirror text says basement); no geological
   equivalence is assumed, so all transforms treat it strictly as an electrical/cover
@@ -19,9 +19,14 @@ Crucial metadata/provenance notes verified from the raw raster bytes:
 """
 from __future__ import annotations
 
+import hashlib
+import json
 from pathlib import Path
+import tempfile
 import numpy as np
 from scipy import ndimage as ndi
+
+FEATURE_VERSION = "msptcd-v2-axial-cos-squared"
 
 RAW_BAND_NAMES: tuple[str, ...] = (
     "mag_anom",             # 01
@@ -54,7 +59,7 @@ CORE_PHYSICS_NAMES: tuple[str, ...] = (
     "scarp_hessian_ridge_s35",  # 25: mesoscale (350 m) Hessian ridge crest of det_elev_slope
     "rad_terrain_residual_edge",# 26: |grad_h tc| / (1 + 0.2 * det_elev_slope)
     "depth_cover_log_step",     # 27: |grad_h log1p(max(depth_to_base_surf, 0))|
-    "grav_mag_orient_coherence",# 28: |cos 2(theta_grav - theta_mag)| * joint edge amplitude
+    "grav_mag_orient_coherence",# 28: cos²(theta_grav - theta_mag) * joint edge amplitude (v2)
 )
 
 STRAIN_SEIS_NAMES: tuple[str, ...] = (
@@ -246,13 +251,11 @@ def compute_physics_features_from_arrays(
     # 6. Log-scale conductive-base cover step sharpness.
     out["depth_cover_log_step"] = np.where(fp, dh_mag, np.nan).astype(np.float32)
 
-    # 7. Azimuthal orientation coherence between gravity and magnetic horizontal gradients.
-    # cos(2 * (theta_g - theta_m)) = ((gx*mx + gy*my)^2 - (gx*my - gy*mx)^2) / (|g|^2 |m|^2)
-    dot_gm = gx * mx + gy * my
-    cross_gm = gx * my - gy * mx
-    denom_gm = (gh_s20 * gh_s20) * (mh_s15 * mh_s15) + eps
-    cos2_diff = np.abs((dot_gm * dot_gm - cross_gm * cross_gm) / denom_gm).astype(np.float32)
-    orient_coh = (cos2_diff * np.tanh(0.5 * (gh_norm + mh_norm))).astype(np.float32)
+    # 7. Axial (polarity-invariant) parallel-normal alignment. The historical
+    # abs(cos(2*delta)) assigned maximal coherence to perpendicular edges too.
+    # cos²(delta) correctly yields 1 for parallel/antiparallel and 0 at 90 deg.
+    alignment = axial_alignment_squared(gx, gy, mx, my)
+    orient_coh = (alignment * np.tanh(0.5 * (gh_norm + mh_norm))).astype(np.float32)
     out["grav_mag_orient_coherence"] = np.where(fp, orient_coh, np.nan).astype(np.float32)
 
     # 8-10. EXP-2 Active Transtensional Strain-Rate & Microseismicity Conditioning.
@@ -269,27 +272,87 @@ def compute_physics_features_from_arrays(
     return out
 
 
+def axial_alignment_squared(gx, gy, mx, my) -> np.ndarray:
+    """Squared cosine of edge normals, invariant to magnetic polarity.
+
+    Zero-amplitude normals have zero alignment rather than arbitrary direction.
+    This geometry identity is unit-tested, not a new model/holdout experiment.
+    """
+    gx, gy, mx, my = (np.asarray(a, dtype=np.float64) for a in (gx, gy, mx, my))
+    if len({a.shape for a in (gx, gy, mx, my)}) != 1:
+        raise ValueError("edge-normal arrays must have the same shape")
+    if not all(np.isfinite(a).all() for a in (gx, gy, mx, my)):
+        raise ValueError("edge normals must be finite")
+    # Normalize components first: squaring raw finite values can overflow (or
+    # underflow to an arbitrary zero direction). Do not mutate caller arrays.
+    gs = np.maximum(np.abs(gx), np.abs(gy))
+    ms = np.maximum(np.abs(mx), np.abs(my))
+    gx, gy = (np.divide(a, gs, out=np.zeros_like(a), where=gs > 0) for a in (gx, gy))
+    mx, my = (np.divide(a, ms, out=np.zeros_like(a), where=ms > 0) for a in (mx, my))
+    numerator = (gx * mx + gy * my) ** 2
+    denominator = (gx * gx + gy * gy) * (mx * mx + my * my)
+    out = np.divide(numerator, denominator, out=np.zeros_like(numerator), where=denominator > 0)
+    return np.clip(out, 0., 1.).astype(np.float32)
+
+
+def _file_sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
+
+
 def build_or_load_msptcd_cache(
     band_cache_dir: Path,
     out_cache_dir: Path,
     footprint: np.ndarray,
 ) -> dict[str, Path]:
-    """Compute and cache all 12 MSPTCD physics features into .npy files in .cache/."""
+    """Content-bound cache: inputs, footprint, implementation AND outputs checked.
+
+    A v1 cache consisting of filenames alone is deliberately not reused. Outputs
+    stage together and the manifest is installed last, so an interrupted rebuild
+    can never be mistaken for a complete verified cache. No labels are inputs.
+    """
+    fp = np.asarray(footprint)
+    if fp.dtype != np.bool_ or fp.ndim != 2 or min(fp.shape) < 2 or not fp.any():
+        raise ValueError("footprint must be a nonempty 2-D boolean mask of shape at least 2x2")
     out_cache_dir = Path(out_cache_dir)
     out_cache_dir.mkdir(parents=True, exist_ok=True)
     needed_names = CORE_PHYSICS_NAMES + STRAIN_SEIS_NAMES
     paths = {name: out_cache_dir / f"{name}.npy" for name in needed_names}
-    if all(p.is_file() for p in paths.values()):
+    inputs = {idx: Path(band_cache_dir) / f"band-{idx:02d}.npy" for idx in REQUIRED_BAND_INDICES}
+    signature = {
+        "feature_version": FEATURE_VERSION,
+        "implementation_sha256": _file_sha256(Path(__file__)),
+        "shape": list(fp.shape),
+        "footprint_sha256": hashlib.sha256(np.packbits(fp).tobytes()).hexdigest(),
+        "input_sha256": {str(idx): _file_sha256(path) for idx, path in inputs.items()},
+    }
+    manifest_path = out_cache_dir / "manifest.json"
+    try:
+        manifest = json.loads(manifest_path.read_text())
+    except (OSError, ValueError):
+        manifest = {}
+    if (manifest.get("signature") == signature
+            and set(manifest.get("outputs", {})) == set(paths)
+            and all(p.is_file() and _file_sha256(p) == manifest["outputs"][name]
+                    for name, p in paths.items())):
         return paths
 
-    needed_bands = (2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 19)
-    bands = {
-        idx: np.load(Path(band_cache_dir) / f"band-{idx:02d}.npy", mmap_mode="r")
-        for idx in needed_bands
-    }
-    computed = compute_physics_features_from_arrays(bands, footprint)
-    for name in needed_names:
-        tmp = paths[name].with_suffix(".tmp.npy")
-        np.save(tmp, computed[name].astype(np.float32, copy=False))
-        tmp.replace(paths[name])
+    bands = {idx: np.load(p, mmap_mode="r", allow_pickle=False) for idx, p in inputs.items()}
+    computed = compute_physics_features_from_arrays(bands, fp)
+    with tempfile.TemporaryDirectory(prefix="msptcd-", dir=out_cache_dir) as tmp:
+        staged = {}
+        for name in needed_names:
+            path = Path(tmp) / f"{name}.npy"
+            np.save(path, computed[name].astype(np.float32, copy=False), allow_pickle=False)
+            staged[name] = path
+        receipt = {"signature": signature,
+                   "outputs": {name: _file_sha256(p) for name, p in staged.items()}}
+        for name, p in staged.items():
+            p.replace(paths[name])
+        staged_manifest = Path(tmp) / "manifest.json"
+        staged_manifest.write_text(json.dumps(receipt, indent=2, allow_nan=False) + "\n")
+        staged_manifest.replace(manifest_path)
     return paths

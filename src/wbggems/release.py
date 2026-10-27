@@ -1,0 +1,162 @@
+"""Fail-closed publication policy, separate from format tests and slot selection.
+
+The current repository has no authorized method lane or complete registry. This
+module deliberately cannot promote a submission. Do not substitute a normalized
+novelty diagnostic or a filename/hash change for the user's literal stop rule.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+from pathlib import Path
+import zipfile
+
+RELEASE_SCHEMA = "wbggems.release-audit.v1"
+
+
+def digest(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
+
+
+def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
+    """All public assets plus root research downloads; no extension/path bypass."""
+    return {p.relative_to(root).as_posix()
+            for folder in (root / 'docs', root / 'site', root / 'downloads')
+            for p in folder.rglob('*') if p.is_file() and p.suffix.lower() in suffixes}
+
+
+def read_json(path: Path):
+    def reject(value):
+        raise ValueError(f"Non-standard JSON constant {value} in {path}")
+
+    def unique_pairs(pairs):
+        out = {}
+        for key, value in pairs:
+            if key in out:
+                raise ValueError(f"Duplicate JSON key {key} in {path}")
+            out[key] = value
+        return out
+
+    return json.loads(path.read_text(encoding="utf-8"), parse_constant=reject, object_pairs_hook=unique_pairs)
+
+
+def require_experiment_lane(lane_id: str, root: Path) -> None:
+    """A ranked proposal is not a lane assignment; do not launch an old campaign."""
+    lane = read_json(root / "config/research_hypotheses.json").get("method_lane", {})
+    if lane.get("status") != "ASSIGNED" or lane.get("lane_id") != lane_id:
+        raise RuntimeError(
+            "STOP: no explicit method-lane assignment. Existing campaigns are historical; "
+            "do not construct features, select dots, or overwrite their evidence."
+        )
+    # Assignment alone is not permission to bypass the all-registry preflight.
+    raise RuntimeError("STOP: complete current registry and reviewed pre-placement launcher required")
+
+
+def _research_path(root: Path, relative: str) -> Path:
+    p = root / relative
+    resolved = p.resolve()
+    if (p.is_symlink() or not p.is_file()
+            or not any(resolved.is_relative_to(root / folder) for folder in ('docs/downloads', 'downloads'))):
+        raise ValueError(f"Artifact path outside the regular-file research inventory: {relative}")
+    return p
+
+
+def load_negative_release(root: Path) -> dict:
+    """Check portable forensic receipts against committed TIFF/ZIP bytes on builds.
+
+    No large input download or scientific dependencies are needed in Pages CI.
+    A changed/new artifact, altered witness hash, invalid receipt or attempted
+    promotion stops publication. This verifies an existing negative disposition,
+    NOT a fresh exhaustive-registry pass or a new scientific/organizer validation.
+    """
+    root = Path(root).resolve()
+    report = read_json(root / 'evidence/release_audit.json')
+    if (report.get('schema') != RELEASE_SCHEMA or report.get('verdict') != 'negative'
+            or report.get('ok_to_submit') is not False or report.get('approved_submission') is not None
+            or report.get('leaderboard_score_estimate') is not None):
+        raise ValueError('Release renderer only accepts the byte-bound negative disposition')
+    policy = report.get('policy', {})
+    if (policy.get('witness_exemptions') != [] or policy.get('radius_px') != 3
+            or policy.get('overlap_stop_strictly_greater_than') != .70
+            or policy.get('absolute_rank_stop_strictly_greater_than') != .90):
+        raise ValueError('Literal registry policy changed; no implicit exemptions or calibration allowed')
+    scope = report.get('scope', {})
+    manifest_path = root / 'config/registry_inputs.json'
+    if (scope.get('all_current_registry_rasters_checked') is not False
+            or type(scope.get('new_candidate_experiments')) is not int or scope['new_candidate_experiments'] != 0
+            or type(scope.get('weekly_slots_used')) is not int or scope['weekly_slots_used'] != 0
+            or scope.get('registry_manifest_sha256') != digest(manifest_path)):
+        raise ValueError('Release audit scope changed; rerun the independent forensic audit')
+    inputs = read_json(manifest_path)['inputs']
+    pins = {r['id']: r for r in inputs}
+    if len(pins) != len(inputs) or scope.get('registry_rasters_opened') != len(pins):
+        raise ValueError('Pinned witness count changed')
+    rows = report.get('artifacts', [])
+    if not rows or len({r['sha256'] for r in rows}) != len(rows):
+        raise ValueError('Empty or repeated release inventory')
+    paths = set()
+    for row in rows:
+        if (row.get('ok_to_submit') is not False or row.get('verdict') != 'negative'
+                or row.get('surface_rank_correlation') is not None or row.get('final_rank_correlation') is not None
+                or row.get('leaderboard_score_estimate') is not None or row.get('organizer_receipt') is not None):
+            raise ValueError('Research artifact cannot inherit an approval, score, or unmeasured rank check')
+        comparisons = row.get('comparisons', [])
+        if len(comparisons) != len(pins) or {r['registry_id'] for r in comparisons} != set(pins):
+            raise ValueError('Incomplete or repeated pinned-witness comparisons')
+        for c in comparisons:
+            pin = pins[c['registry_id']]
+            overlap = c.get('overlap_3px')
+            if (type(overlap) not in (int, float) or not math.isfinite(overlap) or not 0 <= overlap <= 1
+                    or c.get('sha256') != pin['sha256'] or c.get('source') != pin['url']
+                    or c.get('support_type') != pin.get('support_type', 'binary_dots')
+                    or c.get('duplicate_stop') is not (overlap > .70)):
+                raise ValueError('Witness measurement not bound to its immutable pin or literal threshold')
+        witnesses = {r['registry_id'] for r in comparisons if r['overlap_3px'] > .70}
+        if not {'13GEMSDOE', '17GEMSDOE_dense_prior'} <= witnesses:
+            raise ValueError('Missing decisive literal-rule witnesses; no release clearance inferred')
+        if set(row.get('duplicate_witnesses', [])) != witnesses:
+            raise ValueError('Duplicate witness list disagrees with measurements')
+        lattice = next(c['overlap_3px'] for c in comparisons if c['registry_id'] == '13GEMSDOE')
+        if row.get('lattice_overlap_3px') != lattice or row.get('maximum_overlap_3px') != max(c['overlap_3px'] for c in comparisons):
+            raise ValueError('Displayed overlap summary disagrees with the witness table')
+        aliases = row.get('aliases', [])
+        if row.get('path') not in aliases:
+            raise ValueError('Primary research file absent from aliases')
+        for rel in aliases:
+            p = _research_path(root, rel)
+            if rel in paths or digest(p) != row.get('sha256') or p.stat().st_size != row.get('bytes'):
+                raise ValueError(f'Changed or multiply-listed research artifact: {rel}')
+            paths.add(rel)
+        for key in ('validator', 'strict_all_finite_validator'):
+            validator = row.get(key, {})
+            if (validator.get('sha256') != row['sha256'] or validator.get('submission_approval') is not False
+                    or validator.get('reference_sha256') != report['reference']['sha256']):
+                raise ValueError('Validator not bound to the audited raster/reference bytes or claims approval')
+    current = research_inventory(root, ('.tif', '.tiff'))
+    if paths != current or scope.get('owned_tif_paths') != len(current) or scope.get('distinct_tif_sha256') != len(rows):
+        raise ValueError('Changed research TIFF inventory; audit new bytes before publishing')
+    zip_paths = set()
+    for row in report.get('zip_archives', []):
+        p = _research_path(root, row['path'])
+        if row['path'] in zip_paths or row.get('ok_to_submit') is not False or digest(p) != row['sha256']:
+            raise ValueError('Changed, repeated or approved research ZIP')
+        if row['member_sha256'] not in {r['sha256'] for r in rows}:
+            raise ValueError('ZIP is not bound to an audited research TIFF')
+        with zipfile.ZipFile(p) as z:
+            if z.namelist() != [row['member']] or Path(row['member']).name != row['member'] or Path(row['member']).suffix.lower() not in ('.tif', '.tiff'):
+                raise ValueError('ZIP must contain exactly its single named TIFF')
+            h = hashlib.sha256()
+            with z.open(row['member']) as member:
+                for block in iter(lambda: member.read(1 << 20), b''):
+                    h.update(block)
+            if h.hexdigest() != row['member_sha256']:
+                raise ValueError('ZIP member digest differs from the recorded TIFF')
+        zip_paths.add(row['path'])
+    if research_inventory(root, ('.zip',)) != zip_paths:
+        raise ValueError('Changed ZIP inventory; rerun the forensic audit')
+    return report

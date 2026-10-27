@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and mirror the single canonical negative run card, not a new run."""
+"""Validate the negative card and bind exact portable forensic outputs; no new run."""
 import json
 from pathlib import Path
 
@@ -53,8 +53,32 @@ if not (card['verdict'] == 'negative' and card['ok_to_submit'] is False
         and card['conduit_parallel_session']['ok_to_submit'] is False
         and len(card['note']) <= 140):
     raise ValueError('Run-card evidence changed; manual review required before publication')
+import sys
+sys.path.insert(0, str(ROOT / 'src'))
+from wbggems.release import digest, load_negative_release
+release = load_negative_release(ROOT)
+if (card['release_reconciliation']['owned_tif_paths'] != release['scope']['owned_tif_paths']
+        or card['release_reconciliation']['distinct_raster_sha256'] != release['scope']['distinct_tif_sha256']):
+    raise ValueError('Research inventory changed; review the canonical disposition')
+# Derive exact existing-artifact diagnostics from the independently generated
+# audit; never populate the null NEW-candidate or score fields.
+card['existing_artifact_audit'] = {
+    'evidence_class': release['evidence_class'],
+    'source_path': 'evidence/release_audit.json',
+    'source_sha256': digest(ROOT / 'evidence/release_audit.json'),
+    'recorded_utc': release['generated_utc'],
+    'scope': release['scope'],
+    'reference': release['reference'],
+    'artifacts': [{k:r[k] for k in ('path','aliases','sha256','positive_support_cells','validator',
+                                   'strict_all_finite_validator','surface_rank_correlation',
+                                   'final_rank_correlation','lattice_overlap_3px','maximum_overlap_3px',
+                                   'duplicate_witnesses','leaderboard_score_estimate','ok_to_submit','verdict')}
+                  for r in release['artifacts']],
+    'zip_archives': release['zip_archives'],
+}
+
 text = json.dumps(card, indent=2, allow_nan=False) + '\n'
-for rel in ('docs/data/run-card.json', 'docs/data/run_card.json', 'site/data/run_card.json'):
+for rel in ('evidence/run_card.json', 'docs/data/run-card.json', 'docs/data/run_card.json', 'site/data/run_card.json', 'data_public/run_card.json', 'docs/RUN_CARD.json', 'docs/data/run-card-current.json'):
     out = ROOT / rel
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text)

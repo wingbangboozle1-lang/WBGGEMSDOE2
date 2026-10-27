@@ -1,0 +1,108 @@
+{
+  "schema": "wbggems.request-claim-conflicts.v1",
+  "evidence_class": "USER-REPORTED; neither version is receipt verified",
+  "policy": "Do not fit/promote from these claims. Keep current blanks blank. Earlier CSV is a prior snapshot, not a current score or receipt.",
+  "prior_snapshot": "docs/data/user-reported-ledger-20261027.csv",
+  "conflicts": [
+    {
+      "site": "GEMSDOE27",
+      "name": "gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite",
+      "current_user_claim": 0.225,
+      "prior_snapshot_claim": null
+    },
+    {
+      "site": "GEMSDOE28",
+      "name": "gems28-s21-puhgb-20261026-16bbf281ba9b-allfinite",
+      "current_user_claim": 0.0206,
+      "prior_snapshot_claim": 0.1628
+    },
+    {
+      "site": "GEMSDOE33",
+      "name": "gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros",
+      "current_user_claim": 0.0963,
+      "prior_snapshot_claim": 0.0363
+    },
+    {
+      "site": "GEMSDOE36",
+      "name": "gemsdoe36-kpl36-exp3-20261026-fc869911e88c-zeros",
+      "current_user_claim": 0.1647,
+      "prior_snapshot_claim": 0.2314
+    },
+    {
+      "site": "GEMSDOE91",
+      "name": "gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.1578
+    },
+    {
+      "site": "KANLERGEMSDOE3",
+      "name": "kanlergems3-h1b-conduit-stepover-37654-20261026T002552Z-6b9bd4e1-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.0366
+    },
+    {
+      "site": "EUGGEMSDOE1",
+      "name": "euggems1-h2-2-bcal-submod-37654-20261026T001534Z-731e4107-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.1731
+    },
+    {
+      "site": "EUGGEMSDOE2",
+      "name": "euggems2-h1-curv-asym-submod-37541-20261026T025042Z-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.1636
+    },
+    {
+      "site": "EUGGEMSDOE3",
+      "name": "eug3-c3-29-exp2-oobisotonic-dink37654-20261026T054000Z-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.1782
+    },
+    {
+      "site": "WBGGEMSDOE1",
+      "name": "wbg1-m3-listric-worm-aniso-37654-20261026T161500Z-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.0882
+    },
+    {
+      "site": "WBGGEMSDOE3",
+      "name": "wbggems3-lst1-hybrid-20261026-0a0229da-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.1597
+    },
+    {
+      "site": "GINNYGEMSDOE1",
+      "name": "ginny1-exp3-listric-paired-submod-20261026T214500Z-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.0956
+    },
+    {
+      "site": "GINNYGEMSDOE2",
+      "name": "ginny2-e3-splay-hybrid-20261026-1b9cc3110df4-zeros",
+      "current_user_claim": null,
+      "prior_snapshot_claim": 0.1045
+    }
+  ],
+  "new_current_claims": [
+    {
+      "site": "GEMSDOE91",
+      "name": "gems91-s22-spectral-tilt-exp1-19480dots-20261027T002009Z-d857c3c4-zeros",
+      "current_user_claim": 0.0298
+    },
+    {
+      "site": "WBGGEMSDOE1",
+      "name": "wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros",
+      "current_user_claim": null
+    },
+    {
+      "site": "WBGGEMSDOE1",
+      "name": "wbg1-r64c-anderson-conditional-continuation-37654-20261027T015745Z-36d985e6-zeros",
+      "current_user_claim": null
+    },
+    {
+      "site": "WBGGEMSDOE2",
+      "name": "wbg2-atrg-28500dots-20261027T002046Z-105e98d5-zeros",
+      "current_user_claim": null
+    }
+  ]
+}

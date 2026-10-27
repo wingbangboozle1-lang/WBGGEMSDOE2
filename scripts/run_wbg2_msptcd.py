@@ -222,6 +222,8 @@ def run_canaries(
 
 
 def main() -> int:
+    from wbggems.release import require_experiment_lane
+    require_experiment_lane("wbg2-msptcd", ROOT)
     t_start = time.perf_counter()
     prepare_data.restore_template(False)
     sys.path.insert(0, str(prepare_data.TEMPLATE / "src"))
