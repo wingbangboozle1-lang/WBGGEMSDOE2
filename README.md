@@ -10,6 +10,12 @@ The checkout was initially a one-line README, not a working training pipeline. A
 
 A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. This review lane generated no TIFF after that stop; two separate parallel research TIFFs were later independently rejected. The nine historical downloads are research-only.
 
+## Current-session freshness note — 2026-10-27 UTC
+
+The committed leaderboard feed's last successful observation is **0.4437 — ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT**, observed on 2026-10-26 and now explicitly stale. The prompt's **0.3195** and **0.4413** “current high” figures conflict and are **USER-SUPPLIED claims**. None is a per-file organizer receipt or a HOLDOUT-DTI result. A GitHub API freshness check on 2026-10-27 found all nine priority-site heads changed since their audited file pins; those newer rasters have **not** been audited. See [current findings](research/findings.md).
+
+The large competition raster, label/grid files, and cached feature arrays are ignored/generated state, not tracked deliverables, and are **absent from this checkout**. I restored only the hash-pinned shared evaluator source under ignored `.cache/` to run unit tests; it contains no competition data or derived feature bank and may not persist. The hashes in the evidence files record an earlier mirror-restoration run and do not imply those rasters or feature arrays are currently present. They were not restored again because the current registry/policy stop and missing assigned lane prevent a compliant candidate experiment.
+
 ## Reproduce the audit
 
 ```bash
@@ -25,6 +31,7 @@ python scripts/audit_registry.py --fetch
 python scripts/audit_portfolio.py --fetch
 python scripts/review_parallel_candidate.py
 python scripts/review_conduit_candidate.py
+python scripts/build_hypotheses.py
 python scripts/build_run_card.py
 python scripts/build_site.py
 python scripts/build_site_data.py
