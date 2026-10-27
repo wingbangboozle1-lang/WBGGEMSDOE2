@@ -15,10 +15,11 @@ No new candidate, dot placement, model experiment, competition upload, or weekly
 
 ### What was independently measured
 
-The audit reopened **9 existing TIFF paths / 7 distinct SHA-256 identities**, checked their **6 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses**. Every saved TIFF has a decisive literal duplicate witness. Original surfaces were not replayed; no complete current-registry pass is claimed. The two additional identities arrived in concurrently merged PRs #24/#26; their bytes and research measurements were preserved, not generated or scientifically replayed by this review. Their former operational approval claims do not override the independent duplicate stop.
+The audit reopened **10 existing TIFF paths / 8 distinct SHA-256 identities**, checked their **7 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses** (plus a full **467-raster multi-org fleet audit** in [`evidence/dphs_uniqueness_and_fleet_audit.json`](evidence/dphs_uniqueness_and_fleet_audit.json)). Every saved TIFF has a decisive literal duplicate witness (`DO NOT SUBMIT`).
 
 | Existing research artifact | Lattice 3-pixel overlap | Inside/grid format | Extra all-finite check | Decision |
 |---|---:|---|---|---|
+| `wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros` *(New · HOLDOUT-DTI 0.1735)* | 99.836% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros` | 99.147% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros` | 99.923% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg3-h3pack-34k-20261027T174337Z-zeros` | 99.862% | PASS | FAIL | **DO NOT SUBMIT** |
@@ -26,6 +27,16 @@ The audit reopened **9 existing TIFF paths / 7 distinct SHA-256 identities**, ch
 | `wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros` | 99.980% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros` | 99.384% | FAIL | FAIL | **DO NOT SUBMIT** |
 | `wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros` | 99.871% | PASS | PASS | **DO NOT SUBMIT** |
+
+### WBG2-DPHS Campaign (`HOLDOUT-DTI = 0.1735`) & 467-Raster Fleet Empirical Synthesis
+
+- **Pages Subsite:** [`docs/dphs/index.html`](docs/dphs/index.html) · **How to Submit (Contest Steps):** [`docs/dphs/how-to-submit.html`](docs/dphs/how-to-submit.html) · **Executive Forensic Brief:** [`docs/dphs/executive-summary.html`](docs/dphs/executive-summary.html) · **Full Report:** [`research/dphs_findings.md`](research/dphs_findings.md)
+- **5 Preregistered Geological Hypotheses (`DPHS-H1..H5`, [`config/dphs_hypotheses.json`](config/dphs_hypotheses.json)):** Integrates 1 m USGS LiDAR residual scarps, 10 m 3DEP multi-scale DoG curvature & shoreline de-confounding, GeoDAWN aeromagnetic/radiometric lineaments, and Great Basin Play Fairway / GDR (`#1391`, `#1051`, `#1120`) hydrothermal + NBMG springs + Quaternary contacts + USGS ComCat seismicity (`60` zero-catalogue features; 61-feature leakage canary max symmetric ROC-AUC `0.61795 <= 0.90`).
+- **3-Experiment Buffered Holdout (`gems57-pooled-hide-v2`, `alpha=0.2, beta=0.8`, 300 m triangular kernel, `60,988` withheld positives, [`evidence/wbg2_dphs_results.json`](evidence/wbg2_dphs_results.json)):**
+  - **`EXP-3` (`DPHS-Submod300m`):** **`HOLDOUT-DTI = 0.1735` (`95% CI [0.1525, 0.1944]`)**, beating `ctrl_19b` (`0.0303`, paired `Δ = +0.1432`), `msptcd_31` (`0.0296`, paired `Δ = +0.1439`), `h3_blind_lattice` (`0.0720`, paired `Δ = +0.1015`), `EXP-1` (`0.0539`), and `EXP-2` (`0.0609`) across **4/4 folds**.
+- **467-Raster Uniqueness & 95-Scored-Raster Fleet Model ([`evidence/dphs_uniqueness_and_fleet_audit.json`](evidence/dphs_uniqueness_and_fleet_audit.json), [`evidence/RUN_CARD_DPHS.json`](evidence/RUN_CARD_DPHS.json)):**
+  - `WBG2-DPHS EXP-3` (`SHA-256 = 31f3d8e61d195dd5ac09f380815cd08ea072d8812e2f5021d2c41fa423e6ccd9`, `36,500` non-touching binary dots, `0` NaN anywhere) passes SHA-256 uniqueness (`0` matches), pre-placement surface Spearman (`0.8608 <= 0.90`), and 9-focus-site 3-px overlap (`42.68%–58.23% <= 70%`), **but stops fail-closed (`status = "negative"`, `DO NOT SUBMIT`, `0` slots spent)** on `>70%` 3-px overlap against `45` discrete fleet range-front scarp rasters (`95.87%` vs `GEMSDOE12`) + `48` blanket/lattice rasters (`99.84%` vs `13GEMSDOE` lattice).
+  - Our **11-feature Physics + SGMC + Geometry Ridge empirical model** (`n = 95` scored rasters across `68` sites: grouped LOSO `R² = +0.4303`, `Spearman = +0.6488`; 9-focus rank `Spearman = +0.7554`) shows why `GEMSDOE32` (`0.2778 USER-REPORTED`, `34.0%` distal `>32 px`, `C_pied = 0.0888`) and `GEMSDOE70` (`0.3133 USER-REPORTED`, `36.8% >32 px`, `C_pied = 0.2136`) beat range-front-concentrated PU-HGBR runs (`DPHS-EXP3` `frac_gt_32px = 3.64%`, `EMPIRICAL-ESTIMATE = 0.0713`, `95% PI [0.0000, 0.1941]`).
 
 A local format pass is not organizer acceptance, uniqueness, scientific validation or selector approval. The reference is an owner mirror, not an authenticated organizer sample. The actual bytes of the upload that produced “Predicted values must be in range [0, 1]” were not supplied; its cause remains unknown. H3's “zeros” TIFF has NaN outside the footprint; STEPXASYM marks 5,132,809 interior cells as NoData. These observations do not establish the cause of a different upload's error.
 
@@ -1012,6 +1023,15 @@ Pass 3: Re-check the entire implementation against the original request. Improve
 Do not stop after the first pass. Each pass must build on the previous one. Before finishing, verify that the final result fully satisfies the original request.  Work line by line verify everything no hallucinations.
 
 Go ahead and create a pull request and then merge the pull request onto the main. Make suggestions for what work still needs to be done and any limitations that is in the way of a successful project.  It should be worked on in this next session or the next session.  Work line by line verify everything no hallucinations.
+
+---
+
+### 2026-10-27 Parallel-Run Protocol & Updated Ledger Addendum
+
+- Current top public leaderboard score reported in prompt: `0.4413` (`ORGANIZER-PUBLISHED` snapshot on 2026-10-27: `0.4544`, `xiaofanhu`).
+- Verified 144-row (`128` scored, `16` blank/duplicate) prompt ledger archived in [`docs/data/user-reported-ledger-20261027.csv`](docs/data/user-reported-ledger-20261027.csv) and [`evidence/prompt_ledger_audit_20261027.json`](evidence/prompt_ledger_audit_20261027.json).
+- Hypothesis preregistration (`3–5` novel geological hypotheses naming specific layers, physical signature, why missing from USGS/INGENIOUS catalogue, non-fault mimic, repo differentiation, ranked by expected DTI gain and cost): [`config/dphs_hypotheses.json`](config/dphs_hypotheses.json) and [`research/dphs_hypotheses.md`](research/dphs_hypotheses.md).
+- Parallel-Run Protocol (`gems57-pooled-hide-v2` hide-and-recover buffered holdout, `alpha=0.2, beta=0.8`, 300 m kernel, single-feature leakage canary `AUC > 0.90`, pre-placement surface rank-corr `> 0.90` + final-dot 3-px overlap `> 70%`, max 3 experiments, shared `evaluate_holdout.py` + `submission_writer.py`, 1 JSON Run Card): [`evidence/RUN_CARD_DPHS.json`](evidence/RUN_CARD_DPHS.json).
 
 </details>
 

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Step-by-step contest submission guide for DrivenData DOE GEMS Prize (#306), automated [0,1] zero-NaN validation, and unmistakable candidate clearance status.">
+  <meta name="theme-color" content="#0b5d4d">
+  <title>How to Submit (Contest Steps &amp; Preflight) · WBG2-DPHS · GEMS Research</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell">
+      <a href="index.html" class="brand" aria-label="WBG2-DPHS home">
+        <span class="brandmark">
+          <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none">
+            <path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/>
+          </svg>
+        </span>
+        GEMS <small>SUBMISSION GUIDE</small>
+      </a>
+      <nav class="nav" aria-label="DPHS navigation">
+        <a href="index.html">DPHS &amp; Decision Table</a>
+        <a href="executive-summary.html">Why 0.2778 Won &amp; How to Beat It</a>
+        <a href="how-to-submit.html" aria-current="page">How to Submit (Contest Steps)</a>
+        <a href="../index.html">← Main Dashboard</a>
+      </nav>
+      <div class="top-right">
+        <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData Upload Portal ↗</a>
+        <span class="top-status"><span class="dot"></span> 3 / week slot cap</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="shell main">
+    <div class="intro">
+      <div>
+        <p class="eyebrow">Step-by-Step Contest Submission Subpage</p>
+        <h1>How to Submit to the DOE GEMS Prize (DrivenData #306)</h1>
+        <p>Exact technical format requirements, automated zero-NaN preflight checks preventing the <code>"Predicted values must be in range [0, 1]"</code> portal error, uniqueness clearance rules, and step-by-step upload instructions.</p>
+      </div>
+      <div class="intro-meta">Official Portal<br><strong><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData #306 ↗</a></strong></div>
+    </div>
+
+    <div class="callout" role="status">
+      <strong>Unmistakable Current Slot Recommendation (2026-10-27): No file is approved for submission — DO NOT SUBMIT.</strong>
+      <ul>
+        <li><strong>Authoritative All-Lane Verdict:</strong> <strong>DO NOT SPEND A WEEKLY SLOT YET (`0` slots used).</strong> Every candidate in this repository is archived for research inspection only (`DO NOT SUBMIT`).</li>
+        <li><strong><code>WBG2-DPHS EXP-3</code>:</strong> Achieved our highest spatially blocked holdout score (<code>HOLDOUT-DTI = 0.1735</code>, <code>95% CI [0.1525, 0.1944]</code>) and passes all 15 byte/<code>[0,1]</code> zero-NaN checks, <em>but</em> stops fail-closed at the <code>&gt;70%</code> 3-px fleet duplicate gate (<code>95.87%</code> vs <code>GEMSDOE12</code> scarp; <code>99.94%</code> vs <code>13GEMSDOE</code> lattice) — <strong>DO NOT SUBMIT</strong>.</li>
+        <li><strong><code>WBG2-DZ16</code>, <code>WBG2-MSPTCD</code>, <code>WBG3-H3PACK</code>, <code>CBS</code>, &amp; Historical <code>GEMSDOE24..36</code>:</strong> Former normalized-rule approvals are revoked under the literal all-registry gate (`99.15%–100.00%` overlap with `13GEMSDOE` lattice / `17GEMSDOE` prior), and historical `GEMSDOE24..36` files were already submitted (with 5/9 `-nan.tif` variants containing outside-footprint `NaN`s) — <strong>DO NOT SUBMIT</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="card-body">
+          <div class="section-header">
+            <div>
+              <h2>Step 1 · Official Format &amp; Zero-NaN Rules</h2>
+              <p>Verified against <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/945/">Problem Description ↗</a> &amp; <code>sample_submission.tif</code>.</p>
+            </div>
+            <span class="tag">Byte Gate</span>
+          </div>
+          <ul class="gate-list">
+            <li><span class="gate-icon">1</span><div><div class="gate-title">Single-Band <code>float32</code> GeoTIFF (<code>3730 &times; 3292</code>)</div><div class="gate-desc">CRS <code>EPSG:32611</code> (WGS 84 / UTM Zone 11N), affine <code>(100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)</code> (100 m pixels).</div></div><span class="gate-state">Required</span></li>
+            <li><span class="gate-icon">2</span><div><div class="gate-title">Preventing <code>"Predicted values must be in range [0, 1]"</code></div><div class="gate-desc">189 of 467 audited fleet files store <code>NaN</code> outside the polygon (<code>-nan.tif</code>) or masked nodata. Strict whole-array validators evaluate <code>(arr &gt;= 0) &amp; (arr &lt;= 1)</code>, which returns <code>False</code> on <code>NaN</code>! Always upload the <strong><code>-zeros.tif</code></strong> build: <code>nodata = None</code>, <code>12,279,160 / 12,279,160</code> finite pixels, <code>0.0</code> outside footprint, <code>[0.0, 1.0]</code> everywhere.</div></div><span class="gate-state">Critical</span></li>
+            <li><span class="gate-icon">3</span><div><div class="gate-title">Off-Catalogue Non-Touching Support</div><div class="gate-desc"><code>existing_faults.tif</code> pixels are masked during scoring; zero dots on mapped faults and zero 3&times;3 touching pairs maximize 300 m triangular-kernel mass per false-positive unit.</div></div><span class="gate-state">Verified</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-body">
+          <div class="section-header">
+            <div>
+              <h2>Step 2 · Exact 6-Step DrivenData Upload Checklist</h2>
+              <p>For when a candidate clears all gates and a weekly selector authorizes a slot.</p>
+            </div>
+            <span class="tag">Portal Workflow</span>
+          </div>
+          <ol>
+            <li><strong>Check Weekly Slot Budget (Max 3 / 7 days):</strong> Sign in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData Submissions ↗</a> and confirm remaining rolling weekly uploads before uploading any file.</li>
+            <li><strong>Download the All-Finite <code>-zeros.tif</code> File (or <code>.zip</code> if portal requests compressed upload):</strong> Never upload a <code>-nan.tif</code> or <code>-nanoutside.tif</code> file.</li>
+            <li><strong>Verify Exact SHA-256 Locally:</strong> Run <code>shasum -a 256 &lt;file.tif&gt;</code> and confirm 64-character hex equality against the repository JSON receipt (<code>data_public/candidate.json</code> or <code>evidence/wbg2_dphs_results.json</code>).</li>
+            <li><strong>Run Automated Local Byte Validator (Zero Human Guesswork):</strong> Run <code>.venv/bin/pytest tests/test_candidate_submission.py tests/test_dphs.py</code> — verifies CRS, shape, affine transform, <code>0</code> NaNs, <code>0</code> Infs, <code>[0, 1]</code> bounds, and <code>0</code> touching dots directly on disk bytes.</li>
+            <li><strong>Paste Exact Tracking Name &amp; &le;140-Character Note:</strong> Enter the provenance-pinned submission note into DrivenData's comment box so any resulting score can be matched unambiguously to its commit and SHA-256.</li>
+            <li><strong>Record Organizer Receipt:</strong> Save the DrivenData submission confirmation timestamp and returned DTI score before promoting any claim to <code>ORGANIZER-CONFIRMED</code>.</li>
+          </ol>
+        </div>
+      </article>
+    </div>
+
+    <section class="card table-card" id="tracking-metadata-reference">
+      <div class="table-heading">
+        <div>
+          <h2>Step 3 · Exact File Hashes, Tracking Names &amp; &le;140-Char Notes</h2>
+          <p>Reference table for auditing or authorized selector execution.</p>
+        </div>
+        <span class="tag">Provenance</span>
+      </div>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Artifact</th>
+              <th scope="col">SHA-256 (64-hex)</th>
+              <th scope="col">Submission Name &amp; &le;140-Char Tracking Note</th>
+              <th scope="col">Clearance Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Artifact"><a href="../downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif">Research GeoTIFF — DO NOT SUBMIT (wbg2-dphs-exp3-…-zeros.tif)</a></td>
+              <td data-label="SHA-256"><code>31f3d8e61d195dd5ac09f380815cd08ea072d8812e2f5021d2c41fa423e6ccd9</code></td>
+              <td data-label="Metadata">
+                <strong>Name:</strong> <code>wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros</code><br>
+                <strong>Note (85 chars):</strong> <code>WBG2-DPHS EXP-3 1mLiDAR+10m3DEP+GeoDAWN+GDR1391+CELF300m 36500dots HOLDOUT-DTI=0.1735</code>
+              </td>
+              <td data-label="Status"><span class="status-no">DO NOT SUBMIT</span><span class="small-meta">Research archive only (&gt;70% fleet scarp stop)</span></td>
+            </tr>
+            <tr>
+              <td data-label="Artifact"><a href="../downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif">Research GeoTIFF — DO NOT SUBMIT (wbg2-dz16-n34500-…-zeros.tif)</a></td>
+              <td data-label="SHA-256"><code>a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912</code></td>
+              <td data-label="Metadata">
+                <strong>Name:</strong> <code>wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros</code><br>
+                <strong>Note (90 chars):</strong> <code>DZ-16 damage-zone flank, 34500 isolated dots, 0.0 outside footprint, unique (wbggemsdoe2)</code>
+              </td>
+              <td data-label="Status"><span class="status-no">DO NOT SUBMIT</span><span class="small-meta">Former normalized approval revoked under literal lattice rule (EMPIRICAL-ESTIMATE 0.15)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div><strong>GEMS RESEARCH · SUBMISSION GUIDE</strong> · Protect the 3/week slot</div>
+      <div>
+        <a href="index.html">← DPHS Overview</a> &nbsp;·&nbsp;
+        <a href="../submission/index.html">DZ-16 Audit Page</a> &nbsp;·&nbsp;
+        <a href="../index.html">Main Dashboard</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
