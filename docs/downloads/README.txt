@@ -1,7 +1,8 @@
 NO FILE IS APPROVED FOR SUBMISSION
 ==================================
 
-All TIFFs and ZIPs in this directory, including DZ-16, H3-PACK and MSPTCD, are
+All TIFFs and ZIPs in this directory, including DZ-16, H3-PACK, MSPTCD and the
+CBS/D19-DOTTED artifact under cbs/, are
 historical RESEARCH-ONLY artifacts. Do not upload them or spend a competition
 slot. The literal any-registry 3-pixel overlap stop failed for each of the five
 files independently checked in evidence/release_triage_20261027.json; one
