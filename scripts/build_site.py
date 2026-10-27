@@ -75,7 +75,7 @@ SUB_NAME = _sub['submission_name']
 
 
 def decision(suffix=''):
-    return f'''<section class="banner ok" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Current recommendation · submit</p><h2 id="decision-heading{suffix}">One file is approved for submission.</h2><p><code>wbg3-h3pack-34k-20261027T174337Z-zeros.tif</code> — 34,000 dots, zero dots inside 3 px of a mapped fault, packing 9.365/9.38, format validation PASS, distinct from all nine focus rasters (worst 3 px overlap 17.2 %). Projected score 0.308 (range 0.285–0.332); a PROJECTION, never a score.</p></div><div class="actions"><a class="button" href="downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif" download>{icon('download')} Download the GeoTIFF</a><a class="text-link" href="submit/">Full submission page →</a></div></section>'''
+    return f'''<section class="banner ok" aria-labelledby="decision-heading{suffix}"><div class="banner-icon">{icon('shield')}</div><div class="banner-copy"><p class="banner-label">Current recommendation · submit</p><h2 id="decision-heading{suffix}">One file is approved for submission.</h2><p><code>wbg3-h3pack-34k-20261027T174337Z-zeros.tif</code> — 34,000 dots, zero dots inside 3 px of a mapped fault, packing 9.365/9.38, format validation PASS, distinct from all nine focus rasters (worst 3 px overlap 17.2 %). Projected score 0.308 (range 0.285–0.332); a PROJECTION, never a score.</p></div><div class="actions"><a class="button" href="downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.zip" download>{icon('download')} Download the GeoTIFF</a><a class="text-link" href="submit/">Full submission page →</a></div></section>'''
 
 
 def freshness():
