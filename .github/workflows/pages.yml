@@ -24,21 +24,42 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install Markdown renderer
+        run: python -m pip install 'Markdown>=3.7,<4'
+      - name: Restore prior public-observation fallback
+        uses: actions/cache/restore@v4
+        continue-on-error: true  # committed dated snapshot remains the fallback
+        with:
+          path: .cache/feed-state
+          key: gems-leaderboard-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: gems-leaderboard-v1-
+      - name: Validate fallback before use
+        run: python scripts/feed_cache.py restore
       - name: Refresh public leaderboard (stale on failure)
         run: python scripts/refresh_leaderboard.py
       - name: Check priority-site commit freshness (no new raster audit)
         env:
           GH_TOKEN: ${{ github.token }}
         run: python scripts/refresh_registry_refs.py
-      - name: Refresh fieldnotes feed (stale on failure)
+      - name: Refresh fieldnotes feed from the same leaderboard snapshot
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python scripts/refresh_feed.py
+        run: python scripts/refresh_feed.py --leaderboard-snapshot docs/data/leaderboard.json
+      - name: Preserve the last valid public observation for later builds
+        run: python scripts/feed_cache.py save
+      - name: Cache public-observation fallback
+        uses: actions/cache/save@v4
+        continue-on-error: true  # cache availability must not block Pages deployment
+        with:
+          path: .cache/feed-state
+          key: gems-leaderboard-v1-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Rebuild both evidence-first static sites
         run: |
+          python scripts/build_hypotheses.py
           python scripts/build_run_card.py
           python scripts/build_site.py
           python scripts/build_site_data.py
+          python scripts/build_msptcd_site.py
       - name: Stage the same URL layout as legacy Pages
         run: |
           mkdir -p _site/docs _site/site

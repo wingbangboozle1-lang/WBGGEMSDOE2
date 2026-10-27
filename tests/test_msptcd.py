@@ -138,6 +138,9 @@ def test_markdown_local_links_resolve():
         ROOT / "research/findings.md",
         ROOT / "research/hypotheses.md",
         ROOT / "research/sources.md",
+        ROOT / "research/msptcd_findings.md",
+        ROOT / "research/msptcd_hypotheses.md",
+        ROOT / "research/msptcd_sources.md",
         ROOT / "evidence/review.md",
     ]
     pattern = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -199,3 +202,23 @@ def test_msptcd_saved_geotiff_zip_and_receipts_match_bytes():
         assert np.isfinite(arr).all()
         assert float(arr.min()) == 0.0 and float(arr.max()) == 1.0
         assert int((arr > 0).sum()) == art["dots"]
+
+    # Verify RUN_CARD_MSPTCD, cross-lane audit, 144-row 2026-10-27 ledger, and docs/msptcd/*.html
+    card = json.loads((ROOT / "evidence/RUN_CARD_MSPTCD.json").read_text())
+    assert card == json.loads((ROOT / "docs/data/RUN_CARD_MSPTCD.json").read_text())
+    assert card["verdict"] == "negative" and card["ok_to_submit"] is False
+    assert len(card["note"]) <= 140
+
+    cross = json.loads((ROOT / "evidence/wbg2_msptcd_cross_lane_audit.json").read_text())
+    assert cross == json.loads((ROOT / "docs/data/wbg2_msptcd_cross_lane_audit.json").read_text())
+    assert len(cross["comparisons_against_sibling_lanes"]) == 2
+    assert all(r["distinct_under_calibrated_70pct_gate"] for r in cross["comparisons_against_sibling_lanes"])
+
+    import csv
+    with (ROOT / "docs/data/user-reported-ledger-20261027.csv").open() as f:
+        ledger_rows = list(csv.DictReader(f))
+    assert len(ledger_rows) == 144
+
+    for page_name in ("index.html", "executive-summary.html", "research.html", "sources.html"):
+        p = ROOT / "docs/msptcd" / page_name
+        assert p.is_file() and len(p.read_text()) > 1000

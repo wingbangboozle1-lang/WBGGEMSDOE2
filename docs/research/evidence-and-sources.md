@@ -1,84 +1,53 @@
-# Scientific & Forensic Findings (`WBGGEMSDOE2` — 2026-10-27)
+# Evidence and limitations
 
-## 1. Evidence Labels Used Throughout This Repository
-Per the Parallel-Run Protocol, every numeric figure carries an explicit provenance class:
-- **`HOLDOUT-DTI`**: Measured locally on the **unmodified shared evaluator** (`gems57.evaluate_holdout`, `evaluator_version = "gems57-pooled-hide-v2"`, $\alpha=0.2, \beta=0.8$, $R=300\text{ m}$ triangular kernel, `60,988` withheld positive pixels across 4 label-blind spatial quadrants with `8.0 km` / `80 px` spatial buffer, 1,000 paired 20 km spatial-cluster bootstrap draws).
-- **`ORGANIZER-CONFIRMED`**: Reserved strictly for an authenticated DrivenData submission receipt (`None` for local candidates — `0` competition slots used).
-- **`OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT`**: Official DrivenData public leaderboard top team score (`0.4544` by `xiaofanhu`, verified `2026-10-27T17:15:00Z` via `https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/`). Not a receipt for any repository file.
-- **`USER-REPORTED`**: Historical owner/prompt claims across the 144-row multi-repo ledger (`docs/data/user-reported-ledger.csv`); never treated as `ORGANIZER-CONFIRMED` without a portal receipt.
+## Competition facts from official sources
 
----
+| Statement | Source |
+|---|---|
+| Predict faults indicative of geothermal resources, not geothermal production or vent locations directly. The public and private test sets are expert-identified faults omitted from the existing catalogue. | [DrivenData problem description](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) |
+| The target raster is single-band `float32`, EPSG:32611, 100 m resolution, with the training bounds and predictions in [0, 1]. The public description says outside bounds null/NaN. | [Submission format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format) |
+| DTI uses a 300 m triangular distance kernel, alpha 0.2 and beta 0.8. | [Performance metric and equations](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#performance-metric) |
+| Existing USGS/INGENIOUS fault pixels are excluded from evaluation in both rounds; staff did not say that a two-pixel buffer is excluded. | [DrivenData staff clarification](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516) |
+| The official reference notebook supports CPU and GPU; GPU is faster but not a formal requirement for every experiment. | [Organizer reference solution](https://github.com/drivendataorg/gems-prize-reference-solution) |
+| External data need a license allowing use and sharing for verification. | [Competition overview](https://www.drivendata.org/competitions/306/competition-doe-gems/) and [rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf) |
+| The challenge overview lists the deadline as December 3, 2026 at 23:59 UTC. Always verify for updates. | [Competition overview](https://www.drivendata.org/competitions/306/competition-doe-gems/) |
+| The [GDR INGENIOUS regional dataset](https://gdr.openei.org/submissions/1391) is CC BY 4.0 and lists the included sources and attribution. The USGS [GeoDAWN release](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) is CC0. Verify the license of each supplementary source independently. | The official data-release pages linked at left |
 
-## 2. Why `GEMSDOE32` (`h33-h33-2-b2`, `0.2778` User-Reported) Topped the Nine Focus Sites — And Why Later Variants Dropped
+## What we actually measured
 
-Byte-exact inspection across the 9 priority focus champions (`GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36`) and the 2026-10-26/27 sibling updates established an exact raster lineage on the `3730 × 3292` (`5,167,373` in-footprint pixel) EPSG:32611 grid:
+The nine cited historical TIFFs, the owner-mirrored sample and label grids, and two registered witness files were downloaded from pinned GitHub commits and checked against their recorded SHA-256 digests. [Portfolio measurements](../data/portfolio.json) include decoded-content identity and directed Euclidean three-pixel overlap; they are not an exhaustive audit of all current or private submissions. Each of the nine historical site bests exceeds the requested overlap limit against at least one other priority-site historical raster. GEMSDOE25 and GEMSDOE30 have identical decoded in-footprint predictions, despite different bytes. The old project files are reference material only.
 
-1. **`GEMSDOE25` (`dotted-h19-5-d2-8`, `0.2600` user-reported) and `GEMSDOE30` (`d28-poisson300m-offcat-44090`, `0.2600` user-reported) are pixel-for-pixel identical inside the footprint (`44,090` binary dots, `Jaccard = 1.0000`).** Both discretize the `H19-5` multi-line corroborated ridge surface into ~300 m Poisson-spaced dots so adjacent pixels do not double-pay the $\alpha=0.2$ false-positive penalty inside the $R=300\text{ m}$ triangular kernel.
-2. **`GEMSDOE32` (`gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif`, `0.2778` user-reported, SHA-256 `c55bafc4...`) is algebraically identical to `GEMSDOE25` minus all `6,436` dots lying within Euclidean distance $\le 2\text{ px}$ ($200\text{ m}$) of `existing_faults.tif`, leaving exactly `37,654` dots (`0` additions, `6,436` removals).**
-   - **Mathematical mechanism under DW-Tversky ($\alpha=0.2, \beta=0.8$):** On the DrivenData forum (`t/11516/2`), organizers confirmed that mapped `existing_faults.tif` pixels are masked during scoring, while unmapped continuation/splay truth pixels are evaluated via the 300 m linear distance kernel:
-     $$\text{DTI} = \frac{\text{TP}_w}{\text{TP}_w + 0.2\,\text{FP}_w + 0.8\,\text{FN}_w}.$$
-     Dots placed at $d \le 200\text{ m}$ alongside already-mapped fault traces sit inside parallel rasterization/scarp halos where hidden new fault traces are scarce, contributing almost pure $\text{FP}_w$ (`~6,436` units, reducing denominator drag by $0.2 \times 6{,}436 \approx 1{,}287$) while dots at $d \ge 3\text{ px}$ retain nearly full triangular-kernel reach onto genuine off-catalogue fault continuations.
-3. **`GEMSDOE36` (`anderson-geothermal-pinn-38854`, `0.2750` user-reported) keeps all `37,654` `GEMSDOE32` dots (`0` removals) and appends `1,200` extra dots (`38,854` total),** slightly diluting precision (`0.2778 -> 0.2750`).
-4. **Why 2026-10-20..27 from-scratch models across the 144-entry fleet scored `0.0363 – 0.2478` (below `0.2778`):**
-   - Best non-`D2.8` fleet entries: `GEMSDOE70` (`0.2478`), `GEMSDOE76` (`0.2343`), `GEMSDOE36 kpl36-exp3` (`0.2314`), `GEMSDOE27 h29` (`0.2190`), `KANLERGEMSDOE2 htcads-exp-2` (`0.1973`), `GEMSDOE91 s17-lftg` (`0.1823`), `EUGGEMSDOE3` (`0.1782`), `KANLERGEMSDOE1` (`0.1753`), `GEMSDOE28 s21-puhgb` (`0.1628`), `WBGGEMSDOE3 lst1-hybrid` (`0.1597`), `GEMSDOE91 S18-UNIQUE-curvtilt` (`0.1578`).
-   - Failure modes observed in lower-scoring 2026-10-26/27 entries:
-     - **`WBGGEMSDOE2` `wbg2-h1-stepxasym` (`0.0725` user-reported):** Wrote `nodata = 0.0` (marking `5,132,809 / 5,167,373` interior footprint pixels as missing) and relied on a leaky private evaluator (`0.1321` claimed local DTI without excluding test quadrant pixels from training).
-     - **`GEMSDOE33` `s33-seisdil` (`0.0363` user-reported):** Weighted coarse GPS strain/seismicity kernels too heavily without sharp 100 m structural localization.
-   - **Can `0.2778` (`GEMSDOE32`) be beaten?** Yes in principle — the live public leaderboard #1 stands at **`0.4544`** (`xiaofanhu`, +`0.1766` above `0.2778`), proving massive headroom exists — **but not by perturbing `D2.8`/`B2`, and no honest projection of live leaderboard DTI can be made without hidden organizer truth.**
+The B2 raster is exactly the user-reported GEMSDOE25 D2.8 raster minus its pixels at Euclidean catalogue distance **≤2 pixels**: 44,090 D2.8 dots, 6,436 removed, 37,654 retained. This is a statement about reopened owner-mirrored bytes, **not** proof that those bytes were actually submitted or that they caused the claimed result.
 
----
+## Why might B2 have worked?
 
-## 3. Critical GeoDAWN Data Forensic Discovery: Band 6 (`tc`) Is Radiometric Total Counts, Not Tilt Angle
+The official metric rewards credit near a withheld truth pixel but charges false-positive mass. Sparsifying a dense line can reduce redundant false-positive mass while preserving kernel coverage. The B2 catalogue-flank pruning could further remove low-value predicted pixels. The owner-supplied historical sequence is consistent with this interpretation; it does not reveal private truth, causal effects, or independent per-submission receipts. The exact score 0.2778 is **USER-REPORTED / NOT ORGANIZER-CONFIRMED**. The [official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) is separate, time-varying, and not a receipt for B2.
 
-Direct quantile verification across all 19 cached bands (`.cache/features/band-01..19.npy`, `5,167,373` footprint pixels) revealed:
-- **Band 6 (`tc`):** `min = 0.088`, `q01 = 7.637`, `median = 18.490`, `q99 = 29.020` (`5,164,300` finite pixels, `0` negative values). While mirror metadata strings called Band 6 `"Tilt angle or total curvature"`, the official DrivenData problem page figure explicitly labels `tc` as **total radiometric counts** from the USGS GeoDAWN airborne gamma-ray survey. Any model assuming Band 6 is a Miller–Singh magnetic tilt angle in $[-\pi/2, \pi/2]$ computes physically invalid features.
-- **Bands 10 & 16 (`deq_n100a15`, `ieq_n100a15`):** Extreme heavy-tailed distributions (`deq_n100a15` `median = 622.8`, `q99 = 50,240`; `ieq_n100a15` `median = 755.9`, `q99 = 5,083`), requiring `log1p` compression.
+For fixed truth count `N`, let `T=TP_w`, `F=FP_w`, and `S=T/[(1-beta)T+alpha F+beta N]`. For a finite change with positive denominators, improvement requires
 
----
+`[1-(1-beta)S] * delta_T > alpha * S * delta_F`.
 
-## 4. `WBG2-MSPTCD` 3-Experiment Zero-Leakage Campaign Results (`HOLDOUT-DTI`)
+This is not a universal one-dot credit threshold. `T` is a sum over truth pixels; the self-credit of a dot is a different quantity. Coverage saturation and actual changes in both terms matter.
 
-All 3 preregistered experiments (`scripts/run_wbg2_msptcd.py`, `src/wbggems/msptcd.py`) were evaluated on the **exact unmodified `gems57.evaluate_holdout` (`gems57-pooled-hide-v2`)** across `gems57.spatial.folds(catalogue, footprint, buffer_px=80)` (`4` label-blind quadrants, `8.0 km` buffer, `0` shared train/truth components, `60,988` total withheld positive pixels, `155` 20-km bootstrap clusters, `1,000` paired draws, runtime `307.4 s`):
+## Format and data provenance irregularities
 
-### 4.1 Single-Feature Holdout Leakage Canaries (124 Checks = 31 Features × 4 Folds)
-- **Result:** **124 / 124 PASSED** (`threshold = 0.90` on symmetric $\max(\text{AUC}, 1-\text{AUC})$).
-- **Highest two-sided AUC across all 31 features and 4 folds:** `0.6131` (`tc_radiometric`), followed by `seismic_structural_index` (`0.6086`), `geod_shearrate` (`0.5930`), `det_elev_slope` (`0.5917`), `strain_dilation_ratio` (`0.5874`), `scarp_hessian_ridge_s35` (`0.5776`), and `dip_offset_concordance` (`0.5483`). Full machine receipt: `evidence/wbg2_msptcd_canaries.json`.
+* The user-reported portal error does not establish whether NaN, an out-of-range sentinel, a mask, or another cause was responsible. The local strict validator refuses non-finite or out-of-range values across the entire output as a conservative policy. The official text's outside-null wording and all-finite zero-outside files are **not proven equivalent**, and no portal acceptance is claimed.
+* The owner-mirrored “sample” contains 60,988 positive cells, while the official page describes an absence-predicting sample. Its grid/footprint is useful for local checks, but its authenticity is not independently established.
+* The public [DrivenData data tab](https://www.drivendata.org/competitions/306/competition-doe-gems/data/) redirects to login. This sandbox cannot directly reach the user-supplied Dropbox, GDR or USGS binary hosts. A hash-pinned public **owner mirror** was restored automatically; hashes confirm its internal integrity, not organizer provenance. Authenticated official files, private test labels, organizer receipts and the current weekly quota remain inaccessible.
+* The repository was empty except for an initial README. Claims of a pre-existing full training pipeline or a GPU requirement were not valid descriptions of this checkout. A GPU is absent here; the reference solution also supports CPU.
+* The requested method paragraph is not identifiable, and the literal registry rule conflicts with some sibling sites' density exemptions. The unmodified shared literal implementation treats every finite positive cell, including continuous probabilities, as support. One registered continuous probability raster has positive support over the entire footprint; under that implementation, every nonempty candidate fails overlap. Whether a continuous prior should count as “dots” is a policy ambiguity, not permission to silently exempt it. Even using only the binary lattice witness, a 37,654-dot field necessarily exceeds the threshold. The pigeonhole proof does **not** apply to every smaller field.
+* In the upstream shared `metric.py` prose, `delta_T <= k` is stated, but `delta_T` may sum coverage gains over multiple truth pixels and exceed a dot's nearest-truth self-credit `k`. This is a **documentation issue**; the shared scorer and exact finite-change calculation are not changed or privately forked here. Do not use that inequality to justify candidate allocation. The owner must correct the shared upstream template; this session can only work in its assigned repository/branch.
 
-### 4.2 Pooled `HOLDOUT-DTI` (`gems57-pooled-hide-v2`, `60,988` Withheld Positives)
 
-| Arm | Features & Allocation | Pooled `HOLDOUT-DTI` | 95% Spatial-Block CI | Paired $\Delta\text{DTI}$ vs `CTRL-19B` (95% CI) | Detached-Splay DTI (`11,307` px) |
-|---|---|---:|---|---:|---:|
-| **`CTRL-19B`** (Control) | 19 raw GeoDAWN bands + Bayes-calibrated `allocate_by_marginal_bar` | **`0.023409`** | `[0.015356, 0.031895]` | Baseline (`0.000000`) | `0.016915` |
-| **`EXP-1`** (`MSPTCD-Core`) | +9 tilt-grad, dip-offset concordance, cond flank asymmetry, Hessian scarp & rad residual features (`28` total) | **`0.034975`** | `[0.025587, 0.045475]` | **`+0.011566`** (`[+0.005424, +0.018644]`) | `0.027271` (`+61.2%`) |
-| **`EXP-2`** (`MSPTCD-StrainPU`) | +3 active strain/seismicity features (`31` total) + cover-relief inverse-propensity PU weights | **`0.028575`** | `[0.020416, 0.038058]` | `+0.005166` (`[-0.002732, +0.012803]`) | `0.024312` (`+43.7%`) |
-| **`EXP-3`** (`MSPTCD-SubmodGreedy`) | Ridge-coherent `0.5 EXP-1 + 0.5 EXP-2` OOF surface + multi-round 300 m submodular `greedy_allocate` | **`0.042554`** | `[0.032059, 0.054765]` | **`+0.019145`** (`[+0.010977, +0.028755]`) | **`0.030799`** (`+82.1%`) |
+## Parallel H1 candidate — independent post-merge audit
 
-Key scientific takeaways:
-1. **`EXP-1` beats `CTRL-19B` in all 4 spatial quadrants** (`Fold 0: 0.0269 vs 0.0139`, `Fold 1: 0.0464 vs 0.0278`, `Fold 2: 0.0532 vs 0.0452`, `Fold 3: 0.0273 vs 0.0254`) with a paired 95% bootstrap CI `[+0.005424, +0.018644]` strictly above zero, and jumps **+61.2%** on detached unlinked splays ($\ge 400\text{ m}$ from visible faults).
-2. **`EXP-3` adds a second statistically significant gain over `EXP-1`** ($\Delta\text{DTI} = +0.007579$, 95% CI `[+0.002982, +0.011954]`), reaching **`0.042554` (`+81.8%` over `CTRL-19B`)**.
-3. **Why zero-leakage whole-quadrant `HOLDOUT-DTI` (`0.0426`) is numerically much lower than interleaved/leaderboard DTI (`0.27–0.45`):** Holding out an entire $180\text{ km} \times 160\text{ km}$ quadrant behind an $8\text{ km}$ buffer removes 100% of along-strike fault continuation cues inside that quadrant, testing pure blind geophysical generalization rather than local tip extrapolation.
+A separate concurrent run produced a 34,564-dot TIFF, SHA-256 `592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33`, and compared it only with nine selected focus files. We independently reopened the exact bytes and the two hash-pinned witness rasters. **34,351 of 34,564 candidate dots (99.3837518806%)** lie within three pixels of the binary lattice: this exceeds 70% and is a decisive duplicate/STOP even if continuous prior support is disputed. The literal finite-positive continuous prior overlaps all dots. [Measured receipt](../data/parallel_candidate_audit.json). No pre-placement surface or complete current registry was independently checked.
 
----
+The parallel H1 report used a non-shared evaluator. In the archived `run_lane.py`, training-negative selection references the full catalogue including withheld fault pixels; the stated 15-pixel buffer may eliminate a direct 3-pixel exclusion effect, but this was not independently established for every case. More importantly, the evaluation cells were not excluded from the training zone, so spatial separation was not enforced. The feature canary was reported only for fold 0, and the reported comparator was not a valid matched holdout champion. The reported HOLDOUT-DTI and its four-fold bootstrap interval remain historical claims, not a protocol-valid promotion basis or a leaderboard forecast. Its projection is uncalibrated.
 
-## 5. 21-Raster Novelty Audit & Why Verdict Remains Fail-Closed `negative` (`DO NOT SUBMIT`)
+The raw candidate array is finite, in [0,1] and matches the mirrored grid in the shared local format report. However, its `nodata=0` tag causes the raster dataset mask to mark 5,132,809 in-footprint cells invalid. That discrepancy is not rejected by the current shared local checker and organizer mask handling is unknown; an upstream shared-template correction or clarification is needed. The candidate is **not eligible for upload** in any case.
 
-The cross-fitted off-catalogue candidate (`docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif`, `25,594` dots, SHA-256 `fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614`) was audited on both its pre-placement continuous OOF surface and final binary dots against **21 verified rasters**:
-- **Genuine novelty vs all 9 priority focus champions (`GEMSDOE24..36`):** Forward 3-px overlap is **`64.45% – 68.06%`** (every single one $\le 70\%$; against `GEMSDOE32` `B2` it is **`64.45%`**, reverse `5.11%`, surface Spearman $\rho = +0.0673$).
-- **Genuine novelty vs all 2026-10-26/27 discrete sibling submissions:** `GEMSDOE28_S21` (`36.07%`), `GEMSDOE33_S33` (`48.35%`), `GEMSDOE36_KPL36` (`59.12%`), `KANLERGEMSDOE2_HTCADS` (`53.63%`), `WBGGEMSDOE3_LST1` (`32.92%`), and local `STEPXASYM` (`33.70%`).
-- **Why the literal all-registry gate triggers a mandatory `STOP` (`verdict = "negative"`, `ok_to_submit = False`):**
-  1. `13GEMSDOE` (`206,574`-dot regular stride-5 calibration lattice) covers `99.8713%` of the footprint within 3 px (`100.00%` forward overlap on our interior ridges, even though Spearman $\rho = -0.0001$).
-  2. Full-footprint continuous probability rasters (`17GEMSDOE_dense_prior`, `WBGGEMSDOE1_C1`, `WBGGEMSDOE2_PARALLEL_CONDUIT`) have `value > 0` on 100% of footprint pixels (`100.00%` literal support overlap).
-  3. `GEMSDOE27_H31` (`56,161`-dot unpruned halo raster) reaches `78.34%` forward 3-px overlap (`6.48%` reverse, $\rho = +0.0866$).
 
-Per protocol, we **do not exempt or bypass any registry witness**. The generated GeoTIFF and `.zip` are published strictly for **reproducible research and format verification (`DO NOT SUBMIT` to the competition)**.
+## Separate parallel conduit TIFF
 
----
-
-## 6. Root Cause & Automated Prevention of `"Predicted values must be in range [0, 1]"`
-
-DrivenData's scorer rejects uploads with `"Predicted values must be in range [0, 1]"` whenever saved raster bytes contain:
-1. Unclipped raw logits, z-scores, Euler weights, or kernel sums ($<0$ or $>1$),
-2. `NaN` or `±Inf` values on scored in-footprint pixels (e.g., from division by zero in tilt ratios or unfiltered missing GeoDAWN pixels), or
-3. Ambiguous `nodata` metadata (`nodata = 0.0` or mismatched exterior/interior masks).
-
-Our automated pipeline (`gems57.submission_writer.write_submission` + `scripts/validate_submission.py` + `scripts/validate_tif.py`) re-opens the written `.tif` from disk and verifies without human intervention: single-band `float32`, `EPSG:32611`, `3730 × 3292`, `(100, 0, 243350, 0, -100, 4508550)`, `min = 0.0`, `max = 1.0`, `0` NaN, `0` Inf, and `0` masked in-footprint pixels—never silently clipping invalid inputs during validation.
+The other parallel session's 58-file uniqueness scan omitted the registered lattice. Its own ≥0.5 threshold selects 5,094,374 cells, of which 5,087,882 (99.8726%) are within three pixels of that lattice. It has no holdout score. Source review shows synthetic trend/noise inputs rather than the listed geophysical features; its private evaluator is not the pinned shared holdout. The [independent receipt](../data/conduit_review.json) supersedes the original pass. Do not submit.

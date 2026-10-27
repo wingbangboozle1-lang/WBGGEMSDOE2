@@ -1,43 +1,13 @@
 {
   "evidence_class": "OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT",
   "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-  "captured_utc": "2026-10-27T17:15:00Z",
-  "last_attempt_utc": "2026-10-27T17:48:35.343987+00:00",
+  "data_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard_partial/?page=1",
+  "captured_utc": "2026-10-27T17:21:43Z",
+  "last_attempt_utc": "2026-10-27T17:26:05.384531+00:00",
   "status": "stale",
   "top_public_dti": 0.4544,
   "top_participant": "xiaofanhu",
-  "top5_public_dti": [
-    {
-      "rank": 1,
-      "participant": "xiaofanhu",
-      "dti": 0.4544,
-      "submissions": 32
-    },
-    {
-      "rank": 2,
-      "participant": "cfld__",
-      "dti": 0.3916,
-      "submissions": 15
-    },
-    {
-      "rank": 3,
-      "participant": "Batik Shirt Brothers",
-      "dti": 0.3911,
-      "submissions": 12
-    },
-    {
-      "rank": 4,
-      "participant": "BrandenKMurray",
-      "dti": 0.3724,
-      "submissions": 21
-    },
-    {
-      "rank": 5,
-      "participant": "No Fault of Our Own",
-      "dti": 0.3566,
-      "submissions": 15
-    }
-  ],
+  "capture_method": "Official page and public leaderboard fragment viewed via the Arena page renderer; the value was transcribed from the rank-one row. Raw HTML was not saved; timestamp records the immediate follow-up clock reading.",
   "note": "Refresh failed; showing the last successful observation if present, not a live value.",
   "last_error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
 }

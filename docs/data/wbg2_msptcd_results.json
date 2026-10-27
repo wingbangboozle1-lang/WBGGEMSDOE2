@@ -425,9 +425,9 @@
   "winning_experiment": "exp3_msptcd_submod_greedy",
   "artifact": {
     "stem": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
-    "tif_path": "docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
-    "zip_path": "docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip",
-    "receipt_path": "docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.json",
+    "tif_path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+    "zip_path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip",
+    "receipt_path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.json",
     "tif_sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
     "tif_bytes": 71341,
     "zip_sha256": "f3e92a114c93e1fc848fb0dc405d2c8aa723f77408e9fb11b224d7aee014ff1b",
@@ -435,7 +435,7 @@
     "dots": 25594,
     "note": "WBG2-MSPTCD 25594px OOF research TIF; unique vs 9 focus; STOP on 13GEMSDOE/17GEMSDOE literal gate. DO NOT SUBMIT.",
     "validator": {
-      "path": "/home/user/WBGGEMSDOE2/docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+      "path": "/home/user/WBGGEMSDOE2/docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
       "bytes": 71341,
       "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
       "bands": 1,
@@ -501,7 +501,7 @@
       "inside_values_in_0_1": true
     },
     "inspect_tif": {
-      "path": "/home/user/WBGGEMSDOE2/docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+      "path": "/home/user/WBGGEMSDOE2/docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
       "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
       "grid_match_reference": true,
       "crs": "EPSG:32611",

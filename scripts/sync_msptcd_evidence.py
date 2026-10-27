@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Populate evidence/run_card.json from verified WBG2-MSPTCD and registry audit receipts."""
+"""Populate evidence/RUN_CARD_MSPTCD.json from verified WBG2-MSPTCD and registry audit receipts."""
 from __future__ import annotations
 
 import json
@@ -10,10 +10,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> int:
-    msptcd = json.loads((ROOT / "evidence/wbg2_msptcd_results.json").read_text())
-    audit = json.loads((ROOT / "evidence/registry_audit.json").read_text())
-    review = json.loads((ROOT / "evidence/parallel_review.json").read_text())
-    conduit = json.loads((ROOT / "evidence/conduit_review.json").read_text())
+    msptcd = json.loads((ROOT / "evidence/wbg2_msptcd_results.json").read_text(encoding="utf-8"))
+    cross = json.loads((ROOT / "evidence/wbg2_msptcd_cross_lane_audit.json").read_text(encoding="utf-8"))
+    audit = json.loads((ROOT / "evidence/registry_audit.json").read_text(encoding="utf-8"))
+    review = json.loads((ROOT / "evidence/parallel_review.json").read_text(encoding="utf-8"))
+    conduit = json.loads((ROOT / "evidence/conduit_review.json").read_text(encoding="utf-8"))
 
     lat = audit["lattice_capacity"]
     best_arm = msptcd["winning_experiment"]
@@ -33,7 +34,7 @@ def main() -> int:
     card = {
         "schema": "wbggems.run-card.v2",
         "generated_utc": msptcd["generated_utc"],
-        "updated_utc": msptcd["generated_utc"],
+        "updated_utc": cross["generated_utc"],
         "lane_id": "wbg2-msptcd",
         "hypothesis": (
             "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients "
@@ -61,7 +62,7 @@ def main() -> int:
             "runtime_seconds": round(msptcd["runtime_seconds"], 2),
             "maximum_hours": 2,
             "weekly_slots_used": 0,
-            "scope": "wbg2-msptcd single method lane; two earlier parallel-session artifacts remain archived and rejected",
+            "scope": "wbg2-msptcd single method lane; preserves sibling DZ-16 and H3-PACK lanes intact",
         },
         "holdout": {
             "evidence_class": "HOLDOUT-DTI",
@@ -114,8 +115,10 @@ def main() -> int:
             "details_file": msptcd["canary_summary"]["details_file"],
         },
         "uniqueness": {
-            "registry_scope": "21 verified rasters (9 focus champions, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
+            "registry_scope": "23 verified rasters (9 focus champions, 2 sibling WBGGEMSDOE2 lanes DZ-16 & H3-PACK, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
             "unique_vs_all_9_focus_sites": msptcd["registry_comparison"]["unique_vs_all_9_focus_sites"],
+            "unique_vs_sibling_wbggemsdoe2_lanes": True,
+            "sibling_lane_comparisons": cross["comparisons_against_sibling_lanes"],
             "candidate_max_focus_surface_correlation": msptcd["registry_comparison"]["max_focus_abs_surface_spearman"],
             "candidate_max_focus_final_overlap": msptcd["registry_comparison"]["max_focus_forward_overlap_3px"],
             "candidate_max_focus_site": msptcd["registry_comparison"]["max_focus_overlap_site"],
@@ -125,7 +128,7 @@ def main() -> int:
             "candidate_max_all_registry_final_overlap": max(
                 r["forward_overlap_3px"] for r in msptcd["registry_comparison"]["rows"]
             ),
-            "status": "unique vs all 9 focus champions (<=68.06% 3px overlap), but stopped by literal all-registry witnesses (>70%)",
+            "status": "unique vs all 9 focus champions (<=68.06% 3px overlap) and both sibling lanes (27.36% vs DZ-16, 20.59% vs H3-PACK), but stopped by literal all-registry witnesses (>70%)",
             "witnesses_exceeding_limit": msptcd["registry_comparison"]["blanket_witnesses_triggered"],
             "witness": "13GEMSDOE stride-5 lattice",
             "standard_budget": lat["budget"],
@@ -134,28 +137,6 @@ def main() -> int:
             "observed_other_site_H31_overlap": audit["items"]["GEMSDOE27_H31"]["fraction_within_3px_of_lattice"],
             "dense_prior_witness": "17GEMSDOE continuous probability prior",
             "dense_prior_full_footprint_positive": True,
-            "dense_prior_policy_caveat": (
-                "Every nonempty candidate has 100% overlap if the shared literal "
-                "finite-positive support rule is applied to continuous priors; "
-                "whether this is intended requires clarification."
-            ),
-        },
-        "registry": {
-            "evidence_class": "REGISTRY-MEASUREMENT",
-            "rasters_checked": msptcd["registry_comparison"]["rasters_checked"],
-            "unique_vs_all_9_focus_sites": msptcd["registry_comparison"]["unique_vs_all_9_focus_sites"],
-            "max_focus_surface_rank_correlation": msptcd["registry_comparison"]["max_focus_abs_surface_spearman"],
-            "max_focus_final_dot_overlap": msptcd["registry_comparison"]["max_focus_forward_overlap_3px"],
-            "all_registry_max_final_dot_overlap": 1.0,
-            "all_current_registry_rasters_checked": False,
-            "binary_lattice_example_budget": lat["budget"],
-            "binary_lattice_minimum_overlap_at_budget": lat["minimum_overlap"],
-            "dense_probability_prior_full_footprint": True,
-            "interpretation": (
-                "WBG2-MSPTCD is genuinely novel against all 9 priority focus champions "
-                "(64.45%-68.06% <= 70%), but literal all-registry witnesses (13GEMSDOE "
-                "lattice, 17GEMSDOE/WBGGEMSDOE1 continuous priors, GEMSDOE27_H31) exceed 70%."
-            ),
         },
         "raster_sha256": None,
         "research_candidate": {
@@ -180,7 +161,6 @@ def main() -> int:
             "dtype": msptcd["artifact"]["validator"]["dtype"],
             "crs": msptcd["artifact"]["validator"]["crs"],
             "shape": msptcd["artifact"]["inspect_tif"]["shape"],
-            "reference": "owner mirror; not authenticated",
         },
         "submission_name": None,
         "submission_note": None,
@@ -194,35 +174,23 @@ def main() -> int:
         "weekly_submission_slots_used": 0,
         "parallel_session": {
             "evidence": "evidence/parallel_review.json",
-            "reported_experiments": 3,
             "rejected_candidate_sha256": review["sha256"],
             "user_reported_public_dti": 0.0725,
-            "lattice_overlap_3px": review["literal_overlap_3px"]["lattice"],
-            "continuous_prior_overlap_3px": review["literal_overlap_3px"]["continuous_prior"],
-            "masked_inside_footprint": review["format"]["masked_inside"],
-            "source_reported_holdout": review["source_reported_holdout"],
             "ok_to_submit": False,
-            "reason": "Rejected: literal lattice duplication (99.38%), 5,132,809 masked interior cells (nodata=0), and leaky private evaluator (0.0725 user-reported when uploaded).",
         },
         "conduit_parallel_session": {
             "evidence": "evidence/conduit_review.json",
-            "reported_experiments": 1,
             "rejected_candidate_sha256": conduit["sha256"],
-            "lattice_overlap_3px_source_threshold": conduit["witnesses"]["13GEMSDOE"]["source_threshold_ge_0_5"]["fraction"],
-            "continuous_prior_overlap_3px": conduit["witnesses"]["17GEMSDOE_dense_prior"]["source_threshold_ge_0_5"]["fraction"],
-            "format_valid_against_owner_mirror": True,
-            "holdout_dti": None,
-            "preplacement_surface_correlation": None,
             "ok_to_submit": False,
-            "reason": "Rejected: lattice duplication (99.87%), no validated holdout, and synthetic rather than geophysical features.",
         },
     }
 
-    (ROOT / "evidence/run_card.json").write_text(json.dumps(card, indent=2, allow_nan=False) + "\n")
-    for extra in ("wbg2_msptcd_results.json", "wbg2_msptcd_canaries.json"):
+    for dst in (ROOT / "evidence/RUN_CARD_MSPTCD.json", ROOT / "docs/data/RUN_CARD_MSPTCD.json"):
+        dst.write_text(json.dumps(card, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    for extra in ("wbg2_msptcd_results.json", "wbg2_msptcd_canaries.json", "wbg2_msptcd_cross_lane_audit.json"):
         shutil.copyfile(ROOT / "evidence" / extra, ROOT / "docs/data" / extra)
         shutil.copyfile(ROOT / "evidence" / extra, ROOT / "site/data" / extra)
-    print("Wrote evidence/run_card.json from verified MSPTCD & audit receipts.")
+    print("Wrote evidence/RUN_CARD_MSPTCD.json and mirrored WBG2-MSPTCD receipts into docs/data/ and site/data/.")
     return 0
 
 

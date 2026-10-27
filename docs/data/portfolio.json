@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-27T17:30:05.808184+00:00",
+  "generated_utc": "2026-10-27T17:28:30.833008+00:00",
   "evidence_class": "HISTORICAL-MIRROR-MEASUREMENT + USER-REPORTED",
   "score_evidence": "User-reported claims, no organizer submission-page receipts",
   "score_forecast": "Unavailable: no verified cross-family leaderboard calibration",

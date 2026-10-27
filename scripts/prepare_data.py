@@ -13,9 +13,11 @@ import datetime as dt
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / ".cache" / "shared-template"
@@ -77,6 +79,68 @@ def restore_template(fetch: bool) -> Path:
     return TEMPLATE / "scripts/prepare_data.py"
 
 
+def guard_existing_mirrors(root: Path, pins: dict[str, str]) -> None:
+    """Never overwrite an existing different file with a third-party mirror.
+
+    The upstream fetch/assembly helpers replace mismatched destinations. Check
+    *all* destinations before invoking any of them so an authenticated organizer
+    download, a user's file, a directory, or a dangling symlink is not destroyed.
+    This is a local safety preflight, not a modification of the shared builder.
+    """
+    names = ("labels.tif", "existing_faults.tif", "sample_submission.tif",
+             "training_features.tif")
+    for name in names:
+        path = root / "data" / "official" / name
+        expected = pins[f"data/official/{name}"]
+        if path.exists() or path.is_symlink():
+            if not path.is_file() or digest(path) != expected:
+                raise ValueError(
+                    f"Refusing to overwrite existing non-mirror input: {path}. "
+                    "Preserve it and use a separate data location for the public mirror."
+                )
+
+
+def install_without_overwrite(staged: Path, destination: Path, expected: str) -> None:
+    """Atomically publish verified bytes without clobbering a concurrent arrival.
+
+    Staging is on the same filesystem. An already-present, identical file is
+    safe to reuse; a different file (including a dangling symlink) is a STOP.
+    """
+    if not staged.is_file() or digest(staged) != expected:
+        raise ValueError(f"Staged mirror missing or hash-mismatched: {staged}")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        os.link(staged, destination)
+    except FileExistsError:
+        if not destination.is_file() or digest(destination) != expected:
+            raise ValueError(f"Refusing to overwrite concurrently created input: {destination}")
+
+
+def stage_small_mirror(prepare, source: str, destination: Path, expected: str) -> None:
+    """Use the unmodified shared fetcher only inside a disposable staging area."""
+    cache = ROOT / ".cache"
+    cache.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="mirror-input-", dir=cache) as tmp:
+        staged = Path(tmp) / destination.name
+        prepare.fetch_raw(prepare.BRIDGE_REPO, f"data/bridge/{source}",
+                          prepare.BRIDGE_COMMIT, staged, expected)
+        install_without_overwrite(staged, destination, expected)
+
+
+def stage_feature_mirror(prepare, destination: Path, expected: str) -> None:
+    """Assemble with the shared helper in isolation; publish without replacement."""
+    cache = ROOT / ".cache"
+    parts = cache / "source_parts"
+    parts.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="mirror-feature-", dir=cache) as tmp:
+        stage_root = Path(tmp)
+        stage_cache = stage_root / ".cache"
+        stage_cache.mkdir()
+        (stage_cache / "source_parts").symlink_to(parts.resolve(), target_is_directory=True)
+        prepare.assemble_features(stage_root)
+        install_without_overwrite(stage_cache / "training_features.tif", destination, expected)
+
+
 def load_builder(path: Path):
     spec = importlib.util.spec_from_file_location("pinned_shared_prepare", path)
     if spec is None or spec.loader is None:
@@ -93,6 +157,9 @@ def main() -> int:
     args = parser.parse_args()
     try:
         prepare = load_builder(restore_template(args.fetch))
+        # The shared helpers can replace a mismatched destination. This must
+        # precede every data fetch and assembly, including partial restores.
+        guard_existing_mirrors(ROOT, prepare.PIN)
         file_sources = {
             "labels.tif": "existing_faults.tif",
             "existing_faults.tif": "existing_faults.tif",
@@ -103,19 +170,18 @@ def main() -> int:
         for dest, src in file_sources.items():
             path = root / dest
             expected = prepare.PIN[f"data/official/{dest}"]
-            if args.fetch:
-                prepare.fetch_raw(prepare.BRIDGE_REPO, f"data/bridge/{src}",
-                                  prepare.BRIDGE_COMMIT, path, expected)
+            if args.fetch and not path.is_file():
+                stage_small_mirror(prepare, src, path, expected)
             if not path.is_file() or digest(path) != expected:
                 raise FileNotFoundError(f"Missing or changed mirror file: {path}; use --fetch")
             print(f"[data] verified {path.relative_to(ROOT)}", flush=True)
         feature = root / "training_features.tif"
         expected_feature = prepare.PIN["data/official/training_features.tif"]
-        if not feature.is_file() or digest(feature) != expected_feature:
+        if not feature.is_file():
             if not args.fetch:
                 raise FileNotFoundError("Feature stack missing or changed; use --fetch")
-            print("[data] restoring five pinned feature-stack parts", flush=True)
-            prepare.assemble_features(ROOT)
+            print("[data] restoring five pinned feature-stack parts in isolation", flush=True)
+            stage_feature_mirror(prepare, feature, expected_feature)
         if digest(feature) != expected_feature:
             raise ValueError("Feature stack hash mismatch")
         print(f"[data] verified {feature.relative_to(ROOT)}", flush=True)
@@ -140,7 +206,7 @@ def main() -> int:
         (ROOT / "evidence").mkdir(exist_ok=True)
         (ROOT / "evidence" / "data_preparation.json").write_text(json.dumps(receipt, indent=2) + "\n")
         return 0
-    except (FileNotFoundError, ValueError, RuntimeError, subprocess.TimeoutExpired) as e:
+    except (OSError, ValueError, RuntimeError, KeyError, subprocess.TimeoutExpired) as e:
         print(f"[data] STOP: {e}", file=sys.stderr)
         return 1
 

@@ -1,0 +1,40 @@
+{
+  "schema": "wbggems.msptcd.cross-lane-audit.v1",
+  "generated_utc": "2026-10-27T18:18:00Z",
+  "msptcd_candidate": {
+    "path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+    "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
+    "dots": 25594,
+    "verdict_under_literal_all_registry_gate": "DO NOT SUBMIT (fail-closed negative)",
+    "distinct_vs_all_9_focus_champions_70pct": true,
+    "max_focus_3px_overlap": 0.680589
+  },
+  "comparisons_against_sibling_lanes": [
+    {
+      "lane": "DZ-16 (submission lane)",
+      "path": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
+      "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+      "dots": 34500,
+      "msptcd_within_3px_of_lane": 0.273619,
+      "lane_within_3px_of_msptcd": 0.017072,
+      "exact_shared_dots": 258,
+      "footprint_spearman_rho": 0.004951,
+      "distinct_under_calibrated_70pct_gate": true
+    },
+    {
+      "lane": "H3-PACK (third lane)",
+      "path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+      "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+      "dots": 34000,
+      "msptcd_within_3px_of_lane": 0.205908,
+      "lane_within_3px_of_msptcd": 0.013676,
+      "exact_shared_dots": 182,
+      "footprint_spearman_rho": -0.000534,
+      "distinct_under_calibrated_70pct_gate": true
+    }
+  ],
+  "dz16_vs_h3pack_3px_overlap": {
+    "dz16_within_3px_of_h3pack": 0.208841,
+    "h3pack_within_3px_of_dz16": 0.212088
+  }
+}

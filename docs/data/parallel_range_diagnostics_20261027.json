@@ -1,0 +1,48 @@
+{
+  "path": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
+  "sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+  "grid_match_reference": true,
+  "crs": "EPSG:32611",
+  "shape": [
+    3730,
+    3292
+  ],
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "bands": 1,
+  "dtype": "float32",
+  "nodata": "0.0",
+  "strict_all_finite_requested": true,
+  "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "organizer_acceptance": "unknown",
+  "submission_approval": false,
+  "footprint_cells": 5167373,
+  "nonfinite_inside": 0,
+  "masked_inside": 5132809,
+  "nan_total": 0,
+  "inf_total": 0,
+  "nan_inside": 0,
+  "nan_outside": 0,
+  "inf_inside": 0,
+  "inf_outside": 0,
+  "below_zero_inside": 0,
+  "below_zero_outside": 0,
+  "above_one_inside": 0,
+  "above_one_outside": 0,
+  "positive_outside": 0,
+  "diagnostics_band": 1,
+  "all_finite": true,
+  "minimum_inside": 0.0,
+  "maximum_inside": 1.0,
+  "nonzero_inside": 34564,
+  "failures": [
+    "reference-footprint cells are marked nodata/masked"
+  ],
+  "format_valid_against_reference": false
+}

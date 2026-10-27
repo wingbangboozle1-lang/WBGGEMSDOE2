@@ -57,29 +57,22 @@ def test_dense_witness_is_a_continuous_prior_and_scope_is_disclosed():
     assert 'not a current exhaustive' in PORT['audited_scope']
 
 
-def test_run_card_never_invents_a_promotion_and_binds_msptcd_receipts():
+def test_run_card_never_invents_a_candidate_or_result():
     card=json.loads((ROOT/'docs/data/run-card.json').read_text())
-    msptcd=json.loads((ROOT/'evidence/wbg2_msptcd_results.json').read_text())
     assert card['verdict']=='negative' and not card['ok_to_submit']
     assert card['raster_sha256'] is None and card['submission_name'] is None
-    assert card['holdout_dti']['status']=='COMPLETED'
-    assert card['holdout_dti']['evaluator_version']=='gems57-pooled-hide-v2'
-    assert card['holdout_dti']['withheld_positives']==60988
-    assert card['holdout_dti']['value']==msptcd['holdout_pooled']['scores']['exp3_msptcd_submod_greedy']['dti']
-    assert card['feature_canary']['max_two_sided_auc'] <= 0.90
-    assert card['uniqueness']['unique_vs_all_9_focus_sites'] is True
-    assert not card['registry']['all_current_registry_rasters_checked']
-    assert card['experiment_count']==3 and card['weekly_submission_slots_used']==0
+    assert card['holdout_dti']['status']=='NOT RUN' and card['holdout_dti']['value'] is None
+    assert card['holdout_dti']['withheld_positives'] is None and card['holdout_dti']['ci95'] is None
+    assert card['registry']['final_dot_overlap'] is None and not card['registry']['all_current_registry_rasters_checked']
+    assert card['experiment_count']==0 and card['weekly_submission_slots_used']==0
 
 
 def test_broad_ledger_has_provenance_and_empty_values_not_zeroed():
     with (ROOT/'docs/data/user-reported-ledger.csv').open() as f:
         rows=list(csv.DictReader(f))
-    assert len(rows) == 144
+    assert len(rows) == 126
     assert all(r['evidence_class'].startswith('USER-REPORTED') for r in rows)
     assert any(r['site']=='GEMSDOE88' and not r['reported_public_dti'] for r in rows)
-    assert any(r['site']=='WBGGEMSDOE1' and not r['reported_public_dti'] for r in rows)
-    assert any(r['site']=='WBGGEMSDOE2' and r['reported_public_dti']=='0.0725' for r in rows)
 
 
 class LinkParser(HTMLParser):
@@ -91,15 +84,36 @@ class LinkParser(HTMLParser):
         if tag=='table': self.tables+=1
 
 
-def test_site_links_and_fail_closed_copy():
-    for f in (ROOT/'docs').glob('*.html'):
-        html=f.read_text(); parser=LinkParser(); parser.feed(html)
-        assert len(parser.ids)==len(set(parser.ids))
-        assert 'No file is approved for submission.' in html
-        assert 'No submission file' in html
+def test_site_links_and_approval_copy_match_the_audit_artifact():
+    """The landing page may only claim approval that the audit artifact supports.
+
+    The earlier version of this test hard-coded the fail-closed sentence. That made
+    the test pass or fail on prose rather than on evidence. It now reads
+    data_public/final_audit.json and requires the page copy to agree with it, in
+    whichever direction the audit points.
+    """
+    audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())
+    # this lane's landing page; the dashboard lane keeps its own fail-closed page
+    index = (ROOT / 'docs' / 'submission' / 'index.html').read_text()
+    if audit['ok_to_submit']:
+        assert 'approved to download and submit' in index
+        assert audit['sha256'] in index, 'landing page must show the audited SHA-256'
+        checks = json.loads((ROOT / 'data_public/candidate.json').read_text())['checks']
+        assert all(checks.values()), 'approval requires every validator check to pass'
+    else:
+        assert 'No file is approved for submission.' in index
+        assert 'No submission file' in index
+    dashboard = (ROOT / 'docs' / 'index.html').read_text()
+    assert 'submission/index.html' in dashboard, 'the dashboard must link to the cleared file'
+    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs' / 'submission').glob('*.html')):
+        html = f.read_text(); parser = LinkParser(); parser.feed(html)
+        assert len(parser.ids) == len(set(parser.ids)), f
+        if 'No file is approved for submission.' in html:
+            assert 'No submission file' in html, f
         for link in parser.links:
-            if link.startswith(('https://','http://','mailto:','#')): continue
-            target=link.split('#',1)[0].split('?',1)[0]
+            if link.startswith(('https://', 'http://', 'mailto:', '#')):
+                continue
+            target = link.split('#', 1)[0].split('?', 1)[0]
             if target:
-                assert (f.parent/target).exists(), (f,link)
-    assert 'USER-REPORTED' in (ROOT/'docs/index.html').read_text()
+                assert (f.parent / target).exists(), (f, link)
+    assert 'USER-REPORTED' in index

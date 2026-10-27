@@ -595,7 +595,9 @@ def main() -> int:
     decoded_hash8 = hashlib.sha256(candidate_f32.tobytes()).hexdigest()[:8]
     n_dots_final = int(candidate_dots.sum())
     sub_stem = f"wbg2-msptcd-e3-{n_dots_final}dots-20261027T173000Z-{decoded_hash8}-zeros"
-    out_tif = ROOT / "docs/downloads" / f"{sub_stem}.tif"
+    out_dir = ROOT / "docs/downloads/msptcd"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_tif = out_dir / f"{sub_stem}.tif"
     for ext in (".tif", ".zip", ".json"):
         out_tif.with_suffix(ext).unlink(missing_ok=True)
 

@@ -6,7 +6,7 @@
   "note": "WBG2-MSPTCD 25594px OOF research TIF; unique vs 9 focus; STOP on 13GEMSDOE/17GEMSDOE literal gate. DO NOT SUBMIT.",
   "note_chars": 113,
   "validator": {
-    "file": "/home/user/WBGGEMSDOE2/docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+    "file": "/home/user/WBGGEMSDOE2/docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
     "bytes": 71341,
     "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
     "meta": {
@@ -62,7 +62,7 @@
     "footprint_fraction": 0.004953000296282076
   },
   "template_report": {
-    "path": "/home/user/WBGGEMSDOE2/docs/downloads/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+    "path": "/home/user/WBGGEMSDOE2/docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
     "bytes": 71341,
     "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
     "bands": 1,

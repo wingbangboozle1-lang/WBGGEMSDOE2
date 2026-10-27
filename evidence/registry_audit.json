@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.registry-audit.v1",
-  "generated_utc": "2026-10-27T17:29:56.085042+00:00",
+  "generated_utc": "2026-10-27T17:19:32.655787+00:00",
   "scope": "Nine owner-reported historical best files, a submitted binary lattice, a registered continuous prior, and two other research files. This is NOT a complete registry. A failed witness is conclusive for this rule; no comprehensive uniqueness pass is claimed.",
   "radius_px": 3,
   "distance_rule": "Euclidean distance <= 3 pixels",
