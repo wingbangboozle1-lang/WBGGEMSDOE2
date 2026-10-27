@@ -266,11 +266,15 @@ is better; it is the same surface, pruned and re-emitted.</li>
 scored <b>0.0005</b> (user-reported). The competition's labels are expert-identified faults that are
 <b>absent</b> from the catalogue, so catalogue-derived mass buys almost nothing.</li>
 </ol>
-<p><b>Not measurable here:</b> which geophysical prior the lineage actually used. The GEMSDOE32 page and
-the fleet's own validators mark their files owner-reported and research-only, and the
-<code>training_features.tif</code> stack those pipelines used (419 MB, pinned sha256
-<code>4371c82e…23bc5</code>) is behind DrivenData authentication. So the honest attribution is:
-<i>pruning + off-catalogue placement inside a good prior</i>, not a physics result we can reproduce.</p>
+<p><b>Not measurable here:</b> which geophysical prior the lineage actually used. What we did verify by
+reading the owner files this session: GEMSDOE32's own
+<code>docs/downloads/submissions_manifest.json</code> records every entry with <code>"receipt": null</code>
+and no organizer score, and the GEMSDOE33 receipt files state
+<code>"format_validation_is_not_portal_acceptance": true</code> with
+<code>"weekly_slot_authorized": false</code>. The <code>training_features.tif</code> stack those pipelines
+describe (419 MB, pinned sha256 <code>4371c82e…23bc5</code>) is behind DrivenData authentication and was not
+obtained. So the honest attribution is: <i>pruning + off-catalogue placement inside a good prior</i>, not a
+physics result we can reproduce.</p>
 
 <h2>3. Can we generate something that scores above 0.2778?</h2>
 <p><b>Demonstrated: no. Plausible: yes, marginally; Reliable: not with the data reachable from this
@@ -516,9 +520,17 @@ def build_sources() -> str:
          "Label source along with USGS Quaternary fault maps.", "reference"),
         ("GDR submissions 1391", "https://gdr.openei.org/submissions/1391",
          "INGENIOUS compilation record.", "reference"),
-        ("GEMSDOE32 site", "https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html",
-         "Owner page for the 0.2778 claim; labels its own historical scores owner-reported.",
-         "site content reviewed"),
+        ("GEMSDOE32 owner page", "https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html",
+         "Owner page for the 0.2778 claim. Provided for manual review; <b>not re-fetched this session</b>, so no claim is made here about its wording.",
+         "not re-fetched"),
+        ("GEMSDOE32 <code>submissions_manifest.json</code>",
+         "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/07806249f4ed3efe70b4fbf866183c32392b7853/docs/downloads/submissions_manifest.json",
+         "The file actually read this session: every entry carries <code>\"receipt\": null</code> and no organizer score.",
+         "fetched 2026-10-27"),
+        ("GEMSDOE33 receipt files",
+         "https://github.com/buffedlizard55-lab/GEMSDOE33/tree/main/docs/downloads",
+         "Read this session: <code>format_validation_is_not_portal_acceptance: true</code>, <code>weekly_slot_authorized: false</code>.",
+         "fetched 2026-10-27"),
     ]
     trs = "".join(f'<tr><td><a href="{e(u)}">{lbl}</a><br><span class="mono">{e(u)}</span></td>'
                   f'<td>{what}</td><td class="dim">{status}</td></tr>' for lbl, u, what, status in rows)
