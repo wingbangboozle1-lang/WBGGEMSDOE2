@@ -114,9 +114,9 @@ available at any point.</p>
   <span class="tag">Ready to submit</span>
   <h2 style="border:0;margin:.6em 0 .2em;padding:0">Download this file, then upload it at DrivenData</h2>
   <p style="margin:.2em 0 0"><strong>{esc(tif_name)}</strong></p>
-  <a class="dl" href="../downloads/{esc(tif_name)}" download>⬇ Download the submission GeoTIFF ({sub['dots']:,} dots)</a>
+  <a class="dl" href="../downloads/h3-pack/{esc(tif_name)}" download>⬇ Download the submission GeoTIFF ({sub['dots']:,} dots)</a>
   <p style="margin:.2em 0 1em;font-size:.9rem">Or the ZIP containing only that GeoTIFF:
-     <a href="../downloads/{esc(zip_name)}" download><strong>{esc(zip_name)}</strong></a></p>
+     <a href="../downloads/h3-pack/{esc(zip_name)}" download><strong>{esc(zip_name)}</strong></a></p>
 
   <div class="grid">
     <div class="kpi"><div class="l">Projected score (base – upside)</div><div class="n">{proj['regression_only']:.3f} – {proj['full_packing_transfer']:.3f}</div>

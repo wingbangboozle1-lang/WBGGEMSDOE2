@@ -1,5 +1,5 @@
 {
-  "file": "/home/user/WBGGEMSDOE2/docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+  "file": "/home/user/WBGGEMSDOE2/docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
   "reference": "/home/user/WBGGEMSDOE2/data/official/sample_submission.tif",
   "reference_footprint_cells": 5167373,
   "shape": [
@@ -43,8 +43,8 @@
   "dots": 34000,
   "organizer_acceptance": "unknown (no portal upload in this environment)",
   "mirrors": [
-    "docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
-    "downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif"
+    "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+    "downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif"
   ],
   "zip_path": "docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.zip"
 }

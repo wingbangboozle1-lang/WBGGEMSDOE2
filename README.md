@@ -1,119 +1,135 @@
-# GEMS Fieldnotes
+# WBGGEMSDOE2 — DOE GEMS Prize
 
-**Current decision: ONE FILE IS READY TO DOWNLOAD AND SUBMIT.**
+**Read this block first, every session.** It is the current, measured state. Numbers below come from
+scripts in `scripts/` and JSON in `data_public/`; nothing is transcribed by hand.
 
-> **➜ [Open the submission page and download the file](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)**
+## Status: one file is cleared to submit
 
-`docs/downloads/wbg3-h3pack-34k-<timestamp>-zeros.tif` — 34,000 dots, zero dots inside 3 px of a mapped
-fault, packing efficiency 9.365 of a possible 9.38, format validation PASS, distinct from all nine focus
-rasters (worst 3 px overlap 17.2 %). Projected score **0.285 – 0.332**, labelled a PROJECTION everywhere
-because no organizer receipt and no hidden truth exist in this repository.
+| | |
+|---|---|
+| **Submit this file** | [`docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif`](docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif) |
+| SHA-256 | `a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912` |
+| Estimated score | **0.15** · 95% interval 0.00–0.33 · EMPIRICAL-ESTIMATE (out-of-sample RMSE 0.094) |
+| Conditional band | 0.278–0.320 *if* its hit rate matches the fleet's best lineage (DERIVED, N = 20 000) |
+| Format | 1 band float32 · EPSG:32611 · 3730 × 3292 · 100 m · values in [0, 1] · **no NaN anywhere** · 0.0 outside the footprint · 34 500 isolated dots |
+| Validator | all 9 checks PASS, re-read from the bytes on disk |
+| Uniqueness | max 0.178 overlap with any of the nine focus-site submissions; smoothed surface |r| ≤ 0.77; no SHA-256 match in the 655-raster fleet index |
+| Note for the submission page (≤140 chars) | `DZ-16 damage-zone flank, 34500 isolated dots, 0.0 outside footprint, unique (wbggemsdoe2)` |
 
-## The answer to "why did GEMSDOE32 B2 score 0.2778?"
+Site: <https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/> ·
+[executive summary](docs/executive-summary.html) · [method & metric](docs/methodology.html) ·
+[sources](docs/sources.html) · [nine per-site reviews](docs/sites/GEMSDOE24.html).
 
-Not because of better geology. Measured here, in order:
+### Do not submit
 
-1. **All nine focus rasters are the same field.** Pairwise Spearman correlation of their 256 px block
-   densities is **0.996 – 0.999**. Nine methods, one design with two knobs.
-2. **Their scores are a two-parameter function of those knobs.**
-   `score = 0.3110 − 0.000780·(D/1000) − 0.0892·collar`, **R² = 0.988 (n = 9)**.
-   Extras cost 0.00078 per 1,000 dots and 0.00089 per 1 % of dots inside the collar, so a collar dot is
-   between 1.9× and 3.0× more expensive than an ordinary dot, depending on the dot count
-   (3.0× at B2's 37,654; 2.6× at 44,090).
-3. **B2's lineage isolates the mechanism.** B2 (37,654 dots) is exactly GEMSDOE25/30's 44,090-dot field with
-   every dot at ≤2 px from the catalogue deleted — worth +0.0178 on its own. It is also the smallest dot
-   count anyone tried.
-4. **Placement carries no measurable geological discrimination** (block density correlates +0.77 with
-   available data area and nothing else).
-5. **Every raster wastes credit, and more dots wastes more**: `kmass/dot = 8.02–8.27` for the seven rasters at
-   D ≤ 42k, but 6.56–6.58 for the two 60k rasters, against a geometric maximum of 9.38. `kmass` is a hard ceiling
-   on the true positives a fixed number of dots can collect, and no registry design comes within 12 % of it; the
-   34,000-dot design reaches 9.365 (99.8 % of the maximum).
-   **Caveat:** dot count and packing are 98 % collinear in this registry (r = −0.980), so the data cannot say how
-   much of the top score is "few dots" and how much is "good packing". The projection range carries that uncertainty.
+* Any historical GEMSDOE file. Measured: the nine focus submissions lie within 3 px of **each other** for
+  83–100% of their dots. They are one lineage, and they carry no organizer receipt.
+* The two artifacts from earlier sessions (`wbg2-h1-stepxasym-…`, `wbg-h1-blind-conduit-breach-…`). Their
+  binaries were deleted from this repository; their audit records remain in `evidence/`.
 
-## What we built, and why it is different
+## Two lanes finished on the same day — both records are kept
 
-Same two things that earn points (zero collar, small budget) plus the one thing nobody used: **exact
-packing**. A weighted Poisson-disk placement at 5 px separation lifts `kmass/dot` to 9.365, and the dot
-budget drops to 34,000, in the direction the regression points. See
-[`evidence/RUN_CARD_H3.json`](evidence/RUN_CARD_H3.json) and
-[`evidence/h3_analysis.json`](evidence/h3_analysis.json).
+A parallel session in this same repository (the **dashboard lane**) reached the opposite conclusion and its
+pages remain the primary dashboard at `docs/`:
 
-## The finding that matters most
+* It applies the literal all-registry stop: a registered stride-5 lattice plus a footprint-wide continuous
+  prior make every dense candidate a duplicate, so **it clears no file**. Its page states that plainly.
+* It observed the public leaderboard at **0.4544** (2026-10-27 ~17:21 UTC) and produced a forensic note on
+  the B2 lineage (`docs/research/why-b2-scored-2778.html`) — independently consistent with finding 2 below.
+* It also recorded that all nine priority-site HEADs had moved since their audited pins.
 
-**The catalogue holdout is anti-correlated with the leaderboard.** Spearman between the catalogue
-hide-and-recover DTI of the nine rasters and their live scores is **−0.849 (p = 0.0038)**. The raster that
-wins the live board (B2) scores 0.0048 on the catalogue holdout; the one that wins the holdout scores
-0.0178 *worse* live. Any pipeline in this project that "validates on a catalogue holdout before promoting"
-is optimising the opposite of the competition target. This design deliberately does **not** use that
-instrument for selection, and says so wherever the number appears.
+This lane (the **submission lane**) measured the literal rule and showed it flags all nine focus-site
+submissions too, calibrated the gate, and cleared one file. Both records are published:
+[`docs/submission/`](docs/submission/) is this lane; [`docs/index.html`](docs/index.html) is the dashboard
+lane; [`docs/submission/parallel-lanes.html`](docs/submission/parallel-lanes.html) explains the disagreement
+and the one measurement that settles it. **Deciding which reading governs is a policy call for the project
+owner.** The conservative option is to submit nothing.
 
-## Irregularity flagged for review
 
-Two registered witnesses cannot be passed by any non-empty in-footprint submission: the stride-5 lattice
-lies within 3 px of 99.87 % of footprint cells and the continuous 17GEMSDOE prior is positive in all of
-them. Under the literal ">70 % of dots within 3 px of one registry raster" rule, **every published raster
-fails too** (99.91–99.92 % and 100 %). Our file is the least lattice-like raster ever registered here
-(99.862 %). The overlap leg should be applied only to same-representation dot rasters, or the two
-full-footprint witnesses withdrawn. Flagged, not silently exempted.
+## Third lane: H3-PACK (this branch) — independent, and it disagrees with the estimate above
 
-## Limitations (read these)
+This branch started from the same prompt and reached a different, also-measured conclusion, kept here rather than
+overwritten:
 
-* All nine live scores are **user-reported**; no organizer receipt ties a score to exact bytes.
-* The projection extrapolates a 9-point regression below its fitted range (D ≥ 37,654 → 34,000) and assumes
-  the packing gain reaches true positives. It is never written as a score.
-* **This does not reach 0.32–0.44.** The published family plateaus at 0.25–0.278 and our gain is a few
-  points on top of that plateau. Reaching the top of the board needs the hidden faults themselves — either
-  the organizer's private labels or a geophysical lineament detector validated against something that is
-  not the catalogue. Neither exists here.
-* The organizer portal was not exercised from this environment; acceptance is untested.
+* **Same score law, fitted independently.** Refitting the nine reported scores on their own measured dot counts and
+  collar fractions gives `score = 0.3110 − 0.000780·(D/1000) − 0.0892·collar`, **R² = 0.988, n = 9**, residuals
+  ≤ 0.0023 for every raster — including reproducing GEMSDOE32 at 0.2765 vs its reported 0.2778.
+* **One thing this lane adds:** the nine rasters are 98 % collinear in (dot count, packing) — they are not independent
+  observations, so the fit constrains *placement*, not *geology*, and the projection band 0.285–0.332 inherits that.
+* **Its own file:** [`docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif`](docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif),
+  sha256 `5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2`, 34,000 dots, zero inside 3 px of the
+  catalogue, kmass/dot 9.365 of a possible 9.38, worst 3 px overlap with the nine focus rasters 17.2 %. Page:
+  [`docs/submit/`](docs/submit/). Projection labelled PROJECTION throughout; no organizer receipt.
+* **Why it may still be wrong:** the catalogue holdout is *anti*-correlated with the live board (Spearman −0.849,
+  p = 0.0038), so no local instrument can pick between this file, the DZ-16 file above, or doing nothing. That
+  unresolved choice is the project owner's, and doing nothing remains the conservative option.
 
-## Reproduce
+## What the measurements established (and what they did not)
+
+1. **The official metric has a closed form.** Because `FN_w = |G| − TP_w` exactly, the organizers'
+   distance-weighted Tversky index reduces to `T / (T + 0.2F + 0.8(N−T))`. A unit of predicted mass that
+   lands on truth is worth ≈ +0.94; a unit that misses costs ≈ −0.056; a unit that *duplicates* an existing
+   hit earns nothing and still costs. `src/wbg2/metric.py`, `tests/test_metric_official.py`,
+   `scripts/mass_balance.py`.
+2. **Why the 0.2778 file won among the nine.** It is the least-redundant member of one surface family
+   (37 654 dots against 44 090–61 328 for its siblings), and it sits 18 px (1.8 km) off the mapped
+   catalogue rather than on it. The fleet's own control proves the direction: a 100 000-dot file lying on
+   the catalogue scored 0.0005.
+3. **The submitted-corpus "labels" trap.** In the owner mirror, `labels.tif` is **byte-identical** to
+   `existing_faults.tif` (SHA-256 `7ba308cc…`). Every "holdout DTI" and "catalogue proxy" computed from it
+   measures agreement with the visible catalogue — not with the competition's hidden target. This repository
+   does not use it as a score.
+4. **The literal uniqueness rule is unusable as written.** ≥99.4% of the dots of *every* focus-site file lie
+   within 3 px of the 13GEMSDOE stride-5 lattice, which covers 99.96% of the footprint; two further rasters
+   blanket 84% and 90%. The gate here is therefore calibrated against the fleet's own baseline similarity
+   (enrichment over each reference's 3-px coverage, plus a 50% absolute-overlap floor), and the literal
+   result is still published in full in `data_public/final_audit.json`. Flagged for review.
+5. **We could not beat the public leaderboard.** The live leader was **0.4544** on 2026-10-27. Our own
+   estimate for the cleared file is *below* the best historical GEMSDOE file. The blocker is data, not
+   method: `training_features.tif` (419 MB, 19 bands) and `1m_DEM_links.csv` are behind DrivenData
+   authentication, and this environment can only reach github.com, codeload.github.com, api.github.com,
+   registry.npmjs.org, pypi.org and files.pythonhosted.org. Hypotheses 2–5 in the executive summary are
+   specified and blocked for exactly that reason.
+
+## Reproduce the whole result
 
 ```bash
-bash scripts/get_data.sh                      # hash-pinned mirrors + band cache
-python scripts/build_feature_bank.py          # 19-band memmap
-python scripts/generate_h3_pack.py            # design + placement (deterministic)
-python scripts/h3_analysis.py                 # measurements, regression, projection
-python scripts/write_h3_submission.py         # write, zip, validate
-python scripts/build_submit_page.py           # the submission page
-python -m pytest -q                           # 95 tests
-python -m http.server 8000 --bind 0.0.0.0 --directory .
+python3 -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+gh auth status                      # needed: fleet rasters come from the GitHub API
+
+python scripts/fetch_fleet_rasters.py    # 93 fleet submissions named in the requester's score list
+python scripts/fleet_stats.py            # measured geometry + catalogue-proxy DTI  (~3.5 min)
+python scripts/score_model.py            # empirical model, LOO / leave-one-site-out / 9-site holdout
+python scripts/mass_balance.py           # closed-form mass economics
+python scripts/focus_table.py            # per-focus-site table incl. mutual overlap
+python scripts/cache_overlap_fields.py   # distance-field cache for fast uniqueness iteration
+python scripts/make_candidate.py         # builds the submission TIF
+python scripts/candidate_estimate.py     # score estimate + interval
+python scripts/final_audit.py            # uniqueness + format gate (writes final_audit.json)
+python scripts/build_site_v2.py          # renders docs/*.html from the artifacts
+pytest -q
 ```
 
+Organizer-format inputs are pinned in `data_public/official_sources.json`
+(`existing_faults.tif` = `labels.tif` = `7ba308cc…`, `sample_submission.tif` = `2176d08e…`).
+Fleet rasters, the distance cache and the large official files are git-ignored, never shipped.
 
-**27 October public observation:** the snapshot captured at approximately 17:21 UTC showed **0.4544**, superseding the
-26 October **0.4437**. It is a dated public-leaderboard observation, not a receipt for any file here and not a
-HOLDOUT-DTI. A later automated fetch failed, so the dashboard marks that snapshot stale. The prompt's 0.3195 and 0.4413
-"current high" figures are conflicting USER-SUPPLIED claims — all three numbers are lower than the observed 0.4544,
-which is the honest frame: **this lane's projection does not reach the public top of the board.**
+## Evidence labels used everywhere
 
-**Lane status.** Lane H3 is `promote`: one file, `docs/downloads/wbg3-h3pack-34k-20261027T174337Z-zeros.tif`, passes
-every locally checkable gate. The prior lane's negative run card (`evidence/run_card.json`) remains valid for *its*
-two rejected files and is not overwritten; both are shown on the dashboard, clearly labelled.
+`ORGANIZER-PUBLISHED` (public page, not a receipt) · `USER-REPORTED` (the requester's score strings) ·
+`MEASURED` (computed from bytes, hashes recorded) · `DERIVED` (algebra on the official formulas) ·
+`EMPIRICAL-ESTIMATE` (model output with published out-of-sample error) ·
+`CATALOGUE-PROXY-DTI` (diagnostic only; anti-correlated with reality at the top end).
 
-**Evidence freshness.** All nine priority-site HEADs changed since their audited raster pins; newer rasters were not
-re-audited. The shared derived feature bank is absent; this lane rebuilt 19 raw bands into ignored local storage
-(`scratch/fbank/`). Inputs are a hash-pinned owner mirror, not organizer-authenticated.
+## Next steps that would actually move the score
 
-## Start every session here
-
-**Maximize P(Win)** by protecting scarce submission slots and comparing real evidence; **Own the Outcome**
-by surfacing limitations and fixing defects rather than hiding them. Read this README, then
-`evidence/RUN_CARD_H3.json` and `evidence/h3_analysis.json`. Historical instructions and snapshots are not
-a standing authorization to upload, modify unrelated repositories, or repeat a pull-request merge. New
-instructions and current evidence take precedence over stale facts in the preserved prompt.
-
-The checkout was initially a one-line README, not a working training pipeline. The 19-band feature raster,
-the fault catalogue and the sample were restored from public owner mirrors at pinned SHA-256 hashes; their
-origin has **not** been authenticated against DrivenData. No competition credentials, private truth,
-organizer receipt or authenticated weekly quota were available. Large data and caches are ignored by Git.
-
-The previous review lane concluded "DO NOT SUBMIT" because no candidate passed its gates. That conclusion is
-superseded: a candidate now passes every locally checkable gate. The literal full-footprint-witness gate
-remains unsatisfiable for any submission — see above — and the previous lane's mathematics for that bound
-still holds and is reproduced in `evidence/registry_audit.json`.
+1. Obtain `training_features.tif` through an authenticated DrivenData account and test hypotheses 2–4 with
+   the hide-and-recover protocol. Nothing else in this repository can close a 0.15 gap to 0.45.
+2. Re-run `scripts/final_audit.py` against the *complete* 655-raster registry (only 96 were measurable here)
+   plus any rasters created after the GEMSDOE47 snapshot.
+3. Replace the hit-rate assumption in `scripts/mass_balance.py` with a measured holdout hit rate once a
+   real label set exists; that is the only way the conditional band becomes an estimate rather than a bound.
 
 ## Original project prompt
 
