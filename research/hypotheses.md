@@ -2,11 +2,11 @@
 
 **Editorial review:** 2026-10-27 UTC. These are proposals, not results.
 
-**Method lane: UNASSIGNED.** The brief refers to one method paragraph but does not identify a single hypothesis as the assigned lane. H1 is a ranked proposal, not an authorization.
+**Method lane: UNASSIGNED.** The brief refers to one method paragraph but does not identify a single hypothesis as the assigned lane. P1 is a ranked desk proposal, not authorization.
 
 No experiment was run in this review lane. The qualitative ranking below is a judgment about relative potential to improve spatially blocked HOLDOUT-DTI and implementation cost—not a score, a DTI delta, a probability of winning, or a leaderboard forecast. No candidate is selected for a weekly slot.
 
-Not implemented or tested in this repository's present review lane. The currently observed refs for all nine priority sites have changed since the pinned rasters; their new contents have not been audited. Therefore no claim is made that these ideas have never been tried anywhere across the fleet.
+These are desk proposals, not an assigned lane or experiments. The proposed operators are not present in this repository's inspected current implementation, but related approaches exist in other projects. A pinned README-only scan of the nine focus repositories identified prior phase-congruency, radiometric K/Th and drainage work, so those earlier shortlist items were withdrawn; source-reported sibling results were not reproduced. Novelty beyond the inspected files is not established. See evidence/focus_readme_review_20261027.json.
 
 The supplied feature-layer names are from the hash-checked owner-mirrored 19-band manifest, not an authenticated DrivenData download. This session reverified the owner-mirrored stack and 19 raw bands in ignored local storage, which may not persist; the derived shared feature bank remains absent. The official feature description and owner-mirror band metadata disagree about the depth layer; retain the official term ‘depth to conductive base’ unless original metadata resolves it.
 
@@ -14,60 +14,60 @@ The supplied feature-layer names are from the hash-checked owner-mirrored 19-ban
 
 | Potential rank | Proposal | Expected HOLDOUT-DTI potential (qualitative, untested) | Implementation cost | Status |
 |---:|---|---|---|---|
-| 1 | **H1 — Depth-shifted, multiscale gravity–magnetic discontinuity** | Highest qualitative potential of this shortlist; untested | Medium | Proposal only; not run |
-| 2 | **H2 — Conductive-flank asymmetry conditioned on a potential-field edge** | Moderate qualitative potential; overlaps a previously explored family | Medium | Proposal only; not run |
-| 3 | **H3 — Repeated cross-drainage deflection across a candidate structure** | Lower qualitative potential; external-data feasibility unverified | High | Proposal only; not run |
-| 4 | **H4 — Cross-flight-line repeatability of buried magnetic edges** | Lowest direct prediction potential; primarily an artefact-control experiment | High | Proposal only; not run |
+| 1 | **P1 — Upward-continuation ridge trajectories in magnetic data** | Highest qualitative potential among these desk proposals; untested here | Medium–high | Proposal only; not run |
+| 2 | **P2 — Matched cross-flank texture displacement** | Moderate qualitative potential; untested here | Medium–high | Proposal only; not run |
+| 3 | **P3 — Focal-mechanism nodal-plane consistency** | Lower qualitative potential; external coverage unverified | High | Proposal only; not run |
+| 4 | **P4 — Groundwater-head discontinuity across aquifers** | Exploratory; external coverage unverified | High | Proposal only; not run |
 
 ## Candidate mechanisms and disconfirming alternatives
 
-### H1 — Depth-shifted, multiscale gravity–magnetic discontinuity
+### P1 — Upward-continuation ridge trajectories in magnetic data
 
-- **Layers:** iso_grav_anom (owner-mirror band 13); rtp (owner-mirror band 2); depth_to_base_surf (owner-mirror band 15; official metadata says conductive-base depth, not verified basement depth); det_elev (owner-mirror band 12).
-- **Physical signature:** At several fixed spatial scales, compare signed gravity-edge normals with magnetic-gradient ridges at a bounded cross-normal offset informed by a depth/dip proxy; test both magnetic polarities and retain only scale-persistent paired edges.
-- **Why it might find an uncatalogued fault:** A buried structural discontinuity may juxtapose density and magnetic properties beneath basin fill where a surface trace is weak or absent. The proposal uses subsurface physical-property contrasts rather than catalogue proximity. This is a plausible target for unmapped segments, not proof that the catalogue omits only surface-visible faults.
-- **Difference from reviewed methods:** Different as proposed from the named pseudo-gravity residual, simple potential-field fusion, dotted-ridge, catalogue-gap and geothermal-PINN families: it tests a depth-conditioned spatial offset between paired signed edge responses. Related methods elsewhere are not exhaustively audited.
-- **Named non-fault mimic:** An unfaulted lithologic contact or intrusive dike can produce aligned gravity and magnetic edges; flight-line striping and gridding artefacts can also create apparent paired boundaries.
-- **Data/access status:** The 19-band feature names are recorded in a hash-checked owner mirror, not an authenticated DrivenData download. The raw owner-mirrored stack and 19 raw bands were reverified in this session’s ignored cache; they may not persist, are not organizer-authenticated, and the shared derived feature bank is absent. Verify provenance before any run.
-- **Source links for manual review:** [https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features) · [https://pubs.usgs.gov/publication/70271418](https://pubs.usgs.gov/publication/70271418) · [https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and](https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and)
+- **Layers:** rtp magnetic anomaly (owner-mirror band 2); tmi_vg (band 9), context only; det_elev_slope (band 19), terrain sensitivity.
+- **Physical signature:** Compute masked, edge-controlled upward continuations of the magnetic field at several declared heights, track the displacement and persistence of oriented ridge maxima across heights, and test a coherent trajectory rather than selecting one amplitude edge. Exclude or explicitly model FFT boundary and survey-seam effects.
+- **Why it might find an uncatalogued fault:** A buried basement step can remain detectable in potential-field data where the surface fault map is incomplete. Variation across continuation heights may help distinguish broad source geometry, but does not prove a fault or its position.
+- **Difference from reviewed methods:** The local MSPTCD code uses multi-scale gradients and magnetic tilt, but not ridge trajectories across a separately computed continuation series. GEMSDOE32 already lists TMI_up150 in related methods, so this is a proposed extension of an existing family, not a claim of fleet-wide originality. The earlier phase-congruency idea is withdrawn because GEMSDOE32 reports an ARENA49-PCG implementation.
+- **Named non-fault mimic:** Lithologic contacts, intrusive dikes, remanent magnetization, uneven survey height, leveling seams, and FFT edge artifacts.
+- **Data/access status:** Uses owner-mirrored magnetic and terrain bands, not authenticated organizer inputs. Continuation requires defensible units, nodata and boundary handling; no operator, canary, holdout or registry preflight was run.
+- **Source links for manual review:** [https://pubs.usgs.gov/of/2013/1024/i/index_.html](https://pubs.usgs.gov/of/2013/1024/i/index_.html) · [https://pubs.usgs.gov/of/2013/1024/i/downloads/ofr2013-1024_i.pdf](https://pubs.usgs.gov/of/2013/1024/i/downloads/ofr2013-1024_i.pdf) · [https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) · [https://github.com/buffedlizard55-lab/GEMSDOE32/blob/6a28a39a2bca6bbb49cd8a56292c78d474c9ef91/README.md#L19](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/6a28a39a2bca6bbb49cd8a56292c78d474c9ef91/README.md#L19)
 
-### H2 — Conductive-flank asymmetry conditioned on a potential-field edge
+### P2 — Matched cross-flank texture displacement
 
-- **Layers:** cond_surf (owner-mirror band 17); depth_to_base_surf (owner-mirror band 15; official metadata terminology must be retained); iso_grav_anom_hg (owner-mirror band 18) and iso_grav_anom_vg (owner-mirror band 11); det_elev_slope (owner-mirror band 19) as topographic context.
-- **Physical signature:** Estimate signed conductivity contrast on opposite sides of a persistent gravity edge, normalize each flank against its local background and depth, and test whether the asymmetry is stable across scales rather than using raw conductivity or a symmetric buffer.
-- **Why it might find an uncatalogued fault:** A concealed fault-related fluid or alteration pathway could make the two flanks electrically asymmetric even where a mapped trace is missing. It is a conditional physical-property test, not a rule that high conductivity means a fault.
-- **Difference from reviewed methods:** The proposed statistic is a signed, edge-conditioned cross-flank contrast rather than simple co-location or a vent-proximity prior. However, the user-provided history includes conductivity/flank-labelled methods, so this is not claimed to be globally novel and should rank below H1 unless exact old code shows a meaningful distinction.
-- **Named non-fault mimic:** Saline basin fill, clay-rich strata, groundwater, and non-faulted lithologic boundaries can all create conductivity asymmetry.
-- **Data/access status:** Uses bands named in the owner-mirrored numerical feature stack; the restored raw owner-mirror bands are not authenticated as original competition bytes, and the shared derived feature bank is absent.
-- **Source links for manual review:** [https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#provided-features) · [https://gdr.openei.org/submissions/1391](https://gdr.openei.org/submissions/1391)
+- **Layers:** rtp magnetic anomaly (band 2); det_elev (band 12); det_elev_slope (band 19).
+- **Physical signature:** For independently detected candidate lines, search bounded two-dimensional translations between matched oriented texture windows on opposite flanks and require consistent displacement estimates across multiple window sizes; estimate nuisance statistics only on training regions.
+- **Why it might find an uncatalogued fault:** A degraded or buried fault can offset a pre-existing magnetic or terrain pattern without producing a continuous mapped scarp; matched texture could suggest the missing line, but it cannot establish causation.
+- **Difference from reviewed methods:** The local implementation uses pointwise orientation and Hessian ridges rather than matched-window translation estimates. GEMSDOE28 lists a related two-sided texture-covariance idea as unimplemented and GEMSDOE24 lists a related texture-front proposal; this variant must not be described as wholly new to the fleet.
+- **Named non-fault mimic:** Intrusive boundaries, unconformities, erosional contacts, irregular textures and gridding seams can give apparent offsets.
+- **Data/access status:** Owner-mirrored bands were restored and hash-checked, not authenticated. Window quality, missing data, displacement ambiguity and fold-local controls have not been tested.
+- **Source links for manual review:** [https://pubs.usgs.gov/of/2000/of00-188/of00-188.pdf](https://pubs.usgs.gov/of/2000/of00-188/of00-188.pdf) · [https://github.com/buffedlizard55-lab/GEMSDOE28/blob/91e8d24b87a5cfb3e0562249ae32ae78fe9183b4/README.md#L17](https://github.com/buffedlizard55-lab/GEMSDOE28/blob/91e8d24b87a5cfb3e0562249ae32ae78fe9183b4/README.md#L17) · [https://github.com/buffedlizard55-lab/GEMSDOE24/blob/4ac957757f8494439e2dc51b58ca62c380550e44/README.md#L489](https://github.com/buffedlizard55-lab/GEMSDOE24/blob/4ac957757f8494439e2dc51b58ca62c380550e44/README.md#L489)
 
-### H3 — Repeated cross-drainage deflection across a candidate structure
+### P3 — Focal-mechanism nodal-plane consistency
 
-- **Layers:** USGS 3DEP bare-earth digital elevation model (specific tiles and resolution not established here); det_elev_slope (owner-mirror band 19) for comparison only.
-- **Physical signature:** Derive channels from absolute elevation, measure repeated channel azimuth changes, knickzones, and opposing-bank relief across the same candidate line, and normalize by upstream contributing area; require several independent crossings rather than a single scarp.
-- **Why it might find an uncatalogued fault:** A buried or eroded fault may deflect multiple channels without leaving a continuous scarp, creating a geomorphic expression beyond catalogue segment endpoints. Channel behaviour is supporting evidence, not a fault label.
-- **Difference from reviewed methods:** Different from single-scarp, slope-asymmetry, chi-corridor and dotted-ridge methods because it tests repeated cross-channel geometry using an absolute DEM and catchment normalization. Fleet-wide novelty is unverified.
-- **Named non-fault mimic:** Lithologic contacts, differential erosion, alluvial fans, inherited drainage, capture, roads, and terraces can deflect channels.
-- **Data/access status:** Not viable in this checkout until the exact official DEM tiles, coverage, resolution and permitted download are verified; none were downloaded.
-- **Specific official external source:** [USGS 3DEP products and services](https://www.usgs.gov/3d-elevation-program/about-3dep-products-services). The cited USGS page is recorded in the source register as describing free, unrestricted 3DEP products. Study-area tile coverage and actual binary access have not been checked; therefore the data are not yet verified obtainable for this experiment.
-- **Source links for manual review:** [https://www.usgs.gov/3d-elevation-program/about-3dep-products-services](https://www.usgs.gov/3d-elevation-program/about-3dep-products-services)
+- **Layers:** USGS ComCat focal-mechanism or moment-tensor products; local magnetic and terrain structural orientations, if independently derived.
+- **Physical signature:** For adequately located earthquakes, propagate both ambiguous nodal planes and hypocentral uncertainty into a broad spatial orientation likelihood, then test agreement with independently measured structural orientations; never treat epicenters or nodal planes as exact fault traces.
+- **Why it might find an uncatalogued fault:** Seismic ruptures can reflect concealed structures lacking a surface trace. Events with resolved mechanisms might provide orientation evidence where topography is subdued, if coverage and temporal representativeness are adequate.
+- **Difference from reviewed methods:** The inspected local implementation uses seismicity density and strain proxies, not explicit uncertainty-weighted focal nodal planes. GEMSDOE32 previously proposed a ComCat-related idea but reported it data-blocked, so the source and broader family are not new.
+- **Named non-fault mimic:** Induced seismicity, unrelated deeper faults, uncertain locations, catalog completeness changes, and the two-plane ambiguity.
+- **Data/access status:** Not viable here until specific event-product coverage, timestamps, quality and binary/API access are verified; no ComCat records were retrieved in this sandbox.
+- **Specific official external source:** [USGS ComCat FDSN event service](https://earthquake.usgs.gov/fdsnws/event/1/). Official documentation describes a public event API, producttype filters for focal-mechanism and moment-tensor products, and event-specific associated products. This sandbox has not queried the target region or verified usable mechanism counts, access or competition sharing.
+- **Source links for manual review:** [https://earthquake.usgs.gov/fdsnws/event/1/](https://earthquake.usgs.gov/fdsnws/event/1/) · [https://github.com/buffedlizard55-lab/GEMSDOE32/blob/6a28a39a2bca6bbb49cd8a56292c78d474c9ef91/README.md#L226](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/6a28a39a2bca6bbb49cd8a56292c78d474c9ef91/README.md#L226)
 
-### H4 — Cross-flight-line repeatability of buried magnetic edges
+### P4 — Groundwater-head discontinuity across aquifers
 
-- **Layers:** USGS GeoDAWN magnetic flight-line observations and acquisition-direction metadata; mag_anom (owner-mirror band 1) and tmi_hg (owner-mirror band 3) for gridded comparison.
-- **Physical signature:** Estimate edge normals independently from crossing flight-line directions and retain only anomalies whose location and orientation are reproducible across acquisition directions; use disagreement as an artefact veto, not as a positive fault label.
-- **Why it might find an uncatalogued fault:** A real subsurface physical-property boundary potentially associated with an unmapped fault should be spatially stable across independent acquisition directions, unlike some flight-line artefacts. This test improves measurement reliability; it does not establish that a stable edge is a fault.
-- **Difference from reviewed methods:** This is an acquisition-geometry robustness test, not another point-density, terrain-scarp, geothermal-proximity, or catalogue-gap score. No local implementation is present; fleet-wide novelty is unverified.
-- **Named non-fault mimic:** A lithologic contact, dike, or non-fault magnetic body is also stable across flight directions; uneven line coverage can create false disagreement.
-- **Data/access status:** The USGS release page is recorded as listing flight-line data and grids, but the line-level files and usable crossing coverage were not downloaded or verified in this environment. Not viable here until that check succeeds.
-- **Specific official external source:** [USGS GeoDAWN airborne magnetic and radiometric survey release](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and). The public release page is recorded as available and CC0 in the source register; its binary source host was not reachable in the prior sandbox check. Exact flight-line file access and spatial overlap remain unverified.
-- **Source links for manual review:** [https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and)
+- **Layers:** USGS Water Data for the Nation groundwater-level and monitoring-location records; aquifer identity, observation time, reference elevation and uncertainty metadata; independent magnetic or terrain candidate orientations.
+- **Physical signature:** Compare coeval hydraulic heads from comparable aquifer depths on opposite sides of a candidate line, with uncertainty-aware discontinuity against a smooth regional groundwater gradient; require enough well pairs and do not interpolate sparse gaps into certain faults.
+- **Why it might find an uncatalogued fault:** Some faults restrict groundwater flow and produce head offsets even where alluvium hides surface expressions. The effect varies by aquifer and not all head discontinuities are faults.
+- **Difference from reviewed methods:** The inspected local implementation uses no matched hydraulic-head discontinuity. Historical heat-flow, springs and thermal/geochemical proximity experiments are related but measure different variables; unreviewed sibling implementations may still exist.
+- **Named non-fault mimic:** Pumping or recharge, irrigation, aquifer and depth changes, time offsets, stratigraphic barriers and datum errors.
+- **Data/access status:** Not viable until target-region well pairing, aquifer metadata, dates and machine-accessible bytes are checked. No data were downloaded here; modern API rate limits and possible free-key requirements must be checked for the eventual workflow.
+- **Specific official external source:** [USGS Water Data for the Nation modern APIs](https://api.waterdata.usgs.gov/). Official USGS pages describe public groundwater and metadata APIs; modern services may require a free API key for more than a handful of requests per hour. Target-area coverage, water-level records and sandbox access were not verified.
+- **Source links for manual review:** [https://api.waterdata.usgs.gov/](https://api.waterdata.usgs.gov/) · [https://waterdata.usgs.gov/blog/api-whats-new-wdfn-apis/](https://waterdata.usgs.gov/blog/api-whats-new-wdfn-apis/) · [https://pubs.usgs.gov/publication/sir20125261](https://pubs.usgs.gov/publication/sir20125261) · [https://ca.water.usgs.gov/mojave/mojave-water-levels.html](https://ca.water.usgs.gov/mojave/mojave-water-levels.html)
 
 ## Why no candidate was validated
 
 The requested literal registry gate is fail-closed. The registered stride-5 binary lattice forces more than 70% three-pixel overlap for the standard 37,654-distinct-dot budget. Separately, a registered continuous prior is positive throughout the footprint; if the pinned shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether a continuous field should count as ‘dots’ is unresolved, so no exemption is assumed. The inventory is incomplete and does not establish global uniqueness.
 
-The owner-mirrored competition inputs are not authenticated, and the shared derived feature bank is missing; ignored raw caches may not persist. No spatial holdout, feature-alone leakage canary, matched incumbent comparison, or confidence interval can be reported. Do not substitute a projection or a previously reported parallel result for a protocol-valid HOLDOUT-DTI.
+The owner-mirrored competition inputs are not authenticated, and the shared derived feature bank is missing; ignored raw caches may not persist. In this review lane, no spatial holdout, feature-alone leakage canary, matched incumbent comparison, or confidence interval was computed. Prior source-reported results are preserved separately and were not independently replayed here; do not substitute them for a validated result for a new candidate.
 
 ## Gates before any experiment or slot selector
 
@@ -85,6 +85,6 @@ The owner-mirrored competition inputs are not authenticated, and the shared deri
 - [USGS Argenta Rise study](https://pubs.usgs.gov/publication/70271418) — independent multi-physics context; does not validate the proposed transforms.
 - [USGS blind geothermal play-fairway synthesis](https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and) — geothermal context; not a direct submission-score result.
 - [DOE GDR INGENIOUS release 1391](https://gdr.openei.org/submissions/1391) — regional data compilation and license information; specific files were not fetched here.
-- [USGS 3DEP products and services](https://www.usgs.gov/3d-elevation-program/about-3dep-products-services) — the official source named for H3; exact tiles/coverage remain unverified.
+- [USGS ComCat event API](https://earthquake.usgs.gov/fdsnws/event/1/) and [Water Data APIs](https://api.waterdata.usgs.gov/) — official sources named for P3 and P4; target-region product coverage and sandbox access remain unverified.
 
 **Evidence note:** Official source pages were rechecked through the research page renderer on 2026-10-27 UTC; binary access was not verified. See the [dated source recheck](source-verification-20261027.md) and [`research/sources.md`](sources.md) for the recorded access status and limitations.

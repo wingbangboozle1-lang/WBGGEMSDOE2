@@ -13,7 +13,7 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
   const shouldStale = !['fresh', 'snapshot'].includes(snapshot.status) || !Number.isFinite(age) || age > 86400000 || age < -300000;
   const expectedLeader = typeof snapshot.top_public_dti === 'number' && snapshot.top_public_dti >= 0 && snapshot.top_public_dti <= 1 ? snapshot.top_public_dti.toFixed(4) : 'Unavailable';
   const failures = [];
-  const paths = ['/docs/', '/docs/executive-summary.html', '/docs/research.html', '/docs/sources.html', '/docs/research/why-b2-scored-2778.html', '/docs/executive-summary/', '/site/', '/site/executive.html', '/site/research.html', ...['24','25','27','28','30','31','32','33','36'].map(n => `/site/sites/GEMSDOE${n}.html`)];
+  const paths = ['/docs/', '/docs/executive-summary.html', '/docs/research.html', '/docs/sources.html', '/docs/research/why-b2-scored-2778.html', '/docs/executive-summary/', '/docs/submit/', '/docs/submission/', '/docs/msptcd/', '/docs/msptcd/executive-summary.html', '/docs/msptcd/research.html', '/docs/msptcd/sources.html', '/docs/sites/GEMSDOE32.html', '/site/', '/site/executive.html', '/site/research.html', ...['24','25','27','28','30','31','32','33','36'].map(n => `/site/sites/GEMSDOE${n}.html`)];
   for (const viewport of [{name:'desktop',width:1440,height:960},{name:'mobile',width:390,height:844}]) {
     for (const path of paths) {
       const page = await browser.newPage();
@@ -27,6 +27,12 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
       if (!view.main || !view.h1) bad.push('missing main/h1');
       if (view.scrollWidth > view.clientWidth+1) bad.push(`horizontal page overflow ${view.scrollWidth} > ${view.clientWidth}`);
       if (path === '/docs/' && (view.rows !== 9 || (view.stale === 'true') !== shouldStale)) bad.push(`dashboard rows=${view.rows}, stale=${view.stale}`);
+      if (path === '/docs/' || path === '/docs/executive-summary.html' || path === '/docs/submit/' || path === '/docs/submission/') {
+        const status = await page.evaluate(() => ({text: document.body.innerText, rasterLinks: [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href')).filter(h => { const url = new URL(h, location.href); return url.origin === location.origin && /\.(tif|zip)$/i.test(url.pathname); })}));
+        if (!status.text.includes('DO NOT SUBMIT') && !status.text.includes('No new file is approved')) bad.push('missing negative decision');
+        if (status.rasterLinks.length) bad.push(`unsafe direct artifact links: ${status.rasterLinks}`);
+      }
+      if (path.startsWith('/docs/msptcd/') && !(await page.evaluate(() => document.body.innerText.includes('DO NOT SUBMIT')))) bad.push('archival campaign is not labeled DO NOT SUBMIT');
       if (path === '/site/' && view.leader !== expectedLeader) bad.push(`fieldnotes leader=${view.leader}, canonical=${expectedLeader}`);
       if (path === '/site/' && !view.refStatus?.includes('Newer rasters have not been audited')) bad.push(`fieldnotes freshness=${view.refStatus}`);
       if (path === '/docs/research/why-b2-scored-2778.html') {

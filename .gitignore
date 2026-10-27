@@ -18,3 +18,6 @@ data_public/official/
 data/public/
 data_public/_cache/
 data_public/rasters_focus/
+
+# Optional browser-smoke dependencies (installed locally, not part of the project)
+/node_modules/

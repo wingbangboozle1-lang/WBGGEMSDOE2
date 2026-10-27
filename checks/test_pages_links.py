@@ -56,7 +56,8 @@ def test_local_links_and_html_anchors_are_in_pages_artifact():
 def test_b2_analysis_is_rendered_and_does_not_invent_a_catalogue_buffer():
     source = (ROOT / "docs/research/why-b2-scored-2778.md").read_text()
     html = (ROOT / "docs/research/why-b2-scored-2778.html").read_text()
-    assert "1–2 pixels away are **not** known to be masked" in source
+    assert "no surrounding buffer" in source
+    assert "new expert truth can be within 300 m" in source
     assert "0.0178 (0.2778 − 0.2600)" in source
     assert '<base href="../">' in html
     assert "<h1>Why GEMSDOE32 B2" in html and "<h2>1. What the bytes" in html

@@ -1,35 +1,5 @@
 #!/usr/bin/env python3
-"""Build the WBGGEMSDOE2 candidate submission (unique TIF).
-
-Method lane (declared): DZ-16 damage-zone-flank structural prior.
-------------------------------------------------------------------
-Hypothesis. Regional Quaternary fault compilations rasterise long, continuous
-traces and systematically omit (a) sub-parallel strands inside a fault zone and
-(b) relay/stepover links between en-echelon segments. Those omitted structures
-lie at a characteristic *perpendicular offset* from the mapped trace, not on it.
-
-Signature. A distance-to-mapped-trace annulus (peak ~1.6 km, 1-sigma ~1.2 km)
-weighted by local mapped-fault density in a 2 km Gaussian window, sampled as
-isolated binary dots with a minimum separation of 800 m.
-
-Why it should catch faults missing from the catalogue rather than ones already
-in it: the prior is *zero* on the mapped traces (the annulus excludes d < 4 px),
-so the emission cannot spend mass on catalogue pixels, which score ~0 against
-the organizers' off-catalogue labels. Measured evidence in this repository: the
-fleet's best-scoring file is at a median of 18 px from the catalogue
-(0.2778), while a submission sitting on the catalogue scored 0.0005.
-
-Mass economy (measured, not assumed): the requester's reported scores decrease
-monotonically with emitted mass inside the winning family
-(37,654 px -> 0.2778; 44,090 -> 0.2600; 60,069 -> 0.2477), and the derived
-marginal rule is that a wasted unit costs 0.2 while a hitting unit gains ~0.94
-(scripts/mass_balance.py). The candidate therefore emits isolated dots with no
-redundant coverage: no two dots share a 300 m support neighbourhood.
-
-Inputs are only the organizer-format catalogue raster and the grid template
-(both pinned by SHA-256 in data_public/official/SOURCES.json). No fleet raster
-is used to build this surface, so the candidate cannot be a copy.
-"""
+"""Historical DZ-16 placement method, DISABLED. Its saved raster fails the literal lattice gate. The owner mirror is not authenticated and its past projection is not a score. Retained only for research provenance."""
 from __future__ import annotations
 
 import hashlib
@@ -118,6 +88,8 @@ def select_dots(prior: np.ndarray, target: int, min_sep: int, stride: int, seed:
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical lane fails the literal registry gate or lacks pre-placement evidence; see evidence/local_artifact_audit_20261027.json. Do not generate or approve a submission.")
+
     cat, footprint, profile, cat_profile, count = load_grid()
     assert cat.shape == footprint.shape == (3730, 3292), cat.shape
     prior, stats = build_prior(cat, footprint)

@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""Execute the preregistered 3-experiment WBG2-MSPTCD campaign and full registry audit.
-
-Protocol compliance:
-- Reuses cached 19-band GeoDAWN stack, unmodified gems57.spatial.folds,
-  gems57.evaluate_holdout (gems57-pooled-hide-v2), gems57.emit, and
-  gems57.submission_writer. No private evaluator or writer fork is used.
-- Runs single-feature leakage canaries across all 4 buffered spatial folds on
-  all 31 features before trusting any model score; halts if any symmetric AUC > 0.90.
-- Strictly capped at 3 experiments (EXP-1, EXP-2, EXP-3) vs 19-band control (CTRL-19B).
-- Evaluates pre-placement continuous OOF surface and allocated dots against all 13
-  pinned registry rasters plus 6 newly published 2026-10-26/27 sibling rasters and
-  both archived local parallel rasters (21 verified rasters total).
-- Writes the format-validated research GeoTIFF and single-TIFF ZIP via unmodified
-  gems57.submission_writer, verifies saved bytes via scripts/validate_submission.py,
-  and enforces fail-closed verdict='negative', ok_to_submit=False when any literal
-  registry witness (13GEMSDOE lattice / 17GEMSDOE continuous prior) exceeds 70%.
-"""
+"""Historical MSPTCD campaign, DISABLED. Its surface comparison was performed after dot allocation rather than as the requested pre-placement stop. The results are source-reported and not independently reproduced in this review; the saved TIFF fails the literal lattice witness."""
 from __future__ import annotations
 
 import datetime as dt
@@ -222,6 +206,8 @@ def run_canaries(
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical lane fails the literal registry gate or lacks pre-placement evidence; see evidence/local_artifact_audit_20261027.json. Do not generate or approve a submission.")
+
     t_start = time.perf_counter()
     prepare_data.restore_template(False)
     sys.path.insert(0, str(prepare_data.TEMPLATE / "src"))

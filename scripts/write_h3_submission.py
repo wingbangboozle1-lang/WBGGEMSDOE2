@@ -1,9 +1,4 @@
-"""Write, zip and validate the H3-PACK submission GeoTIFF.
-
-Mirrors the official sample exactly: EPSG:32611, 100 m, 3730x3292, one float32
-band, NaN outside the data footprint, {0, 1} inside it.  The file is written by
-copying the sample's profile, so the grid, CRS and transform cannot drift.
-"""
+"""Historical H3 writer, DISABLED. Its input grid is an owner mirror, not an authenticated official sample; the archived output fails the literal lattice gate."""
 from __future__ import annotations
 
 import argparse
@@ -35,6 +30,8 @@ def sha256(path: Path) -> str:
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical lane fails the literal registry gate or lacks pre-placement evidence; see evidence/local_artifact_audit_20261027.json. Do not generate or approve a submission.")
+
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dots", default="scratch/h3_dots_final.npy")
     ap.add_argument("--name", default=None)

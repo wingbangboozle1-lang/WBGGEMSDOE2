@@ -27,16 +27,16 @@ For pooled true-positive mass T, false-positive mass F, and truth count N, with 
 Key implications:
 
 1. **Coverage vs. mass trade-off.** Dense, correlated ridges (e.g., GEMSDOE24's 60,069 dots) can saturate coverage while accumulating false-positive mass. Sparsifying from 44,090 to 37,654 could retain substantial truth credit while reducing αF; the hidden labels are unavailable, so that is a mechanism compatible with the user-reported claims, not a measured improvement.
-2. **Catalogue-proximity pruning.** [DrivenData staff](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516) state that exact known USGS/INGENIOUS fault pixels are excluded from scoring, but do **not** confirm a surrounding buffer. Dots 1–2 pixels away are **not** known to be masked; nearby withheld truth may matter: they may earn truth credit if near an unmapped fault, or add false-positive mass if far from one. Removing them might improve or worsen T and F. The user-reported figures differ by 0.0178 (0.2778 − 0.2600), but neither the difference nor this mechanism is confirmed by a receipt or private-truth analysis.
+2. **Catalogue-proximity pruning.** [DrivenData staff](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4) explicitly state that known USGS/INGENIOUS fault pixels are masked pixel-exactly, with **no surrounding buffer**, and new expert truth can be within 300 m of a known fault. Dots 1–2 pixels away are not excluded merely for that proximity: they may earn truth credit if near an unmapped fault, or add false-positive mass if far from one. Removing them might improve or worsen T and F. The user-reported figures differ by 0.0178 (0.2778 − 0.2600), but neither the difference nor this mechanism is confirmed by a receipt or private-truth analysis.
 3. **Not proof of optimality.** Without private truth, per-dot T/F decomposition, or authenticated receipts, we cannot prove this causal story, rule out that a denser or differently placed set would score higher, or guarantee generalization to the private set. The 0.2778 claim is **not** evidence that B2 is globally optimal.
 
 ## 3. Could we score higher than 0.2778?
 
 Honest answer: **unknown. No defensible score estimate or calibrated forecast is available.**
 
-- We did not compute HOLDOUT-DTI for any of the nine historical files under the required shared evaluator (`gems57-pooled-hide-v2`, whole-segment buffered holdouts, visible-faults-only catalogue features, pooled α=0.2 β=0.8). Only a private, non-compliant evaluator was used in parallel sessions.
-- No submission-page receipt links any historical SHA-256 to a live leaderboard value. The public leaderboard observation was 0.4544 on 27 October 2026 at approximately 17:21 UTC (subsequent automatic refresh failed); the aggregate leaderboard is not a per-file receipt, and public performance does not guarantee private-round performance.
-- A valid test would require: (a) resolving the literal registry policy (see §4), (b) using the shared cached feature stack and evaluator, (c) comparing the new candidate and the same-fold incumbent with paired 95% spatial-block CIs, and (d) obtaining organizer confirmation. Only a paired lower CI >0 counts as a scientific win; a proxy is not a leaderboard score.
+- We did not compute HOLDOUT-DTI for any of the nine historical files under the required shared evaluator (`gems57-pooled-hide-v2`, whole-segment buffered holdouts, visible-faults-only catalogue features, pooled α=0.2 β=0.8). A separate prior MSPTCD lane reported using the shared evaluator on its own arms; those results were not independently replayed here and do not measure the nine historical files. Another parallel lane used a private, non-compliant evaluator.
+- No submission-page receipt links any historical SHA-256 to a live leaderboard value. The public leaderboard was manually rechecked at 0.4544 on 27 October 2026 at approximately 19:05 UTC; an earlier automatic refresh failed, and the dashboard marks expired or failed-refresh snapshots stale; the aggregate leaderboard is not a per-file receipt, and public performance does not guarantee private-round performance.
+- A valid test would require: (a) resolving the literal registry policy (see §4), (b) using the shared cached feature stack and evaluator, (c) comparing the new candidate and the same-fold incumbent with paired 95% spatial-block CIs, and (d) obtaining organizer confirmation. A paired interval should accompany the comparison, with multiple-arm selection disclosed; a proxy is not a leaderboard score.
 
 ## 4. Why we are blocked from generating a new unique TIF today
 
@@ -61,13 +61,13 @@ Only then can a new TIF be labeled **OK TO DOWNLOAD AND SUBMIT** with an evidenc
 
 ## 6. Highest-ranked research proposal — not an assigned lane
 
-The method lane remains UNASSIGNED; H1 is not nominated or authorized for an experiment. The highest-ranked desk proposal in `research/hypotheses.md` is **H1: depth-shifted, multi-scale gravity–magnetic discontinuity** using `iso_grav_anom`, `rtp`/TMI, `depth_to_base_surf` (conductive-base depth, not assumed basement), and `det_elev`:
+The method lane remains UNASSIGNED; P1 is not nominated or authorized for an experiment. The highest-ranked desk proposal in `research/hypotheses.md` is **P1: upward-continuation ridge trajectories**, using the mirrored `rtp` field with terrain and magnetic-gradient context:
 
-- **Physical signature:** signed directional gradients at several 100 m scales; estimate a gravity-edge normal, test whether a magnetic edge displaced along that normal is consistent with a bounded depth/dip proxy. Both magnetic polarities are possible; a density contrast does not imply polarity.
-- **Why it could find a missing fault:** a buried property offset may extend beneath basin fill beyond mapped surface traces, leaving a displaced potential-field signature.
-- **Difference from reviewed sites:** uses a spatially shifted paired signature rather than coincident fusion (GEMSDOE31 pseudo-gravity residual, GEMSDOE36 HVG) or dotted point-density methods (GEMSDOE24/25). Whether any sibling already implemented a similar shift is unproven.
-- **Non-fault mimic:** unfaulted lithologic contact, dike, survey striping; falsified via cross-orientation, shuffled-field, and survey-block controls.
-- **Expected DTI improvement:** medium upside, medium cost — qualitative judgment, not a numerical forecast. Requires feature canaries and a full holdout before any slot is spent.
+- **Physical signature:** track oriented magnetic ridge maxima across several upward-continuation heights, with explicit mask, seam and FFT-boundary controls.
+- **Why it could find a missing fault:** a covered rock-property boundary might remain visible in geophysical data where surface mapping is incomplete. A boundary is not necessarily a fault.
+- **Difference from reviewed repository work:** MSPTCD implements multiscale gradients and magnetic tilt, not ridge trajectories through a computed continuation series. GEMSDOE32 has used an upward-continued magnetic band, so the family is related; a [README-only review](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/research/focus-head-readme-review-20261027.md) is not an exhaustive fleet novelty check. The earlier phase-congruency proposal was withdrawn because GEMSDOE32 reports ARENA49-PCG.
+- **Non-fault mimic:** lithologic contacts, dikes, remanence, survey striping, and FFT edge artifacts.
+- **Expected DTI improvement:** ranked first qualitatively, medium–high cost; no numeric forecast or independent holdout.
 
 If a method is explicitly assigned and all pre-placement gates are resolved, any future candidate must pass feature canaries, matched shared-evaluator holdouts, complete-registry checks, and format validation before a separate slot selector. The ranking itself authorizes nothing.
 
@@ -86,7 +86,7 @@ The optional strict flag also flags outside-footprint NaNs even though the offic
 - No authenticated DrivenData bytes, private truth, or submission-page receipts.
 - No complete current registry; nine-file audit is sufficient to prove duplicates, not to prove uniqueness.
 - No USGS/GDR binary downloads were verified in this sandbox; relevant direct download hosts were outside its network allowlist.
-- No explicit single-method lane assignment in the prompt — the active lane is UNASSIGNED, and H1 is not nominated or authorized.
+- No explicit single-method lane assignment in the prompt — the active lane is UNASSIGNED, and P1 is not nominated or authorized.
 
 Resolving these is the next session's work. The current repository decision remains **DO NOT SUBMIT — no new TIF is approved** (`evidence/run_card.json` verdict: negative, ok_to_submit: false).
 

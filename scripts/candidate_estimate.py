@@ -1,16 +1,5 @@
 #!/usr/bin/env python3
-"""Score estimate for the candidate, from the validated empirical model.
-
-Two independent estimates are produced and reported together:
-
-1. EMPIRICAL-MODEL: gradient boosting fitted on the 93 measured fleet
-   submissions. Its accuracy is known out of sample (scripts/score_model.py:
-   external test on the nine focus sites, RMSE 0.094).
-2. MASS-BALANCE BAND: invert T = s (0.2 M + 0.8 N) at the hit rate the best
-   fleet submissions actually achieve, over a range of unknown GT sizes.
-
-Neither is a competition score. Both are labelled estimates.
-"""
+"""Historical DZ-16 speculative model output, DISABLED. Related user-reported data and unknown hidden truth cannot support a calibrated leaderboard forecast or confidence interval."""
 from __future__ import annotations
 
 import json
@@ -25,6 +14,8 @@ from score_model import FEATURES, make_model  # noqa: E402
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical projection or private holdout cannot authorize an experiment or submission; see research/msptcd_findings.md.")
+
     audit = json.loads((ROOT / "data_public" / "final_audit.json").read_text())
     geo = audit["candidate_geometry"]
     cand = json.loads((ROOT / "data_public" / "candidate.json").read_text())

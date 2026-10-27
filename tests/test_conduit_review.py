@@ -45,8 +45,10 @@ def test_source_claim_is_superseded_and_unsafe_entry_points_disabled():
         proc = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), '--selftest'],
                               capture_output=True, text=True, timeout=5)
         assert proc.returncode != 0 and 'STOP' in (proc.stdout + proc.stderr)
-    brief = (ROOT / 'docs/executive-summary/index.html').read_text()
-    assert '99.8726%' in brief and 'Research-only download — DO NOT SUBMIT' in brief
+    alias = (ROOT / 'docs/executive-summary/index.html').read_text()
+    brief = (ROOT / 'docs/executive-summary.html').read_text()
+    assert 'DO NOT SUBMIT' in alias and 'url=../executive-summary.html' in alias
+    assert '99.8726%' in brief and 'DO NOT SUBMIT' in brief
 
 
 def test_private_evaluator_cannot_be_called():

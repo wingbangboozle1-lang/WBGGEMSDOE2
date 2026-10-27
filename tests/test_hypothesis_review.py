@@ -57,9 +57,10 @@ def test_b2_score_explainer_separates_lineage_from_claims_and_keeps_stop():
     assert 'not a per-file receipt' in html
     assert 'No defensible score estimate' in html
     assert 'DO NOT SUBMIT' in html and 'UNASSIGNED' in html
-    assert 'nearby withheld truth may matter' in html
+    assert 'new expert truth can be within 300 m' in html
+    assert 'no surrounding buffer' in html
     assert 'the method lane remains unassigned' in markdown.lower()
-    assert 'H1 is not nominated or authorized' in markdown
+    assert 'P1 is not nominated or authorized' in markdown
     assert 'H1 is not nominated or authorized' in archive
     assert 'no next experiment or slot is selected' in archive.lower()
 
@@ -85,10 +86,52 @@ def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():
 def test_run_card_does_not_misrepresent_a_proposal_as_an_experiment():
     card = load('evidence/run_card.json')
     assert card['lane_status'].startswith('UNASSIGNED')
-    assert card['hypothesis'].startswith('No experiment hypothesis was assigned')
+    assert card['hypothesis'].startswith('No experimental method was assigned')
     assert card['verdict'] == 'negative'
     assert card['experiment_count'] == 0
     assert card['holdout']['dti'] is None and card['holdout']['ci95'] is None
     assert card['raster_sha256'] is None
     assert card['submission_name'] is None and card['submission_note'] is None
     assert card['ok_to_submit'] is False and card['ok_to_download_new_tif'] is False
+
+
+def test_pinned_readme_review_preserves_scope_and_corrects_prior_work():
+    receipt = load('evidence/focus_readme_review_20261027.json')
+    freshness = load('docs/data/focus-freshness.json')
+    assert len(receipt['sites']) == 9
+    assert {item['site'] for item in receipt['sites']} == {item['site'] for item in freshness['sites']}
+    known_heads = {item['site']: item['current_head'] for item in freshness['sites']}
+    for item in receipt['sites']:
+        assert item['commit_sha'] == known_heads[item['site']]
+        assert item['commit_sha'] in item['readme_url']
+        assert len(item['readme_sha256']) == 64
+        int(item['readme_sha256'], 16)
+    assert 'not a new TIFF byte audit' in receipt['scope']
+    assert load('docs/data/focus_readme_review_20261027.json') == receipt
+    assert load('site/data/focus_readme_review_20261027.json') == receipt
+    notes = (ROOT / 'research/focus-head-readme-review-20261027.md').read_text()
+    assert '0.1647' in notes and '0.2314' in notes
+    assert 'phase congruency' in notes and 'not independently reproduced' in notes
+    assert 'README-only recheck' in (ROOT / 'docs/index.html').read_text()
+    titles = [row['title'].lower() for row in load('config/research_hypotheses.json')['hypotheses']]
+    assert all('phase-congruen' not in title and 'radiometric compositional' not in title for title in titles)
+
+
+def test_msptcd_published_values_match_source_record_without_implying_replay():
+    raw = load('evidence/wbg2_msptcd_results.json')
+    canaries = load('evidence/wbg2_msptcd_canaries.json')
+    findings = (ROOT / 'research/msptcd_findings.md').read_text()
+    page = (ROOT / 'docs/msptcd/index.html').read_text()
+    assert 'not independently reproduced' in findings and 'not independently reproduced' in page
+    for arm in raw['holdout_pooled']['scores'].values():
+        values = [arm['dti'], *arm['ci95']]
+        for value in values:
+            assert f'{value:.6f}' in findings
+            assert f'{value:.6f}' in page
+        assert arm['withheld_positive_pixels'] == 60988
+        assert arm['evaluator_version'] == 'gems57-pooled-hide-v2'
+    delta = raw['paired_vs_ctrl_19b']['exp3_msptcd_submod_greedy']
+    for value in [delta['delta'], *delta['ci95']]:
+        assert f'{value:.6f}' in findings
+    assert canaries['features_tested'] * canaries['folds_tested'] == canaries['total_checks'] == 124
+    assert f"{canaries['max_two_sided_auc']:.4f}" in findings

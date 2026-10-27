@@ -1,50 +1,4 @@
-"""H3-PACK: build the submission dot field.
-
-DESIGN, AND THE MEASUREMENTS IT IS BUILT ON
--------------------------------------------
-All numbers below are measured in this repository by ``scripts/h3_analysis.py``
-and stored in ``evidence/h3_analysis.json``; nothing here reads the hidden
-truth and no label beyond the public catalogue is used.
-
-1.  The nine focus rasters are *binary dot fields*, not probability surfaces.
-    For a binary prediction ``DTI = TP/(0.2*FP + 0.8*N + 0.2*TP)`` with
-    ``FN = N - TP`` exactly and ``FP <= D``, so at a fixed budget ``D`` the only
-    term placement can raise without bound is ``TP``.
-
-2.  The nine rasters are the *same regional density field*: pairwise Spearman
-    correlation of 256 px block densities is **0.996-0.999**. They differ in
-    exactly two measurable ways -- total dot count ``D`` and the fraction of
-    dots inside the 3 px collar around a mapped fault -- and their live scores
-    are reproduced by
-
-        score ~= 0.3110 - 0.000775*(D/1000) - 0.0891*collar     (R^2 = 0.988)
-
-    fitted on the eight dotted rasters with a reported live score.  Dots inside
-    the collar are therefore ~2.6x more expensive than dots outside it, and at
-    D ~ 38-44 k the marginal dot is net-negative.  This is the quantitative
-    answer to "why did GEMSDOE32 B2 score highest": it is the only raster with
-    **zero** dots inside 2 px of the catalogue *and* it sits at the smallest
-    dot count tested.
-
-3.  Their placement carries no measurable geological discrimination: block
-    density correlates +0.77 with *available data area* and essentially nothing
-    else.  Anything that "predicts faults" from the 19 bands actually predicts
-    the *mapped* catalogue, which is not the competition target, and pushes
-    dots into the collar the evidence says to avoid.
-
-4.  Packing degrades as dots are added: ``kmass/dot = 8.02-8.27`` for the seven
-    rasters at D <= 42 k, but only 6.56-6.58 for the two 60 k rasters, against a
-    geometric maximum of **9.38** (a dot isolated by >= 6 px).  Redundant
-    neighbours throw away 12-30 % of the available true-positive credit.  This is
-    the one lever that is both unused and *provable*, so the field below is built
-    with a Poisson-disk spacing rule that reaches ``kmass/dot = 9.37``.
-
-The resulting field is therefore deliberately *not* a new geological hypothesis:
-it is the measured leaderboard optimum (collar-free, near-area-uniform with the
-measured 3-12 px shoulder, at the empirically cheapest useful budget) computed
-with a better optimiser.  It is unique because the packing geometry, the dot set
-and the budget all differ from every registry raster.
-"""
+"""Historical H3 placement method, DISABLED. Its saved raster fails the literal lattice gate. Original causal, uniqueness and score-projection claims are superseded by evidence/local_artifact_audit_20261027.json; code is retained only for research provenance."""
 from __future__ import annotations
 
 import argparse
@@ -208,6 +162,8 @@ def budget_curve(margins, n_truth_candidates=(10000, 20000, 40000, 80000)):
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical lane fails the literal registry gate or lacks pre-placement evidence; see evidence/local_artifact_audit_20261027.json. Do not generate or approve a submission.")
+
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--budget", type=int, default=BUDGET)
     ap.add_argument("--min-sep", type=float, default=MIN_SEP_PX)

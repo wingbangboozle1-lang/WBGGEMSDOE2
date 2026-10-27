@@ -3,11 +3,11 @@
 Implements label-free geophysical, topographic, radiometric, electrical, and geodetic
 structural transforms on the cached 19-band GeoDAWN 100 m stack (EPSG:32611).
 
-Crucial metadata/provenance notes verified from the raw raster bytes:
+Metadata/provenance cautions from the owner mirror and official description:
 - Band 6 (labeled ``tc`` in mirror descriptions as 'Tilt angle or total curvature')
-  has strictly positive values (q01=7.64, median=18.49, q99=29.02), matching the
-  official DrivenData problem page's GeoDAWN *total radiometric counts per second*
-  channel rather than a [-pi/2, pi/2] magnetic tilt angle. True potential-field
+  has positive values (q01=7.64, median=18.49, q99=29.02), consistent with the
+  official description of ``tc`` as total radiometric counts rather than a magnetic
+  tilt angle. Quantiles alone do not authenticate the band's origin or units. True potential-field
   tilt angles (Miller & Singh, 1994) are therefore computed directly from vertical
   and horizontal potential-field derivatives (Bands 2, 3, 9 for magnetics; Bands 5,
   11, 13, 18 for isostatic gravity).

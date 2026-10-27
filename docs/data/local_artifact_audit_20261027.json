@@ -1,0 +1,364 @@
+{
+  "schema": "wbggems.archived-artifact-audit.v1",
+  "generated_utc": "2026-10-27T19:03:14.630279+00:00",
+  "evidence_class": "MEASURED; owner-mirror research only, not an organizer receipt",
+  "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "reference_authenticated_by_organizer": false,
+  "footprint_cells": 5167373,
+  "radius_px": 3,
+  "overlap_limit": 0.7,
+  "distance_rule": "Euclidean distance <= 3 pixels; candidate positive pixels are the denominator",
+  "scope": "Two pinned witnesses only; useful to disprove uniqueness, never to certify a complete registry.",
+  "continuous_prior_caveat": "A finite positive continuous probability field is counted as support by the shared literal tool; whether it should count as dots is unresolved and not exempted.",
+  "witnesses": {
+    "13GEMSDOE": {
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "source": "https://github.com/buffedlizard55-lab/13GEMSDOE/blob/92ee6f074323f161eed837b80ec3ee5b662e26f5/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif?raw=1",
+      "support_type": "binary_dots",
+      "positive_footprint_cells": 206895
+    },
+    "17GEMSDOE_dense_prior": {
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "source": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif?raw=1",
+      "support_type": "continuous_probability",
+      "positive_footprint_cells": 5167373
+    }
+  },
+  "preplacement_surfaces_replayed": false,
+  "artifacts": [
+    {
+      "name": "DZ-16",
+      "path": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
+      "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+      "positive_footprint_cells": 34500,
+      "format": {
+        "path": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
+        "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+        "grid_match_reference": true,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "bands": 1,
+        "dtype": "float32",
+        "nodata": null,
+        "strict_all_finite_requested": false,
+        "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "organizer_acceptance": "unknown",
+        "submission_approval": false,
+        "footprint_cells": 5167373,
+        "nonfinite_inside": 0,
+        "masked_inside": 0,
+        "nan_total": 0,
+        "inf_total": 0,
+        "nan_inside": 0,
+        "nan_outside": 0,
+        "inf_inside": 0,
+        "inf_outside": 0,
+        "below_zero_inside": 0,
+        "below_zero_outside": 0,
+        "above_one_inside": 0,
+        "above_one_outside": 0,
+        "positive_outside": 0,
+        "diagnostics_band": 1,
+        "all_finite": true,
+        "minimum_inside": 0.0,
+        "maximum_inside": 1.0,
+        "nonzero_inside": 34500,
+        "failures": [],
+        "format_valid_against_reference": true
+      },
+      "strict_all_finite_format": true,
+      "final_overlap_3px": {
+        "13GEMSDOE": 0.9997971014492754,
+        "17GEMSDOE_dense_prior": 1.0
+      },
+      "literal_stop_witnesses": [
+        "13GEMSDOE",
+        "17GEMSDOE_dense_prior"
+      ],
+      "preplacement_surface_checked": false,
+      "final_spearman_checked": false,
+      "complete_registry_checked": false,
+      "ok_to_submit": false,
+      "reason": "No pre-placement or complete-registry pass; stop on any literal witness above 70%. Local format is not organizer acceptance."
+    },
+    {
+      "name": "H3-PACK",
+      "path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+      "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+      "positive_footprint_cells": 34000,
+      "format": {
+        "path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+        "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+        "grid_match_reference": true,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "bands": 1,
+        "dtype": "float32",
+        "nodata": "nan",
+        "strict_all_finite_requested": false,
+        "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "organizer_acceptance": "unknown",
+        "submission_approval": false,
+        "footprint_cells": 5167373,
+        "nonfinite_inside": 0,
+        "masked_inside": 0,
+        "nan_total": 7111787,
+        "inf_total": 0,
+        "nan_inside": 0,
+        "nan_outside": 7111787,
+        "inf_inside": 0,
+        "inf_outside": 0,
+        "below_zero_inside": 0,
+        "below_zero_outside": 0,
+        "above_one_inside": 0,
+        "above_one_outside": 0,
+        "positive_outside": 0,
+        "diagnostics_band": 1,
+        "all_finite": false,
+        "minimum_inside": 0.0,
+        "maximum_inside": 1.0,
+        "nonzero_inside": 34000,
+        "failures": [],
+        "format_valid_against_reference": true
+      },
+      "strict_all_finite_format": false,
+      "final_overlap_3px": {
+        "13GEMSDOE": 0.9986176470588235,
+        "17GEMSDOE_dense_prior": 1.0
+      },
+      "literal_stop_witnesses": [
+        "13GEMSDOE",
+        "17GEMSDOE_dense_prior"
+      ],
+      "preplacement_surface_checked": false,
+      "final_spearman_checked": false,
+      "complete_registry_checked": false,
+      "ok_to_submit": false,
+      "reason": "No pre-placement or complete-registry pass; stop on any literal witness above 70%. Local format is not organizer acceptance."
+    },
+    {
+      "name": "MSPTCD",
+      "path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+      "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
+      "positive_footprint_cells": 25594,
+      "format": {
+        "path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+        "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
+        "grid_match_reference": true,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "bands": 1,
+        "dtype": "float32",
+        "nodata": null,
+        "strict_all_finite_requested": false,
+        "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "organizer_acceptance": "unknown",
+        "submission_approval": false,
+        "footprint_cells": 5167373,
+        "nonfinite_inside": 0,
+        "masked_inside": 0,
+        "nan_total": 0,
+        "inf_total": 0,
+        "nan_inside": 0,
+        "nan_outside": 0,
+        "inf_inside": 0,
+        "inf_outside": 0,
+        "below_zero_inside": 0,
+        "below_zero_outside": 0,
+        "above_one_inside": 0,
+        "above_one_outside": 0,
+        "positive_outside": 0,
+        "diagnostics_band": 1,
+        "all_finite": true,
+        "minimum_inside": 0.0,
+        "maximum_inside": 1.0,
+        "nonzero_inside": 25594,
+        "failures": [],
+        "format_valid_against_reference": true
+      },
+      "strict_all_finite_format": true,
+      "final_overlap_3px": {
+        "13GEMSDOE": 1.0,
+        "17GEMSDOE_dense_prior": 1.0
+      },
+      "literal_stop_witnesses": [
+        "13GEMSDOE",
+        "17GEMSDOE_dense_prior"
+      ],
+      "preplacement_surface_checked": false,
+      "final_spearman_checked": false,
+      "complete_registry_checked": false,
+      "ok_to_submit": false,
+      "reason": "No pre-placement or complete-registry pass; stop on any literal witness above 70%. Local format is not organizer acceptance."
+    },
+    {
+      "name": "STEPXASYM",
+      "path": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
+      "sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+      "positive_footprint_cells": 34564,
+      "format": {
+        "path": "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif",
+        "sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+        "grid_match_reference": true,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "bands": 1,
+        "dtype": "float32",
+        "nodata": "0.0",
+        "strict_all_finite_requested": false,
+        "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "organizer_acceptance": "unknown",
+        "submission_approval": false,
+        "footprint_cells": 5167373,
+        "nonfinite_inside": 0,
+        "masked_inside": 5132809,
+        "nan_total": 0,
+        "inf_total": 0,
+        "nan_inside": 0,
+        "nan_outside": 0,
+        "inf_inside": 0,
+        "inf_outside": 0,
+        "below_zero_inside": 0,
+        "below_zero_outside": 0,
+        "above_one_inside": 0,
+        "above_one_outside": 0,
+        "positive_outside": 0,
+        "diagnostics_band": 1,
+        "all_finite": true,
+        "minimum_inside": 0.0,
+        "maximum_inside": 1.0,
+        "nonzero_inside": 34564,
+        "failures": [
+          "reference-footprint cells are marked nodata/masked"
+        ],
+        "format_valid_against_reference": false
+      },
+      "strict_all_finite_format": false,
+      "final_overlap_3px": {
+        "13GEMSDOE": 0.9938375188056938,
+        "17GEMSDOE_dense_prior": 1.0
+      },
+      "literal_stop_witnesses": [
+        "13GEMSDOE",
+        "17GEMSDOE_dense_prior"
+      ],
+      "preplacement_surface_checked": false,
+      "final_spearman_checked": false,
+      "complete_registry_checked": false,
+      "ok_to_submit": false,
+      "reason": "No pre-placement or complete-registry pass; stop on any literal witness above 70%. Local format is not organizer acceptance."
+    },
+    {
+      "name": "CONDUIT",
+      "path": "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif",
+      "sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+      "positive_footprint_cells": 5167373,
+      "format": {
+        "path": "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif",
+        "sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+        "grid_match_reference": true,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "bands": 1,
+        "dtype": "float32",
+        "nodata": null,
+        "strict_all_finite_requested": false,
+        "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "organizer_acceptance": "unknown",
+        "submission_approval": false,
+        "footprint_cells": 5167373,
+        "nonfinite_inside": 0,
+        "masked_inside": 0,
+        "nan_total": 0,
+        "inf_total": 0,
+        "nan_inside": 0,
+        "nan_outside": 0,
+        "inf_inside": 0,
+        "inf_outside": 0,
+        "below_zero_inside": 0,
+        "below_zero_outside": 0,
+        "above_one_inside": 0,
+        "above_one_outside": 0,
+        "positive_outside": 0,
+        "diagnostics_band": 1,
+        "all_finite": true,
+        "minimum_inside": 0.19781608879566193,
+        "maximum_inside": 1.0,
+        "nonzero_inside": 5167373,
+        "failures": [],
+        "format_valid_against_reference": true
+      },
+      "strict_all_finite_format": true,
+      "final_overlap_3px": {
+        "13GEMSDOE": 0.9987132726822701,
+        "17GEMSDOE_dense_prior": 1.0
+      },
+      "literal_stop_witnesses": [
+        "13GEMSDOE",
+        "17GEMSDOE_dense_prior"
+      ],
+      "preplacement_surface_checked": false,
+      "final_spearman_checked": false,
+      "complete_registry_checked": false,
+      "ok_to_submit": false,
+      "reason": "No pre-placement or complete-registry pass; stop on any literal witness above 70%. Local format is not organizer acceptance."
+    }
+  ],
+  "experiment_count": 0,
+  "weekly_slots_used": 0
+}

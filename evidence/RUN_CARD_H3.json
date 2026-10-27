@@ -50,8 +50,8 @@
     "headline": "0.285 (base, regression only) to 0.332 (upside, full packing transfer); 0.308 central",
     "caution": "Dot count and packing efficiency are 98% collinear across the registry (r=-0.980), so the registry cannot separate the two mechanisms. The base case uses the regression alone, which already absorbs whatever packing effect exists inside the fitted range."
   },
-  "verdict": "promote",
-  "verdict_reason": "Passes every locally checkable gate; is distinct from all nine focus rasters by a wide margin; and applies the only improvement in the registry that is both unused and provable. The score remains a PROJECTION (0.285-0.332) because no organizer receipt exists and the hidden truth is unavailable.",
+  "verdict": "negative",
+  "verdict_reason": "Historical approval revoked: the literal lattice and dense-prior overlap limits fail, the source pre-placement surface was not audited, and the full registry is incomplete.",
   "weekly_submission_slot_spent": false,
   "limitations": [
     "All nine live scores are user-reported; no organizer receipt ties any score to exact bytes.",
@@ -60,5 +60,8 @@
     "The catalogue holdout is anti-correlated with the target and was not used to select this design.",
     "Organizer portal acceptance is untested from this environment."
   ],
-  "generated_utc": "2026-10-27T17:46:05Z"
+  "generated_utc": "2026-10-27T17:46:05Z",
+  "historical_verdict": "promote",
+  "ok_to_submit": false,
+  "superseded_by": "evidence/local_artifact_audit_20261027.json"
 }

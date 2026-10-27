@@ -53,8 +53,8 @@ def main() -> int:
             "risers, and variable airborne survey clearance."
         ),
         "lane_status": (
-            "Executed 3 preregistered zero-leakage experiments (EXP-1, EXP-2, EXP-3 vs "
-            "CTRL-19B) on unmodified gems57-pooled-hide-v2; stopped at literal all-registry gate."
+            "Prior source reported 3 canary-checked experiments (EXP-1, EXP-2, EXP-3 vs "
+            "CTRL-19B) with gems57-pooled-hide-v2; not independently replayed. The novelty audit was after allocation; literal gate fails."
         ),
         "experiment_budget": {
             "experiments_run": msptcd["budget_compliance"]["experiments_run"],
@@ -65,7 +65,7 @@ def main() -> int:
             "scope": "wbg2-msptcd single method lane; preserves sibling DZ-16 and H3-PACK lanes intact",
         },
         "holdout": {
-            "evidence_class": "HOLDOUT-DTI",
+            "evidence_class": "HOLDOUT-DTI (SOURCE-REPORTED, NOT INDEPENDENTLY REPRODUCED)",
             "evaluator_version": msptcd["holdout_pooled"]["evaluator_version"],
             "split_version": "label-blind-quadrants-v2 (buffer_px=80, 8.0 km buffer)",
             "withheld_positive_pixels": best_sc["withheld_positive_pixels"],
@@ -84,11 +84,11 @@ def main() -> int:
             "paired_delta_ci95": delta_ctrl["ci95"],
             "detached_splay_dti": msptcd["detached_splay_diagnostic"][best_arm]["detached"]["pooled_dti"],
             "control_detached_splay_dti": msptcd["detached_splay_diagnostic"]["ctrl_19b"]["detached"]["pooled_dti"],
-            "status": "completed on unmodified gems57.evaluate_holdout (1,000 paired 20 km spatial-cluster draws)",
+            "status": "Prior report: 1,000 paired 20 km cluster draws; not independently replayed. Best arm was selected; CI is not selection-adjusted.",
         },
         "holdout_dti": {
-            "evidence_class": "HOLDOUT-DTI",
-            "status": "COMPLETED",
+            "evidence_class": "HOLDOUT-DTI (SOURCE-REPORTED, NOT INDEPENDENTLY REPRODUCED)",
+            "status": "SOURCE-REPORTED; NOT INDEPENDENTLY REPRODUCED",
             "evaluator_version": msptcd["holdout_pooled"]["evaluator_version"],
             "withheld_positives": best_sc["withheld_positive_pixels"],
             "value": best_sc["dti"],
@@ -104,8 +104,8 @@ def main() -> int:
             "status": "not submitted; weekly competition slots preserved",
         },
         "feature_canary": {
-            "evidence_class": "LEAKAGE-CANARY-MEASUREMENT",
-            "status": "passed",
+            "evidence_class": "LEAKAGE-CANARY-MEASUREMENT (SOURCE-REPORTED, NOT INDEPENDENTLY REPRODUCED)",
+            "status": "reported below threshold; does not prove absence of leakage",
             "features_tested": msptcd["canary_summary"]["features_tested"],
             "folds_tested": msptcd["canary_summary"]["folds_tested"],
             "total_checks": msptcd["canary_summary"]["features_tested"] * msptcd["canary_summary"]["folds_tested"],
@@ -115,7 +115,7 @@ def main() -> int:
             "details_file": msptcd["canary_summary"]["details_file"],
         },
         "uniqueness": {
-            "registry_scope": "23 verified rasters (9 focus champions, 2 sibling WBGGEMSDOE2 lanes DZ-16 & H3-PACK, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
+            "registry_scope": "Prior report: 23 selected rasters (incomplete registry) (9 focus champions, 2 sibling WBGGEMSDOE2 lanes DZ-16 & H3-PACK, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
             "unique_vs_all_9_focus_sites": msptcd["registry_comparison"]["unique_vs_all_9_focus_sites"],
             "unique_vs_sibling_wbggemsdoe2_lanes": True,
             "sibling_lane_comparisons": cross["comparisons_against_sibling_lanes"],
@@ -153,7 +153,7 @@ def main() -> int:
             "ok_to_submit_to_competition": False,
         },
         "validator": {
-            "status": "passed local byte-level GeoTIFF & mask validation on research candidate",
+            "status": "local read-back against an unauthenticated mirror; organizer acceptance unknown",
             "no_nan_inside_footprint": msptcd["artifact"]["validator"]["no_nan_inside_footprint"],
             "values_in_0_1": msptcd["artifact"]["validator"]["inside_values_in_0_1"],
             "crs_shape_transform_match": msptcd["artifact"]["inspect_tif"]["grid_match_reference"],

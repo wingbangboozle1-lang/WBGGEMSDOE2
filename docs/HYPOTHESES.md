@@ -1,6 +1,6 @@
 # Historical parallel-run hypothesis notes
 
-> **Superseded:** H1 was self-assigned, not an approved lane. Its candidate failed the registered binary-lattice overlap gate, and the parallel holdout was not protocol-valid. These are untested geological proposals, not proven geological conclusions or score projections. Its reported interval is not reproduced by the committed script; the evaluation cells were not excluded from training. See the [current hypotheses](research/hypotheses.md) and [independent audit](data/parallel_candidate_audit.json).
+> **Superseded:** H1 was self-assigned, not an approved lane. Its candidate failed the registered binary-lattice overlap gate, and the parallel holdout was not protocol-valid. This is a historical draft; some related transforms now exist in the repository. These are not proven geological conclusions or score projections. Its reported interval is not reproduced by the committed script; the evaluation cells were not excluded from training. See the [current hypotheses](research/hypotheses.md) and [independent audit](data/parallel_candidate_audit.json).
 
 This repo started empty (only `README.md`, verified 2026-10-26), so every item
 below is new *to this repo*. Cross-site claims are limited to what the nine

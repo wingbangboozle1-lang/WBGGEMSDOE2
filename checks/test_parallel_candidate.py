@@ -47,7 +47,9 @@ def test_old_lane_and_writer_are_stopped():
 
 def test_old_executive_report_points_to_current_audit():
     html=(ROOT/'docs/executive-summary/index.html').read_text()
-    assert 'do not submit' in html.lower() and 'parallel_candidate_audit.json' in html
+    assert 'do not submit' in html.lower() and 'url=../executive-summary.html' in html
+    guide = (ROOT / 'docs/executive-summary.html').read_text()
+    assert 'local_artifact_audit_20261027.json' in guide and '99.3838%' in guide
     assert '⬇ DOWNLOAD: YES' not in html
 
 

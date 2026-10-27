@@ -35,7 +35,9 @@ def test_retired_partial_lane_cannot_execute():
         proc = subprocess.run([sys.executable, str(ROOT / 'scripts' / script)],
                               capture_output=True, text=True, timeout=5)
         assert proc.returncode != 0 and 'STOP' in (proc.stdout + proc.stderr)
-    brief = (ROOT / 'docs/executive-summary/index.html').read_text()
+    alias = (ROOT / 'docs/executive-summary/index.html').read_text()
+    brief = (ROOT / 'docs/executive-summary.html').read_text()
+    assert 'DO NOT SUBMIT' in alias and 'url=../executive-summary.html' in alias
     assert 'DO NOT SUBMIT' in brief and '99.3838%' in brief
     assert 'Unique: ≤70% of dots' not in brief
 

@@ -1,35 +1,5 @@
 #!/usr/bin/env python3
-"""Uniqueness gate for the WBGGEMSDOE2 candidate.
-
-Two categories of registry raster must be separated, because applying the
-literal "within 3 px of one raster" rule to the first category is *provably*
-inapplicable:
-
-  A. SUBMISSION rasters (actual dotted/probability submissions). These are what
-     "do not duplicate a previous submission" can meaningfully mean.
-  B. SAMPLING / PRIOR witnesses:
-       * 13GEMSDOE `r13-lattice-s5` — a 5-px sampling lattice, 206,895 dots;
-       * 17GEMSDOE `E-proba-multiscale` — a continuous probability field that is
-         positive over the entire footprint.
-     Measured in this repository: 99.9% of the dots in *every one of the nine
-     focus-site submissions* lie within 3 px of the stride-5 lattice, including
-     all six the requester reports as scoring 0.2449-0.2778. A rule that
-     classifies the fleet's own scored submissions as duplicates cannot be the
-     operative reading. Likewise, any non-empty candidate overlaps a raster that
-     is positive everywhere by 100%. Both witnesses are therefore reported
-     separately and excluded from the pass/fail gate, with the measurements
-     that justify the exclusion (see `sampling_witness_findings`).
-
-Gates applied to submission rasters:
-  * exact bytes (SHA-256) equal to any registry file  -> duplicate;
-  * > 70% of candidate dots within 3 px of one raster  -> duplicate;
-  * smoothed-surface correlation > 0.90 with a raster  -> duplicate.
-
-Surface correlation is computed on Gaussian-smoothed (sigma = 10 px = 1 km)
-density fields, not raw sparse binary arrays: on sparse binary rasters a raw
-rank correlation is dominated by the shared zero background and is not a
-measure of shared prior (documented in `measurement_notes`).
-"""
+"""Historical partial uniqueness audit, DISABLED. Its exemption of registered witnesses is not authorized; it must never write an approval. See evidence/local_artifact_audit_20261027.json."""
 from __future__ import annotations
 
 import json
@@ -60,6 +30,8 @@ def smoothed(a: np.ndarray) -> np.ndarray:
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical lane fails the literal registry gate or lacks pre-placement evidence; see evidence/local_artifact_audit_20261027.json. Do not generate or approve a submission.")
+
     cand = json.loads((ROOT / "data_public" / "candidate.json").read_text())
     with rasterio.open(ROOT / cand["file"]) as src:
         mine = src.read(1)

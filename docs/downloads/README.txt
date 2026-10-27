@@ -1,13 +1,16 @@
-WHICH FILE TO SUBMIT
-====================
+RESEARCH ARCHIVE — DO NOT SUBMIT
 
-SUBMIT:  wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif
-         sha256 a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912
-         the only file cleared in this repository (see ../index.html)
+No TIFF is approved for a competition slot. Previous H3-PACK and DZ-16
+approval claims have been revoked: the binary-lattice witness independently
+exceeds the literal 70% / 3-pixel duplicate threshold. The MSPTCD,
+STEPXASYM and CONDUIT research files also fail that witness. STEPXASYM
+additionally has masked cells inside the reference footprint.
 
-DO NOT SUBMIT either of the other two files here:
-  * wbg2-h1-stepxasym-e2-34564dots-...-zeros.tif  -- rejected: masked interior cells,
-    99.4% lattice duplication, no validated holdout (see ../../evidence/final_candidate.json)
-  * ../downloads/wbg-h1-blind-conduit-breach-...    -- rejected: duplicate of the registered lattice
+The full registry is not available and prior pre-placement surfaces have not
+been replayed; partial comparisons cannot authorize an upload. The continuous
+prior is 100% overlap under the shared finite-positive support definition;
+whether it counts as dots is unresolved. Do not bypass the stop.
 
-They are retained only because audit records bind to their hashes.
+Evidence: ../data/local_artifact_audit_20261027.json
+Decision and future submission checklist: ../executive-summary.html
+Canonical negative run card: ../data/run-card.json

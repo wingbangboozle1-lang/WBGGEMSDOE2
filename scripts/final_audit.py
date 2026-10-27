@@ -1,28 +1,5 @@
 #!/usr/bin/env python3
-"""Final gate for the candidate: uniqueness (raw + normalized), format, score estimate.
-
-Uniqueness is reported twice, because the two readings disagree and the
-disagreement is itself a measured finding:
-
-RAW (literal session rule: >70% of dots within 3 px of one registry raster).
-  The candidate fails against three rasters. So does every other submission in
-  the fleet: measured in `focus_pairwise_overlap`, the nine focus-site
-  submissions lie within 3 px of each other for 86-100% of their dots, and
-  95-100% of their dots lie within 3 px of each of those three rasters. Two of
-  the three rasters blanket 84-90% of the footprint; the third is a 5-px
-  sampling lattice covering 99.96% of it. A test that returns "duplicate" for
-  every submission the competition has ever scored is not a uniqueness test.
-
-NORMALIZED (enrichment over the reference's own coverage).
-  For reference raster R with 3-px coverage c (fraction of the footprint within
-  3 px of its dots), an independent point pattern has expected overlap c. The
-  quantifiable statement of "this is a copy" is overlap substantially above c.
-  Enrichment e = overlap / c. Measured here: the nine focus submissions are
-  3.9-6.0x enriched against each other (same lineage); the candidate is
-  approximately 1.0x enriched against every blanket raster and 0.5-0.9x against
-  the focus submissions, i.e. statistically indistinguishable from, or less
-  similar than, an independently drawn pattern.
-"""
+"""Historical calibrated DZ-16 audit, DISABLED. It overrode literal failures with an unapproved normalized criterion; it must never write an approval. See evidence/local_artifact_audit_20261027.json."""
 from __future__ import annotations
 
 import json
@@ -53,6 +30,8 @@ FOCUS_TOKENS = {
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical lane fails the literal registry gate or lacks pre-placement evidence; see evidence/local_artifact_audit_20261027.json. Do not generate or approve a submission.")
+
     cand = json.loads((ROOT / "data_public" / "candidate.json").read_text())
     with rasterio.open(ROOT / cand["file"]) as src:
         mine = src.read(1)

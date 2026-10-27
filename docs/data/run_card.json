@@ -1,10 +1,10 @@
 {
   "schema": "wbggems.run-card.v1",
-  "generated_utc": "2026-10-27T17:24:02.594108+00:00",
-  "hypothesis": "No experiment hypothesis was assigned to this lane. H1 is the highest-ranked research proposal only; it was not selected or tested.",
-  "mechanism": "Not evaluated. H1 proposes a bounded depth-conditioned offset between multiscale signed gravity and magnetic edge responses; no candidate surface was constructed.",
-  "non_fault_mimic": "For the untested H1 proposal: an unfaulted lithologic contact, intrusive dike, or acquisition/gridding artefact can produce aligned gravity and magnetic edges.",
-  "lane_status": "UNASSIGNED: the prompt does not identify one method paragraph as the assigned lane; H1 is a ranked proposal, not authorization.",
+  "generated_utc": "2026-10-27T19:01:33.948721+00:00",
+  "hypothesis": "No experimental method was assigned. P1 is an upward-continuation ridge-trajectory desk proposal, not selected or tested.",
+  "mechanism": "Untested proposal: track magnetic ridge behavior across upward-continuation heights to study possible buried boundaries; survey and FFT artifacts require controls.",
+  "non_fault_mimic": "Lithologic contact, intrusive dike, remanent magnetization, survey seams, and FFT edge artifacts can mimic a buried fault boundary.",
+  "lane_status": "UNASSIGNED: the prompt refers to one method paragraph but does not specify it. The proposal shortlist does not assign a lane.",
   "experiment_budget": {
     "experiments_run": 0,
     "maximum_experiments": 3,
@@ -48,7 +48,7 @@
   },
   "submission_name": null,
   "proposed_research_name": null,
-  "note": "No candidate generated; H1 is a proposal only. No download. DO NOT SUBMIT.",
+  "note": "No lane or eligible candidate. Prior TIFFs fail the literal duplicate gate. DO NOT SUBMIT.",
   "ok_to_submit": false,
   "verdict": "negative",
   "experiment_count": 0,
@@ -75,7 +75,7 @@
   },
   "submission_note": null,
   "ok_to_download_new_tif": false,
-  "updated_utc": "2026-10-27T17:48:48.076904+00:00",
+  "updated_utc": "2026-10-27T19:14:56.377247+00:00",
   "parallel_session": {
     "evidence": "evidence/parallel_review.json",
     "reported_experiments": 3,
@@ -110,8 +110,8 @@
     "reason": "Rejected: lattice duplication, no validated holdout, and synthetic rather than demonstrated geophysical features."
   },
   "this_session_recheck": {
-    "scope": "Repository and previously existing raster audit only; no new candidate, placement, holdout, canary or submission slot.",
-    "registry_audit_time_utc": "2026-10-27T17:19:32.655787+00:00",
+    "scope": "Historical-byte, source, format and UI audit only; no new candidate, placement, canary, holdout or competition slot.",
+    "registry_audit_time_utc": "2026-10-27T18:56:59.115397+00:00",
     "registry_index_evidence": "evidence/shared_registry_index_summary.json",
     "registry_index_hash_rows": 695,
     "index_hashes_not_in_witness_manifest": 684,
@@ -125,13 +125,18 @@
     "public_leaderboard_observation": {
       "evidence_class": "ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION; NOT A RECEIPT",
       "value": 0.4544,
-      "captured_utc": "2026-10-27T17:21:43Z",
-      "latest_automated_refresh": "failed; dashboard stale",
-      "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/"
+      "captured_utc": "2026-10-27T19:05:37Z",
+      "latest_automated_refresh": "prior automated refresh failed; manually rechecked via page renderer at 19:05 UTC",
+      "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+      "manual_observation_record": "evidence/public_leaderboard_observation_20261027_1905.json"
     },
     "shared_template_format_issue": "reproduced, upstream issue creation denied by repository integration permissions; no upstream fix",
     "shared_template_issue_report": "research/shared-template-format-report.md",
     "candidate_experiments": 0,
-    "competition_slots_used": 0
+    "competition_slots_used": 0,
+    "local_artifact_audit": "evidence/local_artifact_audit_20261027.json",
+    "source_clarification": "DrivenData staff explicitly confirmed pixel-exact known-fault mask and possible new truth within 300m; https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4",
+    "focus_readme_review": "evidence/focus_readme_review_20261027.json",
+    "focus_readme_scope": "Pinned README text only from nine previously observed HEADs; no newer TIFFs or sibling holdouts reproduced."
   }
 }

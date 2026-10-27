@@ -1,18 +1,4 @@
-"""Measure the nine focus rasters and the H3-PACK candidate; write the evidence.
-
-Everything the executive summary quotes is produced here:
-
-* per-raster dot count, 3 px collar fraction, packing efficiency (kmass/dot),
-  256 px block clustering, distance-to-catalogue profile and live score;
-* the live-score regression on those measured columns;
-* the catalogue hide-and-recover holdout score of every raster, which is shown
-  in order to demonstrate that this instrument is *anti*-correlated with the
-  live leaderboard and therefore cannot be used to select a submission;
-* the candidate's statistics and the projection range.
-
-No hidden truth is used.  Reported live scores are owner/user-reported values
-copied from the competition pages, never organizer receipts.
-"""
+"""Historical H3 score extrapolation and private holdout, DISABLED. Its projections are not scores, its holdout is not the required shared evaluation, and the saved TIFF fails the literal gate."""
 from __future__ import annotations
 
 import hashlib
@@ -67,6 +53,8 @@ def load(p):
 
 
 def main() -> int:
+    raise RuntimeError("STOP: historical projection or private holdout cannot authorize an experiment or submission; see research/msptcd_findings.md.")
+
     with rasterio.open(ROOT / "data/official/existing_faults.tif") as ds:
         cat = ds.read(1) == 1
     with rasterio.open(ROOT / "data/official/sample_submission.tif") as ds:

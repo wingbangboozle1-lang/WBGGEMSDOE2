@@ -1,3 +1,5 @@
+> **Historical review record, corrected 2026-10-27:** The experimental narrative below is source-reported, not independently reproduced in the present review. Prior canary passes do not prove an absence of leakage; the MSPTCD script audited novelty after allocation, and all five archived local TIFFs fail the literal binary-lattice witness. Prior H3 and DZ-16 approvals are revoked. See [current byte-level audit](local_artifact_audit_20261027.json) and [current three-pass review](../research/review-20261027.md).
+
 # Three-pass review — 2026-10-26
 
 ## Pass 1 — implementation and measured audit
@@ -48,10 +50,10 @@ After both parallel artifacts and the leaderboard-fragment work were integrated:
 
 # Three-pass review — 2026-10-27 (`WBG2-MSPTCD` campaign & updated fleet audit)
 
-## Pass 1 — implementation and zero-leakage experiment execution
+## Pass 1 — implementation and canary-checked experiment execution
 
 - Addressed previous-session next steps first: verified the live DrivenData public leaderboard (`0.4544` by `xiaofanhu` on 2026-10-27 UTC), updated the fleet ledger (`docs/data/user-reported-ledger.csv`, 144 rows including 17 new 2026-10-26/27 entries across `GEMSDOE28/33/36/91/92` and `KANLER/EUG/WBG/GINNY`), and empirically audited all 19 cached GeoDAWN bands—discovering from raw pixel quantiles (`q01=7.637, median=18.490, q99=29.020`, `0` negative cells) that Band 6 (`tc`) is positive airborne gamma-ray total counts rather than a `[-\pi/2, \pi/2]` magnetic tilt angle.
-- Formulated and ranked 5 physical hypotheses (`research/hypotheses.md`), implemented 12 label-free geophysical operators in `src/wbggems/msptcd.py`, ran 124 fold-local single-feature leakage canaries (`31` features × `4` buffered spatial folds, max two-sided ROC-AUC `0.6131 <= 0.90`), and executed 3 preregistered zero-leakage experiments (`EXP-1`, `EXP-2`, `EXP-3` vs `CTRL-19B`) on the unmodified shared `gems57.evaluate_holdout` (`gems57-pooled-hide-v2`, `60,988` withheld positives, `8.0 km` buffer, 1,000 paired 20 km cluster bootstrap draws).
+- Formulated and ranked 5 physical hypotheses (`research/hypotheses.md`), implemented 12 label-free geophysical operators in `src/wbggems/msptcd.py`, ran 124 fold-local single-feature leakage canaries (`31` features × `4` buffered spatial folds, max two-sided ROC-AUC `0.6131 <= 0.90`), and executed 3 preregistered canary-checked experiments (`EXP-1`, `EXP-2`, `EXP-3` vs `CTRL-19B`) on the unmodified shared `gems57.evaluate_holdout` (`gems57-pooled-hide-v2`, `60,988` withheld positives, `8.0 km` buffer, 1,000 paired 20 km cluster bootstrap draws).
 - `EXP-1` improved pooled `HOLDOUT-DTI` from `0.023409` (`CTRL-19B`) to `0.034975` (`+49.4%`, paired 95% CI `[+0.005424, +0.018644]`, winning all 4 quadrants), and `EXP-3` (`greedy_allocate`) reached `0.042554` (`+81.8%`, paired 95% CI `[+0.010977, +0.028755]`) plus `0.030799` vs `0.016915` (`+82.1%`) on detached splays (`>= 400 m` from visible faults).
 - Emitted the cross-fitted research GeoTIFF + ZIP (`docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.{tif,zip}`, SHA-256 `fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614`) via unmodified `gems57.submission_writer`, verified `64.45%–68.06% <= 70%` novelty against all 9 priority focus champions, and stopped fail-closed (`verdict="negative"`, `ok_to_submit=false`, `0` slots used) due to literal all-registry witnesses (`13GEMSDOE` lattice `100.00%`, `17GEMSDOE`/`WBGGEMSDOE1` continuous priors `100.00%`, `GEMSDOE27_H31` `78.34%`).
 

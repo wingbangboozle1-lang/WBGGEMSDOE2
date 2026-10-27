@@ -84,36 +84,29 @@ class LinkParser(HTMLParser):
         if tag=='table': self.tables+=1
 
 
-def test_site_links_and_approval_copy_match_the_audit_artifact():
-    """The landing page may only claim approval that the audit artifact supports.
-
-    The earlier version of this test hard-coded the fail-closed sentence. That made
-    the test pass or fail on prose rather than on evidence. It now reads
-    data_public/final_audit.json and requires the page copy to agree with it, in
-    whichever direction the audit points.
-    """
+def test_site_and_legacy_routes_fail_closed_against_literal_witness():
     audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())
-    # this lane's landing page; the dashboard lane keeps its own fail-closed page
-    index = (ROOT / 'docs' / 'submission' / 'index.html').read_text()
-    if audit['ok_to_submit']:
-        assert 'approved to download and submit' in index
-        assert audit['sha256'] in index, 'landing page must show the audited SHA-256'
-        checks = json.loads((ROOT / 'data_public/candidate.json').read_text())['checks']
-        assert all(checks.values()), 'approval requires every validator check to pass'
-    else:
-        assert 'No file is approved for submission.' in index
-        assert 'No submission file' in index
-    dashboard = (ROOT / 'docs' / 'index.html').read_text()
-    assert 'submission/index.html' in dashboard, 'the dashboard must link to the cleared file'
-    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs' / 'submission').glob('*.html')):
+    observed = json.loads((ROOT / audit['superseded_by']).read_text())
+    assert audit['ok_to_submit'] is False and audit['effective_verdict'] == 'negative'
+    assert audit['verdicts']['literal_rule']['result'] == 'FAIL'
+    assert all(row['final_overlap_3px']['13GEMSDOE'] > .70 and not row['ok_to_submit']
+               for row in observed['artifacts'])
+    dashboard = (ROOT / 'docs/index.html').read_text()
+    guide = (ROOT / 'docs/executive-summary.html').read_text()
+    assert 'No submission file' in dashboard and 'DO NOT SUBMIT' in guide
+    assert '99.3838%' in guide and '99.8726%' in guide
+    assert 'ready to download and submit' not in dashboard.lower()
+    for path in ('index.html', 'docs/submission/index.html', 'docs/submit/index.html'):
+        text = (ROOT / path).read_text()
+        assert 'DO NOT SUBMIT' in text and 'url=' in text
+        assert 'approved to download and submit' not in text.lower()
+    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs/submission').glob('*.html')):
         html = f.read_text(); parser = LinkParser(); parser.feed(html)
         assert len(parser.ids) == len(set(parser.ids)), f
-        if 'No file is approved for submission.' in html:
-            assert 'No submission file' in html, f
         for link in parser.links:
             if link.startswith(('https://', 'http://', 'mailto:', '#')):
                 continue
             target = link.split('#', 1)[0].split('?', 1)[0]
             if target:
                 assert (f.parent / target).exists(), (f, link)
-    assert 'USER-REPORTED' in index
+    assert 'USER-REPORTED' in dashboard

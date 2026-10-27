@@ -63,8 +63,10 @@
   "submission_note_characters": 90,
   "weekly_submission_slots_used": 0,
   "experiment_count": 5,
-  "verdict": "promote",
-  "ok_to_submit": true,
-  "ok_to_download_new_tif": true,
-  "caveat": "Promotion means: format-valid, unique against every raster measured here, and honestly estimated. It does not mean the file is expected to beat the public leaderboard leader (0.4544 on 2026-10-27); the estimate is 0.15 with a conditional band of 0.28-0.32."
+  "verdict": "negative",
+  "ok_to_submit": false,
+  "ok_to_download_new_tif": false,
+  "caveat": "Historical calibrated-policy approval revoked: literal lattice and dense-prior witnesses exceed 70%; surface and complete-registry checks do not authorize this file.",
+  "historical_calibrated_verdict": "promote",
+  "superseded_by": "evidence/local_artifact_audit_20261027.json"
 }

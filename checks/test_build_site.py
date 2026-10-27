@@ -18,16 +18,18 @@ def test_builder_refuses_unreviewed_promotion(tmp_path):
     assert not (tmp_path/'docs/index.html').exists()
 
 
-def test_scheduled_and_legacy_pages_share_url_layout():
-    workflow=(ROOT/'.github/workflows/pages.yml').read_text()
-    assert 'cp -R docs/. _site/docs/' in workflow and 'cp -R site/. _site/site/' in workflow and 'path: _site' in workflow
-    assert 'url=./docs/' in (ROOT/'index.html').read_text()
-    home=(ROOT/'docs/index.html').read_text()
-    # dashboard lane keeps its own layout, and must link to this lane's cleared submission
-    assert 'href="executive-summary.html"' in home
-    assert 'href="sources.html"' in home
-    assert 'href="submission/index.html"' in home
-    sub=(ROOT/'docs/submission/index.html').read_text()
-    assert 'href="sites/GEMSDOE32.html"' in sub
-    assert (ROOT/'docs/submission/sites/GEMSDOE32.html').is_file()
-    assert 'Official source inventory' in (ROOT/'docs/submission/sources.html').read_text()
+def test_scheduled_and_legacy_pages_share_fail_closed_routes():
+    workflow = (ROOT / '.github/workflows/pages.yml').read_text()
+    assert 'cp -R docs/. _site/docs/' in workflow and 'cp -R site/. _site/site/' in workflow
+    assert 'path: _site' in workflow and 'python scripts/build_legacy_routes.py' in workflow
+    root = (ROOT / 'index.html').read_text()
+    assert 'url=./docs/' in root and 'DO NOT SUBMIT' in root
+    home = (ROOT / 'docs/index.html').read_text()
+    assert 'href="executive-summary.html"' in home and 'href="sources.html"' in home
+    assert 'No submission file' in home and 'ready to download and submit' not in home.lower()
+    sub = (ROOT / 'docs/submission/index.html').read_text()
+    assert 'DO NOT SUBMIT' in sub and 'url=../executive-summary.html' in sub
+    site = (ROOT / 'docs/submission/sites/GEMSDOE32.html').read_text()
+    assert 'DO NOT SUBMIT' in site and '../../../site/sites/GEMSDOE32.html' in site
+    sources = (ROOT / 'docs/submission/sources.html').read_text()
+    assert 'DO NOT SUBMIT' in sources and 'url=../sources.html' in sources

@@ -1,55 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Five ranked geological fault-mapping hypotheses and 124 zero-leakage canary checks.">
-  <meta name="theme-color" content="#0b5d4d">
-  <title>5 Ranked Geological Hypotheses · WBG2-MSPTCD · GEMS Research</title>
-  <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="shell">
-      <a href="index.html" class="brand" aria-label="WBG2-MSPTCD home">
-        <span class="brandmark">
-          <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none">
-            <path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/>
-          </svg>
-        </span>
-        GEMS <small>WBG2-MSPTCD</small>
-      </a>
-      <nav class="nav" aria-label="MSPTCD navigation"><a href="index.html">MSPTCD Overview</a><a href="executive-summary.html">Executive Summary</a><a href="research.html" aria-current="page">5 Hypotheses & Holdout</a><a href="sources.html">Sources & Receipts</a><a href="../index.html">← Main Dashboard</a></nav>
-      <div class="top-right">
-        <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a>
-        <span class="top-status"><span class="dot"></span> Research-only · 0 slots</span>
-      </div>
-    </div>
-  </header>
-  <main id="main" class="shell main">
-    <div class="intro">
-      <div>
-        <p class="eyebrow">Hypotheses &amp; Zero-Leakage Validation</p>
-        <h1>Five Ranked Geological Hypotheses &amp; 124-Canary Audit</h1>
-        <p>Ranked by expected buffered <code>HOLDOUT-DTI</code> upside vs implementation/data cost; H1–H4 implemented in <code>src/wbggems/msptcd.py</code> and tested within the strict 3-experiment cap.</p>
-      </div>
-      <div class="intro-meta">Canary status<br><strong>124 / 124 PASS</strong></div>
-    </div>
-    <section class="card" id="hyp-1"><p class="eyebrow">H1 · Rank 1 (Tested in EXP-1/2/3)</p><h2>Multi-Scale Potential-Field Tilt-Gradient &amp; Dip-Shifted Gravity–Magnetic–Basement Concordance</h2><p><strong>Exact layers:</strong> bouguer_gravity_anomaly (B4), magnetic_anomaly (B5), depth_to_base_surf (B9)</p><p><strong>Physical signature:</strong> Depth-invariant Miller &amp; Singh (1994) tilt horizontal-gradient ridges at σ ∈ {300, 800, 2000} m aligned with dip-tolerant (0–600 m lateral offset) Bouguer–magnetic gradient concordance across basement-depth steps.</p><p><strong>Why it catches uncatalogued faults:</strong> Recovers blind intrabasin horst/graben bounding faults buried beneath unscarped quaternary alluvial fans.</p><p><strong>Named non-fault mimics:</strong> Unfaulted pluton margins, volcanic/dike contacts, paleochannel edges.</p></section><section class="card" id="hyp-2"><p class="eyebrow">H2 · Rank 2 (Tested in EXP-1/2/3)</p><h2>Cross-Strike Electrical Conductivity Flank Asymmetry × Heat-Flow Relay Breaches</h2><p><strong>Exact layers:</strong> cond_surf (B8), depth_to_base_surf (B9), heat_flow (B11)</p><p><strong>Physical signature:</strong> Signed across-strike step asymmetry |μ(+400..1200 m) − μ(−400..−1200 m)| / IQR along structural strike gated by conductive cover thickness and conductive heat-flow gradients.</p><p><strong>Why it catches uncatalogued faults:</strong> Detects hydrothermally clay-altered or brine-saturated fault-valve conduits sealed at the surface.</p><p><strong>Named non-fault mimics:</strong> Playa evaporite/clay pans (Carson Sink / Humboldt Sink) — mitigated via topographic concavity &amp; slope gating.</p></section><section class="card" id="hyp-3"><p class="eyebrow">H3 · Rank 3 (Tested in EXP-1/2/3)</p><h2>Submodular 300 m Triangular-Kernel Greedy Allocation on Multi-Scale Scarp Ridges</h2><p><strong>Exact layers:</strong> elevation (B1), slope (B2), aspect_sin/cos (B18–19), tc/K/U/Th (B6, B15–17) + calibrated probability surface</p><p><strong>Physical signature:</strong> Multi-scale Frangi-like negative Hessian eigenvalue ridges λ₋(σ) paired with exact marginal gain ΔTP_w(x|S) = Σ K_300(x,y)·p(y)·(1 − c_S(y)) under the competition&#x27;s 300 m triangular kernel.</p><p><strong>Why it catches uncatalogued faults:</strong> Prevents redundant dot clumping along degraded range-front piedmont scarps, freeing dot budget for subtle basinward synthetic splays.</p><p><strong>Named non-fault mimics:</strong> Pleistocene Lake Lahontan wave-cut shorelines, fluvial terrace risers, highway/canal embankments.</p></section><section class="card" id="hyp-4"><p class="eyebrow">H4 · Rank 4 (Tested in EXP-2)</p><h2>Transtensional Slip-Tendency × Relocated Seismicity Cloud Lineament Alignment</h2><p><strong>Exact layers:</strong> geodetic_strain_rate (B10), earthquake_epicenter_density (B12), potential-field strike θ(x)</p><p><strong>Physical signature:</strong> Sin(2Δθ) Mohr–Coulomb transtensional slip-tendency coupling Walker Lane / Central Nevada Seismic Belt shear with active microseismic cloud elongation.</p><p><strong>Why it catches uncatalogued faults:</strong> Flags immature or blind strike-slip/oblique transfer faults accommodating strain between en-echelon normal segments without cumulative topographic throw.</p><p><strong>Named non-fault mimics:</strong> 25–50 km GPS interpolation smoothing halos and non-tectonic geothermal injection / mining swarm clusters.</p></section><section class="card" id="hyp-5"><p class="eyebrow">H5 · Rank 5 (Deferred — Blocked by Sandbox Network Allowlist)</p><h2>USGS 3DEP 1 m LiDAR Micro-Scarp Curvature &amp; GeoDAWN Flight-Line Radiometrics</h2><p><strong>Exact layers:</strong> Official 1m_DEM_links.csv (USGS 3DEP CloudOptimized GeoTIFFs) + USGS GeoDAWN flight-line profiles (doi:10.5066/P9X8K74F)</p><p><strong>Physical signature:</strong> Sub-meter topographic break-in-slope doublet across degraded Holocene alluvial scarps (&lt;1.5 m vertical offset) invisible at 100 m DEM resolution.</p><p><strong>Why it catches uncatalogued faults:</strong> Directly resolves decimeter-scale Holocene fault scarps across basin floors.</p><p><strong>Named non-fault mimics:</strong> Livestock trails, off-road vehicle tracks, distributary desert wash levees. Blocked in this sandbox because outbound hosts exclude nationalmap.gov / sciencebase.gov.</p></section>
-    </main>
-  <footer class="footer">
-    <div class="shell">
-      <div><strong>WBG2-MSPTCD LANE</strong> · 31-Feature Real-Geophysics Campaign · Zero competition slots spent</div>
-      <div>
-        <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
-        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
-        <a href="../submit/index.html">Sibling H3-PACK lane</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Historical MSPTCD research, not a competition submission">
+<title>Methods and limits · GEMS Research</title><link rel="stylesheet" href="../styles.css"></head><body>
+<a class="skip" href="#main">Skip to content</a><header class="topbar"><div class="shell">
+<a class="brand" href="../index.html">GEMS <small>RESEARCH</small></a><nav class="nav" aria-label="MSPTCD navigation"><a href="index.html">Campaign</a><a href="executive-summary.html">Evidence</a><a href="research.html" aria-current="page">Methods</a><a href="sources.html">Sources</a></nav>
+<a href="../index.html">Main dashboard ↗</a></div></header>
+<main id="main" class="shell main"><div class="intro"><div><p class="eyebrow">Historical research · not a new run</p>
+<h1>Methods and limits</h1><p>Prior report, preserved with an independent byte-level stop review.</p></div></div>
+<section class="banner"><div class="banner-copy"><p class="banner-label">Decision · negative</p>
+<h2>DO NOT SUBMIT the archived MSPTCD raster.</h2><p>Its dots overlap the registered binary lattice by 100% within 3 pixels.
+The complete registry and source pre-placement gate were not validated. No approval is implied by a format check.</p></div></section>
+<section class="card guide-card"><h2>What the historical code implements</h2>
+<p>The inspected module combines 19 owner-mirrored bands with 12 operators: potential-field tilt gradients, depth-proxy shifted
+magnetic/gravity concordance, electrical flank differences, topographic Hessian ridges, total-count/terrain residuals, conductive-base
+steps, gradient orientation coherence, strain and seismicity indices. These are <strong>already implemented</strong> ideas, not the new shortlist.</p>
+<p>Mirror metadata and the official description disagree on band 15: use the term conductive-base depth, not an assumed basement depth.
+The official feature inventory describes <code>tc</code> as radiometric total count while mirror band metadata describes tilt/curvature;
+value distributions are suggestive but cannot authenticate physical units or origin.</p>
+<p>Lithologic contacts, dikes, acquisition striping, surface cover, shorelines and anthropogenic features can mimic fault signals.
+Neither a gradient nor a canary pass is proof of a previously unmapped fault.</p>
+<p><a href="../research.html">Four distinct, untested desk proposals ↗</a> ·
+<a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/research/msptcd_findings.md">Revised research findings ↗</a></p></section></main><footer class="footer"><div class="shell"><span>Evidence before submission</span><a href="../index.html">Back to main dashboard</a></div></footer></body></html>
