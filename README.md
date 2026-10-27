@@ -1,22 +1,12 @@
-# WBGGEMSDOE2 — evidence before submission
+# WBGGEMSDOE2 — DOE GEMS Prize research
 
 **Current decision (27 October 2026): OK TO DOWNLOAD AND SUBMIT one newly generated TIFF** — conditional on the documented [two-reading registry policy](docs/PROJECT_CHARTER.md) and on the human selector checking the weekly cap. Download [`docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif`](docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif) (SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`). The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/), [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md) and [submission guide](site/executive.html) make the decision and its caveats explicit. The single canonical [run card](evidence/run_card.json), [hypotheses](research/hypotheses_20261027.md) and [official source register](research/sources_20261027.md) document exactly what was established. **No organizer score or receipt is claimed; no upload was performed.** The 26 October negative lane is preserved below as history, not as the current decision.
 
-Read this README, [AGENTS.md](AGENTS.md), [current findings](research/findings.md), and
-[project charter](docs/PROJECT_CHARTER.md) at the start of every session.
-The complete original project prompt is preserved below as historical requirements, not verified evidence.
+**The 2026-10-27 review generated no new TIFF, submission name or note, and used no competition slot.** The historical DZ-16, H3-PACK, MSPTCD and two parallel TIFFs were reopened and all five exceed the required 70% overlap with a pinned binary lattice. Some formerly promoted pages and cards applied an unauthorized calibrated or focus-only exemption; those conclusions are superseded. Files are retained **for research only**, not as approved competition submissions. [Release triage](evidence/release_triage_20261027.json) · [single current negative run card](evidence/RUN_CARD_FINAL.json) · [download notice](docs/downloads/README.txt).
 
-**The DZ-16 and H3-PACK approvals were incorrect and are withdrawn.** Their local format passes
-cannot override failed literal uniqueness checks, missing pre-placement evidence or the absence of a
-compliant matched-holdout win. The earlier enrichment-based exemption was not authorized by the prompt.
-No new TIFF was generated, no experiment was run and no weekly submission slot was used in this review.
-Existing TIFFs are retained only for hash-bound research and automated audit.
+[Open the GitHub Pages dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) · [Nine-site executive summary](docs/executive-summary.html) · [Research shortlist](research/hypotheses.md) · [Sources and access](research/msptcd_sources.md).
 
-| Artifact | New submission download | Estimated leaderboard score | Unique under required rule? | Decision |
-|---|---|---|---|---|
-| DZ-16, 34,500 dots | None; historical TIFF retained | Unavailable; old regression unsuitable for selection | No; lattice overlap 99.9797% | DO NOT SUBMIT |
-| H3-PACK, 34,000 dots | None; historical TIFF retained | Unavailable; old transfer projection unvalidated | No; lattice overlap 99.8618% | DO NOT SUBMIT |
-| New candidate | Not generated | No HOLDOUT-DTI measured; no organizer receipt | Not tested | BLOCKED |
+### What we know
 
 **Historical 26 October state (superseded).** A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels; a continuous probability prior is positive across the entire footprint. Under the purely literal reading, *any* nonempty candidate is a duplicate, so that reading is mathematically unsatisfiable. The 27 October [charter amendment](docs/PROJECT_CHARTER.md) resolves this as an explicit, published policy decision: the 70% dot test applies to geological dot fields and the 0.90 rank-correlation test applies to every raster; the literal reading is still computed and reported as firing on three controls. The 27 October lane generated and audited a new TIFF; two earlier parallel research TIFFs remain independently rejected. The nine historical downloads are research-only.
 
@@ -94,46 +84,13 @@ in [`evidence/novelty_refinement.json`](evidence/novelty_refinement.json). Negat
 results are deliverables. The [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md)
 has the download table and exact submission steps.
 
-The prior MSPTCD lane separately reported **HOLDOUT-DTI 0.042554**, evaluator
-`gems57-pooled-hide-v2`, 60,988 withheld positives, reported 95% CI [0.032059, 0.054765].
-This is historical source-reported evidence, not reproduced in this review or an organizer score;
-that lane spent its three-experiment budget and its candidate failed the literal registry gate.
+### Next work and limitations
 
-### What the fresh audit established
+The three prior MSPTCD experiments exhausted that campaign. The prompt does not identify a single assigned new method lane; the ranked research ideas are not authorization to run one. Before any new campaign, obtain an explicit lane assignment, authenticate the data, verify external-data licensing and binary coverage, restore a current complete immutable registry, resolve the continuous-prior interpretation without silent exemptions, and fix the shared upstream validator defect once in its template. Then use fold-visible catalogue features, buffered whole-segment holdouts, every feature canary, the unchanged shared evaluator/writer and the literal pre-placement/final-dot gates; compare with an identical-fold incumbent and report CI. Slot selection is separate and subject to the live account quota. No score or slot use is promised.
 
-- Re-fetched and SHA-256 verified the nine historical focus rasters plus registered witnesses. GEMSDOE25
-  and GEMSDOE30 have identical in-footprint predictions. GEMSDOE32 B2 is D2.8 after removing dots within
-  two pixels of the mirrored catalogue: 44,090 → 37,654. GEMSDOE36 adds 1,200 dots to B2. These are
-  array relations, not proof of what caused the **USER-REPORTED historical claim 0.2778**.
-- Sparse placement may reduce redundant false-positive mass, but its score depends on hidden truth.
-  No valid evidence here establishes a new file will beat B2 or the current leaderboard.
-- The literal lattice gate is a decisive failure for the existing candidates. The continuous-prior
-  interpretation is also unresolved. Do not silently substitute normalized overlap, smoothed Pearson
-  correlation, a nine-site-only audit, or a new filename for the required gates.
-- All nine tracked repository heads changed since their audited pins. Freshness checks are not raster
-  audits. We cannot certify the latest best file or fleet-wide novelty from an old partial registry.
-- Hide-and-recover on public mapped segments **is a legitimate proxy experiment** when the segments and
-  buffers are truly withheld. Hidden organizer labels are not needed for that proxy. Scoring directly
-  against the still-visible catalogue, however, is not hide-and-recover or a leaderboard estimate.
-- [The official reference README](https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md)
-  explicitly supports CPU-only setup. GPU access is not the sole training blocker.
+The public leaderboard and nine GitHub HEAD freshness checks are refreshed by GitHub Actions every six hours when possible; failed fetches remain explicitly stale. A HEAD change is not a raster audit. The official data page requires login and the public mirror's provenance is unverified. The upstream template is read-only to this integration; its masked-interior defect could not be fixed or reported there from this session.
 
-### Next experiment prerequisites, in order
-
-1. Record the missing explicit method lane; the [four ranked hypotheses](research/hypotheses.md) are
-   proposals, not an assignment. Resolve the literal continuous-prior support policy without exempting
-   a failing binary witness. Any policy change needs explicit authorization.
-2. Restore and authenticate the sample, features and catalogue; restore the **shared derived feature
-   stack**, not just raw bands. Data can be mirrored from GitHub for research; an owner mirror is not
-   authentication against DrivenData. Keep the pinned shared evaluator/writer; fix defects upstream.
-3. Restore the complete current registry and pass pre-placement checks before any experiment/placement.
-4. Run feature-alone canaries, whole-segment buffered holdouts and visible-only catalogue features.
-   Report pooled **HOLDOUT-DTI**, evaluator version, withheld positives, spatial 95% CI and a same-fold
-   incumbent. Stop at three experiments or two hours; stop earlier on duplication.
-5. Validate saved bytes and compare with the incumbent before a separate selector approves a real slot.
-   The current quota and organizer receipts require the official submission page; neither is available here.
-
-### Reproduce this review (no training or placement)
+### Reproduce without generating a prediction
 
 ```bash
 python -m venv .venv
@@ -166,21 +123,9 @@ python scripts/build_release_review.py
 python -m pytest -q
 ```
 
-`build_site_v2.py` and `build_submit_page.py` now call the same fail-closed review renderer. Scheduled
-Pages builds use it too. Retired generators stop before reading features or placing dots. The checks never
-silently clip values. A `[0,1]` portal error cannot be diagnosed without the exact rejected bytes.
+`audit_input_metadata.py` additionally requires the owner-mirrored input stack restored in ignored storage; it does not train or predict. Unsafe historical generators and approval/rendering entry points are retired, with original source preserved in [the audit archive](evidence/retired_20261027/). Shared evaluator and writer code are not forked. [Working agreement](AGENTS.md).
 
-### Access limitations and core values
-
-This sandbox can access GitHub, npm and PyPI hosts, not DrivenData, Dropbox, USGS, DOE GDR or the rules-PDF
-host. No authenticated organizer data, live submission quota, or per-file receipt was available in this
-review. External-data hypotheses remain nonviable until exact source files, rights and coverage are checked.
-Earlier leaderboard observations are dated snapshots, not current verification.
-
-**Maximize P(Win):** prioritize tested evidence and save scarce slots rather than manufacture approvals.
-**Own the Outcome:** correct contradictory gates, preserve negative results, and make the release decision
-consistent across the README, generated site, JSON and CI. The competition predicts faults; a fault raster
-is not proof of geothermal vents or commercial resources.
+---
 
 ## Original project prompt
 

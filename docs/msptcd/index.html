@@ -1,183 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="31-feature real-geophysics GEMS campaign (+81.8% HOLDOUT-DTI) and 23-raster uniqueness audit.">
-  <meta name="theme-color" content="#0b5d4d">
-  <title>WBG2-MSPTCD Campaign Overview · WBG2-MSPTCD · GEMS Research</title>
-  <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="shell">
-      <a href="index.html" class="brand" aria-label="WBG2-MSPTCD home">
-        <span class="brandmark">
-          <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none">
-            <path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/>
-          </svg>
-        </span>
-        GEMS <small>WBG2-MSPTCD</small>
-      </a>
-      <nav class="nav" aria-label="MSPTCD navigation"><a href="index.html" aria-current="page">MSPTCD Overview</a><a href="executive-summary.html">Executive Summary</a><a href="research.html">5 Hypotheses & Holdout</a><a href="sources.html">Sources & Receipts</a><a href="../index.html">← Main Dashboard</a></nav>
-      <div class="top-right">
-        <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a>
-        <span class="top-status"><span class="dot"></span> Research-only · 0 slots</span>
-      </div>
-    </div>
-  </header>
-  <main id="main" class="shell main"><section class="notice"><strong>Historical campaign — source-reported, not reproduced in this review.</strong> Canary AUC below an alarm threshold does not prove zero leakage. The literal duplicate stop remains binding. No slot is authorized. See the <a href="../submission/index.html">reconciled release decision</a>.</section>
-    <div class="intro">
-      <div>
-        <p class="eyebrow">Fourth Lane · 31-Feature Real-Geophysics Campaign</p>
-        <h1>WBG2-MSPTCD: Source-Reported HOLDOUT-DTI · Duplicate Stop</h1>
-        <p>Full 19-band GeoDAWN/USGS/DOE geophysical training + 12 multi-scale subsurface potential-field tilt, cross-physics concordance, flank asymmetry, and Hessian ridge operators, evaluated on the unmodified <code>57GEMSDOE@822a0ce5</code> buffered whole-segment holdout harness.</p>
-      </div>
-      <div class="intro-meta">Campaign completed<br><strong>2026-10-27 UTC</strong></div>
-    </div>
-
-    <section class="banner" aria-labelledby="msptcd-decision">
-      <div class="banner-copy">
-        <p class="banner-label">Fail-Closed Protocol Verdict · NEGATIVE STOP (0 Competition Slots Spent)</p>
-        <h2 id="msptcd-decision">DO NOT SUBMIT under literal all-registry gate — Research GeoTIFF verified &amp; archived</h2>
-        <p><code>wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros</code> (<code>25,594</code> off-catalogue dots, SHA-256 <code>fb11891a3a2e6c94…</code>) passes all 9 official GeoTIFF byte checks, passes <strong>124 / 124</strong> single-feature holdout leakage canaries (max two-sided ROC-AUC <code>0.6131 &lt;= 0.90</code>), is distinct under the 70% 3-px rule from <strong>all 9 focus champions</strong> (max <code>68.06%</code> on <code>GEMSDOE27</code>, <code>64.45%</code> on <code>GEMSDOE32</code>) and <strong>both sibling WBGGEMSDOE2 lanes</strong> (<code>27.36%</code> vs DZ-16, <code>20.59%</code> vs H3-PACK), and achieves <strong>+81.8% HOLDOUT-DTI</strong> over the 19-band control. Under the literal all-registry rule it halts fail-closed on <code>13GEMSDOE</code> (<code>100.00%</code> stride-5 lattice), continuous priors (<code>17GEMSDOE</code>/<code>WBGGEMSDOE1</code> <code>100.00%</code>), and <code>GEMSDOE27_H31</code> (<code>78.34%</code>).</p>
-      </div>
-      <div class="actions">
-        <a class="button" href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip">Research ZIP (DO NOT SUBMIT)</a>
-        <a class="text-link" href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif">Raw GeoTIFF (71 KB) →</a>
-        <a class="text-link" href="../downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.json">JSON Receipt →</a>
-      </div>
-    </section>
-
-    <section class="stats" aria-label="Key WBG2-MSPTCD metrics">
-      <article class="stat">
-        <div class="stat-top">Winning Holdout Arm (EXP-3)</div>
-        <div class="stat-value">0.0426</div>
-        <div class="stat-sub"><strong>HOLDOUT-DTI</strong> · 95% CI [0.0321, 0.0548] · +81.8% vs 19-band control (0.0234)</div>
-      </article>
-      <article class="stat">
-        <div class="stat-top">Leakage Canary Gate</div>
-        <div class="stat-value">124 / 124</div>
-        <div class="stat-sub">Max two-sided AUC 0.6131 (tc_radiometric) &lt;= 0.90</div>
-      </article>
-      <article class="stat">
-        <div class="stat-top">Max 9-Focus 3-px Overlap</div>
-        <div class="stat-value">68.06%</div>
-        <div class="stat-sub">64.45% vs GEMSDOE32 · 27.36% vs DZ-16 · 20.59% vs H3-PACK</div>
-      </article>
-      <article class="stat">
-        <div class="stat-top">Live Public Leaderboard #1</div>
-        <div class="stat-value">0.4544</div>
-        <div class="stat-sub">ORGANIZER-PUBLISHED SNAPSHOT (2026-10-27 · xiaofanhu)</div>
-      </article>
-    </section>
-
-    <section class="card" id="experiments">
-      <h2>1. Three-Experiment Canary-Screened Holdout Progression</h2>
-      <p>Evaluated on unmodified <code>gems57.evaluate_holdout</code> (<code>gems57-pooled-hide-v2</code>, <code>label-blind-quadrants-v2</code>, <code>buffer_px=80</code> / 8.0 km buffer, <code>60,988</code> withheld fault pixels, 1,000 paired 20 km spatial-cluster bootstrap draws, seed <code>520810</code>). Every number below is a strict <strong>HOLDOUT-DTI</strong>, never a leaderboard score projection.</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Arm</th>
-              <th>Method Summary</th>
-              <th>Pooled HOLDOUT-DTI</th>
-              <th>95% Spatial CI</th>
-              <th>Paired Δ vs CTRL-19B (95% CI)</th>
-              <th>Detached Splay DTI (≥400 m)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>ctrl_19b</code></td>
-              <td>Incumbent 19 raw bands + HistGBR + ridge NMS</td>
-              <td><strong>0.023409</strong></td>
-              <td>[0.015356, 0.031895]</td>
-              <td>Baseline (0.000000)</td>
-              <td>0.016915</td>
-            </tr>
-            <tr>
-              <td><code>exp1_msptcd_core</code></td>
-              <td>19 raw bands + 9 MSPTCD subsurface potential-field/EM/scarp features</td>
-              <td><strong>0.034975</strong> (+49.4%)</td>
-              <td>[0.025587, 0.045475]</td>
-              <td>+0.011566 [+0.005424, +0.018644] (wins 4/4 folds)</td>
-              <td>0.027271 (+61.2%)</td>
-            </tr>
-            <tr>
-              <td><code>exp2_msptcd_strain_pu</code></td>
-              <td>EXP-1 + 3 strain/slip-tendency/seismicity features + PU weighting</td>
-              <td><strong>0.028575</strong> (+22.1%)</td>
-              <td>[0.020416, 0.038058]</td>
-              <td>+0.005166 [-0.002732, +0.012803]</td>
-              <td>0.024312</td>
-            </tr>
-            <tr>
-              <td><code>exp3_msptcd_submod_greedy</code></td>
-              <td><strong>Winning arm:</strong> Ridge-coherent MSPTCD ensemble + greedy 300 m kernel submodular allocation</td>
-              <td><strong>0.042554</strong> (+81.8%)</td>
-              <td>[0.032059, 0.054765]</td>
-              <td><strong>+0.019145 [+0.010977, +0.028755]</strong></td>
-              <td><strong>0.030799</strong> (+82.1%)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card" id="priority-nine">
-      <h2>2. Priority 9 Historical Submissions (GEMSDOE24..36) vs WBG2-MSPTCD</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Site</th>
-              <th>Historical File</th>
-              <th>Reported Claim</th>
-              <th>Dots</th>
-              <th>Max Peer Overlap (Focus 9)</th>
-              <th>WBG2-MSPTCD Overlap</th>
-              <th>Submission Verdict</th>
-            </tr>
-          </thead>
-          <tbody><tr><td><a href="../sites/GEMSDOE32.html"><strong>GEMSDOE32</strong></a></td><td class="mono">gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</td><td><strong>0.2778</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>37,654</td><td>100.00% vs GEMSDOE24</td><td>64.45% fwd / 5.11% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE36.html"><strong>GEMSDOE36</strong></a></td><td class="mono">gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif</td><td><strong>0.2750</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>38,854</td><td>97.58% vs GEMSDOE27</td><td>64.47% fwd / 4.97% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE28.html"><strong>GEMSDOE28</strong></a></td><td class="mono">gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif</td><td><strong>0.2710</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>37,660</td><td>100.00% vs GEMSDOE24</td><td>64.91% fwd / 4.98% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE31.html"><strong>GEMSDOE31</strong></a></td><td class="mono">gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif</td><td><strong>0.2708</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>40,199</td><td>100.00% vs GEMSDOE24</td><td>65.24% fwd / 5.02% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE33.html"><strong>GEMSDOE33</strong></a></td><td class="mono">GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif</td><td><strong>0.2632</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>41,865</td><td>99.71% vs GEMSDOE27</td><td>65.89% fwd / 4.95% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE25.html"><strong>GEMSDOE25</strong></a></td><td class="mono">gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</td><td><strong>0.2600</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>44,090</td><td>100.00% vs GEMSDOE24</td><td>65.68% fwd / 4.78% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE30.html"><strong>GEMSDOE30</strong></a></td><td class="mono">gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif</td><td><strong>0.2600</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>44,090</td><td>100.00% vs GEMSDOE24</td><td>65.68% fwd / 4.78% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE24.html"><strong>GEMSDOE24</strong></a></td><td class="mono">gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</td><td><strong>0.2477</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>60,069</td><td>100.00% vs GEMSDOE25</td><td>67.76% fwd / 5.00% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr><tr><td><a href="../sites/GEMSDOE27.html"><strong>GEMSDOE27</strong></a></td><td class="mono">gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</td><td><strong>0.2449</strong> <small>(USER-REPORTED; no authenticated submission-page receipt)</small></td><td>61,328</td><td>98.02% vs GEMSDOE24</td><td>68.06% fwd / 4.92% rev</td><td><span class="badge badge-stop">DO NOT SUBMIT</span></td></tr></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card" id="registry-audit">
-      <h2>3. Full 23-Raster Uniqueness Audit (21 Registry Rasters + DZ-16 &amp; H3-PACK)</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Reference Raster / Lane</th>
-              <th>Category</th>
-              <th>Support Type</th>
-              <th>MSPTCD in 3-px of Ref</th>
-              <th>Ref in 3-px of MSPTCD</th>
-              <th>Surface Spearman ρ</th>
-              <th>Gate Status</th>
-            </tr>
-          </thead>
-          <tbody><tr><td class="mono">GEMSDOE24</td><td>focus_champion</td><td>binary_dots</td><td>67.76%</td><td>5.00%</td><td>+0.0904</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE25</td><td>focus_champion</td><td>binary_dots</td><td>65.68%</td><td>4.78%</td><td>+0.0758</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE27</td><td>focus_champion</td><td>binary_dots</td><td>68.06%</td><td>4.92%</td><td>+0.0897</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE28</td><td>focus_champion</td><td>binary_dots</td><td>64.91%</td><td>4.98%</td><td>+0.0681</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE30</td><td>focus_champion</td><td>binary_dots</td><td>65.68%</td><td>4.78%</td><td>+0.0758</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE31</td><td>focus_champion</td><td>binary_dots</td><td>65.24%</td><td>5.02%</td><td>+0.0706</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE32</td><td>focus_champion</td><td>binary_dots</td><td>64.45%</td><td>5.11%</td><td>+0.0673</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE33</td><td>focus_champion</td><td>binary_dots</td><td>65.89%</td><td>4.95%</td><td>+0.0722</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE36</td><td>focus_champion</td><td>binary_dots</td><td>64.47%</td><td>4.97%</td><td>+0.0663</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">13GEMSDOE</td><td>witness_or_recent</td><td>binary_dots</td><td>100.00%</td><td>1.32%</td><td>-0.0001</td><td><strong>STOP (&gt;70% literal)</strong></td></tr><tr><td class="mono">GEMSDOE27_H31</td><td>witness_or_recent</td><td>binary_dots</td><td>78.34%</td><td>6.48%</td><td>+0.0866</td><td><strong>STOP (&gt;70% literal)</strong></td></tr><tr><td class="mono">GEMSDOE32_H47</td><td>witness_or_recent</td><td>binary_dots</td><td>60.72%</td><td>3.37%</td><td>+0.0224</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">17GEMSDOE_dense_prior</td><td>witness_or_recent</td><td>continuous_probability</td><td>100.00%</td><td>1.31%</td><td>+0.5459</td><td><strong>STOP (&gt;70% literal)</strong></td></tr><tr><td class="mono">GEMSDOE28_S21</td><td>sibling_20261026_27</td><td>binary_dots</td><td>36.07%</td><td>4.02%</td><td>+0.0532</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE33_S33</td><td>sibling_20261026_27</td><td>binary_dots</td><td>48.35%</td><td>4.62%</td><td>+0.0628</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">GEMSDOE36_KPL36</td><td>sibling_20261026_27</td><td>binary_dots</td><td>59.12%</td><td>10.95%</td><td>+0.0994</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">KANLERGEMSDOE2_HTCADS</td><td>sibling_20261026_27</td><td>binary_dots</td><td>53.63%</td><td>6.08%</td><td>+0.0571</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">WBGGEMSDOE1_C1</td><td>sibling_20261026_27</td><td>continuous_probability</td><td>100.00%</td><td>1.32%</td><td>+0.6857</td><td><strong>STOP (&gt;70% literal)</strong></td></tr><tr><td class="mono">WBGGEMSDOE3_LST1</td><td>sibling_20261026_27</td><td>binary_dots</td><td>32.92%</td><td>2.92%</td><td>+0.0035</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">WBGGEMSDOE2_PARALLEL_STEPXASYM</td><td>local_archived_rejected</td><td>binary_dots</td><td>33.70%</td><td>2.35%</td><td>+0.0387</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">WBGGEMSDOE2_PARALLEL_CONDUIT</td><td>local_archived_rejected</td><td>continuous_probability</td><td>100.00%</td><td>1.31%</td><td>+0.0125</td><td><strong>STOP (&gt;70% literal)</strong></td></tr><tr><td class="mono">DZ-16 (submission lane)</td><td>wbggemsdoe2_sibling_lane</td><td>binary_dots (34,500)</td><td>27.36%</td><td>1.71%</td><td>+0.0050</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr><tr><td class="mono">H3-PACK (third lane)</td><td>wbggemsdoe2_sibling_lane</td><td>binary_dots (34,000)</td><td>20.59%</td><td>1.37%</td><td>-0.0005</td><td><strong>PASS (&lt;=70% &amp; |ρ|&lt;=0.90)</strong></td></tr></tbody>
-        </table>
-      </div>
-    </section>
-    </main>
-  <footer class="footer">
-    <div class="shell">
-      <div><strong>WBG2-MSPTCD LANE</strong> · 31-Feature Real-Geophysics Campaign · Zero competition slots spent</div>
-      <div>
-        <a href="../data/RUN_CARD_MSPTCD.json">Run Card JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_results.json">Campaign Results JSON</a> &nbsp;·&nbsp;
-        <a href="../data/wbg2_msptcd_canaries.json">124 Canaries JSON</a> &nbsp;·&nbsp;
-        <a href="../submission/index.html">Sibling DZ-16 lane</a> &nbsp;·&nbsp;
-        <a href="../submit/index.html">Sibling H3-PACK lane</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Corrected historical MSPTCD campaign evidence; no submission approved."><title>Corrected MSPTCD findings · GEMS Research</title><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><div class="shell"><a class="brand" href="index.html">GEMS <small>RESEARCH</small></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Research</a><a href="sources.html">Sources</a></nav></div></header><main id="main" class="shell main"><section class="banner"><div class="banner-copy"><p class="banner-label">Historical campaign · NEGATIVE</p><h2>No file is approved for submission.</h2><p>DO NOT SUBMIT. The TIFF failed the literal duplicate stop. These are exploratory proxy results, not organizer scores or proof of no leakage.</p></div><div class="actions"><button class="button" disabled>No submission file</button><a class="text-link" href="data/RUN_CARD_FINAL.json">Current negative run card →</a></div></section><nav aria-label="MSPTCD research"><a href="msptcd/index.html">Findings</a> · <a href="msptcd/executive-summary.html">B2 explanation</a> · <a href="msptcd/research.html">Hypotheses</a> · <a href="msptcd/sources.html">Sources</a></nav><article class="card guide-card research-prose"><h1>Historical MSPTCD campaign: corrected findings</h1>
+<p><strong>Decision: NEGATIVE — DO NOT SUBMIT.</strong> This is a retrospective analysis, not a new run. The prior MSPTCD campaign used its three experiments; its file failed the literal duplicate stop. <a href="data/release_triage_20261027.json">Read-back triage</a> independently measures 100% of its dots within three pixels of the pinned 13GEMSDOE lattice. Its pre-placement surface check was not performed in the required order. The artifact remains in the repository for reproducibility, not competition use.</p>
+<h2>Mapped-fault proxy, not organizer performance</h2>
+<p>The former campaign used the pinned <code>gems57-pooled-hide-v2</code> pooled evaluator with α=0.2, β=0.8, and a 300 m triangular kernel, 60,988 withheld positives and four buffered spatial-component quadrants. Results below are <strong>exploratory HOLDOUT-DTI on the owner-mirrored mapped-fault proxy</strong>, not public/private leaderboard scores or independent model selection:</p>
+<table>
+<thead>
+<tr>
+<th>Arm</th>
+<th style="text-align: right;">HOLDOUT-DTI</th>
+<th style="text-align: right;">95% spatial-block CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19-band control</td>
+<td style="text-align: right;">0.023409</td>
+<td style="text-align: right;">[0.015356, 0.031895]</td>
+</tr>
+<tr>
+<td>EXP3, selected on the same folds</td>
+<td style="text-align: right;">0.042554</td>
+<td style="text-align: right;">[0.032059, 0.054765]</td>
+</tr>
+<tr>
+<td>EXP3 − control, paired</td>
+<td style="text-align: right;">0.019145</td>
+<td style="text-align: right;">[0.010977, 0.028755]</td>
+</tr>
+</tbody>
+</table>
+<p>These are recorded in <a href="data/RUN_CARD_MSPTCD.json">the historical run card</a>; they do <strong>not</strong> prove that EXP3 beats an independently selected incumbent or the reported GEMSDOE32 B2. The labels used are identical to the mirrored mapped-fault catalogue, so the target is hide-and-recover mapped faults, not hidden organizer truth. The selected arm was chosen on the same folds used to report its result. Label-free derived features were prepared globally. The separate detached-splay diagnostic used a different split from the fitted quadrant models; it cannot establish that its diagnostic labels were excluded from training. Do not interpret that diagnostic as a clean held-out score.</p>
+<p>Of 124 feature/fold canaries, the maximum recorded two-sided AUC was 0.6131, below the 0.90 flag threshold. <strong>Passing canaries is not proof of no leakage</strong>: it does not test every interaction, pipeline step, split, or acquisition artifact. Whole buffered components were used for the main proxy experiment, but this and the unmodified shared evaluator alone do not establish independent generalization. The original code performed dot placement before its registry check and wrote a research artifact despite duplicate witnesses; its historical executable is now retired.</p>
+<h2>What is actually known about B2</h2>
+<p>Byte-level lineage shows GEMSDOE25 and 30 have identical predictions within the mirrored footprint; GEMSDOE32 B2 removes 6,436 of 44,090 dots at most two catalogue pixels away, leaving 37,654. GEMSDOE36 adds 1,200. The reported B2 value of <strong>0.2778 is user-reported</strong>, not tied to these bytes by a receipt. Reduced redundancy might improve the metric, but it could also remove useful proximity to unmapped truth. <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">Organizer staff</a> confirmed exclusion of known fault pixels, not a surrounding buffer. No truth or per-dot decomposition is available to establish a cause.</p>
+<p>A prior claim that 6,436 removed binary dots produced <code>0.2 × ΔFP ≈ 12,074</code> was impossible and is withdrawn. If the false-positive term changes by no more than the 6,436 removed unit-valued predictions, the weighted change is at most 1,287.2; the actual change is not measured here. No substitute causal calculation is claimed.</p>
+<h2>Band 6 identity remains unresolved</h2>
+<p>The pinned owner mirror describes band 6 as tilt angle or total curvature. <a href="data/input_metadata_20261027.json">Local read-back</a> reports <strong>3,073 masked NoData sentinel cells</strong> inside the sample footprint, and 5,164,300 valid cells with no negative valid values; valid q01/median/q99 are approximately 7.7223/18.4817/29.1005. The official page's radiometric illustration and these numbers do not independently authenticate the band, establish its units, or prove it cannot be a derivative. In particular, a tilt-angle distribution need not have an assumed 50% negative values. The campaign's internal <code>tc_radiometric</code> name is a historical label, not verified physical identity. The mirrored stack and sample are not confirmed equal to the login-protected organizer files.</p>
+<h2>No clearance</h2>
+<p>Local checks against a mirror are diagnostics, not organizer acceptance. All five examined historical files fail the lattice duplicate stop. New hypotheses and data-access caveats are in <a href="research.html">the current shortlist</a>; sources are in <a href="msptcd/sources.html">the access register</a>. No new GeoTIFF or competition submission was produced in this review.</p></article></main><footer class="footer"><div class="shell"><strong>GEMS RESEARCH · Evidence before submission</strong><a href="data/release_triage_20261027.json">Release triage</a></div></footer></body></html>

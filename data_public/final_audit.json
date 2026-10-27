@@ -26,15 +26,19 @@
         "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
         "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif"
       ],
-      "note": "Fails, exactly as every focus-site submission and every other dense candidate in this fleet fails. See focus_pairwise_overlap."
+      "note": "FAIL is decisive even where other historical files also fail. No exemptions authorized."
     },
     "normalized_rule": {
       "result": "PASS",
-      "violations": []
+      "violations": [],
+      "operative": false,
+      "note": "Historical diagnostic only; no authorized exemption from the literal rule."
     },
     "surface_rule": {
-      "result": "PASS",
-      "violations": []
+      "result": "NOT ESTABLISHED",
+      "violations": [],
+      "note": "Historical smoothed comparison only; original pre-placement order and full-registry correlation were not established.",
+      "historical_diagnostic_result": "PASS"
     },
     "exact_bytes": {
       "result": "PASS"
@@ -149,7 +153,7 @@
       "GEMSDOE24_vs_GEMSDOE32": 0.9,
       "GEMSDOE33_vs_GEMSDOE32": 0.94
     },
-    "conclusion": "Every focus submission is within 3 px of the stride-5 lattice for >=99.4% of its dots and within 3 px of pindrop-v4-nodes for >=94.7%. The literal rule therefore classifies all nine as duplicates of each other. It cannot be the operative reading."
+    "conclusion": "Historical pairwise measurements show extensive overlap with the lattice and other witnesses. The literal duplicate rule is operative; no density or enrichment exception has been authorized."
   },
   "blanket_references": [
     {
@@ -195,7 +199,7 @@
     "mean_px_to_catalogue": 15.563100394187549
   },
   "estimate": {
-    "evidence_class": "EMPIRICAL-ESTIMATE",
+    "evidence_class": "HISTORICAL-UNVALIDATED-PROJECTION-NOT-A-SCORE",
     "method": "gradient-boosted regression on 93 fleet submissions (see score_model.json)",
     "external_test_rmse": 0.09373721070387271,
     "external_test_mae": 0.0754323241849912,
@@ -246,7 +250,8 @@
         ]
       }
     },
-    "calibration_note": "The empirical model was fitted on the same fleet family the candidate belongs to (binary, isolated, 3-6e4 px, off-catalogue). Its out-of-sample RMSE on the nine focus sites is 0.094, i.e. the estimate carries roughly a +/-0.19 95% interval. It cannot certify anything about the 0.33-0.45 leaderboard band, which needs the geophysical feature stack."
+    "calibration_note": "The empirical model was fitted on the same fleet family the candidate belongs to (binary, isolated, 3-6e4 px, off-catalogue). Its out-of-sample RMSE on the nine focus sites is 0.094, i.e. the estimate carries roughly a +/-0.19 95% interval. It cannot certify anything about the 0.33-0.45 leaderboard band, which needs the geophysical feature stack.",
+    "status": "Superseded; geometry model failed out-of-sample validation and cannot authorize a score or submission."
   },
   "top10_references_by_raw_overlap": [
     {
@@ -341,8 +346,6 @@
     }
   ],
   "measurement_notes": "Raw per-pixel rank correlation between sparse binary rasters is dominated by the shared zero background, so surface similarity is measured on 1 km Gaussian-smoothed density fields.",
-  "verdict": "negative",
-  "ok_to_download_new_tif": false,
-  "review_status": "SUPERSEDED APPROVAL: DO NOT SUBMIT; literal duplicate stop, incomplete registry, no compliant holdout win.",
-  "review_evidence": "evidence/release_recheck_20261027.json"
+  "decision": "SUPERSEDED: DO NOT SUBMIT; literal duplicate stop fails. The normalized rule is an unauthorized diagnostic, not a replacement.",
+  "verdict": "negative"
 }

@@ -142,4 +142,3 @@ Fleet rasters, the distance cache and the large official files are git-ignored, 
    plus any rasters created after the GEMSDOE47 snapshot.
 3. Replace the hit-rate assumption in `scripts/mass_balance.py` with a measured holdout hit rate once a
    real label set exists; that is the only way the conditional band becomes an estimate rather than a bound.
-

@@ -9,6 +9,7 @@ silently promote a file. Historical files are always labelled research-only.
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 from html import escape
 import json
 from pathlib import Path
@@ -198,6 +199,32 @@ for name, content in [('index.html', home()), ('executive-summary.html', guide()
                       ('research.html', research()), ('sources.html', sources())]:
     (DOCS / name).write_text(content, encoding='utf-8')
     print(f'built {DOCS / name}')
+
+# Preserve existing public URLs but render every former approval page from the
+# same fail-closed source. A previous H3 or DZ-16 promotion is not inherited.
+compatibility_body = decision('-compat') + \
+    '''<section class="card guide-card"><h1>Submission decision</h1><p><strong>Research only:</strong> DZ-16, H3-PACK, MSPTCD and two parallel files all fail the literal duplicate stop. Their historical hashes and overlap measurements are preserved in the triage receipt; surface checks were not replayed.</p><p><strong>STEPXASYM:</strong> 99.3838% of its dots overlap the lattice and 5,132,809 mirrored-footprint cells are masked. <strong>CONDUIT:</strong> 99.8726% overlap at its historical ≥0.5 threshold; its finite-positive support overlaps by 99.8713%. Research-only download — DO NOT SUBMIT. <a href="data/parallel_candidate_audit.json">STEPXASYM audit →</a> · <a href="data/conduit_review.json">CONDUIT audit →</a>.</p><p>Scores in the table are <strong>USER-REPORTED</strong>, not organizer-confirmed receipts; no reliable new-file score estimate exists. No submission filename or note was produced.</p><p><a href="data/release_triage_20261027.json">Read independent release triage →</a> · <a href="executive-summary.html">Full executive summary →</a> · <a href="research.html">Untested hypotheses →</a></p></section><div style="height:20px"></div>''' + focus_table()
+for rel in ('submission/index.html', 'submission/executive-summary.html',
+            'submission/methodology.html', 'submission/parallel-lanes.html',
+            'submission/sources.html', 'submit/index.html', 'executive-summary/index.html'):
+    destination = DOCS / rel
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(page('Submission decision', 'executive-summary.html', compatibility_body,
+                                'No file is approved for submission.', base='../'), encoding='utf-8')
+    print('built', destination)
+# Replace historical per-site approvals at both legacy URL layouts.
+for row in portfolio['sites']:
+    site = row['site']
+    filename = row['path'].rsplit('/', 1)[-1]
+    content = decision('-site') + f'''<section class="card guide-card"><h1>{e(site)} — historical evidence</h1><p><strong>DO NOT SUBMIT.</strong> The best file named for this site is <code>{e(filename)}</code>, with USER-REPORTED value <strong>{e(row['user_reported_score'])}</strong>; no organizer receipt ties that claim to these bytes. No defensible leaderboard estimate is available for a new file.</p><p>The candidate has {row['max_3px_overlap_vs_other_focus'] * 100:.2f}% of its dots within three pixels of {e(row['max_overlap_witness_site'])}, above the 70% stop. Original pre-placement surfaces were not independently replayed. Historical file links below are for research only.</p><p><a href="{e(row['download_url'])}">Pinned historical research file ↗</a> · <a href="executive-summary.html">All nine sites →</a> · <a href="data/portfolio.json">Audit JSON →</a></p></section>'''
+    for folder, base in (('sites', '../'), ('submission/sites', '../../')):
+        target = DOCS / folder / f'{site}.html'
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(page(f'{site} research only', 'executive-summary.html', content,
+                               'Historical reference, not approved for submission.', base=base), encoding='utf-8')
+
+method_body = decision('-method') + '''<section class="card guide-card"><h1>Method and metric</h1><p>Fault predictions are evaluated using pooled distance-weighted Tversky (α=0.2, β=0.8) with a 300 m triangular kernel. This metric description is not a leaderboard prediction. Known catalogue pixels are excluded, but a surrounding neighborhood is not confirmed excluded.</p><p>Use buffered whole-segment holdouts, derive catalogue features from visible faults only, run feature-alone canaries and compare with a matched incumbent using the pinned shared evaluator. Canary passes cannot prove absence of leakage. A separate selector checks the real quota.</p><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem and metric ↗</a> · <a href="msptcd/index.html">Corrected historical campaign →</a> · <a href="data/RUN_CARD_FINAL.json">Negative run card →</a></p></section>'''
+(DOCS / 'methodology.html').write_text(page('Method', 'research.html', method_body, 'Metric and validation limitations.'), encoding='utf-8')
 
 # Render the byte-audited B2 explanation at the existing nested URL.
 b2_source = DOCS / 'research/why-b2-scored-2778.md'

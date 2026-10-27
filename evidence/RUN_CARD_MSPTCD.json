@@ -3,10 +3,10 @@
   "generated_utc": "2026-10-27T18:10:11.944590+00:00",
   "updated_utc": "2026-10-27T18:18:00Z",
   "lane_id": "wbg2-msptcd",
-  "hypothesis": "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients (Miller & Singh 1994), dip-shifted gravity-magnetic concordance across depth_to_base_surf steps, cross-strike cond_surf flank asymmetry, terrain-normalized radiometric tc edges, and multi-scale Hessian scarp ridges decoded via greedy 300 m triangular-kernel submodular allocation.",
+  "hypothesis": "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients (Miller & Singh 1994), dip-shifted gravity-magnetic concordance across depth_to_base_surf steps, cross-strike cond_surf flank asymmetry, terrain-normalized band-6 edges (physical identity unresolved), and multi-scale Hessian scarp ridges decoded via greedy 300 m triangular-kernel submodular allocation.",
   "mechanism": "Normal/transtensional faulting juxtaposes dense/magnetic footwall rock against basin fill while localizing clay/saline fluid alteration and degraded piedmont scarps along concealed fault projections.",
   "non_fault_mimic": "Unfaulted pluton/dike contacts, playal clay/evaporite pans, shoreline risers, and variable airborne survey clearance.",
-  "lane_status": "Executed 3 preregistered zero-leakage experiments (EXP-1, EXP-2, EXP-3 vs CTRL-19B) on unmodified gems57-pooled-hide-v2; stopped at literal all-registry gate.",
+  "lane_status": "Three historical exploratory mapped-fault-proxy experiments; same-fold selection and leakage limitations; failed literal all-registry duplicate stop. No new experiments in this review.",
   "experiment_budget": {
     "experiments_run": 3,
     "maximum_experiments": 3,
@@ -53,11 +53,12 @@
     ],
     "detached_splay_dti": 0.03079930088769798,
     "control_detached_splay_dti": 0.016914952730943476,
-    "status": "completed on unmodified gems57.evaluate_holdout (1,000 paired 20 km spatial-cluster draws)"
+    "status": "exploratory mapped-fault proxy on unmodified gems57.evaluate_holdout; selected on the reported folds; not independent validation or an organizer score",
+    "detached_splay_caveat": "Different diagnostic split from fitted models; labels may have entered training. Do not use as independent held-out result."
   },
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
-    "status": "COMPLETED",
+    "status": "EXPLORATORY MAPPED-FAULT PROXY; SAME-FOLD SELECTION; NOT ORGANIZER SCORE",
     "evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positives": 60988,
     "value": 0.04255426811430257,
@@ -80,14 +81,15 @@
   },
   "feature_canary": {
     "evidence_class": "LEAKAGE-CANARY-MEASUREMENT",
-    "status": "passed",
+    "status": "124 measured checks below threshold; this does not prove absence of leakage",
     "features_tested": 31,
     "folds_tested": 4,
     "total_checks": 124,
     "threshold_two_sided_auc": 0.9,
     "max_two_sided_auc": 0.6131180129836571,
     "max_two_sided_feature": "tc_radiometric",
-    "details_file": "evidence/wbg2_msptcd_canaries.json"
+    "details_file": "evidence/wbg2_msptcd_canaries.json",
+    "identity_note": "The historical feature name tc_radiometric does not establish band 6 identity; see evidence/input_metadata_20261027.json."
   },
   "uniqueness": {
     "registry_scope": "23 verified rasters (9 focus champions, 2 sibling WBGGEMSDOE2 lanes DZ-16 & H3-PACK, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
@@ -122,7 +124,7 @@
     "candidate_max_focus_site": "GEMSDOE27",
     "candidate_max_all_registry_surface_correlation": 0.6856812367070434,
     "candidate_max_all_registry_final_overlap": 1.0,
-    "status": "unique vs all 9 focus champions (<=68.06% 3px overlap) and both sibling lanes (27.36% vs DZ-16, 20.59% vs H3-PACK), but stopped by literal all-registry witnesses (>70%)",
+    "status": "Historical post-placement comparisons only; the literal any-registry duplicate stop fails. Not a complete current registry and not eligible for submission.",
     "witnesses_exceeding_limit": [
       "13GEMSDOE",
       "GEMSDOE27_H31",
@@ -136,7 +138,8 @@
     "limit": 0.7,
     "observed_other_site_H31_overlap": 0.9961491475009295,
     "dense_prior_witness": "17GEMSDOE continuous probability prior",
-    "dense_prior_full_footprint_positive": true
+    "dense_prior_full_footprint_positive": true,
+    "preplacement_surface_checked": false
   },
   "raster_sha256": null,
   "research_candidate": {
@@ -153,7 +156,7 @@
     "ok_to_submit_to_competition": false
   },
   "validator": {
-    "status": "passed local byte-level GeoTIFF & mask validation on research candidate",
+    "status": "local read-back against unauthenticated owner-mirrored grid only; not organizer acceptance",
     "no_nan_inside_footprint": true,
     "values_in_0_1": true,
     "crs_shape_transform_match": true,
@@ -168,7 +171,7 @@
   "submission_name": null,
   "submission_note": null,
   "proposed_research_name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
-  "note": "Negative/DO NOT SUBMIT: WBG2-MSPTCD HOLDOUT-DTI 0.0426 (+81.8% vs 19B), unique vs 9 focus, stopped by literal 13GEMSDOE/17GEMSDOE >70% gate.",
+  "note": "NEGATIVE: exploratory mapped-fault proxy; literal duplicate stop failed; DO NOT SUBMIT.",
   "ok_to_submit": false,
   "ok_to_download_new_tif": false,
   "ok_to_download_research_tif": true,

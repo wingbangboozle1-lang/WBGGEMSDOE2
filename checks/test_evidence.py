@@ -2,6 +2,7 @@ import csv
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+from urllib.parse import urljoin, urlsplit, unquote
 
 import numpy as np
 from scipy.ndimage import binary_dilation
@@ -90,9 +91,10 @@ def test_broad_ledger_has_provenance_and_empty_values_not_zeroed():
 
 
 class LinkParser(HTMLParser):
-    def __init__(self): super().__init__(); self.links=[]; self.ids=[]; self.tables=0
+    def __init__(self): super().__init__(); self.links=[]; self.ids=[]; self.tables=0; self.base=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if tag=='base' and a.get('href'): self.base=a['href']
         if tag=='a' and a.get('href'): self.links.append(a['href'])
         if 'id' in a: self.ids.append(a['id'])
         if tag=='table': self.tables+=1

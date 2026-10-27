@@ -1,6 +1,6 @@
 {
   "schema": "wbg.release-recheck.v1",
-  "generated_utc": "2026-10-27T18:58:11.366941+00:00",
+  "generated_utc": "2026-10-27T19:17:16.909357+00:00",
   "scope": "Existing-file forensic review only; no experiment, new placement or upload.",
   "evidence_class": "REGISTRY-MEASUREMENT + LOCAL-FORMAT-MEASUREMENT",
   "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",

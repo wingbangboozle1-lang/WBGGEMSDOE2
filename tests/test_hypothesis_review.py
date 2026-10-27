@@ -16,7 +16,7 @@ def test_shortlist_has_complete_fields_and_no_self_assigned_lane():
     assert len({row['id'] for row in rows}) == len(rows)
     assert data['method_lane']['status'] == 'UNASSIGNED'
     assert data['method_lane']['experiments_run_in_this_review_lane'] == 0
-    assert 'not scores' in data['ranking_basis']
+    assert 'not a score' in data['ranking_basis']
     for row in rows:
         for key in ('title', 'layers', 'signature', 'why_uncatalogued',
                     'difference_from_reviewed_methods', 'non_fault_mimic',
@@ -44,7 +44,7 @@ def test_hypothesis_sources_are_consistent_across_site_surfaces():
     for page in (markdown, docs_page, legacy_page, home_page):
         assert 'UNASSIGNED' in page
         assert 'provisional lane' not in page.lower()
-    assert 'no experiment or slot is authorized' in home_page.lower()
+    assert 'no new experiment or slot is authorized' in home_page.lower()
     assert load('docs/data/research_hypotheses.json') == data
     assert load('site/data/research_hypotheses.json') == data
 
@@ -58,10 +58,10 @@ def test_b2_score_explainer_separates_lineage_from_claims_and_keeps_stop():
     assert 'No defensible score estimate' in html
     assert 'DO NOT SUBMIT' in html and 'UNASSIGNED' in html
     assert 'nearby withheld truth may matter' in html
-    assert 'the method lane remains unassigned' in markdown.lower()
-    assert 'H1 is not nominated or authorized' in markdown
-    assert 'H1 is not nominated or authorized' in archive
-    assert 'no next experiment or slot is selected' in archive.lower()
+    assert 'method lane remains **UNASSIGNED**' in markdown
+    assert 'MSPTCD implemented closely related features' in markdown
+    assert 'not a current shortlist' in archive
+    assert 'lane assignment' in archive and 'authorization to run' in archive
 
 
 def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():

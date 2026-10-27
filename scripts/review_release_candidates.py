@@ -39,7 +39,10 @@ def main():
             if (src.shape, src.crs, src.transform) != grid:
                 raise ValueError('Witness grid mismatch')
             arr = src.read(1)
-        support = np.isfinite(arr) & (arr > 0) & fp
+            mask = src.read_masks(1) > 0
+        if np.any(fp & ~mask):
+            raise ValueError(f'Witness {ident} has masked cells inside reference footprint')
+        support = np.isfinite(arr) & (arr > 0) & mask & fp
         coverage[ident] = distance_transform_edt(~support) <= 3
         witnesses[ident] = {'sha256': sha256(path), 'source': entry['url']}
     dz = json.loads((ROOT / 'data_public/candidate.json').read_text())
@@ -55,7 +58,10 @@ def main():
         validation['path'] = rel
         with rasterio.open(path) as src:
             arr = src.read(1)
-        dots = np.isfinite(arr) & (arr > 0) & fp
+            mask = src.read_masks(1) > 0
+        if np.any(fp & ~mask & np.isfinite(arr) & (arr > 0)):
+            raise ValueError(f'Candidate {ident} has masked positive support')
+        dots = np.isfinite(arr) & (arr > 0) & mask & fp
         if not dots.any():
             raise ValueError('No dots to compare')
         overlap = {k: float(v[dots].mean()) for k, v in coverage.items()}
