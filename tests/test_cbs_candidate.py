@@ -11,14 +11,14 @@ TIF = ROOT / CARD["candidate"]["file"]
 def test_candidate_bytes_match_run_card():
     assert hashlib.sha256(TIF.read_bytes()).hexdigest() == CARD["candidate"]["sha256"]
 
-def test_candidate_portal_range_and_grid():
+def test_saved_candidate_strict_finite_range_and_grid():
     with rasterio.open(TIF) as ds:
         a = ds.read(1)
         assert ds.count == 1 and ds.dtypes[0] == "float32"
         assert ds.crs.to_epsg() == 32611 and ds.shape == (3730, 3292)
         assert tuple(ds.transform)[:6] == (100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)
         assert ds.nodata is None
-    # Portal rule: every value finite and in [0,1], no NaN anywhere.
+    # Conservative local precaution, not proof the portal forbids outside NaN or accepts this file.
     assert np.isfinite(a).all() and a.min() >= 0.0 and a.max() <= 1.0
     assert int((a == 1).sum()) == CARD["candidate"]["dots"] == 38000
     assert set(np.unique(a)) <= {0.0, 1.0}

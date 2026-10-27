@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Retired unsafe entry point; historical source is in evidence/retired_20261027.
+"""Retired noncompliant generator/gate. Original source is in evidence/reconciliation_archive.
 
-H3-PACK exceeded the literal any-registry overlap limit; no new placement is authorized.
+This command cannot emit a candidate or bypass the literal all-registry rule.
+Use scripts/audit_release.py to inspect existing artifacts. Do not spend a slot.
 """
 
 
-def main(*args, **kwargs):
-    raise RuntimeError('STOP: H3-PACK exceeded the literal any-registry overlap limit; no new placement is authorized.')
+def main() -> int:
+    raise SystemExit("STOP: historical generator/gate retired. No assigned method lane, no exhaustive registry, and a literal duplicate witness. DO NOT SUBMIT.")
 
 
 if __name__ == "__main__":
-    raise SystemExit('STOP: H3-PACK exceeded the literal any-registry overlap limit; no new placement is authorized.')
+    main()

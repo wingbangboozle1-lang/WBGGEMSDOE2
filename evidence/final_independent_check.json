@@ -35,5 +35,13 @@
   "zip_bytes_match": true,
   "local_copy_sha": true,
   "receipt_sha_match": true,
-  "all_checks": true
+  "all_checks": true,
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "91e4ce5c1d939cad2374d69bf58f436affae9a3784e243ef07ccbb4410dff9e9",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

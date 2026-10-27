@@ -142,5 +142,13 @@
       "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
     }
   },
-  "caveat": "The crowd cap uses historical registry dot fields. A smaller cap increases novelty but moves emission away from mapped structures, which the hide-and-recover proxy rewards."
+  "caveat": "The crowd cap uses historical registry dot fields. A smaller cap increases novelty but moves emission away from mapped structures, which the hide-and-recover proxy rewards.",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "0377874250a5bf3df8e74c4b6f7b872545727e789e8c98722140df4d20d64029",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

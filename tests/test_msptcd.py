@@ -222,3 +222,64 @@ def test_msptcd_saved_geotiff_zip_and_receipts_match_bytes():
     for page_name in ("index.html", "executive-summary.html", "research.html", "sources.html"):
         p = ROOT / "docs/msptcd" / page_name
         assert p.is_file() and len(p.read_text()) > 1000
+
+
+def test_axial_alignment_rejects_perpendicular_edges_and_preserves_polarity():
+    from wbggems.msptcd import axial_alignment_squared
+    gx = np.ones(5); gy = np.zeros(5)
+    mx = np.array([1., -1., 0., 1., 0.])
+    my = np.array([0., 0., 1., 1., 0.])
+    out = axial_alignment_squared(gx, gy, mx, my)
+    np.testing.assert_allclose(out, [1., 1., 0., .5, 0.])
+    np.testing.assert_array_equal(out, axial_alignment_squared(gx, gy, -mx, -my))
+    with pytest.raises(ValueError, match='finite'):
+        axial_alignment_squared(np.array([np.nan]), np.zeros(1), np.ones(1), np.zeros(1))
+    with pytest.raises(ValueError, match='same shape'):
+        axial_alignment_squared(np.ones(2), np.ones(3), np.ones(2), np.ones(2))
+
+
+def test_physics_cache_binds_inputs_footprint_implementation_and_output_bytes(tmp_path, monkeypatch):
+    import wbggems.msptcd as m
+    inputs = tmp_path / 'bands'; inputs.mkdir()
+    outdir = tmp_path / 'derived'; outdir.mkdir()
+    fp = np.ones((4, 4), bool)
+    for idx in m.REQUIRED_BAND_INDICES:
+        np.save(inputs / f'band-{idx:02d}.npy', np.full(fp.shape, idx, np.float32))
+    names = m.CORE_PHYSICS_NAMES + m.STRAIN_SEIS_NAMES
+    # Legacy cache filenames alone must not be trusted after a transform fix.
+    for name in names:
+        np.save(outdir / f'{name}.npy', np.full(fp.shape, -999., np.float32))
+    calls = []
+    def compute(bands, footprint):
+        calls.append(True)
+        return {name: np.where(footprint, bands[2], np.nan).astype(np.float32) for name in names}
+    monkeypatch.setattr(m, 'compute_physics_features_from_arrays', compute)
+    p = m.build_or_load_msptcd_cache(inputs, outdir, fp)
+    assert len(calls) == 1 and np.load(p[names[0]])[0, 0] == 2.
+    m.build_or_load_msptcd_cache(inputs, outdir, fp)
+    assert len(calls) == 1, 'identical verified cache should be reused'
+    np.save(inputs / 'band-02.npy', np.full(fp.shape, 22., np.float32))
+    m.build_or_load_msptcd_cache(inputs, outdir, fp)
+    assert len(calls) == 2 and np.load(p[names[0]])[0, 0] == 22.
+    p[names[0]].write_bytes(b'corrupt')
+    m.build_or_load_msptcd_cache(inputs, outdir, fp)
+    assert len(calls) == 3
+    fp[0, 0] = False
+    m.build_or_load_msptcd_cache(inputs, outdir, fp)
+    assert len(calls) == 4 and np.isnan(np.load(p[names[0]])[0, 0])
+    monkeypatch.setattr(m, 'FEATURE_VERSION', 'test-version-change')
+    m.build_or_load_msptcd_cache(inputs, outdir, fp)
+    assert len(calls) == 5
+
+
+def test_axial_alignment_extreme_finite_amplitudes_do_not_overflow_or_underflow():
+    from wbggems.msptcd import axial_alignment_squared
+    x = np.array([1e308, 1e-300, 1e308, 1e-300])
+    y = np.zeros(4)
+    mx = np.array([-1e308, -1e-300, 0., 0.])
+    my = np.array([0., 0., 1e308, 1e-300])
+    before = [a.copy() for a in (x,y,mx,my)]
+    with np.errstate(over='raise', invalid='raise', divide='raise'):
+        result = axial_alignment_squared(x,y,mx,my)
+    assert np.array_equal(result, [1.,1.,0.,0.])
+    assert all(np.array_equal(a,b) for a,b in zip((x,y,mx,my),before))

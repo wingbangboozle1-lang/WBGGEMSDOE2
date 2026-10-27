@@ -239,5 +239,13 @@
       "leakage_alarm": false
     }
   },
-  "code_path_note": "collar_prior is a deterministic function of the fold-visible catalogue only; no hidden label array is read. The discarded first pass trained on ctx_dist_visible and learned a trivial self-identity; that column is no longer used anywhere."
+  "code_path_note": "collar_prior is a deterministic function of the fold-visible catalogue only; no hidden label array is read. The discarded first pass trained on ctx_dist_visible and learned a trivial self-identity; that column is no longer used anywhere.",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "3059e6377a3c475b1df5ed895ccca9fe4a3cdefffad206300f060475cfaeb010",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

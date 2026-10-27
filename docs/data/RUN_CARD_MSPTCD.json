@@ -3,10 +3,10 @@
   "generated_utc": "2026-10-27T18:10:11.944590+00:00",
   "updated_utc": "2026-10-27T18:18:00Z",
   "lane_id": "wbg2-msptcd",
-  "hypothesis": "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients (Miller & Singh 1994), dip-shifted gravity-magnetic concordance across depth_to_base_surf steps, cross-strike cond_surf flank asymmetry, terrain-normalized band-6 edges (physical identity unresolved), and multi-scale Hessian scarp ridges decoded via greedy 300 m triangular-kernel submodular allocation.",
+  "hypothesis": "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients (Miller & Singh 1994), dip-shifted gravity-magnetic concordance across depth_to_base_surf steps, cross-strike cond_surf flank asymmetry, terrain-normalized radiometric tc edges, and multi-scale Hessian scarp ridges decoded via greedy 300 m triangular-kernel submodular allocation.",
   "mechanism": "Normal/transtensional faulting juxtaposes dense/magnetic footwall rock against basin fill while localizing clay/saline fluid alteration and degraded piedmont scarps along concealed fault projections.",
   "non_fault_mimic": "Unfaulted pluton/dike contacts, playal clay/evaporite pans, shoreline risers, and variable airborne survey clearance.",
-  "lane_status": "Three historical exploratory mapped-fault-proxy experiments; same-fold selection and leakage limitations; failed literal all-registry duplicate stop. No new experiments in this review.",
+  "lane_status": "Historical source-reported campaign: 3 experiments; not independently rerun in this review; no current lane authorization.",
   "experiment_budget": {
     "experiments_run": 3,
     "maximum_experiments": 3,
@@ -53,12 +53,11 @@
     ],
     "detached_splay_dti": 0.03079930088769798,
     "control_detached_splay_dti": 0.016914952730943476,
-    "status": "exploratory mapped-fault proxy on unmodified gems57.evaluate_holdout; selected on the reported folds; not independent validation or an organizer score",
-    "detached_splay_caveat": "Different diagnostic split from fitted models; labels may have entered training. Do not use as independent held-out result."
+    "status": "completed on unmodified gems57.evaluate_holdout (1,000 paired 20 km spatial-cluster draws)"
   },
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
-    "status": "EXPLORATORY MAPPED-FAULT PROXY; SAME-FOLD SELECTION; NOT ORGANIZER SCORE",
+    "status": "COMPLETED",
     "evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positives": 60988,
     "value": 0.04255426811430257,
@@ -81,15 +80,14 @@
   },
   "feature_canary": {
     "evidence_class": "LEAKAGE-CANARY-MEASUREMENT",
-    "status": "124 measured checks below threshold; this does not prove absence of leakage",
+    "status": "passed",
     "features_tested": 31,
     "folds_tested": 4,
     "total_checks": 124,
     "threshold_two_sided_auc": 0.9,
     "max_two_sided_auc": 0.6131180129836571,
     "max_two_sided_feature": "tc_radiometric",
-    "details_file": "evidence/wbg2_msptcd_canaries.json",
-    "identity_note": "The historical feature name tc_radiometric does not establish band 6 identity; see evidence/input_metadata_20261027.json."
+    "details_file": "evidence/wbg2_msptcd_canaries.json"
   },
   "uniqueness": {
     "registry_scope": "23 verified rasters (9 focus champions, 2 sibling WBGGEMSDOE2 lanes DZ-16 & H3-PACK, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
@@ -124,7 +122,7 @@
     "candidate_max_focus_site": "GEMSDOE27",
     "candidate_max_all_registry_surface_correlation": 0.6856812367070434,
     "candidate_max_all_registry_final_overlap": 1.0,
-    "status": "Historical post-placement comparisons only; the literal any-registry duplicate stop fails. Not a complete current registry and not eligible for submission.",
+    "status": "unique vs all 9 focus champions (<=68.06% 3px overlap) and both sibling lanes (27.36% vs DZ-16, 20.59% vs H3-PACK), but stopped by literal all-registry witnesses (>70%)",
     "witnesses_exceeding_limit": [
       "13GEMSDOE",
       "GEMSDOE27_H31",
@@ -138,8 +136,7 @@
     "limit": 0.7,
     "observed_other_site_H31_overlap": 0.9961491475009295,
     "dense_prior_witness": "17GEMSDOE continuous probability prior",
-    "dense_prior_full_footprint_positive": true,
-    "preplacement_surface_checked": false
+    "dense_prior_full_footprint_positive": true
   },
   "raster_sha256": null,
   "research_candidate": {
@@ -156,7 +153,7 @@
     "ok_to_submit_to_competition": false
   },
   "validator": {
-    "status": "local read-back against unauthenticated owner-mirrored grid only; not organizer acceptance",
+    "status": "passed local byte-level GeoTIFF & mask validation on research candidate",
     "no_nan_inside_footprint": true,
     "values_in_0_1": true,
     "crs_shape_transform_match": true,
@@ -171,7 +168,7 @@
   "submission_name": null,
   "submission_note": null,
   "proposed_research_name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
-  "note": "NEGATIVE: exploratory mapped-fault proxy; literal duplicate stop failed; DO NOT SUBMIT.",
+  "note": "Historical MSPTCD research only; literal duplicate stop. Old HOLDOUT-DTI does not validate corrected v2 features. DO NOT SUBMIT.",
   "ok_to_submit": false,
   "ok_to_download_new_tif": false,
   "ok_to_download_research_tif": true,
@@ -188,5 +185,22 @@
     "evidence": "evidence/conduit_review.json",
     "rejected_candidate_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
     "ok_to_submit": false
+  },
+  "post_review": {
+    "review_date": "2026-10-27",
+    "independently_reproduced_in_this_review": false,
+    "historical_feature_source": "evidence/reconciliation_archive/msptcd.py.txt",
+    "current_feature_version": "msptcd-v2-axial-cos-squared",
+    "orientation_defect": "The v1 abs(cos(2*delta)) feature rated perpendicular and parallel edge normals equally coherent. v2 uses cos-squared alignment; old model/holdout statistics do not describe v2.",
+    "cache_defect": "v1 reused outputs based on file existence alone. v2 binds feature implementation, raw inputs, footprint and output bytes in a manifest.",
+    "canary_caveat": "AUC <=0.90 is necessary under the protocol, not proof that leakage is absent.",
+    "preplacement_defect": "The historical script placed dots before its registry comparisons and wrote a research TIFF after the duplicate stop; it is now guarded before any run.",
+    "detached_diagnostic_caveat": "Same OOF predictions were rescored under different segment masks without refitting; not an independent confirmation.",
+    "metadata_caveat": "Band 6 values inconsistent with unscaled tilt radians support a radiometric interpretation but do not prove channel identity or units. Band 15 is not authenticated geological basement.",
+    "publication_correction": "The former rendered hypotheses invented heat_flow and other band indices absent from this stack. The renderer now uses the actual 19-band receipt and source operator names.",
+    "promotion_evidence_valid": false,
+    "authoritative_release_audit": "evidence/release_audit.json",
+    "raw_feature_diagnostic": "evidence/feature_semantics_review.json",
+    "raw_feature_discrepancy": "Restored hash 4371c82e...: Band 6 has 5,164,300 finite in-footprint cells, 3,073 missing, q01=7.7223, median=18.4817, q99=29.1005. Prior rendered quantiles/counts differed; no feature-source hash is bound to the historical campaign metrics."
   }
 }

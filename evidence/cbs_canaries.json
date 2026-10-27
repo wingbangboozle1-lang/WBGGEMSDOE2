@@ -1071,5 +1071,13 @@
         }
       ]
     }
-  ]
+  ],
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "d7e104174a0413b3adcb4899b85271e3b4e8cb20f0566763280ee9f0da3fa019",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

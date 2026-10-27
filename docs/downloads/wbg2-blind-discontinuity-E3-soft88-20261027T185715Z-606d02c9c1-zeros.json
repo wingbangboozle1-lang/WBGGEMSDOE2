@@ -126,5 +126,10 @@
     "soft_refinement": "evidence/soft_novelty_refinement.json",
     "holdout_evaluator": "gems57-pooled-hide-v2",
     "source": "hash-pinned owner mirror; not organizer authenticated"
-  }
+  },
+  "ok_to_submit": false,
+  "release_verdict": "negative",
+  "current_release_evidence": "evidence/release_audit.json",
+  "lattice_overlap_3px_independently_reopened": 0.99923,
+  "release_note": "RESEARCH ONLY \u2014 DO NOT SUBMIT. Source campaign measurements are not independently replayed; format validity and normalized/discrete-peer diagnostics do not override literal witnesses."
 }

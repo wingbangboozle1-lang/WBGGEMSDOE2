@@ -304,5 +304,13 @@
       "format_valid_against_reference": true
     }
   },
-  "supersedes": "wbg2-cbs-ctrl-19b-dotted-64284dots-20261027T191325Z-9cae06c2-zeros (holdout-optimal budget; live-pessimal; removed from downloads)"
+  "supersedes": "wbg2-cbs-ctrl-19b-dotted-64284dots-20261027T191325Z-9cae06c2-zeros (holdout-optimal budget; live-pessimal; removed from downloads)",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "901559c47353daeb19bf5539eecbd88074eb27a843e0cfa726fa29cd7d4ac45e",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

@@ -47,14 +47,9 @@ def test_published_evidence_is_fail_closed_and_synced():
     published_card = json.loads((SITE / 'data/run_card.json').read_text())
     assert source_card == published_card == json.loads((ROOT / 'docs/data/run-card.json').read_text())
     assert source_card == json.loads((ROOT / 'docs/data/run_card.json').read_text())
-    assert source_card['verdict'] == 'promote-to-selector-only' and source_card['ok_to_submit'] is True
-    assert source_card['holdout']['dti'] > .13 and len(source_card['raster_sha256']) == 64
-    assert source_card['submission_name'] and len(source_card['note']) <= 140
-    release = json.loads((SITE / 'data/release.json').read_text())
-    assert release == json.loads((ROOT / 'docs/data/release.json').read_text())
-    assert release['sha256'] == source_card['raster_sha256']
-    assert release['ok_to_submit'] and all(release['gates'].values())
-    assert (ROOT / 'docs/downloads' / Path(release['tif']).name).is_file()
+    assert source_card['verdict'] == 'negative' and source_card['ok_to_submit'] is False
+    assert source_card['holdout']['dti'] is None and source_card['raster_sha256'] is None
+    assert source_card['submission_name'] is None and len(source_card['note']) <= 140
     rows = json.loads((SITE / 'data/focus.json').read_text())['entries']
     assert len(rows) == 9 and len({r['site'] for r in rows}) == 9
     assert all(not r['ok_to_submit'] and not r['unique_under_literal_rule'] for r in rows)
@@ -62,10 +57,12 @@ def test_published_evidence_is_fail_closed_and_synced():
     assert all(r['leaderboard_estimate'] is None and len(r['sha256']) == 64 for r in rows)
     assert all(r['max_peer_overlap']['fraction'] > .7 for r in rows)
     home = (SITE / 'index.html').read_text()
-    assert '1 FILE CLEARED' in home and 'OK TO SUBMIT' in home
-    assert 'OK TO DOWNLOAD' in home and Path(release['tif']).name in home
-    guide = (SITE / 'executive.html').read_text()
-    assert source_card['submission_name'] in guide and source_card['submission_note'] in guide
+    assert 'Submission download unavailable' in home and 'NO FILE CLEARED' in home
+    freshness = json.loads((SITE / 'data/focus-freshness.json').read_text())
+    assert freshness == json.loads((ROOT / 'docs/data/focus-freshness.json').read_text())
+    assert 'newer rasters are not downloaded or audited' in freshness['scope'].lower()
+    app = (SITE / 'assets/app.js').read_text()
+    assert "data/focus-freshness.json" in app and 'Newer rasters have not been audited' in app
 
 
 def test_registered_continuous_witness_is_not_mislabeled_as_dots():

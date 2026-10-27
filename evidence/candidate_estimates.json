@@ -1,133 +1,141 @@
 {
- "evidence_class": "EMPIRICAL-ESTIMATE + PROJECTION + DERIVED (no organizer receipt)",
- "score_law": {
-  "coef_intercept": 0.3119580696204668,
-  "coef_per_1000_dots": -0.0007758493198509631,
-  "coef_collar": -0.09011486741148915,
-  "r2_nine_focus": 0.9883437541852235,
-  "max_abs_residual": 0.002489563130948391
- },
- "empirical_rmse_external_focus": 0.09373721070387271,
- "candidates": [
-  {
-   "file": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
-   "support_px": 34500,
-   "mass": 34500.0,
-   "median_px_to_catalogue": 14.7648230602334,
-   "frac_within_3px_catalogue": 0.0,
-   "components_8conn": 34500,
-   "binary_fraction": 1.0,
-   "kmass_per_dot": 9.371975682929255,
-   "empirical_estimate": 0.15019416758154386,
-   "empirical_interval95": [
-    0.0,
-    0.3339191005611344
-   ],
-   "score_law_projection": 0.2851912680856086,
-   "mass_balance_band_if_best_lineage_hit_rate": {
-    "10000": [
-     0.2824947651006712,
-     0.34642044563758395
-    ],
-    "20000": [
-     0.27847912663755464,
-     0.3200028227074236
-    ],
-    "30000": [
-     0.27654278317152103,
-     0.3072642278317152
-    ]
-   }
+  "evidence_class": "EMPIRICAL-ESTIMATE + PROJECTION + DERIVED (no organizer receipt)",
+  "score_law": {
+    "coef_intercept": 0.3119580696204668,
+    "coef_per_1000_dots": -0.0007758493198509631,
+    "coef_collar": -0.09011486741148915,
+    "r2_nine_focus": 0.9883437541852235,
+    "max_abs_residual": 0.002489563130948391
   },
-  {
-   "file": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
-   "support_px": 34000,
-   "mass": 34000.0,
-   "median_px_to_catalogue": 24.73863375370596,
-   "frac_within_3px_catalogue": 0.0,
-   "components_8conn": 34000,
-   "binary_fraction": 1.0,
-   "kmass_per_dot": 9.36549473834155,
-   "empirical_estimate": 0.16475126900310905,
-   "empirical_interval95": [
-    0.0,
-    0.3484762019826996
-   ],
-   "score_law_projection": 0.28557919274553406,
-   "mass_balance_band_if_best_lineage_hit_rate": {
-    "10000": [
-     0.28440351351351356,
-     0.3487611243243244
-    ],
-    "20000": [
-     0.2797005263157895,
-     0.32140634385964917
-    ],
-    "30000": [
-     0.2774406493506493,
-     0.3082618389610389
-    ]
-   }
-  },
-  {
-   "file": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
-   "support_px": 25594,
-   "mass": 25594.0,
-   "median_px_to_catalogue": 14.560219778561036,
-   "frac_within_3px_catalogue": 0.022583417988591075,
-   "components_8conn": 389,
-   "binary_fraction": 1.0,
-   "kmass_per_dot": 1.6060057734021531,
-   "empirical_estimate": 0.029979859948595398,
-   "empirical_interval95": [
-    0.0,
-    0.2137047929281859
-   ],
-   "score_law_projection": 0.2900658804104611,
-   "mass_balance_band_if_best_lineage_hit_rate": {
-    "10000": [
-     0.3208503826569503,
-     0.39345554776351505
-    ],
-    "20000": [
-     0.30196658901073925,
-     0.3469924730571813
-    ],
-    "30000": [
-     0.2934589337472698,
-     0.3260596123466626
-    ]
-   }
-  },
-  {
-   "file": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
-   "support_px": 38000,
-   "mass": 38000.0,
-   "median_px_to_catalogue": 19.1049731745428,
-   "frac_within_3px_catalogue": 0.0,
-   "components_8conn": 38000,
-   "binary_fraction": 1.0,
-   "kmass_per_dot": 9.30755714544977,
-   "empirical_estimate": 0.26844882072831827,
-   "empirical_interval95": [
-    0.08472388774872777,
-    0.4521737537079088
-   ],
-   "score_law_projection": 0.2824757954661302,
-   "mass_balance_band_if_best_lineage_hit_rate": {
-    "10000": [
-     0.269818717948718,
-     0.3308759384615385
-    ],
-    "20000": [
-     0.27021915254237294,
-     0.31051121355932204
-    ],
-    "30000": [
-     0.27041683544303796,
-     0.30045774177215184
-    ]
-   }
+  "empirical_rmse_external_focus": 0.09373721070387271,
+  "candidates": [
+    {
+      "file": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
+      "support_px": 34500,
+      "mass": 34500.0,
+      "median_px_to_catalogue": 14.7648230602334,
+      "frac_within_3px_catalogue": 0.0,
+      "components_8conn": 34500,
+      "binary_fraction": 1.0,
+      "kmass_per_dot": 9.371975682929255,
+      "empirical_estimate": 0.15019416758154386,
+      "empirical_interval95": [
+        0.0,
+        0.3339191005611344
+      ],
+      "score_law_projection": 0.2851912680856086,
+      "mass_balance_band_if_best_lineage_hit_rate": {
+        "10000": [
+          0.2824947651006712,
+          0.34642044563758395
+        ],
+        "20000": [
+          0.27847912663755464,
+          0.3200028227074236
+        ],
+        "30000": [
+          0.27654278317152103,
+          0.3072642278317152
+        ]
+      }
+    },
+    {
+      "file": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+      "support_px": 34000,
+      "mass": 34000.0,
+      "median_px_to_catalogue": 24.73863375370596,
+      "frac_within_3px_catalogue": 0.0,
+      "components_8conn": 34000,
+      "binary_fraction": 1.0,
+      "kmass_per_dot": 9.36549473834155,
+      "empirical_estimate": 0.16475126900310905,
+      "empirical_interval95": [
+        0.0,
+        0.3484762019826996
+      ],
+      "score_law_projection": 0.28557919274553406,
+      "mass_balance_band_if_best_lineage_hit_rate": {
+        "10000": [
+          0.28440351351351356,
+          0.3487611243243244
+        ],
+        "20000": [
+          0.2797005263157895,
+          0.32140634385964917
+        ],
+        "30000": [
+          0.2774406493506493,
+          0.3082618389610389
+        ]
+      }
+    },
+    {
+      "file": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+      "support_px": 25594,
+      "mass": 25594.0,
+      "median_px_to_catalogue": 14.560219778561036,
+      "frac_within_3px_catalogue": 0.022583417988591075,
+      "components_8conn": 389,
+      "binary_fraction": 1.0,
+      "kmass_per_dot": 1.6060057734021531,
+      "empirical_estimate": 0.029979859948595398,
+      "empirical_interval95": [
+        0.0,
+        0.2137047929281859
+      ],
+      "score_law_projection": 0.2900658804104611,
+      "mass_balance_band_if_best_lineage_hit_rate": {
+        "10000": [
+          0.3208503826569503,
+          0.39345554776351505
+        ],
+        "20000": [
+          0.30196658901073925,
+          0.3469924730571813
+        ],
+        "30000": [
+          0.2934589337472698,
+          0.3260596123466626
+        ]
+      }
+    },
+    {
+      "file": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+      "support_px": 38000,
+      "mass": 38000.0,
+      "median_px_to_catalogue": 19.1049731745428,
+      "frac_within_3px_catalogue": 0.0,
+      "components_8conn": 38000,
+      "binary_fraction": 1.0,
+      "kmass_per_dot": 9.30755714544977,
+      "empirical_estimate": 0.26844882072831827,
+      "empirical_interval95": [
+        0.08472388774872777,
+        0.4521737537079088
+      ],
+      "score_law_projection": 0.2824757954661302,
+      "mass_balance_band_if_best_lineage_hit_rate": {
+        "10000": [
+          0.269818717948718,
+          0.3308759384615385
+        ],
+        "20000": [
+          0.27021915254237294,
+          0.31051121355932204
+        ],
+        "30000": [
+          0.27041683544303796,
+          0.30045774177215184
+        ]
+      }
+    }
+  ],
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "9577b514f10458a3fadb30fc5d0d18c42468dfaa6cb27831d847e24d7ac81ef4",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
   }
- ]
 }

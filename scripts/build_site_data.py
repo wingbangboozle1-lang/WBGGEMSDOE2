@@ -12,11 +12,10 @@ audit = json.loads((ROOT / 'evidence/registry_audit.json').read_text())
 card = json.loads((ROOT / 'evidence/run_card.json').read_text())
 review = json.loads((ROOT / 'evidence/parallel_review.json').read_text())
 conduit = json.loads((ROOT / 'evidence/conduit_review.json').read_text())
-# A promoted card must still be receipt-bound: the historical parallel rejections
-# are preserved verbatim, and the promoted raster hash must be present.
-if (card.get('schema') != 'wbggems.run-card.v2'
-        or card.get('verdict') not in ('promote-to-selector-only', 'negative')
-        or (card.get('ok_to_submit') and not card.get('raster_sha256'))
+if (hypothesis_data.get('method_lane', {}).get('status') != 'UNASSIGNED'
+        or not 3 <= len(hypothesis_data.get('hypotheses', [])) <= 5):
+    raise SystemExit('Research lane/shortlist changed; update the narrative before publishing.')
+if (card.get('ok_to_submit') is not False or card.get('verdict') != 'negative'
         or conduit.get('ok_to_submit') is not False
         or conduit.get('sha256') != card.get('conduit_parallel_session', {}).get('rejected_candidate_sha256')
         or round(conduit.get('witnesses', {}).get('13GEMSDOE', {}).get('source_threshold_ge_0_5', {}).get('fraction', 0), 6) != 0.998726

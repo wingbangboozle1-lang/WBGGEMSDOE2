@@ -1683,5 +1683,13 @@
       "dots": 38854
     }
   },
-  "caveat": "Hide-and-recover withheld mapped catalogue components are a proxy, not the organizer public/private fault set. Historical control rasters were built with the full catalogue and may be optimistically biased."
+  "caveat": "Hide-and-recover withheld mapped catalogue components are a proxy, not the organizer public/private fault set. Historical control rasters were built with the full catalogue and may be optimistically biased.",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "856a3b25a61f04fab39db98db72c9339cecd82360fc168dd55a6c64811725719",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

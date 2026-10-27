@@ -291,5 +291,13 @@
       "max": 1.0,
       "positive_in_footprint": 5062271
     }
+  },
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "9aa84c0750356761c569efc41830fe259dda92c04b84efb3891379d7bd7d7c49",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
   }
 }

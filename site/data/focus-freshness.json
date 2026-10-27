@@ -1,6 +1,6 @@
 {
   "evidence_class": "GITHUB-HEAD-FRESHNESS-ONLY",
-  "checked_utc": "2026-10-27T18:59:59.995229+00:00",
+  "checked_utc": "2026-10-27T18:58:08.627729+00:00",
   "changed_count": 9,
   "unknown_count": 0,
   "scope": "HEAD comparison only; newer rasters are not downloaded or audited by this check",
@@ -15,7 +15,7 @@
     {
       "site": "GEMSDOE25",
       "audited_ref": "606eef45e669a6da061ec24be4a3d870addadb0f",
-      "current_head": "34d36b4463fe6c7f87366ecf8472f31f819e5d53",
+      "current_head": "3a1d548c6a187d50899095e29f5c022101edefc5",
       "changed": true,
       "status": "checked"
     },

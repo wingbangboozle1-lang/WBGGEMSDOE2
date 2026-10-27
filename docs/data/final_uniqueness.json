@@ -2653,5 +2653,13 @@
       "decoded_identical": false,
       "byte_identical": false
     }
-  ]
+  ],
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "9a2b94eb4adecf29dc35960978a77522bcd76d3a37fe83d4fe13642329e283f9",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

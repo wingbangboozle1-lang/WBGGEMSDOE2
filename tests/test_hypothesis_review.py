@@ -16,7 +16,7 @@ def test_shortlist_has_complete_fields_and_no_self_assigned_lane():
     assert len({row['id'] for row in rows}) == len(rows)
     assert data['method_lane']['status'] == 'UNASSIGNED'
     assert data['method_lane']['experiments_run_in_this_review_lane'] == 0
-    assert 'not a score' in data['ranking_basis']
+    assert 'not scores' in data['ranking_basis']
     for row in rows:
         for key in ('title', 'layers', 'signature', 'why_uncatalogued',
                     'difference_from_reviewed_methods', 'non_fault_mimic',
@@ -44,7 +44,7 @@ def test_hypothesis_sources_are_consistent_across_site_surfaces():
     for page in (markdown, docs_page, legacy_page, home_page):
         assert 'UNASSIGNED' in page
         assert 'provisional lane' not in page.lower()
-    assert 'no new experiment or slot is authorized' in home_page.lower()
+    assert 'no experiment or slot is authorized' in home_page.lower()
     assert load('docs/data/research_hypotheses.json') == data
     assert load('site/data/research_hypotheses.json') == data
 
@@ -58,10 +58,10 @@ def test_b2_score_explainer_separates_lineage_from_claims_and_keeps_stop():
     assert 'No defensible score estimate' in html
     assert 'DO NOT SUBMIT' in html and 'UNASSIGNED' in html
     assert 'nearby withheld truth may matter' in html
-    assert 'method lane remains **UNASSIGNED**' in markdown
-    assert 'MSPTCD implemented closely related features' in markdown
-    assert 'not a current shortlist' in archive
-    assert 'lane assignment' in archive and 'authorization to run' in archive
+    assert 'the method lane remains unassigned' in markdown.lower()
+    assert 'H1 is not nominated or authorized' in markdown
+    assert 'H1 is not nominated or authorized' in archive
+    assert 'no next experiment or slot is selected' in archive.lower()
 
 
 def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():
@@ -83,17 +83,13 @@ def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():
 
 
 def test_run_card_does_not_misrepresent_a_proposal_as_an_experiment():
-    # 27 Oct 2026: the current canonical card is the executed three-lane
-    # campaign, not the earlier unassigned proposal. The archived negative
-    # proposal card is evidence/run_card_20261026_negative.json.
     card = load('evidence/run_card.json')
-    assert card['schema'] == 'wbggems.run-card.v2'
-    assert card['experiment_budget']['experiments_run'] == 3
-    assert card['holdout']['dti'] > 0 and card['holdout']['ci95'][0] > 0
-    assert len(card['raster_sha256']) == 64
-    assert card['submission_name'] and card['submission_note']
-    assert card['verdict'] == 'promote-to-selector-only'
-    assert card['ok_to_submit'] is True and card['ok_to_download_new_tif'] is True
-    assert card['score_estimate']['leaderboard_estimate'] is None
-    archived = load('evidence/run_card_20261026_negative.json')
-    assert archived['verdict'] == 'negative' and archived['experiment_count'] == 0
+    assert card['lane_status'].startswith('UNASSIGNED')
+    assert card['hypothesis_id'] is None
+    assert 'proposal-only' in card['hypothesis']
+    assert card['verdict'] == 'negative'
+    assert card['experiment_count'] == 0
+    assert card['holdout']['dti'] is None and card['holdout']['ci95'] is None
+    assert card['raster_sha256'] is None
+    assert card['submission_name'] is None and card['submission_note'] is None
+    assert card['ok_to_submit'] is False and card['ok_to_download_new_tif'] is False

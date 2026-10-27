@@ -1,0 +1,87 @@
+{
+  "evidence_class": "RAW-FEATURE-DIAGNOSTIC; NOT HOLDOUT OR SCORE",
+  "recorded_utc": "2026-10-27T19:08:31.675542+00:00",
+  "source_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+  "footprint_cells": 5167373,
+  "bands": [
+    {
+      "band": 2,
+      "finite_inside": 5164312,
+      "missing_inside": 3061,
+      "min_q01_median_q99_max": [
+        -2786.299560546875,
+        -458.7529602050781,
+        -137.22166442871094,
+        395.7310452270498,
+        4508.76025390625
+      ],
+      "negative_inside": 4331216
+    },
+    {
+      "band": 6,
+      "finite_inside": 5164300,
+      "missing_inside": 3073,
+      "min_q01_median_q99_max": [
+        2.9534237384796143,
+        7.722299365997313,
+        18.48169994354248,
+        29.100453147888167,
+        88.56654357910156
+      ],
+      "negative_inside": 0
+    },
+    {
+      "band": 9,
+      "finite_inside": 5164312,
+      "missing_inside": 3061,
+      "min_q01_median_q99_max": [
+        -7.650597095489502,
+        -0.6922200167179108,
+        -0.008997071534395218,
+        0.79353726863861,
+        20.510923385620117
+      ],
+      "negative_inside": 2934432
+    },
+    {
+      "band": 13,
+      "finite_inside": 5164312,
+      "missing_inside": 3061,
+      "min_q01_median_q99_max": [
+        -45.75756072998047,
+        -32.765608367919924,
+        -7.26103401184082,
+        12.895497713088968,
+        24.232954025268555
+      ],
+      "negative_inside": 4087568
+    },
+    {
+      "band": 15,
+      "finite_inside": 5164312,
+      "missing_inside": 3061,
+      "min_q01_median_q99_max": [
+        -14.837310791015625,
+        1.2142881524562836,
+        316.3645324707031,
+        3416.0773437499984,
+        7135.306640625
+      ],
+      "negative_inside": 9591
+    },
+    {
+      "band": 17,
+      "finite_inside": 5164312,
+      "missing_inside": 3061,
+      "min_q01_median_q99_max": [
+        0.1937037855386734,
+        1.1678259372711182,
+        2.885897636413574,
+        4.488641319274901,
+        4.969292640686035
+      ],
+      "negative_inside": 0
+    }
+  ],
+  "interpretation": "Band 6 range excludes an unscaled tilt angle in radians, but positivity alone cannot prove physical identity or units. Missing raw feature pixels must not change the scoring footprint."
+}

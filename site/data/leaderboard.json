@@ -1,15 +1,15 @@
 {
   "schema": "wbggems.public-feed.v1",
-  "generated_at": "2026-10-27T17:26:05.536237+00:00",
+  "generated_at": "2026-10-27T19:25:14.323819+00:00",
   "leaderboard": {
     "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
     "evidence": "ORGANIZER-PUBLISHED LEADERBOARD; NOT A SUBMISSION RECEIPT",
-    "checked_at": "2026-10-27T17:25:00Z",
+    "checked_at": "2026-10-27T19:09:35.302551+00:00",
+    "data_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard_partial/?page=1",
     "status": "fresh",
     "value": 0.4544,
-    "observed_at": "2026-10-27T17:25:00Z",
-    "notice": "Observed on the official leaderboard page with the research fetch tool; sandbox urllib cannot reach this host. Not a submission receipt.",
-    "capture_method": "research fetch_page tool"
+    "observed_at": "2026-10-27T19:09:35.302551+00:00",
+    "notice": "Official public leaderboard observed in this session, not a receipt for a project TIFF and not HOLDOUT-DTI. Dynamic page; scheduled direct-fetch freshness is independent."
   },
   "site_ref_notice": "Changed refs are compared with an observed HEAD baseline, not the historic raster pins; they require review and are not an automatic audit.",
   "baseline_observed_at": "2026-10-26T21:56:11.098339+00:00",
@@ -17,55 +17,55 @@
     {
       "site": "GEMSDOE24",
       "baseline_sha": "a433b430b74b813a9118ebd4ec438b12cbc69f46",
-      "latest_sha": "2521cb676e172c141a4417e4925b73b6a896c1eb",
+      "latest_sha": "af8576cf23d1e8cfda69fd859e1fb98d3d72194f",
       "status": "changed"
     },
     {
       "site": "GEMSDOE25",
       "baseline_sha": "b4e74b3f9b191fbc214b6447e9ff1f3fa67552c4",
-      "latest_sha": "5a60fb475b7171af93cfce795abe6d96c4021ea2",
+      "latest_sha": "eb70599f5cad08cb8808499dd38589d33fc183b5",
       "status": "changed"
     },
     {
       "site": "GEMSDOE27",
       "baseline_sha": "bef7ae8e8f63b69d299c9214c75988c8f5055f9c",
-      "latest_sha": "5ee301149eb525ed0fde740fe18261bf6ec9efab",
+      "latest_sha": "4f34228a9f39e99da592aa34fd835c96d1b693f5",
       "status": "changed"
     },
     {
       "site": "GEMSDOE28",
       "baseline_sha": "2c839d10f57ec9b074829e93c84bc39935f52896",
-      "latest_sha": "67dbdf4da84fc92a98dd9644ab816ed18ae36bcc",
+      "latest_sha": "4955e29c7b66503ba2178b25d356d713dc1bc534",
       "status": "changed"
     },
     {
       "site": "GEMSDOE30",
       "baseline_sha": "9c0d637c0171407196b61b780444bc772ce75438",
-      "latest_sha": "3c3d7255fdbb3a94375eff086522463a8eaca449",
+      "latest_sha": "d21ddd9502f3c3911e8d77b8f1e6abfaadffc876",
       "status": "changed"
     },
     {
       "site": "GEMSDOE31",
       "baseline_sha": "eeb7da54ca4a8ae056f45e5b23eeef586ad79bf2",
-      "latest_sha": "abd9a45cc7adf046d7d3829eb6e8c980943f462d",
+      "latest_sha": "88ec212955353f7590e94b8ef2a9763ffa035d45",
       "status": "changed"
     },
     {
       "site": "GEMSDOE32",
       "baseline_sha": "400b60d4a6d99f425ee90504e6c4552227556dd1",
-      "latest_sha": "1398109a23f04a2ace71c1bd2f527cfba87860b5",
+      "latest_sha": "6a28a39a2bca6bbb49cd8a56292c78d474c9ef91",
       "status": "changed"
     },
     {
       "site": "GEMSDOE33",
       "baseline_sha": "08380a2e6f2a76d733ee6144d6de33e2907c13b8",
-      "latest_sha": "122e2240a835c9c84831943ee3489dbb48fd6e85",
+      "latest_sha": "844f514819041c7be9efd345a24cf5cd70263f00",
       "status": "changed"
     },
     {
       "site": "GEMSDOE36",
       "baseline_sha": "32c2660001d98f6fa9084a0971b3a9d5062d49b9",
-      "latest_sha": "7576942352382c557f074bae3f2c6eb72750fa44",
+      "latest_sha": "b9d8ce07c10a0adb08bb0302b867a0ccc1eba18e",
       "status": "changed"
     }
   ]

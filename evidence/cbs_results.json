@@ -450,7 +450,7 @@
     "beats_ctrl_paired_ci_gt0": true,
     "beats_repo_best_same_evaluator_0.042554": true,
     "unique_vs_9focus_and_siblings": true,
-    "promote": true
+    "promote": false
   },
   "registry_comparison": [
     {
@@ -711,5 +711,19 @@
       "failures": [],
       "format_valid_against_reference": true
     }
+  },
+  "current_release_review": {
+    "verdict": "negative",
+    "ok_to_submit": false,
+    "evidence": "evidence/release_audit.json",
+    "note": "Original numerical research measurements retained, not independently replayed; operational approvals revoked by the literal any-registry rule. Original source is preserved in the incoming main parent and reconciliation archive."
+  },
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "64121273784a795263339473aab4b31f706c4f3a96e2e49bf87a74f0e54ca619",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
   }
 }

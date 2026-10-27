@@ -1,33 +1,20 @@
-# Current finding (2026-10-27) — new unique submission
+# Current reconciliation — 27 October 2026
 
-A new, unique, format-valid GeoTIFF **was generated and audited** by this session:
-`docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif`
-(SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`).
-HOLDOUT-DTI 0.1452 [0.1287, 0.1626]; paired win +0.0135 [0.0068, 0.0198] vs a
-matched control; 126-raster like-for-like uniqueness clearance. See
-[`docs/CURRENT_EXECUTIVE_SUMMARY.md`](../docs/CURRENT_EXECUTIVE_SUMMARY.md),
-[`evidence/run_card.json`](../evidence/run_card.json) and
-[`research/hypotheses_20261027.md`](hypotheses_20261027.md).
-The parallel-session negative findings below are preserved for audit continuity;
-they refer to different (rejected) artifacts, not to this file.
+All seven saved TIFF identities fail literal registry duplication. Former DZ-16/H3 approvals are revoked;
+no new candidate, experiment, forecast or slot. [Current byte audit](../evidence/release_audit.json),
+[one canonical run card](../evidence/run_card.json), [official-source recheck](source-verification-release-20261027.md),
+[revised N1–N4 proposals](hypotheses.md), and [three-pass review record](release-reconciliation-review.md).
 
-**Verified leaderboard context (27 Oct 2026):** the user-supplied claims 0.3195 and 0.4413 are stale; the official public leaderboard showed 0.4544 (ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT) and the best family claim is 0.2778 (USER-REPORTED). No current leaderboard value was independently verified as a receipt for any project file. See `research/sources_20261027.md`.
-
-# Current release reconciliation — 27 October 2026
-
-**NO FILE CLEARED.** The later DZ-16 and H3-PACK approvals are withdrawn after this session's
-[byte-level recheck](../evidence/release_recheck_20261027.json). Both exceed the binary lattice's
-70% duplicate stop; no enrichment-based exemption is authorized. The 19-band owner mirror and raw
-band cache were restored again, not authenticated against DrivenData. The [new shortlist](hypotheses.md)
-replaces previously implemented depth-shift/conductive-flank proposals; no new lane or experiment was
-assigned. See the [three-pass review](release-review-20261027.md). Below are historical earlier-review
-findings; their old H1 labels do not refer to the current untested drainage proposal.
+The full 19-band owner mirror is restored, not organizer-authenticated. Historical MSPTCD v1
+HOLDOUT-DTI is source-reported, not reproduced. Corrected v2 orientation features and content-bound
+caches have synthetic tests only; old metrics are not evidence for v2. Former web band-schema and
+“zero leakage” claims are corrected. All new raster/score/promotion fields remain null/false.
 
 ---
 
-# Executive audit: what is safe to submit?
+## Earlier forensic notes (historical context; the current release decision above governs)
 
-> **Current release review, 2026-10-27:** All five independently reopened local TIFFs fail the pinned binary-lattice overlap stop, so prior DZ-16/H3-PACK promotions are superseded; no submission is approved. Original pre-placement surfaces were not replayed and the registry is incomplete. The prior MSPTCD mapped-fault proxy is exploratory, was selected on its reporting folds, and does not prove no leakage or a leaderboard score. See the [release triage](../evidence/release_triage_20261027.json), [corrected campaign findings](msptcd_findings.md), and [current negative run card](../evidence/RUN_CARD_FINAL.json).
+# Executive audit: what is safe to submit?
 
 **Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.
 

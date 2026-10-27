@@ -62,5 +62,13 @@
   "registry_surface_and_final": "not checked by this command",
   "ok_to_submit": false,
   "verdict": "research-only; local format is not promotion or slot selection",
-  "inside_values_in_0_1": true
+  "inside_values_in_0_1": true,
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "69e799481d222995558f6c81ae85ad9a7fb6e5f360dcf4254aaca2b4df31193f",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

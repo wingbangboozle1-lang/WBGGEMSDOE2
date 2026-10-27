@@ -120,6 +120,12 @@
     "campaign": "WBG2-CBS-20261027 pass-2 final",
     "arm": "ctrl_19b_dotted",
     "budget": 38000,
-    "ok_to_submit": true
+    "ok_to_submit": false
+  },
+  "current_release_review": {
+    "verdict": "negative",
+    "ok_to_submit": false,
+    "evidence": "evidence/release_audit.json",
+    "note": "Original numerical research measurements retained, not independently replayed; operational approvals revoked by the literal any-registry rule. Original source is preserved in the incoming main parent and reconciliation archive."
   }
 }

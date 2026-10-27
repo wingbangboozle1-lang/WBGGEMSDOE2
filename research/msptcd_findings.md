@@ -1,31 +1,37 @@
-# Historical MSPTCD campaign: corrected findings
+# Historical MSPTCD findings with independent-review corrections
 
-**Decision: NEGATIVE — DO NOT SUBMIT.** This is a retrospective analysis, not a new run. The prior MSPTCD campaign used its three experiments; its file failed the literal duplicate stop. [Read-back triage](../evidence/release_triage_20261027.json) independently measures 100% of its dots within three pixels of the pinned 13GEMSDOE lattice. Its pre-placement surface check was not performed in the required order. The artifact remains in the repository for reproducibility, not competition use.
+**Verdict: NEGATIVE / DO NOT SUBMIT.** No new candidate experiment, placement, scientific holdout or competition slot was used in the current review. Original prose is archived in [`evidence/reconciliation_archive/msptcd_findings.md`](../evidence/reconciliation_archive/msptcd_findings.md).
 
-## Mapped-fault proxy, not organizer performance
+## Independently measured in this review
 
-The former campaign used the pinned `gems57-pooled-hide-v2` pooled evaluator with α=0.2, β=0.8, and a 300 m triangular kernel, 60,988 withheld positives and four buffered spatial-component quadrants. Results below are **exploratory HOLDOUT-DTI on the owner-mirrored mapped-fault proxy**, not public/private leaderboard scores or independent model selection:
+- All five local TIFF identities fail a literal registry overlap witness. The saved MSPTCD TIFF has SHA-256 `fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614`, 25,594 dots and 100% overlap within inclusive Euclidean 3 px of the pinned lattice. Its local format pass is not organizer acceptance. [Exact forensic audit](../evidence/release_audit.json).
+- GEMSDOE25/30 decode identically. B2 is their 44,090-dot mask after removing exactly 6,436 dots within 2 px of the mirrored catalogue. GEMSDOE36 adds 1,200 dots to B2 and removes none. This establishes lineage, not a cause for any **USER-REPORTED** value. [Registry recheck](../evidence/registry_recheck_20261027.json).
+- The full raw stack was restored: 418,912,844 bytes, SHA-256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`, 19 raw caches. It is still an owner mirror, not organizer-authenticated. [Restoration receipt](../evidence/data_preparation.json).
+- B6 has 5,164,300 finite / 3,073 missing cells inside the mirrored footprint, q01 7.7223, median 18.4817 and q99 29.1005. Earlier quantiles/counts differ. The range excludes an unscaled tilt in radians; positivity alone does not prove radiometric identity or units. [Raw diagnostic](../evidence/feature_semantics_review.json).
 
-| Arm | HOLDOUT-DTI | 95% spatial-block CI |
-|---|---:|---:|
-| 19-band control | 0.023409 | [0.015356, 0.031895] |
-| EXP3, selected on the same folds | 0.042554 | [0.032059, 0.054765] |
-| EXP3 − control, paired | 0.019145 | [0.010977, 0.028755] |
+## Historical SOURCE-REPORTED HOLDOUT-DTI — not reproduced here
 
-These are recorded in [the historical run card](../evidence/RUN_CARD_MSPTCD.json); they do **not** prove that EXP3 beats an independently selected incumbent or the reported GEMSDOE32 B2. The labels used are identical to the mirrored mapped-fault catalogue, so the target is hide-and-recover mapped faults, not hidden organizer truth. The selected arm was chosen on the same folds used to report its result. Label-free derived features were prepared globally. The separate detached-splay diagnostic used a different split from the fitted quadrant models; it cannot establish that its diagnostic labels were excluded from training. Do not interpret that diagnostic as a clean held-out score.
+These are preserved campaign receipts, not current v2 results and not leaderboard estimates. Evaluator: `gems57-pooled-hide-v2`; four label-blind quadrant folds with whole intersecting components hidden and an 80 px / 8 km buffer; 60,988 pooled withheld positives. Intervals are conditional paired spatial-cluster bootstrap intervals (1,000 draws, 20 km clusters).
 
-Of 124 feature/fold canaries, the maximum recorded two-sided AUC was 0.6131, below the 0.90 flag threshold. **Passing canaries is not proof of no leakage**: it does not test every interaction, pipeline step, split, or acquisition artifact. Whole buffered components were used for the main proxy experiment, but this and the unmodified shared evaluator alone do not establish independent generalization. The original code performed dot placement before its registry check and wrote a research artifact despite duplicate witnesses; its historical executable is now retired.
+| Historical arm | SOURCE-REPORTED HOLDOUT-DTI | 95% CI |
+|---|---:|---|
+| CTRL-19B | 0.023409 | [0.015356, 0.031895] |
+| EXP-1 core | 0.034975 | [0.025587, 0.045475] |
+| EXP-2 strain/PU | 0.028575 | [0.020416, 0.038058] |
+| EXP-3 greedy ensemble | 0.042554 | [0.032059, 0.054765] |
 
-## What is actually known about B2
+The historical paired EXP-3 minus control delta was 0.019145, 95% CI [0.010977, 0.028755]. Do not extrapolate its relative gain to the leaderboard or compare it numerically to an experiment on different folds. The exact full-precision source measurements are in [`wbg2_msptcd_results.json`](../evidence/wbg2_msptcd_results.json).
 
-Byte-level lineage shows GEMSDOE25 and 30 have identical predictions within the mirrored footprint; GEMSDOE32 B2 removes 6,436 of 44,090 dots at most two catalogue pixels away, leaving 37,654. GEMSDOE36 adds 1,200. The reported B2 value of **0.2778 is user-reported**, not tied to these bytes by a receipt. Reduced redundancy might improve the metric, but it could also remove useful proximity to unmapped truth. [Organizer staff](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516) confirmed exclusion of known fault pixels, not a surrounding buffer. No truth or per-dot decomposition is available to establish a cause.
+## Why the current implementation needs a fresh incumbent
 
-A prior claim that 6,436 removed binary dots produced `0.2 × ΔFP ≈ 12,074` was impossible and is withdrawn. If the false-positive term changes by no more than the 6,436 removed unit-valued predictions, the weighted change is at most 1,287.2; the actual change is not measured here. No substitute causal calculation is claimed.
+1. The v1 orientation formula `abs(cos(2*delta))` treated perpendicular edge normals as coherent. Corrected v2 uses squared axial cosine; only synthetic tests were run. Historical v1 results do **not** validate the correction.
+2. Old caches reused files based on existence alone. The current cache binds feature version, implementation, all required raw-band bytes, footprint and output digests, installing its manifest last.
+3. The former web renderer listed nonexistent/misindexed bands and overstated physical meanings. The corrected renderer reads the actual band receipt/source constants. [Accurate feature interpretation](msptcd_hypotheses.md).
+4. All 124 source-reported canary checks passing is not proof that leakage is absent. The detached-mask diagnostic reuses OOF predictions without refitting and is not independent validation. Source input hashes and full prediction surfaces are insufficiently bound to reproduce the old scientific campaign here.
+5. The old runner placed dots before registry checks and wrote a TIFF after a failed gate. It is now stopped at the beginning of `main()` until a reviewed, authorized launcher exists; no historical evidence is overwritten.
 
-## Band 6 identity remains unresolved
+## What cannot be concluded
 
-The pinned owner mirror describes band 6 as tilt angle or total curvature. [Local read-back](../evidence/input_metadata_20261027.json) reports **3,073 masked NoData sentinel cells** inside the sample footprint, and 5,164,300 valid cells with no negative valid values; valid q01/median/q99 are approximately 7.7223/18.4817/29.1005. The official page's radiometric illustration and these numbers do not independently authenticate the band, establish its units, or prove it cannot be a derivative. In particular, a tilt-angle distribution need not have an assumed 50% negative values. The campaign's internal `tc_radiometric` name is a historical label, not verified physical identity. The mirrored stack and sample are not confirmed equal to the login-protected organizer files.
+A whole-quadrant source-reported local metric and an owner-reported public value measure different tasks; their discrepancy does not quantify “hidden-fault novelty” or establish a score mapping. The official target is fault traces, not vent detections. Potential-field edges, conductivity or a structural junction do not prove a geothermal system.
 
-## No clearance
-
-Local checks against a mirror are diagnostics, not organizer acceptance. All five examined historical files fail the lattice duplicate stop. New hypotheses and data-access caveats are in [the current shortlist](hypotheses.md); sources are in [the access register](msptcd_sources.md). No new GeoTIFF or competition submission was produced in this review.
+No saved TIFF is cleared; no current best corrected-code holdout is established. An incomplete registry disproves uniqueness when it supplies a witness but cannot certify a pass. The [current negative run card](../evidence/run_card.json), [download decision](../docs/release.html), [revised proposal shortlist](hypotheses.md), and [source verification](source-verification-release-20261027.md) govern next steps.

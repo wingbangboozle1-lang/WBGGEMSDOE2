@@ -1,131 +1,115 @@
-# WBGGEMSDOE2 — DOE GEMS Prize research
+# WBGGEMSDOE2 — DOE GEMS Prize
 
-**Current decision (27 October 2026): OK TO DOWNLOAD AND SUBMIT one newly generated TIFF** — conditional on the documented [two-reading registry policy](docs/PROJECT_CHARTER.md) and on the human selector checking the weekly cap. Download [`docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif`](docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif) (SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`). The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/), [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md) and [submission guide](site/executive.html) make the decision and its caveats explicit. The single canonical [run card](evidence/run_card.json), [hypotheses](research/hypotheses_20261027.md) and [official source register](research/sources_20261027.md) document exactly what was established. **No organizer score or receipt is claimed; no upload was performed.** The 26 October negative lane is preserved below as history, not as the current decision.
+**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), and the [canonical run card](evidence/run_card.json). The original prompt is preserved below; it is not a receipt or permission to bypass a failed gate.
 
-**The 2026-10-27 review generated no new TIFF, submission name or note, and used no competition slot.** The historical DZ-16, H3-PACK, MSPTCD and two parallel TIFFs were reopened and all five exceed the required 70% overlap with a pinned binary lattice. Some formerly promoted pages and cards applied an unauthorized calibrated or focus-only exemption; those conclusions are superseded. Files are retained **for research only**, not as approved competition submissions. [Release triage](evidence/release_triage_20261027.json) · [single current negative run card](evidence/RUN_CARD_FINAL.json) · [download notice](docs/downloads/README.txt).
+## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
-[Open the GitHub Pages dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) · [Nine-site executive summary](docs/executive-summary.html) · [Research shortlist](research/hypotheses.md) · [Sources and access](research/msptcd_sources.md).
+**All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
 
-### What we know
+- **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
+- **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
+- **[One current negative JSON run card](evidence/run_card.json)** · [independent byte audit](evidence/release_audit.json) · [official-source verification](research/source-verification-release-20261027.md)
+- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [three-pass review record](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
 
-**Historical 26 October state (superseded).** A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels; a continuous probability prior is positive across the entire footprint. Under the purely literal reading, *any* nonempty candidate is a duplicate, so that reading is mathematically unsatisfiable. The 27 October [charter amendment](docs/PROJECT_CHARTER.md) resolves this as an explicit, published policy decision: the 70% dot test applies to geological dot fields and the 0.90 rank-correlation test applies to every raster; the literal reading is still computed and reported as firing on three controls. The 27 October lane generated and audited a new TIFF; two earlier parallel research TIFFs remain independently rejected. The nine historical downloads are research-only.
+No new candidate, dot placement, model experiment, competition upload, or weekly slot was used in this review. No eligible submission name/note or leaderboard estimate is fabricated. New-file fields remain `null`.
 
-## Current directive — read this first, every session (27 October 2026)
+### What was independently measured
 
-The operator's latest message repeats the original brief (preserved verbatim in the
-`<details>` below) and adds the following operative instructions. They are recorded
-here so no session starts from a partial prompt. Numbers inside the quoted text are
-**claims**, not verified evidence; see `research/sources_20261027.md` for the
-line-by-line check of official pages.
+The audit reopened **9 existing TIFF paths / 7 distinct SHA-256 identities**, checked their **6 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses**. Every saved TIFF has a decisive literal duplicate witness. Original surfaces were not replayed; no complete current-registry pass is claimed. The two additional identities arrived in concurrently merged PRs #24/#26; their bytes and research measurements were preserved, not generated or scientifically replayed by this review. Their former operational approval claims do not override the independent duplicate stop.
 
-> "0.3195 is the highest score right now so we need to design a new strategy,
-> research, testing, analyzing, and generating submission system than the current
-> website. It should be unique, take unique approaches to generating a submission
-> that can score higher than 0.3195."
->
-> "Put this prompt into the repo readme and read it everytime we work on the
-> project as a starting point to make sure we are building what we are aiming for
-> and have a strong base to continue building and improving on making something
-> useful for everyday use. It should solve the problem of having to manually check
-> everything ourselves and having an up to date current feed."
->
-> "Work on the next steps from the previous sessions first." — the previous
-> session's next steps were: (1) reconcile the literal "any registry raster" rule
-> with the lattice/continuous-prior ambiguity as a **policy decision**; (2)
-> authenticate the official sample, catalogue, feature bytes, licence and weekly
-> quota; (3) restore a complete, fresh, hash-pinned registry and recompute
-> catalogue-derived fold features from visible faults only; (4) preregister one
-> lane, run each feature canary, use the same buffered folds and shared evaluator
-> for candidate/control and report pooled HOLDOUT-DTI + CI; (5) fix the shared
-> validator's masked-interior issue upstream, validate the saved bytes and ZIP,
-> and let a separate selector check the quota.
->
-> "Run this task through multiple passes. Pass 1: Implement the task completely
-> and verify the result. Pass 2: Review your work for bugs, missing requirements,
-> incorrect assumptions, and edge cases. Fix everything you find. Pass 3: Re-check
-> the entire implementation against the original request... Do not stop after the
-> first pass."
->
-> "Go ahead and create a pull request and then merge the pull request onto the
-> main. Make suggestions for what work still needs to be done and any limitations
-> that is in the way of a successful project."
->
-> Core values: **Maximize P(Win)** — weigh tradeoffs, assess risk and choose the
-> path that maximizes the probability of winning; **Own the Outcome** — own
-> results end to end, treat failure and success as signals, stay accountable to
-> the final outcome.
+| Existing research artifact | Lattice 3-pixel overlap | Inside/grid format | Extra all-finite check | Decision |
+|---|---:|---|---|---|
+| `wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros` | 99.147% | PASS | PASS | **DO NOT SUBMIT** |
+| `wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros` | 99.923% | PASS | PASS | **DO NOT SUBMIT** |
+| `wbg3-h3pack-34k-20261027T174337Z-zeros` | 99.862% | PASS | FAIL | **DO NOT SUBMIT** |
+| `wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros` | 100.000% | PASS | PASS | **DO NOT SUBMIT** |
+| `wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros` | 99.980% | PASS | PASS | **DO NOT SUBMIT** |
+| `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros` | 99.384% | FAIL | FAIL | **DO NOT SUBMIT** |
+| `wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros` | 99.871% | PASS | PASS | **DO NOT SUBMIT** |
 
-**What this session did with it.** Three preregistered geological lanes
-(`research/hypotheses_20261027.md`), one unchanged shared evaluator/writer, a
-126-file public registry scan (`evidence/registry_expanded.json`), feature
-canaries, a documented two-reading duplicate policy (`docs/PROJECT_CHARTER.md`),
-and an independently audited, newly generated TIFF. The 2026-10-27 official
-leaderboard observation (0.4544) and all other irregularities are in
-`research/sources_20261027.md`. The current decision and download link are at the
-top of the [executive summary](docs/executive-summary.html).
+A local format pass is not organizer acceptance, uniqueness, scientific validation or selector approval. The reference is an owner mirror, not an authenticated organizer sample. The actual bytes of the upload that produced “Predicted values must be in range [0, 1]” were not supplied; its cause remains unknown. H3's “zeros” TIFF has NaN outside the footprint; STEPXASYM marks 5,132,809 interior cells as NoData. These observations do not establish the cause of a different upload's error.
 
-## 27 October 2026 campaign — measured results (not scores)
+### Nine-site executive decision
 
-| Gate | Measured value | Evidence |
-|---|---|---|
-| Three preregistered lanes | E1 flexural curvature dipole, E2 clay-capped alteration edge, E3 fusion with strain partitioning; one discarded first pass (trivial catalogue-distance identity) | [`research/hypotheses_20261027.md`](research/hypotheses_20261027.md), [`evidence/holdout_20261027.json`](evidence/holdout_20261027.json) |
-| Leakage canary | 23 features + collar prior; max directed AUC **0.8179** (< 0.90 alarm); no alarms | [`evidence/canaries_20261027.json`](evidence/canaries_20261027.json) |
-| HOLDOUT-DTI (promoted E3, β=0.88) | **0.1452**, 95% CI **[0.1287, 0.1626]**, `gems57-pooled-hide-v2`, 11,321 withheld positives, 4 buffered folds, 2,000 block-bootstrap draws | [`evidence/soft_novelty_refinement.json`](evidence/soft_novelty_refinement.json) |
-| Paired control | collar-only 0.1317; delta **+0.0135**, 95% CI **[0.0068, 0.0198]** — positive lower bound | same |
-| Nine historical rasters on identical folds | HOLDOUT-DTI 0.0037–0.0919 (proxy only; they were built with the full catalogue) | [`evidence/holdout_20261027.json`](evidence/holdout_20261027.json) |
-| Registry | 127 resolved files / 121 distinct SHA-256 from 86 sites + 13 pinned witnesses; 126 checked; 8 ledger rows unresolved; worst like-for-like overlap **67.65%** (<70%); worst \|Spearman\| **0.431** (<0.90); unique vs all nine focus sites (worst 54.93%) | [`evidence/registry_expanded.json`](evidence/registry_expanded.json), [`evidence/final_uniqueness.json`](evidence/final_uniqueness.json) |
-| Format | float32, one band, EPSG:32611, 100 m, 3730×3292, transform match, all finite in [0,1], 0 masked interior cells, 100,000 dots, zeros outside footprint | [`evidence/final_format.json`](evidence/final_format.json), [`evidence/final_independent_check.json`](evidence/final_independent_check.json) |
-| Leaderboard estimate | **None.** No organizer receipt and no calibrated holdout→leaderboard mapping; exploratory bracket unavailable. Official public leader observed 0.4544 on 2026-10-27. | [`research/sources_20261027.md`](research/sources_20261027.md) |
+These are the **strongest named historical claims supplied for each site**, not a claim to have found each site's current best file. Numbers are **USER-REPORTED**, with no organizer receipt binding a value to a hash. All nine latest repository HEADs have changed since their audited raster pins; a HEAD check is not a new-raster audit.
 
-The literal duplicate reading still fires on three space-filling controls; the
-green decision is conditional on the [like-for-like policy decision](docs/PROJECT_CHARTER.md).
-A hard novelty cap was a decisive negative (HOLDOUT-DTI 0.0091) and is documented
-in [`evidence/novelty_refinement.json`](evidence/novelty_refinement.json). Negative
-results are deliverables. The [executive summary](docs/CURRENT_EXECUTIVE_SUMMARY.md)
-has the download table and exact submission steps.
+| Site summary | Exact historical research file | Historical claim / evidence | New-score estimate | Measured 3-pixel overlap | Submit? |
+|---|---|---|---|---|---|
+| [GEMSDOE32](docs/sites/GEMSDOE32.html) | [`gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif`](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/45ee207185f72804497f7a7a392ad2c43e168f02/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif?raw=1) | 0.2778 USER-REPORTED | Unavailable | 100.00% near GEMSDOE24 | **DO NOT RESUBMIT** |
+| [GEMSDOE36](docs/sites/GEMSDOE36.html) | [`gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif`](https://github.com/buffedlizard55-lab/GEMSDOE36/blob/b90418f852615aa0974cf9a53b92fa569ed133fc/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif?raw=1) | 0.2750 USER-REPORTED | Unavailable | 97.58% near GEMSDOE27 | **DO NOT RESUBMIT** |
+| [GEMSDOE28](docs/sites/GEMSDOE28.html) | [`gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE28/blob/9c1be21e8f1be707347f737e42abf62ea669c819/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif?raw=1) | 0.2710 USER-REPORTED | Unavailable | 100.00% near GEMSDOE24 | **DO NOT RESUBMIT** |
+| [GEMSDOE31](docs/sites/GEMSDOE31.html) | [`gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE31/blob/78f9bf3ae82e5c78ca348aa37c0660c339e72f0e/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif?raw=1) | 0.2708 USER-REPORTED | Unavailable | 100.00% near GEMSDOE24 | **DO NOT RESUBMIT** |
+| [GEMSDOE33](docs/sites/GEMSDOE33.html) | [`GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif`](https://github.com/buffedlizard55-lab/GEMSDOE33/blob/a24fb7c5031ee08b12440af4593057858fecef8e/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif?raw=1) | 0.2632 USER-REPORTED | Unavailable | 99.71% near GEMSDOE27 | **DO NOT RESUBMIT** |
+| [GEMSDOE25](docs/sites/GEMSDOE25.html) | [`gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE25/blob/606eef45e669a6da061ec24be4a3d870addadb0f/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif?raw=1) | 0.2600 USER-REPORTED | Unavailable | 100.00% near GEMSDOE24 | **DO NOT RESUBMIT** |
+| [GEMSDOE30](docs/sites/GEMSDOE30.html) | [`gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif`](https://github.com/buffedlizard55-lab/GEMSDOE30/blob/35ce8911e2c3287eed973eacd12c252e8cb3f34c/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif?raw=1) | 0.2600 USER-REPORTED | Unavailable | 100.00% near GEMSDOE24 | **DO NOT RESUBMIT** |
+| [GEMSDOE24](docs/sites/GEMSDOE24.html) | [`gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE24/blob/5cfab74597cd1d0a271e4640b4cc34511e56ca59/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif?raw=1) | 0.2477 USER-REPORTED | Unavailable | 100.00% near GEMSDOE25 | **DO NOT RESUBMIT** |
+| [GEMSDOE27](docs/sites/GEMSDOE27.html) | [`gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE27/blob/f1e32af867d9cf0081af20866c8241ec8678a432/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif?raw=1) | 0.2449 USER-REPORTED | Unavailable | 98.02% near GEMSDOE24 | **DO NOT RESUBMIT** |
 
-### Next work and limitations
+### What B2 explains — and does not
 
-The three prior MSPTCD experiments exhausted that campaign. The prompt does not identify a single assigned new method lane; the ranked research ideas are not authorization to run one. Before any new campaign, obtain an explicit lane assignment, authenticate the data, verify external-data licensing and binary coverage, restore a current complete immutable registry, resolve the continuous-prior interpretation without silent exemptions, and fix the shared upstream validator defect once in its template. Then use fold-visible catalogue features, buffered whole-segment holdouts, every feature canary, the unchanged shared evaluator/writer and the literal pre-placement/final-dot gates; compare with an identical-fold incumbent and report CI. Slot selection is separate and subject to the live account quota. No score or slot use is promised.
+**MEASURED:** GEMSDOE25/30 decode to the same 44,090 dots. B2 removes exactly the 6,436 within 2 px of the mirrored catalogue, leaving 37,654. GEMSDOE36 adds 1,200 dots to B2 and removes none. **DERIVED:** FN = N − TP, so the official metric is `TP / (0.2 TP + 0.2 FP + 0.8 N + epsilon)` and TP ≤ N. Deleting dots helps only if reduced FP outweighs lost truth credit. That is a plausible mechanism for the USER-REPORTED 0.2778, not proof of its cause. Staff confirmed exact known-pixel exclusion, not a two-pixel collar. [Detailed analysis](docs/research/why-b2-scored-2778.html).
 
-The public leaderboard and nine GitHub HEAD freshness checks are refreshed by GitHub Actions every six hours when possible; failed fetches remain explicitly stale. A HEAD change is not a raster audit. The official data page requires login and the public mirror's provenance is unverified. The upstream template is read-only to this integration; its masked-interior defect could not be fixed or reported there from this session.
+The official public leaderboard displayed **0.4544** for xiaofanhu on 2026-10-27 ([dated observation](evidence/public_leaderboard_recheck_20261027.json), [official page](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/)). This is **ORGANIZER-PUBLISHED PUBLIC OBSERVATION**, not an ORGANIZER-CONFIRMED receipt for a project file, HOLDOUT-DTI, or proof we can beat it. The 0.3195/0.4413 values in the prompt remain unverified user claims.
 
-### Reproduce without generating a prediction
+### Historical campaign and scientific correction
+
+Prior MSPTCD **SOURCE-REPORTED HOLDOUT-DTI**: 0.042554, 95% spatial-bootstrap CI [0.032059, 0.054765], 60,988 withheld positives, evaluator `gems57-pooled-hide-v2`; historical control 0.023409. This review **did not reproduce it**. A v1 orientation defect treated perpendicular edges as coherent. Corrected `msptcd-v2-axial-cos-squared` has synthetic tests and **no measured holdout result**. Content-bound/versioned caches replace existence-only reuse. Passing AUC canaries does not prove no leakage. The former web table also invented nonexistent/misindexed bands; its replacement uses the actual source schema. [Corrected historical report](docs/msptcd/index.html) · [historical card with corrections](evidence/RUN_CARD_MSPTCD.json).
+
+The **full pinned 19-band raw stack and caches were restored**: 418,912,844 source bytes, SHA-256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`. Organizer provenance, band-unit semantics and the separate shared derived bank remain unresolved. Do not claim the raw stack is absent or that lack of GPU prevents this audit. [Input receipt](evidence/data_preparation.json) · [raw feature diagnostic](evidence/feature_semantics_review.json).
+
+## Reproduce safely
 
 ```bash
-python -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-# Hash-check owner mirrors and rebuild the shared label-free 19-band cache.
-python scripts/prepare_data.py --fetch --cache-bands
-python scripts/restore_public_mirrors.py --small-only
-python scripts/fetch_shared_template.py
-# Reopen registered historical rasters for research only.
-python scripts/audit_registry.py --fetch
-# 27 Oct campaign: expanded registry, features, 3 lanes, final TIFF, audits, site.
-python scripts/expand_registry.py && python scripts/registry_union.py
-PYTHONPATH=src python -m wbg2.features
-PYTHONPATH=src python scripts/run_campaign_20261027.py --stage canaries
-PYTHONPATH=src python scripts/run_campaign_20261027.py --stage holdout
-PYTHONPATH=src python scripts/novelty_refine.py
-PYTHONPATH=src python scripts/soft_novelty_refine.py
-PYTHONPATH=src python scripts/run_campaign_20261027.py --stage final
-PYTHONPATH=src python scripts/audit_final_candidate.py
-python scripts/build_run_card.py && python scripts/build_site.py && python scripts/build_site_data.py
-python scripts/audit_portfolio.py --fetch
-python scripts/review_parallel_candidate.py
-python scripts/review_conduit_candidate.py
-python scripts/build_run_card.py
-python scripts/build_site.py
-python scripts/build_site_data.py
-python scripts/build_msptcd_site.py
-python scripts/build_release_review.py
-python -m pytest -q
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python -m pytest -q
+.venv/bin/python scripts/build_hypotheses.py
+.venv/bin/python scripts/build_run_card.py
+.venv/bin/python scripts/build_site_data.py
+.venv/bin/python scripts/sync_msptcd_evidence.py
+.venv/bin/python scripts/build_msptcd_site.py
+.venv/bin/python scripts/build_site.py
+.venv/bin/python scripts/build_release.py
 ```
 
-`audit_input_metadata.py` additionally requires the owner-mirrored input stack restored in ignored storage; it does not train or predict. Unsafe historical generators and approval/rendering entry points are retired, with original source preserved in [the audit archive](evidence/retired_20261027/). Shared evaluator and writer code are not forked. [Working agreement](AGENTS.md).
+The release builder checks TIFF/ZIP inventories, byte hashes, ZIP-member bytes, policy and pinned-witness consistency before writing. It cannot approve a file. Five original private generators/approval gates and seven newly encountered campaign/refinement/projection entrypoints now stop. Historical campaigns stop before feature/model/output work. All nine current-card aliases mirror the one canonical negative card. Contradictory original receipts/sources remain in [`evidence/reconciliation_archive/`](evidence/reconciliation_archive/) as **historical, non-authorizing** material.
 
----
+Optional forensic rerun (not a candidate experiment; requires ignored reference/registry bytes):
+
+```bash
+.venv/bin/python scripts/fetch_shared_template.py
+.venv/bin/python scripts/audit_registry.py --fetch --output evidence/registry_recheck_20261027.json
+.venv/bin/python scripts/prepare_data.py --fetch --cache-bands
+.venv/bin/python scripts/audit_release.py
+```
+
+The shared evaluator/writer remain pinned and unchanged. A shared NoData-mask defect is reproduced by regression tests; [upstream report](research/shared-template-format-report.md) creation is permission-denied. No private evaluator/writer fork substitutes for the unresolved upstream fix.
+
+### Before another experiment
+
+1. Record a single explicit method-lane assignment and complete fresh immutable registry. No silent lattice/continuous-prior exemptions or footprint-edge gaming.
+2. Authenticate organizer input/reference bytes; resolve the shared format gate upstream.
+3. Run every feature-alone canary on buffered whole-segment spatial holdouts; use only visible faults for catalogue features and mask visible pixels exactly.
+4. Establish a matched corrected-code incumbent on identical folds with the shared pooled DTI evaluator, 300 m triangular kernel, alpha 0.2/beta 0.8, and paired spatial 95% CI. Historical v1 metrics are not that incumbent.
+5. Check original surfaces before placement and final dots against **every** registry raster: absolute rank correlation >0.90 **or** inclusive Euclidean 3 px overlap >70% means duplicate and STOP. Stop at 3 experiments or 2 hours.
+6. A separate authorized selector checks actual remaining quota (official rules: up to 3 submissions/week), assigns a unique meaningful filename and ≤140-character note, and archives the exact organizer receipt. No slot is selected in this review.
+
+### Current-request claim amendments
+
+The original brief below and later 144-row ledger are historical unverified snapshots. The current request supplies different S21/S33/KPL36 values and leaves some formerly populated claims blank. The [conflict register](evidence/request_claim_conflicts.json) retains both; blank is never zero. Newly named ATRG, conditional-continuation and spectral-tilt files are references only; filenames do not prove novelty or approval. None is used to fit a release forecast.
+
+#### Current request values that differ from the prior snapshot (all USER-REPORTED)
+
+| Reference | Current supplied value | Prior snapshot value | Treatment |
+|---|---:|---:|---|
+| GEMSDOE27 H31 DRCG | 0.2250 | blank | No organizer receipt |
+| GEMSDOE28 S21 PUHGB | 0.0206 | 0.1628 | Conflict, neither authenticated |
+| GEMSDOE33 S33 strain/seismicity | 0.0963 | 0.0363 | Conflict, neither authenticated |
+| GEMSDOE36 KPL36 exp3 | 0.1647 | 0.2314 | Conflict, neither authenticated |
+| GEMSDOE91 S22 spectral tilt | 0.0298 | absent | New claim, not a receipt |
+| GEMSDOE91 S18, KANLER3, EUG1–3, WBG1 and several GINNY/WBG3 references | blank | values previously populated | Current blank is not zero or a verified result |
+
+Additional currently unscored names: `wbg2-atrg-28500dots-20261027T002046Z-105e98d5-zeros`; `wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros`; `wbg1-r64c-anderson-conditional-continuation-37654-20261027T015745Z-36d985e6-zeros`. Their mention does not create a candidate, score or approval.
 
 ## Original project prompt
 
@@ -1039,7 +1023,7 @@ A concurrent session produced `wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-e
 
 The parallel source reported **HOLDOUT-DTI 0.1321**, evaluator `WBGGEMSDOE2-HIDE-RECOVER-v2.0`, 58,016 withheld positives, reported 95% CI [0.1290, 0.1349] (and when subsequently uploaded on 2026-10-26, its `USER-REPORTED` public DTI in the 2026-10-27 prompt ledger was **`0.0725`**). That result has **not** been independently reproduced, used a private rather than the required shared evaluator, and reports canaries only for one fold, did not exclude evaluation cells from its training zone, and the committed lane script does not reproduce the reported interval. It is not a leaderboard score or proof of beating the matched incumbent. Its speculative live-score projection is not accepted. Three experiments were source-reported in that parallel lane; this review lane ran none, and no organizer receipt is available.
 
-See the [rechecked parallel brief](docs/executive-summary/index.html), [independent evidence](evidence/parallel_review.json), [preserved original records](evidence/parallel_archive/), and the [archived 26 Oct negative run card](evidence/run_card_20261026_negative.json) (the [current canonical card](evidence/run_card.json) is the 27 Oct promotion). The incomplete parallel generator, partial uniqueness audit and zero-NoData private writer are disabled rather than silently reused.
+See the [rechecked parallel brief](docs/executive-summary/index.html), [independent evidence](evidence/parallel_review.json), [preserved original records](evidence/parallel_archive/), and the single [canonical negative run card](evidence/run_card.json). The incomplete parallel generator, partial uniqueness audit and zero-NoData private writer are disabled rather than silently reused.
 
 
 ## Second parallel conduit record — STOP

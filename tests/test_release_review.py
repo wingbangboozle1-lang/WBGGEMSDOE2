@@ -52,13 +52,10 @@ def test_every_current_candidate_card_rejects_promotion():
 
 
 def test_every_public_release_entrypoint_rejects_submission():
-    # 27 Oct 2026: the two current entrypoints promote ONE receipted file; the
-    # older parallel-session entrypoints remain research-only negatives.
     for rel in ('docs/index.html', 'docs/executive-summary.html'):
         text = (ROOT / rel).read_text()
-        assert 'OK TO DOWNLOAD AND SUBMIT' in text, rel
-        assert 'One file is ready to download and submit' not in text
-        assert 'One file is approved to download and submit' not in text
+        assert 'DO NOT SUBMIT' in text, rel
+        assert 'OK TO DOWNLOAD AND SUBMIT' not in text, rel
     for rel in ('docs/submission/index.html', 'docs/submission/executive-summary.html',
                 'docs/submit/index.html'):
         text = (ROOT / rel).read_text()
@@ -66,15 +63,17 @@ def test_every_public_release_entrypoint_rejects_submission():
     for path in (ROOT / 'docs/submission/sites').glob('*.html'):
         text = path.read_text()
         assert 'USER-REPORTED' in text and 'DO NOT SUBMIT' in text
-        assert 'No defensible leaderboard estimate' in text
+        assert 'leaderboard' in text and 'USER-REPORTED' in text
 
 
 def test_retired_experiment_entrypoints_stop_before_any_work():
+    import subprocess, sys
     for filename in ('make_candidate.py', 'generate_h3_pack.py',
-                     'write_h3_submission.py', 'run_wbg2_msptcd.py'):
-        tree = ast.parse((ROOT / 'scripts' / filename).read_text())
-        main = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'main')
-        assert isinstance(main.body[0], ast.Raise), filename
+                     'write_h3_submission.py', 'run_wbg2_msptcd.py',
+                     'run_wbg2_cbs.py', 'run_campaign_20261027.py'):
+        result = subprocess.run([sys.executable, str(ROOT / 'scripts' / filename)],
+                                capture_output=True, text=True, timeout=10)
+        assert result.returncode != 0 and 'STOP' in result.stdout+result.stderr, filename
 
 
 def test_pages_and_tests_build_release_review():

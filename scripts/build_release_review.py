@@ -40,28 +40,12 @@ def check_evidence(report):
 
 
 def main():
-    report = load('evidence/release_recheck_20261027.json')
-    check_evidence(report)
-    registry = load('evidence/registry_recheck_20261027.json')
-    for item in load('config/registry_inputs.json')['inputs'][:9]:
-        measurement = registry['items'][item['id']]
-        if measurement['sha256'] != item['sha256'] or not measurement['literal_lattice_duplicate']:
-            raise ValueError('Focus evidence changed; review before publication')
-    # Synchronize independent audit receipts and the current negative cards. The
-    # canonical renderer must already have built all pages; never overwrite them
-    # with a competing narrative or resurrect retired approval markup.
-    for name in ('release_recheck_20261027.json', 'registry_recheck_20261027.json'):
-        shutil.copyfile(ROOT / 'evidence' / name, DOCS / 'data' / name)
-    for source, name in (('evidence/RUN_CARD_H3.json', 'RUN_CARD_H3.json'),
-                         ('data_public/run_card.json', 'run-card-current.json')):
-        shutil.copyfile(ROOT / source, DOCS / 'data' / name)
-    for rel in ('index.html', 'executive-summary.html', 'submission/index.html',
-                'submission/executive-summary.html', 'submit/index.html'):
-        page = (DOCS / rel).read_text()
-        if 'DO NOT SUBMIT' not in page:
-            raise ValueError(f'Unsafe or missing release banner: {rel}')
-    print('Validated independent negative review; canonical release pages remain unchanged')
+    # Keep the independent two-artifact receipt as a scoped historical check,
+    # then publish only through the complete current owned-inventory renderer.
+    check_evidence(load('evidence/release_recheck_20261027.json'))
+    from build_release import main as publish_negative_release
+    return publish_negative_release()
 
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

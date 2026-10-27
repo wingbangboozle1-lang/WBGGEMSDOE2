@@ -21,7 +21,7 @@ from audit_release_triage import audit_one
 RETIRED = (
     'make_candidate.py', 'final_audit.py', 'uniqueness_audit.py',
     'generate_h3_pack.py', 'write_h3_submission.py', 'run_wbg2_msptcd.py',
-    'sync_msptcd_evidence.py', 'build_site_v2.py', 'build_submit_page.py',
+    'run_wbg2_cbs.py', 'run_campaign_20261027.py',
 )
 
 
@@ -31,7 +31,7 @@ def test_retired_entry_points_stop_before_writing(script):
                             capture_output=True, text=True, timeout=10)
     assert result.returncode != 0
     assert 'STOP' in result.stdout + result.stderr
-    assert (ROOT / 'evidence/retired_20261027' / (script + '.txt')).is_file()
+    assert any((folder / (script + '.txt')).is_file() for folder in (ROOT / 'evidence/retired_20261027', ROOT / 'evidence/reconciliation_archive/incoming-29abbf69'))
 
 
 def write_raster(path: Path, values: np.ndarray) -> None:
@@ -67,7 +67,7 @@ def test_literal_stop_is_strictly_over_seventy_percent_and_never_approves(tmp_pa
 
 
 def copy_site_sources(destination: Path) -> None:
-    for name in ('scripts', 'config', 'docs', 'site', 'evidence', 'downloads', 'research'):
+    for name in ('scripts', 'src', 'config', 'docs', 'site', 'evidence', 'downloads', 'research', 'data_public'):
         shutil.copytree(ROOT / name, destination / name,
                         ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
     shutil.copy(ROOT / 'index.html', destination / 'index.html')
@@ -93,11 +93,10 @@ def test_site_regeneration_cannot_restore_a_historical_approval(tmp_path):
     for page in pages:
         text = page.read_text(encoding='utf-8').lower()
         assert all(phrase not in text for phrase in rejected_phrases), page
-    # 27 Oct 2026: the two current entrypoints promote ONE receipted file;
-    # the three historical parallel-session entrypoints remain negative.
+    # Every entrypoint must retain the independently measured negative decision.
     for rel in ('docs/index.html', 'docs/executive-summary.html'):
         text = (tmp_path / rel).read_text(encoding='utf-8')
-        assert 'OK TO DOWNLOAD AND SUBMIT' in text, rel
+        assert 'DO NOT SUBMIT' in text and 'OK TO DOWNLOAD AND SUBMIT' not in text, rel
     for rel in ('docs/submit/index.html', 'docs/submission/index.html',
                 'docs/msptcd/index.html'):
         text = (tmp_path / rel).read_text(encoding='utf-8')
@@ -114,7 +113,7 @@ def test_builder_refuses_if_historical_artifact_no_longer_matches_triage(tmp_pat
     artifact.write_bytes(artifact.read_bytes() + b'tamper')
     result = subprocess.run([sys.executable, str(tmp_path / 'scripts/build_site.py')],
                             cwd=tmp_path, capture_output=True, text=True, timeout=15)
-    assert result.returncode != 0 and 'does not match its triage hash' in result.stderr
+    assert result.returncode != 0 and 'Changed or multiply-listed research artifact' in result.stderr
 
 
 def test_builder_refuses_tampered_final_card_even_if_legacy_card_is_negative(tmp_path):

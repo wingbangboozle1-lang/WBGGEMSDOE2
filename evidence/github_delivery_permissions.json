@@ -1,0 +1,22 @@
+{
+  "schema": "wbggems.github-permission-observations.v1",
+  "checked_utc": "2026-10-27T20:19:00.590539+00:00",
+  "issue_23": {
+    "edit": "denied HTTP403 by REST and GraphQL",
+    "comment": "denied by integration",
+    "body_repaired": false,
+    "formatted_update": "research/release-blockers-20261027.md"
+  },
+  "pages": {
+    "requested_build_type": "workflow",
+    "change": "denied HTTP403",
+    "last_verified_build_type": "legacy",
+    "source": {
+      "branch": "main",
+      "path": "/"
+    },
+    "migration_complete": false
+  },
+  "pr29_comment": "https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/pull/29#issuecomment-6452329578",
+  "note": "Observed permission boundaries, not authentication credentials. No token requested, stored, or substituted; no settings change claimed."
+}

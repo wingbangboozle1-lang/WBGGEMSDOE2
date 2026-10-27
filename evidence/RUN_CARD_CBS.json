@@ -134,7 +134,8 @@
     "calibrated_uniqueness_vs_discrete_peers": true,
     "saved_byte_format_strict_finite_0_1": true
   },
-  "blocking_gate": "Literal any-registry rule as governed on main (merged fail-closed dashboard policy, PRs #21/#25): 13GEMSDOE lattice 3-px coverage is 99.87% of the footprint and the 17GEMSDOE continuous prior is positive on 100%, so this candidate (like every >=22k-dot field and every historical champion) exceeds the 70% literal stop. Promotion requires an explicit project-owner ruling on space-filling-control / continuous-prior support interpretation; no silent exemption is applied here.",
-  "ok_to_submit_basis": "Fail-closed under the repo\u2019s current merged policy. Scientifically the file is the best-measured candidate in the repo (holdout win, calibrated uniqueness vs every discrete peer \u226470%/\u03c1\u22640.90, strict finite-[0,1] format), and its enrichment over the space-filling witnesses\u2019 own coverage is \u22481.0, but the literal gate on main permits no calibrated exemption. Retained for research; the one decision that can unblock it is an owner ruling documented in research/cbs_findings.md.",
-  "weekly_slots_used": 0
+  "blocking_gate": "Literal any-registry stop: independent readback found 0.9914736842105263 overlap with pinned 13GEMSDOE and 1.0 with registered positive-support prior. No implicit normalized or density exemption. The lattice counting bound forces >70% above 22,163 distinct predictions, not at every budget >=22k. Current canonical disposition is evidence/run_card.json.",
+  "ok_to_submit_basis": "Research only. Source-reported scores/canaries and discrete-peer diagnostics are not a matched corrected-v2 incumbent or complete current-registry clearance. This audit did not replay those experiments and makes no leaderboard estimate.",
+  "weekly_slots_used": 0,
+  "review_status": "Historical, source-reported scientific results; not independently replayed; not results for the corrected MSPTCD v2 feature implementation."
 }

@@ -1,121 +1,18 @@
 {
-  "schema": "wbggems.release.v1",
-  "generated_utc": "2026-10-27T19:30:43.355654+00:00",
-  "decision": "OK TO DOWNLOAD AND SUBMIT",
-  "decision_detail": "Conditional on the documented like-for-like registry policy. The literal reading still fires on space-filling controls. No automatic upload; selector and weekly cap are yours.",
-  "ok_to_submit": true,
-  "ok_to_download_new_tif": true,
-  "tif": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
-  "tif_url": "downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
-  "sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
-  "bytes": 217821,
-  "submission_name": "wbg2-20261027-blind-discontinuity-unique",
-  "submission_note": "Blind-discontinuity E3_fusion soft88; HOLDOUT-DTI proxy only; 126-raster audit; no organizer score.",
-  "holdout_dti": 0.14519327072662716,
-  "holdout_ci95": [
-    0.12867263440658486,
-    0.16256990659420223
-  ],
-  "withheld_positive_pixels": 11321,
-  "evaluator_version": "gems57-pooled-hide-v2",
-  "paired_delta_vs_control": 0.013470345627204422,
-  "paired_delta_ci95": [
-    0.006822682958210913,
-    0.01978507459235446
-  ],
-  "control_dti": 0.13172292509942274,
-  "leaderboard_estimate": null,
-  "leaderboard_estimate_reason": "No organizer submission receipt and no calibrated mapping from HOLDOUT-DTI to public DW-Tversky. A projection is not a score.",
-  "official_public_leader_observed": 0.4544,
-  "unique_vs_nine_focus": true,
-  "nine_focus_worst_overlap": 0.54927,
-  "registry_rasters_checked": 126,
-  "like_for_like_worst_overlap": 0.6765,
-  "worst_rank_correlation": 0.43095024357735195,
-  "literal_overlap_firings": 3,
-  "canary_max_directed_auc": 0.81788,
-  "dots": 100000,
-  "budget": 100000,
-  "soft_beta": 0.88,
-  "format_ok": true,
-  "values_in_0_1": true,
-  "no_nan_inside_footprint": true,
-  "gates": {
-    "format_ok": true,
-    "values_in_0_1": true,
-    "no_nan_inside_footprint": true,
-    "no_masked_interior": true,
-    "crs_shape_transform": true,
-    "canary_clear": true,
-    "rank_correlation_clear": true,
-    "like_for_like_clear": true,
-    "unique_vs_nine_focus": true,
-    "complete_accessible_registry_scan": true,
-    "holdout_beats_matched_control": true,
-    "paired_ci_lower_bound_positive": true,
-    "note_length": true,
-    "weekly_slots_unused": true
-  },
-  "verdict": "promote-to-selector-only",
-  "nine_focus_sites": {
-    "GEMSDOE24": {
-      "overlap": 0.33074,
-      "file": "gems24-gvc1-negative-geothermal-lineament-submod-20261025-abe8e51c719d-zeros",
-      "claim": 0.2477
-    },
-    "GEMSDOE25": {
-      "overlap": 0.54927,
-      "file": "gems25-h66-mgd-flank-sapd3-0-k3p5-20261025-da617550a0e9-zeros",
-      "claim": 0.26
-    },
-    "GEMSDOE27": {
-      "overlap": 0.13093,
-      "file": "topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan",
-      "claim": 0.2449
-    },
-    "GEMSDOE28": {
-      "overlap": 0.11367,
-      "file": "h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan",
-      "claim": 0.271
-    },
-    "GEMSDOE30": {
-      "overlap": 0.37496,
-      "file": "gems30-MSDB1-edge44090-20261025-e7856ec3f14a",
-      "claim": 0.26
-    },
-    "GEMSDOE31": {
-      "overlap": 0.11006,
-      "file": "h27-4-solo-d28-20261004-8acb75e1-nan",
-      "claim": 0.2708
-    },
-    "GEMSDOE32": {
-      "overlap": 0.10294,
-      "file": "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros",
-      "claim": 0.2778
-    },
-    "GEMSDOE33": {
-      "overlap": 0.11485,
-      "file": "h33d-analog-tip-stepover-r30-20261004-cb490425926e",
-      "claim": 0.2632
-    },
-    "GEMSDOE36": {
-      "overlap": 0.11021,
-      "file": "anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros",
-      "claim": 0.275
-    }
-  },
-  "irregularities": [
-    "Official leaderboard observed 0.4544 at #1 on 2026-10-27, not 0.3195/0.4413 as quoted.",
-    "Mirrored sample_submission has 60,988 positives equal to the mirrored catalogue; provenance unauthenticated.",
-    "8 of 126 ledger rows unresolved in the expanded registry; HEAD blobs are unpinned snapshots.",
-    "Literal duplicate reading fires on space-filling controls/continuous prior for any nonempty raster.",
-    "Organizer acceptance, weekly quota and per-file receipts remain unavailable."
-  ],
-  "sources": [
-    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
-    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-    "https://www.usgs.gov/observatories/yvo/news/novel-technique-peeks-beneath-ground-yellowstones-hot-water-plumbing-system",
-    "https://www.usgs.gov/publications/structural-discontinuities-and-their-control-hydrothermal-systems-great-basin-usa",
-    "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and"
-  ]
+  "schema": "wbggems.release-audit.v1",
+  "generated_utc": "2026-10-27T19:44:34.426353+00:00",
+  "verdict": "negative",
+  "ok_to_submit": false,
+  "approved_submission": null,
+  "leaderboard_score_estimate": null,
+  "scope": {
+    "registry_rasters_opened": 13,
+    "all_current_registry_rasters_checked": false,
+    "registry_manifest_sha256": "364e413a9fabd319cbb380c34cf108a8be5bf675c9dfd92c10f0e0b7d041a409",
+    "owned_tif_paths": 9,
+    "distinct_tif_sha256": 7,
+    "new_candidate_experiments": 0,
+    "weekly_slots_used": 0,
+    "note": "Already-existing artifacts only. Continued forensic comparisons after a witness do not constitute candidate placement or promotion."
+  }
 }

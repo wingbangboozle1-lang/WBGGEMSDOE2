@@ -202,5 +202,13 @@
       "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
     }
   },
-  "caveat": "Overlaps are measured on the final full-catalogue surface; the independent 126-raster audit must confirm the promoted file."
+  "caveat": "Overlaps are measured on the final full-catalogue surface; the independent 126-raster audit must confirm the promoted file.",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "94990ba2151c60482c2c1ce083ca98c4a8160b073814d53a511d4d1a565a3fb5",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }

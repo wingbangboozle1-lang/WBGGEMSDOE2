@@ -150,5 +150,13 @@
   "surface_file": ".cache/derived/final_preplacement_surface.npy",
   "preview_dots_file": ".cache/derived/preview_dots.npy",
   "final_dots_file": ".cache/derived/final_dots.npy",
-  "discarded_first_pass": "Trained with ctx_dist_visible; 0.0 DTI; discarded before any conclusion. See docstring and holdout receipt."
+  "discarded_first_pass": "Trained with ctx_dist_visible; 0.0 DTI; discarded before any conclusion. See docstring and holdout receipt.",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "29a5672c467dbb41986b767b8198cce9f7b307df253c18345fc52bbb9cedb981",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
 }
