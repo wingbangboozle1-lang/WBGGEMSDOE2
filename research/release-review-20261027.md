@@ -91,3 +91,9 @@ fails; Own the Outcome means correcting the false green button, not manufacturin
 - `git diff --check` passed. CI rebuilds the site before running regression tests. Archived original
   approvals are labeled historical; no current card authorizes a file.
 
+### Concurrent merge reconciliation
+
+PR #21 merged a related fail-closed UI fix while this review was running. Merged `origin/main`
+into this session branch without switching branches. Preserved its no-download section and tests;
+updated the tests' URL expectations for the newly hash-bound negative release page. Rebuilt all
+conflicted generated HTML rather than retaining conflict markers or an obsolete approval renderer.

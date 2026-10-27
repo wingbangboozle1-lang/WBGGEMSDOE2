@@ -24,6 +24,11 @@ Overlap figures are **REGISTRY-MEASUREMENTS**, not scores.
 [Submission instructions](docs/submit/index.html) ·
 [Three-pass review](research/release-review-20261027.md).
 
+The prior MSPTCD lane separately reported **HOLDOUT-DTI 0.042554**, evaluator
+`gems57-pooled-hide-v2`, 60,988 withheld positives, reported 95% CI [0.032059, 0.054765].
+This is historical source-reported evidence, not reproduced in this review or an organizer score;
+that lane spent its three-experiment budget and its candidate failed the literal registry gate.
+
 ### What the fresh audit established
 
 - Re-fetched and SHA-256 verified the nine historical focus rasters plus registered witnesses. GEMSDOE25

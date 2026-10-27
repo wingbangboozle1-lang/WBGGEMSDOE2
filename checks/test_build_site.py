@@ -23,10 +23,12 @@ def test_scheduled_and_legacy_pages_share_url_layout():
     assert 'cp -R docs/. _site/docs/' in workflow and 'cp -R site/. _site/site/' in workflow and 'path: _site' in workflow
     assert 'url=./docs/' in (ROOT/'index.html').read_text()
     home=(ROOT/'docs/index.html').read_text()
-    # dashboard lane keeps its own layout, and must link to this lane's cleared submission
+    # Dashboard must lead to the fail-closed guide, never a historical TIFF download.
     assert 'href="executive-summary.html"' in home
     assert 'href="sources.html"' in home
-    assert 'href="submission/index.html"' in home
+    assert 'href="submit/"' in home
+    assert 'No submission download is available' in home
+    assert 'href="downloads/h3-pack/' not in home
     sub=(ROOT/'docs/submission/index.html').read_text()
     assert 'href="sites/GEMSDOE32.html"' in sub
     assert (ROOT/'docs/submission/sites/GEMSDOE32.html').is_file()
