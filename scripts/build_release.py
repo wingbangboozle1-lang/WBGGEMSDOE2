@@ -15,7 +15,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from wbggems.release import load_negative_release, read_json
+from wbggems.release import CANONICAL_RUN_CARDS, digest, load_negative_release, read_json, validate_negative_html
 
 
 ARCHIVE_COMMIT = "29eee989dd9c3872668235f206114e982e60d5e4"
@@ -173,6 +173,11 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
 <li>Single-feature leakage canaries are necessary warnings, not proof that leakage is absent.</li></ul>
 <p><a href="research/why-b2-scored-2778.html">Detailed epsilon-aware B2 metric analysis</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official equations</a> · <a href="release.html">Current byte-bound decision</a></p></section>'''
     outputs['methodology.html'] = shell('Method and metric without an unsupported forecast', metric_body)
+    # Concurrent CBS research URLs use the same measured negative disposition.
+    # The source-reported campaign results are retained, not replayed here.
+    cbs_intro = '''<section class="card guide-card"><h1>CBS / D19-DOTTED — research only</h1><p>The historical CBS experiments were negative. Its saved D19 control and the concurrently merged E3-soft88 file both fail the literal all-registry overlap rule on independent readback. Their scientific scores were not replayed here and are not leaderboard receipts. The CBS physics experiments used the earlier MSPTCD feature implementation; those source statistics do not validate corrected v2.</p><p>Historical focus-site scores remain USER-REPORTED. No projection is a score or authorization. <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/29abbf694c2084569080fea6eaea275eb800f800/research/cbs_findings.md">Archived CBS research and caveats</a></p></section>'''
+    for rel in ('cbs/index.html', 'cbs/executive-summary.html'):
+        outputs[rel] = shell('CBS research — DO NOT SUBMIT', status_banner()+cbs_intro+artifact_table(audit), base='../')
     # Preserve legacy URLs, not legacy authorizations or contradictory uploads.
     for rel in ('submission/index.html', 'submission/executive-summary.html', 'submit/index.html'):
         outputs[rel] = shell('Submission decision — historical approvals revoked', body, base='../')
@@ -192,15 +197,25 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
     for row in sorted(portfolio['sites'], key=lambda r: float(r['user_reported_score']), reverse=True):
         md_rows.append(f'| [{row["site"]}](sites/{row["site"]}.html) | [`{Path(row["path"]).name}`]({row["download_url"]}) | {row["user_reported_score"]} USER-REPORTED | No: {row["max_3px_overlap_vs_other_focus"]*100:.2f}% near {row["max_overlap_witness_site"]} | DO NOT RESUBMIT |')
     md_rows += ['', 'B2 = D2.8 minus 6,436 near-catalogue dots; GEMSDOE36 adds 1,200 to B2. This is measured lineage, not a causal score explanation. Corrected MSPTCD v2 has no measured holdout result; archived v1 results are source-reported and not reproduced.', '', '[Full metric analysis](research/why-b2-scored-2778.html) · [Sources and limitations](sources.html)', '']
-    for rel in ('EXECUTIVE_SUMMARY.md', 'executive-summary.md'):
+    for rel in ('EXECUTIVE_SUMMARY.md', 'executive-summary.md', 'CURRENT_EXECUTIVE_SUMMARY.md'):
         (docs / rel).write_text('\n'.join(md_rows), encoding='utf-8')
     for folder in (docs / 'data', root / 'site/data'):
         folder.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(root / 'evidence/release_audit.json', folder / 'release_audit.json')
     status = {k: audit[k] for k in ('schema', 'generated_utc', 'verdict', 'ok_to_submit', 'approved_submission', 'leaderboard_score_estimate', 'scope')}
     for folder in (docs / 'data', root / 'site/data'):
-        (folder / 'release_status.json').write_text(json.dumps(status, indent=2, allow_nan=False)+'\n')
+        for name in ('release_status.json', 'release.json'):
+            (folder / name).write_text(json.dumps(status, indent=2, allow_nan=False)+'\n')
     (docs / 'downloads/README.txt').write_text('RESEARCH ONLY — DO NOT SUBMIT\n\nNo TIFF in this directory is approved. Former DZ-16 and H3-PACK approvals are revoked.\nEvery existing file exceeds the literal all-registry overlap gate.\nSee ../release.html and ../data/release_audit.json for exact hashes and read-back diagnostics.\nA format pass is not uniqueness, organizer acceptance or slot-selector authorization.\n')
+    # Fail before Pages uploads anything, even if a legacy static page retained
+    # the unsafe footer that an earlier successful browser run did not assert.
+    canonical = read_json(root / 'evidence/run_card.json')
+    for relative in CANONICAL_RUN_CARDS:
+        if read_json(root / relative) != canonical:
+            raise ValueError(f'Stale current run-card alias: {relative}')
+    if canonical['existing_artifact_audit']['source_sha256'] != digest(root / 'evidence/release_audit.json'):
+        raise ValueError('Current run card is not bound to this byte audit')
+    validate_negative_html(root)
     print(f'Built {len(outputs)} reconciled release/site pages; all submission gates remain closed.')
 
 

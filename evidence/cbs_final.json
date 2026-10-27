@@ -1,0 +1,316 @@
+{
+  "schema": "wbggems.cbs-final.v1",
+  "generated_utc": "2026-10-27T19:18:26.072740+00:00",
+  "arm": "ctrl_19b_dotted (control arm; CBS experiments negative vs control)",
+  "budget": 38000,
+  "budget_factor_vs_campaign_x1": 0.9812782440284055,
+  "campaign_x1_budget": 38725,
+  "holdout_candidate_rule": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.13358918368599232,
+    "ci95": [
+      0.12194736919045505,
+      0.14627645116790164
+    ],
+    "withheld_positive_pixels": 60988,
+    "tpw": 7760.536021068195,
+    "fpw": 38750.202313709706,
+    "fnw": 53227.463978931824
+  },
+  "per_fold": [
+    {
+      "fold": 0,
+      "budget": 19705,
+      "dti": 0.12216857300327895,
+      "n_truth": 29319
+    },
+    {
+      "fold": 1,
+      "budget": 10994,
+      "dti": 0.16433504797147674,
+      "n_truth": 12596
+    },
+    {
+      "fold": 2,
+      "budget": 4539,
+      "dti": 0.12855013604085191,
+      "n_truth": 9473
+    },
+    {
+      "fold": 3,
+      "budget": 6339,
+      "dti": 0.13093504891904062,
+      "n_truth": 9600
+    }
+  ],
+  "unique_vs_9focus_and_siblings": true,
+  "registry_comparison": [
+    {
+      "id": "GEMSDOE24",
+      "category": "focus_champion",
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "ref_dots": 60069,
+      "coverage3px_of_footprint": 0.18079283225731915,
+      "candidate_overlap_3px": 0.3228421052631579,
+      "enrichment_over_coverage": 1.7857019066091213,
+      "surface_spearman": 0.08525173786990264,
+      "exact_shared_dots": 1176,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE25",
+      "category": "focus_champion",
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "ref_dots": 44090,
+      "coverage3px_of_footprint": 0.17191094972242182,
+      "candidate_overlap_3px": 0.30815789473684213,
+      "enrichment_over_coverage": 1.7925437282175054,
+      "surface_spearman": 0.07156459392588475,
+      "exact_shared_dots": 900,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE27",
+      "category": "focus_champion",
+      "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "ref_dots": 61328,
+      "coverage3px_of_footprint": 0.1852153889413441,
+      "candidate_overlap_3px": 0.32773684210526316,
+      "enrichment_over_coverage": 1.7694903429922566,
+      "surface_spearman": 0.08464695232216553,
+      "exact_shared_dots": 1187,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE28",
+      "category": "focus_champion",
+      "sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "ref_dots": 37660,
+      "coverage3px_of_footprint": 0.157525109954323,
+      "candidate_overlap_3px": 0.29986842105263156,
+      "enrichment_over_coverage": 1.9036229915318474,
+      "surface_spearman": 0.06434494585705773,
+      "exact_shared_dots": 829,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE30",
+      "category": "focus_champion",
+      "sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "ref_dots": 44090,
+      "coverage3px_of_footprint": 0.17191094972242182,
+      "candidate_overlap_3px": 0.30815789473684213,
+      "enrichment_over_coverage": 1.7925437282175054,
+      "surface_spearman": 0.07156459392588475,
+      "exact_shared_dots": 900,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE31",
+      "category": "focus_champion",
+      "sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "ref_dots": 40199,
+      "coverage3px_of_footprint": 0.1600641176861047,
+      "candidate_overlap_3px": 0.3028421052631579,
+      "enrichment_over_coverage": 1.8920049642671906,
+      "surface_spearman": 0.0667266859098235,
+      "exact_shared_dots": 900,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE32",
+      "category": "focus_champion",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "ref_dots": 37654,
+      "coverage3px_of_footprint": 0.15085344139081888,
+      "candidate_overlap_3px": 0.29589473684210527,
+      "enrichment_over_coverage": 1.961471572103716,
+      "surface_spearman": 0.06366436448843443,
+      "exact_shared_dots": 900,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE33",
+      "category": "focus_champion",
+      "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "ref_dots": 41865,
+      "coverage3px_of_footprint": 0.16618560340041255,
+      "candidate_overlap_3px": 0.3071052631578947,
+      "enrichment_over_coverage": 1.8479655088891553,
+      "surface_spearman": 0.06830933216949957,
+      "exact_shared_dots": 899,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE36",
+      "category": "focus_champion",
+      "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "ref_dots": 38854,
+      "coverage3px_of_footprint": 0.15459015635217352,
+      "candidate_overlap_3px": 0.29876315789473684,
+      "enrichment_over_coverage": 1.9326143717334836,
+      "surface_spearman": 0.06308944735407929,
+      "exact_shared_dots": 906,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "DZ16",
+      "category": "sibling_lane",
+      "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+      "ref_dots": 34500,
+      "coverage3px_of_footprint": 0.19342710502996396,
+      "candidate_overlap_3px": 0.22642105263157894,
+      "enrichment_over_coverage": 1.1705756160518654,
+      "surface_spearman": 0.005482683937634662,
+      "exact_shared_dots": 312,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "H3PACK",
+      "category": "sibling_lane",
+      "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+      "ref_dots": 34000,
+      "coverage3px_of_footprint": 0.19028237365485326,
+      "candidate_overlap_3px": 0.19873684210526316,
+      "enrichment_over_coverage": 1.0444311697821531,
+      "surface_spearman": -0.0013811256073906074,
+      "exact_shared_dots": 276,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "MSPTCD_E3",
+      "category": "sibling_lane",
+      "sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
+      "ref_dots": 25594,
+      "coverage3px_of_footprint": 0.013137429792662539,
+      "candidate_overlap_3px": 0.04631578947368421,
+      "enrichment_over_coverage": 3.5254833102554284,
+      "surface_spearman": 0.1159059893099595,
+      "exact_shared_dots": 900,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "CBS_64K_SUPERSEDED",
+      "category": "superseded_self",
+      "sha256": "bd966a3ef81436abc40101e8bd62f7f28ec451539e125f0d4a38859f9ed5c54f",
+      "ref_dots": 64284,
+      "coverage3px_of_footprint": 0.34353838981625673,
+      "candidate_overlap_3px": 1.0,
+      "enrichment_over_coverage": 2.910882828946294,
+      "surface_spearman": 0.13148202889862592,
+      "exact_shared_dots": 38000,
+      "literal_duplicate_flag": true
+    },
+    {
+      "id": "13GEMSDOE",
+      "category": "literal_witness",
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "ref_dots": 206895,
+      "coverage3px_of_footprint": 0.9987132726822701,
+      "candidate_overlap_3px": 0.9914736842105263,
+      "enrichment_over_coverage": 0.9927510841502084,
+      "surface_spearman": -5.2590215396615694e-05,
+      "exact_shared_dots": 1518,
+      "literal_duplicate_flag": true
+    },
+    {
+      "id": "GEMSDOE27_H31",
+      "category": "literal_witness",
+      "sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+      "ref_dots": 37654,
+      "coverage3px_of_footprint": 0.1699360584188523,
+      "candidate_overlap_3px": 0.3951578947368421,
+      "enrichment_over_coverage": 2.3253328246726257,
+      "surface_spearman": 0.08161129408520862,
+      "exact_shared_dots": 870,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "GEMSDOE32_H47",
+      "category": "literal_witness",
+      "sha256": "d8da7e947db3ed03a3d7064c02b523c254bcb3ae1c5115b7e59b4b436f80fea1",
+      "ref_dots": 49231,
+      "coverage3px_of_footprint": 0.21716953662915373,
+      "candidate_overlap_3px": 0.2885526315789474,
+      "enrichment_over_coverage": 1.328697551497243,
+      "surface_spearman": 0.022124840321508226,
+      "exact_shared_dots": 800,
+      "literal_duplicate_flag": false
+    },
+    {
+      "id": "17GEMSDOE_dense_prior",
+      "category": "literal_witness",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "ref_dots": 5167373,
+      "coverage3px_of_footprint": 1.0,
+      "candidate_overlap_3px": 1.0,
+      "enrichment_over_coverage": 1.0,
+      "surface_spearman": 0.5253093504782529,
+      "exact_shared_dots": 38000,
+      "literal_duplicate_flag": true
+    }
+  ],
+  "artifact": {
+    "stem": "wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros",
+    "tif_path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+    "sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+    "dots": 38000,
+    "note": "D19-dotted 19-band HGB cross-fitted 38000 collar-free dots zeros unique (wbggemsdoe2)",
+    "validator": {
+      "path": "/home/user/WBGGEMSDOE2/docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+      "sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+      "grid_match_reference": true,
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "bands": 1,
+      "dtype": "float32",
+      "nodata": null,
+      "strict_all_finite_requested": true,
+      "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "organizer_acceptance": "unknown",
+      "submission_approval": false,
+      "footprint_cells": 5167373,
+      "nonfinite_inside": 0,
+      "masked_inside": 0,
+      "nan_total": 0,
+      "inf_total": 0,
+      "nan_inside": 0,
+      "nan_outside": 0,
+      "inf_inside": 0,
+      "inf_outside": 0,
+      "below_zero_inside": 0,
+      "below_zero_outside": 0,
+      "above_one_inside": 0,
+      "above_one_outside": 0,
+      "positive_outside": 0,
+      "diagnostics_band": 1,
+      "all_finite": true,
+      "minimum_inside": 0.0,
+      "maximum_inside": 1.0,
+      "nonzero_inside": 38000,
+      "failures": [],
+      "format_valid_against_reference": true
+    }
+  },
+  "supersedes": "wbg2-cbs-ctrl-19b-dotted-64284dots-20261027T191325Z-9cae06c2-zeros (holdout-optimal budget; live-pessimal; removed from downloads)",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "901559c47353daeb19bf5539eecbd88074eb27a843e0cfa726fa29cd7d4ac45e",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
+}

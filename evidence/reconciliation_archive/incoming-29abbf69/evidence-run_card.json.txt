@@ -1,0 +1,281 @@
+{
+  "schema": "wbggems.run-card.v2",
+  "generated_utc": "2026-10-27T19:30:43.355654+00:00",
+  "session": "2026-10-27 blind-discontinuity campaign (3 preregistered lanes)",
+  "hypothesis": "Blind faults are expressed by low-slope curvature dipoles, clay-capped conductivity/magnetic-low pairs, and strain-partition boundaries; their fusion is E3.",
+  "mechanism": "Label-free multi-scale transforms of the 19 official bands (detrended elevation Laplacian dipoles; conductivity \u00d7 TMI opposed gradients and clay caps; dilatation/shear/earthquake boundaries), HistGradientBoosting trained only on visible catalogue faults, a fixed 6 px visible-catalogue collar prior, and graded registry novelty separation at emission.",
+  "non_fault_mimic": "Alluvial-fan/terrace risers, playa clay and zeolite-rich tuffs, GPS interpolation artifacts and GeoDAWN flight-line striping.",
+  "lane": "E3_fusion (H-A + H-C + H-E), one lane of three",
+  "experiment_budget": {
+    "experiments_run": 3,
+    "maximum_experiments": 3,
+    "maximum_hours": 2,
+    "within_lane_refinements": [
+      "hard crowd cap (negative, DTI 0.0091)",
+      "graded dense-witness penalty beta=0.88 (promoted)"
+    ],
+    "discarded_first_pass": "Trained on ctx_dist_visible; learned a trivial self-identity and scored 0.0. No result trusted.",
+    "weekly_submission_slots_used": 0
+  },
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "implementation_sha256": {
+      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+    },
+    "withheld_positive_pixels": 11321,
+    "dti": 0.14519327072662716,
+    "ci95": [
+      0.12867263440658486,
+      0.16256990659420223
+    ],
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300,
+    "folds": 4,
+    "block_bootstrap_draws": 2000,
+    "matched_control": {
+      "arm": "C0_collar_only",
+      "dti": 0.13172292509942274,
+      "ci95": [
+        0.1154018685406415,
+        0.14817600658874097
+      ]
+    },
+    "paired_delta": 0.013470345627204422,
+    "paired_delta_ci95": [
+      0.006822682958210913,
+      0.01978507459235446
+    ],
+    "status": "paired 95% CI lower bound is positive vs the matched collar-only control",
+    "caveat": "Hide-and-recover withheld catalogue components are a proxy, not organizer public/private truth. Not a leaderboard score."
+  },
+  "feature_canary": {
+    "evidence_class": "LEAKAGE-CANARY",
+    "method": "Single-feature directed AUC = max(AUC, 1-AUC) on each fold's label-blind scored region; withheld component pixels vs 4x random active non-truth pixels. >0.90 is an alarm.",
+    "features_tested": 23,
+    "max_directed_auc": 0.81788,
+    "alarm_threshold": 0.9,
+    "alarmed_features": [],
+    "file": "evidence/canaries_20261027.json"
+  },
+  "uniqueness": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "registry_scope": "Public GitHub HEAD trees for every site named in the user-supplied 126-row ledger, plus 13 pinned witnesses. Not an organizer-complete registry: renamed, private, external, unlinked, deleted or later-written rasters may be absent. A HEAD snapshot is not a pinned commit for unpinned rows.",
+    "registry_rasters_checked": 126,
+    "registry_distinct_sha256": 121,
+    "complete_accessible_scan": true,
+    "candidate_surface_correlation": 0.43095024357735195,
+    "candidate_final_overlap": 0.6765,
+    "worst_overlap_submission": "gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros",
+    "nine_focus_worst_overlap": 0.54927,
+    "unique_vs_nine_focus": true,
+    "literal_reading_fires": true,
+    "literal_firings": 3,
+    "policy_decision": "docs/PROJECT_CHARTER.md 2026-10-27 amendment: like-for-like dot test on geological dot fields, rank correlation on all rasters; literal reading still reported as firing on space-filling controls / continuous prior.",
+    "gates": {
+      "rho_limit": 0.9,
+      "overlap_limit": 0.7,
+      "jaccard_limit": 0.5
+    },
+    "file": "evidence/final_uniqueness.json"
+  },
+  "raster_sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
+  "validator": {
+    "evidence_class": "LOCAL-FORMAT-MEASUREMENT",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "bands": 1,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "masked_inside_footprint": 0,
+    "shared_format_ok": true,
+    "supplemental_mask_and_format_ok": true,
+    "problems": [],
+    "reference_provenance": "Hash-pinned third-party mirror; not organizer authenticated",
+    "organizer_acceptance": "unknown",
+    "file": "evidence/final_format.json"
+  },
+  "submission_name": "wbg2-20261027-blind-discontinuity-unique",
+  "submission_note": "Blind-discontinuity E3_fusion soft88; HOLDOUT-DTI proxy only; 126-raster audit; no organizer score.",
+  "note": "Blind-discontinuity E3_fusion soft88; HOLDOUT-DTI proxy only; 126-raster audit; no organizer score.",
+  "note_chars": 99,
+  "verdict": "promote-to-selector-only",
+  "ok_to_submit": true,
+  "ok_to_download_new_tif": true,
+  "weekly_submission_slots_used": 0,
+  "score_estimate": {
+    "evidence_class": "NO-LEADERBOARD-ESTIMATE",
+    "leaderboard_estimate": null,
+    "reason": "No organizer submission receipt and no calibrated mapping from HOLDOUT-DTI to public DW-Tversky. A projection is not a score.",
+    "exploratory_projection_not_score": {
+      "evidence_class": "EXPLORATORY-PROJECTION-NOT-A-SCORE",
+      "method": "Historical focus rasters evaluated on the SAME folds; user-reported claims (NOT organizer receipts) within +/-0.03 holdout DTI of this candidate define a bracket. No calibrated leaderboard forecast exists.",
+      "historical_pairs": [
+        {
+          "site": "GEMSDOE24",
+          "holdout_dti": 0.08880836836369756,
+          "user_reported_claim": 0.2477
+        },
+        {
+          "site": "GEMSDOE25",
+          "holdout_dti": 0.09188832467218272,
+          "user_reported_claim": 0.26
+        },
+        {
+          "site": "GEMSDOE27",
+          "holdout_dti": 0.08839043936142424,
+          "user_reported_claim": 0.2449
+        },
+        {
+          "site": "GEMSDOE28",
+          "holdout_dti": 0.02708236322219311,
+          "user_reported_claim": 0.271
+        },
+        {
+          "site": "GEMSDOE30",
+          "holdout_dti": 0.09188832467218272,
+          "user_reported_claim": 0.26
+        },
+        {
+          "site": "GEMSDOE31",
+          "holdout_dti": 0.029067173563199197,
+          "user_reported_claim": 0.2708
+        },
+        {
+          "site": "GEMSDOE32",
+          "holdout_dti": 0.003698680598708719,
+          "user_reported_claim": 0.2778
+        },
+        {
+          "site": "GEMSDOE33",
+          "holdout_dti": 0.053078293662446124,
+          "user_reported_claim": 0.2632
+        },
+        {
+          "site": "GEMSDOE36",
+          "holdout_dti": 0.0038035928867696657,
+          "user_reported_claim": 0.275
+        }
+      ],
+      "candidate_holdout_dti": 0.13847813236991083,
+      "bracket": null,
+      "usable_as_score": false,
+      "note": "A projection is never a score. Public/private truth and receipts are unavailable."
+    }
+  },
+  "files": {
+    "tif": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+    "zip": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.zip",
+    "writer_receipt": "evidence/campaign_20261027.json",
+    "holdout": "evidence/soft_novelty_refinement.json",
+    "uniqueness": "evidence/final_uniqueness.json",
+    "format": "evidence/final_format.json",
+    "hypotheses": "research/hypotheses_20261027.md",
+    "sources": "research/sources_20261027.md"
+  },
+  "nine_focus_sites": {
+    "GEMSDOE24": {
+      "overlap": 0.33074,
+      "file": "gems24-gvc1-negative-geothermal-lineament-submod-20261025-abe8e51c719d-zeros",
+      "claim": 0.2477
+    },
+    "GEMSDOE25": {
+      "overlap": 0.54927,
+      "file": "gems25-h66-mgd-flank-sapd3-0-k3p5-20261025-da617550a0e9-zeros",
+      "claim": 0.26
+    },
+    "GEMSDOE27": {
+      "overlap": 0.13093,
+      "file": "topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan",
+      "claim": 0.2449
+    },
+    "GEMSDOE28": {
+      "overlap": 0.11367,
+      "file": "h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan",
+      "claim": 0.271
+    },
+    "GEMSDOE30": {
+      "overlap": 0.37496,
+      "file": "gems30-MSDB1-edge44090-20261025-e7856ec3f14a",
+      "claim": 0.26
+    },
+    "GEMSDOE31": {
+      "overlap": 0.11006,
+      "file": "h27-4-solo-d28-20261004-8acb75e1-nan",
+      "claim": 0.2708
+    },
+    "GEMSDOE32": {
+      "overlap": 0.10294,
+      "file": "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros",
+      "claim": 0.2778
+    },
+    "GEMSDOE33": {
+      "overlap": 0.11485,
+      "file": "h33d-analog-tip-stepover-r30-20261004-cb490425926e",
+      "claim": 0.2632
+    },
+    "GEMSDOE36": {
+      "overlap": 0.11021,
+      "file": "anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros",
+      "claim": 0.275
+    }
+  },
+  "irregularities": [
+    "Official leaderboard observed 0.4544 at #1 on 2026-10-27, not 0.3195/0.4413 as quoted.",
+    "Mirrored sample_submission has 60,988 positives equal to the mirrored catalogue; provenance unauthenticated.",
+    "8 of 126 ledger rows unresolved in the expanded registry; HEAD blobs are unpinned snapshots.",
+    "Literal duplicate reading fires on space-filling controls/continuous prior for any nonempty raster.",
+    "Organizer acceptance, weekly quota and per-file receipts remain unavailable."
+  ],
+  "parallel_session": {
+    "evidence": "evidence/parallel_review.json",
+    "reported_experiments": 3,
+    "rejected_candidate_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+    "lattice_overlap_3px": 0.9938375188056938,
+    "continuous_prior_overlap_3px": 1.0,
+    "masked_inside_footprint": 5132809,
+    "source_reported_holdout": {
+      "evidence_class": "HOLDOUT-DTI (SOURCE-REPORTED, NOT REPRODUCED)",
+      "evaluator_version": "WBGGEMSDOE2-HIDE-RECOVER-v2.0 (private parallel implementation, not the required shared evaluator)",
+      "withheld_positive_pixels": 58016,
+      "dti": 0.1321,
+      "reported_95ci": [
+        0.129,
+        0.1349
+      ],
+      "limitations": "Evaluation cells were not excluded from the training zone; the four-fold interval is not reproduced by the committed lane script; canaries reported only for fold 0; no valid matched shared-evaluator incumbent or complete-registry preflight."
+    },
+    "ok_to_submit": false,
+    "reason": "Rejected: literal lattice duplication, masked interior cells, and no compliant pre-placement/holdout approval."
+  },
+  "conduit_parallel_session": {
+    "evidence": "evidence/conduit_review.json",
+    "reported_experiments": 1,
+    "rejected_candidate_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+    "lattice_overlap_3px_source_threshold": 0.9987256530439265,
+    "continuous_prior_overlap_3px": 1.0,
+    "format_valid_against_owner_mirror": true,
+    "holdout_dti": null,
+    "preplacement_surface_correlation": null,
+    "ok_to_submit": false,
+    "reason": "Rejected: lattice duplication, no validated holdout, and synthetic rather than demonstrated geophysical features."
+  }
+}

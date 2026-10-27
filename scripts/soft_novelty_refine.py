@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""Retired historical entrypoint; original at evidence/reconciliation_archive/incoming-29abbf69/soft_novelty_refine.py.txt."""
+
+
+def main():
+    raise SystemExit("STOP: lane unassigned; literal all-registry gate fails. No experiment, prediction, score projection or overwrite is authorized. Historical source is archived; no witness exemptions.")
+
+
+if __name__ == "__main__":
+    main()

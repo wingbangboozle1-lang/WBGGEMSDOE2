@@ -25,7 +25,7 @@ def e(value):
 def shell(title, body):
     notice = '''<section class="banner" data-release-status="blocked"><div class="banner-copy">
 <p class="banner-label">Historical source-reported campaign · not independently reproduced</p>
-<h2>DO NOT SUBMIT. No current approval.</h2><p>All local TIFFs fail the literal registry gate. The corrected v2 orientation feature has no measured holdout result.
+<h2>No file is approved for submission. DO NOT SUBMIT.</h2><p>All local TIFFs fail the literal registry gate. The corrected v2 orientation feature has no measured holdout result.
 Passing AUC canaries is not proof of zero leakage. <a href="../release.html">Current byte-bound release decision →</a></p></div></section>'''
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} · Historical MSPTCD · GEMS Research</title><meta name="description" content="Historical MSPTCD evidence with corrections and a negative submission verdict.">

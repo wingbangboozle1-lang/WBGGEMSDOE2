@@ -15,7 +15,7 @@ import zipfile
 
 import pytest
 
-from wbggems.release import digest, load_negative_release, read_json, require_experiment_lane
+from wbggems.release import CANONICAL_RUN_CARDS, NEGATIVE_RESEARCH_CARDS, digest, load_negative_release, read_json, require_experiment_lane, validate_negative_html
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -44,8 +44,8 @@ def receipt_root(tmp_path):
 
 def test_current_real_bytes_have_only_negative_decisions():
     report = load_negative_release(ROOT)
-    assert report['scope']['owned_tif_paths'] == 6
-    assert len(report['artifacts']) == 5 and len(report['zip_archives']) == 3
+    assert report['scope']['owned_tif_paths'] == 9
+    assert len(report['artifacts']) == 7 and len(report['zip_archives']) == 6
     assert report['scope']['registry_rasters_opened'] == 13
     assert all(r['lattice_overlap_3px'] > .70 and r['ok_to_submit'] is False for r in report['artifacts'])
     assert report['approved_submission'] is None and report['leaderboard_score_estimate'] is None
@@ -267,3 +267,57 @@ def test_one_canonical_run_card_contains_exact_existing_byte_validator_outputs()
     assert [r['validator'] for r in bound['artifacts']] == [r['validator'] for r in report['artifacts']]
     assert [r['strict_all_finite_validator'] for r in bound['artifacts']] == [r['strict_all_finite_validator'] for r in report['artifacts']]
     assert card['raster_sha256'] is None and card['holdout']['dti'] is None
+
+
+@pytest.mark.parametrize('relative', [*CANONICAL_RUN_CARDS, *NEGATIVE_RESEARCH_CARDS])
+def test_a_parallel_current_card_cannot_grant_its_own_approval(receipt_root, relative):
+    root, _ = receipt_root
+    path = root / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({'verdict':'negative', 'ok_to_submit':True}))
+    with pytest.raises(ValueError, match='negative-only dashboard refuses to publish'):
+        load_negative_release(root)
+
+
+def test_all_nine_current_run_card_aliases_are_the_canonical_negative_card():
+    canonical = read_json(ROOT / 'evidence/run_card.json')
+    for relative in CANONICAL_RUN_CARDS:
+        assert read_json(ROOT / relative) == canonical, relative
+
+
+@pytest.mark.parametrize('filename', ['run_wbg2_cbs.py','build_cbs_final.py',
+    'run_campaign_20261027.py','novelty_refine.py','soft_novelty_refine.py',
+    'audit_final_candidate.py','estimate_candidate.py'])
+def test_concurrent_lane_entrypoints_cannot_overwrite_research_or_project_a_score(filename):
+    before = digest(ROOT / 'evidence/run_card.json')
+    result = subprocess.run([sys.executable, str(ROOT/'scripts'/filename)],
+                            capture_output=True, text=True, timeout=10)
+    assert result.returncode != 0 and 'STOP' in result.stdout+result.stderr
+    assert digest(ROOT / 'evidence/run_card.json') == before
+
+
+@pytest.mark.parametrize('body', [
+    '<h3>Download and submit</h3>',
+    '<b>1 FILE CLEARED</b>',
+    '<a href="downloads/test.tif">Download</a>',
+    '<a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/downloads/test.tif?raw=1">Research only</a>',
+])
+def test_portable_pages_copy_guard_blocks_legacy_approval_or_unqualified_download(tmp_path, body):
+    (tmp_path/'docs').mkdir()
+    (tmp_path/'docs/legacy.html').write_text(body)
+    with pytest.raises(ValueError):
+        validate_negative_html(tmp_path)
+
+
+def test_portable_pages_guard_accepts_unambiguous_research_copy(tmp_path):
+    (tmp_path/'docs').mkdir()
+    (tmp_path/'docs/legacy.html').write_text('<h3>Research only</h3><a href="downloads/test.tif">Research TIFF — DO NOT SUBMIT</a>')
+    validate_negative_html(tmp_path)
+
+
+def test_dashboard_audit_timestamp_is_bound_to_the_release_receipt_not_old_portfolio():
+    from datetime import datetime, timezone
+    receipt = read_json(ROOT / 'evidence/release_audit.json')
+    expected = datetime.fromisoformat(receipt['generated_utc']).astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+    home = (ROOT / 'docs/index.html').read_text()
+    assert f'Release-byte audit<br><strong>{expected}</strong>' in home

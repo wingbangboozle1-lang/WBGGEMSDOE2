@@ -1,0 +1,189 @@
+{
+  "schema": "wbggems.run-card.v2",
+  "generated_utc": "2026-10-27T18:10:11.944590+00:00",
+  "updated_utc": "2026-10-27T18:18:00Z",
+  "lane_id": "wbg2-msptcd",
+  "hypothesis": "WBG2-MSPTCD: Depth-invariant potential-field tilt horizontal gradients (Miller & Singh 1994), dip-shifted gravity-magnetic concordance across depth_to_base_surf steps, cross-strike cond_surf flank asymmetry, terrain-normalized radiometric tc edges, and multi-scale Hessian scarp ridges decoded via greedy 300 m triangular-kernel submodular allocation.",
+  "mechanism": "Normal/transtensional faulting juxtaposes dense/magnetic footwall rock against basin fill while localizing clay/saline fluid alteration and degraded piedmont scarps along concealed fault projections.",
+  "non_fault_mimic": "Unfaulted pluton/dike contacts, playal clay/evaporite pans, shoreline risers, and variable airborne survey clearance.",
+  "lane_status": "Executed 3 preregistered zero-leakage experiments (EXP-1, EXP-2, EXP-3 vs CTRL-19B) on unmodified gems57-pooled-hide-v2; stopped at literal all-registry gate.",
+  "experiment_budget": {
+    "experiments_run": 3,
+    "maximum_experiments": 3,
+    "runtime_seconds": 306.32,
+    "maximum_hours": 2,
+    "weekly_slots_used": 0,
+    "scope": "wbg2-msptcd single method lane; preserves sibling DZ-16 and H3-PACK lanes intact"
+  },
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "split_version": "label-blind-quadrants-v2 (buffer_px=80, 8.0 km buffer)",
+    "withheld_positive_pixels": 60988,
+    "winning_arm": "exp3_msptcd_submod_greedy",
+    "dti": 0.04255426811430257,
+    "ci95": [
+      0.03205871015164006,
+      0.05476536944098737
+    ],
+    "control_19b_dti": 0.023409147943953046,
+    "control_19b_ci95": [
+      0.015355945201826322,
+      0.031894669552479896
+    ],
+    "exp1_msptcd_core_dti": 0.03497487837216973,
+    "exp1_msptcd_core_ci95": [
+      0.025586887742581124,
+      0.04547489276926102
+    ],
+    "exp1_paired_delta_vs_ctrl": 0.011565730428216688,
+    "exp1_paired_delta_ci95": [
+      0.005424371981728876,
+      0.01864388784275443
+    ],
+    "exp2_msptcd_strain_pu_dti": 0.028575092885931498,
+    "exp2_msptcd_strain_pu_ci95": [
+      0.020416029419072706,
+      0.03805833626407977
+    ],
+    "paired_delta_vs_ctrl_19b": 0.01914512017034952,
+    "paired_delta_ci95": [
+      0.01097695033438511,
+      0.028755292395709373
+    ],
+    "detached_splay_dti": 0.03079930088769798,
+    "control_detached_splay_dti": 0.016914952730943476,
+    "status": "completed on unmodified gems57.evaluate_holdout (1,000 paired 20 km spatial-cluster draws)"
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "status": "COMPLETED",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 60988,
+    "value": 0.04255426811430257,
+    "ci95": [
+      0.03205871015164006,
+      0.05476536944098737
+    ],
+    "control_19b_value": 0.023409147943953046,
+    "paired_delta_vs_control": 0.01914512017034952,
+    "paired_delta_ci95": [
+      0.01097695033438511,
+      0.028755292395709373
+    ]
+  },
+  "organizer_confirmed": {
+    "evidence_class": "ORGANIZER-CONFIRMED",
+    "value": null,
+    "receipt": null,
+    "status": "not submitted; weekly competition slots preserved"
+  },
+  "feature_canary": {
+    "evidence_class": "LEAKAGE-CANARY-MEASUREMENT",
+    "status": "passed",
+    "features_tested": 31,
+    "folds_tested": 4,
+    "total_checks": 124,
+    "threshold_two_sided_auc": 0.9,
+    "max_two_sided_auc": 0.6131180129836571,
+    "max_two_sided_feature": "tc_radiometric",
+    "details_file": "evidence/wbg2_msptcd_canaries.json"
+  },
+  "uniqueness": {
+    "registry_scope": "23 verified rasters (9 focus champions, 2 sibling WBGGEMSDOE2 lanes DZ-16 & H3-PACK, 13GEMSDOE lattice, 17GEMSDOE prior, 2 historic H31/H47 witnesses, 6 2026-10-26/27 sibling rasters, 2 local rejected parallel rasters)",
+    "unique_vs_all_9_focus_sites": true,
+    "unique_vs_sibling_wbggemsdoe2_lanes": true,
+    "sibling_lane_comparisons": [
+      {
+        "lane": "DZ-16 (submission lane)",
+        "path": "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif",
+        "sha256": "a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912",
+        "dots": 34500,
+        "msptcd_within_3px_of_lane": 0.273619,
+        "lane_within_3px_of_msptcd": 0.017072,
+        "exact_shared_dots": 258,
+        "footprint_spearman_rho": 0.004951,
+        "distinct_under_calibrated_70pct_gate": true
+      },
+      {
+        "lane": "H3-PACK (third lane)",
+        "path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
+        "sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
+        "dots": 34000,
+        "msptcd_within_3px_of_lane": 0.205908,
+        "lane_within_3px_of_msptcd": 0.013676,
+        "exact_shared_dots": 182,
+        "footprint_spearman_rho": -0.000534,
+        "distinct_under_calibrated_70pct_gate": true
+      }
+    ],
+    "candidate_max_focus_surface_correlation": 0.09036802861727491,
+    "candidate_max_focus_final_overlap": 0.680628272251309,
+    "candidate_max_focus_site": "GEMSDOE27",
+    "candidate_max_all_registry_surface_correlation": 0.6856812367070434,
+    "candidate_max_all_registry_final_overlap": 1.0,
+    "status": "unique vs all 9 focus champions (<=68.06% 3px overlap) and both sibling lanes (27.36% vs DZ-16, 20.59% vs H3-PACK), but stopped by literal all-registry witnesses (>70%)",
+    "witnesses_exceeding_limit": [
+      "13GEMSDOE",
+      "GEMSDOE27_H31",
+      "17GEMSDOE_dense_prior",
+      "WBGGEMSDOE1_C1",
+      "WBGGEMSDOE2_PARALLEL_CONDUIT"
+    ],
+    "witness": "13GEMSDOE stride-5 lattice",
+    "standard_budget": 37654,
+    "minimum_overlap_bound": 0.8234184947150369,
+    "limit": 0.7,
+    "observed_other_site_H31_overlap": 0.9961491475009295,
+    "dense_prior_witness": "17GEMSDOE continuous probability prior",
+    "dense_prior_full_footprint_positive": true
+  },
+  "raster_sha256": null,
+  "research_candidate": {
+    "name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
+    "tif_path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif",
+    "zip_path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.zip",
+    "receipt_path": "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.json",
+    "tif_sha256": "fb11891a3a2e6c9400daa7c19f34bbb149f1ef853b3578f457c0efd1cec53614",
+    "tif_bytes": 71341,
+    "zip_sha256": "f3e92a114c93e1fc848fb0dc405d2c8aa723f77408e9fb11b224d7aee014ff1b",
+    "zip_bytes": 21663,
+    "emitted_dots": 25594,
+    "ok_to_download_for_research": true,
+    "ok_to_submit_to_competition": false
+  },
+  "validator": {
+    "status": "passed local byte-level GeoTIFF & mask validation on research candidate",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": true,
+    "masked_inside_footprint": 0,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ]
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "proposed_research_name": "wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros",
+  "note": "Negative/DO NOT SUBMIT: WBG2-MSPTCD HOLDOUT-DTI 0.0426 (+81.8% vs 19B), unique vs 9 focus, stopped by literal 13GEMSDOE/17GEMSDOE >70% gate.",
+  "ok_to_submit": false,
+  "ok_to_download_new_tif": false,
+  "ok_to_download_research_tif": true,
+  "verdict": "negative",
+  "experiment_count": 3,
+  "weekly_submission_slots_used": 0,
+  "parallel_session": {
+    "evidence": "evidence/parallel_review.json",
+    "rejected_candidate_sha256": "592c74f26212199311d4f70807061a3f28cfe4c925652c0deada936ac925bf33",
+    "user_reported_public_dti": 0.0725,
+    "ok_to_submit": false
+  },
+  "conduit_parallel_session": {
+    "evidence": "evidence/conduit_review.json",
+    "rejected_candidate_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+    "ok_to_submit": false
+  }
+}

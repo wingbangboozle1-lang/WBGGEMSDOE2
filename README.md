@@ -9,16 +9,18 @@
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
 - **[One current negative JSON run card](evidence/run_card.json)** · [independent byte audit](evidence/release_audit.json) · [official-source verification](research/source-verification-release-20261027.md)
-- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [three-pass review record](research/release-reconciliation-review.md) · [remaining blockers, issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [three-pass review record](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
 
 No new candidate, dot placement, model experiment, competition upload, or weekly slot was used in this review. No eligible submission name/note or leaderboard estimate is fabricated. New-file fields remain `null`.
 
 ### What was independently measured
 
-The audit reopened **6 existing TIFF paths / 5 distinct SHA-256 identities**, checked their **3 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses**. Every saved TIFF has a decisive literal duplicate witness. Original surfaces were not replayed; no complete current-registry pass is claimed.
+The audit reopened **9 existing TIFF paths / 7 distinct SHA-256 identities**, checked their **6 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses**. Every saved TIFF has a decisive literal duplicate witness. Original surfaces were not replayed; no complete current-registry pass is claimed. The two additional identities arrived in concurrently merged PRs #24/#26; their bytes and research measurements were preserved, not generated or scientifically replayed by this review. Their former operational approval claims do not override the independent duplicate stop.
 
 | Existing research artifact | Lattice 3-pixel overlap | Inside/grid format | Extra all-finite check | Decision |
 |---|---:|---|---|---|
+| `wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros` | 99.147% | PASS | PASS | **DO NOT SUBMIT** |
+| `wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros` | 99.923% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg3-h3pack-34k-20261027T174337Z-zeros` | 99.862% | PASS | FAIL | **DO NOT SUBMIT** |
 | `wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros` | 100.000% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros` | 99.980% | PASS | PASS | **DO NOT SUBMIT** |
@@ -70,7 +72,7 @@ python3 -m venv .venv
 .venv/bin/python scripts/build_release.py
 ```
 
-The release builder checks TIFF/ZIP inventories, byte hashes, ZIP-member bytes, policy and pinned-witness consistency before writing. It cannot approve a file. Five legacy private generators/approval gates now stop. The historical campaign stops before feature/model/output work. Contradictory original receipts/sources remain in [`evidence/reconciliation_archive/`](evidence/reconciliation_archive/) as **historical, non-authorizing** material.
+The release builder checks TIFF/ZIP inventories, byte hashes, ZIP-member bytes, policy and pinned-witness consistency before writing. It cannot approve a file. Five original private generators/approval gates and seven newly encountered campaign/refinement/projection entrypoints now stop. Historical campaigns stop before feature/model/output work. All nine current-card aliases mirror the one canonical negative card. Contradictory original receipts/sources remain in [`evidence/reconciliation_archive/`](evidence/reconciliation_archive/) as **historical, non-authorizing** material.
 
 Optional forensic rerun (not a candidate experiment; requires ignored reference/registry bytes):
 

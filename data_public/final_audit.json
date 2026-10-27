@@ -26,11 +26,13 @@
     "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
     "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif"
    ],
-   "note": "Fails, exactly as every focus-site submission and every other dense candidate in this fleet fails. See focus_pairwise_overlap."
+   "note": "Fails, exactly as every focus-site submission and every other dense candidate in this fleet fails. See focus_pairwise_overlap.",
+   "operative": true
   },
   "normalized_rule": {
    "result": "PASS",
-   "violations": []
+   "violations": [],
+   "operative": false
   },
   "surface_rule": {
    "result": "PASS",
@@ -348,5 +350,7 @@
   "previous_ok_to_submit": true,
   "normalized_rule_authorizes_submission": false,
   "surface_rule_caveat": "Historical Gaussian-smoothed Pearson correlation is not the required pre-placement rank-correlation audit."
- }
+ },
+ "current_release_evidence": "evidence/release_audit.json",
+ "historical_measurements_independently_reproduced_in_this_review": false
 }

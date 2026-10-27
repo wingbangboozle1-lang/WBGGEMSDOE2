@@ -7,12 +7,27 @@ novelty diagnostic or a filename/hash change for the user's literal stop rule.
 from __future__ import annotations
 
 import hashlib
+from html.parser import HTMLParser
 import json
 import math
 from pathlib import Path
+import re
+from urllib.parse import urlsplit
 import zipfile
 
 RELEASE_SCHEMA = "wbggems.release-audit.v1"
+CANONICAL_RUN_CARDS = (
+    'evidence/run_card.json', 'docs/data/run-card.json', 'docs/data/run_card.json',
+    'site/data/run_card.json', 'data_public/run_card.json', 'docs/RUN_CARD.json',
+    'docs/data/run-card-current.json', 'evidence/RUN_CARD_FINAL.json',
+    'docs/data/RUN_CARD_FINAL.json',
+)
+NEGATIVE_RESEARCH_CARDS = (
+    'evidence/RUN_CARD_CBS.json', 'docs/data/RUN_CARD_CBS.json',
+    'evidence/RUN_CARD_H3.json', 'docs/data/RUN_CARD_H3.json',
+    'evidence/RUN_CARD_MSPTCD.json', 'docs/data/RUN_CARD_MSPTCD.json',
+    'data_public/final_audit.json',
+)
 
 
 def digest(path: Path) -> str:
@@ -159,4 +174,71 @@ def load_negative_release(root: Path) -> dict:
         zip_paths.add(row['path'])
     if research_inventory(root, ('.zip',)) != zip_paths:
         raise ValueError('Changed ZIP inventory; rerun the forensic audit')
+    # An incoming lane or a stale current-card alias cannot independently grant
+    # permission. Portable receipt-only fixtures may omit cards; actual builders
+    # separately require the canonical card and regenerate all of its aliases.
+    for relative in (*CANONICAL_RUN_CARDS, *NEGATIVE_RESEARCH_CARDS):
+        path = root / relative
+        if path.exists():
+            card = read_json(path)
+            if card.get('verdict') != 'negative' or card.get('ok_to_submit') is not False:
+                raise ValueError(f'negative-only dashboard refuses to publish conflicting card: {relative}')
     return report
+
+
+def validate_negative_html(root: Path) -> None:
+    """Portable pre-deploy copy guard, also used outside the numerical test suite.
+
+    This is a negative-only publisher, not a general parser of future approvals.
+    Check unchanged legacy HTML as well as pages produced by the current build.
+    """
+    class Copy(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.anchor = self.heading = None
+            self.anchors, self.headings, self.words = [], [], []
+
+        def handle_starttag(self, tag, attrs):
+            if tag == 'a':
+                self.anchor = [dict(attrs).get('href') or '', '']
+            if tag in ('h1', 'h2', 'h3'):
+                self.heading = ['']
+
+        def handle_data(self, text):
+            self.words.append(text)
+            if self.anchor is not None:
+                self.anchor[1] += text
+            if self.heading is not None:
+                self.heading[0] += text
+
+        def handle_endtag(self, tag):
+            if tag == 'a' and self.anchor is not None:
+                self.anchors.append(self.anchor)
+                self.anchor = None
+            if tag in ('h1', 'h2', 'h3') and self.heading is not None:
+                self.headings.append(self.heading[0])
+                self.heading = None
+
+    for page in [root / 'index.html', *(root / 'docs').rglob('*.html'), *(root / 'site').rglob('*.html')]:
+        if not page.exists():
+            continue
+        if page.is_symlink():
+            raise ValueError(f'Public HTML must be a regular file: {page}')
+        parsed = Copy()
+        parsed.feed(page.read_text(encoding='utf-8'))
+        for heading in parsed.headings:
+            normalized = ' '.join(heading.lower().split())
+            if (normalized in ('download and submit', 'submit this file', 'cleared for submission')
+                    or 'ok to download and submit' in normalized):
+                raise ValueError(f'Stale positive submission heading: {page}')
+        words = ' '.join(' '.join(parsed.words).lower().split())
+        if 'cleared exactly one' in words or re.search(r'\b[1-9]\d* files? cleared\b', words):
+            raise ValueError(f'Stale positive submission badge: {page}')
+        for href, label in parsed.anchors:
+            parts = urlsplit(href)
+            if Path(parts.path).suffix.lower() not in ('.tif', '.tiff', '.zip'):
+                continue
+            owned = not parts.scheme and not parts.netloc
+            owned |= '/wingbangboozle1-lang/wbggemsdoe2/' in parts.path.lower()
+            if owned and ('research' not in label.lower() or 'DO NOT SUBMIT' not in label):
+                raise ValueError(f'Unqualified owned research download: {page}: {href}')

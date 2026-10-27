@@ -1,0 +1,53 @@
+{
+  "point_estimate": 0.1493,
+  "interval95": [
+    0.0,
+    0.333
+  ],
+  "external_test_rmse": 0.09373721070387271,
+  "external_test_mae": 0.0754323241849912,
+  "model_inputs": {
+    "log10_support": 4.537819095073274,
+    "median_px_to_catalogue": 14.142135623730951,
+    "frac_within_3px_catalogue": 0.0,
+    "log10_components": 4.537831683136692,
+    "binary_fraction": 1.0,
+    "log10_mass": 4.537831683136692
+  },
+  "mass_balance_band": {
+    "10000": {
+      "hit_rate_range": [
+        0.42091720000000005,
+        0.5161664640000001
+      ],
+      "implied_dti_range": [
+        0.2824947651006712,
+        0.34642044563758395
+      ]
+    },
+    "20000": {
+      "hit_rate_range": [
+        0.31885860000000005,
+        0.366403232
+      ],
+      "implied_dti_range": [
+        0.27847912663755464,
+        0.3200028227074236
+      ]
+    },
+    "30000": {
+      "hit_rate_range": [
+        0.2848390666666667,
+        0.3164821546666667
+      ],
+      "implied_dti_range": [
+        0.27654278317152103,
+        0.3072642278317152
+      ]
+    }
+  },
+  "calibration_note": "The empirical model was fitted on the same fleet family the candidate belongs to (binary, isolated, 3-6e4 px, off-catalogue). Its out-of-sample RMSE on the nine focus sites is 0.094, i.e. the estimate carries roughly a +/-0.19 95% interval. It cannot certify anything about the 0.33-0.45 leaderboard band, which needs the geophysical feature stack.",
+  "ok_to_submit": false,
+  "status": "HISTORICAL UNVALIDATED PROJECTION \u2014 not a score and not actionable",
+  "evidence_class": "HISTORICAL-UNVALIDATED-PROJECTION-NOT-A-SCORE"
+}

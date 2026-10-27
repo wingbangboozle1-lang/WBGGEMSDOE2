@@ -55,7 +55,7 @@ if not (card['verdict'] == 'negative' and card['ok_to_submit'] is False
     raise ValueError('Run-card evidence changed; manual review required before publication')
 import sys
 sys.path.insert(0, str(ROOT / 'src'))
-from wbggems.release import digest, load_negative_release
+from wbggems.release import CANONICAL_RUN_CARDS, digest, load_negative_release
 release = load_negative_release(ROOT)
 if (card['release_reconciliation']['owned_tif_paths'] != release['scope']['owned_tif_paths']
         or card['release_reconciliation']['distinct_raster_sha256'] != release['scope']['distinct_tif_sha256']):
@@ -78,7 +78,7 @@ card['existing_artifact_audit'] = {
 }
 
 text = json.dumps(card, indent=2, allow_nan=False) + '\n'
-for rel in ('evidence/run_card.json', 'docs/data/run-card.json', 'docs/data/run_card.json', 'site/data/run_card.json', 'data_public/run_card.json', 'docs/RUN_CARD.json', 'docs/data/run-card-current.json'):
+for rel in CANONICAL_RUN_CARDS:
     out = ROOT / rel
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text)

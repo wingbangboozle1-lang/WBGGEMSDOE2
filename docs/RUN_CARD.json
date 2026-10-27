@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.run-card.v1",
-  "generated_utc": "2026-10-27T19:13:22.456497+00:00",
+  "generated_utc": "2026-10-27T19:44:34.426353+00:00",
   "hypothesis": "No implemented candidate hypothesis. Revised N1\u2013N4 shortlist is proposal-only; method lane UNASSIGNED.",
   "mechanism": "No candidate surface, dot placement or corrected-v2 scientific holdout was constructed in this review.",
   "non_fault_mimic": "For unimplemented N1: an unfaulted intrusive or volcanic body margin can produce paired multi-physics edges.",
@@ -40,7 +40,7 @@
   },
   "raster_sha256": null,
   "validator": {
-    "status": "No new raster. Existing five TIFF identities independently re-opened; exact inside/grid and strict whole-array outputs in evidence/release_audit.json. Format-only PASS is not upload acceptance.",
+    "status": "No new raster generated in this review. Seven existing identities (including two concurrently merged research artifacts) independently reopened; exact inside/grid and strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance.",
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
     "crs_shape_transform_match": null,
@@ -150,10 +150,10 @@
   "release_reconciliation": {
     "status": "ALL EXISTING TIFFS RESEARCH-ONLY / DO NOT SUBMIT",
     "audit_path": "evidence/release_audit.json",
-    "owned_tif_paths": 6,
-    "distinct_raster_sha256": 5,
+    "owned_tif_paths": 9,
+    "distinct_raster_sha256": 7,
     "pinned_witnesses": 13,
-    "zip_archives": 3,
+    "zip_archives": 6,
     "approved_submission": null,
     "leaderboard_score_estimate": null,
     "all_current_registry_cleared": false,
@@ -173,14 +173,14 @@
   "existing_artifact_audit": {
     "evidence_class": "BYTE-LEVEL-FORENSIC-MEASUREMENT; NOT A CANDIDATE EXPERIMENT",
     "source_path": "evidence/release_audit.json",
-    "source_sha256": "364da2da5e58497cd03606c951bc9a6f67cd3f51238d25515c4183abc36264e7",
-    "recorded_utc": "2026-10-27T19:02:09.139570+00:00",
+    "source_sha256": "80bfcc8b176fe718fcee4119c6d35edd43d534ffeb0417a2beb8ac823fa2e40c",
+    "recorded_utc": "2026-10-27T19:44:34.426353+00:00",
     "scope": {
       "registry_rasters_opened": 13,
       "all_current_registry_rasters_checked": false,
       "registry_manifest_sha256": "364e413a9fabd319cbb380c34cf108a8be5bf675c9dfd92c10f0e0b7d041a409",
-      "owned_tif_paths": 6,
-      "distinct_tif_sha256": 5,
+      "owned_tif_paths": 9,
+      "distinct_tif_sha256": 7,
       "new_candidate_experiments": 0,
       "weekly_slots_used": 0,
       "note": "Already-existing artifacts only. Continued forensic comparisons after a witness do not constitute candidate placement or promotion."
@@ -206,6 +206,117 @@
       }
     },
     "artifacts": [
+      {
+        "path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+        "aliases": [
+          "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif"
+        ],
+        "sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+        "positive_support_cells": 38000,
+        "validator": {
+          "path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+          "sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+          "grid_match_reference": true,
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "bands": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "strict_all_finite_requested": false,
+          "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "organizer_acceptance": "unknown",
+          "submission_approval": false,
+          "footprint_cells": 5167373,
+          "nonfinite_inside": 0,
+          "masked_inside": 0,
+          "nan_total": 0,
+          "inf_total": 0,
+          "nan_inside": 0,
+          "nan_outside": 0,
+          "inf_inside": 0,
+          "inf_outside": 0,
+          "below_zero_inside": 0,
+          "below_zero_outside": 0,
+          "above_one_inside": 0,
+          "above_one_outside": 0,
+          "positive_outside": 0,
+          "diagnostics_band": 1,
+          "all_finite": true,
+          "minimum_inside": 0.0,
+          "maximum_inside": 1.0,
+          "nonzero_inside": 38000,
+          "failures": [],
+          "format_valid_against_reference": true
+        },
+        "strict_all_finite_validator": {
+          "path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+          "sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+          "grid_match_reference": true,
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "bands": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "strict_all_finite_requested": true,
+          "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "organizer_acceptance": "unknown",
+          "submission_approval": false,
+          "footprint_cells": 5167373,
+          "nonfinite_inside": 0,
+          "masked_inside": 0,
+          "nan_total": 0,
+          "inf_total": 0,
+          "nan_inside": 0,
+          "nan_outside": 0,
+          "inf_inside": 0,
+          "inf_outside": 0,
+          "below_zero_inside": 0,
+          "below_zero_outside": 0,
+          "above_one_inside": 0,
+          "above_one_outside": 0,
+          "positive_outside": 0,
+          "diagnostics_band": 1,
+          "all_finite": true,
+          "minimum_inside": 0.0,
+          "maximum_inside": 1.0,
+          "nonzero_inside": 38000,
+          "failures": [],
+          "format_valid_against_reference": true
+        },
+        "surface_rank_correlation": null,
+        "final_rank_correlation": null,
+        "lattice_overlap_3px": 0.9914736842105263,
+        "maximum_overlap_3px": 1.0,
+        "duplicate_witnesses": [
+          "13GEMSDOE",
+          "17GEMSDOE_dense_prior"
+        ],
+        "leaderboard_score_estimate": null,
+        "ok_to_submit": false,
+        "verdict": "negative"
+      },
       {
         "path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
         "aliases": [
@@ -426,6 +537,118 @@
         "duplicate_witnesses": [
           "13GEMSDOE",
           "GEMSDOE27_H31",
+          "17GEMSDOE_dense_prior"
+        ],
+        "leaderboard_score_estimate": null,
+        "ok_to_submit": false,
+        "verdict": "negative"
+      },
+      {
+        "path": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+        "aliases": [
+          "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+          "downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif"
+        ],
+        "sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
+        "positive_support_cells": 100000,
+        "validator": {
+          "path": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+          "sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
+          "grid_match_reference": true,
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "bands": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "strict_all_finite_requested": false,
+          "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "organizer_acceptance": "unknown",
+          "submission_approval": false,
+          "footprint_cells": 5167373,
+          "nonfinite_inside": 0,
+          "masked_inside": 0,
+          "nan_total": 0,
+          "inf_total": 0,
+          "nan_inside": 0,
+          "nan_outside": 0,
+          "inf_inside": 0,
+          "inf_outside": 0,
+          "below_zero_inside": 0,
+          "below_zero_outside": 0,
+          "above_one_inside": 0,
+          "above_one_outside": 0,
+          "positive_outside": 0,
+          "diagnostics_band": 1,
+          "all_finite": true,
+          "minimum_inside": 0.0,
+          "maximum_inside": 1.0,
+          "nonzero_inside": 100000,
+          "failures": [],
+          "format_valid_against_reference": true
+        },
+        "strict_all_finite_validator": {
+          "path": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+          "sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
+          "grid_match_reference": true,
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "bands": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "strict_all_finite_requested": true,
+          "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "organizer_acceptance": "unknown",
+          "submission_approval": false,
+          "footprint_cells": 5167373,
+          "nonfinite_inside": 0,
+          "masked_inside": 0,
+          "nan_total": 0,
+          "inf_total": 0,
+          "nan_inside": 0,
+          "nan_outside": 0,
+          "inf_inside": 0,
+          "inf_outside": 0,
+          "below_zero_inside": 0,
+          "below_zero_outside": 0,
+          "above_one_inside": 0,
+          "above_one_outside": 0,
+          "positive_outside": 0,
+          "diagnostics_band": 1,
+          "all_finite": true,
+          "minimum_inside": 0.0,
+          "maximum_inside": 1.0,
+          "nonzero_inside": 100000,
+          "failures": [],
+          "format_valid_against_reference": true
+        },
+        "surface_rank_correlation": null,
+        "final_rank_correlation": null,
+        "lattice_overlap_3px": 0.99923,
+        "maximum_overlap_3px": 1.0,
+        "duplicate_witnesses": [
+          "13GEMSDOE",
           "17GEMSDOE_dense_prior"
         ],
         "leaderboard_score_estimate": null,
@@ -772,6 +995,13 @@
     ],
     "zip_archives": [
       {
+        "path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.zip",
+        "sha256": "13f64f35121693a139597d8e87ae5e837dacd72756aa6091fb8aec3162f0bca3",
+        "member": "wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+        "member_sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+        "ok_to_submit": false
+      },
+      {
         "path": "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.zip",
         "sha256": "643d91309f2d4ea6215032a1f7c6cc6287108a68780453b5b0a9eca85c9dad15",
         "member": "wbg3-h3pack-34k-20261027T174337Z-zeros.tif",
@@ -786,10 +1016,50 @@
         "ok_to_submit": false
       },
       {
+        "path": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.zip",
+        "sha256": "339cdd8f93c0e067fb8f512bca0f095d426c29a8fee80309e87fce52887adeb5",
+        "member": "wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+        "member_sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
+        "ok_to_submit": false
+      },
+      {
         "path": "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.zip",
         "sha256": "205825f7a5bc3efe8de5a40c93bddf0b569bd89a9f2478d04278e4d154b788a7",
         "member": "wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif",
         "member_sha256": "95458ad456a01733d1e95e537557bd410b82543985cb22b9174429cffc2fa9ad",
+        "ok_to_submit": false
+      },
+      {
+        "path": "downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.zip",
+        "sha256": "339cdd8f93c0e067fb8f512bca0f095d426c29a8fee80309e87fce52887adeb5",
+        "member": "wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+        "member_sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
+        "ok_to_submit": false
+      }
+    ]
+  },
+  "concurrent_main_review": {
+    "source_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "source_prs": [
+      24,
+      26
+    ],
+    "new_candidate_experiments_this_review": 0,
+    "research_scores_replayed": false,
+    "policy": "No witness exemptions; no single-feature or original surface check is inferred from a saved-file audit.",
+    "newly_encountered_artifacts": [
+      {
+        "path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
+        "sha256": "7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36",
+        "positive_support_cells": 38000,
+        "lattice_overlap_3px": 0.9914736842105263,
+        "ok_to_submit": false
+      },
+      {
+        "path": "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif",
+        "sha256": "d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f",
+        "positive_support_cells": 100000,
+        "lattice_overlap_3px": 0.99923,
         "ok_to_submit": false
       }
     ]

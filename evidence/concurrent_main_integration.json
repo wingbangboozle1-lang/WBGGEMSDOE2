@@ -1,0 +1,591 @@
+{
+  "incoming_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+  "new_candidate_experiments_in_this_review": 0,
+  "incoming_scientific_artifacts": "TIFF/ZIP bytes preserved byte-for-byte and independently reopened: 9 paths / 7 identities / 6 ZIPs; all negative. Original research code and receipts preserved at the pinned main parent and archival snapshots; unsafe operational entrypoints retired. No scientific model or holdout rerun.",
+  "conflict_resolution_scope": "Current publication and proposal sources use the negative-only renderer, UNASSIGNED N1\u2013N4 and one canonical negative card with nine aliases. Incoming numerical source evidence retained with non-replay provenance; unsafe promotion expectations replaced with real literal-stop regressions. A non-conflicting auto-merge that weakened build_site_data to accept promotion was explicitly reverted after review.",
+  "conflicts": [
+    {
+      "path": ".github/workflows/pages.yml",
+      "review_branch_blob": "5838567326345916b57c84a2bdaa70d91aa1a101",
+      "incoming_blob": "780ef4b9aa6fbeed27c26e013895fc37478daf31",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": ".github/workflows/tests.yml",
+      "review_branch_blob": "7b799a9e2668572394e1683bf755453fc11724e5",
+      "incoming_blob": "0f782aba07b366828bf8b55bf981a9b4e5f52f2e",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "AGENTS.md",
+      "review_branch_blob": "d5eb17727fa2abc37f471d0d96ed5f5fcc598039",
+      "incoming_blob": "afd70e4d2a8d0103b1e9fa041a4ed5495b7a2c16",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "README.md",
+      "review_branch_blob": "559fb6f2cfa6f4a16b1c9e3a456e833b136f61b7",
+      "incoming_blob": "a4e6ee9c28b08b3cb05a934e9ced02c481c8da1b",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "checks/browser_smoke.cjs",
+      "review_branch_blob": "7438048d5942e9fc72f7ca8a311b3e65c07ccffd",
+      "incoming_blob": "ae71fa293b82eee6a0c92b10cad7df134ddecf90",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "checks/test_build_site.py",
+      "review_branch_blob": "a3626e7f5c51da05d38ad62830a7574a99755ae5",
+      "incoming_blob": "9a255905d0e916146cde23af9c96b3bc7d0f64b6",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "checks/test_evidence.py",
+      "review_branch_blob": "cae2e211063629a9ebc02486e0052868c2030fb7",
+      "incoming_blob": "e3d42a7d0197c0cb50d794c388b06820a9ac4ffe",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "config/research_hypotheses.json",
+      "review_branch_blob": "f708acfe4816b9ff7355c0d59ddaa6211811ab22",
+      "incoming_blob": "0fac3ad49cd8cfa0fe1bfa0cf4555ea4e07fce97",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "data_public/candidate.json",
+      "review_branch_blob": "6d45a7c1be24c2cd8ae0606da19c8874ffc3506f",
+      "incoming_blob": "6fe19a8900f8bf2e72db422655da88c477a9b18d",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "data_public/candidate_estimate.json",
+      "review_branch_blob": "de722b53cc7d95b3b4a6dc7312790c7002385348",
+      "incoming_blob": "9973c2715ad873f2d32ef4fda453488a24a56710",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "data_public/final_audit.json",
+      "review_branch_blob": "a0c26b35c4564ff5c858fbc647fd420314e12160",
+      "incoming_blob": "337b28080a485d49d419228320456a63603d93ea",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "data_public/run_card.json",
+      "review_branch_blob": "0ae6900799a4b7a66178325504632ec764e5806d",
+      "incoming_blob": "e27b1ff824013de41c8fcbfb3b36301aac035d31",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/EXECUTIVE_SUMMARY.md",
+      "review_branch_blob": "7daba294740059be4800314661ec14e04f3d8525",
+      "incoming_blob": "34791eb1ba37c9d3d4f90281ecd46a95f8bc79f8",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/PROJECT_CHARTER.md",
+      "review_branch_blob": "cb9c43e16a732df678319274b1c4203f4facd7ba",
+      "incoming_blob": "513731e36f9fed42937aebd9bb4ef90dd034bbfb",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/RUN_CARD.json",
+      "review_branch_blob": "0ae6900799a4b7a66178325504632ec764e5806d",
+      "incoming_blob": "4e33ee6c6959d71ca3e12c3c399a9108860f2f20",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/RUN_CARD_H3.json",
+      "review_branch_blob": "dc700b552abe99a9941a9dffeb29222d898e8a83",
+      "incoming_blob": "6964d3dca684d8e3c1c9775a35043a5ccb41bc60",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/RUN_CARD_MSPTCD.json",
+      "review_branch_blob": "9038c74171c6925986a175eae98088db7e55e10b",
+      "incoming_blob": "060c3cbc8a73f2f1c8e70c2f0922e346e719f4a7",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/data_preparation.json",
+      "review_branch_blob": "c642edf0f8de9c895b87bf372d1327ea038926b8",
+      "incoming_blob": "7d1642e2098f5eb2ac26b2de99d30ae4e00c9226",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/focus-freshness.json",
+      "review_branch_blob": "5cbf1f2db77af2ddca0822c0d72da04614a9b5b7",
+      "incoming_blob": "72f10b40f23d7ae7f39803d673b3c7c7e6c88792",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/leaderboard.json",
+      "review_branch_blob": "acc57b53386c1cde13959122a2e9df8d7540fcd3",
+      "incoming_blob": "f688ea0ce2f69def01221a4a61b705627380b173",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/research_hypotheses.json",
+      "review_branch_blob": "f708acfe4816b9ff7355c0d59ddaa6211811ab22",
+      "incoming_blob": "0fac3ad49cd8cfa0fe1bfa0cf4555ea4e07fce97",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/run-card-current.json",
+      "review_branch_blob": "0ae6900799a4b7a66178325504632ec764e5806d",
+      "incoming_blob": "e27b1ff824013de41c8fcbfb3b36301aac035d31",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/run-card.json",
+      "review_branch_blob": "0ae6900799a4b7a66178325504632ec764e5806d",
+      "incoming_blob": "5311b30608861757623fe509c2b46d7d1894b28b",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/data/run_card.json",
+      "review_branch_blob": "0ae6900799a4b7a66178325504632ec764e5806d",
+      "incoming_blob": "5311b30608861757623fe509c2b46d7d1894b28b",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/downloads/README.txt",
+      "review_branch_blob": "f82e37a6ffc40ff1c0ad4d5d2e2279ba2ad45204",
+      "incoming_blob": "046b92dc7edab1e73b741b3b34e945a41d3dc661",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/executive-summary.html",
+      "review_branch_blob": "42b39956be8e81f2b0d80ec966b8b60857e4ece2",
+      "incoming_blob": "f9b9f39d5c3943a5901f97b4393647e6942d6c77",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/executive-summary.md",
+      "review_branch_blob": "7daba294740059be4800314661ec14e04f3d8525",
+      "incoming_blob": "99fad57b90fb664462a47a66e0d513aed795e4c1",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/executive-summary/index.html",
+      "review_branch_blob": "f21300d1b15326ed556d426ab6651159698c0715",
+      "incoming_blob": "8bae6187b8d9f8dbeb0a48e4fb42be3cf537fada",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/index.html",
+      "review_branch_blob": "bcb2843fac345d72e467fdbf551502a72f4952b1",
+      "incoming_blob": "44c8e25aa20b317a248b11a4933b76202cc23072",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/methodology.html",
+      "review_branch_blob": "f4debc37ffaaa7d2c718e81f0db816bd9572b104",
+      "incoming_blob": "a7d84a6b15dfae9f5167da91a3a3ca571f03e23c",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/msptcd/executive-summary.html",
+      "review_branch_blob": "6e9619790aed5730737abdd6062f611f9151185c",
+      "incoming_blob": "240da714fe8644cac60b00f53343feda97901d95",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/msptcd/index.html",
+      "review_branch_blob": "8b165b1be227013b5b203997963c4a60e350ad35",
+      "incoming_blob": "dc59daec78eafa4e779ac68e4772e666ab9fa5da",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/msptcd/research.html",
+      "review_branch_blob": "6dacccee1d6d4464aca1cad5edbae21a00766007",
+      "incoming_blob": "58f0430035e89bdec7b0d0d9b89064e5781b74f9",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/msptcd/sources.html",
+      "review_branch_blob": "ae378a77d78fc09bae0c324157ccc221f6ef8f80",
+      "incoming_blob": "c04a5278efd2057ca1c74631d46ab635f317a9ed",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/research.html",
+      "review_branch_blob": "b174c5e72f7064311b126ce7bf0108f3c19a7603",
+      "incoming_blob": "df191273648f6ea2fdeceb71dd6bcb1312f41cfa",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/research/why-b2-scored-2778.html",
+      "review_branch_blob": "99b390b965a642b8e531f8f6b009158d92127e44",
+      "incoming_blob": "73966c0b37222e10b2a4d34a7e9219c38a269c38",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE24.html",
+      "review_branch_blob": "7457cf673630f3b81354157dc2fe6b1ad43b2ad0",
+      "incoming_blob": "cbf35c864007c97a48638304d199ff9c8b939953",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE25.html",
+      "review_branch_blob": "86f397286b3216de4b65e9219883352376287c02",
+      "incoming_blob": "9b090b660fb895043cf78e80b6ae1e438c17d0fb",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE27.html",
+      "review_branch_blob": "e6f5ce9575abee3050d18580fc98ae59198c8f08",
+      "incoming_blob": "15f6d9fed034eb8bc194f1c7025edd06c510f652",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE28.html",
+      "review_branch_blob": "0ef2ea319b44ba30a05090657a3b518bc9452f51",
+      "incoming_blob": "1ad5ba2b41de847fe42d2612aee0823c9bef70c7",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE30.html",
+      "review_branch_blob": "be58e59b57d82ddca79f5dbd75a95eee4b162246",
+      "incoming_blob": "e7c756044d92a0889c3e603df69fa5f75f69c451",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE31.html",
+      "review_branch_blob": "b4b848408aa3fb991614fa8949c764463d40a66b",
+      "incoming_blob": "63a933baedbbc1ebd51bd1a45a527efdced38f97",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE32.html",
+      "review_branch_blob": "38cbb983f5f9b21f32fe4dd3ed9f87236bc72e17",
+      "incoming_blob": "890c846698c0921074018b6b79e02a0bcddbad10",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE33.html",
+      "review_branch_blob": "c5e6bf693582c7458cefbc61fe9ca0a63a8f5be5",
+      "incoming_blob": "c8531b607dc2e14ccd62499fab6184bf2e733477",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sites/GEMSDOE36.html",
+      "review_branch_blob": "3c08eab6a72d68d55a0d2bd322586d58929080e4",
+      "incoming_blob": "dd870cc396e429922f315c48bd245ff472013510",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/sources.html",
+      "review_branch_blob": "25a084ac1b12097c5249710a60c33f9cae860703",
+      "incoming_blob": "d0e3b841fa301f414f192873ae4dc332166d09cd",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/styles.css",
+      "review_branch_blob": "2cfe649bbbb65c5bd1f7bf742e0a7ec476258413",
+      "incoming_blob": "0721d705f34ae050561488d497db45e40bcff167",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/executive-summary.html",
+      "review_branch_blob": "5a6f3a7f74cd1d87c861844e884fdb32660f91b2",
+      "incoming_blob": "8bae6187b8d9f8dbeb0a48e4fb42be3cf537fada",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/index.html",
+      "review_branch_blob": "5a6f3a7f74cd1d87c861844e884fdb32660f91b2",
+      "incoming_blob": "8bae6187b8d9f8dbeb0a48e4fb42be3cf537fada",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/methodology.html",
+      "review_branch_blob": "7ad3e1c680cf875d9e59571654182b70e488b7ce",
+      "incoming_blob": "8bae6187b8d9f8dbeb0a48e4fb42be3cf537fada",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/parallel-lanes.html",
+      "review_branch_blob": "60b47e242125042ff3822173a3fa0db694f05057",
+      "incoming_blob": "8bae6187b8d9f8dbeb0a48e4fb42be3cf537fada",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE24.html",
+      "review_branch_blob": "41834f8f922284d44857af19b1bcebf956e77066",
+      "incoming_blob": "9783cba2493b6eeae94f3c7a5a495ec89bad5df1",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE25.html",
+      "review_branch_blob": "93a5283decc1af03e98341c2aba8404f3e3b2d64",
+      "incoming_blob": "ff24ad9344ced7c256af62806b9f8f40bdb8d7c1",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE27.html",
+      "review_branch_blob": "6c1efc3a98a9174cd8b53044aa3b0ff8f6940c9b",
+      "incoming_blob": "892e616405c0cb01e0cf05c37ffc04372ce766d5",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE28.html",
+      "review_branch_blob": "86486beebb476f7b9a25b2eb5c5fb27c4ae85979",
+      "incoming_blob": "c27f34c725804b0c5bea4ac4c9aa712ced94641f",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE30.html",
+      "review_branch_blob": "c0601a52bf5ed46665c180c4e38d02483fbbaaa6",
+      "incoming_blob": "7ebf97fefa277e6d48748f6d00788a5c7e3d7492",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE31.html",
+      "review_branch_blob": "be21cf24e8109d98fc2b4a593eedca0f2292e8c1",
+      "incoming_blob": "a5c9e40c66495e8fcd24cfc5f5d4ff31df853d66",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE32.html",
+      "review_branch_blob": "d03ce6cfc1e9cc6e2e4e7b3c0085dad613f8ae82",
+      "incoming_blob": "4f7dfa51c1a68059645a1c0b670d74ba1ecc48f3",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE33.html",
+      "review_branch_blob": "3437192944b780489cfdbdd763462fff2923431d",
+      "incoming_blob": "0efa9278557ea8574e607b569dd3f93a4355d808",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sites/GEMSDOE36.html",
+      "review_branch_blob": "31fc9448f285520c84ed38275ac9aa53174c1a08",
+      "incoming_blob": "028f03f92b86e5e309d507c557d866ae9f91f8ed",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submission/sources.html",
+      "review_branch_blob": "9736939de6fb3a28d4733c756bee91e8d02d3dcf",
+      "incoming_blob": "8bae6187b8d9f8dbeb0a48e4fb42be3cf537fada",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "docs/submit/index.html",
+      "review_branch_blob": "5a6f3a7f74cd1d87c861844e884fdb32660f91b2",
+      "incoming_blob": "8bae6187b8d9f8dbeb0a48e4fb42be3cf537fada",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "evidence/RUN_CARD_H3.json",
+      "review_branch_blob": "dc700b552abe99a9941a9dffeb29222d898e8a83",
+      "incoming_blob": "6964d3dca684d8e3c1c9775a35043a5ccb41bc60",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "evidence/RUN_CARD_MSPTCD.json",
+      "review_branch_blob": "9038c74171c6925986a175eae98088db7e55e10b",
+      "incoming_blob": "060c3cbc8a73f2f1c8e70c2f0922e346e719f4a7",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "evidence/data_preparation.json",
+      "review_branch_blob": "c642edf0f8de9c895b87bf372d1327ea038926b8",
+      "incoming_blob": "7d1642e2098f5eb2ac26b2de99d30ae4e00c9226",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "evidence/registry_recheck_20261027.json",
+      "review_branch_blob": "7b9f5d447f058543aa77410dbb2a4352852b57b8",
+      "incoming_blob": "58e3ad96207ac509452c7698b7c2784e55a182f7",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "evidence/run_card.json",
+      "review_branch_blob": "0ae6900799a4b7a66178325504632ec764e5806d",
+      "incoming_blob": "5311b30608861757623fe509c2b46d7d1894b28b",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "research/findings.md",
+      "review_branch_blob": "a356612d632710ca29ac0514f373fd9d0cb7497f",
+      "incoming_blob": "93068432bdbb40543e6ed067daedb62fac364e88",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "research/hypotheses.md",
+      "review_branch_blob": "491724d63bd181a2f4d3618edca174cdfe0fa936",
+      "incoming_blob": "3ede82faf59eddc10e79d5df0216fc751b83973f",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "research/msptcd_findings.md",
+      "review_branch_blob": "fcc7cdc11da9a326feeb259e83d32e660928c8cb",
+      "incoming_blob": "3ba7a1fc3b5673ab24b1a8545bc384fa53dfad7e",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "research/msptcd_hypotheses.md",
+      "review_branch_blob": "8083a61505b2b285207e8160085b6084b5c50e08",
+      "incoming_blob": "3e3aec0e0f2763456da7178ded6d8a8c9991ee49",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "research/msptcd_sources.md",
+      "review_branch_blob": "7bac2252b8c003f879afcbe978347061ae47ff02",
+      "incoming_blob": "b56b87da6a36b264e1d8512472cbd476aeefb5c6",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/build_hypotheses.py",
+      "review_branch_blob": "2839ee51b2374a8e2459312fffe088aec49d39f7",
+      "incoming_blob": "3fb21185b87489525081672f39f57276b6c65c1c",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/build_msptcd_site.py",
+      "review_branch_blob": "611debdd8b4458babae7a758d95ab0fc61898d33",
+      "incoming_blob": "17a9d659447a55e518ca247914651dbdbcc0a1b4",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/build_run_card.py",
+      "review_branch_blob": "f6c7436ad207816e331a4fa320458f7e15bdbae9",
+      "incoming_blob": "c3d0a64e641e6adb51761f94c36942c98adee2d8",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/build_site.py",
+      "review_branch_blob": "a04c469904dbe55aaa4c57ad0040977bd0ffae9a",
+      "incoming_blob": "db579980e9eee9e604c8eae0877ed7356f3cab6e",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/build_site_v2.py",
+      "review_branch_blob": "bcd696a70bc259a7495abddd5385870f54ede087",
+      "incoming_blob": "cf98583ad54c3b4996654c565d231057e701f7f0",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/build_submit_page.py",
+      "review_branch_blob": "bcd696a70bc259a7495abddd5385870f54ede087",
+      "incoming_blob": "1d1f81cce7de1e50d0d36e0e77c3466ff77e3c2f",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/final_audit.py",
+      "review_branch_blob": "c91f4c7cce9a533711839b7327820e3ac0760a89",
+      "incoming_blob": "0a7702dbaa029250b4a841356250baa1641ed58c",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/generate_h3_pack.py",
+      "review_branch_blob": "c91f4c7cce9a533711839b7327820e3ac0760a89",
+      "incoming_blob": "d7dd44506184125ce733f0bea437b168714e7e4e",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/make_candidate.py",
+      "review_branch_blob": "c91f4c7cce9a533711839b7327820e3ac0760a89",
+      "incoming_blob": "2e33d5993aa6363f212fee6952483d9f46c27fed",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/run_wbg2_msptcd.py",
+      "review_branch_blob": "5219dcc5d7ab2452aa9f6d6522437bc73cfb1cb7",
+      "incoming_blob": "b18bda698d0cb93c45e435eb09354905956fbc2c",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/sync_msptcd_evidence.py",
+      "review_branch_blob": "18689a6d33fabd0053f76479c9d8611142f63846",
+      "incoming_blob": "44636792ab70d8f05fe29f439dcb601d9d3da23f",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/uniqueness_audit.py",
+      "review_branch_blob": "c91f4c7cce9a533711839b7327820e3ac0760a89",
+      "incoming_blob": "2de73602ccd9ae7c3dcae181f8b35175e2dd4ba2",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "scripts/write_h3_submission.py",
+      "review_branch_blob": "c91f4c7cce9a533711839b7327820e3ac0760a89",
+      "incoming_blob": "ec6c37ed9b66133a98d52776b7bd07f25ddabc22",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/assets/style.css",
+      "review_branch_blob": "d9581de42d3fbfdb3d7f98e503aeb3db01cc0107",
+      "incoming_blob": "73260e1a66c1b62fdb49fa0238885a4c02fed043",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/data/focus-freshness.json",
+      "review_branch_blob": "5cbf1f2db77af2ddca0822c0d72da04614a9b5b7",
+      "incoming_blob": "72f10b40f23d7ae7f39803d673b3c7c7e6c88792",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/data/leaderboard.json",
+      "review_branch_blob": "7d9592971855796b06ddc65942e844f5f84efe81",
+      "incoming_blob": "10fffcd99b3ed98474ef35c40d895932e3f9971d",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/data/research_hypotheses.json",
+      "review_branch_blob": "f708acfe4816b9ff7355c0d59ddaa6211811ab22",
+      "incoming_blob": "0fac3ad49cd8cfa0fe1bfa0cf4555ea4e07fce97",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/data/run_card.json",
+      "review_branch_blob": "0ae6900799a4b7a66178325504632ec764e5806d",
+      "incoming_blob": "5311b30608861757623fe509c2b46d7d1894b28b",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/executive.html",
+      "review_branch_blob": "48846902d7aba3b9ab85f6895b43cb32187806f6",
+      "incoming_blob": "fac2c2b9ba0f9e744ca37300424402bbb784216f",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/index.html",
+      "review_branch_blob": "88e15d66eb32ac264638a583b55871f3aa8727a2",
+      "incoming_blob": "caf04918372706584ba026aa3c20720f5d10da79",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "site/research.html",
+      "review_branch_blob": "15fadf3a51008517d1407d3db57782c60f3851b4",
+      "incoming_blob": "6e879803680c51fec9dea33172601daf37abc73c",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "src/wbggems/msptcd.py",
+      "review_branch_blob": "bed526a836723187db99389761d4c0a989792d1e",
+      "incoming_blob": "ab9c6175c85b962df1cd446c821a54d184ad479d",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "tests/test_candidate_submission.py",
+      "review_branch_blob": "0c60bd755b12b1f0665fc448233b509adc91db67",
+      "incoming_blob": "6d1c110cd5355ccde5c73ee2ee7a061f842aa288",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    },
+    {
+      "path": "tests/test_hypothesis_review.py",
+      "review_branch_blob": "681f537fcfa463ceaea301c8ebfc23c5b070d88b",
+      "incoming_blob": "fa57b1ef651b758892e69e529f3a76c8b4867e06",
+      "resolution": "retain negative publication guards and reviewed unassigned N1\u2013N4 source; regenerate generated mirrors after auditing incoming artifacts"
+    }
+  ],
+  "issue_update_permission": {
+    "issue": 23,
+    "edit": "denied, HTTP403",
+    "comment": "denied by integration",
+    "formatted_update": "research/release-blockers-20261027.md",
+    "pr29_cross_lane_comment": "https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/pull/29#issuecomment-6452329578"
+  }
+}

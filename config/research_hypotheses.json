@@ -7,7 +7,7 @@
     "experiments_run_in_this_review_lane": 0
   },
   "ranking_basis": "Qualitative prior ranking of possible paired spatial HOLDOUT-DTI improvement balanced against implementation cost. These ranks are not scores, measured deltas, calibrated forecasts or evidence of performance.",
-  "novelty_scope": "Revised after reading all local MSPTCD operators and historical generators: depth-shifted concordance, conductive-flank asymmetry, strain/seismicity conditioning and greedy placement have already been tried here. N1-N4 name unimplemented tests in this checkout, not globally novel methods. Nine priority-site HEADs differ from audited pins, and their newer raster bytes have not all been audited.",
+  "novelty_scope": "Revised after reading all local MSPTCD operators and historical generators: depth-shifted concordance, conductive-flank asymmetry, strain/seismicity conditioning and greedy placement have already been tried here. N1-N4 name unimplemented tests in this checkout, not globally novel methods. Nine priority-site HEADs differ from audited pins, and their newer raster bytes have not all been audited. Concurrent main research reviewed at 29abbf69 includes CBS subsurface-only HGB and E3 flexure/alteration/strain fusion. N1 requires signed cross-profile edge-pair geometry and a body-mimic veto, not their unsigned transforms or a soft weighting change; none of N1\u2013N4 is a claim of globally novel geology or validated performance.",
   "input_restore": "evidence/data_preparation.json",
   "superseded_shortlist": "evidence/reconciliation_archive/research_hypotheses_prior.json",
   "hypotheses": [
@@ -47,7 +47,7 @@
         "cond_surf (owner-mirror band 17; fold-local rank strata, units unverified)",
         "det_elev_slope (owner-mirror band 19)"
       ],
-      "signature": "Find magnetic ridges that persist across 300–1000 m smoothing but lose their co-located surface total-count edge in low-relief, deeper-conductive-base strata. Match sampling within fold-local B17 conductivity-rank strata and train any regime threshold on visible-training cells only. Compare this radiometric-quiet branch with the same magnetic-edge model and sampling without the branch.",
+      "signature": "Find magnetic ridges that persist across 300\u20131000 m smoothing but lose their co-located surface total-count edge in low-relief, deeper-conductive-base strata. Match sampling within fold-local B17 conductivity-rank strata and train any regime threshold on visible-training cells only. Compare this radiometric-quiet branch with the same magnetic-edge model and sampling without the branch.",
       "why_uncatalogued": "A subsurface contrast may remain magnetically visible while young sediment conceals a surface lithologic or scarp expression, a plausible omission regime for surface mapping. Radiometric quietness is a cover/measurement hypothesis, not positive evidence of a geothermal vent or a fault by itself.",
       "difference_from_reviewed_methods": "MSPTCD treats terrain-normalized total-count edges as an additional positive feature. This proposal instead tests explicit cross-modal edge disappearance as a cover-conditioned transfer rule, with matched sampling and a negative control. The earlier conductivity-flank and depth-offset ideas are already implemented and are not reused as new hypotheses.",
       "non_fault_mimic": "Moist soil, uniform sediment composition, variable aircraft clearance, weak radiometric signal or a buried non-faulted volcanic/plutonic contact can produce the same discordance.",
