@@ -3,7 +3,7 @@
 <nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="research.html" aria-current="page">Research</a><a href="sources.html">Sources</a></nav><div class="top-right"><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a><span class="top-status"><span class="dot"></span> Submission blocked</span></div></div></header><main id="main" class="shell main"><article class="card guide-card research-prose"><h1>Why GEMSDOE32 B2 may have scored well — and whether we can beat it</h1>
 <p><strong>Evidence class: HISTORICAL-MIRROR-MEASUREMENT + USER-REPORTED CLAIM — NOT ORGANIZER-CONFIRMED</strong></p>
 <p>This note answers the user's direct question: <em>Why and how did <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778</code> get the highest score among the nine focus sites, and can we generate a submission that scores higher than 0.2778?</em></p>
-<p>All numeric claims below are labeled per the parallel-run protocol. No ORGANIZER-CONFIRMED receipt linking a specific raster SHA-256 to its score is present in any of the nine repositories at their audited commits. The 0.2778 figure is therefore treated as a <strong>user-reported historical claim</strong>, not a verified organizer score.</p>
+<p>All numeric claims below are labeled per the parallel-run protocol. No ORGANIZER-CONFIRMED receipt linking a specific raster SHA-256 to its score is present in any of the nine repositories at their audited commits. The 0.2778 figure is therefore treated as a <strong>USER-REPORTED historical claim</strong>, not a verified organizer score.</p>
 <h2>1. What the bytes prove (and what they do not)</h2>
 <p>We reopened the nine pinned historical TIFFs at their exact pinned file SHA-256 and compared them against the hash-pinned owner mirror of the competition grid (footprint = 5,167,373 cells, EPSG:32611, 100 m). All nine match the mirror's CRS/shape/transform.</p>
 <p>Measured lineage:</p>
@@ -19,11 +19,11 @@
 <p>Key implications:</p>
 <ol>
 <li><strong>Coverage vs. mass trade-off.</strong> Dense, correlated ridges (e.g., GEMSDOE24's 60,069 dots) can saturate coverage while accumulating false-positive mass. Sparsifying from 44,090 to 37,654 could retain substantial truth credit while reducing αF; the hidden labels are unavailable, so that is a mechanism compatible with the user-reported claims, not a measured improvement.</li>
-<li><strong>Catalogue-proximity pruning.</strong> <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">DrivenData staff</a> state that exact known USGS/INGENIOUS fault pixels are excluded from scoring, but do <strong>not</strong> confirm a surrounding buffer. Dots 1–2 pixels away are <strong>not</strong> known to be masked: they may earn truth credit if near an unmapped fault, or add false-positive mass if far from one. Removing them might improve or worsen T and F. The user-reported figures differ by 0.0178 (0.2778 − 0.2600), but neither the difference nor this mechanism is confirmed by a receipt or private-truth analysis.</li>
+<li><strong>Catalogue-proximity pruning.</strong> <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">DrivenData staff</a> state that exact known USGS/INGENIOUS fault pixels are excluded from scoring, but do <strong>not</strong> confirm a surrounding buffer. Dots 1–2 pixels away are <strong>not</strong> known to be masked; nearby withheld truth may matter: they may earn truth credit if near an unmapped fault, or add false-positive mass if far from one. Removing them might improve or worsen T and F. The user-reported figures differ by 0.0178 (0.2778 − 0.2600), but neither the difference nor this mechanism is confirmed by a receipt or private-truth analysis.</li>
 <li><strong>Not proof of optimality.</strong> Without private truth, per-dot T/F decomposition, or authenticated receipts, we cannot prove this causal story, rule out that a denser or differently placed set would score higher, or guarantee generalization to the private set. The 0.2778 claim is <strong>not</strong> evidence that B2 is globally optimal.</li>
 </ol>
 <h2>3. Could we score higher than 0.2778?</h2>
-<p>Honest answer: <strong>unknown, and no calibrated forecast is available.</strong></p>
+<p>Honest answer: <strong>unknown. No defensible score estimate or calibrated forecast is available.</strong></p>
 <ul>
 <li>We did not compute HOLDOUT-DTI for any of the nine historical files under the required shared evaluator (<code>gems57-pooled-hide-v2</code>, whole-segment buffered holdouts, visible-faults-only catalogue features, pooled α=0.2 β=0.8). Only a private, non-compliant evaluator was used in parallel sessions.</li>
 <li>No submission-page receipt links any historical SHA-256 to a live leaderboard value. The public leaderboard observation was 0.4544 on 27 October 2026 at approximately 17:21 UTC (subsequent automatic refresh failed); the aggregate leaderboard is not a per-file receipt, and public performance does not guarantee private-round performance.</li>
@@ -49,8 +49,8 @@
 <li><strong>Prove improvement</strong> via paired bootstrap CIs against the same-fold incumbent, then validate format (<code>[0,1]</code>, float32, EPSG:32611, single band, footprint mask) with the shared writer and a separate freshness/registry check.</li>
 </ol>
 <p>Only then can a new TIF be labeled <strong>OK TO DOWNLOAD AND SUBMIT</strong> with an evidence class of HOLDOUT-DTI (and later ORGANIZER-CONFIRMED upon receipt).</p>
-<h2>6. Our provisional next experiment if the gate is resolved</h2>
-<p>The top-ranked hypothesis in <code>research/hypotheses.md</code> is <strong>H1: depth-shifted, multi-scale gravity–magnetic discontinuity</strong> using <code>iso_grav_anom</code>, <code>rtp</code>/TMI, <code>depth_to_base_surf</code> (conductive-base depth, not assumed basement), and <code>det_elev</code>:</p>
+<h2>6. Highest-ranked research proposal — not an assigned lane</h2>
+<p>The method lane remains UNASSIGNED; H1 is not nominated or authorized for an experiment. The highest-ranked desk proposal in <code>research/hypotheses.md</code> is <strong>H1: depth-shifted, multi-scale gravity–magnetic discontinuity</strong> using <code>iso_grav_anom</code>, <code>rtp</code>/TMI, <code>depth_to_base_surf</code> (conductive-base depth, not assumed basement), and <code>det_elev</code>:</p>
 <ul>
 <li><strong>Physical signature:</strong> signed directional gradients at several 100 m scales; estimate a gravity-edge normal, test whether a magnetic edge displaced along that normal is consistent with a bounded depth/dip proxy. Both magnetic polarities are possible; a density contrast does not imply polarity.</li>
 <li><strong>Why it could find a missing fault:</strong> a buried property offset may extend beneath basin fill beyond mapped surface traces, leaving a displaced potential-field signature.</li>
@@ -58,7 +58,7 @@
 <li><strong>Non-fault mimic:</strong> unfaulted lithologic contact, dike, survey striping; falsified via cross-orientation, shuffled-field, and survey-block controls.</li>
 <li><strong>Expected DTI improvement:</strong> medium upside, medium cost — qualitative judgment, not a numerical forecast. Requires feature canaries and a full holdout before any slot is spent.</li>
 </ul>
-<p>If H1's canaries pass and its pooled HOLDOUT-DTI beats the incumbent's paired CI on the same folds, it would become the first candidate eligible for format and full-registry checks.</p>
+<p>If a method is explicitly assigned and all pre-placement gates are resolved, any future candidate must pass feature canaries, matched shared-evaluator holdouts, complete-registry checks, and format validation before a separate slot selector. The ranking itself authorizes nothing.</p>
 <h2>7. Practical submission guidance and the [0,1] error</h2>
 <p>The exact bytes behind the user's earlier portal error (<code>Predicted values must be in range [0, 1]</code>) were not supplied, so its cause is unknown. Potential range, non-finite, masking and metadata problems can be diagnosed separately without guessing or clipping. Our read-back validator (<code>python scripts/validate_tif.py file.tif --reference authenticated_sample.tif --strict-all-finite</code>) checks:</p>
 <ul>
@@ -72,7 +72,7 @@
 <li>No authenticated DrivenData bytes, private truth, or submission-page receipts.</li>
 <li>No complete current registry; nine-file audit is sufficient to prove duplicates, not to prove uniqueness.</li>
 <li>No USGS/GDR binary downloads were verified in this sandbox; relevant direct download hosts were outside its network allowlist.</li>
-<li>No explicit single-method lane assignment in the prompt — we provisionally nominate H1 but do not proceed to experiments until confirmed.</li>
+<li>No explicit single-method lane assignment in the prompt — the active lane is UNASSIGNED, and H1 is not nominated or authorized.</li>
 </ul>
 <p>Resolving these is the next session's work. The current repository decision remains <strong>DO NOT SUBMIT — no new TIF is approved</strong> (<code>evidence/run_card.json</code> verdict: negative, ok_to_submit: false).</p>
 <hr />

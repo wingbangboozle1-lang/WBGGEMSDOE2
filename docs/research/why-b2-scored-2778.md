@@ -4,7 +4,7 @@
 
 This note answers the user's direct question: *Why and how did `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros: 0.2778` get the highest score among the nine focus sites, and can we generate a submission that scores higher than 0.2778?*
 
-All numeric claims below are labeled per the parallel-run protocol. No ORGANIZER-CONFIRMED receipt linking a specific raster SHA-256 to its score is present in any of the nine repositories at their audited commits. The 0.2778 figure is therefore treated as a **user-reported historical claim**, not a verified organizer score.
+All numeric claims below are labeled per the parallel-run protocol. No ORGANIZER-CONFIRMED receipt linking a specific raster SHA-256 to its score is present in any of the nine repositories at their audited commits. The 0.2778 figure is therefore treated as a **USER-REPORTED historical claim**, not a verified organizer score.
 
 ## 1. What the bytes prove (and what they do not)
 
@@ -27,12 +27,12 @@ For pooled true-positive mass T, false-positive mass F, and truth count N, with 
 Key implications:
 
 1. **Coverage vs. mass trade-off.** Dense, correlated ridges (e.g., GEMSDOE24's 60,069 dots) can saturate coverage while accumulating false-positive mass. Sparsifying from 44,090 to 37,654 could retain substantial truth credit while reducing αF; the hidden labels are unavailable, so that is a mechanism compatible with the user-reported claims, not a measured improvement.
-2. **Catalogue-proximity pruning.** [DrivenData staff](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516) state that exact known USGS/INGENIOUS fault pixels are excluded from scoring, but do **not** confirm a surrounding buffer. Dots 1–2 pixels away are **not** known to be masked: they may earn truth credit if near an unmapped fault, or add false-positive mass if far from one. Removing them might improve or worsen T and F. The user-reported figures differ by 0.0178 (0.2778 − 0.2600), but neither the difference nor this mechanism is confirmed by a receipt or private-truth analysis.
+2. **Catalogue-proximity pruning.** [DrivenData staff](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516) state that exact known USGS/INGENIOUS fault pixels are excluded from scoring, but do **not** confirm a surrounding buffer. Dots 1–2 pixels away are **not** known to be masked; nearby withheld truth may matter: they may earn truth credit if near an unmapped fault, or add false-positive mass if far from one. Removing them might improve or worsen T and F. The user-reported figures differ by 0.0178 (0.2778 − 0.2600), but neither the difference nor this mechanism is confirmed by a receipt or private-truth analysis.
 3. **Not proof of optimality.** Without private truth, per-dot T/F decomposition, or authenticated receipts, we cannot prove this causal story, rule out that a denser or differently placed set would score higher, or guarantee generalization to the private set. The 0.2778 claim is **not** evidence that B2 is globally optimal.
 
 ## 3. Could we score higher than 0.2778?
 
-Honest answer: **unknown, and no calibrated forecast is available.**
+Honest answer: **unknown. No defensible score estimate or calibrated forecast is available.**
 
 - We did not compute HOLDOUT-DTI for any of the nine historical files under the required shared evaluator (`gems57-pooled-hide-v2`, whole-segment buffered holdouts, visible-faults-only catalogue features, pooled α=0.2 β=0.8). Only a private, non-compliant evaluator was used in parallel sessions.
 - No submission-page receipt links any historical SHA-256 to a live leaderboard value. The public leaderboard observation was 0.4544 on 27 October 2026 at approximately 17:21 UTC (subsequent automatic refresh failed); the aggregate leaderboard is not a per-file receipt, and public performance does not guarantee private-round performance.
@@ -59,9 +59,9 @@ Both witnesses are hash-pinned and independently rechecked in `evidence/registry
 
 Only then can a new TIF be labeled **OK TO DOWNLOAD AND SUBMIT** with an evidence class of HOLDOUT-DTI (and later ORGANIZER-CONFIRMED upon receipt).
 
-## 6. Our provisional next experiment if the gate is resolved
+## 6. Highest-ranked research proposal — not an assigned lane
 
-The top-ranked hypothesis in `research/hypotheses.md` is **H1: depth-shifted, multi-scale gravity–magnetic discontinuity** using `iso_grav_anom`, `rtp`/TMI, `depth_to_base_surf` (conductive-base depth, not assumed basement), and `det_elev`:
+The method lane remains UNASSIGNED; H1 is not nominated or authorized for an experiment. The highest-ranked desk proposal in `research/hypotheses.md` is **H1: depth-shifted, multi-scale gravity–magnetic discontinuity** using `iso_grav_anom`, `rtp`/TMI, `depth_to_base_surf` (conductive-base depth, not assumed basement), and `det_elev`:
 
 - **Physical signature:** signed directional gradients at several 100 m scales; estimate a gravity-edge normal, test whether a magnetic edge displaced along that normal is consistent with a bounded depth/dip proxy. Both magnetic polarities are possible; a density contrast does not imply polarity.
 - **Why it could find a missing fault:** a buried property offset may extend beneath basin fill beyond mapped surface traces, leaving a displaced potential-field signature.
@@ -69,7 +69,7 @@ The top-ranked hypothesis in `research/hypotheses.md` is **H1: depth-shifted, mu
 - **Non-fault mimic:** unfaulted lithologic contact, dike, survey striping; falsified via cross-orientation, shuffled-field, and survey-block controls.
 - **Expected DTI improvement:** medium upside, medium cost — qualitative judgment, not a numerical forecast. Requires feature canaries and a full holdout before any slot is spent.
 
-If H1's canaries pass and its pooled HOLDOUT-DTI beats the incumbent's paired CI on the same folds, it would become the first candidate eligible for format and full-registry checks.
+If a method is explicitly assigned and all pre-placement gates are resolved, any future candidate must pass feature canaries, matched shared-evaluator holdouts, complete-registry checks, and format validation before a separate slot selector. The ranking itself authorizes nothing.
 
 ## 7. Practical submission guidance and the [0,1] error
 
@@ -86,7 +86,7 @@ The optional strict flag also flags outside-footprint NaNs even though the offic
 - No authenticated DrivenData bytes, private truth, or submission-page receipts.
 - No complete current registry; nine-file audit is sufficient to prove duplicates, not to prove uniqueness.
 - No USGS/GDR binary downloads were verified in this sandbox; relevant direct download hosts were outside its network allowlist.
-- No explicit single-method lane assignment in the prompt — we provisionally nominate H1 but do not proceed to experiments until confirmed.
+- No explicit single-method lane assignment in the prompt — the active lane is UNASSIGNED, and H1 is not nominated or authorized.
 
 Resolving these is the next session's work. The current repository decision remains **DO NOT SUBMIT — no new TIF is approved** (`evidence/run_card.json` verdict: negative, ok_to_submit: false).
 

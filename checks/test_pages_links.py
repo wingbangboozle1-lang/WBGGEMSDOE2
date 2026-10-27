@@ -64,11 +64,15 @@ def test_b2_analysis_is_rendered_and_does_not_invent_a_catalogue_buffer():
     assert "research/why-b2-scored-2778.html" in (ROOT / "docs/index.html").read_text()
 
 
-def test_five_ranked_proposals_match_both_dashboards():
+def test_ranked_proposals_match_both_dashboards():
+    import json
+    data = json.loads((ROOT / "config/research_hypotheses.json").read_text())
+    rows = data["hypotheses"]
+    assert 3 <= len(rows) <= 5
+    assert data["method_lane"]["status"] == "UNASSIGNED"
     ranking = (ROOT / "research/hypotheses.md").read_text()
-    assert sum(f"## H{n} —" in ranking for n in range(1, 6)) == 5
     docs = (ROOT / "docs/research.html").read_text()
     fieldnotes = (ROOT / "site/research.html").read_text()
-    assert "Five ranked desk proposals" in docs
-    assert "Five research hypotheses" in fieldnotes
-    assert "Slope asymmetry along buried edges" in docs and "Slope asymmetry along buried edges" in fieldnotes
+    for row in rows:
+        assert row["title"] in ranking and row["title"] in docs and row["title"] in fieldnotes
+    assert "UNASSIGNED" in docs and "UNASSIGNED" in fieldnotes

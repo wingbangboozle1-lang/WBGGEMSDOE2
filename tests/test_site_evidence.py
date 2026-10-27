@@ -58,6 +58,11 @@ def test_published_evidence_is_fail_closed_and_synced():
     assert all(r['max_peer_overlap']['fraction'] > .7 for r in rows)
     home = (SITE / 'index.html').read_text()
     assert 'Submission download unavailable' in home and 'NO FILE CLEARED' in home
+    freshness = json.loads((SITE / 'data/focus-freshness.json').read_text())
+    assert freshness == json.loads((ROOT / 'docs/data/focus-freshness.json').read_text())
+    assert 'newer rasters are not downloaded or audited' in freshness['scope'].lower()
+    app = (SITE / 'assets/app.js').read_text()
+    assert "data/focus-freshness.json" in app and 'Newer rasters have not been audited' in app
 
 
 def test_registered_continuous_witness_is_not_mislabeled_as_dots():

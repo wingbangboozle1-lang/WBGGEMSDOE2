@@ -1,6 +1,6 @@
 # GEMS Fieldnotes
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [B2 lineage and score-claim analysis](docs/research/why-b2-scored-2778.html), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
 
 **27 October recheck:** the prior registry measurements and both rejected TIFFs were independently reopened with matching results. The public leaderboard showed **0.4544** at approximately 17:21 UTC ([dated public observation](evidence/public_leaderboard_observation_20261027.json)); this is not a submission receipt or a score for any project file. A later automated fetch failed, so the dashboard marks that snapshot stale. An older [shared registry index](evidence/shared_registry_index_summary.json) lists 695 distinct hashes, 684 outside our witness manifest; only metadata were counted, not those raster bytes. The duplicate stop and incomplete inventory prevent a new experiment or submission. The preflight stops before opening a preview if the inventory is incomplete, and conservatively applies the 0.90 rank-correlation threshold to absolute correlation.
 
@@ -11,6 +11,12 @@ Read this README, including the original project brief below, then read the curr
 The checkout was initially a one-line README, not a working training pipeline. A public owner mirror of the 19-band feature raster and grid/catalogue was restored, hash-checked, and kept out of Git. Its origin has **not** been authenticated against DrivenData, and its purported sample is not the all-absence example described by the public problem page. No competition credentials, private truth, organizer receipt, or authenticated weekly quota were available. The unchanged shared builder rebuilt the 19 label-free raw-band caches locally; the separate derived feature bank is absent from the pinned public template tree. See the source register for exact hashes, rights and the independent grid irregularity.
 
 A previously registered stride-5 lattice covers 5,160,724 of 5,167,373 mirrored-footprint cells within 3 pixels. Consequently any 37,654-dot map has at least 82.34% overlap with that reference—above the literal 70% stop. This does **not** establish impossibility for every smaller budget. A separately registered continuous probability prior is positive across the entire footprint; if the shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether it should count as “dots” needs an explicit policy decision. The protocol says stop, not silently exempt a witness or force edge dots. This review lane generated no TIFF after that stop; two separate parallel research TIFFs were later independently rejected. The nine historical downloads are research-only.
+
+## Evidence freshness and assigned lane — 27 October 2026 UTC
+
+The newer **0.4544 public leaderboard observation** is dated above; the earlier **0.4437** snapshot from 26 October is superseded. The prompt's 0.3195 and 0.4413 “current high” figures are conflicting USER-SUPPLIED claims. None is a per-file receipt or a HOLDOUT-DTI result. All nine priority-site HEADs changed since their audited raster pins; newer rasters were not re-audited.
+
+The method lane is **UNASSIGNED**: H1 is the highest-ranked desk proposal, not authorization to run it. This session restored hash-pinned owner-mirror inputs and 19 raw bands into ignored local storage; the separate shared derived feature bank is absent. These files are not organizer-authenticated, are not tracked, and may be absent in another checkout or later session.
 
 ## Reproduce the audit
 
@@ -29,6 +35,7 @@ python scripts/audit_portfolio.py --fetch
 python scripts/inspect_registry_index.py --fetch
 python scripts/review_parallel_candidate.py
 python scripts/review_conduit_candidate.py
+python scripts/build_hypotheses.py
 python scripts/build_run_card.py
 python scripts/build_site.py
 python scripts/build_site_data.py

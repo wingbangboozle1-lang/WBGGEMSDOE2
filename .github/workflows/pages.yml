@@ -55,6 +55,7 @@ jobs:
           key: gems-leaderboard-v1-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Rebuild both evidence-first static sites
         run: |
+          python scripts/build_hypotheses.py
           python scripts/build_run_card.py
           python scripts/build_site.py
           python scripts/build_site_data.py

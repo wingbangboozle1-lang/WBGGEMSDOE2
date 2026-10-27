@@ -3,5 +3,5 @@ numpy>=1.26,<3
 scipy>=1.11,<2
 rasterio>=1.3,<2
 pytest>=8,<10
-scikit-learn>=1.3,<2  # lane H1 holdout/final training only
-Markdown>=3.7,<4  # render the B2 research brief on both local and Pages builds
+scikit-learn>=1.3,<2  # spatial holdout/model experiments after explicit lane and data gates
+Markdown>=3.7,<4  # render the B2 research brief on local and Pages builds
