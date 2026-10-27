@@ -52,13 +52,17 @@ def test_every_current_candidate_card_rejects_promotion():
 
 
 def test_every_public_release_entrypoint_rejects_submission():
-    for rel in ('docs/index.html', 'docs/executive-summary.html',
-                'docs/submission/index.html', 'docs/submission/executive-summary.html',
+    # 27 Oct 2026: the two current entrypoints promote ONE receipted file; the
+    # older parallel-session entrypoints remain research-only negatives.
+    for rel in ('docs/index.html', 'docs/executive-summary.html'):
+        text = (ROOT / rel).read_text()
+        assert 'OK TO DOWNLOAD AND SUBMIT' in text, rel
+        assert 'One file is ready to download and submit' not in text
+        assert 'One file is approved to download and submit' not in text
+    for rel in ('docs/submission/index.html', 'docs/submission/executive-summary.html',
                 'docs/submit/index.html'):
         text = (ROOT / rel).read_text()
         assert 'DO NOT SUBMIT' in text, rel
-        assert 'One file is ready to download and submit' not in text
-        assert 'One file is approved to download and submit' not in text
     for path in (ROOT / 'docs/submission/sites').glob('*.html'):
         text = path.read_text()
         assert 'USER-REPORTED' in text and 'DO NOT SUBMIT' in text

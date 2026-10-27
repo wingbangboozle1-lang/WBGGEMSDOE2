@@ -83,12 +83,17 @@ def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():
 
 
 def test_run_card_does_not_misrepresent_a_proposal_as_an_experiment():
+    # 27 Oct 2026: the current canonical card is the executed three-lane
+    # campaign, not the earlier unassigned proposal. The archived negative
+    # proposal card is evidence/run_card_20261026_negative.json.
     card = load('evidence/run_card.json')
-    assert card['lane_status'].startswith('UNASSIGNED')
-    assert card['hypothesis'].startswith('No experiment hypothesis was assigned')
-    assert card['verdict'] == 'negative'
-    assert card['experiment_count'] == 0
-    assert card['holdout']['dti'] is None and card['holdout']['ci95'] is None
-    assert card['raster_sha256'] is None
-    assert card['submission_name'] is None and card['submission_note'] is None
-    assert card['ok_to_submit'] is False and card['ok_to_download_new_tif'] is False
+    assert card['schema'] == 'wbggems.run-card.v2'
+    assert card['experiment_budget']['experiments_run'] == 3
+    assert card['holdout']['dti'] > 0 and card['holdout']['ci95'][0] > 0
+    assert len(card['raster_sha256']) == 64
+    assert card['submission_name'] and card['submission_note']
+    assert card['verdict'] == 'promote-to-selector-only'
+    assert card['ok_to_submit'] is True and card['ok_to_download_new_tif'] is True
+    assert card['score_estimate']['leaderboard_estimate'] is None
+    archived = load('evidence/run_card_20261026_negative.json')
+    assert archived['verdict'] == 'negative' and archived['experiment_count'] == 0

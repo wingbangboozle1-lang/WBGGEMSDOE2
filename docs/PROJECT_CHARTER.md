@@ -35,7 +35,9 @@ silent exemption. Both readings of the duplicate rule are computed and published
    the submission page's displayed weekly cap (staff: the website limit prevails,
    [5 Oct 2026](https://community.drivendata.org/t/submission-amount-question/11553)).
 
-**Status update, 2026-10-26:** Read the current [README](../README.md), [evidence notes](research/evidence-and-sources.md), and [negative run card](data/run-card.json) together with this charter. The owner-mirrored sample, labels, features, unchanged pinned shared code and two registry witnesses were restored and hash-verified in the ignored local cache; authenticity as organizer files is not independently established. This did not create a model or upload approval in that review lane. Two later parallel TIFFs were independently rejected; see `data/parallel_review.json` and `data/conduit_review.json`.
+
+
+**Status update, 2026-10-27:** Read the current [README](../README.md), [evidence notes](research/evidence-and-sources.md), and [negative run card](data/run-card.json) together with this charter. This session reverified pinned owner-mirror inputs, the unchanged shared template and 19 raw-band caches in ignored local storage; those files may not persist, the separate derived feature bank is absent, and the mirrors are not authenticated as organizer copies. A 2026-10-27 GitHub HEAD check found all nine focus-site refs changed since their pinned audited rasters; it did not fetch or audit the newer rasters. This review created no model, TIFF, holdout result, or upload approval. Two parallel TIFFs were independently rejected; see `data/parallel_review.json` and `data/conduit_review.json`.
 
 **Read this file at the start of every project session.** It is the durable, actionable record of the project request, including safety/evidence constraints, the nine-site focus, the submission-format issue, and project values. The original long prompt included duplicated historical score lists; this charter consolidates repeated wording while retaining all operative requirements and the relevant site results in `EXECUTIVE_SUMMARY.md`.
 

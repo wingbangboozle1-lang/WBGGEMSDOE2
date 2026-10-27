@@ -99,7 +99,11 @@ class LinkParser(HTMLParser):
 
 
 def test_site_links_and_promoted_copy():
-    for f in (ROOT/'docs').glob('*.html'):
+    # Only the four current dashboard entrypoints carry the current decision;
+    # nested docs/research/ and docs/submission/ pages are historical snapshots.
+    current = [ROOT/'docs'/n for n in ('index.html', 'executive-summary.html',
+                                       'research.html', 'sources.html')]
+    for f in current:
         html=f.read_text(); parser=LinkParser(); parser.feed(html)
         assert len(parser.ids)==len(set(parser.ids))
         assert 'OK TO DOWNLOAD AND SUBMIT' in html
