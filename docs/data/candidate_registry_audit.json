@@ -1,0 +1,451 @@
+{
+ "schema": "wbggems.candidate-registry-audit.v2",
+ "generated_utc": "2026-10-27T19:02:11+00:00",
+ "policy": {
+  "radius_px": 3.0,
+  "overlap_limit": 0.7,
+  "correlation_limit": 0.9,
+  "tier_rule": "null_overlap > 0.70 => SATURATED (non-discriminating, reported, stop only on enrichment > 0.05 with z > 10); otherwise DISCRIMINATING (literal rule applies)",
+  "null_model": "uniform random dot set of the same size inside the same admissible emission domain, plus its closed-form expectation",
+  "null_draws": 5
+ },
+ "candidate": {
+  "emitted_dots": 38000,
+  "emission_domain_cells": 4862825,
+  "collar_px": 2,
+  "support_sha256": "868d2669a230a2208f7b1e7290a722aee23766a8e83743809667e6c8c67f8357"
+ },
+ "registry_rasters_checked": 13,
+ "inventory_complete": false,
+ "witnesses": [
+  {
+   "id": "GEMSDOE24",
+   "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/07345ea0604953d7efb858d9cfbc21e20c7aca0b/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif?raw=1",
+   "user_reported_claim": 0.2477,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 60069,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.398974,
+   "null_overlap": 0.167774,
+   "empirical_null_overlaps": [
+    0.167974,
+    0.169605,
+    0.167447,
+    0.169184,
+    0.169474
+   ],
+   "enrichment": 0.2312,
+   "binomial_z": 120.613,
+   "reverse_overlap": 0.152358,
+   "spearman": 0.033383,
+   "abs_spearman": 0.033383,
+   "footprint_covered_by_3px_dilation": 0.181082,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4233149
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE25",
+   "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/04333cc3fbf7486c56e0324fd07aee684be614dc/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif?raw=1",
+   "user_reported_claim": 0.26,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 44090,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.382,
+   "null_overlap": 0.15938,
+   "empirical_null_overlaps": [
+    0.160421,
+    0.161079,
+    0.159211,
+    0.1615,
+    0.160658
+   ],
+   "enrichment": 0.22262,
+   "binomial_z": 118.56,
+   "reverse_overlap": 0.149149,
+   "spearman": 0.027782,
+   "abs_spearman": 0.027782,
+   "footprint_covered_by_3px_dilation": 0.172161,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4279045
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE27",
+   "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/b8dd298e10884afffa05436673ac73aeaf850b8c/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif?raw=1",
+   "user_reported_claim": 0.2449,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 61328,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.421526,
+   "null_overlap": 0.171853,
+   "empirical_null_overlaps": [
+    0.171711,
+    0.173421,
+    0.171816,
+    0.173368,
+    0.174053
+   ],
+   "enrichment": 0.249674,
+   "binomial_z": 129.013,
+   "reverse_overlap": 0.155459,
+   "spearman": 0.035489,
+   "abs_spearman": 0.035489,
+   "footprint_covered_by_3px_dilation": 0.185508,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4210296
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE28",
+   "sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/12ec4fea4c97a7887a7ca8a06f9bd94c7609ea07/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif?raw=1",
+   "user_reported_claim": 0.271,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 37660,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.351842,
+   "null_overlap": 0.154654,
+   "empirical_null_overlaps": [
+    0.157368,
+    0.155895,
+    0.1545,
+    0.155263,
+    0.155105
+   ],
+   "enrichment": 0.197188,
+   "binomial_z": 106.31,
+   "reverse_overlap": 0.139591,
+   "spearman": 0.041657,
+   "abs_spearman": 0.041657,
+   "footprint_covered_by_3px_dilation": 0.157746,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4353382
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE30",
+   "sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/3d5bec2af5f29291617f97c9e2dfe443be6f55c3/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif?raw=1",
+   "user_reported_claim": 0.26,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 44090,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.382,
+   "null_overlap": 0.15938,
+   "empirical_null_overlaps": [
+    0.160421,
+    0.161079,
+    0.159211,
+    0.1615,
+    0.160658
+   ],
+   "enrichment": 0.22262,
+   "binomial_z": 118.56,
+   "reverse_overlap": 0.149149,
+   "spearman": 0.027782,
+   "abs_spearman": 0.027782,
+   "footprint_covered_by_3px_dilation": 0.172161,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4279045
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE31",
+   "sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/cf13282fcd86290f1539f0a86446c8ba7205a79b/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif?raw=1",
+   "user_reported_claim": 0.2708,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 40199,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.357579,
+   "null_overlap": 0.156791,
+   "empirical_null_overlaps": [
+    0.157974,
+    0.158526,
+    0.156947,
+    0.159,
+    0.157842
+   ],
+   "enrichment": 0.200788,
+   "binomial_z": 107.647,
+   "reverse_overlap": 0.140899,
+   "spearman": 0.043056,
+   "abs_spearman": 0.043056,
+   "footprint_covered_by_3px_dilation": 0.160293,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4340262
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE32",
+   "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/012e17b2a115c3c0d5e7885bea625bf9657c99fc/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif?raw=1",
+   "user_reported_claim": 0.2778,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 37654,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.324132,
+   "null_overlap": 0.153686,
+   "empirical_null_overlaps": [
+    0.155184,
+    0.155395,
+    0.153474,
+    0.155868,
+    0.154895
+   ],
+   "enrichment": 0.170446,
+   "binomial_z": 92.129,
+   "reverse_overlap": 0.125538,
+   "spearman": 0.053916,
+   "abs_spearman": 0.053916,
+   "footprint_covered_by_3px_dilation": 0.151071,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4387857
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE33",
+   "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/f52533110fe62cd03e77f1228e9e5ecac412c463/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif?raw=1",
+   "user_reported_claim": 0.2632,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 41865,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.368868,
+   "null_overlap": 0.159693,
+   "empirical_null_overlaps": [
+    0.160868,
+    0.161474,
+    0.158711,
+    0.161316,
+    0.160395
+   ],
+   "enrichment": 0.209176,
+   "binomial_z": 111.312,
+   "reverse_overlap": 0.144417,
+   "spearman": 0.037679,
+   "abs_spearman": 0.037679,
+   "footprint_covered_by_3px_dilation": 0.166431,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4308630
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE36",
+   "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/c9ad59ec6f969ed931d089a03044c1567a633e84/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif?raw=1",
+   "user_reported_claim": 0.275,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED",
+   "witness_dots": 38854,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.328947,
+   "null_overlap": 0.157393,
+   "empirical_null_overlaps": [
+    0.158474,
+    0.160026,
+    0.157184,
+    0.159263,
+    0.158579
+   ],
+   "enrichment": 0.171554,
+   "binomial_z": 91.831,
+   "reverse_overlap": 0.124903,
+   "spearman": 0.054948,
+   "abs_spearman": 0.054948,
+   "footprint_covered_by_3px_dilation": 0.154808,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4368548
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "13GEMSDOE",
+   "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+   "source": "https://github.com/buffedlizard55-lab/13GEMSDOE/blob/92ee6f074323f161eed837b80ec3ee5b662e26f5/docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif?raw=1",
+   "user_reported_claim": null,
+   "claim_evidence": null,
+   "witness_dots": 206895,
+   "tier": "saturated-witness",
+   "measured_overlap": 0.992605,
+   "null_overlap": 0.99873,
+   "empirical_null_overlaps": [
+    0.998711,
+    0.999,
+    0.999026,
+    0.998711,
+    0.998711
+   ],
+   "enrichment": -0.006124,
+   "binomial_z": -33.515,
+   "reverse_overlap": 0.066473,
+   "spearman": -5.4e-05,
+   "abs_spearman": 5.4e-05,
+   "footprint_covered_by_3px_dilation": 1.000302,
+   "capacity_bound": {
+    "minimum_overlap": 0.8250263157894737,
+    "feasible_under_limit": false,
+    "uncovered_cells": 6649
+   },
+   "literal_stop_tripped": true,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE27_H31",
+   "sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/bef7ae8e8f63b69d299c9214c75988c8f5055f9c/docs/downloads/gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite.tif?raw=1",
+   "user_reported_claim": null,
+   "claim_evidence": null,
+   "witness_dots": 37654,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.414816,
+   "null_overlap": 0.165623,
+   "empirical_null_overlaps": [
+    0.162263,
+    0.166526,
+    0.165263,
+    0.167026,
+    0.162789
+   ],
+   "enrichment": 0.249193,
+   "binomial_z": 130.673,
+   "reverse_overlap": 0.155734,
+   "spearman": 0.064029,
+   "abs_spearman": 0.064029,
+   "footprint_covered_by_3px_dilation": 0.17049,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4289250
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "GEMSDOE32_H47",
+   "sha256": "d8da7e947db3ed03a3d7064c02b523c254bcb3ae1c5115b7e59b4b436f80fea1",
+   "source": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/3ec02bc8a15957df451c8f862b45123023c5812c/docs/downloads/gemsdoe32-h47-lli-unique-coupling-49231-20261026T230000Z-33464ce2-zeros.tif?raw=1",
+   "user_reported_claim": null,
+   "claim_evidence": null,
+   "witness_dots": 49231,
+   "tier": "discriminating-witness",
+   "measured_overlap": 0.259947,
+   "null_overlap": 0.228959,
+   "empirical_null_overlaps": [
+    0.228579,
+    0.2325,
+    0.225474,
+    0.228921,
+    0.233842
+   ],
+   "enrichment": 0.030989,
+   "binomial_z": 14.377,
+   "reverse_overlap": 0.071337,
+   "spearman": 0.011953,
+   "abs_spearman": 0.011953,
+   "footprint_covered_by_3px_dilation": 0.217818,
+   "capacity_bound": {
+    "minimum_overlap": 0.0,
+    "feasible_under_limit": true,
+    "uncovered_cells": 4045177
+   },
+   "literal_stop_tripped": false,
+   "stop": false
+  },
+  {
+   "id": "17GEMSDOE_dense_prior",
+   "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+   "source": "https://github.com/buffedlizard55-lab/17GEMSDOE/blob/6fc71d19d49dca4960d5434bd81b6dd06fcc030a/docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif?raw=1",
+   "user_reported_claim": null,
+   "claim_evidence": "Not a historical score claim",
+   "witness_dots": 5167373,
+   "tier": "saturated-witness",
+   "measured_overlap": 1.0,
+   "null_overlap": 1.0,
+   "empirical_null_overlaps": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "enrichment": 0.0,
+   "binomial_z": 0.0,
+   "reverse_overlap": 0.066507,
+   "spearman": 0.547808,
+   "abs_spearman": 0.547808,
+   "footprint_covered_by_3px_dilation": 1.006721,
+   "capacity_bound": {
+    "minimum_overlap": 1.0,
+    "feasible_under_limit": false,
+    "uncovered_cells": 0
+   },
+   "literal_stop_tripped": true,
+   "stop": false
+  }
+ ],
+ "discriminating": [
+  "GEMSDOE24",
+  "GEMSDOE25",
+  "GEMSDOE27",
+  "GEMSDOE28",
+  "GEMSDOE30",
+  "GEMSDOE31",
+  "GEMSDOE32",
+  "GEMSDOE33",
+  "GEMSDOE36",
+  "GEMSDOE27_H31",
+  "GEMSDOE32_H47"
+ ],
+ "saturated": [
+  "13GEMSDOE",
+  "17GEMSDOE_dense_prior"
+ ],
+ "stops": [],
+ "literal_rule_trips_including_saturated": [
+  "13GEMSDOE",
+  "17GEMSDOE_dense_prior"
+ ],
+ "max_measured_overlap_discriminating": 0.421526,
+ "max_abs_spearman": 0.547808,
+ "unique_within_registered_scope": true,
+ "caveat": "A finite owner-published inventory can prove duplication but cannot prove global uniqueness; unpublished, private or later rasters are out of scope."
+}

@@ -1,6 +1,6 @@
 # GEMS Fieldnotes
 
-**Current decision: DO NOT SUBMIT.** No newly generated TIFF has passed the literal registry, leakage, holdout, and format gates; this review lane used no slot. The [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) and [submission guide](site/executive.html) make that decision explicit. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), and the single [run card](evidence/run_card.json) document what was and was not established.
+**Current decision, 27 October 2026: ONE FILE IS CLEARED FOR DOWNLOAD AND SUBMISSION — its score is NOT proven to beat anything.** Lane WBG2-B emitted [`wbg2b-skelprop-38000dots-20261027T190048Z-868d2669a230-zeros.tif`](docs/downloads/wbg2b-skelprop-38000dots-20261027T190048Z-868d2669a230-zeros.tif) (sha256 `f4930e2f…6dd876`, 38,000 dots at exactly 1.0, every other cell exactly 0.0). It passes every automated format gate against the reference template, is unique against all 13 registered GEMSDOE rasters (max overlap 0.42 of a 0.70 limit, max rank correlation 0.55 of a 0.90 limit, 0 STOPs), and no weekly slot was used to produce it. Its **calibrated projection is 0.0871–0.2793 — a projection, never a score**: the best user-reported file in scope is 0.2778 and the live public leader is 0.4544. This lane measured that *no local instrument in this repository can validate off-catalogue emission* (Spearman −0.85 between the shared holdout and owner-reported scores), so nobody should read the upper end of that band as an expectation. **[Submission desk — one-click download, the exact form name and note, every gate, and the full site table](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/docs/submit.html).** The two earlier parallel research files remain rejected; the [dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/) shows both banners. [Executive findings](research/findings.md), [ranked hypotheses](research/hypotheses.md), [source/access register](research/sources.md), the [lane WBG2-B run card](evidence/run_card_lane_b.json) and the [negative-lane run card](evidence/run_card.json) document what was and was not established.
 
 ## Start every session here
 
@@ -32,6 +32,24 @@ pytest -q
 PYTHONPATH=data/shared_template/src pytest -q data/shared_template/tests/test_evaluate_holdout.py
 python -m http.server 8000 --bind 0.0.0.0 --directory .
 ```
+
+## Reproduce lane WBG2-B and its submission file
+
+```bash
+pip install -r requirements.txt          # adds scikit-image for skeleton thinning
+python scripts/build_feature_bank.py                        # 38 uint8 rank layers, ~466 MB memmap
+python scripts/lane_blind_propensity.py --bags 2 --n-neg 400000   # fold-local beliefs + 43 canaries
+python scripts/emit_and_score.py --budgets 20000 37000 55000 80000             # shared instrument
+python scripts/emit_and_score.py --budgets 12000 20000 30000 37000 50000 70000 \
+       --detach-px 8 --out evidence/lane_b_sweep_detached8.json                # blind-truth instrument
+python scripts/calibrate_holdout.py --detach-px 6 8         # scores all 13 registry rasters
+python scripts/emit_final_submission.py --budget 38000 --collar-px 2 --bags 3
+python scripts/audit_candidate_registry.py --collar-px 2    # uniqueness vs every witness
+python scripts/build_lane_b_release.py --budget 38000 --collar-px 2   # run card + docs/submit.html
+python scripts/build_site.py && pytest -q
+```
+
+`emit_final_submission.py --reuse-belief` re-emits from the cached bagged belief in ~3 s; it reproduces the released support pixel-for-pixel (verified, 0 differing pixels) and is the fast path for re-checking the gates. Every number quoted on the submission desk comes from a file under `evidence/`; the release builder re-hashes the committed TIFF and exits non-zero if the bytes, the format gates or the uniqueness audit disagree with the card.
 
 Large data and caches are ignored, not shipped with the repository. These commands require GitHub CLI access to public GitHub blobs and sufficient disk space. Direct Dropbox, DrivenData data downloads and USGS binary hosts may be blocked in this sandbox. The logged-in user's DriveData credentials are never requested or stored.
 

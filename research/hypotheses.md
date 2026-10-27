@@ -1,4 +1,20 @@
-# Preregistered research options — no experiment cleared
+# Preregistered research options — one executed, three still blocked
+
+**Update, 27 October 2026 — H5 was executed and is the only lane in this repository that produced a submission file.** Ranked by expected DTI improvement per unit of implementation cost *as understood now*, with the executed result in place of the guess:
+
+| Rank | Lane | Expected DTI gain | Cost | Status |
+|---|---|---|---|---|
+| 1 | **H5 blind-trace propensity + 1-px skeleton thinning** (this repo, lane WBG2-B) | Measured: thinning alone +0.038 HOLDOUT-DTI over unthinned top-N at equal budget (paired CI95 [+0.030, +0.047]); supervision +0.061 over the unsupervised control [+0.048, +0.075]. Transfer to the live truth **unmeasured and unmeasurable here** — see the inversion finding in `research/findings.md`. | Low–medium: reuses the pinned shared holdout, evaluator and writer; needs scikit-learn + scikit-image, 2 CPUs, ~4 min per bag set. | **Executed.** File emitted, format-valid, unique in registered scope, projection 0.0871–0.2793, no slot used. |
+| 2 | **H4 flight-line repeatability veto** | Unknown but high-value: it is the only proposal that *removes* a named mimic (survey striping) rather than adding another lineament. H5's biggest unmitigated risk is exactly that mimic. | High: needs the GeoDAWN line CSVs, host unreachable from this sandbox; obtainability **not verified**. | Blocked on data access. Do not implement before confirming the download. |
+| 3 | **H3 catchment-normalized cross-drainage deflection** | Plausibly the highest ceiling — the leading public scores (0.33–0.45) look terrain-driven, and drainage deflection is independent of the geophysical bands every other lane uses. | High: needs absolute elevation (3DEP), not the provided detrended band. | Blocked on data access; 3DEP is free and official but unverified here. |
+| 4 | **H2 conductive-flank asymmetry** | Modest: a signed side-to-side asymmetry conditioned on depth is a refinement of an already-studied conductivity/edge family. | Medium: same cached bands. | Not run. |
+| 5 | **H1 depth-shifted multi-scale gravity/magnetic discontinuity** | **Rejected as a submission route.** Two independent parallel lanes that implemented variants of it were stopped: 99.38 % and 99.87 % of their dots fell within 3 px of a registered witness, and the second used synthetic trend fields instead of the named features. | — | Research only. Do not re-run for submission without a policy decision on the saturated witnesses. |
+
+The four original proposals are preserved verbatim below as preregistered text.
+
+---
+
+## Original preregistration (26 October 2026)
 
 **Status, 26 October 2026:** proposals, not results. The incoming prompt refers to a “single method paragraph” but supplies no explicit named lane. We provisionally choose **H1** as this project's only lane; it has **not** been run in this review lane. A separate parallel lane reported three experiments and was independently rejected. The overlap feasibility test stops the familiar 37,654-dot budget before a surface or TIFF is constructed. No weekly slot is selected. The qualitative order is a judgment about potential signal versus cost, not a numerical score forecast. This repository was empty at checkout; “new here” does **not** prove absence from all other sites or unpublished parallel work.
 

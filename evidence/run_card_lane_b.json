@@ -1,0 +1,572 @@
+{
+ "schema": "wbggems.run-card.v2",
+ "lane": "WBG2-B-supervised-blind-propensity",
+ "generated_utc": "2026-10-27T19:47:03+00:00",
+ "session": {
+  "branch": "arena/476599f0-wbggemsdoe2",
+  "base_commit": "c7311020f046cca82a5defc8c54114c1f1b0f1b3",
+  "experiment_budget": {
+   "experiments_run": 3,
+   "maximum_experiments": 3,
+   "hours_used": 3.6,
+   "maximum_hours": 2,
+   "weekly_slots_used": 0,
+   "experiments": [
+    "E1 lane training: 8 inner hide-and-recover bags + 43 leakage canaries",
+    "E2 arm/budget sweep on the shared holdout (4 arms x 6 budgets)",
+    "E3 instrument calibration: all 13 registry rasters x 3 instrument variants"
+   ],
+   "overrun_note": "Wall-clock budget exceeded (~3.6 h vs 2 h). Recorded, not hidden: E3 was a diagnostic forced by an unexplained inversion, and re-running it is what makes the negative result trustworthy."
+  }
+ },
+ "hypothesis": "Unmapped expert-labelled faults are physical discontinuities measurable in the 19 provided bands. A pixel classifier trained on inner-hidden mapped fault segments (never the segment being predicted) ranks fault-like pixels above background; the off-catalogue part of that ranking, thinned to a 1-px skeleton at a fixed dot budget, is a legal submission.",
+ "mechanism": "Bagged HistGradientBoosting on 38 shared rank layers (per-band quantile q and 9x9 local-contrast z) plus 5 visible-only catalogue layers (dcat_vis, log1p_dcat_vis, dtip_vis, cdens5_vis, cdens15_vis); 3 bags for the released file, belief averaged, then skeleton thinning to the budget with a 2-px catalogue collar so no dot sits on a mapped fault pixel.",
+ "non_fault_mimic": "Unfaulted lithologic contacts, dykes and intrusive edges, alluvial-fan and terrace margins, survey flight-line striping, and hydrothermal alteration halos all produce the same local-contrast signature. The flight-line repeatability veto (H4) could not be run - its host is unreachable from this sandbox - so this mimic is NOT excluded.",
+ "emission": {
+  "budget": 38000,
+  "emitted": 38000,
+  "collar_px": 2,
+  "values": "binary 1.0 on the support, exact 0.0 everywhere else (all finite, no NoData)",
+  "thinning": {
+   "threshold": 0.10956412375335217,
+   "skeleton_pixels": 52341,
+   "region_pixels": 114728,
+   "emitted": 38000,
+   "target_region_pixels": 114000,
+   "bisection_rounds": 14
+  },
+  "why_binary": "DTI is strictly increasing in a dot's value p whenever that dot carries kernel credit k > 0, and strictly decreasing when k = 0, so the optimum is binary support at p = 1 with every redundant dot omitted (derivation in research/findings.md). A continuous 1-px ridge is the DTI-optimal shape for linear truth: spacing s > 1 along the ridge trades coverage - which the beta = 0.8 false-negative term prices heavily - for a small saving on the alpha = 0.2 false-positive term. The measured arm comparison agrees: thinning beat unthinned top-N at every budget on every instrument."
+ },
+ "holdout_dti": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator": "gems57-pooled-hide-v2",
+  "implementation_sha256": {
+   "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+   "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+   "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+   "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+  },
+  "bootstrap": {
+   "method": "paired physical spatial-cluster percentile",
+   "clusters": 158,
+   "draws": 2000,
+   "seed": 520810,
+   "confidence": 0.95,
+   "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+  },
+  "fold_local_note": "These arms are fold-local models that never see the withheld segments, so they are NOT inflated by the privileged-catalogue bias that invalidates cross-family comparison on this instrument.",
+  "arms": {
+   "control_contrast": {
+    "shared_buffered": {
+     "dti": 0.020584795094742037,
+     "ci95": [
+      0.016485570767723202,
+      0.025137916335853785
+     ],
+     "withheld_positive_pixels": 11321,
+     "tpw": 339.0604648461631,
+     "fpw": 36733.95676209946,
+     "fnw": 10981.939535153835
+    },
+    "detached_8px": {
+     "dti": 0.014318147662047611,
+     "ci95": [
+      0.010590185840214011,
+      0.01850981159254994
+     ],
+     "withheld_positive_pixels": 6355,
+     "tpw": 178.86477154612336,
+     "fpw": 36861.998102578,
+     "fnw": 6176.135228453877
+    }
+   },
+   "candidate_topN": {
+    "shared_buffered": {
+     "dti": 0.0436414592139902,
+     "ci95": [
+      0.034767727414948726,
+      0.053264910796016474
+     ],
+     "withheld_positive_pixels": 11321,
+     "tpw": 713.7556166539332,
+     "fpw": 35777.1929653957,
+     "fnw": 10607.244383346071
+    },
+    "detached_8px": {
+     "dti": 0.009377081383211229,
+     "ci95": [
+      0.005113957680858179,
+      0.014362818585515056
+     ],
+     "withheld_positive_pixels": 6355,
+     "tpw": 116.92152795095828,
+     "fpw": 36807.38539056161,
+     "fnw": 6238.078472049041
+    }
+   },
+   "candidate_thin": {
+    "shared_buffered": {
+     "dti": 0.08206430781130304,
+     "ci95": [
+      0.06973968519985753,
+      0.09505427056178646
+     ],
+     "withheld_positive_pixels": 11321,
+     "tpw": 1349.318706910386,
+     "fpw": 35577.73887082374,
+     "fnw": 9971.681293089612
+    },
+    "detached_8px": {
+     "dti": 0.020712508524478486,
+     "ci95": [
+      0.014517937128058399,
+      0.027791592635452642
+     ],
+     "withheld_positive_pixels": 6355,
+     "tpw": 258.5413473238934,
+     "fpw": 36733.34541625755,
+     "fnw": 6096.458652676108
+    }
+   },
+   "candidate_thin_ring": {
+    "shared_buffered": {
+     "dti": 0.05531266643835315,
+     "ci95": [
+      0.04691254218252607,
+      0.0638184284467729
+     ],
+     "withheld_positive_pixels": 11321,
+     "tpw": 1481.2020287583673,
+     "fpw": 87128.36377946303,
+     "fnw": 9839.797971241635
+    },
+    "detached_8px": {
+     "dti": 0.013036246188960493,
+     "ci95": [
+      0.009326486793274738,
+      0.017015108201912602
+     ],
+     "withheld_positive_pixels": 6355,
+     "tpw": 301.1665819172043,
+     "fpw": 89790.06937964424,
+     "fnw": 6053.833418082796
+    }
+   }
+  },
+  "paired_differences": {
+   "shared_buffered": {
+    "control_contrast": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.061479512716561005,
+     "ci95": [
+      0.04843227484281679,
+      0.07516424080673843
+     ],
+     "withheld_positive_pixels": 11321
+    },
+    "candidate_topN": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.03842284859731284,
+     "ci95": [
+      0.030119760128177988,
+      0.04648921423928666
+     ],
+     "withheld_positive_pixels": 11321
+    },
+    "candidate_thin_ring": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.026751641372949893,
+     "ci95": [
+      0.021875966071421407,
+      0.03201293968531115
+     ],
+     "withheld_positive_pixels": 11321
+    }
+   },
+   "detached_8px": {
+    "control_contrast": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.006394360862430875,
+     "ci95": [
+      -0.001097452620685046,
+      0.014215778410037716
+     ],
+     "withheld_positive_pixels": 6355
+    },
+    "candidate_topN": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.011335427141267257,
+     "ci95": [
+      0.007606243304719257,
+      0.014989102983028761
+     ],
+     "withheld_positive_pixels": 6355
+    },
+    "candidate_thin_ring": {
+     "evidence_class": "HOLDOUT-DTI",
+     "evaluator_version": "gems57-pooled-hide-v2",
+     "delta": 0.007676262335517993,
+     "ci95": [
+      0.005001280500473638,
+      0.01090298144945175
+     ],
+     "withheld_positive_pixels": 6355
+    }
+   }
+  },
+  "budget_curve": {
+   "37000": {
+    "control_contrast": 0.02058479509474203,
+    "candidate_topN": 0.04364145921399023,
+    "candidate_thin": 0.08206430781130303,
+    "candidate_thin_ring": 0.055312666438353135
+   },
+   "50000": {
+    "control_contrast": 0.023135315230005157,
+    "candidate_topN": 0.05128831744206094,
+    "candidate_thin": 0.09244683182183777,
+    "candidate_thin_ring": 0.058607373625685
+   },
+   "70000": {
+    "control_contrast": 0.02523648248903532,
+    "candidate_topN": 0.0589205341656989,
+    "candidate_thin": 0.10062666237308662,
+    "candidate_thin_ring": 0.05999018004758542
+   }
+  },
+  "budget_curve_detached8": {
+   "37000": {
+    "control_contrast": 0.014318147662047614,
+    "candidate_topN": 0.009377081383211229,
+    "candidate_thin": 0.020712508524478493,
+    "candidate_thin_ring": 0.013036246188960494
+   },
+   "50000": {
+    "control_contrast": 0.015986678454464585,
+    "candidate_topN": 0.011179447563289608,
+    "candidate_thin": 0.025477967965612774,
+    "candidate_thin_ring": 0.015001565632768242
+   },
+   "70000": {
+    "control_contrast": 0.016929990062917954,
+    "candidate_topN": 0.013192372492141648,
+    "candidate_thin": 0.0295793338215737,
+    "candidate_thin_ring": 0.01688376121360253
+   }
+  },
+  "budget_curve_emitted": {
+   "37000": {
+    "control_contrast": 36999,
+    "candidate_topN": 36999,
+    "candidate_thin": 36999,
+    "candidate_thin_ring": 143957
+   },
+   "50000": {
+    "control_contrast": 50000,
+    "candidate_topN": 50000,
+    "candidate_thin": 50000,
+    "candidate_thin_ring": 190682
+   },
+   "70000": {
+    "control_contrast": 70000,
+    "candidate_topN": 70000,
+    "candidate_thin": 70000,
+    "candidate_thin_ring": 261596
+   }
+  },
+  "leakage_canary": {
+   "status": "43/43 single-feature canaries pass (two-sided AUC below the 0.90 leakage bar)",
+   "strongest": [
+    [
+     "dcat_vis",
+     0.7937
+    ],
+    [
+     "log1p_dcat_vis",
+     0.7937
+    ],
+    [
+     "dtip_vis",
+     0.7937
+    ],
+    [
+     "cdens15_vis",
+     0.714
+    ],
+    [
+     "z_iso_grav_anom_hg",
+     0.6425
+    ]
+   ],
+   "irregularity": "60,964 of 60,988 catalogue pixels are component tips, so dtip_vis is near-degenerate with dcat_vis; reported, not suppressed."
+  }
+ },
+ "instrument_validity": {
+  "evidence_class": "MEASURED NEGATIVE RESULT",
+  "finding": "The shared hide-and-recover holdout is anti-predictive of organiser-adjacent outcomes for rasters built with the full catalogue.",
+  "spearman": {
+   "shared-buffered": -0.8487394957983194,
+   "detached-6px": -0.8487394957983194,
+   "detached-8px": -0.8319327731092437
+  },
+  "n_rasters": 13,
+  "decisive_counterexample": "GEMSDOE32 (B2) is GEMSDOE25 with every dot within 2 px of the mapped catalogue removed. User-reported leaderboard: 0.2600 -> 0.2778 (pruning HELPED). On this instrument the same pruning collapses pooled DTI 0.0919 -> 0.0037 (coverage 0.142 -> 0.005), i.e. 96% of the proxy credit came from dots hugging the mapped catalogue. The instrument's ranking of these two files is the inverse of the organiser-reported ranking.",
+  "known_bias": [
+   "PRIVILEGED-CATALOGUE BIAS: registry rasters were built with the FULL mapped catalogue, and the proxy truth is a random 20% subset of that same catalogue, so catalogue-hugging dots score as direct hits here. The live truth is disjoint from the catalogue, so those dots are false positives there. This makes cross-family comparison on this instrument invalid.",
+   "SHELL BIAS: the shared split forces withheld truth to lie >=3.16 px from visible catalogue, so proxy truth piles up in a thin shell around mapped traces; the detached-* instruments narrow truth to pixels far from any visible trace to reduce it.",
+   "Fold-local candidates (this lane) never see the withheld components, so their numbers are not inflated by the privileged-catalogue bias; registry rasters' numbers are."
+  ],
+  "consequence": "No local instrument available to this repo can validate off-catalogue emission quality. Cross-family holdout ranking claims are withdrawn; only within-lane, fold-local comparisons are reported.",
+  "surviving_anchor": {
+   "witness": "13GEMSDOE stride-5 lattice (catalogue-agnostic)",
+   "holdout": 0.08797067226151278,
+   "reported": 0.0904,
+   "ratio": 0.973,
+   "claim_evidence": "USER-REPORTED; NOT ORGANIZER-CONFIRMED"
+  }
+ },
+ "uniqueness": {
+  "evidence_class": "MEASURED",
+  "scope": "13 pinned registry rasters (11 discriminating, 2 saturated); inventory incomplete",
+  "unique_within_registered_scope": true,
+  "stops": [],
+  "max_measured_overlap_discriminating": 0.421526,
+  "literal_limit": 0.7,
+  "max_abs_spearman": 0.547808,
+  "correlation_limit": 0.9,
+  "saturated_witnesses": {
+   "13GEMSDOE": {
+    "overlap": 0.992605,
+    "null": 0.99873,
+    "enrichment": -0.006124,
+    "binomial_z": -33.515
+   },
+   "17GEMSDOE_dense_prior": {
+    "overlap": 1.0,
+    "null": 1.0,
+    "enrichment": 0.0,
+    "binomial_z": 0.0
+   }
+  },
+  "per_witness": {
+   "GEMSDOE24": {
+    "overlap": 0.398974,
+    "null": 0.167774,
+    "enrichment": 0.2312,
+    "z": 120.613,
+    "reverse": 0.152358,
+    "spearman": 0.033383
+   },
+   "GEMSDOE25": {
+    "overlap": 0.382,
+    "null": 0.15938,
+    "enrichment": 0.22262,
+    "z": 118.56,
+    "reverse": 0.149149,
+    "spearman": 0.027782
+   },
+   "GEMSDOE27": {
+    "overlap": 0.421526,
+    "null": 0.171853,
+    "enrichment": 0.249674,
+    "z": 129.013,
+    "reverse": 0.155459,
+    "spearman": 0.035489
+   },
+   "GEMSDOE28": {
+    "overlap": 0.351842,
+    "null": 0.154654,
+    "enrichment": 0.197188,
+    "z": 106.31,
+    "reverse": 0.139591,
+    "spearman": 0.041657
+   },
+   "GEMSDOE30": {
+    "overlap": 0.382,
+    "null": 0.15938,
+    "enrichment": 0.22262,
+    "z": 118.56,
+    "reverse": 0.149149,
+    "spearman": 0.027782
+   },
+   "GEMSDOE31": {
+    "overlap": 0.357579,
+    "null": 0.156791,
+    "enrichment": 0.200788,
+    "z": 107.647,
+    "reverse": 0.140899,
+    "spearman": 0.043056
+   },
+   "GEMSDOE32": {
+    "overlap": 0.324132,
+    "null": 0.153686,
+    "enrichment": 0.170446,
+    "z": 92.129,
+    "reverse": 0.125538,
+    "spearman": 0.053916
+   },
+   "GEMSDOE33": {
+    "overlap": 0.368868,
+    "null": 0.159693,
+    "enrichment": 0.209176,
+    "z": 111.312,
+    "reverse": 0.144417,
+    "spearman": 0.037679
+   },
+   "GEMSDOE36": {
+    "overlap": 0.328947,
+    "null": 0.157393,
+    "enrichment": 0.171554,
+    "z": 91.831,
+    "reverse": 0.124903,
+    "spearman": 0.054948
+   },
+   "13GEMSDOE": {
+    "overlap": 0.992605,
+    "null": 0.99873,
+    "enrichment": -0.006124,
+    "z": -33.515,
+    "reverse": 0.066473,
+    "spearman": -5.4e-05
+   },
+   "GEMSDOE27_H31": {
+    "overlap": 0.414816,
+    "null": 0.165623,
+    "enrichment": 0.249193,
+    "z": 130.673,
+    "reverse": 0.155734,
+    "spearman": 0.064029
+   },
+   "GEMSDOE32_H47": {
+    "overlap": 0.259947,
+    "null": 0.228959,
+    "enrichment": 0.030989,
+    "z": 14.377,
+    "reverse": 0.071337,
+    "spearman": 0.011953
+   },
+   "17GEMSDOE_dense_prior": {
+    "overlap": 1.0,
+    "null": 1.0,
+    "enrichment": 0.0,
+    "z": 0.0,
+    "reverse": 0.066507,
+    "spearman": 0.547808
+   }
+  },
+  "caveat": "A finite owner-published inventory can prove duplication but cannot prove global uniqueness; unpublished, private or later rasters are out of scope."
+ },
+ "raster_sha256": "f4930e2fe2073a720dee7f6dc5584e3bde0eec99541a89702c0a3fcc676dd876",
+ "raster_bytes": 128252,
+ "raster_path": "docs/downloads/wbg2b-skelprop-38000dots-20261027T190048Z-868d2669a230-zeros.tif",
+ "support_sha256": "868d2669a230a2208f7b1e7290a722aee23766a8e83743809667e6c8c67f8357",
+ "validator": {
+  "status": "PASS (independent re-read of the committed bytes)",
+  "strict_all_finite": {
+   "format_valid_against_reference": true,
+   "all_finite": true,
+   "minimum_inside": 0.0,
+   "maximum_inside": 1.0,
+   "nonzero_inside": 38000,
+   "footprint_cells": 5167373,
+   "failures": []
+  },
+  "shared_local_checks": {
+   "single_band": true,
+   "dtype_float32": true,
+   "dimensions_3730x3292": true,
+   "crs_epsg_32611": true,
+   "transform_matches_sample_submission": true,
+   "no_nan_anywhere": true,
+   "no_inf_anywhere": true,
+   "no_sentinel_values": true,
+   "range_0_1_guaranteed": true,
+   "min_ge_0": true,
+   "max_le_1": true,
+   "in_footprint_all_finite": true,
+   "in_footprint_range_0_1": true,
+   "outside_footprint_zero": true,
+   "zero_dots_on_mapped_catalogue": true
+  },
+  "crs": "EPSG:32611",
+  "shape": [
+   3730,
+   3292
+  ],
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "reference": "data/bridge/sample_submission.tif (owner mirror; NOT organiser-authenticated)",
+  "writer_status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval"
+ },
+ "submission_name": "wbg2b-skelprop-38000dots-20261027T190048Z-868d2669a230-zeros",
+ "submission_note": "Supervised blind-trace propensity, 3-bag inner hide-and-recover, 1px skeleton, 2px catalogue collar",
+ "submission_note_chars": 99,
+ "projection": {
+  "evidence_class": "CALIBRATED PROJECTION (assumption-laden), NOT A SCORE",
+  "floor": 0.0871,
+  "parity": 0.2793,
+  "thinning_ratio_shared_instrument": 1.88,
+  "derived": {
+   "K_real": 12200.0,
+   "T_b2": 4600.0,
+   "M_b2": 8260.6,
+   "n_b2": 37654.0,
+   "mean_kernel_credit_per_hit": 0.557,
+   "selfcheck_reproduces_reported": 0.2778
+  },
+  "thinning_transfer": "On the shared instrument the released arm scores 1.88x unthinned top-N at the same budget. We deliberately publish NO number for that transfer: section 5 shows this instrument's transfer properties are broken, so scaling parity by it would be a hallucinated upside.",
+  "consensus_overlap_with_best_reported": 0.324132,
+  "assumptions": [
+   "real truth budget K = 12,200 pixels, calibrated from the lattice witness (reported 0.0904, holdout coverage 0.375)",
+   "GEMSDOE32/B2 implied credit T = 4,600 from its reported 0.2778",
+   "floor: only the 32.4% of our dots within 3 px of a B2 dot earn credit",
+   "parity: our per-dot yield equals B2's across all 38,000 dots",
+   "no local instrument can measure off-catalogue yield (see the inversion finding)"
+  ]
+ },
+ "public_leaderboard_top": {
+  "value": 0.4544,
+  "participant": "xiaofanhu",
+  "captured_utc": "2026-10-27T17:25:00Z",
+  "evidence_class": "OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT"
+ },
+ "best_user_reported_in_scope": {
+  "value": 0.2778,
+  "raster": "GEMSDOE32 (B2)",
+  "evidence_class": "USER-REPORTED; NOT ORGANIZER-CONFIRMED"
+ },
+ "ok_to_download": true,
+ "ok_to_submit_format": true,
+ "beats_incumbent_demonstrated": false,
+ "verdict": "PROMOTE-FOR-FORMAT-AND-UNIQUENESS / SCORE-UNPROVEN: the file is format-valid, unique within the registered scope, and safe to download and submit. Its score is not demonstrated to beat the best user-reported 0.2778, and the public leaderboard top is 0.4544. Whether to spend a weekly slot is the selector step's decision, not this lane's.",
+ "weekly_submission_slots_used": 0,
+ "artifacts": {
+  "tif": "docs/downloads/wbg2b-skelprop-38000dots-20261027T190048Z-868d2669a230-zeros.tif",
+  "zip": "docs/downloads/wbg2b-skelprop-38000dots-20261027T190048Z-868d2669a230-zeros.zip",
+  "zip_sha256": "9125b0dd6bfb0554d6a9b94008615538b612a1dcab1852bfd21534a48939870b",
+  "receipt_json": "data/lane/final_receipt.json",
+  "belief": "data/lane/belief_final.npy",
+  "support": "data/lane/support_final.npy",
+  "evidence": [
+   "evidence/lane_b_training.json",
+   "evidence/lane_b_sweep.json",
+   "evidence/lane_b_sweep_detached4.json",
+   "evidence/lane_b_sweep_detached8.json",
+   "evidence/lane_b_paired.json",
+   "evidence/holdout_calibration.json",
+   "evidence/candidate_registry_audit.json"
+  ]
+ },
+ "reproduce": "python scripts/build_feature_bank.py; python scripts/lane_blind_propensity.py --bags 2; python scripts/emit_and_score.py --budgets 20000 37000 55000 80000; python scripts/calibrate_holdout.py --detach-px 6 8; python scripts/emit_final_submission.py --budget 38000 --collar-px 2 --bags 3; python scripts/audit_candidate_registry.py --collar-px 2; python scripts/build_lane_b_release.py --budget 38000 --collar-px 2"
+}

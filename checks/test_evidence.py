@@ -1,6 +1,8 @@
 import csv
 from html.parser import HTMLParser
+import hashlib
 import json
+import pytest
 from pathlib import Path
 
 import numpy as np
@@ -88,11 +90,89 @@ def test_site_links_and_fail_closed_copy():
     for f in (ROOT/'docs').glob('*.html'):
         html=f.read_text(); parser=LinkParser(); parser.feed(html)
         assert len(parser.ids)==len(set(parser.ids))
-        assert 'No file is approved for submission.' in html
-        assert 'No submission file' in html
         for link in parser.links:
             if link.startswith(('https://','http://','mailto:','#')): continue
             target=link.split('#',1)[0].split('?',1)[0]
             if target:
                 assert (f.parent/target).exists(), (f,link)
+    # The four generated dashboard pages must still carry the prior-lane negative
+    # banner: a cleared candidate in one lane does not retroactively approve the
+    # two rejected parallel research files.
+    for name in ('index.html','executive-summary.html','research.html','sources.html'):
+        html=(ROOT/'docs'/name).read_text()
+        assert 'No <em>prior</em> lane file is approved for submission.' in html, name
+        assert 'No submission file' in html, name
     assert 'USER-REPORTED' in (ROOT/'docs/index.html').read_text()
+
+
+def test_submission_desk_is_byte_bound_and_label_honest():
+    """The download button may only be green if the committed bytes agree."""
+    card=json.loads((ROOT/'docs/data/run-card-lane-b.json').read_text())
+    tif=ROOT/card['raster_path']
+    assert tif.is_file(), card['raster_path']
+    assert hashlib.sha256(tif.read_bytes()).hexdigest()==card['raster_sha256']
+    assert tif.stat().st_size==card['raster_bytes']
+    assert card['ok_to_download'] is True and card['ok_to_submit_format'] is True
+    assert card['beats_incumbent_demonstrated'] is False
+    assert card['weekly_submission_slots_used']==0
+    assert card['verdict'].startswith('PROMOTE-FOR-FORMAT-AND-UNIQUENESS / SCORE-UNPROVEN')
+    uniq=card['uniqueness']
+    assert uniq['stops']==[] and uniq['unique_within_registered_scope'] is True
+    assert uniq['max_measured_overlap_discriminating']<=uniq['literal_limit']
+    assert uniq['max_abs_spearman']<=uniq['correlation_limit']
+    strict=card['validator']['strict_all_finite']
+    assert strict['format_valid_against_reference'] is True and strict['all_finite'] is True
+    assert 0.0<=strict['minimum_inside'] and strict['maximum_inside']<=1.0
+    assert strict['nonzero_inside']==card['emission']['emitted']
+    assert all(card['validator']['shared_local_checks'].values())
+    assert len(card['submission_note'])<=140 and len(card['submission_name'])<=140
+    # A projection is never written as a score, and the parity scenario must
+    # reproduce the reported value it was derived from.
+    proj=card['projection']
+    assert 'PROJECTION' in proj['evidence_class'] and 'NOT A SCORE' in proj['evidence_class']
+    assert proj['floor']<proj['parity']
+    assert abs(proj['derived']['selfcheck_reproduces_reported']-0.2778)<=1e-3
+    page=(ROOT/'docs/submit.html').read_text()
+    assert 'never a score' in page and 'CALIBRATED PROJECTION' in page
+    assert tif.name in page
+    assert card['raster_sha256'] in page
+    home=(ROOT/'docs/index.html').read_text()
+    assert 'OK to download and submit' in home and tif.name in home
+    assert 'a projection, never a score' in home
+
+
+def test_instrument_inversion_is_published_not_buried():
+    """The negative result that invalidates cross-family holdout claims stays visible."""
+    calib=json.loads((ROOT/'evidence/holdout_calibration.json').read_text())
+    inst=calib['instruments']
+    assert inst['shared-buffered']['spearman_holdout_vs_reported'] < -0.5
+    assert all(v['spearman_holdout_vs_reported'] < 0 for v in inst.values())
+    assert 'GEMSDOE32' in calib['decisive_counterexample']
+    card=json.loads((ROOT/'docs/data/run-card-lane-b.json').read_text())
+    assert card['instrument_validity']['evidence_class']=='MEASURED NEGATIVE RESULT'
+    assert card['instrument_validity']['spearman']['shared-buffered'] < -0.5
+    assert 'withdrawn' in card['instrument_validity']['consequence']
+    assert 'inversion finding' in (ROOT/'docs/submit.html').read_text()
+
+
+@pytest.mark.skipif(not (ROOT/'data/lane/final_receipt.json').is_file(),
+                    reason='lane artefacts are gitignored; needs a prepared workspace')
+def test_release_builder_fails_closed(monkeypatch, tmp_path):
+    import argparse, importlib.util
+    spec=importlib.util.spec_from_file_location(
+        'blr', ROOT/'scripts/build_lane_b_release.py')
+    mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    real=mod.load
+    args=argparse.Namespace(budget=38000, collar_px=2,
+                            page=tmp_path/'s.html', card=tmp_path/'c.json')
+    for field, value in (('sha256','0'*64), ('bytes', 1)):
+        def bad(rel, field=field, value=value):
+            d=real(rel)
+            if rel=='data/lane/final_receipt.json':
+                d=dict(d); d[field]=value
+            return d
+        monkeypatch.setattr(mod,'load',bad)
+        with pytest.raises(SystemExit):
+            mod.build_release(args)
+    monkeypatch.setattr(mod,'load',real)
+    assert not (tmp_path/'s.html').exists()
