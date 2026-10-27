@@ -13,6 +13,8 @@
   "max_registry_dot_overlap": 0.95866,
   "format_valid": true,
   "status": "negative",
+  "verdict": "negative",
+  "ok_to_submit": false,
   "evidence_details": {
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",

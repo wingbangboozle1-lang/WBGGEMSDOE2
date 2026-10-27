@@ -45,11 +45,11 @@
     </div>
 
     <div class="callout" role="status">
-      <strong>Unmistakable Current Slot Recommendation (2026-10-27):</strong>
+      <strong>Unmistakable Current Slot Recommendation (2026-10-27): No file is approved for submission — DO NOT SUBMIT.</strong>
       <ul>
-        <li><strong>Conservative / Competitive Recommendation (Targeting &gt; 0.2778 or Strict Literal Uniqueness):</strong> <strong>DO NOT SPEND A WEEKLY SLOT YET.</strong> <code>WBG2-DPHS EXP-3</code> achieved our highest spatially blocked holdout score (<code>HOLDOUT-DTI = 0.1735</code>) and passes all format checks, <em>but</em> stops fail-closed at the <code>&gt;70%</code> 3-px fleet duplicate gate (<code>95.87%</code> vs <code>GEMSDOE12</code> scarp).</li>
-        <li><strong>Normalized Non-Blanket Uniqueness Option Only:</strong> Only <a href="../submission/index.html"><code>wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif</code></a> (SHA-256 <code>a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912</code>) passes normalized non-blanket uniqueness (<code>0</code> enriched discrete duplicates across 467 rasters; <code>16.1–24.2%</code> vs 9 focus sites). Its out-of-sample <code>EMPIRICAL-ESTIMATE</code> is <code>0.15</code> (<code>95% PI [0.00, 0.33]</code>), so submit it <em>only</em> if project policy authorizes normalized uniqueness and accepts a probe below <code>0.2778</code>.</li>
-        <li><strong>Never Submit:</strong> <code>WBG2-DPHS EXP-3</code> (duplicate-gate stop), <code>WBG2-MSPTCD EXP-3</code> (duplicate + low holdout), <code>WBG3-H3PACK</code> (zero-geology lattice), or any historical <code>GEMSDOE24..36</code> file (already submitted + 5/9 contain outside-footprint <code>NaN</code>s).</li>
+        <li><strong>Authoritative All-Lane Verdict:</strong> <strong>DO NOT SPEND A WEEKLY SLOT YET (`0` slots used).</strong> Every candidate in this repository is archived for research inspection only (`DO NOT SUBMIT`).</li>
+        <li><strong><code>WBG2-DPHS EXP-3</code>:</strong> Achieved our highest spatially blocked holdout score (<code>HOLDOUT-DTI = 0.1735</code>, <code>95% CI [0.1525, 0.1944]</code>) and passes all 15 byte/<code>[0,1]</code> zero-NaN checks, <em>but</em> stops fail-closed at the <code>&gt;70%</code> 3-px fleet duplicate gate (<code>95.87%</code> vs <code>GEMSDOE12</code> scarp; <code>99.94%</code> vs <code>13GEMSDOE</code> lattice) — <strong>DO NOT SUBMIT</strong>.</li>
+        <li><strong><code>WBG2-DZ16</code>, <code>WBG2-MSPTCD</code>, <code>WBG3-H3PACK</code>, <code>CBS</code>, &amp; Historical <code>GEMSDOE24..36</code>:</strong> Former normalized-rule approvals are revoked under the literal all-registry gate (`99.15%–100.00%` overlap with `13GEMSDOE` lattice / `17GEMSDOE` prior), and historical `GEMSDOE24..36` files were already submitted (with 5/9 `-nan.tif` variants containing outside-footprint `NaN`s) — <strong>DO NOT SUBMIT</strong>.</li>
       </ul>
     </div>
 
@@ -112,7 +112,7 @@
           </thead>
           <tbody>
             <tr>
-              <td data-label="Artifact"><a href="../downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif">wbg2-dphs-exp3-submod300m-…-zeros.tif</a></td>
+              <td data-label="Artifact"><a href="../downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif">Research GeoTIFF — DO NOT SUBMIT (wbg2-dphs-exp3-…-zeros.tif)</a></td>
               <td data-label="SHA-256"><code>31f3d8e61d195dd5ac09f380815cd08ea072d8812e2f5021d2c41fa423e6ccd9</code></td>
               <td data-label="Metadata">
                 <strong>Name:</strong> <code>wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros</code><br>
@@ -121,13 +121,13 @@
               <td data-label="Status"><span class="status-no">DO NOT SUBMIT</span><span class="small-meta">Research archive only (&gt;70% fleet scarp stop)</span></td>
             </tr>
             <tr>
-              <td data-label="Artifact"><a href="../downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif">wbg2-dz16-n34500-…-zeros.tif</a></td>
+              <td data-label="Artifact"><a href="../downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif">Research GeoTIFF — DO NOT SUBMIT (wbg2-dz16-n34500-…-zeros.tif)</a></td>
               <td data-label="SHA-256"><code>a9c46823cd6ef367726c1446581f0ccfc3d92456f8a242e521358ae84bd27912</code></td>
               <td data-label="Metadata">
                 <strong>Name:</strong> <code>wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros</code><br>
                 <strong>Note (90 chars):</strong> <code>DZ-16 damage-zone flank, 34500 isolated dots, 0.0 outside footprint, unique (wbggemsdoe2)</code>
               </td>
-              <td data-label="Status"><strong>OK TO DOWNLOAD AND SUBMIT</strong> <em>(Normalized Rule Only)</em><span class="small-meta">EMPIRICAL-ESTIMATE 0.15 · DO NOT SUBMIT under literal rule</span></td>
+              <td data-label="Status"><span class="status-no">DO NOT SUBMIT</span><span class="small-meta">Former normalized approval revoked under literal lattice rule (EMPIRICAL-ESTIMATE 0.15)</span></td>
             </tr>
           </tbody>
         </table>

@@ -1,0 +1,65 @@
+{
+  "schema": "wbggems.negative-run-card.v1",
+  "reviewed_utc": "2026-10-27",
+  "lane": "UNASSIGNED — no unambiguous single-method paragraph was assigned",
+  "hypothesis": "Top-ranked desk proposal only: repeated, catchment-normalized cross-drainage deflections from USGS 3DEP elevation; not implemented or tested in this review.",
+  "mechanism": "A concealed or discontinuous fault might leave coherent stream deflections or knickzones across multiple independent catchments; repeated geometry could distinguish a candidate line from a single scarp.",
+  "non_fault_mimic": "Lithologic contacts, differential erosion, inherited channels, stream capture, roads and alluvial fans.",
+  "data_access": "USGS 3DEP products are free and unrestricted, but the exact study-area tiles, coverage and binary access were not verified; owner-mirrored competition inputs were not authenticated against DrivenData.",
+  "experiments_this_review": 0,
+  "prior_msptcd_campaign_experiments": 3,
+  "max_experiments_per_campaign": 3,
+  "submission_slots_used_this_review": 0,
+  "holdout_dti": {
+    "status": "NOT RUN for the ranked proposal",
+    "value": null,
+    "ci95": null,
+    "withheld_positives": null,
+    "evaluator_version": "gems57-pooled-hide-v2 required for any future evaluation",
+    "prior_exploratory_proxy": {
+      "evidence_class": "HOLDOUT-DTI — EXPLORATORY MAPPED-FAULT PROXY, NOT ORGANIZER SCORE",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "withheld_positives": 60988,
+      "selected_exp3_value": 0.04255426811430257,
+      "ci95": [0.03205871015164006, 0.05476536944098737],
+      "control_value": 0.023409147943953046,
+      "control_ci95": [0.015355945201826322, 0.031894669552479896],
+      "paired_difference": 0.01914512017034952,
+      "paired_ci95": [0.01097695033438511, 0.028755292395709373],
+      "caveats": "Prior MSPTCD campaign, not this proposal; selected on reporting folds, mirrored labels equal mapped catalogue, globally prepared label-free features and separate detached-splay split. Canary passes do not prove no leakage. Not proof of independent improvement or promotion."
+    }
+  },
+  "registry": {
+    "preplacement_surface_correlation": null,
+    "final_dot_overlap": null,
+    "status": "NOT RUN for a new candidate; no pre-placement surface or new dots exist. Current registry is incomplete and all nine focus repositories have newer unaudited refs.",
+    "example_historical_artifact": "MSPTCD",
+    "example_lattice_overlap_3px": 1.0,
+    "example_lattice_overlap_evidence": "evidence/release_triage_20261027.json",
+    "maximum_allowed_overlap": 0.7,
+    "maximum_allowed_surface_correlation": 0.9,
+    "dense_prior_interpretation": "Finite-positive continuous support would force 100% overlap for every nonempty candidate; whether it counts as dots is unresolved, so no exemption is assumed."
+  },
+  "raster_sha256": null,
+  "validation": {
+    "status": "NOT RUN — no new TIFF exists",
+    "nan_check": null,
+    "range_0_1": null,
+    "crs": null,
+    "shape": null,
+    "transform": null,
+    "mask": null,
+    "organizer_acceptance": "Unknown; no candidate was submitted."
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "note": "NEGATIVE: no new TIFF; literal duplicate stops and unassigned lane. DO NOT SUBMIT.",
+  "ok_to_download_new_tif": false,
+  "ok_to_submit": false,
+  "verdict": "negative",
+  "reasons": [
+    "Five existing TIFFs independently reopened for release triage exceed the literal lattice overlap limit; original pre-placement surfaces were not replayed.",
+    "The prior MSPTCD lane exhausted three experiments and failed the novelty gate; no new method lane is unambiguously assigned.",
+    "The current registry is incomplete, newer rasters are unaudited, official input provenance is unverified, and no validated matched-incumbent result exists for the new proposals."
+  ]
+}

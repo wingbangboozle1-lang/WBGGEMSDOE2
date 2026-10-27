@@ -57,9 +57,9 @@ def test_b2_analysis_is_rendered_and_does_not_invent_a_catalogue_buffer():
     source = (ROOT / "docs/research/why-b2-scored-2778.md").read_text()
     html = (ROOT / "docs/research/why-b2-scored-2778.html").read_text()
     assert "1–2 pixels away are **not** known to be masked" in source
-    assert "0.0178 (0.2778 − 0.2600)" in source
+    assert 'Its cause is unknown' in source and 'mathematically impossible' in source
     assert '<base href="../">' in html
-    assert "<h1>Why GEMSDOE32 B2" in html and "<h2>1. What the bytes" in html
+    assert "<h1>Why GEMSDOE32 B2" in html and "<h2>What is reproducible" in html
     assert "<pre" not in html
     assert "research/why-b2-scored-2778.html" in (ROOT / "docs/index.html").read_text()
 

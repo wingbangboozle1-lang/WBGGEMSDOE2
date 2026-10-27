@@ -2,12 +2,11 @@
   "evidence_class": "OFFICIAL-PUBLIC-LEADERBOARD-SNAPSHOT",
   "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
   "data_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard_partial/?page=1",
-  "captured_utc": "2026-10-27T17:21:43Z",
-  "last_attempt_utc": "2026-10-27T17:26:05.384531+00:00",
-  "status": "stale",
+  "captured_utc": "2026-10-27T19:09:35.302551+00:00",
+  "last_attempt_utc": "2026-10-27T19:09:35.302551+00:00",
+  "status": "fresh",
   "top_public_dti": 0.4544,
   "top_participant": "xiaofanhu",
-  "capture_method": "Official page and public leaderboard fragment viewed via the Arena page renderer; the value was transcribed from the rank-one row. Raw HTML was not saved; timestamp records the immediate follow-up clock reading.",
-  "note": "Refresh failed; showing the last successful observation if present, not a live value.",
-  "last_error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
+  "capture_method": "Public official HTMX fragment retrieved via Arena page-retrieval tool. Rank-one row transcribed, not authenticated to any submission receipt. Raw HTML unavailable; timestamp is the follow-up clock reading, not a server timestamp.",
+  "note": "Official public leaderboard observed in this session, not a receipt for a project TIFF and not HOLDOUT-DTI. Dynamic page; scheduled direct-fetch freshness is independent."
 }

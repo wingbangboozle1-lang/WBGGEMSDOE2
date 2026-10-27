@@ -1,0 +1,42 @@
+{
+  "repo": "drivendataorg/gems-prize-reference-solution",
+  "commit": "aebe92f7c8a990f0e3443451b7a825d9afd6336b",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "git_blob": "a8814f99c395d12a8e1c3731c738e61d7dca06b5",
+      "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+      "bytes": 2367,
+      "executed": false
+    },
+    {
+      "path": "environment-cpu.yml",
+      "git_blob": "0a374d4b403ecbdde721a6d24cb84cd9dbb3b61e",
+      "sha256": "76e03b116f74513a4b6298f863664c3ee5b8e40e33f7cb68c24f63ab307bb62d",
+      "bytes": 395,
+      "executed": false
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob": "e371c6581f9a3c453788fd48c1329d588a5c80d5",
+      "sha256": "00dae72777985013ac2f32cf1c6647229dd77fc5a0c81f70b7ed19f8a222cba4",
+      "bytes": 2207,
+      "executed": false
+    },
+    {
+      "path": "unet-mc-cv-reference-solution.ipynb",
+      "git_blob": "d45bf7bdb1d31a22caa38371ad195c2f6eb965ae",
+      "sha256": "1a7622732ba00f67237058bc0efe79b45ba4e87c449fc9c1e5d6ea659de92ca0",
+      "bytes": 1578736,
+      "executed": false
+    }
+  ],
+  "execution_status": "Read-only source inspection; notebook not executed, no new experiment/holdout/performance claim",
+  "observations": {
+    "architecture": "segmentation-models-pytorch U-Net, resnet18 encoder",
+    "validation": "Five Monte Carlo train/test patch splits; 128 px patches, 50% test; test patches removed before overlapping training extraction",
+    "training": "AdamW, Tversky loss, 5 epochs in notebook configuration",
+    "not_equivalent_to_user_protocol": "Notebook does not demonstrate the required whole-fault-segment buffered hide-and-recover protocol or feature-alone canaries. No result from it is used as our incumbent.",
+    "environment": "Published CPU option and GPU/MPS support; Python >=3.12. Current audit uses Python 3.11; notebook not run."
+  }
+}

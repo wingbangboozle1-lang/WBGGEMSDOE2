@@ -46,5 +46,8 @@
    ]
   }
  },
- "calibration_note": "The empirical model was fitted on the same fleet family the candidate belongs to (binary, isolated, 3-6e4 px, off-catalogue). Its out-of-sample RMSE on the nine focus sites is 0.094, i.e. the estimate carries roughly a +/-0.19 95% interval. It cannot certify anything about the 0.33-0.45 leaderboard band, which needs the geophysical feature stack."
+ "calibration_note": "The empirical model was fitted on the same fleet family the candidate belongs to (binary, isolated, 3-6e4 px, off-catalogue). Its out-of-sample RMSE on the nine focus sites is 0.094, i.e. the estimate carries roughly a +/-0.19 95% interval. It cannot certify anything about the 0.33-0.45 leaderboard band, which needs the geophysical feature stack.",
+ "archive_status": "Historical research diagnostic; not a current release estimate or submission authorization",
+ "ok_to_submit": false,
+ "superseded_by": "evidence/release_audit.json"
 }

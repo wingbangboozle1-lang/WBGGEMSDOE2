@@ -1,0 +1,154 @@
+{
+  "schema": "wbggems.novelty-refinement.v1",
+  "generated_utc": "2026-10-27T18:45:34.982412+00:00",
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "scope": "Within-lane emission refinement of E3_fusion after a final-dot duplicate stop; not a fourth geological hypothesis.",
+  "withheld_positive_pixels": 11321,
+  "lam": 0.7,
+  "budget": 100000,
+  "crowd_cap_values": [
+    3,
+    5,
+    8,
+    12,
+    20,
+    100
+  ],
+  "eligible_k_after_duplicate_prescreen": [
+    3,
+    5,
+    8,
+    12
+  ],
+  "rows": [
+    {
+      "k": 3,
+      "dti": 0.0,
+      "tpw": 0.0,
+      "fpw": 97934.0,
+      "fnw": 11321.0,
+      "n_truth": 11321
+    },
+    {
+      "k": 5,
+      "dti": 7.265212441210292e-05,
+      "tpw": 2.2331456400847434,
+      "fpw": 108401.33333333334,
+      "fnw": 11318.766854359916,
+      "n_truth": 11321
+    },
+    {
+      "k": 8,
+      "dti": 0.0012241888367072325,
+      "tpw": 39.127430642145804,
+      "fpw": 114486.4929028882,
+      "fnw": 11281.872569357854,
+      "n_truth": 11321
+    },
+    {
+      "k": 12,
+      "dti": 0.009110520016527478,
+      "tpw": 290.75883927139284,
+      "fpw": 113998.37131352151,
+      "fnw": 11030.241160728607,
+      "n_truth": 11321
+    },
+    {
+      "k": 20,
+      "dti": 0.055142957176710056,
+      "tpw": 1650.729901441415,
+      "fpw": 102742.58030804897,
+      "fnw": 9670.270098558582,
+      "n_truth": 11321
+    },
+    {
+      "k": 100,
+      "dti": 0.13847813236991083,
+      "tpw": 3601.7424552676293,
+      "fpw": 81161.5940312776,
+      "fnw": 7719.2575447323725,
+      "n_truth": 11321
+    }
+  ],
+  "best": {
+    "k": 12,
+    "dti": 0.009110520016527478,
+    "tpw": 290.75883927139284,
+    "fpw": 113998.37131352151,
+    "fnw": 11030.241160728607,
+    "n_truth": 11321
+  },
+  "pooled_summary": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "pooled": true,
+    "scores": {
+      "E3_k12": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.009110520016527478,
+        "ci95": [
+          0.006489656092724082,
+          0.012138910373833104
+        ],
+        "withheld_positive_pixels": 11321,
+        "tpw": 290.75883927139284,
+        "fpw": 113998.37131352151,
+        "fnw": 11030.241160728607
+      },
+      "C0_collar_only": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.13172292509942274,
+        "ci95": [
+          0.11560584168244761,
+          0.1472413032062211
+        ],
+        "withheld_positive_pixels": 11321,
+        "tpw": 3695.0312289043636,
+        "fpw": 91278.6811668461,
+        "fnw": 7625.968771095636
+      }
+    },
+    "best_comparable_control": "C0_collar_only",
+    "paired_differences": {
+      "C0_collar_only": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": -0.12261240508289525,
+        "ci95": [
+          -0.13757762976338572,
+          -0.10710333190323024
+        ],
+        "withheld_positive_pixels": 11321
+      }
+    },
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 159,
+      "draws": 2000,
+      "seed": 20261027,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    },
+    "implementation_sha256": {
+      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+    }
+  },
+  "caveat": "The crowd cap uses historical registry dot fields. A smaller cap increases novelty but moves emission away from mapped structures, which the hide-and-recover proxy rewards.",
+  "release_review_provenance": {
+    "source_main_commit": "29abbf694c2084569080fea6eaea275eb800f800",
+    "original_json_sha256": "0377874250a5bf3df8e74c4b6f7b872545727e789e8c98722140df4d20d64029",
+    "scientific_metrics_replayed_in_this_review": false,
+    "current_ok_to_submit": false,
+    "current_release_evidence": "evidence/release_audit.json",
+    "interpretation": "Historical source-reported research, not a corrected-v2 holdout, complete registry clearance, organizer receipt, or leaderboard forecast."
+  }
+}

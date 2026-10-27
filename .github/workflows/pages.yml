@@ -60,6 +60,8 @@ jobs:
           python scripts/build_site.py
           python scripts/build_site_data.py
           python scripts/build_msptcd_site.py
+          python scripts/build_release.py
+          python scripts/build_release_review.py
       - name: Stage the same URL layout as legacy Pages
         run: |
           mkdir -p _site/docs _site/site

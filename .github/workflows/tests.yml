@@ -23,8 +23,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: PYTHONPATH=scripts python -c 'from prepare_data import restore_template; restore_template(True)'
       - run: python scripts/build_hypotheses.py
-      - run: python -m pytest -q
       - run: python scripts/build_run_card.py
       - run: python scripts/build_site.py
       - run: python scripts/build_site_data.py
       - run: python scripts/build_msptcd_site.py
+      - run: python scripts/build_release.py
+      - run: python scripts/build_release_review.py
+      - run: python -m pytest -q

@@ -33,7 +33,7 @@
     4508550.0
    ],
    "dtype": "float32",
-   "nodata": NaN,
+   "nodata": null,
    "count": 1
   },
   "catalogue_positives": 60988,

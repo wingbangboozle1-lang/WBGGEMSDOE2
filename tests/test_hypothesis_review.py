@@ -85,7 +85,8 @@ def test_score_sources_and_freshness_are_not_claimed_as_current_receipts():
 def test_run_card_does_not_misrepresent_a_proposal_as_an_experiment():
     card = load('evidence/run_card.json')
     assert card['lane_status'].startswith('UNASSIGNED')
-    assert card['hypothesis'].startswith('No experiment hypothesis was assigned')
+    assert card['hypothesis_id'] is None
+    assert 'proposal-only' in card['hypothesis']
     assert card['verdict'] == 'negative'
     assert card['experiment_count'] == 0
     assert card['holdout']['dti'] is None and card['holdout']['ci95'] is None

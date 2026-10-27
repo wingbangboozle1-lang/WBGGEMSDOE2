@@ -1,3 +1,19 @@
+# Current reconciliation — 27 October 2026
+
+All seven saved TIFF identities fail literal registry duplication. Former DZ-16/H3 approvals are revoked;
+no new candidate, experiment, forecast or slot. [Current byte audit](../evidence/release_audit.json),
+[one canonical run card](../evidence/run_card.json), [official-source recheck](source-verification-release-20261027.md),
+[revised N1–N4 proposals](hypotheses.md), and [three-pass review record](release-reconciliation-review.md).
+
+The full 19-band owner mirror is restored, not organizer-authenticated. Historical MSPTCD v1
+HOLDOUT-DTI is source-reported, not reproduced. Corrected v2 orientation features and content-bound
+caches have synthetic tests only; old metrics are not evidence for v2. Former web band-schema and
+“zero leakage” claims are corrected. All new raster/score/promotion fields remain null/false.
+
+---
+
+## Earlier forensic notes (historical context; the current release decision above governs)
+
 # Executive audit: what is safe to submit?
 
 **Decision: no new file is approved.** This was a research and repository audit, not a competition submission. This review lane generated no prediction, canary AUC, holdout experiment or leaderboard forecast; a parallel session later reported three experiments and an independently rejected TIFF. Do not resubmit historical rasters. The original checkout contained only a README, not the claimed ready-to-run pipeline.

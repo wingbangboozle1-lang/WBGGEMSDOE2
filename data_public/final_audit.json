@@ -26,11 +26,13 @@
     "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
     "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif"
    ],
-   "note": "Fails, exactly as every focus-site submission and every other dense candidate in this fleet fails. See focus_pairwise_overlap."
+   "note": "Fails, exactly as every focus-site submission and every other dense candidate in this fleet fails. See focus_pairwise_overlap.",
+   "operative": true
   },
   "normalized_rule": {
    "result": "PASS",
-   "violations": []
+   "violations": [],
+   "operative": false
   },
   "surface_rule": {
    "result": "PASS",
@@ -40,7 +42,7 @@
    "result": "PASS"
   }
  },
- "ok_to_submit": true,
+ "ok_to_submit": false,
  "focus_site_overlap": [
   {
    "file": "GEMSDOE28__gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
@@ -340,5 +342,15 @@
    "is_focus_site_submission": false
   }
  ],
- "measurement_notes": "Raw per-pixel rank correlation between sparse binary rasters is dominated by the shared zero background, so surface similarity is measured on 1 km Gaussian-smoothed density fields."
+ "measurement_notes": "Raw per-pixel rank correlation between sparse binary rasters is dominated by the shared zero background, so surface similarity is measured on 1 km Gaussian-smoothed density fields.",
+ "verdict": "negative",
+ "approval_revoked": {
+  "evidence": "evidence/release_audit.json",
+  "reason": "The original approval used a non-authorized normalized novelty rule despite its own literal FAIL, incomplete registry and no compliant surface/holdout release.",
+  "previous_ok_to_submit": true,
+  "normalized_rule_authorizes_submission": false,
+  "surface_rule_caveat": "Historical Gaussian-smoothed Pearson correlation is not the required pre-placement rank-correlation audit."
+ },
+ "current_release_evidence": "evidence/release_audit.json",
+ "historical_measurements_independently_reproduced_in_this_review": false
 }

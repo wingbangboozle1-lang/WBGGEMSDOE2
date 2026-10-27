@@ -198,9 +198,9 @@ def test_dphs_html_pages_clear_and_unambiguous():
     exec_sum = (ROOT / "docs" / "dphs" / "executive-summary.html").read_text(encoding="utf-8")
 
     assert "DO NOT SUBMIT" in idx and "0.1735" in idx and "31f3d8e61d195dd5" in idx
-    assert "OK TO DOWNLOAD AND SUBMIT" in idx
+    assert "Research GeoTIFF — DO NOT SUBMIT" in idx
     for site in ("GEMSDOE24", "GEMSDOE25", "GEMSDOE27", "GEMSDOE28", "GEMSDOE30", "GEMSDOE31", "GEMSDOE32", "GEMSDOE33", "GEMSDOE36"):
         assert site in idx
-    assert "Predicted values must be in range [0, 1]" in howto
+    assert "Predicted values must be in range [0, 1]" in howto and "DO NOT SUBMIT" in howto
     assert "0.2778" in exec_sum and "0.3195" in exec_sum and "0.4544" in exec_sum
 
