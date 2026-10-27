@@ -344,5 +344,6 @@
   "historical_calibrated_ok_to_submit": true,
   "effective_verdict": "negative",
   "superseded_by": "evidence/local_artifact_audit_20261027.json",
-  "supersession_reason": "Literal all-registry stop was previously overridden by a calibrated policy; the session does not authorize that exception."
+  "supersession_reason": "Literal all-registry stop was previously overridden by a calibrated policy; the session does not authorize that exception.",
+  "verdict": "negative"
 }

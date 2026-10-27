@@ -154,7 +154,7 @@ def main() -> int:
             "density fields, which is what 'same prior' means operationally."
         ),
         "verdict": verdict,
-        "ok_to_submit": bool(verdict == "UNIQUE"),
+        "ok_to_submit": False,  # Partial uniqueness diagnostics are never slot approval.
     }
     (ROOT / "data_public" / "uniqueness_audit.json").write_text(json.dumps(report, indent=1))
 

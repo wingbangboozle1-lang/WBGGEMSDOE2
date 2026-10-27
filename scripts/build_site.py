@@ -2,6 +2,7 @@
 """Build the static, evidence-first GitHub Pages site without a web framework."""
 from __future__ import annotations
 import datetime as dt
+from hashlib import sha256
 from html import escape
 import json
 from pathlib import Path
@@ -33,6 +34,10 @@ if (set(archive_rows) != {'DZ-16', 'H3-PACK', 'MSPTCD', 'STEPXASYM', 'CONDUIT'}
                or row['final_overlap_3px']['13GEMSDOE'] <= archived['overlap_limit']
                for row in archive_rows.values())):
     raise ValueError('Archived raster evidence changed; review the decision before publishing.')
+for row in archive_rows.values():
+    # Keep the public decision bound to the exact bytes, not only a JSON flag.
+    if sha256((ROOT / row['path']).read_bytes()).hexdigest() != row['sha256']:
+        raise ValueError(f"Archived raster bytes changed: {row['name']}; re-audit before publishing.")
 if (review.get('ok_to_submit') is not False or review.get('sha256') != run.get('parallel_session', {}).get('rejected_candidate_sha256')
         or review.get('format', {}).get('masked_inside') != 5132809
         or round(review.get('literal_overlap_3px', {}).get('lattice', 0), 6) != 0.993838):
@@ -180,7 +185,7 @@ def focus_table():
 def home():
     body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + h3_banner() + msptcd_banner() + decision() + stats() + score_evidence_notice() + compare_section() + focus_table()
     body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Review the research shortlist</h3><p>Four ranked, untested proposals. No single method lane has been assigned; no experiment or submission slot is authorized.</p><a href="research.html">View proposals →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/run-card.json">Read the negative run card →</a> · <a href="executive-summary/">See both rejected parallel files →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
-    body += '''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>Download and submit</h2><p>No new candidate has cleared the required gates.</p></div><span class="tag red">Blocked</span></div><p>Earlier H3-PACK and DZ-16 approval claims are revoked. Do not upload an archived TIFF. The research-byte results are linked for audit only.</p><button class="button" disabled>No submission file</button> &nbsp; <a class="text-link" href="data/local_artifact_audit_20261027.json">Read the archived-artifact audit →</a></div></section>'''
+    body += '''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>Download and submit</h2><p>No new candidate has cleared the required gates.</p></div><span class="tag red">Blocked</span></div><p><strong>DO NOT SUBMIT.</strong> Earlier H3-PACK and DZ-16 approval claims are revoked. Do not upload an archived TIFF. The research-byte results are linked for audit only.</p><button class="button" disabled>No submission file</button> &nbsp; <a class="text-link" href="data/local_artifact_audit_20261027.json">Read the archived-artifact audit →</a></div></section>'''
 
     return page('Overview','index.html',body,'Evidence-first DOE GEMS Prize research and submission status.')
 

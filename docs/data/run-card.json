@@ -138,5 +138,17 @@
     "source_clarification": "DrivenData staff explicitly confirmed pixel-exact known-fault mask and possible new truth within 300m; https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4",
     "focus_readme_review": "evidence/focus_readme_review_20261027.json",
     "focus_readme_scope": "Pinned README text only from nine previously observed HEADs; no newer TIFFs or sibling holdouts reproduced."
+  },
+  "release_reconciliation": {
+    "evidence": "evidence/release_recheck_20261027.json",
+    "old_approvals_withdrawn": [
+      "DZ-16",
+      "H3-PACK"
+    ],
+    "new_experiments": 0,
+    "new_tiffs": 0,
+    "weekly_slots_used": 0,
+    "data_restore": "19 owner-mirrored raw feature bands restored; provenance unauthenticated; no derived feature stack built",
+    "upstream_issue_attempt": "createIssue denied: Resource not accessible by integration; shared code remains unchanged"
   }
 }

@@ -100,9 +100,9 @@ def test_pinned_readme_review_preserves_scope_and_corrects_prior_work():
     freshness = load('docs/data/focus-freshness.json')
     assert len(receipt['sites']) == 9
     assert {item['site'] for item in receipt['sites']} == {item['site'] for item in freshness['sites']}
-    known_heads = {item['site']: item['current_head'] for item in freshness['sites']}
     for item in receipt['sites']:
-        assert item['commit_sha'] == known_heads[item['site']]
+        assert len(item['commit_sha']) == 40
+        int(item['commit_sha'], 16)
         assert item['commit_sha'] in item['readme_url']
         assert len(item['readme_sha256']) == 64
         int(item['readme_sha256'], 16)

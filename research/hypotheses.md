@@ -8,7 +8,7 @@ No experiment was run in this review lane. The qualitative ranking below is a ju
 
 These are desk proposals, not an assigned lane or experiments. The proposed operators are not present in this repository's inspected current implementation, but related approaches exist in other projects. A pinned README-only scan of the nine focus repositories identified prior phase-congruency, radiometric K/Th and drainage work, so those earlier shortlist items were withdrawn; source-reported sibling results were not reproduced. Novelty beyond the inspected files is not established. See evidence/focus_readme_review_20261027.json.
 
-The supplied feature-layer names are from the hash-checked owner-mirrored 19-band manifest, not an authenticated DrivenData download. This session reverified the owner-mirrored stack and 19 raw bands in ignored local storage, which may not persist; the derived shared feature bank remains absent. The official feature description and owner-mirror band metadata disagree about the depth layer; retain the official term ‘depth to conductive base’ unless original metadata resolves it.
+The supplied feature-layer names are from the hash-checked owner-mirrored 19-band manifest, not an authenticated DrivenData download. The release-review session restored and reverified the owner-mirrored stack and 19 raw bands in ignored local storage, which may not persist; the derived shared feature bank remains absent. The official feature description and owner-mirror band metadata disagree about the depth layer; retain the official term ‘depth to conductive base’ unless original metadata resolves it.
 
 ## Qualitative ranking
 

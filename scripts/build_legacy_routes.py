@@ -19,6 +19,7 @@ def redirect(target: str) -> str:
 <meta http-equiv="refresh" content="0; url={href}"></head><body><main>
 <h1>DO NOT SUBMIT — no file is cleared</h1><p>Earlier H3-PACK and DZ-16 approvals were revoked after the literal duplicate audit.
 This route points to the current evidence dashboard, not a submission download.</p>
+<p>Historical scores are USER-REPORTED, not organizer-confirmed receipts. No defensible leaderboard estimate is available for a new candidate.</p>
 <p><a href="{href}">Continue to the current evidence</a> if you are not redirected.</p>
 </main></body></html>\n'''
 

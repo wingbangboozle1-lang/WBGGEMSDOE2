@@ -48,6 +48,8 @@ The file names and values below are **USER-REPORTED historical claims**, not org
 
 The official [public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) displayed **0.4544** at rank one when viewed on 2026-10-27 around 19:05 UTC. This is an **ORGANIZER-PUBLISHED public observation**, not an ORGANIZER-CONFIRMED receipt for a project file. It can change; the automated feed shows a clearly dated stale snapshot if refresh fails.
 
+The concurrent [release reconciliation](research/release-review-20261027.md) independently checked DZ-16 and H3; both evidence records and its byte-bound publication guard are retained. Its earlier shortlist is [archived](evidence/release_archive/concurrent_shortlist_20261027.json) and superseded by the rechecked proposals below.
+
 ## Research and historical holdout
 
 Four distinct [ranked desk proposals](research/hypotheses.md) identify the layers, physical signal, competing non-fault explanations, scope of novelty and data costs. The highest-ranked upward-continuation proposal is **not an assigned lane** and has not been tested here. A pinned [nine-site README-only recheck](research/focus-head-readme-review-20261027.md) found related earlier work, so novelty is not asserted fleet-wide. The earlier depth-offset and conductive-flank proposals are already implemented in `src/wbggems/msptcd.py` and are no longer advertised as new.
