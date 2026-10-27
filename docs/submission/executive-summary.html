@@ -54,11 +54,15 @@ is better; it is the same surface, pruned and re-emitted.</li>
 scored <b>0.0005</b> (user-reported). The competition's labels are expert-identified faults that are
 <b>absent</b> from the catalogue, so catalogue-derived mass buys almost nothing.</li>
 </ol>
-<p><b>Not measurable here:</b> which geophysical prior the lineage actually used. The GEMSDOE32 page and
-the fleet's own validators mark their files owner-reported and research-only, and the
-<code>training_features.tif</code> stack those pipelines used (419 MB, pinned sha256
-<code>4371c82e…23bc5</code>) is behind DrivenData authentication. So the honest attribution is:
-<i>pruning + off-catalogue placement inside a good prior</i>, not a physics result we can reproduce.</p>
+<p><b>Not measurable here:</b> which geophysical prior the lineage actually used. What we did verify by
+reading the owner files this session: GEMSDOE32's own
+<code>docs/downloads/submissions_manifest.json</code> records every entry with <code>"receipt": null</code>
+and no organizer score, and the GEMSDOE33 receipt files state
+<code>"format_validation_is_not_portal_acceptance": true</code> with
+<code>"weekly_slot_authorized": false</code>. The <code>training_features.tif</code> stack those pipelines
+describe (419 MB, pinned sha256 <code>4371c82e…23bc5</code>) is behind DrivenData authentication and was not
+obtained. So the honest attribution is: <i>pruning + off-catalogue placement inside a good prior</i>, not a
+physics result we can reproduce.</p>
 
 <h2>3. Can we generate something that scores above 0.2778?</h2>
 <p><b>Demonstrated: no. Plausible: yes, marginally; Reliable: not with the data reachable from this
