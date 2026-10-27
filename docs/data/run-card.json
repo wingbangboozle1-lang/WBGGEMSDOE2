@@ -1,9 +1,9 @@
 {
   "schema": "wbggems.run-card.v1",
   "generated_utc": "2026-10-27T17:24:02.594108+00:00",
-  "hypothesis": "No experiment hypothesis was assigned to this lane. Current shortlist H1 proposes cross-fault marker displacement by paired patch registration; it was not tested.",
-  "mechanism": "Untested: repeated nonzero marker-texture displacement across a candidate boundary, compared with a zero-displacement null. Prior depth-shift and conductive-flank H1/H2 were found already implemented in MSPTCD and are not new.",
-  "non_fault_mimic": "Drainage capture, migrating terraces, lithological texture changes, or inter-survey georegistration offsets.",
+  "hypothesis": "No experiment hypothesis was assigned to this lane. Current shortlist H1 proposes repeated catchment-normalized cross-drainage deflections; it was not tested.",
+  "mechanism": "Untested: multiple independent streams deflect or change bed gradient consistently across a candidate line, compared with random orientations and lithological boundaries.",
+  "non_fault_mimic": "Lithological boundaries, terraces, alluvial fans, drainage capture, roads and inherited drainage.",
   "lane_status": "UNASSIGNED: the prompt does not identify one method paragraph as the assigned lane; H1 is a ranked proposal, not authorization.",
   "experiment_budget": {
     "experiments_run": 0,

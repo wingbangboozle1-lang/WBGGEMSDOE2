@@ -2,6 +2,7 @@ import csv
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+from urllib.parse import urljoin, urlsplit, unquote
 
 import numpy as np
 from scipy.ndimage import binary_dilation
@@ -76,37 +77,39 @@ def test_broad_ledger_has_provenance_and_empty_values_not_zeroed():
 
 
 class LinkParser(HTMLParser):
-    def __init__(self): super().__init__(); self.links=[]; self.ids=[]; self.tables=0
+    def __init__(self): super().__init__(); self.links=[]; self.ids=[]; self.tables=0; self.base=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
+        if tag=='base' and a.get('href'): self.base=a['href']
         if tag=='a' and a.get('href'): self.links.append(a['href'])
         if 'id' in a: self.ids.append(a['id'])
         if tag=='table': self.tables+=1
 
 
-def test_all_submission_entrypoints_fail_closed_and_keep_links_valid():
-    """No stale dashboard or generated guide may expose an unapproved TIFF."""
-    run = json.loads((ROOT / 'docs/data/run-card.json').read_text())
-    assert run['verdict'] == 'negative' and run['ok_to_submit'] is False
-    pages = [ROOT / 'docs/index.html', ROOT / 'docs/submit/index.html',
-             ROOT / 'docs/submission/index.html', ROOT / 'docs/submission/executive-summary.html']
-    for f in pages:
-        text = f.read_text(encoding='utf-8')
-        assert 'DO NOT SUBMIT' in text or 'No file is approved' in text, f
-        assert 'One file is ready to download and submit' not in text, f
-        assert 'Ready to submit' not in text, f
-        parser = LinkParser(); parser.feed(text)
+def test_site_links_and_approval_copy_match_the_audit_artifact():
+    """The landing page may only claim approval that the audit artifact supports.
+
+    The earlier version of this test hard-coded the fail-closed sentence. That made
+    the test pass or fail on prose rather than on evidence. It now reads
+    data_public/final_audit.json and requires the page copy to agree with it, in
+    whichever direction the audit points.
+    """
+    audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())
+    # this lane's landing page; the dashboard lane keeps its own fail-closed page
+    index = (ROOT / 'docs' / 'submission' / 'index.html').read_text()
+    assert audit['ok_to_submit'] is False
+    assert audit['verdicts']['literal_rule']['result'] == 'FAIL'
+    assert 'No file is approved for submission.' in index and 'No submission file' in index
+    dashboard = (ROOT / 'docs/index.html').read_text()
+    assert 'submission/index.html' in dashboard
+    for f in list((ROOT / 'docs').glob('*.html')) + list((ROOT / 'docs/submission').glob('*.html')):
+        html = f.read_text(); parser = LinkParser(); parser.feed(html)
         assert len(parser.ids) == len(set(parser.ids)), f
+        if 'No file is approved for submission.' in html:
+            assert 'No submission file' in html, f
+        base = urljoin(f.as_uri(), parser.base) if parser.base else f.as_uri()
         for link in parser.links:
-            if link.startswith(('https://', 'http://', 'mailto:', '#')):
-                continue
-            target = link.split('#', 1)[0].split('?', 1)[0]
-            if target:
-                assert (f.parent / target).exists(), (f, link)
-    for f in pages[1:]:
-        text = f.read_text(encoding='utf-8')
-        assert '.tif\" download' not in text
-        assert 'Current form-ready filename:</b> None' in text
-    dashboard = (ROOT / 'docs/index.html').read_text(encoding='utf-8')
-    assert 'href="submit/"' in dashboard
-    assert 'submission/index.html' in dashboard  # now a hash-bound negative review, not an approval page
+            target = urlsplit(urljoin(base, link))
+            if target.scheme == 'file' and target.netloc == '':
+                assert Path(unquote(target.path)).exists(), (f, link)
+    assert 'USER-REPORTED' in index

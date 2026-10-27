@@ -1,16 +1,9 @@
 {
   "card_version": "2.0",
   "run_id": "WBGGEMSDOE2-2026-10-27-H3-PACK",
-  "hypothesis": "The published 0.25-0.278 plateau is not geology: the nine focus rasters are one regional density field (pairwise block-density Spearman 0.996-0.999) scored by dot count and catalogue-collar fraction alone. Fixing the one measurable inefficiency - 14% of true-positive credit lost to redundant dot packing - raises the score at the same budget.",
-  "mechanism": "DTI = TP/(0.2*FP + 0.8*N + 0.2*TP) with FN = N - TP exactly and FP <= D, so at fixed budget D the only term placement can raise without bound is TP = sum_cells prior * max_dot k. Published packing is kmass/dot = 8.02-8.27 for the seven rasters at D <= 42k and 6.56-6.58 for the two 60k rasters against a geometric maximum of 9.38, i.e. 12-30% of available TP is discarded to overlapping dots. A weighted Poisson-disk placement (5 px separation) reaches 9.365. Removing the 3 px catalogue collar removes dots whose measured marginal cost is 1.9-3.0x that of an ordinary dot.",
-  "named_non_fault_process_that_could_mimic_it": "Survey flight-line and radiometric leveling artefacts, and detrended-elevation edge effects, produce linear features that look like faults. The blocking fields (mineral/geothermal alteration) also project as lineaments. This design adds NO feature-driven lineament claim, so it cannot be fooled by them - but it also cannot benefit from real ones.",
-  "holdout_dti": {
-    "label": "HOLDOUT-DTI (catalogue hide-and-recover, NOT the organizer truth)",
-    "evaluator_version": "wbg3.metric v1.0 (alpha 0.2, beta 0.8, R=3 px triangular, whole-block withholding, 15 px buffer, pooled)",
-    "withheld_positives": 60988,
-    "candidate": 0.0,
-    "note": "Deliberately near zero and NOT used for selection: this instrument is anti-correlated with the live leaderboard (Spearman -0.849, p=0.0038, n=9). It rewards re-predicting mapped faults, which is the opposite of the competition target."
-  },
+  "hypothesis": "Historical H3-PACK hypothesis: more widely separated predictions might reduce redundant kernel coverage. Impact on hidden truth and the leaderboard was not measured.",
+  "mechanism": "The prior campaign measured a geometric packing proxy; overlap of geometric kernels is not the same as measured true-positive credit and does not establish an improvement on organizer truth.",
+  "named_non_fault_process_that_could_mimic_it": "Lithologic boundaries, survey artifacts and non-fault geological contacts may still receive predictions; a geometry-only design is not immune to false positives.",
   "registry_comparison": {
     "correlation_limit": 0.9,
     "overlap_limit": 0.7,
@@ -24,14 +17,14 @@
         0.9991,
         0.99923
       ],
-      "status": "UNSATISFIABLE for any non-empty in-footprint submission, including all nine published rasters. Flagged for protocol review; not silently exempted."
+      "status": "Binary lattice exceeds 70% for this file. Dense-prior support blocks every nonempty file only if finite-positive continuous support is interpreted as dots; unresolved, no exemption granted."
     },
-    "surface_rank_correlation": "not applicable: the candidate is a binary dot field with no continuous surface"
+    "surface_rank_correlation": "Original pre-placement surface comparison unavailable; not a novelty pass."
   },
   "raster_sha256": "5b32ad6190957ac43b3d9069f99dc0742c776cd0b2f89af63666dd43672d4ac2",
   "zip_sha256": "643d91309f2d4ea6215032a1f7c6cc6287108a68780453b5b0a9eca85c9dad15",
   "validator": {
-    "status": "PASS",
+    "status": "Local diagnostic against unauthenticated owner mirror; not organizer acceptance.",
     "no_nan_inside_footprint": true,
     "values_in_0_1": true,
     "crs_shape_transform_match": true,
@@ -40,29 +33,37 @@
     "dots": 34000,
     "report": "evidence/h3_submission.json"
   },
-  "submission_name": "wbg3-h3pack-34k-20261027T174337Z-zeros",
-  "submission_note": "REJECTED: literal registry duplicate; no compliant holdout win. Research only. DO NOT SUBMIT.",
+  "submission_name": null,
+  "submission_note": null,
   "projection": {
     "regression_only": 0.2847,
     "full_packing_transfer": 0.3323,
     "half_packing_transfer": 0.3085,
     "assumption": "regression fitted on the eight dotted focus rasters (score = a + b*D/1000 + c*collar); the packing multiplier assumes the kmass/dot gain transfers fully (or half) into TP. This is a PROJECTION, not a score.",
-    "headline": "0.285 (base, regression only) to 0.332 (upside, full packing transfer); 0.308 central",
-    "caution": "Dot count and packing efficiency are 98% collinear across the registry (r=-0.980), so the registry cannot separate the two mechanisms. The base case uses the regression alone, which already absorbs whatever packing effect exists inside the fitted range."
+    "headline": "UNVALIDATED HISTORICAL PROJECTION; not a measured or predicted leaderboard score.",
+    "caution": "Dot count and packing efficiency are 98% collinear across the registry (r=-0.980), so the registry cannot separate the two mechanisms. The base case uses the regression alone, which already absorbs whatever packing effect exists inside the fitted range.",
+    "status": "Exploratory geometry extrapolation, not actionable and not evidence of improvement."
   },
   "verdict": "negative",
-  "verdict_reason": "SUPERSEDED APPROVAL: DO NOT SUBMIT; literal duplicate stop, incomplete registry, no compliant holdout win.",
+  "verdict_reason": "Literal any-registry duplicate stop: lattice overlap 99.8618% (and dense-prior support 100%). Prior focus-only approval was invalid; pre-placement surface audit not established.",
   "weekly_submission_slot_spent": false,
   "limitations": [
     "All nine live scores are user-reported; no organizer receipt ties any score to exact bytes.",
     "The projection extrapolates a 9-point regression below its fitted range and assumes the packing gain transfers to TP.",
     "No design in this evidence reaches 0.32-0.44; the published family plateaus at 0.25-0.278.",
     "The catalogue holdout is anti-correlated with the target and was not used to select this design.",
-    "Organizer portal acceptance is untested from this environment."
+    "Organizer portal acceptance is untested from this environment.",
+    "H3 used a non-shared local proxy without the prescribed CI; no official HOLDOUT-DTI is claimed."
   ],
   "generated_utc": "2026-10-27T17:46:05Z",
   "ok_to_submit": false,
   "ok_to_download_new_tif": false,
-  "review_status": "SUPERSEDED APPROVAL: DO NOT SUBMIT; literal duplicate stop, incomplete registry, no compliant holdout win.",
-  "review_evidence": "evidence/release_recheck_20261027.json"
+  "release_triage": "evidence/release_triage_20261027.json",
+  "historical_noncompliant_proxy": {
+    "label": "HISTORICAL NONCOMPLIANT PROXY; not a shared-evaluator HOLDOUT-DTI and not a score",
+    "evaluator_version": "wbg3.metric v1.0 (alpha 0.2, beta 0.8, R=3 px triangular, whole-block withholding, 15 px buffer, pooled)",
+    "withheld_positives": 60988,
+    "candidate": 0.0,
+    "note": "Historical private evaluator lacked the required shared-evaluator/CI protocol. No comparison to hidden leaderboard truth is established."
+  }
 }

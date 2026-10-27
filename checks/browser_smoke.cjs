@@ -30,8 +30,16 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
       if (path === '/site/' && view.leader !== expectedLeader) bad.push(`fieldnotes leader=${view.leader}, canonical=${expectedLeader}`);
       if (path === '/site/' && !view.refStatus?.includes('Newer rasters have not been audited')) bad.push(`fieldnotes freshness=${view.refStatus}`);
       if (path === '/docs/research/why-b2-scored-2778.html') {
-        const check = await page.evaluate(() => ({strong:document.querySelectorAll('.research-prose strong').length,sections:document.querySelectorAll('.research-prose h2').length,pre:document.querySelectorAll('.research-prose pre').length,canonical:document.querySelector('nav a[href="research.html"]')?.href}));
-        if (check.strong < 10 || check.sections < 8 || check.pre !== 0 || !check.canonical.endsWith('/docs/research.html')) bad.push(`B2 render/navigation ${JSON.stringify(check)}`);
+        const check = await page.evaluate(() => {
+          const article = document.querySelector('.research-prose');
+          const text = article?.innerText || '';
+          return {headings:[...article.querySelectorAll('h2')].map(h => h.innerText),
+            pre:article.querySelectorAll('pre').length,
+            reported:text.includes('USER-REPORTED'), decision:text.includes('DO NOT SUBMIT'),
+            unknown:text.includes('cause is unknown'), metric:text.includes('[1−(1−β)s] ΔT > αs ΔF'),
+            canonical:document.querySelector('nav a[href="research.html"]')?.href};
+        });
+        if (check.headings.length < 4 || !check.reported || !check.decision || !check.unknown || !check.metric || check.pre !== 0 || !check.canonical.endsWith('/docs/research.html')) bad.push(`B2 evidence/navigation ${JSON.stringify(check)}`);
       }
       if (bad.length) failures.push({viewport:viewport.name,path,bad,view});
       console.log(JSON.stringify({viewport:viewport.name,path,...view,bad}));

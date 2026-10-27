@@ -1,5 +1,7 @@
 # Release reconciliation — 27 October 2026
 
+> **Historical concurrent review:** this record describes a separate review that merged into main. Its marker-patch shortlist was later superseded by the current [ranked proposals](hypotheses.md); the current five-file release triage and status are in [the present review](../evidence/review.md). No approval is implied.
+
 ## Outcome
 
 **Negative; no new TIFF, experiment, or weekly slot.** The priority was continuing prior-session work:

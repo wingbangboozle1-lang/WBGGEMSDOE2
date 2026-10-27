@@ -1,8 +1,12 @@
-NO FILE CLEARED — DO NOT SUBMIT
+NO FILE IS APPROVED FOR SUBMISSION
+==================================
 
-All TIFFs here are historical research artifacts, retained for hash-bound audit.
-DZ-16: wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif
-H3-PACK: wbg3-h3pack-34k-20261027T174337Z-zeros.tif
-Both fail the literal registered lattice overlap gate. A format pass does not
-establish uniqueness, scientific validation, or organizer acceptance.
-See ../submission/index.html (or ../../submission/index.html from h3-pack).
+All TIFFs and ZIPs in this directory, including DZ-16, H3-PACK and MSPTCD, are
+historical RESEARCH-ONLY artifacts. Do not upload them or spend a competition
+slot. The literal any-registry 3-pixel overlap stop failed for each of the five
+files independently checked in evidence/release_triage_20261027.json; one
+also fails local mirror-format checks. A partial focus-site pass, an enrichment
+calculation or a format pass cannot replace the full novelty gate.
+
+No new submission TIFF, name or submission note was produced by this review.
+See ../index.html and ../../evidence/RUN_CARD_FINAL.json for the current decision.
