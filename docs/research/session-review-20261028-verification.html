@@ -1,0 +1,346 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Independent re-verification of the lattice bound, B2 lineage and nine-site duplicates."><meta name="theme-color" content="#0b5d4d"><title>Session review 2026-10-28 · GEMS Research</title><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script></head><body><a class="skip" href="research/session-review-20261028-verification.html#main">Skip to content</a><header class="topbar"><div class="shell">
+<a href="index.html" class="brand" aria-label="GEMS research home"><span class="brandmark"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/></svg></span>GEMS <small>RESEARCH</small></a>
+<nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a href="release.html">Download status</a><a href="executive-summary.html">Executive summary</a><a href="research.html" aria-current="page">Research</a><a href="sources.html">Sources</a></nav><div class="top-right"><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a><span class="top-status"><span class="dot"></span> Submission blocked</span></div></div></header><main id="main" class="shell main"><article class="card guide-card research-prose"><h1>Session review — 28 October 2026 (independent re-verification)</h1>
+<p><strong>Lane status:</strong> UNASSIGNED. This session ran <strong>no candidate experiment</strong>, placed <strong>no dots</strong>,
+spent <strong>0 weekly slots</strong>, and generated <strong>no new TIFF</strong>. Its deliverable is an <strong>independent
+re-verification</strong> of the repository's central claims plus a decision-critical policy finding.</p>
+<p><strong>What this session actually did</strong></p>
+<ol>
+<li>Installed the pinned runtime (<code>requirements.txt</code>) and ran the full suite:
+   <strong>350 passed, 12 skipped</strong> (<code>pytest</code>) and <strong>41 passed, 11 skipped</strong> (<code>checks/</code>).</li>
+<li>Ran the documented build pipeline end to end
+   (<code>build_hypotheses → build_run_card → build_site_data → sync_msptcd_evidence →
+   build_msptcd_site → build_site → build_release</code>): <strong>all exit 0</strong>, all gates stay closed.</li>
+<li>Restored the two hash-pinned owner-mirror reference grids
+   (<code>reference_grid_mirror.tif</code>, <code>existing_faults_mirror.tif</code>) from the pinned GitHub blobs and
+   hash-verified them.</li>
+<li>Re-ran the registry audit <strong>with fetch</strong> (<code>scripts/audit_registry.py --fetch</code>) to
+   independently re-derive the lattice-coverage bound and the B2 lineage from the pinned
+   registry bytes. Output: <code>evidence/registry_audit_20261028.json</code>.</li>
+<li>Read back the on-disk TIFF bytes of the best local candidates and checked format/range/hash.</li>
+</ol>
+<p>Every number below marked <strong>VERIFIED</strong> was reproduced in this session from pinned bytes, not
+copied from prose.</p>
+<hr />
+<h2>1. Independent re-verification of the literal uniqueness bound (VERIFIED)</h2>
+<p>Reproduced from the pinned 13GEMSDOE lattice and the mirrored footprint:</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align: right;">Value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Footprint cells</td>
+<td style="text-align: right;">5,167,373</td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Cells within inclusive 3 px of the lattice</td>
+<td style="text-align: right;">5,160,724</td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Fraction of footprint covered</td>
+<td style="text-align: right;">0.99871327</td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Uncovered cells</td>
+<td style="text-align: right;">6,649</td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Uncovered cells within 3 px of a footprint edge/hole</td>
+<td style="text-align: right;">6,485</td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Max distance from an uncovered cell to the footprint exterior</td>
+<td style="text-align: right;">48.01 px</td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Standard budget</td>
+<td style="text-align: right;">37,654 dots</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Minimum possible 3-px lattice overlap at that budget</td>
+<td style="text-align: right;"><strong>0.82341849</strong></td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Stop limit</td>
+<td style="text-align: right;">0.70</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Feasible under the limit at standard budget?</td>
+<td style="text-align: right;"><strong>false</strong></td>
+<td>VERIFIED</td>
+</tr>
+<tr>
+<td>Largest budget that could possibly meet the limit</td>
+<td style="text-align: right;"><strong>22,163</strong></td>
+<td>VERIFIED</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consequence (counting bound, not a score):</strong> for any 37,654-distinct-dot map, at least
+82.34% of dots lie within 3 px of the registered lattice, above the 70% stop. Passing the
+literal rule at the standard budget is therefore <strong>arithmetically impossible</strong>; it would require
+a budget below 22,164 dots placed almost entirely in the 6,649 uncovered cells — which the repo
+correctly classifies as <em>footprint-edge gaming</em> that confounds acquisition geometry with geology,
+not as a scientific submission.</p>
+<p>The separate 17GEMSDOE continuous prior is positive on <strong>all 5,167,373</strong> footprint cells
+(VERIFIED). Under the shared literal finite-positive support rule every nonempty candidate
+overlaps it 100%. Whether a continuous prior "counts as dots" is a <strong>policy question</strong>, not a
+measurement; this session applies no exemption.</p>
+<h2>2. Independent re-verification of the B2 lineage (VERIFIED)</h2>
+<p>From the pinned GEMSDOE25/27/28/30/31/32/33/36 masks:</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEMSDOE25 and GEMSDOE30 identical in-footprint</td>
+<td><strong>true</strong> (both 44,090 dots)</td>
+</tr>
+<tr>
+<td>GEMSDOE32 B2 = GEMSDOE25 minus dots within 2 px of catalogue</td>
+<td><strong>true</strong> (37,654 dots)</td>
+</tr>
+<tr>
+<td>GEMSDOE36 additions to GEMSDOE32</td>
+<td><strong>1,200</strong> (0 removals)</td>
+</tr>
+<tr>
+<td>Reference sample positives == catalogue positives</td>
+<td><strong>true</strong> (60,988)</td>
+</tr>
+</tbody>
+</table>
+<p>This confirms the repo's lineage: the nine "champions" are not nine independent methods; they are
+one dotted mask plus deterministic prunings/additions. <strong>B2 is not a genuinely new method</strong> relative
+to the GEMSDOE25/30 lineage.</p>
+<h2>3. Nine-site executive decision (all VERIFIED against pinned bytes)</h2>
+<p><code>fraction_within_3px_of_lattice</code> is the candidate's own dots falling within 3 px of the registered
+lattice. <code>max_focus_peer</code> is the best overlap with any other named focus file (directed). All nine
+are literal duplicates; <strong>none is submit-able</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Site</th>
+<th style="text-align: right;">Dots</th>
+<th style="text-align: right;">3-px lattice overlap</th>
+<th>Best focus peer</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEMSDOE32 (B2)</td>
+<td style="text-align: right;">37,654</td>
+<td style="text-align: right;">0.99915</td>
+<td>GEMSDOE24 1.000</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+<tr>
+<td>GEMSDOE36</td>
+<td style="text-align: right;">38,854</td>
+<td style="text-align: right;">0.99918</td>
+<td>GEMSDOE27 0.9758</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+<tr>
+<td>GEMSDOE28</td>
+<td style="text-align: right;">37,660</td>
+<td style="text-align: right;">0.99910</td>
+<td>GEMSDOE24 1.000</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+<tr>
+<td>GEMSDOE31</td>
+<td style="text-align: right;">40,199</td>
+<td style="text-align: right;">0.99918</td>
+<td>GEMSDOE24 1.000</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+<tr>
+<td>GEMSDOE33</td>
+<td style="text-align: right;">41,865</td>
+<td style="text-align: right;">0.99914</td>
+<td>GEMSDOE27 0.9971</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+<tr>
+<td>GEMSDOE25</td>
+<td style="text-align: right;">44,090</td>
+<td style="text-align: right;">0.99916</td>
+<td>GEMSDOE24 1.000</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+<tr>
+<td>GEMSDOE30</td>
+<td style="text-align: right;">44,090</td>
+<td style="text-align: right;">0.99916</td>
+<td>GEMSDOE24 1.000</td>
+<td>DO NOT SUBMIT (== GEMSDOE25)</td>
+</tr>
+<tr>
+<td>GEMSDOE24</td>
+<td style="text-align: right;">60,069</td>
+<td style="text-align: right;">0.99922</td>
+<td>GEMSDOE25 1.000</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+<tr>
+<td>GEMSDOE27</td>
+<td style="text-align: right;">61,328</td>
+<td style="text-align: right;">0.99923</td>
+<td>GEMSDOE24 0.9802</td>
+<td>DO NOT SUBMIT</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Answer to "which is the best submission to submit to obtain a high score":</strong> none of the nine.
+The highest <em>user-reported</em> claim (GEMSDOE32 B2, 0.2778) is also a literal duplicate and cannot be
+resubmitted. The table the requester asked for (file / estimate / unique?) is therefore all
+"DO NOT RESUBMIT" with estimate <strong>Unavailable</strong> — there is no defensible leaderboard forecast for
+any archived file, and resubmitting a duplicate wastes a weekly slot.</p>
+<h2>4. Why B2 may have reached 0.2778 — and whether we can beat it</h2>
+<p><strong>Why (plausible, not proven).</strong> The official metric is
+<code>DTI = T / [(1−β)T + αF + βN + ε]</code> with α=0.2, β=0.8, 300 m triangular kernel. B2 removes 6,436
+dots within 2 px of the mapped catalogue from the 44,090-dot D2.8 mask. Removing dots can raise DTI
+only if the lost false-positive mass <code>ΔF</code> outweighs the lost truth coverage <code>ΔT</code>; the improvement
+condition is <code>[1−(1−β)s]·ΔT &gt; α·s·ΔF</code>. <strong>Both ΔT and ΔF were not measured</strong>, so the 0.2778
+mechanism is a hypothesis, not a verified decomposition. (An older claim that the removal saved
+<code>0.2·ΔFP ≈ 12,074</code> is withdrawn as impossible: even at one mass unit per removed dot the weighted
+reduction is ≤ 1,287.2.)</p>
+<p><strong>Can we beat it?</strong> Unknown, and not currently testable here:
+- The method lane is UNASSIGNED, so no candidate may be implemented.
+- No authenticated competition feature stack / labels are present in this checkout
+  (<code>data/</code> holds only the two small reference mirrors; the 418 MB training stack is not restored).
+- The best measured candidate in the repository is <strong>WBG2-DISTAL <code>natural_oof</code></strong>,
+  <strong>HOLDOUT-DTI 0.1770</strong>, 95% CI [0.1549, 0.1976], evaluator <code>gems57-pooled-hide-v2</code>,
+  60,988 withheld positives, 61/61 leakage canaries ≤ 0.6180 — but it <strong>also fails the literal
+  all-registry rule</strong> (max registry dot overlap 0.9066 &gt; 0.70) for the same blanket-control reason.
+- The empirical fleet model's point estimate for the archived candidate is <strong>0.1493</strong>,
+  95% PI <strong>[0.000, 0.333]</strong>, external-test RMSE 0.094; it <strong>cannot certify anything above the
+  observed 0.2778</strong> and gives no evidence about the 0.33–0.45 leaderboard band.
+- The organizer-published public leaderboard high observed on 2026-10-27 was <strong>0.4544</strong>
+  (xiaofanhu). This is a public observation, <strong>not</strong> a per-file receipt.</p>
+<h2>5. The <code>[0, 1]</code> submission error — cause identified (VERIFIED against on-disk bytes)</h2>
+<p>The requester's upload failed with <em>"Predicted values must be in range [0, 1]"</em>. The repository's
+recorded cause (<code>data_public/candidate.json</code>) is a <strong>NaN-filled variant</strong>; the fix is to write
+<strong>zeros everywhere</strong> (no NaN, no NoData mask) inside and outside the footprint. This session
+read back the two best local TIFFs and confirmed they already satisfy the portal's range rule:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>CRS</th>
+<th>Shape</th>
+<th>Transform</th>
+<th>dtype</th>
+<th style="text-align: right;">bands</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">NaN</th>
+<th style="text-align: right;">&lt;0</th>
+<th style="text-align: right;">&gt;1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wbg2-distaloof-natural_oof-...-8237e99a-zeros.tif</code></td>
+<td>EPSG:32611</td>
+<td>3730×3292</td>
+<td>100 m</td>
+<td>float32</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><code>wbg2-distal-blind-piedmont-...-7a3f9c1d-zeros.tif</code></td>
+<td>EPSG:32611</td>
+<td>3730×3292</td>
+<td>100 m</td>
+<td>float32</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>On-disk SHA-256 re-checked this session: DISTAL <code>512609c1…aa9c</code> (matches its writer receipt);
+GVCD <code>b625e13b…5218</code> (matches the README). A local range pass is <strong>not</strong> portal acceptance, and it
+is <strong>not</strong> uniqueness or organizer approval.</p>
+<h2>6. The single decision-critical policy question</h2>
+<p>The repository applies the literal rule <em>"any registry raster"</em>, which includes three <strong>synthetic
+blanket controls</strong> (the 13GEMSDOE stride-5 lattice, the 17GEMSDOE continuous prior, GEMSDOE22).
+Under that literal reading <strong>no standard-budget candidate can ever pass</strong>, and the requester's own
+0.2778 champion is itself rejected.</p>
+<p>If — and only if — the rule-setter confirms that <strong>synthetic space-filling / continuous controls are
+not "submissions"</strong> and are excluded from the duplicate gate, then the repository's best candidate,
+<strong>WBG2-DISTAL <code>natural_oof</code> (HOLDOUT-DTI 0.1770)</strong>, becomes unique under the sparse-peer rule
+(max 3-px overlap 0.679 vs 437 comparable-budget fleet rasters; ≤ 0.631 vs the nine focus
+champions) and is the strongest available submission.</p>
+<p><strong>This session does not resolve that question unilaterally and does not spend a slot.</strong> Resolving it
+is the single highest-leverage unblock. Until it is resolved, the correct action is to protect the
+weekly slot and submit nothing.</p>
+<h2>7. Blockers (unchanged, all real)</h2>
+<ol>
+<li><strong>No assigned method lane</strong> — the parallel-run protocol references a "single method paragraph"
+   that is not present in the project inputs; the shortlist does not assign one.</li>
+<li><strong>No authenticated competition data</strong> — DrivenData requires login; <code>data/</code> is not populated with
+   organizer features/labels. The owner mirror is <strong>not</strong> organizer-authenticated.</li>
+<li><strong>Literal uniqueness gate is unpassable at the standard budget</strong> (Section 1).</li>
+<li><strong>Unresolved dense-prior interpretation</strong> (Section 1/6).</li>
+<li><strong>Shared template NoData-mask defect</strong> — reproduced by regression tests; upstream issue creation
+   was permission-denied. No private fork.</li>
+<li><strong>No current complete registry</strong> — a failed witness is conclusive, but no candidate can be
+   declared globally unique from an incomplete inventory.</li>
+</ol>
+<h2>8. Next steps (ranked by P(Win) impact)</h2>
+<ol>
+<li><strong>Resolve the policy question in Section 6</strong> (do synthetic blanket controls count?). This is the
+   only change that can convert an existing candidate into an eligible submission.</li>
+<li><strong>Assign an explicit method lane</strong> and restore authenticated competition data
+   (<code>bash scripts/download_competition_data.sh</code> on an unrestricted machine, then
+   <code>python scripts/prepare_data.py</code>).</li>
+<li>If (1) resolves in favour of sparse-peer uniqueness, run the separate <strong>selector</strong> step: confirm
+   remaining weekly quota, assign a unique filename and a ≤140-character note, and archive the exact
+   organizer receipt for the submitted SHA-256.</li>
+<li>Only then consider new experiments — and only inside an assigned lane, with buffered whole-segment
+   hide-and-recover holdouts, feature-alone leakage canaries, and the unchanged shared evaluator.</li>
+</ol>
+<h2>9. Session run card</h2>
+<ul>
+<li>Hypothesis tested: none (no lane assigned; no experiment authorized).</li>
+<li>Mechanism: independent re-derivation of the lattice bound and B2 lineage from pinned bytes.</li>
+<li>Non-fault mimic (for any future N1–N4): unfaulted intrusive/volcanic body margins, alluvial
+  edges, and survey striping can mimic paired multi-physics edges.</li>
+<li>Holdout DTI: <strong>NOT RUN</strong> (no lane, no authenticated data).</li>
+<li>Registry measurement: lattice overlap bound <strong>0.82341849</strong> (VERIFIED); all nine focus files
+  literal duplicates (VERIFIED); dense prior full-footprint positive (VERIFIED).</li>
+<li>Raster SHA-256 generated: <strong>none</strong> (no new TIFF).</li>
+<li>Validator: existing local TIFFs re-read; range/CRS/shape/transform PASS; not portal acceptance.</li>
+<li>Submission name/note: <strong>none</strong>.</li>
+<li>Verdict: <strong>negative</strong> — protect the slot; resolve the policy question first.</li>
+</ul></article></main><footer class="footer"><div class="shell"><div><strong>GEMS RESEARCH</strong> · Evidence before submission</div><div><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition ↗</a> &nbsp;·&nbsp; <a href="data/run-card.json">Run card</a> &nbsp;·&nbsp; <a href="data/portfolio.json">Audit data</a></div></div></footer></body></html>
