@@ -20,15 +20,6 @@ Protocol compliance:
 """
 from __future__ import annotations
 
-import sys
-
-# Keep the retired launcher self-test independent of optional shared-template imports.
-# The pinned ``gems57`` package is intentionally absent from a blocked checkout; a
-# self-test must still fail closed with the policy message rather than a traceback.
-if "--selftest" in sys.argv:
-    print("STOP: retired launcher; restore and verify the pinned shared template before use.", file=sys.stderr)
-    raise SystemExit(2)
-
 import datetime as dt
 import gc
 import hashlib
@@ -47,6 +38,12 @@ from sklearn.metrics import roc_auc_score
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / ".cache" / "shared-template" / "src"))
+
+# Retired campaign entry point: make the safety probe independent of optional
+# shared-template availability so it always fails closed before importing or writing.
+if "--selftest" in sys.argv:
+    print("STOP: retired WBG2-DPHS campaign; do not run or write outputs.", file=sys.stderr)
+    raise SystemExit(2)
 
 from gems57 import emit, evaluate_holdout, spatial, submission_writer  # noqa: E402
 from wbggems.dphs import (  # noqa: E402
