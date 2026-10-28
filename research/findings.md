@@ -1,14 +1,15 @@
 # Current reconciliation — 27 October 2026
 
-All eight saved TIFF identities fail literal registry duplication. Former DZ-16/H3 approvals are revoked;
-no new candidate, experiment, forecast or slot. [Current byte audit](../evidence/release_audit.json),
+All nine audited TIFF identities fail literal registry duplication under finite-positive support. Former DZ-16/H3 approvals are revoked;
+this review ran no new candidate experiment, forecast or slot. A concurrent session's 6,000-dot TIFF is included: its lattice overlap is 67.167% but its continuous-prior overlap is 100% under that support definition. The prior's interpretation remains unresolved; no method lane is assigned. [Current byte audit](../evidence/release_audit.json),
+[independent recheck](../evidence/release_independent_review_20261027.json),
 [one canonical run card](../evidence/run_card.json), [official-source recheck](source-verification-release-20261027.md),
-[revised N1–N4 proposals](hypotheses.md), and [three-pass review record](release-reconciliation-review.md).
+[revised N1–N4 proposals](hypotheses.md), and [latest three-pass review](three-pass-independent-review-20261027.md).
 
 The full 19-band owner mirror is restored, not organizer-authenticated. Historical MSPTCD v1
 HOLDOUT-DTI is source-reported, not reproduced. Corrected v2 orientation features and content-bound
 caches have synthetic tests only; old metrics are not evidence for v2. Former web band-schema and
-“zero leakage” claims are corrected. All new raster/score/promotion fields remain null/false.
+“zero leakage” claims are corrected. The canonical card's new-release raster/score/promotion fields remain null/false; the separate concurrent research file is identified in its audit section.
 
 ---
 

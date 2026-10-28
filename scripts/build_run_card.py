@@ -60,10 +60,37 @@ release = load_negative_release(ROOT)
 if (card['release_reconciliation']['owned_tif_paths'] != release['scope']['owned_tif_paths']
         or card['release_reconciliation']['distinct_raster_sha256'] != release['scope']['distinct_tif_sha256']):
     raise ValueError('Research inventory changed; review the canonical disposition')
-# Keep secondary inventory counts derived from the same byte-bound audit. These
-# are descriptive counts, not approval gates; stale counts still mislead readers.
-card['release_reconciliation']['zip_archives'] = len(release['zip_archives'])
+
+# A separate local recheck must reproduce both prior measurements, not merely
+# have a newer timestamp. These receipts only reject existing rasters; they do
+# not measure an original surface, certify the whole registry or approve a slot.
+registry_recheck_path = ROOT / 'evidence/registry_independent_review_20261027.json'
+release_recheck_path = ROOT / 'evidence/release_independent_review_20261027.json'
+registry_recheck = json.loads(registry_recheck_path.read_text())
+release_recheck = json.loads(release_recheck_path.read_text())
+without_time = lambda record: {k: v for k, v in record.items() if k != 'generated_utc'}
+if without_time(registry_recheck) != without_time(audit) or without_time(release_recheck) != without_time(release):
+    raise ValueError('Independent recheck changed a measurement; review before publishing')
+card['independent_forensic_recheck'] = {
+    'evidence_class': 'BYTE-LEVEL-FORENSIC-MEASUREMENT; not an experiment or submission approval',
+    'registry_receipt': str(registry_recheck_path.relative_to(ROOT)),
+    'registry_receipt_sha256': digest(registry_recheck_path),
+    'registry_recorded_utc': registry_recheck['generated_utc'],
+    'release_receipt': str(release_recheck_path.relative_to(ROOT)),
+    'release_receipt_sha256': digest(release_recheck_path),
+    'release_recorded_utc': release_recheck['generated_utc'],
+    'measurements_match_prior_receipts_excluding_timestamps': True,
+    'all_current_registry_rasters_checked': False,
+    'new_experiments': 0,
+    'weekly_slots_used': 0,
+}
+card['validator']['status'] = (
+    f"No raster generated in this review. {len(release['artifacts'])} existing identities in "
+    f"{release['scope']['owned_tif_paths']} paths and {len(release['zip_archives'])} ZIPs "
+    "were independently reopened; format checks are not organizer acceptance."
+)
 card['release_reconciliation']['pinned_witnesses'] = release['scope']['registry_rasters_opened']
+card['release_reconciliation']['zip_archives'] = len(release['zip_archives'])
 # Derive exact existing-artifact diagnostics from the independently generated
 # audit; never populate the null NEW-candidate or score fields.
 card['existing_artifact_audit'] = {
@@ -80,12 +107,6 @@ card['existing_artifact_audit'] = {
                   for r in release['artifacts']],
     'zip_archives': release['zip_archives'],
 }
-
-card['validator']['status'] = (
-    f"No new raster generated in this review. {release['scope']['owned_tif_paths']} existing TIFF paths / "
-    f"{release['scope']['distinct_tif_sha256']} identities independently reopened; exact inside/grid and "
-    "strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance."
-)
 
 text = json.dumps(card, indent=2, allow_nan=False) + '\n'
 for rel in CANONICAL_RUN_CARDS:

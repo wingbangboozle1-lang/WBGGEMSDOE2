@@ -1,69 +1,39 @@
 {
+  "schema": "wbggems.public-dphs-review.v1",
+  "review_status": "HISTORICAL SOURCE; campaign, canaries and original surface not independently replayed",
   "run_id": "wbg2-dphs-20261027T203110Z",
   "hypothesis": "DPHS-H1..H5: Dual-regime calibrated PU-HGBR combining 1 m LiDAR residual scarps, 10 m 3DEP multi-scale DoG curvature, GeoDAWN aeromagnetic/radiometric lineaments, and Great Basin Play Fairway / GDR hydrothermal + Quaternary contacts, decoded via 300 m triangular-kernel CELF submodular max-cover outside a 2.05 px catalogue collar.",
-  "method_lane": "WBG2-DPHS (Multi-Sensor Piedmont-Hydrothermal PU-HGBR + 300 m CELF Submodular Allocation)",
-  "holdout_dti": 0.173477,
-  "incumbent_dti": 0.029605,
+  "method_lane": "UNASSIGNED in current review; historical DPHS is not an assignment",
+  "holdout_dti": 0.17347681799742903,
   "ci95": [
-    0.152451,
-    0.194361
+    0.15245051093303297,
+    0.1943608976540539
   ],
-  "leakage_canary_max_auc": 0.6179,
-  "max_registry_corr": 0.86524,
-  "max_registry_dot_overlap": 0.95866,
+  "incumbent_dti": null,
+  "leakage_canary_max_auc": null,
+  "max_registry_corr": null,
+  "max_registry_dot_overlap": 1.0,
+  "lattice_overlap_3px": 0.9983561643835617,
   "format_valid": true,
   "status": "negative",
   "verdict": "negative",
   "ok_to_submit": false,
+  "submission_name": null,
+  "submission_note": null,
+  "leaderboard_score_estimate": null,
   "evidence_details": {
-    "evidence_class": "HOLDOUT-DTI",
+    "evidence_class": "SOURCE-REPORTED HOLDOUT-DTI; NOT REPRODUCED",
     "evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positives": 60988,
-    "alpha": 0.2,
-    "beta": 0.8,
-    "triangular_radius_m": 300.0,
-    "paired_delta_vs_incumbent_msptcd": {
-      "delta": 0.143871,
-      "ci95": [
-        0.123055,
-        0.162854
-      ]
-    },
-    "paired_delta_vs_ctrl_19b": {
-      "delta": 0.143173,
-      "ci95": [
-        0.124278,
-        0.16325
-      ]
-    },
-    "paired_delta_vs_h3_blind_lattice": {
-      "delta": 0.101454,
-      "ci95": [
-        0.080103,
-        0.122342
-      ]
-    },
-    "experiments_executed": 3,
-    "experiment_cap": 3,
-    "weekly_submission_slots_used": 0,
+    "historical_source_canary_auc": 0.6179,
+    "canary_caveat": "Source-reported, not independently rerun; passing does not prove absence of leakage.",
     "candidate_file": "docs/downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif",
     "candidate_sha256": "31f3d8e61d195dd5ac09f380815cd08ea072d8812e2f5021d2c41fa423e6ccd9",
-    "submission_name": "wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros",
-    "submission_note": "WBG2-DPHS EXP-3 1mLiDAR+10m3DEP+GeoDAWN+GDR1391+CELF300m 36500dots HOLDOUT-DTI=0.1735",
-    "uniqueness_audit_scope": {
-      "rasters_measured": 467,
-      "exact_sha256_matches": 0,
-      "preplacement_surface_spearman_max_abs": 0.86078,
-      "postplacement_1km_pearson_max_abs": 0.86524,
-      "focus_sites_9_primary_3px_overlap_range": [
-        0.42682,
-        0.58233
-      ],
-      "discrete_non_blanket_3px_overlap_max": 0.95866,
-      "discrete_non_blanket_rasters_gt_70pct": 45,
-      "literal_blanket_rasters_gt_70pct": 48,
-      "duplicate_stop_reason": "Final dots exceed the 70% 3-px registry overlap gate against 45 discrete range-front scarp/PU-HGBR fleet rasters (max 0.9587 vs GEMSDOE12 dem10-scarp; 0.7827 vs GEMSDOE32 h45; 0.7495 vs GEMSDOE24 gvc1 [0.0859 USER-REPORTED]; 0.7365 vs GEMSDOE28 s21-puhgb [0.0206 USER-REPORTED]) and 48 blanket/lattice rasters because full-map packaging blended 55% in-sample PU-HGBR predictions that concentrated 96.36% of dots inside 2..32 px steep range fronts (frac_gt_32px=0.0364, c_pied_sgmc=0.0520, EMPIRICAL-ESTIMATE=0.0713 [95% PI 0.0000..0.1941]). Stopped per Parallel-Run Protocol (>70% = duplicate STOP; 3-experiment cap reached). DO NOT SUBMIT."
-    },
+    "registry_scope": "13 pinned witnesses; incomplete current registry. Continuous prior support interpretation remains unresolved.",
+    "original_surface_rank_correlation": null,
+    "local_format_caveat": "Local checks against an owner mirror are not organizer acceptance.",
+    "historical_source": "evidence/RUN_CARD_DPHS.json",
+    "independent_byte_audit": "evidence/release_independent_review_20261027.json",
     "ok_to_download_for_research": true,
     "ok_to_submit": false
   }

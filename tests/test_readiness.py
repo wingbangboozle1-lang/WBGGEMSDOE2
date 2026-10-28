@@ -44,7 +44,7 @@ def test_diagnostic_is_non_authorizing_and_inventory_is_byte_bound():
     assert report['new_raster'] is None and report['leaderboard_estimate'] is None
     assert report['experiments_run'] == report['weekly_slots_used'] == 0
     assert report['existing_research_inventory'] == {
-        'tif_paths': 10, 'distinct_tif_hashes': 8, 'zip_paths': 7,
+        'tif_paths': 11, 'distinct_tif_hashes': 9, 'zip_paths': 8,
         'all_rejected_by_literal_overlap': True,
     }
     assert {r['status'] for r in report['gates']} <= {'verified', 'blocked', 'not-run'}
@@ -93,8 +93,8 @@ def test_corrupt_release_never_writes_diagnostic(tmp_path, monkeypatch):
 def test_home_banner_distinguishes_reported_science_and_saved_byte_measurement():
     html = (ROOT / 'docs/index.html').read_text()
     assert 'SOURCE-REPORTED HOLDOUT-DTI 0.173477' in html
-    assert 'This review did not replay the campaign' in html
-    assert '99.84% overlap within 3 px' in html
+    assert 'the campaign and its canaries were not independently replayed' in html
+    assert '99.836% of this file' in html and 'registered binary lattice' in html
     assert '99.94% vs' not in html
     assert 'Why 0.2778 won' not in html
     assert 'href="readiness.html"' in html

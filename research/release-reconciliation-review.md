@@ -1,6 +1,8 @@
 # Three-pass release review: implementation → review → recheck
 
-**27 October 2026 UTC · completed software/forensic review · NEGATIVE / DO NOT SUBMIT.**
+**27 October 2026 UTC · historical software/forensic review · NEGATIVE / DO NOT SUBMIT.**
+
+This is an earlier snapshot; its counts and test totals reflect that review, not the current inventory. See the [latest independent review](three-pass-independent-review-20261027.md) for 10 TIFF paths / 8 identities / 7 ZIPs and the current rerun.
 
 This is not a new candidate campaign. This review generated no prediction TIFF, placed no dots, trained no model, reran no scientific holdout, and used no competition slot. Two additional existing raster identities arrived through concurrently merged PRs #24/#26; their TIFF/ZIP bytes are preserved, not presented as this review's novel work. The deliverable is one canonical [`evidence/run_card.json`](../evidence/run_card.json), mirrored at nine current/legacy aliases.
 

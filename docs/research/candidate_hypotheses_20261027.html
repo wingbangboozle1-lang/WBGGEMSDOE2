@@ -1,93 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Candidate Hypotheses · GEMS Research</title><link rel="stylesheet" href="https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/assets/css/site.css"></head><body><header class="topbar"><div class="shell"><a href="../index.html" class="brand">GEMS <small>RESEARCH</small></a></div></header><main class="shell main"><article class="card"><div class="card-body"><h1>Five ranked geological hypotheses — distal blind-fault program 2026-10-27</h1>
-<p><strong>Evidence class:</strong> <code>PROPOSED-HYPOTHESIS</code> — qualitative prior, not measured HOLDOUT-DTI. All layers below are from the hash-pinned 19-band owner-mirrored stack (<code>data/official/training_features.tif</code> SHA-256 <code>4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5</code>) plus Census TIGER and GDR sources. No new external binary is required. Mirror origin is not organizer-authenticated; ignored caches must be re-verified before any holdout run. The official depth layer is <code>depth to conductive base</code> (not authenticated basement depth).</p>
-<p><strong>Fleet observation that motivates the ranking:</strong> The 95-scored-raster empirical model (LOSO R² 0.4303, Spearman 0.6488) shows top scorers (GEMSDOE32 0.2778, GEMSDOE70 0.3133 USER-REPORTED) place 34–37% of mass &gt;32 px distal vs 3.6% for range-front-concentrated DPHS-EXP3. B2's gain likely came from removing 6,436 near-catalogue dots (44,090→37,654) that were paying FP cost without adding distal T. The next gain should come from <em>re-allocating</em> that budget to distal piedmont, not from more range-front density.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Rank</th>
-<th>ID</th>
-<th>Title</th>
-<th>Expected HOLDOUT-DTI gain (qualitative, untested)</th>
-<th>Cost</th>
-<th>Layers</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">1</td>
-<td><strong>N5 — Distal piedmont blind-fault allocation outside 30 px</strong></td>
-<td><strong>Highest</strong> — directly targets the 30–40% of fleet variance explained by distal placement; lowest FP overlap with known faults</td>
-<td><strong>Low</strong> (~90 LOC; EDT + masked submodular, no new sensor)</td>
-<td><code>existing_faults</code> distance (EDT), <code>depth_to_base_surf</code> (Band 15 proxy), <code>det_elev</code> (Band 12) + TIGER road de-confound</td>
-<td><strong>Implemented as research candidate</strong> <code>wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros</code> — see run card</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">2</td>
-<td><strong>N1 — Signed edge-pair body veto</strong></td>
-<td>High qualitative — discriminates finite-width intrusives from monotonic steps</td>
-<td>Medium (profile sampling at 200/400/800 m)</td>
-<td><code>rtp</code> (B2), <code>iso_grav_anom</code> (B13), <code>depth_to_base_surf</code> (B15)</td>
-<td>Proposal only; distinct from MSPTCD unsigned gradients</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">3</td>
-<td><strong>N2 — Radiometric-quiet magnetic transfer under cover</strong></td>
-<td>Moderate — targets cover bias</td>
-<td>Medium (matched strata sampling)</td>
-<td><code>tc</code> (B6), <code>rtp</code> (B2), <code>depth_to_base_surf</code> (B15), <code>cond_surf</code> (B17)</td>
-<td>Proposal only</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">4</td>
-<td><strong>N3 — Catalogue-free orientation transport at junctions</strong></td>
-<td>Exploratory — high cost, non-unique</td>
-<td>High (graph)</td>
-<td><code>iso_grav_anom</code> (B13), <code>rtp</code> (B2), <code>det_elev</code> (B12)</td>
-<td>Proposal only</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">5</td>
-<td><strong>N4 — Survey-axis notch stability veto</strong></td>
-<td>Low direct — artefact control only</td>
-<td>Low–Medium (local FFT)</td>
-<td><code>mag_anom</code> (B1), <code>rtp</code> (B2), <code>tc</code> (B6) + USGS GeoDAWN flight-line docs</td>
-<td>Proposal only</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2>N5 — Distal piedmont blind-fault allocation (implemented)</h2>
-<ul>
-<li><strong>Specific layers:</strong> <code>existing_faults.tif</code> Euclidean distance transform (EDT) &gt;30 px (=3,000 m) mask; <code>depth_to_base_surf</code> (Band 15, conductive-base depth proxy) for piedmont vs playa stratification; <code>det_elev</code> (Band 12) for relief context; Census TIGER <code>tiger_road_distance_m</code> for road de-confounder (250 m buffer). No new binary needed.</li>
-<li><strong>Physical signature:</strong> Basin-and-Range normal faults produce 0.5–8 m piedmont scarps with asymmetric topographic steps and 100 m-scale linear coherence. Beyond 3 km from range fronts, Holocene/Late-Pleistocene scarps are systematically omitted from 1:100k compilations (Faulds &amp; Hinz 2015). Require distal EDT mask + road-suppressed scarp contrast, sampled only on fold-visible training folds.</li>
-<li><strong>Why it catches uncatalogued vs known:</strong> Known faults are range-front master strands with &gt;10 m throws and clear bedrock scarps; they dominate the training catalogue. Blind intrabasin faults have &lt;3 m throws under thin Quaternary fill, lack bedrock exposure, and are invisible to pre-3DEP mapping. By masking <code>d_vis ≤2.05 px</code> and decoding only <code>d_vis &gt;30 px</code> via submodular cover, we <em>exclude</em> near-catalogue FP waste and <em>re-allocate</em> to distal hypothesis space where hidden truth density is higher (fleet model: distal fraction explains +0.12 DTI).</li>
-<li><strong>Difference from repo:</strong> DZ-16 used isotropic <code>d≤32 px</code> truncation (distal starvation: 3.6% distal). MSPTCD was zero-catalogue. DPHS-H2 used Voronoi relay bridges (2.5–26 px) — a <em>near-catalogue</em> linker, not a distal allocator. H3-PACK was uniform lattice packing. None used an explicit <strong>30 px distal mask</strong> with road/shoreline de-confounded 10 m DEM + 1 m LiDAR (when available) as a <em>budget allocator</em>. Our candidate's uncovered-edge priority is a <em>registry-uniqueness</em> strategy, not geology; the distal mask is the geology.</li>
-<li><strong>Non-fault mimic:</strong> Pleistocene Lake Lahontan shoreline benches (1,315–1,348 m), highway causeways (&lt;250 m from TIGER), and symmetric arroyo incision can mimic piedmont steps. Mitigated by Lahontan elevation notch (1332±15 m) and road-weight <code>clip(dist/250,0.15,1)</code>.</li>
-<li><strong>External data:</strong> None required. All layers are in the restored 19-band mirror. For LiDAR gap (24.7% un-flown), fallback is seamless 10 m 3DEP DEM (already in DPHS cache). No free external source needed; if pursued, USGS 3DEP 1 m LiDAR via https://apps.nationalmap.gov/downloader/ (official, CC0) is obtainable.</li>
-<li><strong>Cost &amp; validation:</strong> Low — EDT is O(n), greedy placement is O(N log N). <strong>Holdout:</strong> Not yet run on <code>gems57-pooled-hide-v2</code> (requires full 19-band cache re-verification and 2 h). Leakage canary is trivial (distance is catalogue-derived but strictly fold-visible; AUC must be tested per-fold). Empirical fleet-model projection for this geometry (median 45.5 px, frac_within 3.2%, 6,000 dots) is <code>EMPIRICAL-ESTIMATE 0.18–0.30, 95% PI [0.00,0.35]</code> (RMSE 0.094, not a HOLDOUT-DTI or organizer receipt). Weekly slot not spent.</li>
-</ul>
-<h2>N1–N4 — carried forward, not implemented here</h2>
-<p>See <code>research/hypotheses.md</code> for full N1–N4 specifications with sources. Ranking here reflects new fleet evidence: distal allocation outranks body-veto because fleet variance is dominated by <em>where</em> mass is placed, not just <em>what</em> is vetoed. N1 remains the top <em>feature</em> proposal; N5 is the top <em>placement</em> proposal.</p>
-<h2>How B2 achieved 0.2778 (PhD-level forensic)</h2>
-<p><strong>DTI mechanism:</strong> <code>DTI = TP_w / (0.2·TP_w + 0.2·FP_w + 0.8·N + ε)</code> with <code>FN_w = N − TP_w</code> and 300 m triangular kernel <code>K(r)=max(0,1−r/3)</code>. For a change <code>ΔT, ΔF</code> from an ancestor at score <code>s</code>, <code>ΔDTI&gt;0 ⇔ [1−0.8s]·ΔT &gt; 0.2·s·ΔF</code>. B2 deletes 6,436 dots near catalogue (within 2 px). Upper bound <code>ΔF ≤6,436</code> and <code>ΔT ≤6,436</code>, but <code>TP_w</code> is kernel-weighted: a dot near a masked known fault contributes ~0.0 to <code>FP_w</code> if its kernel mass falls on visible faults? Actually organizer masks exact known-fault pixels <em>only</em> (not a 2-px collar), so B2's 2-px exclusion is <em>stricter</em> than official masking. Its reported +0.0178 (0.2600→0.2778) is plausible if those dots were FP-heavy (e.g., on footwall granite) and TP-light, but without hidden labels per-dot contributions are unmeasurable. GEMSDOE36 adds 1,200 dots to B2 and scores <em>lower</em> (0.2750), consistent with FP-cost hypothesis but not proof. All are USER-REPORTED, no receipt, public-set overfitting possible.</p>
-<p><strong>Why others trail:</strong> GEMSDOE25/30 (44,090 dots) are identical predictions (different TIFF bytes). Their higher N pays <code>β=0.8·N</code> penalty without proportional <code>TP_w</code> gain. GEMSDOE24/27 (60k+ dots) pay even higher <code>β·N</code>. The optimum balances covering hidden distal faults (<code>ΔT</code>) against paying <code>0.2·FP_w+0.8·N</code>. Lattice packing (13GEMSDOE) maximizes coverage but maximizes <code>FP_w</code>.</p>
-<p><strong>Can we beat 0.2778?</strong> Unknown. Fleet model predicts 6k distal placement at <code>0.18–0.30</code> (wide PI); B2's empirical projection is <code>0.25</code> ±0.09. Only a buffered hide-and-recover holdout (visible-only features, 60,988 withheld positives, paired CI) can rank N5 vs B2. No HOLDOUT-DTI was measured here; no weekly slot was spent.</p>
-<h2>Sources (verified 2026-10-27)</h2>
-<ul>
-<li>Official competition, metric, features, format: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/</li>
-<li>Masking clarification: https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516</li>
-<li>GeoDAWN: https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and</li>
-<li>Argenta Rise multi-physics: https://pubs.usgs.gov/publication/70271418</li>
-<li>Blind geothermal synthesis: https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and</li>
-<li>GDR INGENIOUS 1391: https://gdr.openei.org/submissions/1391</li>
-<li>3DEP: https://www.usgs.gov/3d-elevation-program/about-3dep-products-services</li>
-<li>TIGER/Line: https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html</li>
-<li>Tversky/DTI: https://en.wikipedia.org/wiki/Tversky_index</li>
-<li>EPSG:32611: https://epsg.io/32611</li>
-</ul>
-<p>Evidence note: All hypothesis layers were reverified via <code>.cache</code> on 2026-10-27; owner-mirrored stack is hash-pinned, not organizer-authenticated. No holdout, leakage canary, or organizer receipt was produced in this session for N5–N1 beyond the file-format/uniqueness checks above.</p></div></article></main></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A qualified, unassigned distal piedmont research proposal."><meta name="theme-color" content="#0b5d4d"><title>Concurrent distal hypothesis · GEMS Research</title><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script></head><body><a class="skip" href="research/candidate_hypotheses_20261027.html#main">Skip to content</a><header class="topbar"><div class="shell">
+<a href="index.html" class="brand" aria-label="GEMS research home"><span class="brandmark"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/></svg></span>GEMS <small>RESEARCH</small></a>
+<nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a href="release.html">Download status</a><a href="executive-summary.html">Executive summary</a><a href="research.html" aria-current="page">Research</a><a href="sources.html">Sources</a></nav><div class="top-right"><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a><span class="top-status"><span class="dot"></span> Submission blocked</span></div></div></header><main id="main" class="shell main"><article class="card guide-card research-prose"><h1>Concurrent distal piedmont hypothesis — research only</h1>
+<p><strong>Decision: NEGATIVE / DO NOT SUBMIT.</strong> A separate session placed a 6,000-dot raster on main. Its N5 method description was self-reported; the governing project brief contains no explicit assignment, and this review did not reconstruct the generator or pre-placement surface. The <a href="data/release_audit.json">independent byte audit</a> does not constitute a scientific experiment.</p>
+<h2>Proposed mechanism and confounders</h2>
+<p>The reported concept uses distance from mapped faults to explore covered piedmonts where small scarps might not have been mapped, with reported topographic and conductive-base proxies plus road deconfounding. A fault could produce a coherent offset in relief or subsurface properties; a mapped-fault distance mask by itself is not evidence of a fault. Lake Lahontan shorelines, road embankments and erosional channels are non-fault mimics. Geological contacts, survey boundaries and uneven acquisition geometry are additional confounders. Feature provenance, physical units and whether every claimed layer was actually used have not been independently established. A mask chosen to avoid a registry lattice can favour footprint edges rather than geology.</p>
+<p>The suggested layers are the owner-mirrored 19-band stack and fault-distance features. The stack is hash-pinned, not authenticated as organizer data. Official sources to investigate include <a href="https://www.usgs.gov/3d-elevation-program/about-3dep-products-services">USGS 3DEP</a>, <a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a>, <a href="https://gdr.openei.org/submissions/1391">DOE INGENIOUS GDR 1391</a> and <a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">Census TIGER/Line</a>. Their fitness, coverage, rights and transformations for this specific candidate remain unverified. No external layer is asserted necessary or already validated.</p>
+<h2>What the saved bytes establish</h2>
+<p>The recorded TIFF SHA-256 is <code>ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7</code>. The two independent forensic reruns found 6,000 in-footprint positive cells and a local strict finite/grid pass against an owner mirror, not organizer acceptance. <strong>67.167%</strong> of the cells are within three pixels of the pinned binary lattice, below the literal 70% threshold. <strong>100%</strong> overlap the pinned continuous prior when finite-positive support is applied, above the stop. Whether a continuous probability surface should count as dots is unresolved; it is not exempted. Thirteen references were opened, not the entire current registry.</p>
+<p>No original surface rank check, per-feature leakage canaries or matched blocked HOLDOUT-DTI were replayed. No organizer score or receipt exists here. The other session reported one experiment and zero competition slots; neither is evidence that this review ran an experiment. A former fleet-regression forecast and claims that distal allocation caused a score gain are not independently validated and are not a leaderboard estimate. Original prose and JSON are preserved under <code>evidence/retired_20261027/</code>.</p>
+<h2>Future investigation, not authorization</h2>
+<p>Any future experiment requires an explicitly assigned single-method lane, a clarified continuous-prior rule, an exhaustive pinned registry and the shared-template pre-placement check <strong>before</strong> placement. Then use fold-visible catalogue features, whole-segment buffered holdout, pixel-exact known-fault masking, individual leakage canaries and the same evaluator/incumbent. Expected runtime and added data cost are not measured. A separate selector must authorize any competition slot. These conditions are not currently met.</p>
+<p>The original N1–N4 ranked proposals, mechanisms, non-fault mimics, costs and source limitations remain in <a href="research.html">research/hypotheses.md</a>. They are proposals only; this concurrent idea does not change their assignment status. The B2 lineage and why its user-reported score cannot be causally established are discussed in <a href="research/why-b2-scored-2778.html">the B2 analysis</a>.</p></article></main><footer class="footer"><div class="shell"><div><strong>GEMS RESEARCH</strong> · Evidence before submission</div><div><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition ↗</a> &nbsp;·&nbsp; <a href="data/run-card.json">Run card</a> &nbsp;·&nbsp; <a href="data/portfolio.json">Audit data</a></div></div></footer></body></html>
