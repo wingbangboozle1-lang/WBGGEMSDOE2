@@ -1,8 +1,8 @@
 {
   "schema": "wbggems.run-card.v1",
   "generated_utc": "2026-10-27T19:44:34.426353+00:00",
-  "hypothesis": "No implemented candidate hypothesis. Revised N1\u2013N4 shortlist is proposal-only; method lane UNASSIGNED.",
-  "mechanism": "No candidate surface, dot placement or corrected-v2 scientific holdout was constructed in this review.",
+  "hypothesis": "No candidate implemented in this review. N1\u2013N4 are proposal-only; the concurrent session\u2019s N5 artifact is a rejected research file, not a method assignment.",
+  "mechanism": "No new surface or dot placement was constructed in this review. A concurrent session\u2019s existing distal raster was independently audited after it landed on main.",
   "non_fault_mimic": "For unimplemented N1: an unfaulted intrusive or volcanic body margin can produce paired multi-physics edges.",
   "lane_status": "UNASSIGNED: no single explicit method paragraph authorizes a campaign; the shortlist does not assign one.",
   "experiment_budget": {
@@ -10,7 +10,7 @@
     "maximum_experiments": 3,
     "maximum_hours": 2,
     "weekly_slots_used": 0,
-    "scope": "This review: 0 new experiments, 0 weekly slots. Historical MSPTCD records 3 earlier experiments, not rerun here."
+    "scope": "This review: 0 new experiments and 0 weekly slots. A concurrent session source-reported one additional candidate experiment; its holdout and pre-placement surface were not independently replayed."
   },
   "holdout": {
     "evidence_class": "HOLDOUT-DTI",
@@ -28,7 +28,7 @@
     "registry_scope": "13 pinned raster references including a binary lattice and a continuous prior; incomplete inventory",
     "candidate_surface_correlation": null,
     "candidate_final_overlap": null,
-    "status": "no candidate constructed",
+    "status": "No candidate constructed in this review; the concurrently merged distal TIFF was independently rejected.",
     "witness": "13GEMSDOE stride-5 lattice",
     "standard_budget": 37654,
     "minimum_overlap_bound": 0.8234184947150369,
@@ -40,7 +40,7 @@
   },
   "raster_sha256": null,
   "validator": {
-    "status": "No new raster generated in this review. Eleven existing identities (including three WBG2-DISTAL lane artifacts, research-only under the literal rule) independently reopened; exact inside/grid and strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance.",
+    "status": "No raster generated in this review. 12 existing identities in 14 paths and 11 ZIPs were independently reopened; format checks are not organizer acceptance.",
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
     "crs_shape_transform_match": null,
@@ -48,7 +48,7 @@
   },
   "submission_name": null,
   "proposed_research_name": null,
-  "note": "Negative review: all saved TIFFs duplicate registered support; lane unassigned. No new candidate, estimate or slot. DO NOT SUBMIT.",
+  "note": "Negative review: all audited TIFFs fail literal overlap; lane unassigned. No new score or slot. DO NOT SUBMIT.",
   "ok_to_submit": false,
   "verdict": "negative",
   "experiment_count": 0,
@@ -150,10 +150,10 @@
   "release_reconciliation": {
     "status": "ALL EXISTING TIFFS RESEARCH-ONLY / DO NOT SUBMIT",
     "audit_path": "evidence/release_audit.json",
-    "owned_tif_paths": 13,
-    "distinct_raster_sha256": 11,
+    "owned_tif_paths": 14,
+    "distinct_raster_sha256": 12,
     "pinned_witnesses": 13,
-    "zip_archives": 10,
+    "zip_archives": 11,
     "approved_submission": null,
     "leaderboard_score_estimate": null,
     "all_current_registry_cleared": false,
@@ -169,18 +169,18 @@
     "applies_to": "archived v1 feature code only; not corrected v2",
     "promotion_evidence_valid": false
   },
-  "verdict_reason": "Negative: literal all-registry overlap witnesses reject every saved TIFF; no assigned method lane, complete fresh registry or organizer-authenticated reference. Former lane approvals revoked. No candidate generated or promoted; no new HOLDOUT-DTI or leaderboard score estimated.",
+  "verdict_reason": "Negative: literal all-registry overlap witnesses reject every audited TIFF under the stated finite-positive support definition. The concurrent 6k distal file is not a release; no assigned lane, complete registry, holdout, or organizer receipt.",
   "existing_artifact_audit": {
     "evidence_class": "BYTE-LEVEL-FORENSIC-MEASUREMENT; NOT A CANDIDATE EXPERIMENT",
     "source_path": "evidence/release_audit.json",
-    "source_sha256": "a918f5c5aecc9155e289b4d2c5c4259bb131e3074b0576e4d2300916fe8cfbef",
-    "recorded_utc": "2026-10-28T01:02:27.838932+00:00",
+    "source_sha256": "e46d03775f1359a04b4fa62a824754cff3760e5534bb709c835d77d7c7f125a5",
+    "recorded_utc": "2026-10-28T01:12:50.658583+00:00",
     "scope": {
       "registry_rasters_opened": 13,
       "all_current_registry_rasters_checked": false,
       "registry_manifest_sha256": "364e413a9fabd319cbb380c34cf108a8be5bf675c9dfd92c10f0e0b7d041a409",
-      "owned_tif_paths": 13,
-      "distinct_tif_sha256": 11,
+      "owned_tif_paths": 14,
+      "distinct_tif_sha256": 12,
       "new_candidate_experiments": 0,
       "weekly_slots_used": 0,
       "note": "Already-existing artifacts only. Continued forensic comparisons after a witness do not constitute candidate placement or promotion."
@@ -206,6 +206,116 @@
       }
     },
     "artifacts": [
+      {
+        "path": "candidate/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif",
+        "aliases": [
+          "candidate/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif"
+        ],
+        "sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+        "positive_support_cells": 6000,
+        "validator": {
+          "path": "candidate/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif",
+          "sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+          "grid_match_reference": true,
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "bands": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "strict_all_finite_requested": false,
+          "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "organizer_acceptance": "unknown",
+          "submission_approval": false,
+          "footprint_cells": 5167373,
+          "nonfinite_inside": 0,
+          "masked_inside": 0,
+          "nan_total": 0,
+          "inf_total": 0,
+          "nan_inside": 0,
+          "nan_outside": 0,
+          "inf_inside": 0,
+          "inf_outside": 0,
+          "below_zero_inside": 0,
+          "below_zero_outside": 0,
+          "above_one_inside": 0,
+          "above_one_outside": 0,
+          "positive_outside": 0,
+          "diagnostics_band": 1,
+          "all_finite": true,
+          "minimum_inside": 0.0,
+          "maximum_inside": 1.0,
+          "nonzero_inside": 6000,
+          "failures": [],
+          "format_valid_against_reference": true
+        },
+        "strict_all_finite_validator": {
+          "path": "candidate/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif",
+          "sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+          "grid_match_reference": true,
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "bands": 1,
+          "dtype": "float32",
+          "nodata": null,
+          "strict_all_finite_requested": true,
+          "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "organizer_acceptance": "unknown",
+          "submission_approval": false,
+          "footprint_cells": 5167373,
+          "nonfinite_inside": 0,
+          "masked_inside": 0,
+          "nan_total": 0,
+          "inf_total": 0,
+          "nan_inside": 0,
+          "nan_outside": 0,
+          "inf_inside": 0,
+          "inf_outside": 0,
+          "below_zero_inside": 0,
+          "below_zero_outside": 0,
+          "above_one_inside": 0,
+          "above_one_outside": 0,
+          "positive_outside": 0,
+          "diagnostics_band": 1,
+          "all_finite": true,
+          "minimum_inside": 0.0,
+          "maximum_inside": 1.0,
+          "nonzero_inside": 6000,
+          "failures": [],
+          "format_valid_against_reference": true
+        },
+        "surface_rank_correlation": null,
+        "final_rank_correlation": null,
+        "lattice_overlap_3px": 0.6716666666666666,
+        "maximum_overlap_3px": 1.0,
+        "duplicate_witnesses": [
+          "17GEMSDOE_dense_prior"
+        ],
+        "leaderboard_score_estimate": null,
+        "ok_to_submit": false,
+        "verdict": "negative"
+      },
       {
         "path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
         "aliases": [
@@ -1439,6 +1549,13 @@
     ],
     "zip_archives": [
       {
+        "path": "candidate/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.zip",
+        "sha256": "459e4e7eafaeaaf985ce58c6d0a2c9f591bc8cde9ff2010d54a74c66472acd4c",
+        "member": "wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif",
+        "member_sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+        "ok_to_submit": false
+      },
+      {
         "path": "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.zip",
         "sha256": "13f64f35121693a139597d8e87ae5e837dacd72756aa6091fb8aec3162f0bca3",
         "member": "wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif",
@@ -1535,5 +1652,40 @@
         "ok_to_submit": false
       }
     ]
+  },
+  "independent_forensic_recheck": {
+    "evidence_class": "BYTE-LEVEL-FORENSIC-MEASUREMENT; not an experiment or submission approval",
+    "registry_receipt": "evidence/registry_independent_review_20261027.json",
+    "registry_receipt_sha256": "774352fd4ac0efa6f4a2098d9540dee880281448d07438591476fda5c68a137a",
+    "registry_recorded_utc": "2026-10-27T23:47:35.666743+00:00",
+    "release_receipt": "evidence/release_independent_review_20261027.json",
+    "release_receipt_sha256": "08d04dffc479b573e48dfee7aa957dcd7f862fe0c81215394aa4c43eedb62890",
+    "release_recorded_utc": "2026-10-28T01:14:13.057479+00:00",
+    "measurements_match_prior_receipts_excluding_timestamps": true,
+    "all_current_registry_rasters_checked": false,
+    "new_experiments": 0,
+    "weekly_slots_used": 0
+  },
+  "concurrent_distal_candidate": {
+    "evidence_class": "INDEPENDENT BYTE-LEVEL AUDIT; source-reported method was not replayed",
+    "source_commit": "e0479a8f0a5c78d0e50e9138374db4afcd5e14fd",
+    "source_reported_experiments": 1,
+    "experiment_scope_caveat": "Reported by another session; this review did not generate, evaluate, or place the candidate.",
+    "method_lane": "UNASSIGNED in current governing brief; historical self-description is not an assignment",
+    "path": "candidate/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif",
+    "sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+    "positive_support_cells": 6000,
+    "lattice_overlap_3px": 0.6716666666666666,
+    "continuous_prior_overlap_3px": 1.0,
+    "continuous_prior_interpretation": "100% under literal finite-positive support; whether a continuous probability prior should count as dots remains unresolved.",
+    "original_surface_rank_correlation": null,
+    "holdout_dti": null,
+    "feature_canaries": null,
+    "local_format_pass": true,
+    "reference": "hash-pinned owner mirror; not organizer-authenticated",
+    "leaderboard_score_estimate": null,
+    "organizer_receipt": null,
+    "ok_to_submit": false,
+    "verdict": "negative"
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.release-audit.v1",
-  "generated_utc": "2026-10-28T01:02:27.838932+00:00",
+  "generated_utc": "2026-10-28T01:12:50.658583+00:00",
   "verdict": "negative",
   "ok_to_submit": false,
   "approved_submission": null,
@@ -9,8 +9,8 @@
     "registry_rasters_opened": 13,
     "all_current_registry_rasters_checked": false,
     "registry_manifest_sha256": "364e413a9fabd319cbb380c34cf108a8be5bf675c9dfd92c10f0e0b7d041a409",
-    "owned_tif_paths": 13,
-    "distinct_tif_sha256": 11,
+    "owned_tif_paths": 14,
+    "distinct_tif_sha256": 12,
     "new_candidate_experiments": 0,
     "weekly_slots_used": 0,
     "note": "Already-existing artifacts only. Continued forensic comparisons after a witness do not constitute candidate placement or promotion."

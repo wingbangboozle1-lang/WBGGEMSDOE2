@@ -37,7 +37,7 @@ def test_distal_holdout_protocol_and_canary():
 
 
 def test_distal_recommended_tif_byte_validation():
-    card = json.loads((ROOT / "evidence/RUN_CARD_DISTAL.json").read_text())
+    card = json.loads((ROOT / "evidence/RUN_CARD_DISTAL_OOF.json").read_text())
     det = card["evidence_details"]
     tif_path = ROOT / det["candidate_file"]
     assert tif_path.is_file()
@@ -61,7 +61,7 @@ def test_distal_recommended_tif_byte_validation():
 
 
 def test_distal_uniqueness_and_run_card_promote_to_selector_only():
-    card = json.loads((ROOT / "evidence/RUN_CARD_DISTAL.json").read_text())
+    card = json.loads((ROOT / "evidence/RUN_CARD_DISTAL_OOF.json").read_text())
     for key in ("run_id", "hypothesis", "mechanism", "named_non_fault_mimic",
                 "method_lane", "holdout_dti", "ci95", "verdict", "evidence_details"):
         assert card.get(key), f"missing run-card field {key}"
@@ -93,8 +93,8 @@ def test_distal_uniqueness_and_run_card_promote_to_selector_only():
     assert est["pi95"][0] <= est["point"] <= est["pi95"][1]
 
     # all published aliases are byte-identical
-    aliases = ["docs/data/run-card-distal.json", "docs/data/RUN_CARD_DISTAL.json"]
-    canonical = (ROOT / "evidence/RUN_CARD_DISTAL.json").read_bytes()
+    aliases = ["docs/data/run-card-distal-oof.json"]
+    canonical = (ROOT / "evidence/RUN_CARD_DISTAL_OOF.json").read_bytes()
     for rel in aliases:
         assert (ROOT / rel).read_bytes() == canonical
 
@@ -106,6 +106,6 @@ def test_distal_site_pages_exist_and_are_qualified():
         assert "DO NOT SUBMIT" in text, rel
         assert "OK TO DOWNLOAD AND SUBMIT" not in text, rel
     index = (ROOT / "docs/distal/index.html").read_text(encoding="utf-8")
-    card = json.loads((ROOT / "evidence/RUN_CARD_DISTAL.json").read_text())
+    card = json.loads((ROOT / "evidence/RUN_CARD_DISTAL_OOF.json").read_text())
     assert card["evidence_details"]["submission_name"] in index
     assert "USER-REPORTED" in index and "EMPIRICAL" in index

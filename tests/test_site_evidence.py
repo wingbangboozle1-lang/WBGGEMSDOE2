@@ -50,6 +50,17 @@ def test_published_evidence_is_fail_closed_and_synced():
     assert source_card['verdict'] == 'negative' and source_card['ok_to_submit'] is False
     assert source_card['holdout']['dti'] is None and source_card['raster_sha256'] is None
     assert source_card['submission_name'] is None and len(source_card['note']) <= 140
+    rerun = source_card['independent_forensic_recheck']
+    assert rerun['measurements_match_prior_receipts_excluding_timestamps'] is True
+    assert rerun['all_current_registry_rasters_checked'] is False
+    assert rerun['new_experiments'] == rerun['weekly_slots_used'] == 0
+    from hashlib import sha256
+    for kind in ('registry', 'release'):
+        raw = (ROOT / rerun[f'{kind}_receipt']).read_bytes()
+        assert sha256(raw).hexdigest() == rerun[f'{kind}_receipt_sha256']
+    audit = json.loads((ROOT / 'evidence/release_audit.json').read_text())
+    assert source_card['release_reconciliation']['distinct_raster_sha256'] == len(audit['artifacts']) == 12
+    assert source_card['release_reconciliation']['zip_archives'] == len(audit['zip_archives']) == 11
     rows = json.loads((SITE / 'data/focus.json').read_text())['entries']
     assert len(rows) == 9 and len({r['site'] for r in rows}) == 9
     assert all(not r['ok_to_submit'] and not r['unique_under_literal_rule'] for r in rows)

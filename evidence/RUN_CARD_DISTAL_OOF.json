@@ -1,5 +1,5 @@
 {
-  "run_id": "wbg2-distal-20261028T010914Z",
+  "run_id": "wbg2-distal-20261028T011603Z",
   "schema": "wbggems.distal-run-card.v1",
   "hypothesis": "DISTAL-H1/H2: a 100% spatial-OOF surface (zero in-sample pixels) cannot memorize mapped traces, so its honest distal allocation recovers concealed piedmont/intrabasin faults that the in-sample-blended DPHS full map collapsed away (frac_gt_32px 3.64% -> 18.7% natural, 35-40% quota).",
   "mechanism": "DPHS EXP-3 60-feature dual-HistGBR + isotonic surface per label-blind quadrant fold; pooled pre-modulator OOF surface quantile-matched across quadrants; full-catalogue relay/tip modulator; 300 m CELF submodular allocation outside 2.05 px collar; 38,000-dot cap.",
@@ -285,7 +285,7 @@
   },
   "b2_gate_diagnostic": {
     "schema": "wbggems.distal-b2-gate-diagnostic.v1",
-    "generated_utc": "2026-10-28T01:09:14.408722+00:00",
+    "generated_utc": "2026-10-28T01:16:03.389709+00:00",
     "champion": "GEMSDOE32 B2 (0.2778 USER-REPORTED, not an organizer receipt)",
     "champion_dots": 37654,
     "references": {

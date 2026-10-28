@@ -1,6 +1,6 @@
 # Current nine-site executive decision — NEGATIVE
 
-**No file is approved. DO NOT SUBMIT.** Former DZ-16/H3 approvals are revoked. All saved local TIFFs fail the literal registry gate; no new candidate or weekly slot.
+**No file is approved. DO NOT SUBMIT.** Former DZ-16/H3 approvals are revoked. All audited TIFFs fail the literal registry gate under finite-positive support; no weekly slot was used in this review.
 
 [Exact research downloads and byte audit](release.html) · [Submission instructions](executive-summary.html) · [Canonical run card](data/run-card.json)
 

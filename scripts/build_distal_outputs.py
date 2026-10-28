@@ -230,7 +230,7 @@ def main() -> int:
         },
     }
     assert len(card["evidence_details"]["submission_note"]) <= 140
-    for rel in ("evidence/RUN_CARD_DISTAL.json", "docs/data/run-card-distal.json", "docs/data/RUN_CARD_DISTAL.json"):
+    for rel in ("evidence/RUN_CARD_DISTAL_OOF.json", "docs/data/run-card-distal-oof.json"):
         p = ROOT / rel
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(card, indent=2) + "\n", encoding="utf-8")
@@ -329,7 +329,7 @@ no arm can honestly be claimed to beat 0.2778 before an organizer receipt exists
 <div class="table-scroll"><table class="data-table"><thead><tr><th>Registry reference</th><th>Reference dots</th>
 <th>B2 dots within 3px</th><th>Literal &gt;70% rule</th></tr></thead><tbody>{b2_rows}</tbody></table></div>
 <p>Full analysis: <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/research/distal_findings.md">research/distal_findings.md</a> ·
-Run card: <a href="../data/run-card-distal.json">RUN_CARD_DISTAL</a> ·
+Run card: <a href="../data/run-card-distal-oof.json">RUN_CARD_DISTAL_OOF</a> ·
 Preregistration: research/distal_preregistration_20261027.md</p>
 """ + foot
 

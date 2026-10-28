@@ -39,15 +39,20 @@ def receipt_root(tmp_path):
         shutil.copyfile(ROOT / rel, p)
     report['scope'].update(owned_tif_paths=len(row['aliases']), distinct_tif_sha256=1)
     write_report(tmp_path, report)
+    # Independent recheck prevents a modified receipt from erasing a decisive
+    # comparison while retaining some other negative witness.
+    (tmp_path / 'evidence/release_independent_review_20261027.json').write_text(json.dumps(report))
     return tmp_path, report
 
 
 def test_current_real_bytes_have_only_negative_decisions():
     report = load_negative_release(ROOT)
-    assert report['scope']['owned_tif_paths'] == 13
-    assert len(report['artifacts']) == 11 and len(report['zip_archives']) == 10
+    assert report['scope']['owned_tif_paths'] == 14
+    assert len(report['artifacts']) == 12 and len(report['zip_archives']) == 11
     assert report['scope']['registry_rasters_opened'] == 13
-    assert all(r['lattice_overlap_3px'] > .70 and r['ok_to_submit'] is False for r in report['artifacts'])
+    assert all('17GEMSDOE_dense_prior' in r['duplicate_witnesses'] and r['ok_to_submit'] is False for r in report['artifacts'])
+    distal = next(r for r in report['artifacts'] if r['path'].startswith('candidate/'))
+    assert distal['lattice_overlap_3px'] < .70 and distal['maximum_overlap_3px'] == 1.0
     assert report['approved_submission'] is None and report['leaderboard_score_estimate'] is None
     assert report['scope']['new_candidate_experiments'] == report['scope']['weekly_slots_used'] == 0
 
@@ -82,6 +87,18 @@ def test_no_boolean_score_policy_or_scope_override(receipt_root, section, key, v
         load_negative_release(root)
 
 
+def test_inventory_rejects_nested_symlink_directory_that_could_hide_rasters(receipt_root):
+    root, report = receipt_root
+    external = root / 'outside'; external.mkdir()
+    (external / 'hidden.tif').write_bytes(b'unreviewed raster')
+    alias = root / 'candidate' / 'hidden'
+    alias.parent.mkdir(parents=True, exist_ok=True)
+    alias.symlink_to(external, target_is_directory=True)
+    write_report(root, report)
+    with pytest.raises(ValueError, match='symlink director'):
+        load_negative_release(root)
+
+
 @pytest.mark.parametrize('mutation', ['missing', 'repeated', 'sha', 'url', 'support', 'threshold', 'boolean_overlap', 'outside_unit_interval'])
 def test_witness_measurements_must_match_pins_and_literal_threshold(receipt_root, mutation):
     root, report = receipt_root
@@ -110,7 +127,7 @@ def test_decisive_witness_cannot_be_erased_even_if_summary_is_rewritten(receipt_
     with pytest.raises(ValueError, match='decisive'): load_negative_release(root)
 
 
-@pytest.mark.parametrize('mutation', ['changed_bytes','missing_file','added_tif','added_tiff','upper_tif','added_zip','upper_zip','symlink','duplicate_alias'])
+@pytest.mark.parametrize('mutation', ['changed_bytes','missing_file','added_tif','added_tiff','upper_tif','added_zip','upper_zip','candidate_path','symlink','duplicate_alias'])
 def test_exact_inventory_has_no_extension_case_or_alias_bypass(receipt_root, mutation):
     root, report = receipt_root
     row = report['artifacts'][0]
@@ -120,6 +137,9 @@ def test_exact_inventory_has_no_extension_case_or_alias_bypass(receipt_root, mut
     elif mutation in ('added_tif','added_tiff','upper_tif','added_zip','upper_zip'):
         name = {'added_tif':'new.tif','added_tiff':'new.tiff','upper_tif':'new.TIF','added_zip':'new.zip','upper_zip':'new.ZIP'}[mutation]
         (p.parent / name).write_bytes(b'unreviewed')
+    elif mutation == 'candidate_path':
+        (root / 'candidate').mkdir()
+        (root / 'candidate/unreviewed.tif').write_bytes(b'unreviewed')
     elif mutation == 'symlink':
         alias = root / row['aliases'][-1]
         alias.unlink(); alias.symlink_to(p)

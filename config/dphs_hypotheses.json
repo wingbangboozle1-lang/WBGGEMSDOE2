@@ -1,4 +1,6 @@
 {
+  "review_status": "HISTORICAL_SOURCE_CLAIMS_ONLY; not current lane assignment, not independent validation",
+  "review_caveat": "The assigned_method_lane and projected gains below are historical source claims. Current status is UNASSIGNED; see config/research_hypotheses.json and research/dphs_findings.md.",
   "schema": "wbggems.dphs-hypotheses.v1",
   "preregistered_utc": "2026-10-27T19:15:00Z",
   "assigned_method_lane": "WBG2-DPHS (Dual-Regime Piedmont & Hydrothermal-Structural Synthesis)",
