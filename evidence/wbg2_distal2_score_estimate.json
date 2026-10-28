@@ -1,0 +1,24 @@
+{
+  "candidate_features": {
+    "support_px": 38000,
+    "mass": 38000.0,
+    "binary_fraction": 1.0,
+    "footprint_fill_fraction": 0.007353833369489681,
+    "components_8conn": 38000,
+    "occupied_1km_blocks": 763,
+    "frac_within_1px_catalogue": 0.0,
+    "frac_within_2px_catalogue": 0.0,
+    "frac_within_3px_catalogue": 0.19113157894736843,
+    "median_px_to_catalogue": 10.63014581273465,
+    "mean_px_to_catalogue": 19.645439971182597,
+    "catalogue_proxy_dti": 0.028952236065986115,
+    "catalogue_proxy_tp": 38000.0,
+    "catalogue_proxy_fp": 38000.0
+  },
+  "empirical_estimate": 0.14974308574028586,
+  "loso_r2": 0.21279711889665254,
+  "loso_spearman": 0.6477794109395417,
+  "n": 93,
+  "model": "RidgeCV(scaler)",
+  "evidence_class": "EMPIRICAL-ESTIMATE (not a score)"
+}

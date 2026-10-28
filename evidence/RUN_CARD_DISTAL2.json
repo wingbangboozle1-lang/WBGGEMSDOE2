@@ -1,0 +1,146 @@
+{
+  "run_id": "wbg2-distal2-20261028T170304Z",
+  "schema": "wbggems.distal-run-card.v1",
+  "lane": "WBG2-DISTAL (100% spatial-OOF distance-stratified piedmont allocation) \u2014 fresh-seed replication 20261028",
+  "hypothesis": "DISTAL-H1/H2 replicated with a fresh RNG seed (20261028 vs 20261027): a 100% spatial-OOF surface cannot memorize mapped traces, so its honest distal allocation recovers concealed piedmont/intrabasin faults that an in-sample-blended surface collapses away.",
+  "mechanism": "DPHS EXP-3 60-feature dual-HistGBR + isotonic surface per label-blind quadrant fold; pooled pre-modulator OOF surface quantile-matched across quadrants; full-catalogue relay/tip modulator; 300 m CELF submodular allocation outside the 2.05 px collar; 38,000-dot cap.",
+  "named_non_fault_mimic": "Alluvial fan channels, playas and Pleistocene Lake Lahontan shoreline benches produce distal low-slope lineaments.",
+  "holdout_dti": 0.1771,
+  "ci95": [
+    0.157,
+    0.1983
+  ],
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "withheld_positives": 60988,
+  "leakage_canary_max_auc": 0.6179,
+  "incumbent_dti_dphs_exp3": 0.1735,
+  "incumbent_dti_distal_20261028": 0.177,
+  "format_valid": true,
+  "status": "promote_to_selector",
+  "verdict": "promote",
+  "ok_to_submit": false,
+  "verdict_scope": "Promote ONLY to the separate selector step. ok_to_submit stays false: the literal any-registry rule rejects this candidate via the registered continuous prior (17GEMSDOE, overlap 1.0) and via an incomplete registry (95 of 655+ rasters locally accessible). Spending a weekly slot is the selector's documented decision.",
+  "recommended_arm": "natural_oof",
+  "candidate": {
+    "name": "wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros",
+    "note": "WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1771",
+    "note_chars": 81,
+    "tif_path": "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif",
+    "tif_sha256": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
+    "tif_bytes": 134932,
+    "dots": 38000,
+    "min_dist_to_catalogue_px": 2.2361,
+    "frac_le_2px": 0.0,
+    "frac_gt_32px": 0.1897,
+    "median_px": 10.63
+  },
+  "uniqueness": {
+    "candidate_file_sha256": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
+    "candidate_dots": 38000,
+    "registry_rasters_checked": 95,
+    "complete_accessible_scan": false,
+    "worst_spearman": 0.09310776845957044,
+    "worst_overlap": 1.0,
+    "worst_overlap_submission": "17GEMSDOE_prior__17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+    "focus_sites_checked": 22,
+    "focus_max_overlap": 0.6791578947368421,
+    "focus_sites_pass_le_0.70": true,
+    "sparse_peer_rasters": 69,
+    "sparse_peer_max_overlap": 0.6856052631578947,
+    "sparse_peer_pass_le_0.70": true,
+    "duplicate_count": 9,
+    "unique_literal": false,
+    "flagged_rows": [
+      {
+        "submission": "13GEMSDOE__13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "their_dots": 206895,
+        "my_dots_within_3px_of_theirs": 0.9978157894736842,
+        "spearman_full_footprint": 0.0008263977180169948,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "17GEMSDOE_prior__17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+        "their_dots": 5167373,
+        "my_dots_within_3px_of_theirs": 1.0,
+        "spearman_full_footprint": 0.09310776845957044,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+        "their_dots": 103347,
+        "my_dots_within_3px_of_theirs": 0.8916052631578948,
+        "spearman_full_footprint": 0.034800867139625026,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+        "their_dots": 206895,
+        "my_dots_within_3px_of_theirs": 0.9978157894736842,
+        "spearman_full_footprint": 0.0008263977180169948,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+        "their_dots": 335879,
+        "my_dots_within_3px_of_theirs": 0.9083421052631578,
+        "spearman_full_footprint": 0.07889605330665485,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+        "their_dots": 91533,
+        "my_dots_within_3px_of_theirs": 0.7152368421052632,
+        "spearman_full_footprint": 0.013631975044607092,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "GEMSDOE37__gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+        "their_dots": 80000,
+        "my_dots_within_3px_of_theirs": 0.7547894736842106,
+        "spearman_full_footprint": 0.028559930974237,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+        "their_dots": 155021,
+        "my_dots_within_3px_of_theirs": 0.8011315789473684,
+        "spearman_full_footprint": 0.006360138962388163,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      },
+      {
+        "submission": "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+        "their_dots": 201260,
+        "my_dots_within_3px_of_theirs": 0.7939736842105263,
+        "spearman_full_footprint": 0.010372337241095677,
+        "duplicate_by_overlap": true,
+        "duplicate_by_rho": false
+      }
+    ]
+  },
+  "estimate": {
+    "evidence_class": "EMPIRICAL-ESTIMATE (not a score)",
+    "estimate": 0.14974308574028586,
+    "loso_r2": 0.21279711889665254,
+    "loso_spearman": 0.6477794109395417,
+    "n": 93,
+    "model": "RidgeCV(scaler)",
+    "note": "Fleet regression on 93 USER-REPORTED scores; not an organizer receipt and not a leaderboard score."
+  },
+  "submission": {
+    "submission_name": "wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros",
+    "note": "WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1771",
+    "ok_to_download_and_submit": "CONDITIONAL \u2014 see verdict_scope"
+  },
+  "preregistration": "research/distal_preregistration_20261027.md (amended by this fresh-seed replication)",
+  "experiments_executed": 3,
+  "experiment_cap": 3,
+  "weekly_slots_used": 0
+}
