@@ -1,8 +1,20 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28) — current checkout is BLOCKED; DO NOT SUBMIT
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**Latest repository review:** [current-checkout audit](research/repo-review-20261028-current-checkout.md). The test suite could not run here because neither the project `.venv` nor system pytest is present; install declared requirements before claiming tests pass.
+
+**Current decision: no TIFF is authorized for submission from this checkout.** The
+release register and older lane pages contain historical promotion claims, but the
+current `python scripts/check_readiness.py --check` snapshot fails closed: the lane is
+unassigned, official-mirror inputs and the pinned shared cache are absent, registry
+coverage and the continuous-prior rule are unresolved, and the separate selector has
+not run. Do not treat an old artifact, a format pass, or a stale “promote” record as
+submission authorization. See [current readiness](docs/readiness.html), the
+[canonical run card](evidence/run_card.json), and [release audit](evidence/release_audit.json).
+
+The locally present `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`
+and other registered artifacts are retained as research evidence only for this checkout;
+no live score estimate is validated here. All older submission recommendations below
+are historical records and superseded by this fail-closed decision.
 
 | | |
 |---|---|
@@ -61,7 +73,9 @@ for those files — it just no longer governs the one file in the lane above.
 
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
-## WBG4 / EDTI lane — read this first (added 2026-10-28)
+## Historical WBG4 / EDTI lane records — not current authorization (added 2026-10-28)
+
+> **Superseded:** the promotion and download statements in this archived section do not override the current BLOCKED / DO NOT SUBMIT decision above. The present checkout readiness check is authoritative; see `evidence/run_card.json` and `evidence/checkout_readiness.json`.
 
 **[Executive summary with the download box, the nine-site table, the score projection and the reconciliation with the NEGATIVE decision below → `docs/edti/index.html`](docs/edti/index.html)**
 · [markdown mirror](docs/EDTI_EXECUTIVE_SUMMARY.md)
@@ -104,7 +118,9 @@ deliverables; no copy renamed as a novel prediction; every claim carries a sourc
 review.
 
 
-## Current releases: THREE REGISTERED CANDIDATES (2026-10-28)
+## Historical release register snapshot: THREE REGISTERED CANDIDATES (2026-10-28; NOT current approval)
+
+> The following release-register entries are historical records. They are not current authorization to download or submit. Current checkout readiness is blocked.
 
 **[Download the submission GeoTIFF](docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif) · [executive summary, numbers and caveats](docs/wbg4/index.html) · [run card](evidence/RUN_CARD_WBG4.json) · [research report](research/wbg4_lane.md)**
 
