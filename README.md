@@ -1,8 +1,16 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28 review) — NO FILE CLEARED TO SUBMIT
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**Current decision: DO NOT SUBMIT any TIFF in this repository.** A fresh readiness check is
+`BLOCKED / DO NOT SUBMIT`; the complete current registry and assigned method lane are
+not established, and this checkout does not contain the pinned shared template/data cache
+needed to reproduce the prescribed holdout and validator. Older sections below contain
+contradictory candidate approvals and download links; those are historical records, not
+current authorization. The public Pages landing page also states the all-lane negative
+decision. Do not rely on any older “ready”, “promote”, or “OK to download” wording.
+
+The user-reported GEMSDOE32 value 0.2778 is not organizer-confirmed. No new candidate,
+valid leaderboard-score estimate, experiment, or submission slot was produced in this
+review. Existing hypotheses remain proposals only.
 
 | | |
 |---|---|
