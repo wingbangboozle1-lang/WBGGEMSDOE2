@@ -1,0 +1,87 @@
+{
+ "evidence_class": "MEASURED",
+ "rule": "3-px halo overlap, both files measured on the organizer grid",
+ "rows": [
+  {
+   "site": "GEMSDOE32",
+   "file": "GEMSDOE32_downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+   "published_score": 0.2778,
+   "dots": 37654,
+   "closest_site": "GEMSDOE36",
+   "frac_dots_within_3px_of_closest": 1.0,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE36",
+   "file": "GEMSDOE36/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-nan.tif",
+   "published_score": 0.275,
+   "dots": 38854,
+   "closest_site": "GEMSDOE27",
+   "frac_dots_within_3px_of_closest": 0.9758,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE28",
+   "file": "GEMSDOE28/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+   "published_score": 0.271,
+   "dots": 37660,
+   "closest_site": "GEMSDOE25",
+   "frac_dots_within_3px_of_closest": 1.0,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE31",
+   "file": "GEMSDOE31/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+   "published_score": 0.2708,
+   "dots": 40199,
+   "closest_site": "GEMSDOE25",
+   "frac_dots_within_3px_of_closest": 1.0,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE33",
+   "file": "GEMSDOE33/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e-nanoutside.tif",
+   "published_score": 0.2632,
+   "dots": 41865,
+   "closest_site": "GEMSDOE27",
+   "frac_dots_within_3px_of_closest": 0.9971,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE25",
+   "file": "GEMSDOE32_downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+   "published_score": 0.26,
+   "dots": 44090,
+   "closest_site": "GEMSDOE30",
+   "frac_dots_within_3px_of_closest": 1.0,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE30",
+   "file": "GEMSDOE30/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca-nanoutside.tif",
+   "published_score": 0.26,
+   "dots": 44090,
+   "closest_site": "GEMSDOE25",
+   "frac_dots_within_3px_of_closest": 1.0,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE24",
+   "file": "GEMSDOE24/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+   "published_score": 0.2477,
+   "dots": 60069,
+   "closest_site": "GEMSDOE25",
+   "frac_dots_within_3px_of_closest": 1.0,
+   "is_duplicate_of_other_sites": true
+  },
+  {
+   "site": "GEMSDOE27",
+   "file": "GEMSDOE28/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+   "published_score": 0.2449,
+   "dots": 61328,
+   "closest_site": "GEMSDOE24",
+   "frac_dots_within_3px_of_closest": 0.9802,
+   "is_duplicate_of_other_sites": true
+  }
+ ]
+}

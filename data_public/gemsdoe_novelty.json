@@ -1,0 +1,143 @@
+{
+ "evidence_class": "MEASURED",
+ "candidate": "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
+ "sha256": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
+ "dots": 38000,
+ "n_compared": 30,
+ "rules": {
+  "identical_bytes": [],
+  "mutual_halo_limit": 0.7,
+  "rank_limit": 0.9
+ },
+ "identical_bytes": [],
+ "max_frac_my_dots_within_3px": 0.3483684210526316,
+ "max_frac_their_dots_within_3px": 0.35835,
+ "max_abs_smoothed_spearman": 0.3629420920838068,
+ "worst": [
+  {
+   "file": "/tmp/fleet/GEMSDOE63/docs/downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+   "stem": "gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros",
+   "dots": 54864,
+   "sha256": "46a0f0fa2f63e6e6b4a5fe4520e999b925cf3ff954a01b10b36b735c1b0649c8",
+   "frac_my_dots_within_3px": 0.3483684210526316,
+   "frac_their_dots_within_3px": 0.24336541265675124,
+   "smoothed_spearman": 0.2509559841297114
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE49/docs/downloads/gems49-gate_ortho_w0.25-40k-20261006T213721Z-nan.tif",
+   "stem": "gems49-gate_ortho_w0.25-40k-20261006T213721Z-nan",
+   "dots": 40000,
+   "sha256": "c58fe0551e120678fff190239146985d0b2f7255255535fb5fb637a05cb40af3",
+   "frac_my_dots_within_3px": 0.3215,
+   "frac_their_dots_within_3px": 0.35835,
+   "smoothed_spearman": 0.3629420920838068
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE33/docs/downloads/gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros.tif",
+   "stem": "gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros",
+   "dots": 37654,
+   "sha256": "5eb9572946fa62356ebc0cbfef22bb54aa2ef094cb8b4a84b52e6b80e120db96",
+   "frac_my_dots_within_3px": 0.24568421052631578,
+   "frac_their_dots_within_3px": 0.3119456100281511,
+   "smoothed_spearman": 0.2516334484672565
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE28/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+   "stem": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan",
+   "dots": 61328,
+   "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+   "frac_my_dots_within_3px": 0.23542105263157895,
+   "frac_their_dots_within_3px": 0.22355204800417428,
+   "smoothed_spearman": 0.2047293259067282
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE30/docs/downloads/gems30-MSDB1-edge44090-20261025-e7856ec3f14a.tif",
+   "stem": "gems30-MSDB1-edge44090-20261025-e7856ec3f14a",
+   "dots": 44090,
+   "sha256": "22850984a68c393f60c6cc9aeafd8d74fd8a3479654bdfcfd3626a4b99ff0381",
+   "frac_my_dots_within_3px": 0.23342105263157895,
+   "frac_their_dots_within_3px": 0.22327058289861645,
+   "smoothed_spearman": 0.18253436972520506
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE24/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+   "stem": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan",
+   "dots": 60069,
+   "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+   "frac_my_dots_within_3px": 0.23189473684210526,
+   "frac_their_dots_within_3px": 0.22494131748489238,
+   "smoothed_spearman": 0.20943447252911296
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE48/docs/downloads/gemsdoe48-h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8.tif",
+   "stem": "gemsdoe48-h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8",
+   "dots": 37723,
+   "sha256": "f1584187b459baf47f75e5daf64de6f7696f9feb14910d3cf2762f7a1119597a",
+   "frac_my_dots_within_3px": 0.22844736842105262,
+   "frac_their_dots_within_3px": 0.23879330912175595,
+   "smoothed_spearman": 0.20331808391595443
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE24/docs/downloads/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+   "stem": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan",
+   "dots": 44090,
+   "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+   "frac_my_dots_within_3px": 0.2188157894736842,
+   "frac_their_dots_within_3px": 0.22240870945792696,
+   "smoothed_spearman": 0.20529951408711647
+  }
+ ],
+ "worst_rank": [
+  {
+   "file": "/tmp/fleet/GEMSDOE49/docs/downloads/gems49-gate_ortho_w0.25-40k-20261006T213721Z-nan.tif",
+   "stem": "gems49-gate_ortho_w0.25-40k-20261006T213721Z-nan",
+   "dots": 40000,
+   "sha256": "c58fe0551e120678fff190239146985d0b2f7255255535fb5fb637a05cb40af3",
+   "frac_my_dots_within_3px": 0.3215,
+   "frac_their_dots_within_3px": 0.35835,
+   "smoothed_spearman": 0.3629420920838068
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE33/docs/downloads/gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros.tif",
+   "stem": "gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros",
+   "dots": 37654,
+   "sha256": "5eb9572946fa62356ebc0cbfef22bb54aa2ef094cb8b4a84b52e6b80e120db96",
+   "frac_my_dots_within_3px": 0.24568421052631578,
+   "frac_their_dots_within_3px": 0.3119456100281511,
+   "smoothed_spearman": 0.2516334484672565
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE63/docs/downloads/gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+   "stem": "gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros",
+   "dots": 54864,
+   "sha256": "46a0f0fa2f63e6e6b4a5fe4520e999b925cf3ff954a01b10b36b735c1b0649c8",
+   "frac_my_dots_within_3px": 0.3483684210526316,
+   "frac_their_dots_within_3px": 0.24336541265675124,
+   "smoothed_spearman": 0.2509559841297114
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE70/docs/downloads/gems70-p5-dual-submod300-oof38k-20261020.tif",
+   "stem": "gems70-p5-dual-submod300-oof38k-20261020",
+   "dots": 37654,
+   "sha256": "d0e41ce921afcf3af33b7d86d75f6a258653dfbb4d050e864babe643245f0ea8",
+   "frac_my_dots_within_3px": 0.19002631578947368,
+   "frac_their_dots_within_3px": 0.2705954214691666,
+   "smoothed_spearman": 0.24755011302717575
+  },
+  {
+   "file": "/tmp/fleet/GEMSDOE24/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+   "stem": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan",
+   "dots": 60069,
+   "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+   "frac_my_dots_within_3px": 0.23189473684210526,
+   "frac_their_dots_within_3px": 0.22494131748489238,
+   "smoothed_spearman": 0.20943447252911296
+  }
+ ],
+ "note": "nine focus-site best files plus every fleet raster carrying a published score",
+ "verdict": {
+  "unique_bytes": true,
+  "passes_halo_rule": true,
+  "passes_rank_rule": true
+ }
+}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEMS — How to submit</title><style>
+:root{--ink:#12181f;--muted:#5b6673;--line:#dfe5ec;--bg:#f7f9fc;--card:#fff;
+--ok:#0f7b3f;--okbg:#e8f6ee;--warn:#8a5a00;--warnbg:#fff6e0;--bad:#a11b1b;--badbg:#fdeaea;--accent:#1b57c4}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#0e1b2b;color:#fff;padding:14px 20px}
+header a{color:#cfe0ff;text-decoration:none;margin-right:18px;font-size:14px}
+header a:hover{text-decoration:underline}
+main{max-width:1080px;margin:0 auto;padding:26px 20px 60px}
+h1{font-size:30px;line-height:1.2;margin:8px 0 6px}
+h2{font-size:21px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:17px;margin:22px 0 6px}
+p.lead{font-size:17px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
+.hero{border:2px solid var(--ok);background:var(--okbg)}
+.hero h2{border:0;margin-top:0}
+.btn{display:inline-block;background:var(--ok);color:#fff;text-decoration:none;font-weight:650;
+padding:13px 22px;border-radius:9px;margin:8px 10px 8px 0;font-size:16px}
+.btn.alt{background:var(--accent)}
+.btn:hover{filter:brightness(1.07)}
+code,kbd{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:13px;word-break:break-all}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
+th{background:#eef2f7;font-weight:650}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:650}
+.ok{background:var(--okbg);color:var(--ok)}
+.warn{background:var(--warnbg);color:var(--warn)}
+.bad{background:var(--badbg);color:var(--bad)}
+.muted{color:var(--muted);font-size:14px}
+ul.tight li{margin:3px 0}
+.note{border-left:4px solid var(--accent);background:#eef4ff;padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:14px;color:var(--muted);font-size:13px}
+</style></head>
+<body><header><a href="../lane/index.html">Submission lane</a><a href="../lane/how-to-submit.html">How to submit</a><a href="../lane/findings.html">Findings</a><a href="../lane/sources.html">Sources</a><a href="../index.html">Project dashboard</a><a href="../release.html">Legacy byte audit</a></header><main>
+<div class="note" data-evidence-class="EMPIRICAL-BAND ESTIMATE">
+<strong>Submission lane.</strong> Evidence class: EMPIRICAL-BAND ESTIMATE. The score range
+below is an estimate derived from the published metric; there is no organizer receipt and
+no leaderboard score for this file. Format and novelty are measured, not assumed.</div>
+
+<h1>How to submit</h1>
+<p class="lead">The competition accepts a single-band float32 GeoTIFF on the training grid,
+or a ZIP containing exactly one such GeoTIFF.</p>
+
+<div class="card hero">
+  <a class="btn" href="../downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif" download>⬇ Download the .tif</a>
+  <a class="btn alt" href="../downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip" download>Download the .zip</a>
+  <p class="muted">SHA-256 <code>b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe</code></p>
+</div>
+
+<h2>Steps</h2>
+<ol>
+<li>Download the file above and check its SHA-256 if you want certainty
+(<code>sha256sum gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif</code>).</li>
+<li>Open the submission page while logged in:
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">drivendata.org › GEMS › submissions</a>.</li>
+<li>Choose <strong>New submission</strong> and upload the <code>.tif</code>
+(or the <code>.zip</code>).</li>
+<li>Paste this note (≤140 characters):<br>
+<code>multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells</code></li>
+<li>Submit and archive the result: the score, the timestamp and the file SHA-256. That
+receipt replaces every USER-REPORTED number in this repository.</li>
+</ol>
+
+<h2>If the portal rejects the upload</h2>
+<table>
+<tr><th>Portal message</th><th>What it means here</th><th>Action</th></tr>
+<tr><td>“Predicted values must be in range [0, 1]”</td>
+<td>The validator is rejecting the NaN fill outside the data footprint.</td>
+<td>Upload <code>gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif</code> (or the
+<code>-zerooutside.zip</code>): identical inside the footprint, zeros outside instead of
+NaN — measured all-finite, 0 NaN, 38,000 positive cells, every value in [0, 1].</td></tr>
+<tr><td>“must match the submission format’s CRS, shape, and geotransform”</td>
+<td>The raster is not on the organizer grid.</td>
+<td>Do not resample by hand. Re-run <code>python scripts/gemsdoe_final.py</code>; it writes
+the grid from the organizer’s own sample raster.</td></tr>
+<tr><td>Upload accepted, score shown</td>
+<td>Success.</td>
+<td>Record the receipt, then compare with the estimate 0.15 – 0.28 and with 0.2778.</td></tr>
+</table>
+
+<h2>What the file contains</h2>
+<table>
+<tr><th>Property</th><th>Value</th></tr>
+<tr><td>Grid / CRS</td><td>3730 × 3292, EPSG:32611, 100 m (matches organizer raster)</td></tr>
+<tr><td>Positive cells (mass)</td><td class="num">38,000</td></tr>
+<tr><td>300 m halo coverage</td><td class="num">17.2 % of the footprint</td></tr>
+<tr><td>Cells within 300 m of the mapped catalogue</td>
+<td class="num">8.3 %</td></tr>
+<tr><td>Median distance to the mapped catalogue</td>
+<td class="num">2025 m</td></tr>
+<tr><td>Values</td><td>binary 0 / 1 inside the footprint; null outside</td></tr>
+</table>
+<p class="muted">Under the organizer ruling, pixels of known USGS/INGENIOUS faults are
+excluded from scoring, so the emission deliberately avoids the immediate 2-pixel collar
+around the mapped catalogue (the measured lesson from GEMSDOE32 B2).</p>
+
+<footer>Generated from the evidence files in this repository. Scores quoted as
+<strong>USER-REPORTED</strong> carry no organizer receipt; measured quantities are
+reproducible with the scripts named in the executive summary.
+Last build: see <code>data_public/gemsdoe_estimate.json</code>.</footer>
+</main></body></html>

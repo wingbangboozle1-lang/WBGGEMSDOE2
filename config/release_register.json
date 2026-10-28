@@ -14,6 +14,34 @@
       "holdout_evidence": "evidence/wbg4_folds.json",
       "uniqueness_evidence": "evidence/wbg4_uniqueness.json",
       "registered_utc": "2026-10-28"
+    },
+    {
+      "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
+      "zip": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip",
+      "sha256": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
+      "bytes": 212133,
+      "zip_sha256": "444da164e79da7fbf99ff4b82c3952d9adc119f66e3f831c3ae23683bdc787ae",
+      "lane": "GEMSDOE",
+      "decision": "PROMOTE",
+      "decision_basis": "format validator passes on the saved bytes (3730x3292, EPSG:32611, 100 m, single band float32, values in [0,1], NaN outside the footprint or 0.0 for the all-finite twin); novelty passes byte / 70 % 3-px halo / 0.90 rank against 30 fleet rasters (worst 34.8 % and 0.36); the value is the same file the submissions/ copy carries (submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif); score is an EMPIRICAL-BAND / STRUCTURAL estimate 0.15-0.28 with no organizer receipt",
+      "run_card": "evidence/gemsdoe_lane_run_card.json",
+      "holdout_evidence": "evidence/gemsdoe_lane_holdout.json",
+      "uniqueness_evidence": "evidence/gemsdoe_lane_uniqueness.json",
+      "registered_utc": "2026-10-28"
+    },
+    {
+      "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif",
+      "zip": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip",
+      "sha256": "c8f41c0490f84a26d86073df12fea351464a12e8934a55ca538da5af9253813c",
+      "bytes": 142065,
+      "zip_sha256": "3cfebe90b991f64bd10433e80f13caf1d5af82843bb2425a33f5e675928eb391",
+      "lane": "GEMSDOE",
+      "decision": "PROMOTE",
+      "decision_basis": "format validator passes on the saved bytes (3730x3292, EPSG:32611, 100 m, single band float32, values in [0,1], NaN outside the footprint or 0.0 for the all-finite twin); novelty passes byte / 70 % 3-px halo / 0.90 rank against 30 fleet rasters (worst 34.8 % and 0.36); the value is the same file the submissions/ copy carries (submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif); score is an EMPIRICAL-BAND / STRUCTURAL estimate 0.15-0.28 with no organizer receipt",
+      "run_card": "evidence/gemsdoe_lane_run_card.json",
+      "holdout_evidence": "evidence/gemsdoe_lane_holdout.json",
+      "uniqueness_evidence": "evidence/gemsdoe_lane_uniqueness.json",
+      "registered_utc": "2026-10-28"
     }
   ]
 }
