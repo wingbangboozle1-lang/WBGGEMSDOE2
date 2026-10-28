@@ -54,6 +54,19 @@
       "holdout_evidence": "evidence/wbg4_exp2.json",
       "uniqueness_evidence": "evidence/wbg4_edti_uniqueness.json",
       "registered_utc": "2026-10-28"
+    },
+    {
+      "path": "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif",
+      "zip": "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.zip",
+      "sha256": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
+      "bytes": 134932,
+      "lane": "WBG2-DISTAL2",
+      "decision": "PROMOTE-TO-SELECTOR",
+      "decision_basis": "fresh-seed SEED 20261028; 4-fold pooled HOLDOUT-DTI 0.1771 [0.1570, 0.1983]; unique vs all nine focus sites (max 3-px 0.6792) and 69 sparse peers (max 0.6856); whole-array [0,1]/zero-NaN PASS; still fails the literal all-registry stop (continuous prior 17GEMSDOE = 100%; accessible registry incomplete); ok_to_submit False, 0 slots spent",
+      "run_card": "evidence/RUN_CARD_DISTAL2.json",
+      "holdout_evidence": "evidence/wbg2_distal_exp2_results.json",
+      "uniqueness_evidence": "evidence/wbg2_distal2_uniqueness_audit.json",
+      "registered_utc": "2026-10-28"
     }
   ]
 }

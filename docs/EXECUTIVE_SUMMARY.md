@@ -1,6 +1,6 @@
 # ⭐ New submission — WBG2-DISTAL2 fresh-seed candidate (2026-10-28)
 
-**New, byte-unique file generated today — OK TO DOWNLOAD; promotion to a slot is a separate selector decision.**
+**New, byte-unique file generated today — OK TO DOWNLOAD; promotion to a weekly slot is a separate selector decision.**
 
 | Field | Value |
 |---|---|
