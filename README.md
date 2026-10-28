@@ -1,8 +1,16 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28) — NEGATIVE release decision; do not submit
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**Current decision: no TIFF in this repository is cleared for a competition slot. DO NOT SUBMIT.** The
+canonical run card and `src/wbggems/release.py` fail closed: no authorized method lane or complete current
+registry is established, and the literal duplicate stop blocks recorded candidates. Existing historical
+“PROMOTE” language and score projections are not organizer receipts or current selector authorization.
+The contradictory positive text below is preserved as historical material and is not a release decision.
+See [latest repository review](research/repo-review-20261028.md), [canonical run card](evidence/run_card.json),
+and [release audit](evidence/release_audit.json).
+
+**No new TIFF was generated in this review.** Existing files are research artifacts only; format validity
+alone does not establish uniqueness, a high score, or permission to submit. No score above the reported
+GEMSDOE32 value of 0.2778 has been verified for a new candidate, and no leaderboard projection is offered.
 
 | | |
 |---|---|
