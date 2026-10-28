@@ -41,9 +41,7 @@ The remainder of this README is a preserved project brief and historical record.
 
 ### The rest of this README is the legacy record
 
-The sections below describe the earlier *negative* release audit: 15 historical TIFFs,
-13 distinct SHA-256 identities and a literal all-registry stop. That verdict still holds
-for those files — it just no longer governs the one file in the lane above.
+The sections below preserve historical audits and decisions for context; none of their candidate approvals or download links is current checkout authorization.
 
 ---
 
