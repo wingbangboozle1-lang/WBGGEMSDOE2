@@ -14,7 +14,7 @@
 
 **Official references:** [competition problem, metric and format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · [rules](https://www.drivendata.org/competitions/306/competition-doe-gems/rules/) · [submission page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/).
 
-**Current reviews:** [session-2 repository review](research/repo-review-20261028-session2.md) · [fresh main-integration review](research/repo-review-20261028-followup.md) · [negative session run card](evidence/session_run_card_20261028.json) · [checkout readiness](evidence/checkout_readiness.json).
+**Current reviews:** [session-2 repository review](research/repo-review-20261028-session2.md) · [fresh main-integration review](research/repo-review-20261028-followup.md) · [latest main checkout review](research/repo-review-20261028-current-checkout.md) · [negative session run card](evidence/session_run_card_20261028.json) · [checkout readiness](evidence/checkout_readiness.json).
 
 Before new candidate work, explicitly assign the single method lane, restore and authenticate required inputs and the shared derived-feature cache, resolve literal duplicate semantics, establish comprehensive registry coverage, then reproduce format, leakage-canary, and spatial holdout gates. Do not rely on any archived “ready” badge.
 

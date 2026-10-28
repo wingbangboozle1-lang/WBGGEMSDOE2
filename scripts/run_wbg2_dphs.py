@@ -39,6 +39,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / ".cache" / "shared-template" / "src"))
 
+# Retired campaign entry point: make the safety probe independent of optional
+# shared-template availability so it always fails closed before importing or writing.
+if "--selftest" in sys.argv:
+    print("STOP: retired WBG2-DPHS campaign; do not run or write outputs.", file=sys.stderr)
+    raise SystemExit(2)
+
 from gems57 import emit, evaluate_holdout, spatial, submission_writer  # noqa: E402
 from wbggems.dphs import (  # noqa: E402
     EXP1_FEATURE_NAMES,
