@@ -1,0 +1,131 @@
+{
+  "file": "wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+  "sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+  "bytes": 136229,
+  "submission_name": "wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros",
+  "note": "WBG2-GVCD 100%OOF 72f Vent+Stress+ComCat DualCELF 37400d (44%>32px) HOLDOUT-DTI=0.1759",
+  "note_chars": 86,
+  "validator": {
+    "file": "/home/user/WBGGEMSDOE2/docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+    "bytes": 136229,
+    "sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.003045810852199793,
+    "emitted_positive_pixels": 37400,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37400,
+    "footprint_fraction": 0.007237720211024055
+  },
+  "template_report": {
+    "path": "/home/user/WBGGEMSDOE2/docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+    "bytes": 136229,
+    "sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.003045810852199793,
+    "n_nonzero": 37400,
+    "mass": 37400.0,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.zip",
+  "zip_sha256": "1a3618d3dabb81411937a18797f4c34db0893e39e316045e60119f0556cb98d7",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "metadata": {
+    "lane": "WBG2-GVCD",
+    "winning_experiment": "GVCD-EXP3 (Dual-Regime Geothermal-Vent & Stress-Dilation Synthesis)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "holdout_dti": 0.17591470735855824,
+    "holdout_ci95": [
+      0.1554924660571521,
+      0.19693604045156685
+    ],
+    "in_sample_refit_fraction": 0.0,
+    "out_of_fold_footprint_fraction": 1.0
+  }
+}

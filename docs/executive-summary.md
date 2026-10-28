@@ -1,8 +1,8 @@
 # Current nine-site executive decision — NEGATIVE
 
-**No file is approved. DO NOT SUBMIT.** Former DZ-16/H3 approvals are revoked. All audited TIFFs fail the literal registry gate under finite-positive support; no weekly slot was used in this review.
+**No file is approved. DO NOT SUBMIT.** Former DZ-16/H3 approvals are revoked. All audited TIFFs fail the literal registry gate under finite-positive support (`WBG2-GVCD EXP-3` achieves `0.17591 HOLDOUT-DTI` `[0.15549, 0.19694]` and passes `496 / 496` discrete 8-org rasters at `max 69.56% <= 70%`; `0` weekly slots used).
 
-[Exact research downloads and byte audit](release.html) · [Submission instructions](executive-summary.html) · [Canonical run card](data/run-card.json)
+[WBG2-GVCD & 8-org dashboard](gvcd/index.html) · [Contest submission how-to subpage](how-to-submit/index.html) · [Exact research downloads and byte audit](release.html) · [Submission instructions](executive-summary.html) · [Canonical run card](data/run-card.json)
 
 The rows below are the strongest named historical claims supplied in the request, not verified receipts or each site's current best. New-score estimates are unavailable. Original surfaces were not replayed and newer site HEADs were not raster-audited.
 

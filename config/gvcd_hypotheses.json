@@ -1,0 +1,101 @@
+{
+  "schema": "wbggems.gvcd-hypotheses.v1",
+  "preregistered_utc": "2026-10-27T23:57:00Z",
+  "lane_id": "WBG2-GVCD",
+  "lane_title": "Geothermal Vent & Concealed Dilatational Conduit Synthesis (100% Spatial-OOF Dual-Regime Allocation)",
+  "incumbent_holdout_best": {
+    "lane": "WBG2-DPHS EXP-3",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 60988,
+    "holdout_dti": 0.173477,
+    "ci95": [0.152451, 0.194361]
+  },
+  "hypotheses": [
+    {
+      "rank": 1,
+      "id": "GVCD-H1",
+      "title": "100% Spatial-OOF Dual-Regime Concealed-Basin vs Range-Front Specialist Ensemble & Strike-Anisotropic 300 m CELF Submodular Packing",
+      "specific_layers": [
+        "All 72 zero-catalogue GVCD features partitioned into (a) 59 Subsurface-Geothermal-Vent-Stress features (excluding coarse slope/elevation memorizers Band 12 det_elev, Band 19 det_elev_slope, dem10_slope_max, dem10_steep_ratio_max, scarp_hessian_ridge_s35) and (b) 72 Full-Domain Multi-Sensor features",
+        "Fold-visible relay/tip geometry computed strictly from fold['visible'] during holdout evaluation"
+      ],
+      "physical_signature": "Eliminates range-front slope memorization by training a dedicated Concealed-Basin Subsurface-Vent PU-HGBR specialist up-weighting low-slope (< median det_elev_slope) fault pixels, fusing with nested-block isotonic-calibrated multi-sensor trees, applying strike-tangent directional ridge smoothing, and decoding via Minoux (1978) CELF 300 m (R=3.0 px) triangular-kernel submodular max-cover at optimal non-overlapping spacing (min_sep >= 2.50 px) with 0% in-sample full-map refit and explicit 35%-40% distal (>32 px) concealed-basin allocation.",
+      "why_catches_uncatalogued_faults": "Exposed steep range-front faults (>10 deg slope) were already mapped from 1:24,000-1:250,000 aerial photography in existing_faults.tif, causing unstratified in-sample PU-HGBR models (e.g., DPHS EXP-3) to dump 96.36% of dots onto mapped range fronts (frac_gt_32px = 3.64%). Pure spatial-OOF scoring paired with a slope-blind subsurface/geothermal specialist recovers buried intrabasin and piedmont faults (>3.2 km from mapped traces) where GeoDAWN and 3DEP interpretation adds unmapped structures.",
+      "non_fault_mimic": "Unfaulted coalescing alluvial fan-toe aprons (bajada break-in-slope) and eolian dune margins.",
+      "countermeasure": "Slope-blind specialist excludes raw 10 m slope thresholds and requires subsurface gravity/magnetic/MT step corroboration plus Lahontan highstand shoreline suppression.",
+      "difference_from_repo": "WBG2-DPHS (scripts/run_wbg2_dphs.py:514) blended 55% in-sample full-map PU-HGBR predictions on a single unstratified feature set with min_sep=2.2 px, collapsing distal coverage to 3.64% and failing discrete fleet uniqueness (95.87% overlap vs GEMSDOE12). GVCD-H1 uses 0% in-sample refit, a slope-blind subsurface-vent specialist, wider 2.50-2.65 px kernel spacing, and regime-balanced distal allocation.",
+      "external_data_source": "Uses existing pinned GeoDAWN 19-band stack plus verified free public-domain / CC-BY-4.0 layers below; zero unobtainable sources.",
+      "expected_holdout_dti_gain": "+0.006 to +0.022 HOLDOUT-DTI over DPHS EXP-3 (0.1735) on gems57-pooled-hide-v2, plus >+0.15 EMPIRICAL-ESTIMATE improvement and <=0.70 discrete fleet overlap.",
+      "implementation_cost": "Low-Medium (~110 s CPU across 4 folds)"
+    },
+    {
+      "rank": 2,
+      "id": "GVCD-H2",
+      "title": "Mohr-Coulomb Regional Tectonic Stress Dilation-Tendency (T_d) & Walker Lane Transtensional Shear-Dilation Gate",
+      "specific_layers": [
+        "gb_regional_stress_grid_10km.csv (shmin_az_deg, aphi, shmax_mpa, shmin_mpa; SHA-256 9e01d5de2b6070816513e163a8f34cf19559630d497ef8ddc60b4d18565140ef)",
+        "Band 13 iso_grav_anom, Band 2 rtp, Band 12 det_elev, dem10_deconfounded_piedmont_scarp"
+      ],
+      "physical_signature": "Axial Morris-Ferrill-Henderson (1996) Dilation Tendency T_d = sin^2(theta_strike - theta_shmin) and transtensional shear-dilation product sin^2(2(theta_strike - theta_shmin)) * exp(-0.5 * ((A_phi - 1.15)/0.45)^2) evaluated on geographic structural strike theta_strike = atan2(dF/drow, dF/dcol) of Bouguer gravity, RTP magnetics, and de-confounded piedmont scarps.",
+      "why_catches_uncatalogued_faults": "Concealed basins contain numerous pre-Cenozoic pluton margins and Miocene volcanic contacts with strong potential-field edges that are not Quaternary faults. Computing T_d against the modern Great Basin WNW-ESE SHmin field (~100-118 deg) isolates NNE-SSW extensional conduits and NW/ENE Walker Lane transtensional stepovers held open by modern crustal stress—the exact permeable pathways hosting blind geothermal vents (Faulds & Hinz, 2015).",
+      "non_fault_mimic": "Unfaulted NNE-elongate Mesozoic granitic stocks or Jurassic dike swarms coincidentally perpendicular to modern SHmin.",
+      "countermeasure": "Coupled with cross-strike depth_to_base_surf asymmetry (GVCD-H5) and shallow conductive/radiometric hydrothermal alteration (GVCD-H3).",
+      "difference_from_repo": "No module in WBGGEMSDOE2 (msptcd.py, dphs.py, wbg2, wbg3) previously loaded regional stress orientations or computed mechanical dilation/slip tendency.",
+      "external_data_source": "USGS Western US Stress Map (Lund & Snee, 2016, USGS SIM 3353, https://pubs.usgs.gov/sim/3353/) & World Stress Map (CC-BY-4.0 / US Public Domain); verified obtainable and SHA-256 pinned.",
+      "expected_holdout_dti_gain": "+0.004 to +0.012 HOLDOUT-DTI",
+      "implementation_cost": "Low (~10 s CPU)"
+    },
+    {
+      "rank": 3,
+      "id": "GVCD-H3",
+      "title": "Edge-Locked Geothermal Vent Plume & Borehole Convective Heat-Flow Conduit Coupling",
+      "specific_layers": [
+        "usgs_heat_flow_wells_epsg32611.csv (1,546 stations: hf_meas_mw_m2, hf_resid_mw_m2; SHA-256 9773bf59340e06901b2855d30b1972dc91374a5d344a8324452f9bb69304e370)",
+        "derived_gdr_volcanics_100m_u8.tif (SHA-256 c219bd644e6f7a4071dc429e29b909a2296967b0657bf456bb6675413ee76cb2)",
+        "gdr_wellspring_in_footprint.csv, derived_gdr_2m_probes_100m_u8.tif, derived_gdr_paleo_100m_u8.tif, gdr_volcanic_vents_in_footprint.csv",
+        "geodawn_k_th_alteration, mag_shallow_demag, Band 17 cond_surf, Band 15 depth_to_base_surf, Band 13 iso_grav_anom"
+      ],
+      "physical_signature": "Multi-scale convective borehole heat-flow excess log1p(max(0, hf_resid_mw_m2)) fused with thermal springs/wells, 2 m shallow temperature probes, paleo-sinter/travertine mounds, and Quaternary volcanic margins, multiplicatively locked onto sub-vertical subsurface potential-field + conductive-clay-cap (cond_surf) + basement-step edges weighted by dilation tendency (vent_structural_conduit_ridge & epithermal_claycap_root_index).",
+      "why_catches_uncatalogued_faults": "Over 75% of Great Basin geothermal systems are blind (lacking Holocene surface scarps), yet ascending 60-250 C fluids leak thermal anomalies, deposit opaline sinter/travertine, alter wallrock to K-illite/smectite (high K/Th and high cond_surf), and oxidize magnetite along the buried permeable feeder fault beneath Quaternary alluvium.",
+      "non_fault_mimic": "Stratabound lateral thermal outflow plumes in permeable Tertiary ash-flow tuff or gravel aquifers displaced 1-4 km down-gradient from the feeder fault.",
+      "countermeasure": "Edge-locking multiplies diffuse thermal/sinter plumes by subsurface gravity/magnetic/depth-step gradient envelopes so high scores collapse onto the steep feeder fault rather than flat aquifer sheets.",
+      "difference_from_repo": "Prior DPHS lacked the 1,546-well borehole heat-flow compilation and GDR volcanic unit margins, and applied only isotropic Gaussian blurs around springs/probes without subsurface structural edge-locking.",
+      "external_data_source": "DOE Geothermal Data Repository #1391 INGENIOUS (https://gdr.openei.org/submissions/1391, CC-BY-4.0) & USGS Heat Flow Database (Public Domain); verified obtainable and SHA-256 pinned.",
+      "expected_holdout_dti_gain": "+0.003 to +0.010 HOLDOUT-DTI (major driver of concealed >32 px geothermal fault precision)",
+      "implementation_cost": "Low (~12 s CPU)"
+    },
+    {
+      "rank": 4,
+      "id": "GVCD-H4",
+      "title": "Post-INGENIOUS (2021-2026) Blind ComCat Microseismicity & Crustal Strain-Seismogenic Corridor Concordance",
+      "specific_layers": [
+        "usgs_comcat_geodawn.csv (3,977 deduplicated events 1900-2026, 2,040 in footprint, 541 post-2021 post-INGENIOUS compilation cutoff; SHA-256 c580226b3b0516653873b87077edb8e164c3545e9bc1e7c764789c52bdd30624)",
+        "Band 4 geod_2ndinv, Band 7 geod_shearrate, Band 8 geod_dilaterate"
+      ],
+      "physical_signature": "Splits relocated earthquake moment/energy halos 10^(0.45*(M - 1.5)) into (a) post-2021 earthquakes occurring after the GDR #1391 fault compilation cutoff (comcat_post2021_blind_halo, filtering depth_km > 0.5 where reported) and (b) full crustal seismogenic corridors coupled with GPS geodetic shear rate (comcat_seismogenic_corridor).",
+      "why_catches_uncatalogued_faults": "Immature Walker Lane and Central Nevada Seismic Belt transfer splays lack cumulative scarp throw for airphoto mapping, and 541 post-2021 earthquakes directly illuminate active blind shear/dilatational fractures that postdate the static INGENIOUS fault map.",
+      "non_fault_mimic": "Open-pit mining/quarry blasts and shallow geothermal injection microseismicity swarms.",
+      "countermeasure": "Suppresses zero-depth surface blast records (depth_km <= 0.5 when reported), applies log1p single-swarm saturation damping, and couples with GPS geodetic shear strain.",
+      "difference_from_repo": "Correction of prior prose irregularity: neither msptcd.py nor dphs.py ever loaded USGS ComCat data (only coarse competition Bands 10/16 deq/ieq). GVCD-H4 is the first genuine code implementation of ComCat seismicity and the post-2021 post-catalogue temporal split in WBGGEMSDOE2.",
+      "external_data_source": "USGS Earthquake Hazards Program ComCat FDSN API (https://earthquake.usgs.gov/fdsnws/event/1/, US Public Domain 17 U.S.C. 105); verified obtainable and SHA-256 pinned.",
+      "expected_holdout_dti_gain": "+0.002 to +0.007 HOLDOUT-DTI",
+      "implementation_cost": "Low (~8 s CPU)"
+    },
+    {
+      "rank": 5,
+      "id": "GVCD-H5",
+      "title": "Intrabasin Conductive/Basement-Depth Hessian Tubular Ridge & Listric Hanging-Wall Dipole Asymmetry",
+      "specific_layers": [
+        "Band 15 depth_to_base_surf, Band 13 iso_grav_anom, Band 18 iso_grav_anom_hg, Band 11 iso_grav_anom_vg"
+      ],
+      "physical_signature": "Second-order multi-scale Hessian principal tubular ridgeness max_{sigma in {1.8, 3.8}} sigma^2 * max(-lambda_min(H_sigma(|grad log1p(depth_to_base_surf)|)), 0) paired with cross-strike hanging-wall thickening Laplacian dipole skewness concordant with iso_grav_anom_hg.",
+      "why_catches_uncatalogued_faults": "Synthetic intrabasin step-faults and buried horst margins sit 3-12 km basinward of mapped range fronts beneath flat playa/bajada cover (slope < 1.5 deg), expressing purely as linear tubular ridges in basement/cover depth gradients and asymmetric hanging-wall gravity rollovers.",
+      "non_fault_mimic": "Unfaulted buried paleochannels or differential compaction over pre-basin volcanic relief.",
+      "countermeasure": "Requires elongate tubular Hessian eigenvalue persistence and concordance with regional stress dilation tendency (GVCD-H2).",
+      "difference_from_repo": "msptcd.py computed only a first-order isotropic gradient magnitude (depth_cover_log_step); GVCD-H5 extracts second-order Hessian tubular ridge crests and cross-strike listric dipole asymmetry.",
+      "external_data_source": "Uses competition GeoDAWN/INGENIOUS Bands 11, 13, 15, 18 directly; zero new external downloads required.",
+      "expected_holdout_dti_gain": "+0.003 to +0.008 HOLDOUT-DTI",
+      "implementation_cost": "Low (~12 s CPU)"
+    }
+  ]
+}

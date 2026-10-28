@@ -1,0 +1,1388 @@
+[
+  {
+    "site": "GEMSDOE32",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE32",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html",
+    "submission_name": "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros",
+    "reported_public_dti": 0.2778,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE/docs/index.html",
+    "submission_name": "gems-submission-20260925T001403Z-7f00890a",
+    "reported_public_dti": 0.1563,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "6GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/6GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/6GEMSDOE/",
+    "submission_name": "gems6_hgb88-topk03_33cec71ff0",
+    "reported_public_dti": 0.0286,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE3",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE3",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE3/docs/index.html",
+    "submission_name": "pindrop-v4-nodes-20260925T152420Z-f347b70daa",
+    "reported_public_dti": 0.1193,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE3",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE3",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE3/docs/index.html",
+    "submission_name": "pindrop-v4-discovery-20260925T152423Z-37f9d5b855",
+    "reported_public_dti": 0.083,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE3",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE3",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE3/docs/index.html",
+    "submission_name": "pindrop-v4-ridge-20260925T152422Z-4e03fc9705",
+    "reported_public_dti": 0.1152,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE2",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE2",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE2/docs/index.html",
+    "submission_name": "gemsdoe2-dual-family-union-20260925T160406Z-f68e590f",
+    "reported_public_dti": 0.156,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE4",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE4",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE4/",
+    "submission_name": "gems-submission-20260926T163915Z-237f0063",
+    "reported_public_dti": 0.0343,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "5GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/5GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/5GEMSDOE/docs/index.html",
+    "submission_name": "gems-submission-20260926T175114Z-7f00890a",
+    "reported_public_dti": 0.1563,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "7GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/7GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/7GEMSDOE/",
+    "submission_name": "lidarscarp-ridge-top2pct-36c3a3f341c8",
+    "reported_public_dti": 0.1461,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "8GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/8GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/8GEMSDOE/",
+    "submission_name": "Hedge-v2_submission",
+    "reported_public_dti": 0.1563,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE9",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE9",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE9/docs/index.html",
+    "submission_name": "2314b599",
+    "reported_public_dti": 0.0107,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "11GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/11GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/11GEMSDOE/docs/index.html",
+    "submission_name": "gems-structural-area06-v1",
+    "reported_public_dti": 0.0202,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "12GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/12GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/12GEMSDOE/docs/index.html",
+    "submission_name": "r7-nms3-dem10-scarp_0c9199f14e62",
+    "reported_public_dti": 0.1294,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "12GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/12GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/12GEMSDOE/docs/index.html",
+    "submission_name": "r7-nms3-dem10-scarp_0c9199f14e62_allfinite",
+    "reported_public_dti": 0.1294,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "15GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/15GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/15GEMSDOE/docs/index.html",
+    "submission_name": "gems-tso1-20260929T005627Z-conj_alteration_mag",
+    "reported_public_dti": 0.0782,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "14GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/14GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/14GEMSDOE/docs/index.html",
+    "submission_name": "GEMS_r5-geom-horse-ensemble_20260929T154852Z_ccbe1de0_site_e96e942f",
+    "reported_public_dti": 0.002,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "17GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/17GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/17GEMSDOE/",
+    "submission_name": "17GEMSDOE_F-ensemble-2pct_20260930T050626Z",
+    "reported_public_dti": 0.0187,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "18GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/18GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/18GEMSDOE/",
+    "submission_name": "H19-C_20260930T212401Z_c11e495e",
+    "reported_public_dti": 0.0297,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "19GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/19GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/19GEMSDOE/docs/index.html",
+    "submission_name": "h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan",
+    "reported_public_dti": 0.1894,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "19GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/19GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/19GEMSDOE/docs/index.html",
+    "submission_name": "h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan",
+    "reported_public_dti": 0.1922,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE10",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE10",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE10/",
+    "submission_name": "h16-continuation-20260927T065521077735Z-3431b83c7c",
+    "reported_public_dti": 0.0461,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE10",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE10",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE10/",
+    "submission_name": "h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686",
+    "reported_public_dti": 0.0921,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE10",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE10",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE10/",
+    "submission_name": "H25-ctx-ridge-20260927T232947704150Z-6452ae1d00",
+    "reported_public_dti": 0.128,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE10",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE10",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE10/",
+    "submission_name": "h28-dotted-ridge-20260928T020256236880Z-6452ae1d00",
+    "reported_public_dti": 0.1839,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "13GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/13GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/13GEMSDOE/",
+    "submission_name": "20261001_r13-lattice-s5_v2_nan-outside",
+    "reported_public_dti": 0.0904,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "16GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/16GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/16GEMSDOE/docs/index.html",
+    "submission_name": "h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan",
+    "reported_public_dti": 0.1855,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "16GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/16GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/16GEMSDOE/docs/index.html",
+    "submission_name": "h18-3a-topo-geophys-x-complexity-prior-20260930-c502dfab-nan",
+    "reported_public_dti": 0.0976,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "16GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/16GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/16GEMSDOE/docs/index.html",
+    "submission_name": "h18-4-usgs-geologic-map-faults-gap-20260930-aef8f42c-nan",
+    "reported_public_dti": 0.036,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE21",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE21",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE21/",
+    "submission_name": "h19-4-reference-20260930-691e4dfa",
+    "reported_public_dti": 0.1894,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "20GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/20GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/20GEMSDOE/docs/index.html",
+    "submission_name": "h20-1-sarnnpu-powerlaw-pi0363-tilt-wingcrack-20260930-be0e8f6b-nan",
+    "reported_public_dti": 0.189,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "20GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/20GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/20GEMSDOE/docs/index.html",
+    "submission_name": "h20-5-continuous-pu-proxy-unverified-20260930-824ce73a-nan",
+    "reported_public_dti": 0.1859,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE22",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE22",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE22/docs/index.html",
+    "submission_name": "h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan",
+    "reported_public_dti": 0.1002,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE22",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE22",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE22/docs/index.html",
+    "submission_name": "h23-b-dti-optimal-emission-10pct-20261002-86176698-nan",
+    "reported_public_dti": 0.0748,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE23",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE23",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE23/",
+    "submission_name": "h30-arrangement-matched-habitat-20261002-0d4e02e8-nan",
+    "reported_public_dti": 0.1352,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE24",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE24",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE24/",
+    "submission_name": "h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan",
+    "reported_public_dti": 0.2477,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE24",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE24",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE24/",
+    "submission_name": "gems24-gvc1-negative-geothermal-lineament-submod-20261025-abe8e51c719d-zeros",
+    "reported_public_dti": 0.0859,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE25",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE25",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE25/",
+    "submission_name": "dotted-h19-5-d2-8-20261002-e56ea318af89-nan",
+    "reported_public_dti": 0.26,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE25",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE25",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE25/",
+    "submission_name": "gems25-h66-mgd-flank-sapd3-0-k3p5-20261025-da617550a0e9-zeros",
+    "reported_public_dti": 0.0742,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE26",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE26",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE26/",
+    "submission_name": "dilcond-oof-v1-20261003-47629f496133-nan",
+    "reported_public_dti": 0.1223,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE27",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE27",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE27/",
+    "submission_name": "topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan",
+    "reported_public_dti": 0.2449,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE27",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE27",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE27/",
+    "submission_name": "gems27-h29-hydrothermal-piedmont-celf-20261025-511898747886-allfinite",
+    "reported_public_dti": 0.219,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE27",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE27",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE27/",
+    "submission_name": "gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite",
+    "reported_public_dti": 0.225,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE28",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE28",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+    "submission_name": "h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan",
+    "reported_public_dti": 0.2708,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE28",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE28",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+    "submission_name": "h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan",
+    "reported_public_dti": 0.2649,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE28",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE28",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+    "submission_name": "h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan",
+    "reported_public_dti": 0.271,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE28",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE28",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+    "submission_name": "h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan",
+    "reported_public_dti": 0.2707,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE28",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE28",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+    "submission_name": "gems28-s18-mxtp-20261025-3e95505c011a-allfinite",
+    "reported_public_dti": 0.0217,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE28",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE28",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+    "submission_name": "gems28-s21-puhgb-20261026-16bbf281ba9b-allfinite",
+    "reported_public_dti": 0.0206,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE29",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE29",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE29/docs/index.html",
+    "submission_name": "efd28-repro-20261003-1cc7dc534d51-nan",
+    "reported_public_dti": 0.26,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE29",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE29",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE29/docs/index.html",
+    "submission_name": "repo-c0-habitat-emission-20261003-a4d439b07426-nan",
+    "reported_public_dti": 0.0041,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE29",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE29",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE29/docs/index.html",
+    "submission_name": "sgmc-off-catalogue-44k-20261003-c8dcd780e3fd-nan",
+    "reported_public_dti": 0.0512,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE29",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE29",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE29/docs/index.html",
+    "submission_name": "wormrank-d28-20261003-59dcaf6dd11d-zeros",
+    "reported_public_dti": 0.256,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE29",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE29",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE29/docs/index.html",
+    "submission_name": "wormsurv-filter-20261003-921f10960d6e-zeros",
+    "reported_public_dti": 0.0532,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE29",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE29",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE29/docs/index.html",
+    "submission_name": "xfit-c0-habitat-20261003-ca879db0089a-zeros",
+    "reported_public_dti": 0.0439,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE29",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE29",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE29/docs/index.html",
+    "submission_name": "xfit-h41-union-qfaults-20261003-9edb34b99e3a-zeros",
+    "reported_public_dti": 0.0356,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE30",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE30",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE30/",
+    "submission_name": "d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca",
+    "reported_public_dti": 0.26,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE30",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE30",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE30/",
+    "submission_name": "gems30-MSDB1-edge44090-20261025-e7856ec3f14a",
+    "reported_public_dti": 0.1462,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE31",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE31",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE31/docs/",
+    "submission_name": "h27-4-solo-d28-20261004-8acb75e1-nan",
+    "reported_public_dti": 0.2708,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE33",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE33",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE33/",
+    "submission_name": "h33d-analog-tip-stepover-r30-20261004-cb490425926e",
+    "reported_public_dti": 0.2632,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE33",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE33",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE33/",
+    "submission_name": "gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros",
+    "reported_public_dti": 0.0963,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE34",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE34",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE34/docs/index.html",
+    "submission_name": "h34-scatter-q50-arr-matched-20261004T223317Z",
+    "reported_public_dti": 0.0778,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE35",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE35",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE35/docs/index.html",
+    "submission_name": "h35-06-aaa86efb25-20261004T225420098147Z-candidate",
+    "reported_public_dti": 0.0418,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE36",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE36",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE36/docs/",
+    "submission_name": "anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros",
+    "reported_public_dti": 0.275,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE36",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE36",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE36/docs/",
+    "submission_name": "gemsdoe36-kpl36-exp3-20261026-fc869911e88c-zeros",
+    "reported_public_dti": 0.1647,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE37",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE37",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE37/",
+    "submission_name": "h6-physics-dotted-80k-20261005T055000Z-0bef9211631c",
+    "reported_public_dti": 0.1193,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE38",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE38",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE38/docs/index.html",
+    "submission_name": "D-step-3p0-07pct-tipProt-20261005-ecfbf59e2b48-zero",
+    "reported_public_dti": 0.0763,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE39",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE39",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE39/",
+    "submission_name": "h40-e-disc-h40e-30k-zeros",
+    "reported_public_dti": 0.0339,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE40",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE40",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE40/docs/index.html",
+    "submission_name": "h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1",
+    "reported_public_dti": 0.0355,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE40",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE40",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE40/docs/index.html",
+    "submission_name": "h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard",
+    "reported_public_dti": 0.0397,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE40",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE40",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE40/docs/index.html",
+    "submission_name": "h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros",
+    "reported_public_dti": 0.0984,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE41",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE41",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE41/docs/index.html",
+    "submission_name": "h42-submission-primary",
+    "reported_public_dti": 0.0245,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE42",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE42",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE42/docs/index.html",
+    "submission_name": "xscale-worm-persistence-20261006T000541Z-nan",
+    "reported_public_dti": 0.0581,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE43",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE43",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE43/docs/index.html",
+    "submission_name": "sup01-hgb21-sep40-n40000-20261006-bc2e4e9a8d6f-nan",
+    "reported_public_dti": 0.0424,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE44",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE44",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE44/docs/",
+    "submission_name": "h46-twostageAB_20261006T160000Z_b0cfe956-zeros",
+    "reported_public_dti": 0.0715,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE45",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE45",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE45/",
+    "submission_name": "h51-km-faultzone-20261006-zeros",
+    "reported_public_dti": 0.0106,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE46",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE46",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE46/",
+    "submission_name": "r11f-scarp-radiometric-fusion-00e049b51218-zeros",
+    "reported_public_dti": 0.1589,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE46",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE46",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE46/",
+    "submission_name": "r12-scarp-rad-concordance-23e807e2de9f-zeros",
+    "reported_public_dti": 0.0843,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE47",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE47",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE47/",
+    "submission_name": "h60-lidarscarp-s2p0-20261007-nanoutside",
+    "reported_public_dti": 0.043,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE48",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE48",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE48/docs/index.html",
+    "submission_name": "h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8",
+    "reported_public_dti": 0.2296,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE49",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE49",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE49/",
+    "submission_name": "gate_ortho_w0.25-40k-20261006T213721Z-nan",
+    "reported_public_dti": 0.2376,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE50",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE50",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE50/",
+    "submission_name": "h59-sharpened-scarp-scatter-90k-20261007T171954Z-allfinite",
+    "reported_public_dti": 0.0764,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE51",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE51",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE51/",
+    "submission_name": "h53-twostage-20261008T040951Z-9a0b32c871",
+    "reported_public_dti": 0.1047,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE52",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE52",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE52/",
+    "submission_name": "h97b-candidate",
+    "reported_public_dti": 0.0856,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE53",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE53",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE53/docs/index.html",
+    "submission_name": "h8-tiprelay-ridgeconcord-pr2-n80000-20261009-49bec522-zeros",
+    "reported_public_dti": 0.0159,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE54",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE54",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE54/docs/",
+    "submission_name": "h54c-manifest-edge-20261009T025732Z-73454bc5",
+    "reported_public_dti": 0.0449,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "55GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/55GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/55GEMSDOE/docs/index.html",
+    "submission_name": "tensor_full-n16000-sep3-20261009T211747Z-nan",
+    "reported_public_dti": 0.029,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "56GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/56GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/56GEMSDOE/docs/index.html",
+    "submission_name": "h56-final-dotted-ridge-d2p8-20261009T190421Z",
+    "reported_public_dti": 0.0658,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "57GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/57GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/57GEMSDOE/docs/index.html",
+    "submission_name": "h57r-joint-strata-38000-20261010T214547Z-00cf5b2066f1-zeros",
+    "reported_public_dti": 0.0254,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "58GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/58GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/58GEMSDOE/docs/index.html",
+    "submission_name": "ml-binary-ridge-20261012T000000Z",
+    "reported_public_dti": 0.018,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "59GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/59GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/59GEMSDOE/docs/index.html",
+    "submission_name": "h59j-coherence-consensus-dotted-20261011T043000Z",
+    "reported_public_dti": 0.0499,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "60GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/60GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/60GEMSDOE/docs/index.html",
+    "submission_name": "h73-chi-coherent-corridor-12000-20261011T195818Z-zeros",
+    "reported_public_dti": 0.0351,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "61GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/61GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/61GEMSDOE/docs/index.html",
+    "submission_name": "h61a-basement-step-20000dots-20261011T012029Z-eb2ae4bb024b-zeros",
+    "reported_public_dti": 0.0009,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "61GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/61GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/61GEMSDOE/docs/index.html",
+    "submission_name": "h61o-vardepth-none-40000dots-20261011T160711Z-28d4fac611ea-zeros-zeros",
+    "reported_public_dti": 0.0751,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "62GEMSDOE",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/62GEMSDOE",
+    "site_url": "https://buffedlizard55-lab.github.io/62GEMSDOE/",
+    "submission_name": "datum-lahontan-strain-gauge-defensible-440dots-zeros",
+    "reported_public_dti": 0.0,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE63",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE63",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE63/",
+    "submission_name": "cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros",
+    "reported_public_dti": 0.2303,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE64",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE64",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE64/",
+    "submission_name": "h64-lidar-scarp-cv-20261011T220000Z",
+    "reported_public_dti": 0.0383,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE65",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE65",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE65/docs/index.html",
+    "submission_name": "sar-em-propensity-half-20261011T223500Z-5e4660cd-zeros",
+    "reported_public_dti": 0.0431,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE66",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE66",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE66/docs/index.html",
+    "submission_name": "gems66-lidar03-cvretrain-reliefdecile-37654dots-20261020T190152Z-zeros",
+    "reported_public_dti": 0.1152,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE67",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE67",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE67/",
+    "submission_name": "h67a-orientip-lane-29447dots-20261012T021226Z-allfinite",
+    "reported_public_dti": 0.0356,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE67",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE67",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE67/",
+    "submission_name": "ovtr-ml-cover-tau3p0-20261012-nan",
+    "reported_public_dti": 0.1426,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE68",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE68",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE68/",
+    "submission_name": "gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-nan",
+    "reported_public_dti": 0.0437,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE68",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE68",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE68/",
+    "submission_name": "gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-zeros",
+    "reported_public_dti": 0.0437,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE69",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE69",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE69/",
+    "submission_name": "h69-joint-relayramp-pullapart-38669-20261020T201504Z-f29b6df5",
+    "reported_public_dti": 0.0053,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE70",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE70",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE70/",
+    "submission_name": "gems70-p5-dual-submod300-oof38k-20261020",
+    "reported_public_dti": 0.2478,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE71",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE71",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE71/",
+    "submission_name": "gems71-hydro-conduit-38800-20261020T120000Z-zeros",
+    "reported_public_dti": 0.0558,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE72",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE72",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE72/",
+    "submission_name": "gemsdoe72-h72-1-sgmc-offcatalogue-20261020T195456Z-6e6525e5-zeros",
+    "reported_public_dti": 0.0492,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE73",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE73",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE73/",
+    "submission_name": "gems73-h73-mcsc-seamfree-blakely-37654dots-20261021T073716Z-b27ac445-zeros",
+    "reported_public_dti": 0.1917,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE74",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE74",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE74/",
+    "submission_name": "gemsdoe74-triregime-radon-piedmont-37654-20261021T051000Z-zeros",
+    "reported_public_dti": 0.0669,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE75",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE75",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE75/",
+    "submission_name": "gems75-trlt-radon-loco-ridge-20261021-zeros",
+    "reported_public_dti": 0.1627,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE76",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE76",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE76/",
+    "submission_name": "gems76_h76_3_geotherm_tilt_axial_submod_20261021_zeros",
+    "reported_public_dti": 0.1555,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE76",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE76",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE76/",
+    "submission_name": "gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros",
+    "reported_public_dti": 0.2343,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE77",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE77",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE77/",
+    "submission_name": "gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros",
+    "reported_public_dti": 0.0964,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE78",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE78",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE78/",
+    "submission_name": "gems78-h78sigx-fuse-b5-44090dots-20261022T021932Z-zeros",
+    "reported_public_dti": 0.1564,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE79",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE79",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE79/",
+    "submission_name": "gems79-tilt-ring-100000dots-20261022T212135Z-50a5d7498c71-zeros",
+    "reported_public_dti": 0.0005,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE80",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE80",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE80/",
+    "submission_name": "gemsdoe80-h80g-choquet-tworegime-20261022T000000Z-zeros",
+    "reported_public_dti": 0.0943,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE81",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE81",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE81/",
+    "submission_name": "gems81-cont-poisson44090-buf2-20261021T233115Z-42223e10-zeros",
+    "reported_public_dti": 0.0041,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE82",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE82",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE82/",
+    "submission_name": "gemsdoe82-h82-submodular-punoisyor-20261021T235456Z-fe137199-zeros",
+    "reported_public_dti": 0.1886,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE83",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE83",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE83/",
+    "submission_name": "gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros",
+    "reported_public_dti": 0.0573,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE84",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE84",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE84/",
+    "submission_name": "gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros",
+    "reported_public_dti": 0.0132,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE85",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE85",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE85/",
+    "submission_name": "gemsdoe85-hjcd-ventbridge-submod-zeros",
+    "reported_public_dti": 0.111,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE86",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE86",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE86/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOE87",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE87",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE87/",
+    "submission_name": "h87-h87-cmgep-20261022T060000Z-8f394f43",
+    "reported_public_dti": 0.05,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE88",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE88",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE88/",
+    "submission_name": "gems88-bpwd88-baranov-worm-conduit-37654-20261025-b8543782-zeros-DO-NOT-SUBMIT",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOE89",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE89",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE89/",
+    "submission_name": "gemsdoe89-bh-rtp-habc-20261024-d7e1507c-zeros",
+    "reported_public_dti": 0.0301,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE90",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE90",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE90/",
+    "submission_name": "gems90-cnc-35000dots-20261024T084324Z",
+    "reported_public_dti": 0.0749,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE91",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE91",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE91/",
+    "submission_name": "gems91-s17-cwpc-e3-37654dots-20261025T150000Z-4d124f1d-zeros",
+    "reported_public_dti": 0.1367,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE91",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE91",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE91/",
+    "submission_name": "gems91-s17-lftg-20261025T160014Z-7b6bf90844-zeros",
+    "reported_public_dti": 0.1823,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE91",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE91",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE91/",
+    "submission_name": "gems91-S18-UNIQUE-curvtilt-20000dots-20261025T182858Z-29db2405",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOE91",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE91",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE91/",
+    "submission_name": "gems91-s22-omtj-e1-20261026-a99b8923f0-zeros",
+    "reported_public_dti": 0.0298,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "GEMSDOE92",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE92",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE92/",
+    "submission_name": "gemsdoe92-listricdip-updip50-37654-20261025T190000Z-zeros",
+    "reported_public_dti": 0.0255,
+    "evidence_class": "USER-REPORTED"
+  },
+  {
+    "site": "KANLERGEMSDOE3",
+    "org": "kanlerxz87-cyber",
+    "repo": "kanlerxz87-cyber/KANLERGEMSDOE3",
+    "site_url": "https://kanlerxz87-cyber.github.io/KANLERGEMSDOE3/docs/index.html",
+    "submission_name": "kanlergemsdoe3-h-k3-1-cadg-submod-exp-k3-3-oof8f-37654-20261026-f0565e6d10f9-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "KANLERGEMSDOE1",
+    "org": "kanlerxz87-cyber",
+    "repo": "kanlerxz87-cyber/KANLERGEMSDOE1",
+    "site_url": "https://kanlerxz87-cyber.github.io/KANLERGEMSDOE1/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "KANLERGEMSDOE2",
+    "org": "kanlerxz87-cyber",
+    "repo": "kanlerxz87-cyber/KANLERGEMSDOE2",
+    "site_url": "https://kanlerxz87-cyber.github.io/KANLERGEMSDOE2/",
+    "submission_name": "kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "EUGGEMSDOE3",
+    "org": "eugboogieman123-ops",
+    "repo": "eugboogieman123-ops/EUGGEMSDOE3",
+    "site_url": "https://eugboogieman123-ops.github.io/EUGGEMSDOE3/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "EUGGEMSDOE2",
+    "org": "eugboogieman123-ops",
+    "repo": "eugboogieman123-ops/EUGGEMSDOE2",
+    "site_url": "https://eugboogieman123-ops.github.io/EUGGEMSDOE2/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "EUGGEMSDOE1",
+    "org": "eugboogieman123-ops",
+    "repo": "eugboogieman123-ops/EUGGEMSDOE1",
+    "site_url": "https://eugboogieman123-ops.github.io/EUGGEMSDOE1/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "WBGGEMSDOE3",
+    "org": "wingbangboozle1-lang",
+    "repo": "wingbangboozle1-lang/WBGGEMSDOE3",
+    "site_url": "https://wingbangboozle1-lang.github.io/WBGGEMSDOE3/docs/index.html",
+    "submission_name": "wbg3-h3pack-34k-20261027T174337Z-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "WBGGEMSDOE3",
+    "org": "wingbangboozle1-lang",
+    "repo": "wingbangboozle1-lang/WBGGEMSDOE3",
+    "site_url": "https://wingbangboozle1-lang.github.io/WBGGEMSDOE3/docs/index.html",
+    "submission_name": "wbggemsdoe3-skarpline-union-20261027-610acf58-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "WBGGEMSDOE2",
+    "org": "wingbangboozle1-lang",
+    "repo": "wingbangboozle1-lang/WBGGEMSDOE2",
+    "site_url": "https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/docs/",
+    "submission_name": "wbg2-offcatalogue-density-36k-20261027",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "WBGGEMSDOE1",
+    "org": "wingbangboozle1-lang",
+    "repo": "wingbangboozle1-lang/WBGGEMSDOE1",
+    "site_url": "https://wingbangboozle1-lang.github.io/WBGGEMSDOE1/docs/index.html",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GINNYGEMSDOE3",
+    "org": "ginnymcfiner23-ux",
+    "repo": "ginnymcfiner23-ux/GINNYGEMSDOE3",
+    "site_url": "https://ginnymcfiner23-ux.github.io/GINNYGEMSDOE3/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GINNYGEMSDOE2",
+    "org": "ginnymcfiner23-ux",
+    "repo": "ginnymcfiner23-ux/GINNYGEMSDOE2",
+    "site_url": "https://ginnymcfiner23-ux.github.io/GINNYGEMSDOE2/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GINNYGEMSDOE1",
+    "org": "ginnymcfiner23-ux",
+    "repo": "ginnymcfiner23-ux/GINNYGEMSDOE1",
+    "site_url": "https://ginnymcfiner23-ux.github.io/GINNYGEMSDOE1/",
+    "submission_name": "(blank in brief)",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOE92",
+    "org": "buffedlizard55-lab",
+    "repo": "buffedlizard55-lab/GEMSDOE92",
+    "site_url": "https://buffedlizard55-lab.github.io/GEMSDOE92/",
+    "submission_name": "gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOEkarage1",
+    "org": "karagemop466-tech",
+    "repo": "karagemop466-tech/GEMSDOEkarage1",
+    "site_url": "https://karagemop466-tech.github.io/GEMSDOEkarage1/",
+    "submission_name": "karage1-hmas-sinter-dualcover-sep29-20261027T220000Z-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOEkarage2",
+    "org": "karagemop466-tech",
+    "repo": "karagemop466-tech/GEMSDOEkarage2",
+    "site_url": "https://karagemop466-tech.github.io/GEMSDOEkarage2/",
+    "submission_name": "gemsdoe-karage2-hkarage1-irregular-submodular-15000d-6a3f542a-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOEkarage3",
+    "org": "karagemop466-tech",
+    "repo": "karagemop466-tech/GEMSDOEkarage3",
+    "site_url": "https://karagemop466-tech.github.io/GEMSDOEkarage3/",
+    "submission_name": "karage3-k3-fuse-greedy-b2-20261027T212847Z-80117cd2-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "ApartGEMSDOE1",
+    "org": "apartanish22-droid",
+    "repo": "apartanish22-droid/ApartGEMSDOE1",
+    "site_url": "https://apartanish22-droid.github.io/ApartGEMSDOE1/",
+    "submission_name": "apartgems1-udth-submod-e3-20261027-50e7b334-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "ApartGEMSDOE2",
+    "org": "apartanish22-droid",
+    "repo": "apartanish22-droid/ApartGEMSDOE2",
+    "site_url": "https://apartanish22-droid.github.io/ApartGEMSDOE2/",
+    "submission_name": "apartgemsdoe2-ap1-dilatcond-37654-20261027-1f26aa05-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "ApartGEMSDOE3",
+    "org": "apartanish22-droid",
+    "repo": "apartanish22-droid/ApartGEMSDOE3",
+    "site_url": "https://apartanish22-droid.github.io/ApartGEMSDOE3/",
+    "submission_name": "apartgemsdoe3-h-apart3-1-cfkc-dhc-37654-20261027T215000Z-9dedadfc-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOESASS1",
+    "org": "sassnarep3-star",
+    "repo": "sassnarep3-star/GEMSDOESASS1",
+    "site_url": "https://sassnarep3-star.github.io/GEMSDOESASS1/",
+    "submission_name": "gemsass1-swgb-hrv2-44090dots-20261027T122104Z-f9b3f764-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOESASS2",
+    "org": "sassnarep3-star",
+    "repo": "sassnarep3-star/GEMSDOESASS2",
+    "site_url": "https://sassnarep3-star.github.io/GEMSDOESASS2/",
+    "submission_name": "gemsdoesass2-hvfd-exp3-hydrocollinear-37654-20261027T120000Z-fc98343e-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  },
+  {
+    "site": "GEMSDOESASS3",
+    "org": "sassnarep3-star",
+    "repo": "sassnarep3-star/GEMSDOESASS3",
+    "site_url": "https://sassnarep3-star.github.io/GEMSDOESASS3/",
+    "submission_name": "gemsdoesass3-lwst-geoconduit-dual37654-20261027T120000Z-a9ad3386-zeros",
+    "reported_public_dti": null,
+    "evidence_class": "USER-REPORTED-BLANK"
+  }
+]

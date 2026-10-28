@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.external-provenance.v1",
-  "generated_utc": "2026-10-27T19:12:00.011739+00:00",
+  "generated_utc": "2026-10-27T23:57:05.845505+00:00",
   "storage_note": "Stored strictly in git-ignored, snapshot-excluded .cache/external/.",
   "files": [
     {
@@ -112,6 +112,50 @@
       "official_url": "https://pubs.usgs.gov/ds/1052/",
       "license": "US Public Domain (CC0)",
       "role": "diagnostic_evaluation_only_never_in_model"
+    },
+    {
+      "name": "derived_gdr_volcanics_100m_u8.tif",
+      "bytes": 72349,
+      "sha256": "c219bd644e6f7a4071dc429e29b909a2296967b0657bf456bb6675413ee76cb2",
+      "mirror_repo": "buffedlizard55-lab/GEMSDOE30",
+      "mirror_ref": "35ce8911e2c3287eed973eacd12c252e8cb3f34c",
+      "official_source": "DOE GDR #1391 INGENIOUS Quaternary & Neogene Volcanic Units & Vents",
+      "official_url": "https://gdr.openei.org/submissions/1391",
+      "license": "CC-BY-4.0 (GBCGE / UNR)",
+      "role": "model_feature"
+    },
+    {
+      "name": "usgs_comcat_geodawn.csv",
+      "bytes": 600662,
+      "sha256": "c580226b3b0516653873b87077edb8e164c3545e9bc1e7c764789c52bdd30624",
+      "mirror_repo": "buffedlizard55-lab/GEMSDOE85",
+      "mirror_ref": "f016dd5194ec45fcb3e25afb29ffa6ea04207356",
+      "official_source": "USGS Earthquake Hazards Program ComCat FDSN Event Web Service v1 (1900-2026, incl. 541 post-2021 post-INGENIOUS events)",
+      "official_url": "https://earthquake.usgs.gov/fdsnws/event/1/",
+      "license": "US Public Domain (17 U.S.C. 105 / CC0)",
+      "role": "model_feature_coords_mag_year_only"
+    },
+    {
+      "name": "usgs_heat_flow_wells_epsg32611.csv",
+      "bytes": 139607,
+      "sha256": "9773bf59340e06901b2855d30b1972dc91374a5d344a8324452f9bb69304e370",
+      "mirror_repo": "buffedlizard55-lab/GEMSDOE85",
+      "mirror_ref": "f016dd5194ec45fcb3e25afb29ffa6ea04207356",
+      "official_source": "USGS / SMU / DOE GDR #1391 INGENIOUS Borehole Conductive & Residual Heat Flow Compilation",
+      "official_url": "https://gdr.openei.org/submissions/1391",
+      "license": "CC-BY-4.0 / US Public Domain",
+      "role": "model_feature_coords_and_heatflow_only"
+    },
+    {
+      "name": "gb_regional_stress_grid_10km.csv",
+      "bytes": 47627,
+      "sha256": "9e01d5de2b6070816513e163a8f34cf19559630d497ef8ddc60b4d18565140ef",
+      "mirror_repo": "buffedlizard55-lab/GEMSDOE85",
+      "mirror_ref": "f016dd5194ec45fcb3e25afb29ffa6ea04207356",
+      "official_source": "USGS Western US Stress Map (Lund & Snee 2016, SIM 3353) / World Stress Map Regional SHmin & Simpson A_phi Grid",
+      "official_url": "https://pubs.usgs.gov/sim/3353/",
+      "license": "US Public Domain (17 U.S.C. 105) / CC-BY-4.0",
+      "role": "model_feature_stress_tensor"
     }
   ],
   "dem10_seamless_3dep": {
