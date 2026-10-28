@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.checkout-readiness.v1",
-  "checked_utc": "2026-10-28T20:16:54.314010+00:00",
+  "checked_utc": "2026-10-28T20:20:08.873545+00:00",
   "evidence_class": "CHECKOUT-DIAGNOSTIC; NOT HOLDOUT-DTI OR AN ORGANIZER RECEIPT",
   "scope": "Dated local checkout snapshot. CI and other machines can have different ignored caches. No network, raster generation, model experiment, or submission.",
   "sources": {
