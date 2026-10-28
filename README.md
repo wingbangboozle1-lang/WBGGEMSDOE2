@@ -1,44 +1,20 @@
-## START HERE (2026-10-28) — current checkout is BLOCKED; DO NOT SUBMIT
+## START HERE (2026-10-28) — checkout is blocked; DO NOT SUBMIT
 
-**Latest repository review:** [current-checkout audit](research/repo-review-20261028-current-checkout.md). The test suite could not run here because neither the project `.venv` nor system pytest is present; install declared requirements before claiming tests pass.
+**Current checked-out decision: no TIFF is cleared for competition upload.** The read-only readiness gate (`python scripts/check_readiness.py --check`) exits **2** and writes `ok_to_submit: false`. This checkout has no `data/` directory, organizer-input mirrors, cached model feature bands or derived feature bank. The shared holdout and writer files in `scripts/` are retired fail-closed wrappers; the required pinned shared implementation is not present. The registry audit is explicitly incomplete. Do not use older README sections, historical run cards, or files linked below as authorization to submit.
 
-**Current decision: no TIFF is authorized for submission from this checkout.** The
-release register and older lane pages contain historical promotion claims, but the
-current `python scripts/check_readiness.py --check` snapshot fails closed: the lane is
-unassigned, official-mirror inputs and the pinned shared cache are absent, registry
-coverage and the continuous-prior rule are unresolved, and the separate selector has
-not run. Do not treat an old artifact, a format pass, or a stale “promote” record as
-submission authorization. See [current readiness](docs/readiness.html), the
-[canonical run card](evidence/run_card.json), and [release audit](evidence/release_audit.json).
-
-The locally present `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`
-and other registered artifacts are retained as research evidence only for this checkout;
-no live score estimate is validated here. All older submission recommendations below
-are historical records and superseded by this fail-closed decision.
-
-| | |
+| Request | Verified status in this checkout |
 |---|---|
-| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
-| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
-| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
-| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
-| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
-| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+| Unique submission TIFF | **Not generated in this review. DO NOT SUBMIT any repository TIFF.** Existing files are historical research artifacts; format validity alone is not approval. |
+| Estimate / leaderboard score | **No current estimate.** GEMSDOE32's 0.2778 is a user/site-reported historical claim, not an organizer receipt. The cited public 0.3195/high score is also not verified here. |
+| Nine-site summary | Historical evidence and caveats are documented under `docs/sites/` and `docs/EXECUTIVE_SUMMARY.md`; site-reported scores are not treated as receipts. Exact bytes and full current-registry uniqueness are not established for every new site update. |
+| Hypotheses | See [`config/wbg4_hypotheses.json`](config/wbg4_hypotheses.json), ranked within the recorded WBG4-SSCC lane. The leading candidate was tested in an earlier checkout, but that work is not reproducible from current files and does not override current readiness. |
+| Slots | 0 slots used by this review. Promotion/selection is a separate step. |
 
-**Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
-· **Why 0.2778 was the highest score and what it would take to beat it:**
-[docs/lane/findings.html](docs/lane/findings.html) (source: [research/gemsdoe_findings.md](research/gemsdoe_findings.md))
-· **Site:** [docs/lane/index.html](docs/lane/index.html) ·
-[executive summary](docs/EXECUTIVE_SUMMARY.md)
+**Why B2 may have scored well:** the archived analysis hypothesizes that it pruned a catalogue-adjacent collar from a strong structural dot prior. Its evidence is derived from mirrored site files, not organizer receipts or hidden truth; it does not establish causality. No evidence in this checkout demonstrates a submission that beats 0.2778.
 
-The short version of the analysis: the organizer metric is
-`DTI = T / (T + 0.2 F + 0.8 (N - T))`. Inverting it on the one pair of fleet files that
-is provably the same detector at two masses (44,090 dots -> 0.2600 and its 37,654-dot
-pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's coverage at
-**40.9 %**. At 38,000 cells a submission scores 0.105 at 15 % coverage, 0.173 at 25 %,
-0.206 at 30 % and 0.277 at 41 %; the leaderboard's 0.4544 needs >= 50 % coverage at
-40,000 cells. The nine focus sites all sit in the same 0.40-0.48 coverage band and are
-97-100 % duplicates of each other, so resubmitting any of them cannot change a score.
+**Official submit-format reference:** <https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/>. A local format validator cannot prove organizer acceptance or scientific uniqueness. Current automatic status and blockers: [`docs/readiness.html`](docs/readiness.html), [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json). Detailed review: [`research/repo-review-20261028.md`](research/repo-review-20261028.md). This session’s checkout-level review, ranked hypotheses and JSON run card are in [`research/session-review-20261028-checkout.md`](research/session-review-20261028-checkout.md).
+
+The remainder of this README is a preserved project brief and historical record. Some older sections contain superseded approvals or estimates; the fail-closed checkout diagnostic above governs the present checkout.
 
 ### The prompt this repository is answering (verbatim, preserved as the brief)
 
@@ -65,17 +41,13 @@ pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's cov
 
 ### The rest of this README is the legacy record
 
-The sections below describe the earlier *negative* release audit: 15 historical TIFFs,
-13 distinct SHA-256 identities and a literal all-registry stop. That verdict still holds
-for those files — it just no longer governs the one file in the lane above.
+The sections below preserve historical audits and decisions for context; none of their candidate approvals or download links is current checkout authorization.
 
 ---
 
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
-## Historical WBG4 / EDTI lane records — not current authorization (added 2026-10-28)
-
-> **Superseded:** the promotion and download statements in this archived section do not override the current BLOCKED / DO NOT SUBMIT decision above. The present checkout readiness check is authoritative; see `evidence/run_card.json` and `evidence/checkout_readiness.json`.
+## WBG4 / EDTI lane — read this first (added 2026-10-28)
 
 **[Executive summary with the download box, the nine-site table, the score projection and the reconciliation with the NEGATIVE decision below → `docs/edti/index.html`](docs/edti/index.html)**
 · [markdown mirror](docs/EDTI_EXECUTIVE_SUMMARY.md)
@@ -118,9 +90,7 @@ deliverables; no copy renamed as a novel prediction; every claim carries a sourc
 review.
 
 
-## Historical release register snapshot: THREE REGISTERED CANDIDATES (2026-10-28; NOT current approval)
-
-> The following release-register entries are historical records. They are not current authorization to download or submit. Current checkout readiness is blocked.
+## Current releases: THREE REGISTERED CANDIDATES (2026-10-28)
 
 **[Download the submission GeoTIFF](docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif) · [executive summary, numbers and caveats](docs/wbg4/index.html) · [run card](evidence/RUN_CARD_WBG4.json) · [research report](research/wbg4_lane.md)**
 

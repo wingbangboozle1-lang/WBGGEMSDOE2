@@ -1,3 +1,5 @@
+> **CURRENT CHECKOUT STATUS — 2026-10-28: DO NOT SUBMIT.** This file is a historical report, not a live approval. `python scripts/check_readiness.py --check` exits 2; official-input mirrors, cached feature stack and pinned shared holdout/writer are absent; the registry audit is incomplete. No TIFF in this checkout is cleared for upload and no current score estimate is supported. The previous approval text and estimates below are superseded for current decision-making. See [current checkout review](../research/session-review-20261028-checkout.md) and [readiness report](readiness.html).
+
 # ⭐ New submission — WBG2-DISTAL2 fresh-seed candidate (2026-10-28)
 
 **New, byte-unique file generated today — OK TO DOWNLOAD; promotion to a weekly slot is a separate selector decision.**
