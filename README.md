@@ -1,32 +1,20 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28) — NO FILE CLEARED FOR SUBMISSION
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**Decision for this checkout: DO NOT DOWNLOAD OR SUBMIT any TIFF as an authorized new candidate.** Historical binaries are present for research, but passing a GeoTIFF format check is not scientific validation, a complete registry-uniqueness certificate, or permission to upload. In particular, the earlier “ready to upload”/“PROMOTE” statements below and in archived records conflict with the current run card, incomplete registry coverage, and the literal duplicate policy. Treat those statements as superseded unless a fresh, reproducible review resolves the conflicts.
 
-| | |
+| Submission check | Current status |
 |---|---|
-| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
-| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
-| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
-| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
-| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
-| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+| Fresh candidate generated in this review | No |
+| New HOLDOUT-DTI with evaluator, withheld-positive count and 95% CI | Not run; competition inputs and cached derived feature stack are absent in this checkout |
+| Full current-registry uniqueness | Not established; registry is incomplete and the continuous-prior support rule remains unresolved |
+| Downloadable new candidate approved | **No — DO NOT SUBMIT** |
+| Weekly submission slots used | 0 |
 
-**Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
-· **Why 0.2778 was the highest score and what it would take to beat it:**
-[docs/lane/findings.html](docs/lane/findings.html) (source: [research/gemsdoe_findings.md](research/gemsdoe_findings.md))
-· **Site:** [docs/lane/index.html](docs/lane/index.html) ·
-[executive summary](docs/EXECUTIVE_SUMMARY.md)
+**Historical-site analysis:** [nine-site executive summary](research/focus-sites-review-20261028.md) · [why the reported GEMSDOE32 B2 result is not causally established](research/gemsdoe_findings.md) · [official sources](research/sources.md). The submitted value `0.2778` is USER-REPORTED in this repository, not tied to an organizer receipt for the exact audited bytes. A numerical leaderboard estimate for a new file is unavailable; a projection is not a score.
 
-The short version of the analysis: the organizer metric is
-`DTI = T / (T + 0.2 F + 0.8 (N - T))`. Inverting it on the one pair of fleet files that
-is provably the same detector at two masses (44,090 dots -> 0.2600 and its 37,654-dot
-pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's coverage at
-**40.9 %**. At 38,000 cells a submission scores 0.105 at 15 % coverage, 0.173 at 25 %,
-0.206 at 30 % and 0.277 at 41 %; the leaderboard's 0.4544 needs >= 50 % coverage at
-40,000 cells. The nine focus sites all sit in the same 0.40-0.48 coverage band and are
-97-100 % duplicates of each other, so resubmitting any of them cannot change a score.
+**Official references:** [competition overview, metric and submission format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · [rules](https://www.drivendata.org/competitions/306/competition-doe-gems/rules/) · [submission page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/). See the [latest repository review and blockers](research/repo-review-20261028-session2.md).
+
+Before any later candidate work, assign the single method lane explicitly, restore/authenticate required inputs and the shared derived-feature cache, resolve literal uniqueness checks against the complete registry, and reproduce format + leakage-canary + spatial holdout gates. Do not use the old “ready” badge as evidence of current eligibility.
 
 ### The prompt this repository is answering (verbatim, preserved as the brief)
 
@@ -51,11 +39,9 @@ pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's cov
 > ORGANIZER-CONFIRMED (with the forum post/leaderboard link). Keep the Core Values /
 > Maximize P(Win) / Own the Outcome framing. Multi-pass review, then PR -> main.
 
-### The rest of this README is the legacy record
+### The rest of this README is an archival record, not current authorization
 
-The sections below describe the earlier *negative* release audit: 15 historical TIFFs,
-13 distinct SHA-256 identities and a literal all-registry stop. That verdict still holds
-for those files — it just no longer governs the one file in the lane above.
+All later sections retain earlier reports and decisions for provenance. Their former "PROMOTE", "OK TO DOWNLOAD", estimate, and readiness claims are **superseded for current use** by the negative decision above. They are not proof that any file is cleared under the active literal all-registry rule. Consult the dated [current session review](research/repo-review-20261028-session2.md), [current run card](evidence/session_run_card_20261028.json), and [checkout readiness](evidence/checkout_readiness.json) before any subsequent work.
 
 ---
 
