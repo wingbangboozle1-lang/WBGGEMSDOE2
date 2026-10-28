@@ -28,6 +28,12 @@ from pathlib import Path
 import sys
 import time
 
+# Keep the retired entry point testable without loading optional model/template
+# dependencies. The shared template is absent and this lane is not authorized.
+if __name__ == "__main__" and "--selftest" in sys.argv:
+    print("STOP: retired DPHS runner; no explicit lane assignment or shared template.", file=sys.stderr)
+    raise SystemExit(2)
+
 import numpy as np
 import rasterio
 from scipy import ndimage as ndi

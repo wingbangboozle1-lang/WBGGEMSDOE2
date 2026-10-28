@@ -1,12 +1,10 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28) — current decision: DO NOT SUBMIT
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**No TIFF in this checkout is cleared for competition upload.** The canonical release gate is negative: no explicitly assigned method lane, no complete current registry audit, and the literal duplicate rule has unresolved support semantics. Historical release-register entries and older README passages claiming “PROMOTE” or “ready to upload” are superseded by the fail-closed policy in `src/wbggems/release.py`, `evidence/release_audit.json`, `docs/PROJECT_CHARTER.md`, and `AGENTS.md`. Treat every raster as research-only. The feature-valid examples below are not scientific approval or authorization to submit.
 
 | | |
 |---|---|
-| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
+| **Research artifact only — DO NOT SUBMIT** | The historic file is retained for reproducibility in `submissions/` and must not be presented as a current release. Current negative audit: [release decision](evidence/release_audit.json) · [readiness check](docs/readiness.html) |
 | **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
 | **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
 | **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
