@@ -124,7 +124,10 @@ def build_summary() -> str:
     est = json.loads((ROOT / "data_public" / "gemsdoe_estimate.json").read_text())
     sites = json.loads((ROOT / "data_public" / "site_best_overlap.json").read_text())["rows"]
     card = json.loads((ROOT / "submissions" / f"{CANDIDATE}.json").read_text())
-    nov = json.loads((ROOT / "data" / "work" / "novelty.json").read_text())
+    nov_path = ROOT / "data_public" / "gemsdoe_novelty.json"
+    if not nov_path.exists():                      # local-only fallback
+        nov_path = ROOT / "data" / "work" / "novelty.json"
+    nov = json.loads(nov_path.read_text())
     v = card["validation"]
 
     site_rows = "".join(
@@ -356,7 +359,7 @@ DOI 10.5066/P93LGLVQ, ScienceBase item 657e1d85d34e23d3533209f7</td></tr>
 <li><a href="findings.html">Measured findings</a> — analysis, experiments, irregularities.</li>
 <li><code>data_public/site_best_overlap.json</code> — the nine-site duplicate matrix.</li>
 <li><code>data_public/gemsdoe_estimate.json</code> — the structural estimate table.</li>
-<li><code>data/work/novelty.json</code> — novelty measurements for the submitted file.</li>
+<li><code>data_public/gemsdoe_novelty.json</code> — novelty measurements for the submitted file.</li>
 <li><code>submissions/</code> — the file, its ZIP, the zero-outside twin and the run card.</li>
 </ul>
 """
@@ -451,7 +454,10 @@ def build_lane_manifest() -> dict:
         return h.hexdigest()
 
     card = json.loads((ROOT / "submissions" / f"{CANDIDATE}.json").read_text())
-    nov = json.loads((ROOT / "data" / "work" / "novelty.json").read_text())
+    nov_path = ROOT / "data_public" / "gemsdoe_novelty.json"
+    if not nov_path.exists():                      # local-only fallback
+        nov_path = ROOT / "data" / "work" / "novelty.json"
+    nov = json.loads(nov_path.read_text())
     est = json.loads((ROOT / "data_public" / "gemsdoe_estimate.json").read_text())
     files = []
     for rel in (f"docs/downloads/gemsdoe/{CANDIDATE}.tif",
