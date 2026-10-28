@@ -22,6 +22,24 @@ Design summary (see ``research/wbg4_lane.md`` for the full argument):
 
 from __future__ import annotations
 
-__all__ = ["lane", "emit"]
+__all__ = ["lane", "emit", "algebra", "features", "holdout", "placement", "writer"]
 
 __version__ = "1.0.0"
+
+# ---------------------------------------------------------------------------
+# Two independent lanes live in this package and must not be confused:
+#
+# * ``lane``/``emit``      — WBG4-SSCC, the strike-conditioned structural-corridor
+#   lane.  Its artifact is registered in ``config/release_register.json`` and its
+#   holdout is ``evidence/wbg4_folds.json`` (evaluator ``wbg4-hide-recover-v1``,
+#   60,980 withheld positives, blind DTI 0.1086).
+#
+# * ``algebra``/``features``/``holdout``/``placement``/``writer`` — the WBG4-EDTI
+#   expected-DTI lane added by a parallel session on the same day.  Its artifact
+#   is ``artifacts/wbg4/*-9f5dbc9b-zeros.tif``, its holdout is
+#   ``evidence/wbg4_exp2.json`` (2 folds, 7,893 withheld positives, pooled DTI
+#   0.11469 at the 40k operating point) and its uniqueness audit is
+#   ``evidence/wbg4_edti_uniqueness.json`` (437 registry rasters, 0 violations).
+#   The two evaluators are deliberately different, so their DTIs must never be
+#   compared with each other or read as leaderboard scores.
+# ---------------------------------------------------------------------------

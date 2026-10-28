@@ -42,6 +42,18 @@
       "holdout_evidence": "evidence/gemsdoe_lane_holdout.json",
       "uniqueness_evidence": "evidence/gemsdoe_lane_uniqueness.json",
       "registered_utc": "2026-10-28"
+    },
+    {
+      "path": "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif",
+      "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
+      "bytes": 372561,
+      "lane": "WBG4-EDTI",
+      "decision": "PUBLISH-WITH-CAVEAT",
+      "decision_basis": "format validator passes on the saved bytes; pooled buffered-whole-segment holdout measured over 2 folds and 15,816 withheld positives (7,893 and 7,923 per fold) (evaluator wbg4-edti-v1) at the 40k operating point; uniqueness measured against 437 registry rasters with 0 method-bearing violations (max 3 px overlap 0.5604, max |Spearman| 0.1665); no leaderboard score is defensible - the 0.20-0.30 projection is explicitly not a score, and the differing evaluators make the SSCC 0.1086 and this lane's 0.1171 non-comparable",
+      "run_card": "evidence/RUN_CARD_WBG4_EDTI.json",
+      "holdout_evidence": "evidence/wbg4_exp2.json",
+      "uniqueness_evidence": "evidence/wbg4_edti_uniqueness.json",
+      "registered_utc": "2026-10-28"
     }
   ]
 }

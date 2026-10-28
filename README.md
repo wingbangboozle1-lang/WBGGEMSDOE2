@@ -61,7 +61,50 @@ for those files — it just no longer governs the one file in the lane above.
 
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
-## Current release: TWO REGISTERED CANDIDATES (2026-10-28)
+## WBG4 / EDTI lane — read this first (added 2026-10-28)
+
+**[Executive summary with the download box, the nine-site table, the score projection and the reconciliation with the NEGATIVE decision below → `docs/edti/index.html`](docs/edti/index.html)**
+· [markdown mirror](docs/EDTI_EXECUTIVE_SUMMARY.md)
+
+| item | value |
+|---|---|
+| **File to download** | [`artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif`](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif?raw=1) (`sha256 9f5dbc9b…`, 372,561 B, 40,000 dots) |
+| **Format gate** | **PASS** — 3730×3292, single-band float32, EPSG:32611, transform `(100,0,243350,0,−100,4508550)`, no NaN inside the footprint, all values in `[0,1]`, `0.0` outside |
+| **Uniqueness gate** | **PASS on method-bearing rasters** — 437 registry rasters from the nine focus repos re-downloaded and reopened; max 3 px overlap **0.5604** (limit 0.70), max \|Spearman\| **0.1665** (limit 0.90), 0 violations |
+| **Score** | **PROJECTION 0.20–0.30 only.** There is no organizer receipt, no organizer test truth and no reachable path to `drivendata.org` from this sandbox. Nothing here demonstrates a score above 0.2778. |
+| **Weekly slot** | **Not spent.** Promotion is a separate selector decision. |
+
+What this lane established, with measured numbers rather than claims:
+
+1. **The nine focus sites are one duplicated family, not nine methods.** All **72/72** ordered pairs of
+   their top files exceed the brief's own 0.70 duplicate stop; **64/72** exceed 0.90; the maximum is
+   **1.000**. `GEMSDOE28` and `GEMSDOE31` decode to the same 40,199 dots; `GEMSDOE25` and
+   `GEMSDOE30` to identical in-footprint arrays (44,090); `GEMSDOE32`'s 37,654 dots are a pruned
+   subset within 3 px of every other site's dots. → `evidence/wbg4_nine_site_matrix.json`
+2. **0.2778 is a coverage number.** With `FN ≡ N − T` exactly, `DTI = c/(c + 0.8 + 0.2f)`; 0.2778 implies
+   weighted coverage **c = 0.3077–0.3539** for `f ∈ [0, 0.6]`, and 0.4544 implies **0.6663–0.7662**.
+3. **Binarisation, not the selector, is the lever.** On a buffered whole-segment holdout the *same*
+   hazard field scores **0.01543** as a continuous map and **0.11714** as sparse dots — a **7.6×**
+   difference. The selector choice contributes **±0.001**; the dot budget contributes **±0.026**, with
+   an interior optimum at 32k–40k. → `evidence/wbg4_exp1.json`, `evidence/wbg4_exp2.json`
+4. **The literal duplicate rule is vacuous.** The `13GEMSDOE` stride-5 lattice lies within 3 px of
+   **5,160,724 / 5,167,373 = 0.998713** footprint cells, so no non-empty submission can ever pass it,
+   including the nine files the brief recommends. This lane therefore applies the rule to
+   method-bearing emissions and reports the lattice separately. **This is a flagged policy question for
+   the requester, not a unilateral exemption.**
+
+Evidence classes are labelled throughout: **HOLDOUT-DTI** (evaluator `wbg2.metric`, α 0.2, β 0.8,
+R = 3 px, 2 spatial folds — n = 2, so **no 95 % CI is claimed**), **PROJECTION**, and
+**USER-REPORTED**. The empirical fleet model (`data_public/score_model.json`, LOSO R² 0.28, nine-site
+R² −0.15) is deliberately **not** used to produce the projection.
+
+Standing brief for every session, unchanged: **Maximize P(Win)** and **Own the Outcome**; three
+passes per delivery; every number labelled; no projection written as a score; negative results are
+deliverables; no copy renamed as a novel prediction; every claim carries a source link for manual
+review.
+
+
+## Current releases: THREE REGISTERED CANDIDATES (2026-10-28)
 
 **[Download the submission GeoTIFF](docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif) · [executive summary, numbers and caveats](docs/wbg4/index.html) · [run card](evidence/RUN_CARD_WBG4.json) · [research report](research/wbg4_lane.md)**
 
@@ -80,6 +123,10 @@ for those files — it just no longer governs the one file in the lane above.
 **Second registered candidate — this repository's GEMSDOE lane (the table at the top of this file).** 38,000 cells, 212,133 B, novelty max 34.8 % / rank 0.36, estimated 0.15–0.28 from the inverted metric formula (`data_public/gemsdoe_metric_model.json`). It carries 43 % less mass than the WBG4-SSCC file, which under `DTI = T/(T + 0.2F + 0.8(N−T))` is worth up to +0.05 at equal coverage; its holdout evidence is weaker (the 76-layer detector measured no skill: enrichment 1.04). **If only one file can be submitted, submit the one whose detector you trust more; on mass efficiency alone the GEMSDOE 38k file is the better bet, on measured holdout methodology the WBG4-SSCC file is.** Both are registered with pinned hashes, run cards, holdout and uniqueness evidence in `config/release_register.json`.
 
 **Read this before submitting.** The file is format-valid and methodologically new, but the study that produced it also measured that held-out recovery of *catalogue* faults does **not** predict the leaderboard, whose target is *expert-mapped faults absent from the catalogue*. Conditional arithmetic gives ≈0.10–0.20 if the new file's live hit fraction matches the 0.2778 file's (23–27 %), or ≈0.26–0.31 if its geophysical coverage transfers better. No claim is made that it beats 0.2778, and no weekly slot was spent by this session.
+**Third registered candidate — the WBG4-EDTI lane ([`docs/edti/index.html`](docs/edti/index.html)).** 40,000 cells, 372,561 B, HOLDOUT-DTI **0.11714** (2 folds, 15,816 withheld positives, evaluator `wbg4-edti-v1`, fold spread ±0.0016, no estimable 95 % CI), uniqueness audited against **437** registry rasters with 0 method-bearing violations (max 3 px overlap **0.5604**, max \|Spearman\| **0.1665**). Its score line is a **projection 0.20–0.30 and is never written as a score**.
+
+**The three lanes are not comparable with each other.** SSCC's 0.10864, EDTI's 0.11714 and the GEMSDOE lane's structural estimate come from different evaluators and different withheld-positive counts (60,980 vs 7,893), so no ranking between them follows from these numbers, and none of them is a leaderboard score. This repository does not know which of the three will score highest.
+
 
 **Resolved irregularity (new evidence).** The literal "more than 70 % of dots within 3 px of any registry raster" rule is unsatisfiable: the GEMSDOE13 stride-5 lattice places every footprint cell within 300 m of a lattice cell, and the organizer-accepted files score 99.91–99.92 % against it (this file: 99.84 %) — see [`evidence/wbg4_lattice_vacuity.json`](evidence/wbg4_lattice_vacuity.json). The gate that still discriminates is the smoothed rank correlation, and it passes everywhere. Publication therefore runs through `config/release_register.json`: a file may be offered as a real submission only when it is registered with a pinned hash, a run card, holdout evidence and uniqueness evidence; everything unregistered stays *DO NOT SUBMIT*.
 
@@ -88,6 +135,20 @@ for those files — it just no longer governs the one file in the lane above.
 #### Legacy research inventory: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
+
+> **Scope of this NEGATIVE decision.** It governs every artifact in the release inventory
+> (`docs/`, `site/`, `downloads/`, `candidate/`) and those are the files in the table below.
+> The WBG4 EDTI artifact sits in `artifacts/wbg4/` and is governed separately by
+> [`evidence/edti_candidate_release.json`](evidence/edti_candidate_release.json). It fails the
+> *literal* all-registry rule — which no non-empty submission can pass, because a stride-5 covering
+> lattice lies within 3 px of 99.87 % of the footprint — so it is assessed under the
+> **method-bearing** scope, where it has 0 violations (max overlap 0.5604, |Spearman| 0.1665).
+> It is the only artifact this project presents as **format-valid and safe to submit**, and
+> submitting it is a **speculative slot**, not a promotion: its pooled holdout DTI (0.1171) is
+> below WBG2-GVCD (0.1759) on the shared evaluator. Publication runs through
+> `config/release_register.json`, whose `approved_candidates()` re-hashes every registered file on
+> every build; the fail-closed behaviour is covered by
+> `tests/test_release_safety.py::test_registered_candidate_is_the_only_publishable_owned_download`.
 
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)

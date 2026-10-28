@@ -1,0 +1,47 @@
+{
+ "GEMSDOE24": {
+  "registry_captured_by_candidate": 0.44540445154738717,
+  "candidate_overlapping_registry": 0.462025,
+  "reg_dots": 60069
+ },
+ "GEMSDOE25": {
+  "registry_captured_by_candidate": 0.4386482195509186,
+  "candidate_overlapping_registry": 0.447875,
+  "reg_dots": 44090
+ },
+ "GEMSDOE27": {
+  "registry_captured_by_candidate": 0.4408263762066267,
+  "candidate_overlapping_registry": 0.4679,
+  "reg_dots": 61328
+ },
+ "GEMSDOE28": {
+  "registry_captured_by_candidate": 0.4152590860469166,
+  "candidate_overlapping_registry": 0.392325,
+  "reg_dots": 40199
+ },
+ "GEMSDOE30": {
+  "registry_captured_by_candidate": 0.4386482195509186,
+  "candidate_overlapping_registry": 0.447875,
+  "reg_dots": 44090
+ },
+ "GEMSDOE31": {
+  "registry_captured_by_candidate": 0.4152590860469166,
+  "candidate_overlapping_registry": 0.392325,
+  "reg_dots": 40199
+ },
+ "GEMSDOE32": {
+  "registry_captured_by_candidate": 0.4014447336272375,
+  "candidate_overlapping_registry": 0.35035,
+  "reg_dots": 37654
+ },
+ "GEMSDOE33": {
+  "registry_captured_by_candidate": 0.4204944464349695,
+  "candidate_overlapping_registry": 0.41365,
+  "reg_dots": 41865
+ },
+ "GEMSDOE36": {
+  "registry_captured_by_candidate": 0.39658722396664436,
+  "candidate_overlapping_registry": 0.354625,
+  "reg_dots": 38854
+ }
+}
