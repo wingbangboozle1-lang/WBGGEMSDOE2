@@ -1,20 +1,24 @@
 ## START HERE (2026-10-28) — NO FILE CLEARED FOR SUBMISSION
 
-**Decision for this checkout: DO NOT DOWNLOAD OR SUBMIT any TIFF as an authorized new candidate.** Historical binaries are present for research, but passing a GeoTIFF format check is not scientific validation, a complete registry-uniqueness certificate, or permission to upload. In particular, the earlier “ready to upload”/“PROMOTE” statements below and in archived records conflict with the current run card, incomplete registry coverage, and the literal duplicate policy. Treat those statements as superseded unless a fresh, reproducible review resolves the conflicts.
+**Decision for this checkout: DO NOT DOWNLOAD OR SUBMIT any TIFF as an authorized new candidate.** Historical binaries are present for research, but format validity is not scientific validation, full-registry uniqueness, or permission to upload. Earlier “ready to upload”, “PROMOTE”, and “OK TO DOWNLOAD” claims below are archived, contradictory records and are superseded by this current decision.
 
 | Submission check | Current status |
 |---|---|
 | Fresh candidate generated in this review | No |
-| New HOLDOUT-DTI with evaluator, withheld-positive count and 95% CI | Not run; competition inputs and cached derived feature stack are absent in this checkout |
-| Full current-registry uniqueness | Not established; registry is incomplete and the continuous-prior support rule remains unresolved |
+| New HOLDOUT-DTI with evaluator, withheld-positive count and 95% CI | Not run; required competition inputs and derived feature cache are absent in this checkout |
+| Full current-registry uniqueness | Not established; registry is incomplete and continuous-prior support semantics remain unresolved |
 | Downloadable new candidate approved | **No — DO NOT SUBMIT** |
 | Weekly submission slots used | 0 |
 
-**Historical-site analysis:** [nine-site executive summary](research/focus-sites-review-20261028.md) · [why the reported GEMSDOE32 B2 result is not causally established](research/gemsdoe_findings.md) · [official sources](research/sources.md). The submitted value `0.2778` is USER-REPORTED in this repository, not tied to an organizer receipt for the exact audited bytes. A numerical leaderboard estimate for a new file is unavailable; a projection is not a score.
+**Nine-site summary:** [focus-site executive review](research/focus-sites-review-20261028.md) · [B2 score/causality review](research/gemsdoe_findings.md) · [official source inventory](research/sources.md). The GEMSDOE32 value `0.2778` is USER-REPORTED, not tied to an organizer receipt for the exact TIFF bytes. A new-file leaderboard estimate is unavailable; a projection is not a score.
 
-**Official references:** [competition overview, metric and submission format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · [rules](https://www.drivendata.org/competitions/306/competition-doe-gems/rules/) · [submission page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/). See the [latest repository review and blockers](research/repo-review-20261028-session2.md).
+**Official references:** [competition problem, metric and format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · [rules](https://www.drivendata.org/competitions/306/competition-doe-gems/rules/) · [submission page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/).
 
-Before any later candidate work, assign the single method lane explicitly, restore/authenticate required inputs and the shared derived-feature cache, resolve literal uniqueness checks against the complete registry, and reproduce format + leakage-canary + spatial holdout gates. Do not use the old “ready” badge as evidence of current eligibility.
+**Current reviews:** [session-2 repository review](research/repo-review-20261028-session2.md) · [fresh main-integration review](research/repo-review-20261028-followup.md) · [negative session run card](evidence/session_run_card_20261028.json) · [checkout readiness](evidence/checkout_readiness.json).
+
+Before new candidate work, explicitly assign the single method lane, restore and authenticate required inputs and the shared derived-feature cache, resolve literal duplicate semantics, establish comprehensive registry coverage, then reproduce format, leakage-canary, and spatial holdout gates. Do not rely on any archived “ready” badge.
+
+---
 
 ### The prompt this repository is answering (verbatim, preserved as the brief)
 
@@ -39,9 +43,11 @@ Before any later candidate work, assign the single method lane explicitly, resto
 > ORGANIZER-CONFIRMED (with the forum post/leaderboard link). Keep the Core Values /
 > Maximize P(Win) / Own the Outcome framing. Multi-pass review, then PR -> main.
 
-### The rest of this README is an archival record, not current authorization
+### The rest of this README is the legacy record
 
-All later sections retain earlier reports and decisions for provenance. Their former "PROMOTE", "OK TO DOWNLOAD", estimate, and readiness claims are **superseded for current use** by the negative decision above. They are not proof that any file is cleared under the active literal all-registry rule. Consult the dated [current session review](research/repo-review-20261028-session2.md), [current run card](evidence/session_run_card_20261028.json), and [checkout readiness](evidence/checkout_readiness.json) before any subsequent work.
+The sections below describe the earlier *negative* release audit: 15 historical TIFFs,
+13 distinct SHA-256 identities and a literal all-registry stop. That verdict still holds
+for those files — it just no longer governs the one file in the lane above.
 
 ---
 
