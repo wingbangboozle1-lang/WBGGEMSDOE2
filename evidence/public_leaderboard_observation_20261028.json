@@ -1,0 +1,31 @@
+{
+  "evidence_class": "ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION; NOT A RECEIPT",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "captured_utc": "2026-10-28T01:01:00.406448+00:00",
+  "capture_method": "Arena page-retrieval fetch of the public leaderboard during the WBG2-DISTAL session",
+  "top_public_dw_tversky": 0.4544,
+  "top_participant": "xiaofanhu",
+  "next_ranks": [
+    {
+      "rank": 2,
+      "participant": "cfld__",
+      "value": 0.3916
+    },
+    {
+      "rank": 3,
+      "participant": "Batik Shirt Brothers",
+      "value": 0.3911
+    },
+    {
+      "rank": 4,
+      "participant": "BrandenKMurray",
+      "value": 0.3724
+    },
+    {
+      "rank": 5,
+      "participant": "No Fault of Our Own",
+      "value": 0.357
+    }
+  ],
+  "note": "Unchanged from the 2026-10-27 snapshot's rank 1 (0.4544). Not HOLDOUT-DTI and not a receipt for any project TIFF. Prompt values 0.3195/0.4413 remain USER-SUPPLIED."
+}

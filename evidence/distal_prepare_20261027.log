@@ -1,0 +1,11 @@
+[data] verified data/official/labels.tif
+[data] verified data/official/existing_faults.tif
+[data] verified data/official/sample_submission.tif
+[data] restoring five pinned feature-stack parts in isolation
+[data] verified data/official/training_features.tif
+[data] invoking upstream cache_bands, label-derived geometry excluded
+[data] cached 19 feature bands
+[external] Streaming 8 file(s) from GEMSDOE24@07345ea060...
+[external] Streaming 2 file(s) from GEMSDOE30@35ce8911e2...
+[external] Streaming 13 10m 3DEP DEM channels...
+[external] Verified 10 external files + 13 10m DEM channels.

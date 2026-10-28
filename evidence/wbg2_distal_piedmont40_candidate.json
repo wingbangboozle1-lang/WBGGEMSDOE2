@@ -1,0 +1,154 @@
+{
+  "emitted_candidate": {
+    "arm": "piedmont40",
+    "name": "wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros",
+    "note": "WBG2-DISTAL piedmont40 100pctOOF CELF300m 37870dots gt32=0.40 HOLDOUT-DTI=0.1515",
+    "tif_path": "docs/downloads/distal/wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.tif",
+    "zip_path": "docs/downloads/distal/wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.zip",
+    "tif_sha256": "b0c6e529389e10d41d518e76b3701b4b6a5b7d59868460d6c838316a091382b0",
+    "tif_bytes": 131622,
+    "dots": 37870,
+    "min_dist_to_catalogue_px": 2.2361,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.2509,
+    "frac_10_to_32px": 0.3512,
+    "frac_gt_32px": 0.3979,
+    "median_px": 21.213,
+    "preplacement_surface_cache": ".cache/distal_features/preplacement_surface_piedmont40.npy",
+    "holdout_dti": 0.1515394982507172,
+    "holdout_ci95": [
+      0.12861945188370075,
+      0.1743272148808268
+    ],
+    "writer_receipt": {
+      "file": "wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.tif",
+      "sha256": "b0c6e529389e10d41d518e76b3701b4b6a5b7d59868460d6c838316a091382b0",
+      "bytes": 131622,
+      "submission_name": "wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros",
+      "note": "WBG2-DISTAL piedmont40 100pctOOF CELF300m 37870dots gt32=0.40 HOLDOUT-DTI=0.1515",
+      "note_chars": 80,
+      "validator": {
+        "file": "/home/user/WBGGEMSDOE2/docs/downloads/distal/wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.tif",
+        "bytes": 131622,
+        "sha256": "b0c6e529389e10d41d518e76b3701b4b6a5b7d59868460d6c838316a091382b0",
+        "meta": {
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "dtype": "float32",
+          "count": 1,
+          "nodata": null,
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "profile_compress": "deflate"
+        },
+        "band_description": [
+          null
+        ],
+        "n_finite": 12279160,
+        "n_nan": 0,
+        "n_infinite": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0030840872786939144,
+        "emitted_positive_pixels": 37870,
+        "checks": {
+          "single_band": true,
+          "dtype_float32": true,
+          "dimensions_3730x3292": true,
+          "crs_epsg_32611": true,
+          "transform_matches_sample_submission": true,
+          "no_nan_anywhere": true,
+          "no_inf_anywhere": true,
+          "no_sentinel_values": true,
+          "range_0_1_guaranteed": true,
+          "min_ge_0": true,
+          "max_le_1": true,
+          "in_footprint_all_finite": true,
+          "in_footprint_range_0_1": true,
+          "outside_footprint_zero": true,
+          "zero_dots_on_mapped_catalogue": true
+        },
+        "all_checks_passed": true,
+        "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+        "on_catalogue_positive_pixels": 0,
+        "in_footprint_positive_pixels": 37870,
+        "footprint_fraction": 0.007328675518488795
+      },
+      "template_report": {
+        "path": "/home/user/WBGGEMSDOE2/docs/downloads/distal/wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.tif",
+        "bytes": 131622,
+        "sha256": "b0c6e529389e10d41d518e76b3701b4b6a5b7d59868460d6c838316a091382b0",
+        "bands": 1,
+        "dtype": "float32",
+        "crs": "EPSG:32611",
+        "width": 3292,
+        "height": 3730,
+        "bounds": [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        "ref_bounds": [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "nodata": null,
+        "blocksize": [
+          256,
+          256
+        ],
+        "fixture_grid": false,
+        "has_validity_mask": false,
+        "nan_pixels": 0,
+        "infinity_pixels": 0,
+        "n_nan": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.0030840872786939144,
+        "n_nonzero": 37870,
+        "mass": 37870.0,
+        "mass_outside_footprint": 0,
+        "problems": [],
+        "ok": true,
+        "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+      },
+      "zip_file": "wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.zip",
+      "zip_sha256": "7c4925d65caf6595c5a732885ab069776729b5a3a441a4c8aed529802f92a3e0",
+      "approved_for_weekly_slot": false,
+      "promoted": false,
+      "submission_slots_used": 0,
+      "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+      "metadata": {
+        "lane": "WBG2-DISTAL",
+        "winning_experiment": "piedmont40",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "holdout_dti": 0.1515394982507172,
+        "holdout_ci95": [
+          0.12861945188370075,
+          0.1743272148808268
+        ],
+        "full_map_surface": "100% spatial-OOF, quantile-matched, zero in-sample pixels"
+      }
+    }
+  }
+}

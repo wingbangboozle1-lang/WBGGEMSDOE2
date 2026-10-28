@@ -1,0 +1,18 @@
+[fleet] Streaming candidate rasters across 77 repositories into .cache/fleet_rasters/...
+[fleet] Available verified rasters on disk: 478 / 490
+[audit] Measuring pre-placement surface & final-dot uniqueness across 478 rasters...
+
+=== DPHS EXP-3 UNIQUENESS & EMPIRICAL SCORE AUDIT ===
+  Rasters audited across 5 orgs         : 477 (95 scored across 68 sites)
+  Exact SHA-256 registry match          : PASS (0 matches)
+  Pre-placement surface Spearman (1km)  : max |rho| = 0.6984 <= 0.90 -> PASS
+  Final-dot 1km surface Pearson         : max |r|   = 0.5833 <= 0.90 -> PASS
+  Discrete non-blanket 3-px dot overlap : max       = 0.8854 <= 0.70 -> FAIL
+  9 Focus Sites 3-px dot overlap range  : 0.5758 .. 0.7039 <= 0.70 -> PASS
+  Normalized enrichment rule (>1.5 & >.5): FAIL
+  Literal all-registry 3-px (>70% incl. stride-5 lattice & continuous priors): FAIL (9 blanket refs)
+  Geometry-only 9-focus external R^2    : -0.1834 (RMSE=0.1014)
+  Physics+SGMC+Geo 9-focus external R^2 : -0.1387 (RMSE=0.0995, Spearman=+0.7554)
+  Physics+SGMC+Geo full LOSO CV R^2     : +0.4303 (RMSE=0.0637, Spearman=+0.6488)
+  DPHS EXP-3 EMPIRICAL-ESTIMATE (NOT a leaderboard score!): 0.1090 (95% PI [0.0000, 0.2312])
+  DPHS EXP-3 C_pied (SGMC off-cat recall): 0.0574 vs GEMSDOE32=0.0888

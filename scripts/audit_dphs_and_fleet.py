@@ -13,6 +13,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import datetime as dt
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -211,6 +212,7 @@ def fetch_all_fleet_rasters(focus_heads: dict[str, dict]) -> list[dict]:
         ("WBGGEMSDOE2_DZ16", "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif"),
         ("WBGGEMSDOE2_H3PACK", "docs/downloads/h3-pack/wbg3-h3pack-34k-20261027T174337Z-zeros.tif"),
         ("WBGGEMSDOE2_MSPTCD", "docs/downloads/msptcd/wbg2-msptcd-exp2-pu31-20261027T180500Z-ad4d825f-zeros.tif"),
+        ("WBGGEMSDOE2_DPHS", "docs/downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif"),
     ):
         src_p = ROOT / rel_p
         if src_p.is_file():
@@ -272,10 +274,17 @@ def main() -> int:
     lidar_diag = np.load(dphs_cdir / "lidar_ex_max.npy", mmap_mode="r")
     hydro_diag = np.load(dphs_cdir / "hydro_cond_coupling.npy", mmap_mode="r")
     demag_diag = np.load(dphs_cdir / "demag_along_strike_s3.npy", mmap_mode="r")
-    pre_surface = np.load(dphs_cdir / "exp3_preplacement_surface.npy", mmap_mode="r")
+    # Candidate is overridable for successor lanes (e.g. WBG2-DISTAL); defaults
+    # reproduce the original DPHS EXP-3 audit exactly.
+    surface_env = os.environ.get("WBG_AUDIT_SURFACE_NPY")
+    pre_surface = np.load(
+        (ROOT / surface_env) if surface_env else (dphs_cdir / "exp3_preplacement_surface.npy"),
+        mmap_mode="r",
+    )
 
-    # Load emitted DPHS EXP-3 GeoTIFF
-    dphs_res = json.loads((ROOT / "evidence/wbg2_dphs_results.json").read_text(encoding="utf-8"))
+    # Load emitted candidate GeoTIFF (DPHS EXP-3 by default)
+    results_env = os.environ.get("WBG_AUDIT_RESULTS_JSON", "evidence/wbg2_dphs_results.json")
+    dphs_res = json.loads((ROOT / results_env).read_text(encoding="utf-8"))
     cand_info = dphs_res["emitted_candidate"]
     cand_tif = ROOT / cand_info["tif_path"]
     with rasterio.open(cand_tif) as ds:
@@ -384,6 +393,8 @@ def main() -> int:
     print(f"[audit] Measuring pre-placement surface & final-dot uniqueness across {len(fleet_entries)} rasters...", flush=True)
     for item in fleet_entries:
         p = item["local_path"]
+        if sha256_file(p) == cand_info["tif_sha256"]:
+            continue  # never audit the candidate against itself
         try:
             with rasterio.open(p) as ds:
                 if (ds.height, ds.width) != mine.shape:
@@ -646,7 +657,7 @@ def main() -> int:
             "geometry_only_6feat_external_9focus": ext_geo_metrics,
             "physics_sgmc_geometry_11feat_external_9focus": ext_phys_metrics,
             "physics_sgmc_geometry_11feat_loso_all_sites": loso_phys_metrics,
-            "dphs_exp3_empirical_estimate": {
+            os.environ.get("WBG_AUDIT_ESTIMATE_KEY", "dphs_exp3_empirical_estimate"): {
                 "evidence_class": "EMPIRICAL-ESTIMATE",
                 "point_estimate": cand_point_est,
                 "interval95": [ci_lo, ci_hi],
@@ -672,7 +683,8 @@ def main() -> int:
         },
         "all_audited_rasters": audit_rows,
     }
-    out_p = ROOT / "evidence/dphs_uniqueness_and_fleet_audit.json"
+    out_p = ROOT / os.environ.get(
+        "WBG_AUDIT_OUTPUT_JSON", "evidence/dphs_uniqueness_and_fleet_audit.json")
     out_p.write_text(json.dumps(full_audit, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return 0
 

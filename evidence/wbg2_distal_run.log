@@ -1,0 +1,14 @@
+[distal] Footprint 5,167,373 | catalogue 60,988
+[distal] piedmont percentiles scarp p50=0.2532 p90=0.5942 | slope p30=1.5024 p70=9.4043
+[canary] PASS 61 features, max symmetric AUC 0.6179 on demag_along_strike_s3
+[fold 0] (191.2s) | natural_oof=0.1541 (18,225, gt32=0.98) | quota35=0.1237 (18,005, gt32=0.96) | piedmont40=0.1192 (17,961, gt32=0.97)
+[fold 1] (157.1s) | natural_oof=0.2210 (10,169, gt32=0.96) | quota35=0.1957 (9,898, gt32=0.97) | piedmont40=0.1938 (9,879, gt32=0.97)
+[fold 2] (113.8s) | natural_oof=0.1698 (4,198, gt32=0.95) | quota35=0.1597 (4,198, gt32=0.94) | piedmont40=0.1594 (4,198, gt32=0.95)
+[fold 3] (140.8s) | natural_oof=0.1934 (5,862, gt32=0.97) | quota35=0.1885 (5,862, gt32=0.98) | piedmont40=0.1846 (5,862, gt32=0.98)
+
+=== POOLED HOLDOUT-DTI (gems57-pooled-hide-v2) ===
+  natural_oof   : DTI=0.1770 95% CI [0.1549, 0.1976]
+  quota35       : DTI=0.1548 95% CI [0.1315, 0.1774]
+  piedmont40    : DTI=0.1515 95% CI [0.1286, 0.1743]
+[select] E1=0.1770 eligible=[] winner=natural_oof quota=False
+[done] wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif (38,000 dots, gt32=0.187, median=10.63px) in 692.7s

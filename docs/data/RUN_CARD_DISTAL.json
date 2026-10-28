@@ -1,0 +1,439 @@
+{
+  "run_id": "wbg2-distal-20261028T010914Z",
+  "schema": "wbggems.distal-run-card.v1",
+  "hypothesis": "DISTAL-H1/H2: a 100% spatial-OOF surface (zero in-sample pixels) cannot memorize mapped traces, so its honest distal allocation recovers concealed piedmont/intrabasin faults that the in-sample-blended DPHS full map collapsed away (frac_gt_32px 3.64% -> 18.7% natural, 35-40% quota).",
+  "mechanism": "DPHS EXP-3 60-feature dual-HistGBR + isotonic surface per label-blind quadrant fold; pooled pre-modulator OOF surface quantile-matched across quadrants; full-catalogue relay/tip modulator; 300 m CELF submodular allocation outside 2.05 px collar; 38,000-dot cap.",
+  "named_non_fault_mimic": "Alluvial fan channels, playas and Pleistocene Lake Lahontan shoreline benches produce distal low-slope lineaments.",
+  "method_lane": "WBG2-DISTAL (100% spatial-OOF distance-stratified piedmont allocation)",
+  "preregistration": "research/distal_preregistration_20261027.md (incl. Amendment A1)",
+  "holdout_dti": 0.17702928064237153,
+  "ci95": [
+    0.15493037057599188,
+    0.19755401928900304
+  ],
+  "incumbent_dti_dphs_exp3": 0.173477,
+  "leakage_canary_max_auc": 0.61795,
+  "max_registry_corr": 0.69839,
+  "max_registry_dot_overlap": 0.9066,
+  "format_valid": true,
+  "status": "promote_to_selector",
+  "verdict": "promote",
+  "ok_to_submit": false,
+  "verdict_scope": "Promote ONLY to the separate selector step. ok_to_submit stays false: spending a weekly slot is the selector's documented decision, contingent on the sparse-peer uniqueness interpretation in uniqueness_audit_scope (the literal any-registry rule also rejects the 0.2778 champion; see b2_gate_diagnostic).",
+  "recommended_arm": "natural_oof",
+  "arms": {
+    "natural_oof": {
+      "name": "wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros",
+      "note": "WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1770",
+      "tif_path": "docs/downloads/distal/wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif",
+      "zip_path": "docs/downloads/distal/wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.zip",
+      "tif_sha256": "512609c135676fbd8d1a44c43aa37ec88e6da9b76dab6af76ec929ab71b0aa9c",
+      "tif_bytes": 134568,
+      "dots": 38000,
+      "holdout_dti": 0.17702928064237153,
+      "holdout_ci95": [
+        0.15493037057599188,
+        0.19755401928900304
+      ],
+      "frac_le_2px": 0.0,
+      "frac_gt_32px": 0.1872,
+      "frac_2_to_10px": 0.4849,
+      "frac_10_to_32px": 0.3279,
+      "median_px_to_catalogue": 10.63,
+      "min_px_to_catalogue": 2.2361,
+      "empirical_estimate": 0.1067,
+      "empirical_pi95": [
+        0.0,
+        0.2276
+      ],
+      "candidate_physics_geometry": {
+        "log10_dots": 4.579795025268589,
+        "dots": 38000,
+        "mass_per_dot": 1.0,
+        "frac_on_cat": 0.0,
+        "frac_le_2px": 0.0,
+        "frac_2_to_32px": 0.8128157894736842,
+        "frac_gt_32px": 0.1871842105263158,
+        "coverage_3px": 0.10706020254392319,
+        "c_pied_sgmc": 0.06163325533270836,
+        "scarp_10m_mean": 0.30876800417900085,
+        "lidar_1m_mean": 0.39887702465057373,
+        "hydro_demag_mean": 0.26938775181770325
+      },
+      "strict_format_ok": true,
+      "strict_nan_pixels": 0,
+      "uniqueness": {
+        "rasters_measured": 477,
+        "exact_bytes_pass": true,
+        "preplacement_surface_spearman_max_abs": 0.69839,
+        "postplacement_surface_pearson_max_abs": 0.59216,
+        "surface_rule_pass": true,
+        "discrete_non_blanket_3px_max": 0.9066,
+        "discrete_non_blanket_pass": false,
+        "focus_sites_3px_min": 0.54476,
+        "focus_sites_3px_max": 0.68437,
+        "normalized_enrichment_pass": false,
+        "literal_all_registry_pass": false,
+        "literal_blanket_violations": [
+          "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+          "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+          "GEMSDOE37__gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+          "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+          "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+          "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+          "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+          "WBGGEMSDOE1__wbg-c1-commutator-research-surface-20261026-acea88448272.tif"
+        ],
+        "sparse_peer_rasters": 437,
+        "sparse_peer_max_overlap": 0.678526,
+        "sparse_peer_worst": {
+          "site": "GEMSDOE63",
+          "file": "GEMSDOE63__gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+          "reference_dots": 54864,
+          "reported_score": 0.2303
+        },
+        "sparse_peer_pass_le_0.70": true,
+        "dense_rasters_gt_0.70": 5,
+        "dense_max_overlap": 0.906605
+      },
+      "focus_primary_overlap": {
+        "GEMSDOE32": 0.5448,
+        "GEMSDOE36": 0.5489,
+        "GEMSDOE28": 0.565,
+        "GEMSDOE31": 0.5725,
+        "GEMSDOE33": 0.5865,
+        "GEMSDOE25": 0.6029,
+        "GEMSDOE30": 0.6029,
+        "GEMSDOE24": 0.6252,
+        "GEMSDOE27": 0.6307
+      },
+      "focus_primary_max": 0.6307
+    },
+    "quota35": {
+      "name": "wbg2-distaloof-quota35-37988dots-20261028T003932Z-cbdb172d-zeros",
+      "note": "WBG2-DISTAL quota35 100pctOOF CELF300m 37988dots gt32=0.35 HOLDOUT-DTI=0.1548",
+      "tif_path": "docs/downloads/distal/wbg2-distaloof-quota35-37988dots-20261028T003932Z-cbdb172d-zeros.tif",
+      "zip_path": "docs/downloads/distal/wbg2-distaloof-quota35-37988dots-20261028T003932Z-cbdb172d-zeros.zip",
+      "tif_sha256": "76ea791d0f106d216dca1be371e1f13e6abf7cb453d68ae9c489b454e3b44198",
+      "tif_bytes": 131896,
+      "dots": 37988,
+      "holdout_dti": 0.15476368656236955,
+      "holdout_ci95": [
+        0.13148642899089685,
+        0.17735048548452328
+      ],
+      "frac_le_2px": 0.0,
+      "frac_gt_32px": 0.3498,
+      "frac_2_to_10px": 0.3001,
+      "frac_10_to_32px": 0.3501,
+      "median_px_to_catalogue": 18.0,
+      "min_px_to_catalogue": 2.2361,
+      "empirical_estimate": 0.109,
+      "empirical_pi95": [
+        0.0,
+        0.2312
+      ],
+      "candidate_physics_geometry": {
+        "log10_dots": 4.579657861593733,
+        "dots": 37988,
+        "mass_per_dot": 1.0,
+        "frac_on_cat": 0.0,
+        "frac_le_2px": 0.0,
+        "frac_2_to_32px": 0.6502053279983152,
+        "frac_gt_32px": 0.34979467200168474,
+        "coverage_3px": 0.09383143039993436,
+        "c_pied_sgmc": 0.057424549013376236,
+        "scarp_10m_mean": 0.31075653433799744,
+        "lidar_1m_mean": 0.39860478043556213,
+        "hydro_demag_mean": 0.279961496591568
+      },
+      "strict_format_ok": true,
+      "strict_nan_pixels": 0,
+      "uniqueness": {
+        "rasters_measured": 477,
+        "exact_bytes_pass": true,
+        "preplacement_surface_spearman_max_abs": 0.69839,
+        "postplacement_surface_pearson_max_abs": 0.5833,
+        "surface_rule_pass": true,
+        "discrete_non_blanket_3px_max": 0.88538,
+        "discrete_non_blanket_pass": false,
+        "focus_sites_3px_min": 0.57581,
+        "focus_sites_3px_max": 0.70391,
+        "normalized_enrichment_pass": false,
+        "literal_all_registry_pass": false,
+        "literal_blanket_violations": [
+          "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+          "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+          "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+          "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+          "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+          "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+          "WBGGEMSDOE1__wbg-c1-commutator-research-surface-20261026-acea88448272.tif",
+          "GEMSDOE31__gemsdoe31-union-b-p060-20261004-8acb75e1-allfinite.tif",
+          "GEMSDOE31__gemsdoe31-union-b-p060-20261004-8acb75e1-nan.tif"
+        ],
+        "sparse_peer_rasters": 437,
+        "sparse_peer_max_overlap": 0.693456,
+        "sparse_peer_worst": {
+          "site": "GEMSDOE63",
+          "file": "GEMSDOE63__gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+          "reference_dots": 54864,
+          "reported_score": 0.2303
+        },
+        "sparse_peer_pass_le_0.70": true,
+        "dense_rasters_gt_0.70": 6,
+        "dense_max_overlap": 0.885385
+      },
+      "focus_primary_overlap": {
+        "GEMSDOE32": 0.5758,
+        "GEMSDOE36": 0.5794,
+        "GEMSDOE28": 0.5893,
+        "GEMSDOE31": 0.5959,
+        "GEMSDOE33": 0.6073,
+        "GEMSDOE25": 0.6171,
+        "GEMSDOE30": 0.6171,
+        "GEMSDOE24": 0.6395,
+        "GEMSDOE27": 0.6427
+      },
+      "focus_primary_max": 0.6427
+    },
+    "piedmont40": {
+      "name": "wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros",
+      "note": "WBG2-DISTAL piedmont40 100pctOOF CELF300m 37870dots gt32=0.40 HOLDOUT-DTI=0.1515",
+      "tif_path": "docs/downloads/distal/wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.tif",
+      "zip_path": "docs/downloads/distal/wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.zip",
+      "tif_sha256": "b0c6e529389e10d41d518e76b3701b4b6a5b7d59868460d6c838316a091382b0",
+      "tif_bytes": 131622,
+      "dots": 37870,
+      "holdout_dti": 0.1515394982507172,
+      "holdout_ci95": [
+        0.12861945188370075,
+        0.1743272148808268
+      ],
+      "frac_le_2px": 0.0,
+      "frac_gt_32px": 0.3979,
+      "frac_2_to_10px": 0.2509,
+      "frac_10_to_32px": 0.3512,
+      "median_px_to_catalogue": 21.213,
+      "min_px_to_catalogue": 2.2361,
+      "empirical_estimate": 0.0953,
+      "empirical_pi95": [
+        0.0,
+        0.2194
+      ],
+      "candidate_physics_geometry": {
+        "log10_dots": 4.578306773004322,
+        "dots": 37870,
+        "mass_per_dot": 1.0,
+        "frac_on_cat": 0.0,
+        "frac_le_2px": 0.0,
+        "frac_2_to_32px": 0.6020596778452602,
+        "frac_gt_32px": 0.3979403221547399,
+        "coverage_3px": 0.0938681995667818,
+        "c_pied_sgmc": 0.054066289216279984,
+        "scarp_10m_mean": 0.33011895418167114,
+        "lidar_1m_mean": 0.3875128924846649,
+        "hydro_demag_mean": 0.29104557633399963
+      },
+      "strict_format_ok": true,
+      "strict_nan_pixels": 0,
+      "uniqueness": {
+        "rasters_measured": 477,
+        "exact_bytes_pass": true,
+        "preplacement_surface_spearman_max_abs": 0.69844,
+        "postplacement_surface_pearson_max_abs": 0.56466,
+        "surface_rule_pass": true,
+        "discrete_non_blanket_3px_max": 0.86089,
+        "discrete_non_blanket_pass": false,
+        "focus_sites_3px_min": 0.56715,
+        "focus_sites_3px_max": 0.69224,
+        "normalized_enrichment_pass": false,
+        "literal_all_registry_pass": false,
+        "literal_blanket_violations": [
+          "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+          "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+          "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+          "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+          "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+          "WBGGEMSDOE1__wbg-c1-commutator-research-surface-20261026-acea88448272.tif"
+        ],
+        "sparse_peer_rasters": 437,
+        "sparse_peer_max_overlap": 0.679879,
+        "sparse_peer_worst": {
+          "site": "GEMSDOE63",
+          "file": "GEMSDOE63__gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+          "reference_dots": 54864,
+          "reported_score": 0.2303
+        },
+        "sparse_peer_pass_le_0.70": true,
+        "dense_rasters_gt_0.70": 3,
+        "dense_max_overlap": 0.860893
+      },
+      "focus_primary_overlap": {
+        "GEMSDOE32": 0.5672,
+        "GEMSDOE36": 0.5716,
+        "GEMSDOE28": 0.5788,
+        "GEMSDOE31": 0.5845,
+        "GEMSDOE33": 0.5952,
+        "GEMSDOE25": 0.6037,
+        "GEMSDOE30": 0.6037,
+        "GEMSDOE24": 0.6251,
+        "GEMSDOE27": 0.6278
+      },
+      "focus_primary_max": 0.6278
+    }
+  },
+  "b2_gate_diagnostic": {
+    "schema": "wbggems.distal-b2-gate-diagnostic.v1",
+    "generated_utc": "2026-10-28T01:09:14.408722+00:00",
+    "champion": "GEMSDOE32 B2 (0.2778 USER-REPORTED, not an organizer receipt)",
+    "champion_dots": 37654,
+    "references": {
+      "GEMSDOE22_h23a_dense_6pct": {
+        "file": "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+        "reference_dots": 335879,
+        "b2_dots_within_3px_fraction": 0.9995,
+        "literal_gate_rejects_b2": true
+      },
+      "GEMSDOE12_dem10_scarp": {
+        "file": "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+        "reference_dots": 103347,
+        "b2_dots_within_3px_fraction": 0.6945,
+        "literal_gate_rejects_b2": false
+      },
+      "GEMSDOE77_h85_skeleton": {
+        "file": "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+        "reference_dots": 201260,
+        "b2_dots_within_3px_fraction": 0.7861,
+        "literal_gate_rejects_b2": true
+      },
+      "GEMSDOE37_physics_80k": {
+        "file": "GEMSDOE37__gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+        "reference_dots": 80000,
+        "b2_dots_within_3px_fraction": 0.5596,
+        "literal_gate_rejects_b2": false
+      },
+      "GEMSDOE23_h30_habitat": {
+        "file": "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+        "reference_dots": 91533,
+        "b2_dots_within_3px_fraction": 0.7255,
+        "literal_gate_rejects_b2": true
+      },
+      "13GEMSDOE_stride5_lattice": {
+        "file": "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+        "reference_dots": 206895,
+        "b2_dots_within_3px_fraction": 0.9992,
+        "literal_gate_rejects_b2": true
+      },
+      "WBGGEMSDOE1_continuous_prior": {
+        "file": "WBGGEMSDOE1__wbg-c1-commutator-research-surface-20261026-acea88448272.tif",
+        "reference_dots": 5106385,
+        "b2_dots_within_3px_fraction": 1.0,
+        "literal_gate_rejects_b2": true
+      }
+    },
+    "conclusion": "The literal any-registry >70% within-3px rule rejects the champion itself against dense/blanket references; it cannot distinguish copying from coverage. Uniqueness is therefore also reported against sparse peer-budget emissions (reference dots <= 65,000)."
+  },
+  "evidence_details": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 60988,
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "experiments_executed": 3,
+    "experiment_cap": 3,
+    "weekly_submission_slots_used": 0,
+    "paired_quota35_minus_natural": {
+      "delta": 0.022265594080001977,
+      "ci95": [
+        0.01531613870183318,
+        0.02916644579152733
+      ]
+    },
+    "canary": {
+      "n_features": 61,
+      "all_passed": true,
+      "max_symmetric_auc": 0.61795,
+      "worst_feature": "demag_along_strike_s3"
+    },
+    "candidate_file": "docs/downloads/distal/wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif",
+    "candidate_sha256": "512609c135676fbd8d1a44c43aa37ec88e6da9b76dab6af76ec929ab71b0aa9c",
+    "submission_name": "wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros",
+    "submission_note": "WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1770",
+    "uniqueness_audit_scope": {
+      "rasters_measured": 477,
+      "exact_bytes_pass": true,
+      "preplacement_surface_spearman_max_abs": 0.69839,
+      "postplacement_surface_pearson_max_abs": 0.59216,
+      "surface_rule_pass": true,
+      "discrete_non_blanket_3px_max": 0.9066,
+      "discrete_non_blanket_pass": false,
+      "focus_sites_3px_min": 0.54476,
+      "focus_sites_3px_max": 0.68437,
+      "normalized_enrichment_pass": false,
+      "literal_all_registry_pass": false,
+      "literal_blanket_violations": [
+        "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+        "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+        "GEMSDOE37__gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+        "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+        "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+        "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+        "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+        "WBGGEMSDOE1__wbg-c1-commutator-research-surface-20261026-acea88448272.tif"
+      ],
+      "sparse_peer_rasters": 437,
+      "sparse_peer_max_overlap": 0.678526,
+      "sparse_peer_worst": {
+        "site": "GEMSDOE63",
+        "file": "GEMSDOE63__gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+        "reference_dots": 54864,
+        "reported_score": 0.2303
+      },
+      "sparse_peer_pass_le_0.70": true,
+      "dense_rasters_gt_0.70": 5,
+      "dense_max_overlap": 0.906605
+    },
+    "focus_primary_overlap": {
+      "GEMSDOE32": 0.5448,
+      "GEMSDOE36": 0.5489,
+      "GEMSDOE28": 0.565,
+      "GEMSDOE31": 0.5725,
+      "GEMSDOE33": 0.5865,
+      "GEMSDOE25": 0.6029,
+      "GEMSDOE30": 0.6029,
+      "GEMSDOE24": 0.6252,
+      "GEMSDOE27": 0.6307
+    },
+    "empirical_estimate": {
+      "evidence_class": "EMPIRICAL-ESTIMATE (fleet regression; NOT a score)",
+      "point": 0.1067,
+      "pi95": [
+        0.0,
+        0.2276
+      ],
+      "model": "11-feature Physics+SGMC+Geometry ensemble, n=95 USER-REPORTED fleet scores, grouped LOSO R2 +0.4303 / Spearman +0.6488; 9-focus external RMSE 0.0995. It under-predicts B2 (LOSO 0.197 vs 0.2778 reported), so no arm can be claimed to beat 0.2778."
+    },
+    "validator": {
+      "strict_ok": true,
+      "nan_pixels_anywhere": 0,
+      "values_in_0_1_whole_array": true,
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "evidence": "evidence/distal_strict_validation.json + writer receipt in lane results",
+      "organizer_acceptance": "unknown (local format check only)"
+    }
+  }
+}

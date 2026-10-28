@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../styles.css"><title>How to submit (selector only) · GEMS Research</title></head><body>
+<header class="topbar"><div class="shell"><a href="index.html" class="brand">GEMS <small>WBG2-DISTAL</small></a>
+<nav class="nav"><a href="index.html">Selector Decision Table</a><a href="executive-summary.html">Executive Summary</a>
+<a href="how-to-submit.html">How to Submit</a><a href="../index.html">← Main Dashboard</a></nav></div></header>
+<main id="main" class="shell main">
+<h1>How to submit — selector steps (contest)</h1>
+<ol>
+<li>Confirm the selector adopts the sparse-peer uniqueness interpretation documented on the
+<a href="index.html">decision page</a> (the literal any-registry rule also rejects GEMSDOE32 B2).</li>
+<li>Download exactly one file: <code>wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif</code> (SHA-256 <code>512609c135676fbd8d1a44c43aa37ec88e6da9b76dab6af76ec929ab71b0aa9c</code>).
+Verify the hash after download. The matching .zip contains the same single GeoTIFF.</li>
+<li>On DrivenData → <em>New submission</em>, choose that .tif (single-band float32, EPSG:32611,
+3730×3292, all values finite in [0,1] — it cannot trigger “Predicted values must be in range [0, 1]”).</li>
+<li>Use this exact note (≤140 chars): <code>WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1770</code></li>
+<li>Submit within the weekly cap shown on the submission page; record the organizer receipt
+score back into the run card as ORGANIZER-CONFIRMED (nothing here is a receipt yet).</li>
+</ol>
+<p><strong>DO NOT SUBMIT</strong> the quota35/piedmont40 research TIFFs or any historical focus-site file in the same slot decision.</p>
+<p><small>Evidence classes: HOLDOUT-DTI = shared hide-and-recover evaluator
+(gems57-pooled-hide-v2, α 0.2, β 0.8, 300 m kernel, 60,988 withheld positives);
+USER-REPORTED = fleet ledger claims with no organizer receipt in Git;
+EMPIRICAL-ESTIMATE = fleet regression, not a score. No weekly slot was spent.</small></p>
+</main></body></html>
