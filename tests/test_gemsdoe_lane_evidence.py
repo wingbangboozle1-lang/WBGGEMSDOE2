@@ -39,16 +39,18 @@ def test_lane_primary_file_is_byte_and_grid_identical_to_its_receipt():
     assert np.isnan(a).sum() > 0
 
 
-def test_lane_manifest_validates_and_matches_the_measured_file():
+def test_candidate_is_registered_with_pinned_bytes():
+    """The release register is the only gate that may offer a real submission."""
     sys.path.insert(0, str(ROOT / "src"))
-    from wbggems.release import submission_lane
+    from wbggems.release import approved_candidates
 
-    pages, files = submission_lane(ROOT)
-    assert files, "lane must validate its own bytes"
+    approved = approved_candidates(ROOT)
     primary = read("gemsdoe_release.json")["primary_file"]
-    assert primary in files
-    assert files[primary]["sha256"] == read("candidate_measurements.json")["sha256"]
-    assert pages == set(read("gemsdoe_release.json")["positive_pages"])
+    assert primary in approved, f"{primary} is not registered"
+    assert approved[primary]["sha256"] == read("candidate_measurements.json")["sha256"]
+    for rel in (f"docs/downloads/gemsdoe/{NAME}.tif",
+                f"docs/downloads/gemsdoe/{NAME}-zerooutside.tif"):
+        assert rel in approved and approved[rel]["lane"] == "GEMSDOE", rel
 
 
 def test_novelty_verdicts_are_true_and_are_the_ones_quoted_on_the_site():

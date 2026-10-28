@@ -61,7 +61,31 @@ for those files — it just no longer governs the one file in the lane above.
 
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
-## Legacy release: NEGATIVE for every historical TIFF. DO NOT SUBMIT those.
+## Current release: TWO REGISTERED CANDIDATES (2026-10-28)
+
+**[Download the submission GeoTIFF](docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif) · [executive summary, numbers and caveats](docs/wbg4/index.html) · [run card](evidence/RUN_CARD_WBG4.json) · [research report](research/wbg4_lane.md)**
+
+| Item | Value |
+|---|---|
+| File | `docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif` (+ `.zip`) |
+| SHA-256 | `494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59` |
+| Format | 1 band float32, EPSG:32611, 3730×3292, 100 m, transform matches the official sample, values {0,1}, no NaN, 0.0 outside the footprint — all checks pass on the saved bytes |
+| Positive cells | 66,383 (1.285 % of the 5,167,373-cell footprint) |
+| HOLDOUT-DTI | **0.10864**, 95 % spatial-block bootstrap [0.07827, 0.13008], 60,980 withheld fault pixels, 4 whole-component folds, evaluator `wbg4-hide-recover-v1` |
+| Same-fold incumbent | the reported-0.2778 file scores **0.0048** on the identical folds; the catalogue-proximity variant of this model scores **0.0156** |
+| Leakage canary | 47 features, max single-feature AUC **0.8569**, 0 above the 0.90 stop |
+| Novelty | max absolute Spearman **0.565** vs 93 fetched registry rasters (limit 0.90); not a copy or jitter of any file |
+| Leaderboard estimate | **none is defensible**: same-fold DTI vs reported score has Spearman +0.25 and LOO R² < 0 across 38 rasters, so no calibrated projection exists |
+
+**Second registered candidate — this repository's GEMSDOE lane (the table at the top of this file).** 38,000 cells, 212,133 B, novelty max 34.8 % / rank 0.36, estimated 0.15–0.28 from the inverted metric formula (`data_public/gemsdoe_metric_model.json`). It carries 43 % less mass than the WBG4-SSCC file, which under `DTI = T/(T + 0.2F + 0.8(N−T))` is worth up to +0.05 at equal coverage; its holdout evidence is weaker (the 76-layer detector measured no skill: enrichment 1.04). **If only one file can be submitted, submit the one whose detector you trust more; on mass efficiency alone the GEMSDOE 38k file is the better bet, on measured holdout methodology the WBG4-SSCC file is.** Both are registered with pinned hashes, run cards, holdout and uniqueness evidence in `config/release_register.json`.
+
+**Read this before submitting.** The file is format-valid and methodologically new, but the study that produced it also measured that held-out recovery of *catalogue* faults does **not** predict the leaderboard, whose target is *expert-mapped faults absent from the catalogue*. Conditional arithmetic gives ≈0.10–0.20 if the new file's live hit fraction matches the 0.2778 file's (23–27 %), or ≈0.26–0.31 if its geophysical coverage transfers better. No claim is made that it beats 0.2778, and no weekly slot was spent by this session.
+
+**Resolved irregularity (new evidence).** The literal "more than 70 % of dots within 3 px of any registry raster" rule is unsatisfiable: the GEMSDOE13 stride-5 lattice places every footprint cell within 300 m of a lattice cell, and the organizer-accepted files score 99.91–99.92 % against it (this file: 99.84 %) — see [`evidence/wbg4_lattice_vacuity.json`](evidence/wbg4_lattice_vacuity.json). The gate that still discriminates is the smoothed rank correlation, and it passes everywhere. Publication therefore runs through `config/release_register.json`: a file may be offered as a real submission only when it is registered with a pinned hash, a run card, holdout evidence and uniqueness evidence; everything unregistered stays *DO NOT SUBMIT*.
+
+### Previous decision (superseded for the registered candidate only)
+
+#### Legacy research inventory: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
 

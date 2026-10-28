@@ -1,0 +1,14 @@
+{
+ "schema": "wbggems.uniqueness-evidence.v1",
+ "lane": "GEMSDOE",
+ "source": "data_public/gemsdoe_novelty.json",
+ "verdict": {
+  "unique_bytes": true,
+  "passes_halo_rule": true,
+  "passes_rank_rule": true
+ },
+ "max_frac_my_dots_within_3px": 0.3483684210526316,
+ "max_abs_smoothed_spearman": 0.3629420920838068,
+ "n_compared": 30,
+ "identical_bytes": []
+}

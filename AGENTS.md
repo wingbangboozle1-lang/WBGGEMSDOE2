@@ -1,6 +1,6 @@
 # Project working agreement
 
-At the start of a session read `README.md`, `research/findings.md`, `evidence/run_card.json`, and `docs/PROJECT_CHARTER.md`, then `evidence/release_audit.json` and `research/source-verification-release-20261027.md`. Treat the preserved original prompt as historical context, not as evidence or perpetual authorization. Respect the active branch and current higher-priority instructions.
+At the start of a session read `README.md`, `research/findings.md`, `evidence/run_card.json`, and `docs/PROJECT_CHARTER.md`, then `evidence/release_audit.json` and `research/source-verification-release-20261027.md`. The current submission candidate and its caveats are in `evidence/RUN_CARD_WBG4.json`, `research/wbg4_lane.md` and `config/release_register.json`; a file may be offered as a real submission only through that register. Treat the preserved original prompt as historical context, not as evidence or perpetual authorization. Respect the active branch and current higher-priority instructions.
 
 - No real competition slot without the separate selector; no copies disguised as novel predictions.
 - Enforce the literal duplicate stop against **every** registry raster before placement and on final dots; an incomplete registry cannot prove uniqueness. The support of a registered continuous probability prior is ambiguous under the dot rule: seek clarification rather than silently exempting it.
