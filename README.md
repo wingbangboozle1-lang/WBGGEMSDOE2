@@ -2,6 +2,14 @@
 
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. The latest code/repository review and priorities are in [repo-review-20261027.md](research/repo-review-20261027.md).
 
+## Session 2026-10-28 — answer for the 0.2778 question (read first)
+
+- **Decision: NO file is OK to download or submit.** No new TIFF was generated: the method lane is still `UNASSIGNED`, and the registry and holdout gates are open. Readiness is BLOCKED (`python scripts/check_readiness.py --check` → exit 2). Tests: 362 passed after the owner-mirror inputs were restored.
+- **Why GEMSDOE32 `h33-h33-2-b2` scored 0.2778 (measured structure, not a score recomputation):** [research/gemsdoe32_0.2778_why_20261028.md](research/gemsdoe32_0.2778_why_20261028.md) · receipt [evidence/gemsdoe32_structure_20261028.json](evidence/gemsdoe32_structure_20261028.json) · script [scripts/analyze_gemsdoe32_structure.py](scripts/analyze_gemsdoe32_structure.py). Its 37,654 binary dots have **zero** positives on mapped faults and only 4.28% strictly within the 300 m kernel support. It is zero-filled outside the footprint.
+- **Can we beat 0.2778?** Not demonstrated. The best local holdout DTI is 0.177029 (WBG2-DISTAL, `gems57-pooled-hide-v2`), and that is not comparable to the leaderboard figure.
+- **Official sources:** [competition problem and metric page](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) (the submission page states that data outside the bounds is "null or nan", which conflicts with the zero fill used by the 0.2778 file; flagged for review).
+- **Next step, needs a human decision:** assign one method lane (N1–N4 in [research/hypotheses.md](research/hypotheses.md)) and decide how the continuous-prior support rule applies. Only then can the canaries, holdout, registry and format gates run.
+
 ## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.

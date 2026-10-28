@@ -1,0 +1,49 @@
+{
+  "schema": "wbggems.gemsdoe32-structure.v1",
+  "evidence_class": "PUBLIC-RASTER STRUCTURE MEASUREMENT; NOT HOLDOUT-DTI, NOT AN ORGANIZER RECEIPT",
+  "source": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/45ee207185f72804497f7a7a392ad2c43e168f02/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+  "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+  "crs": "EPSG:32611",
+  "shape": [
+    3730,
+    3292
+  ],
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "nan_pixels": 0,
+  "unique_values": [
+    0.0,
+    1.0
+  ],
+  "positive_pixels": 37654,
+  "footprint_pixels": 5167373,
+  "positives_outside_footprint": 0,
+  "mapped_fault_pixels": 60988,
+  "positives_on_mapped_faults": 0,
+  "positive_distance_to_mapped_fault_m_cumulative_strict": {
+    "d_lt_100m": 0,
+    "d_lt_200m": 0,
+    "d_lt_300m": 1611,
+    "d_lt_500m": 4848,
+    "d_lt_1000m": 11140,
+    "d_lt_2000m": 19048,
+    "d_lt_5000m": 30125
+  },
+  "positives_exactly_300m": 560,
+  "positives_beyond_5000m": 7529,
+  "fraction_positives_with_kernel_credit_d_lt_300m": 0.04278429914484517,
+  "median_positive_distance_to_mapped_fault_m": 1964.68827043885,
+  "nearest_neighbour_spacing_cells_p5_p50_p95": [
+    2.8284271247461903,
+    3.0,
+    7.211102550927978
+  ],
+  "nearest_neighbour_min_cells": 2.8284271247461903,
+  "scoring_note": "The official DTI page (drivendata competition 306, page 967) does not mention masking mapped faults; the pinned template docstring cites an organiser thread for that masking, which is NOT verified here. Hidden test labels are unavailable, so the raster score is not recomputed."
+}
