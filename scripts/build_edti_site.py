@@ -108,7 +108,7 @@ def main() -> int:
     n_viol = uniq.get("n_method_bearing_violations")
     fmt_ok = cks.get("all_format_checks_pass", False)
 
-    verdict_banner = ("FORMAT-VALID AND UNIQUE \u2014 SAFE TO SUBMIT"
+    verdict_banner = ("FORMAT-VALID AND UNIQUE \u2014 HOLD, NOT A LEADERBOARD PICK"
                       if (fmt_ok and n_viol == 0) else "DO NOT SUBMIT")
     vclass = "ok" if (fmt_ok and n_viol == 0) else "stop"
 

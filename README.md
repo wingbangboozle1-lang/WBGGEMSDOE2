@@ -1,17 +1,26 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28) — read the verdict before downloading anything
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**Verdict: DO NOT SUBMIT any file in this repository as a leaderboard pick (no weekly slot spent).**
+Executive summary with the nine-site table, the candidate table and every label:
+**[docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md](docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md)**
+(HTML: [docs/nine-site-executive-summary.html](docs/nine-site-executive-summary.html)).
+
+Four files pass the format gate and the nine-site uniqueness check. The best measured proxy among them is the distal2 TIF. It is safe to **download for the record only**:
 
 | | |
 |---|---|
-| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
-| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
-| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
-| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
-| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
-| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+| **Download (best proxy, format-valid, unique vs nine sites)** | [`docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif`](docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif) |
+| **Bytes / SHA-256** | 134,932 B · `0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10` (MEASURED) |
+| **Format** | PASS — repo validator `ok: true`; 0 NaN; values in [0,1]; EPSG:32611; 3730 x 3292; 38,000 positive cells |
+| **Uniqueness vs nine sites** | PASS — worst 63.7 % of its dots within 3 px of any one site (limit 70 %); worst smoothed rank correlation 0.42 (limit 0.90). MEASURED |
+| **Holdout (proxy)** | HOLDOUT-DTI **0.1771 [0.1570, 0.1983]**, 60,988 withheld, `gems57-pooled-hide-v2`, folds regenerated per fold. Fixed-raster on the same folds: 0.0289. Not validated against the leaderboard. |
+| **Estimated score** | **None supported as a score.** The fleet regression gives PROJECTION 0.1497 (LOSO R² 0.21, n = 93). The run card says `ok_to_submit: False`. |
+| **Why not submit** | Nothing here shows a file beating the 0.2778 reference. The local holdout ranks that reference (0.0067) below uniform random dots (0.069) because it scores withheld *mapped* faults, which the official metric masks. |
+| **Do NOT use** | Both triphysics variants (`gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` and `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif`): lowest measured proxy (0.0121). The NaN-outside file also fails the repo gate (7,111,787 NaN); the earlier "PASS" text was wrong. |
+
+Evidence: [`evidence/nine_site_recheck_20261028.json`](evidence/nine_site_recheck_20261028.json) · [`evidence/fixed_raster_holdout_20261028.json`](evidence/fixed_raster_holdout_20261028.json) · [`evidence/run_card_nine_site_20261028.json`](evidence/run_card_nine_site_20261028.json) · flagged irregularities: [executive summary §7](docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md#7-irregularities-flagged-for-review)
+
+Earlier session content is unchanged below and remains under review. The release register still lists the triphysics files as `PROMOTE`, which is flagged in §7 of the summary.
 
 **Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
 · **Why 0.2778 was the highest score and what it would take to beat it:**
@@ -147,7 +156,7 @@ review.
 > *literal* all-registry rule — which no non-empty submission can pass, because a stride-5 covering
 > lattice lies within 3 px of 99.87 % of the footprint — so it is assessed under the
 > **method-bearing** scope, where it has 0 violations (max overlap 0.5604, |Spearman| 0.1665).
-> It is the only artifact this project presents as **format-valid and safe to submit**, and
+> It is the only artifact this project presents as **format-valid and safe to submit (SUPERSEDED: see START HERE — not a leaderboard pick)**, and
 > submitting it is a **speculative slot**, not a promotion: its pooled holdout DTI (0.1171) is
 > below WBG2-GVCD (0.1759) on the shared evaluator. Publication runs through
 > `config/release_register.json`, whose `approved_candidates()` re-hashes every registered file on

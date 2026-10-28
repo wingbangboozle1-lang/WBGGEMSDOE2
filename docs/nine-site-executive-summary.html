@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEMSDOE nine-site executive summary (2026-10-28)</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body{max-width:1100px;margin:2rem auto;padding:0 1rem;font-family:system-ui,sans-serif;line-height:1.5;color:#1b1b1b}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+th,td{border:1px solid #ccc;padding:.4rem .5rem;vertical-align:top;text-align:left}
+th{background:#f1f3f6}
+blockquote{border-left:5px solid #c0392b;background:#fdf2f0;margin:1rem 0;padding:.6rem 1rem}
+code{font-size:.88em;word-break:break-all}
+a{color:#0b57d0}
+</style></head>
+<body>
+<p><a href="index.html">&larr; Site home</a></p>
+<h1 id="executive-summary-gemsdoe-nine-site-review-and-the-one-tif-file-2026-10-28">Executive summary — GEMSDOE nine-site review and the one TIF file (2026-10-28)</h1>
+<blockquote>
+<p><strong>Verdict in one line:</strong> Do <strong>not</strong> spend a weekly slot on any file in this repository as a leaderboard attempt. Four files pass the format gate and the nine-site uniqueness check. The best measured proxy among them is the <strong>distal2 TIF</strong> (<code>wbg2-distal2-…-zeros.tif</code>). You may download it for the record, but <strong>nothing here shows it can beat the 0.2778 reference, and it is not a leaderboard pick.</strong></p>
+</blockquote>
+<p>Labels used below: <strong>ORGANIZER-CONFIRMED</strong> = copied from an official submission-page receipt (none exists for any file here) · <strong>USER-REPORTED</strong> = score supplied in the request, no receipt · <strong>HOLDOUT-DTI</strong> = local proxy (evaluator and count given) · <strong>PROJECTION</strong> = model output, never a score · <strong>MEASURED</strong> = re-computed this session from bytes.</p>
+<hr />
+<h2 id="1-download-box">1. Download box</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>File to download</strong></td>
+<td><a href="downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif"><code>downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif</code></a> (zip: <a href="downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.zip"><code>…-zeros.zip</code></a>)</td>
+</tr>
+<tr>
+<td><strong>SHA-256</strong></td>
+<td><code>0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10</code> (134,932 bytes) — MEASURED; matches <code>config/release_register.json</code></td>
+</tr>
+<tr>
+<td><strong>Format gate</strong></td>
+<td><strong>PASS</strong> — repo validator <code>ok: true</code>; 0 NaN; values in [0, 1]; EPSG:32611; 3730 × 3292; 38,000 positive cells</td>
+</tr>
+<tr>
+<td><strong>Unique vs the nine sites</strong></td>
+<td><strong>PASS</strong> — worst share of its dots within 3 px of any one site: <strong>63.7 %</strong> (limit 70 %); worst smoothed rank correlation <strong>0.42</strong> (limit 0.90). MEASURED, <code>evidence/nine_site_recheck_20261028.json</code></td>
+</tr>
+<tr>
+<td><strong>Best proxy in the repo</strong></td>
+<td>HOLDOUT-DTI <strong>0.1771 [0.1570, 0.1983]</strong>, 60,988 withheld positives, <code>gems57-pooled-hide-v2</code>, folds regenerated per fold (its run card). <strong>Caveat:</strong> fixed-raster on the same folds gives 0.0289, and the proxy is unvalidated against the leaderboard (§5).</td>
+</tr>
+<tr>
+<td><strong>Submit?</strong></td>
+<td><strong>NO — hold.</strong> Its own run card says <code>ok_to_submit: False</code>; the literal all-registry stop is unresolved; no organizer receipt exists. See §3 and §5.</td>
+</tr>
+<tr>
+<td><strong>Do not use (both triphysics variants)</strong></td>
+<td>Lowest measured proxy (0.0121 fixed-raster; 0.0086 in its run card). The NaN-outside file also <strong>fails</strong> the repo gate (7,111,787 NaN pixels); the README's earlier "PASS" was wrong.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-nine-focus-sites-best-file-per-site">2. Nine focus sites — best file per site</h2>
+<p>Every site's best file is a near-copy of the others. Each site shares <strong>at least 86.7 %</strong> of its dots within 3 px of another site's dots, so <strong>none of the nine is unique relative to the others.</strong> MEASURED, <code>evidence/nine_site_recheck_20261028.json</code> (sha256 of each re-fetched file matched <code>registry/focus_sites.json</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Site</th>
+<th>Best file (highest reported)</th>
+<th>Reported score</th>
+<th>Evidence</th>
+<th>SHA-256 (prefix) verified</th>
+<th>Unique vs other eight?</th>
+<th>Max share of its dots in another site's 3-px halo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GEMSDOE24</td>
+<td><code>gems24-h25-1-dotted-h19-5-d1-5-…-nan.tif</code></td>
+<td>0.2477</td>
+<td>USER-REPORTED</td>
+<td><code>68d0e2e4</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>1.00 (GEMSDOE25)</td>
+</tr>
+<tr>
+<td>GEMSDOE25</td>
+<td><code>gems25-dotted-h19-5-d2-8-…-nan.tif</code></td>
+<td>0.2600</td>
+<td>USER-REPORTED</td>
+<td><code>91eae1ca</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>1.00 (GEMSDOE24)</td>
+</tr>
+<tr>
+<td>GEMSDOE27</td>
+<td><code>gems27-topo-gap-closure-t-v2-on-d1-5-…-nan.tif</code></td>
+<td>0.2449</td>
+<td>USER-REPORTED</td>
+<td><code>33003374</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>0.980 (GEMSDOE24)</td>
+</tr>
+<tr>
+<td>GEMSDOE28</td>
+<td><code>gems28-h36-1-rung30-blind-r1-…-nan.tif</code></td>
+<td><strong>0.2710</strong></td>
+<td>USER-REPORTED</td>
+<td><code>5556aa14</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>1.00 (GEMSDOE24)</td>
+</tr>
+<tr>
+<td>GEMSDOE30</td>
+<td><code>gemsdoe30-d28-poisson300m-offcat-44090-…tif</code></td>
+<td>0.2600</td>
+<td>USER-REPORTED</td>
+<td><code>8cf893ea</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>1.00 (GEMSDOE24)</td>
+</tr>
+<tr>
+<td>GEMSDOE31</td>
+<td><code>gemsdoe31-h27-4-solo-d28-…-nan.tif</code></td>
+<td>0.2708</td>
+<td>USER-REPORTED</td>
+<td><code>07b6db44</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>1.00 (GEMSDOE24)</td>
+</tr>
+<tr>
+<td><strong>GEMSDOE32</strong></td>
+<td><code>gemsdoe32-h33-h33-2-b2-…-zeros.tif</code></td>
+<td><strong>0.2778 (highest)</strong></td>
+<td>USER-REPORTED</td>
+<td><code>c55bafc4</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>1.00 (GEMSDOE24)</td>
+</tr>
+<tr>
+<td>GEMSDOE33</td>
+<td><code>GEMSDOE33-h33d-analog-tip-stepover-r30-…tif</code></td>
+<td>0.2632</td>
+<td>USER-REPORTED</td>
+<td><code>87f857d5</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>0.997 (GEMSDOE27)</td>
+</tr>
+<tr>
+<td>GEMSDOE36</td>
+<td><code>gemsdoe36-anderson-geothermal-pinn-38854-…-zeros.tif</code></td>
+<td>0.2750</td>
+<td>USER-REPORTED</td>
+<td><code>e1589102</code> ✔</td>
+<td><strong>NO</strong></td>
+<td>0.976 (GEMSDOE27)</td>
+</tr>
+</tbody>
+</table>
+<p>Download the exact files from each repo's <code>registry/focus_sites.json</code> <code>download_url</code>. The "reported" scores are <strong>not</strong> organizer receipts; no team name on the public leaderboard is linked to these repositories.</p>
+<hr />
+<h2 id="3-candidate-files-in-this-repo-estimate-and-verdict">3. Candidate files in this repo — estimate and verdict</h2>
+<table>
+<thead>
+<tr>
+<th>File (repo path)</th>
+<th>Downloadable</th>
+<th>Format gate</th>
+<th>Unique vs nine sites</th>
+<th>Holdout evidence (label, count, CI)</th>
+<th>Estimate</th>
+<th>Submit?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>triphysics — zero-outside <code>submissions/…-b7c1e4a2-zerooutside.tif</code></td>
+<td>Yes, not recommended (lowest proxy)</td>
+<td><strong>PASS</strong></td>
+<td><strong>PASS</strong> (23.5 %, ρ 0.21)</td>
+<td>HOLDOUT-DTI 0.0121 [0.0101, 0.0140], 60,988 withheld, <code>gems57-pooled-hide-v2</code>, fixed raster (this session)</td>
+<td><strong>None supported</strong> (see §5)</td>
+<td><strong>NO — hold</strong></td>
+</tr>
+<tr>
+<td>triphysics — NaN-outside <code>submissions/…-b7c1e4a2.tif</code></td>
+<td>Do not use</td>
+<td><strong>FAIL</strong> (7.1 M NaN)</td>
+<td>PASS (same dots)</td>
+<td>Same dots as above</td>
+<td>None</td>
+<td><strong>NO</strong></td>
+</tr>
+<tr>
+<td><strong>distal2 — download pick</strong> <code>docs/downloads/distal_exp2/…-062373ad-zeros.tif</code></td>
+<td><strong>Yes (pick)</strong></td>
+<td>PASS</td>
+<td>PASS (63.7 %, ρ 0.42)</td>
+<td>HOLDOUT-DTI <strong>0.1771 [0.1570, 0.1983]</strong>, 60,988, <code>gems57-pooled-hide-v2</code>, <strong>per-fold regenerated</strong> (its run card). Fixed-raster on the same folds: 0.0289 [0.0247, 0.0332]</td>
+<td>PROJECTION <strong>0.1497</strong> (fleet regression, LOSO R² 0.21, n = 93)</td>
+<td><strong>NO — policy hold</strong> (its run card: <code>ok_to_submit: False</code>; literal stop unresolved)</td>
+</tr>
+<tr>
+<td>wbg4 EDTI <code>artifacts/wbg4/…-9f5dbc9b-zeros.tif</code></td>
+<td>Yes</td>
+<td>PASS</td>
+<td>PASS (46.8 %, ρ 0.39)</td>
+<td>HOLDOUT-DTI 0.1171 (mean of 2 folds), evaluator <code>wbg4-edti-v1</code> — <strong>not comparable</strong></td>
+<td>None</td>
+<td><strong>NO</strong></td>
+</tr>
+<tr>
+<td>wbg4 SSCC <code>docs/downloads/wbg4-sscc-blind-66383dots-…tif</code></td>
+<td>Yes</td>
+<td>PASS</td>
+<td>PASS (64.1 %, ρ 0.25)</td>
+<td>HOLDOUT-DTI 0.1086 [0.0783, 0.1301], 60,980, <code>wbg4-hide-recover-v1</code> — <strong>not comparable</strong></td>
+<td>None</td>
+<td><strong>NO</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Reading the table: the <strong>distal2</strong> row is the best proxy number the repo holds. Its holdout is a regenerated, per-fold protocol; the 0.2778 reference was only evaluated fixed-raster, so the two rows are <strong>not on the same protocol</strong> and cannot be ranked against each other.</p>
+<p>Reference points (label <strong>USER-REPORTED</strong>, not receipts): GEMSDOE32 <strong>0.2778</strong>. Local proxy on the <strong>same</strong> shared evaluator and folds, fixed raster: <strong>0.0067 [0.0060, 0.0074]</strong>; uniform random dots at the same budget: <strong>0.0686 / 0.0692 / 0.0694</strong> (seeds 1–3). MEASURED, <code>evidence/fixed_raster_holdout_20261028.json</code>.</p>
+<hr />
+<h2 id="4-why-did-gemsdoe32-02778-score-highest-phd-level-reading-labelled">4. Why did GEMSDOE32 (0.2778) score highest? (PhD-level reading, labelled)</h2>
+<ol>
+<li><strong>It is the pruned member of one family.</strong> Its 37,654 dots are the 44,090-dot "D2.8" mask with the dots within 2 px of the mapped catalogue removed (repo lineage note, <code>evidence/retired_20261027/why-b2-scored-2778.md.txt</code>). I re-measured that it has <strong>0.000</strong> of its dots within 2 px of the catalogue. Every other site's dots are ≥ 86.7 % inside another site's halo, so the nine scores differ by <strong>budget and pruning, not by method.</strong></li>
+<li><strong>Mapped-fault pixels are not penalised.</strong> DrivenData staff state that known USGS/INGENIOUS fault pixels are masked from evaluation and do not count toward penalty terms (<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">community reply, "Sep 16"</a>). Dots on mapped faults therefore earn nothing and cost nothing; removing them frees budget for unmapped-fault candidates. <strong>This is an inference from the official rule, not a confirmed cause.</strong></li>
+<li><strong>Metric arithmetic.</strong> DTI = TP_w / (TP_w + 0.2·FP_w + 0.8·FN_w), with a 300 m triangular kernel (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official metric</a>). The repo's inversion (USER-REPORTED scores, F = mass assumed) implies about 12,783 scored truth pixels and about 41 % weighted coverage at 0.2778 (<a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/data_public/gemsdoe_metric_model.json"><code>data_public/gemsdoe_metric_model.json</code></a>). <strong>PROJECTION-level; the assumption F = mass is conservative and unverified.</strong></li>
+</ol>
+<h2 id="5-can-we-beat-02778-honest-answer-not-demonstrated">5. Can we beat 0.2778? — honest answer: <strong>not demonstrated.</strong></h2>
+<ul>
+<li>The only local tool that uses the official formula and the shared fold code ranks GEMSDOE32 <strong>below random dots</strong> (0.0067 vs 0.069). That is because it scores withheld <strong>mapped</strong> faults, which the official metric masks, so <strong>the local holdout measures the wrong target for this family.</strong> HOLDOUT-DTI, MEASURED.</li>
+<li>The triphysics "0.15–0.28" band has no derivation in the repo. Its run card's only target is a footprint-reach envelope of 0.15–0.17 (fraction of the footprint within 3 px), which is not truth coverage. <strong>Projection withdrawn.</strong></li>
+<li>The distal2 fleet regression (0.1497) has leave-one-site-out R² = 0.21 on 93 USER-REPORTED points. That is too weak to support a leaderboard claim.</li>
+<li><strong>Context:</strong> the public leaderboard, fetched today, shows <strong>#1 = 0.4544</strong>, #2 = 0.3916, #22 = 0.3261, and #48 = 0.2895 — so 0.2778 sits below the top 48 (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a>). Beating 0.2778 would not reach the top; the gap to #1 is 0.18.</li>
+</ul>
+<h2 id="6-official-rules-checked-verified-2026-10-28">6. Official rules checked (verified 2026-10-28)</h2>
+<ul>
+<li><strong>Metric &amp; format:</strong> distance-weighted Tversky, α = 0.2, β = 0.8, R = 300 m; submission is float32, single band, EPSG:32611, 100 m; values in [0, 1]; "data outside the bounds is null or nan." (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a>)</li>
+<li><strong>Scored truth:</strong> the public and private test sets are new faults not in the USGS database; the final round re-scores on an expanded label set. (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a>)</li>
+<li><strong>Known faults masked:</strong> see §4 item 2 (<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">community reply</a>).</li>
+<li><strong>NaN vs zero outside:</strong> the official text permits NaN outside bounds. This repo's stricter all-finite gate rejects NaN, so the zero-outside file is the safer download. Both pass the official range rule.</li>
+</ul>
+<h2 id="7-irregularities-flagged-for-review">7. Irregularities flagged for review</h2>
+<ol>
+<li><strong>README "START HERE" said the NaN triphysics file "PASS … ready to upload."</strong> The repo's own validator fails it (<code>ok: false</code>). Corrected in README. <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/evidence/run_card_nine_site_20261028.json"><code>evidence/run_card_nine_site_20261028.json</code></a></li>
+<li><strong><code>config/release_register.json</code> still lists both triphysics files as <code>PROMOTE</code>.</strong> This conflicts with the validator result and with the holdout evidence. Left unchanged, because AGENTS.md forbids silently regenerating approvals; a reviewer should decide.</li>
+<li><strong>The triphysics run card says the 0.2778 file scores 0.0048.</strong> I measured 0.0067 on the same evaluator. Same conclusion, different number. Its own holdout (0.0086, 60,940 truth) uses an <strong>unrecorded</strong> evaluator, so it is not reproducible from the repo.</li>
+<li><strong>The 0.15–0.28 triphysics band</strong> has no derivation (§5).</li>
+<li><strong>distal2's uniqueness.</strong> The register records max halo 0.6792 against the focus sites; I measured <strong>0.6372</strong> against the nine pinned files. The register's extra "69 sparse peers" can't be re-checked here.</li>
+<li><strong>EDTI "pooled" DTI is a mean of two folds</strong> (<code>mean_dti</code> in <code>evidence/wbg4_exp2.json</code>). Its withheld count (15,816 per the register) also differs from the 60,988 in the file.</li>
+<li><strong>Leaderboard top score conflicts across the brief:</strong> the request says 0.4413 (current) and also 0.3195 ("highest right now"). The leaderboard fetched today shows <strong>0.4544</strong> at #1 and 0.3195 at #26. The brief's figures are not reconciled.</li>
+<li><strong>Test failure:</strong> <code>tests/test_release_safety.py::test_retired_entry_points_stop_before_writing[run_wbg2_dphs.py]</code>. The retired script still crashes with <code>ModuleNotFoundError</code> instead of printing <code>STOP</code>. I did <strong>not</strong> convert it to a stub, because <code>scripts/run_wbg2_distal.py</code>, <code>scripts/run_wbg2_distal_exp2.py</code> and <code>scripts/package_distal_arms.py</code> import it, and the distal2 pipeline depends on that import.</li>
+<li><strong>The PARALLEL-RUN PROTOCOL's "single method paragraph" is a placeholder</strong> (<code>[0.90]</code>, <code>[70%]</code> unfilled, no method text). Per AGENTS.md this is a lane blocker, so no new candidate was generated under a self-assigned method.</li>
+<li><strong>README's "prompt" section is a paraphrase</strong>, not the verbatim brief.</li>
+<li><strong>Scores that are not receipts:</strong> all nine site scores are USER-REPORTED. None is ORGANIZER-CONFIRMED.</li>
+</ol>
+<h2 id="8-what-was-done-this-session-2-experiments-within-the-3-experiment-budget">8. What was done this session (2 experiments, within the 3-experiment budget)</h2>
+<ul>
+<li><strong>Experiment 1:</strong> re-fetched the nine pinned focus rasters (sha256 verified), re-ran the uniqueness and rank checks, and built the full 9×9 overlap matrix. Script: <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/scripts/recheck_nine_site_20261028.py"><code>scripts/recheck_nine_site_20261028.py</code></a>.</li>
+<li><strong>Experiment 2:</strong> scored fixed rasters on the shared folds and evaluator, with random-dot controls. Script: <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/scripts/fixed_raster_holdout_20261028.py"><code>scripts/fixed_raster_holdout_20261028.py</code></a>.</li>
+<li><strong>No new TIFF was generated.</strong> The file to download was chosen by measured proxy among existing files, not by any leaderboard evidence. The reason is §5 plus the missing lane. No weekly slot was spent. No submission was made.</li>
+</ul>
+<h2 id="9-limitations-and-what-would-unblock-a-real-attempt">9. Limitations and what would unblock a real attempt</h2>
+<ul>
+<li>No organizer receipt exists for any file. The leaderboard is public-test only; the private round is hidden.</li>
+<li>The local holdout targets mapped faults, which the official metric masks. A valid proxy needs a truth set built from unmapped faults, and no such source is in this repo.</li>
+<li>Obtain a <strong>lane assignment</strong> (one method paragraph) so a single method can be tested under the protocol.</li>
+<li>Get the <strong>literal all-registry duplicate rule</strong> resolved by the requester. Under the repo's own 13GEMSDOE lattice finding, no non-empty file can pass it.</li>
+<li>Repair the <code>run_wbg2_dphs.py</code> import dependency before retiring it.</li>
+</ul>
+<h2 id="10-sources-manual-review">10. Sources (manual review)</h2>
+<ul>
+<li>Problem &amp; metric (fetched 2026-10-28): https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/</li>
+<li>Leaderboard (fetched 2026-10-28): https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/</li>
+<li>Known-fault masking (staff reply, dated "Sep 16" on the forum): https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516</li>
+<li>Data page (login required, not reachable from sandbox): https://www.drivendata.org/competitions/306/competition-doe-gems/data/</li>
+<li>Official reference solution: https://github.com/drivendataorg/gems-prize-reference-solution</li>
+<li>Grid template (owner mirror, SHA-256 pinned): https://github.com/buffedlizard55-lab/57GEMSDOE/tree/822a0ce5546c7b6749cdd82eb145b6b3e616603d/data/official</li>
+<li>Nine focus rasters (pins): <code>registry/focus_sites.json</code>, each repo at its pinned commit.</li>
+</ul>
+<p>Evidence files: <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/evidence/nine_site_recheck_20261028.json"><code>evidence/nine_site_recheck_20261028.json</code></a> · <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/evidence/fixed_raster_holdout_20261028.json"><code>evidence/fixed_raster_holdout_20261028.json</code></a> · <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/evidence/run_card_nine_site_20261028.json"><code>evidence/run_card_nine_site_20261028.json</code></a></p>
+</body></html>

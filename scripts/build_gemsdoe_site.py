@@ -27,6 +27,8 @@ DOCS = ROOT / "docs"
 OUT = DOCS / "lane"   # the positive submission lane (validated by wbggems.release)
 GITHUB = "https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main"
 CANDIDATE = "gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2"
+# Verdict 2026-10-28: nothing is cleared. The download-for-record file is distal2 (zeros).
+D2_NAME = "wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif"
 
 CSS = """
 :root{--ink:#12181f;--muted:#5b6673;--line:#dfe5ec;--bg:#f7f9fc;--card:#fff;
@@ -149,22 +151,22 @@ def build_summary() -> str:
     body = f"""
 <h1>Executive summary</h1>
 <p class="lead">Nine focus sites, one dot field: every one of the nine highest-scoring
-submissions is a near-duplicate of another. The file at the top of this page is new,
-measured, and ready to submit.</p>
+submissions is a near-duplicate of another. No file on this page is cleared for submission;
+the distal2 file is downloadable for the record only.</p>
 
 <div class="card hero">
-  <h2>Submit this file</h2>
-  <p><code>submissions/{CANDIDATE}.tif</code></p>
-  <p class="muted">SHA-256 <code>{card['sha256']}</code> · {card['bytes']:,} bytes ·
-  {card['dots']:,} unit cells</p>
-  <a class="btn" href="../downloads/gemsdoe/{CANDIDATE}.tif" download>⬇ Download .tif</a>
-  <a class="btn alt" href="../downloads/gemsdoe/{CANDIDATE}.zip" download>Download .zip</a>
-  <a class="btn alt" href="../downloads/gemsdoe/{CANDIDATE}-zerooutside.zip" download>All-finite .zip (validator workaround)</a>
-  <p><span class="pill ok">Format: PASS</span>
-     <span class="pill ok">Unique: PASS</span>
-     <span class="pill warn">Estimate 0.15 – 0.28</span></p>
-  <p class="muted">Estimated score is an empirical-band estimate, not a receipt and not a
-  promise to beat 0.2778. See “Can we beat 0.2778?” below.</p>
+  <h2>Do not submit. Download for the record only.</h2>
+  <p>Verdict: <strong>HOLD</strong>. No file is cleared for a leaderboard slot. The triphysics
+  NaN-outside file fails the repo's [0,1] gate and must not be used.</p>
+  <p><code>docs/downloads/distal_exp2/{D2_NAME}</code></p>
+  <p class="muted">SHA-256 <code>0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10</code> · 134,932 bytes ·
+  HOLDOUT-DTI 0.1771 [0.1570, 0.1983] (evaluator gems57-pooled-hide-v2, 60,988 withheld). This is a
+  proxy, not an organizer score.</p>
+  <a class="btn alt" href="../downloads/distal_exp2/{D2_NAME}" download>Download distal2 .tif (record only)</a>
+  <p><span class="pill ok">Format: PASS (zeros)</span>
+     <span class="pill warn">Uniqueness: 63.7% within 3 px (limit 70%)</span>
+     <span class="pill warn">Not cleared</span></p>
+  <p class="muted">See the <a href="../nine-site-executive-summary.html">executive summary</a> for the full table.</p>
 </div>
 
 <h2>The nine focus sites, measured</h2>
@@ -259,7 +261,8 @@ def build_howto() -> str:
 or a ZIP containing exactly one such GeoTIFF.</p>
 
 <div class="card hero">
-  <a class="btn" href="../downloads/gemsdoe/{CANDIDATE}.tif" download>⬇ Download the .tif</a>
+  <p><strong>HOLD: do not upload any file from this page yet.</strong> No file is cleared for a leaderboard slot. The steps below describe the format only.</p>
+  <a class="btn alt" href="../downloads/distal_exp2/{D2_NAME}" download>Download distal2 .tif (record only)</a>
   <a class="btn alt" href="../downloads/gemsdoe/{CANDIDATE}.zip" download>Download the .zip</a>
   <p class="muted">SHA-256 <code>{card['sha256']}</code></p>
 </div>
@@ -369,11 +372,9 @@ DOI 10.5066/P93LGLVQ, ScienceBase item 657e1d85d34e23d3533209f7</td></tr>
 def build_banner() -> str:
     """Prominent, one-click entry point injected at the top of the project dashboard."""
     card = json.loads((ROOT / "submissions" / f"{CANDIDATE}.json").read_text())
-    return f'''<div class="lane-banner" data-lane="gemsdoe-20261028" style="margin:0 0 18px;padding:16px 18px;border:2px solid #0f7b3f;border-radius:12px;background:#e8f6ee;font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
-<div style="font-weight:700;font-size:15px;letter-spacing:.02em;color:#0f7b3f">SUBMISSION LANE OPENED 2026-10-28 · verdict: <span data-verdict="submit">SAFE TO SUBMIT</span></div>
-<p style="margin:6px 0 10px;color:#12181f">One unique file passed the format, grid and nine-site novelty checks:
-<code>{CANDIDATE}.tif</code> ({card['dots']:,} cells, {card['bytes']:,} bytes). It is <em>not</em> one of the historical
-near-duplicates below, and it carries no organizer receipt.</p>
+    return f'''<div class="lane-banner" data-lane="gemsdoe-20261028" style="margin:0 0 18px;padding:16px 18px;border:2px solid #b45309;border-radius:12px;background:#fff7ed;font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+<div style="font-weight:700;font-size:15px;letter-spacing:.02em;color:#b45309">SUBMISSION LANE 2026-10-28 · verdict: <span data-verdict="hold">HOLD — DO NOT SUBMIT</span></div>
+<p style="margin:6px 0 10px;color:#12181f">Format and nine-site novelty checks pass for four files, <strong>but none is cleared as a leaderboard pick</strong>. Best measured proxy, download for the record only: <a href="downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif">distal2 TIF</a> (134,932 bytes, SHA-256 0ebf5e2d…). The proxy is not validated against the leaderboard, and no organizer receipt exists. <a href="nine-site-executive-summary.html">Executive summary</a>.</p>
 <p style="margin:0"><a class="btn" style="display:inline-block;background:#0f7b3f;color:#fff;text-decoration:none;font-weight:650;padding:10px 18px;border-radius:9px" href="lane/index.html">Open the submission lane &rarr;</a>
 &nbsp; <a href="lane/index.html#why" style="color:#12181f">Why this file, and what it will score &rarr;</a>
 &nbsp; <a href="release.html" style="color:#5b6673">Legacy audit of the rejected files &rarr;</a></p>
