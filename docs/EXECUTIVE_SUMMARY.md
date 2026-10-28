@@ -1,3 +1,22 @@
+# ⭐ New submission — WBG2-DISTAL2 fresh-seed candidate (2026-10-28)
+
+**New, byte-unique file generated today — OK TO DOWNLOAD; promotion to a slot is a separate selector decision.**
+
+| Field | Value |
+|---|---|
+| File to download | [`wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif`](downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif) (also [`.zip`](downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.zip)) |
+| HOLDOUT-DTI | **0.1771**, 95% CI [0.1570, 0.1983], 60,988 withheld positives (evaluator `gems57-pooled-hide-v2`) |
+| Estimated leaderboard score | **≈ 0.15** `EMPIRICAL-ESTIMATE` (RidgeCV LOSO R² +0.21, Spearman +0.65 over 93 USER-REPORTED fleet scores — **not a score**) |
+| Unique? | **Yes** vs all nine focus sites (max 3-px overlap 0.679 ≤ 0.70) and all 69 sparse-peer fleet rasters (max 0.686 ≤ 0.70); literal all-registry: **FAIL** (continuous prior `17GEMSDOE` = 100%; accessible registry incomplete) |
+| Format | PASS (0 NaN, whole array [0,1], EPSG:32611, 3730×3292, transform match, 0 outside footprint) |
+| Submit? | **Conditional** — selector step required; 0 weekly slots spent |
+| SHA-256 | `0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10` |
+| Submission note | `WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1771` |
+
+Evidence: [uniqueness audit JSON](data/wbg2_distal2_uniqueness_audit.json) · [score estimate JSON](data/wbg2_distal2_score_estimate.json) · [experiment results JSON](data/wbg2_distal2_results.json) · [run card JSON](data/RUN_CARD_DISTAL2.json) · [subpage](distal_exp2/index.html)
+
+---
+
 # GEMS Prize — Executive Summary (2026-10-28)
 
 ## 1. What to submit
