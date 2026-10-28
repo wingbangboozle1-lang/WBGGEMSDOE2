@@ -80,7 +80,7 @@ def test_candidate_score_curve_matches_the_published_estimate_band():
     curve = m["by_coverage"]
     assert 0.09 < curve["0.150"] < 0.12
     assert 0.26 < curve["0.409"] < 0.29
-    summary = (ROOT / "docs" / "EXECUTIVE_SUMMARY.md").read_text()
+    summary = (ROOT / "research" / "gemsdoe_executive_summary.md").read_text()
     assert "212,133" in summary and "12,783" in summary
     assert "0.15 – 0.28" in summary
 

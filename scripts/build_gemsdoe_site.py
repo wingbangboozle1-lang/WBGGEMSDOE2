@@ -498,8 +498,11 @@ def main():
     (OUT / "sources.html").write_text(build_sources())
     body = md(ROOT / "research" / "gemsdoe_findings.md")
     (OUT / "findings.html").write_text(page("GEMS — Measured findings", body, here="../"))
-    (DOCS / "EXECUTIVE_SUMMARY.md").write_text(
-        (DOCS / "EXECUTIVE_SUMMARY.md").read_text())  # source of truth, unchanged
+    # The canonical summary lives outside docs/ because the legacy negative builder
+    # rewrites docs/EXECUTIVE_SUMMARY.md on every CI run; re-assert the current text.
+    summary = (ROOT / "research" / "gemsdoe_executive_summary.md").read_text()
+    (DOCS / "EXECUTIVE_SUMMARY.md").write_text(summary)
+    (OUT / "EXECUTIVE_SUMMARY.md").write_text(summary)
     build_lane_manifest()
     inject_banner()
     print("wrote:", *(str(p.relative_to(ROOT)) for p in
