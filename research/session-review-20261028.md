@@ -1,64 +1,100 @@
-# Repository and decision review — 2026-10-28
+# Repository review and next-step decision — 2026-10-28
 
 ## Executive decision
 
-**NEGATIVE — no TIFF in this checkout is approved to download and submit.** This review generated no new raster, did not place dots, ran no model experiment, and used zero weekly submission slots. The request's “single method paragraph” does not identify a unique assigned method lane in the project inputs. The project agreement therefore requires stopping before implementation rather than choosing one of the ranked proposals. The literal duplicate rule also has an unresolved dense-prior interpretation, and the registry inventory is not exhaustive.
+**Negative / DO NOT SUBMIT.** This review found no candidate eligible for a competition slot. It did not generate a TIFF, place dots, run a model experiment or canary, submit to DrivenData, or consume a weekly slot. The working agreement does not assign a method lane; current readiness is blocked; the existing TIFFs remain research-only. Do not download one of them for scoring.
 
-The most important user-supplied claim, `GEMSDOE32` B2 at `0.2778`, remains a **USER-REPORTED** historical score with no organizer receipt tied to the exact TIFF bytes. It is the largest supplied claim among the nine named sites, not a verified explanation of performance and not a defensible forecast for a new submission. The current official public leaderboard page was re-opened during this review and displayed `0.4544` for xiaofanhu; this is an **ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION**, not a receipt for a project TIFF or a local validation score. See the [official leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) and the dated [2026-10-28 record](../evidence/public_leaderboard_observation_20261028.json).
-
-## Nine-site executive comparison
-
-These are the highest named historical entries supplied in the request and pinned in [`docs/data/portfolio.json`](../docs/data/portfolio.json). Scores are **USER-REPORTED**, without organizer receipts. The score-estimate column is deliberately `Unavailable`: there is no validated cross-family calibration. “Near” means the directional fraction of this file's positive pixels within inclusive Euclidean 3 px of the stated peer's positives; the original pre-placement surfaces were not replayed. It is not an exhaustive current-registry uniqueness certificate.
-
-| Site | Historical file (research reference only) | Reported score | New leaderboard estimate | Measured peer overlap | Decision |
-|---|---|---:|---|---|---|
-| GEMSDOE32 | [`gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif`](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/45ee207185f72804497f7a7a392ad2c43e168f02/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif?raw=1) | 0.2778 | Unavailable | 100.00% near GEMSDOE24 | DO NOT RESUBMIT |
-| GEMSDOE36 | [`gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif`](https://github.com/buffedlizard55-lab/GEMSDOE36/blob/b90418f852615aa0974cf9a53b92fa569ed133fc/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif?raw=1) | 0.2750 | Unavailable | 97.58% near GEMSDOE27 | DO NOT RESUBMIT |
-| GEMSDOE28 | [`gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE28/blob/9c1be21e8f1be707347f737e42abf62ea669c819/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif?raw=1) | 0.2710 | Unavailable | 100.00% near GEMSDOE24 | DO NOT RESUBMIT |
-| GEMSDOE31 | [`gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE31/blob/78f9bf3ae82e5c78ca348aa37c0660c339e72f0e/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif?raw=1) | 0.2708 | Unavailable | 100.00% near GEMSDOE24 | DO NOT RESUBMIT |
-| GEMSDOE33 | [`GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif`](https://github.com/buffedlizard55-lab/GEMSDOE33/blob/a24fb7c5031ee08b12440af4593057858fecef8e/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif?raw=1) | 0.2632 | Unavailable | 99.71% near GEMSDOE27 | DO NOT RESUBMIT |
-| GEMSDOE25 | [`gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE25/blob/606eef45e669a6da061ec24be4a3d870addadb0f/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif?raw=1) | 0.2600 | Unavailable | 100.00% near GEMSDOE24; decoded mask identical to GEMSDOE30 | DO NOT RESUBMIT |
-| GEMSDOE30 | [`gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif`](https://github.com/buffedlizard55-lab/GEMSDOE30/blob/35ce8911e2c3287eed973eacd12c252e8cb3f34c/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif?raw=1) | 0.2600 | Unavailable | 100.00% near GEMSDOE24; decoded mask identical to GEMSDOE25 | DO NOT RESUBMIT |
-| GEMSDOE24 | [`gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE24/blob/5cfab74597cd1d0a271e4640b4cc34511e56ca59/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif?raw=1) | 0.2477 | Unavailable | 100.00% near GEMSDOE25 | DO NOT RESUBMIT |
-| GEMSDOE27 | [`gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif`](https://github.com/buffedlizard55-lab/GEMSDOE27/blob/f1e32af867d9cf0081af20866c8241ec8678a432/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif?raw=1) | 0.2449 | Unavailable | 98.02% near GEMSDOE24 | DO NOT RESUBMIT |
-
-Every measured focus-to-focus overlap above exceeds the prompt's strict 70% duplicate stop. GEMSDOE25 and GEMSDOE30 also decode to the same binary prediction mask on the mirrored footprint. These are byte-audit measurements on pinned historical references; the source surfaces were not audited and newer site revisions may contain other artifacts. For the all-repository decision, see the [canonical run card](../evidence/run_card.json) and [release audit](../evidence/release_audit.json).
-
-## Why B2's reported value could be higher — and what is not known
-
-The repository's pinned owner-mirror measurements show that GEMSDOE25 and GEMSDOE30 share the same 44,090-dot mask. GEMSDOE32 B2 is that mask after removing 6,436 dots within 2 px of the mirrored mapped-fault catalogue, leaving 37,654 dots; GEMSDOE36 adds 1,200 dots to B2. The `0.2778` score is not authenticated to these bytes, so these transformations cannot be asserted as the cause of that score.
-
-A plausible mechanism is a precision–recall trade-off: if removed dots were redundant false-positive mass while retained dots stayed close to held-out truth, the official metric could improve. But deletion can also remove useful truth coverage. The official metric uses a triangular 300 m kernel and weights false negatives more heavily (`alpha=0.2`, `beta=0.8`); it does not make a particular pruning rule optimal. The hidden truth and per-pixel contributions are unavailable. Consequently, no projected score for a new submission is responsible, and no evidence establishes that a new method can exceed 0.2778 or the public leaderboard's 0.4544.
-
-Official links: [problem, metric and submission format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/), [rules](https://www.drivendata.org/competitions/306/competition-doe-gems/rules/), [USGS GeoDAWN data release](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and), [USGS Argenta Rise multi-physics study](https://pubs.usgs.gov/publication/70271418), and [USGS blind geothermal play-fairway synthesis](https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and).
-
-The official problem statement is specifically about mapping **geological faults indicative of geothermal resources**, not detecting vents directly. It describes expert-identified faults outside the current public fault database as the test labels and a later expert panel expanding labels for final scoring. A fault-probability raster is not proof of a geothermal vent, flow, permeability, or commercial resource.
-
-## Ranked 4-hypothesis preregistration (proposal only)
-
-The complete research record is [`research/hypotheses.md`](hypotheses.md). The four ideas below use names and band numbers in the pinned owner-mirrored feature manifest; the mirror is **not authenticated organizer data**, and units/semantics remain imperfectly verified. These rankings are qualitative judgments, not DTI estimates or measured wins. No proposal has been selected as the method lane.
-
-| Rank | Proposal / layers | Target signature and rationale for an unmapped fault | Difference from reviewed repo methods | Named non-fault mimic | Relative HOLDOUT-DTI potential / implementation cost |
-|---:|---|---|---|---|---|
-| 1 | **N1: signed edge-pair cancellation** — reduced-to-pole magnetics (band 2), isostatic gravity anomaly (band 13), depth-to-conductive-base proxy (band 15) | Across signed cross-normal profiles at several scales, distinguish a persistent step from opposed lobes that return to background; a buried density boundary could continue beneath cover without a mapped surface trace. | Existing MSPTCD transforms use unsigned gradient/orientation relationships; this tests signed profile shape and finite-width-body cancellation. | Unfaulted intrusive or lithologic contact; a narrow fault-bounded block can also be wrongly vetoed. | Highest qualitative potential; medium cost. Untested. |
-| 2 | **N2: radiometric-quiet magnetic transfer under cover** — total radiometric count (band 6), reduced-to-pole magnetics (band 2), depth proxy (band 15), surface conductivity (band 17), detrended-elevation slope (band 19) | Test persistent magnetic edges with weak co-located surface radiometric edges specifically in low-relief/deeper-cover strata; this targets faults concealed from surface mapping rather than reinforcing mapped scarps. | Earlier repo work used terrain-normalized radiometric edges positively and explored conductivity/depth flank relationships; N2 tests cross-modal edge disappearance as a matched negative/control regime. | Moist soil, homogeneous sediment, flight-height variability, weak radiometric response, or a buried non-faulted contact. | Moderate qualitative potential; medium cost. Untested. |
-| 3 | **N3: catalogue-free edge-orientation transport** — isostatic gravity anomaly (band 13), reduced-to-pole magnetics (band 2), detrended elevation (band 12) | Construct a label-free ridge graph, transport axial normals along edges, and test cross-field-supported junction branches; independent subsurface structure could reveal concealed continuations not seeded from known fault endpoints. | Repo code includes local Hessian ridges, cross-field alignment and greedy coverage, but not an along-edge orientation-transport graph with junction consistency. | Dike/intrusive intersections, drainage junctions, lithologic boundaries, or acquisition seams. | Exploratory qualitative potential; high cost. Untested. |
-| 4 | **N4: survey-axis notch-stability control** — magnetic anomaly (band 1), reduced-to-pole magnetics (band 2), total counts (band 6), official USGS survey-geometry description | Apply local, conservative spectral perturbations near documented flight/tie-line directions and compare rotated controls; instability can identify acquisition-direction artefacts, potentially reducing false positives and preserving evidence for real structures. | No local survey-axis perturbation stability feature is reported; this is primarily an artefact-control experiment, not a geological predictor. | True faults parallel to flight lines may be suppressed; gridding, directional lithology, dikes or leveling may mimic stability. | Lowest direct discovery potential; low–medium cost. Untested. |
-
-No external binary is required by these four proposed tests beyond the cached feature stack, although N4 relies on the official USGS release's published acquisition geometry. **That does not make the proposals runnable today:** the current fresh checkout is missing the ignored feature/cache and shared-template files; the full registry, organizer authentication and explicit method-lane assignment are also absent. The site-reported owner-mirror manifest and official-source records are linked above for manual review.
-
-## Validation, irregularities, and next gate
-
-- **Fresh checkout diagnostic:** `python scripts/check_readiness.py --check` returned exit code 2, `BLOCKED / DO NOT SUBMIT`; the current snapshot lists the organizer-reference mirror files, 19 raw-band `.npy` caches and pinned shared-template source as missing. This is a local checkout fact, not a competition-account diagnosis. See [`evidence/checkout_readiness.json`](../evidence/checkout_readiness.json) and [the generated readiness page](../docs/readiness.html).
-- **Tests:** after installing `requirements.txt`, `PYTHONPATH=src .venv/bin/python -m pytest -q` returned **350 passed, 12 skipped**. This verifies the included test suite, not access to organizer data or scientific validity.
-- **Previous artifact audit:** the checked-in [release audit](../evidence/release_audit.json) is explicitly incomplete (13 pinned witness rasters, not every current registry raster). Its existing TIFFs have decisive duplicate witnesses under the literal positive-support rule; one continuous full-footprint probability prior creates a policy ambiguity, which was not waived. The pre-placement surfaces for the nine historical focus submissions were not replayed.
-- **Shared-tool defect:** the documented pinned shared writer/evaluator format-mask issue remains unresolved upstream. A local supplemental validator cannot be used as a private replacement for the shared template.
-- **Upload error:** the exact file rejected with “Predicted values must be in range [0, 1]” was not provided. We cannot identify which pixel or metadata caused the error. Do not silently clip or rewrite any historical file.
-
-The next authorized sequence is: (1) record one explicit lane, (2) settle continuous-prior support policy and refresh the complete immutable registry, (3) restore/authenticate inputs and pinned shared cache, (4) resolve the shared validator defect upstream, (5) preregister a proposal and run each feature-alone canary, then perform the same-fold buffered whole-segment hide-and-recover comparison against a corrected incumbent, and (6) only after passing every gate hand the result to a separate quota-aware selector. No experiment or weekly slot is authorized by this review.
+The user's 0.3195 public-high statement is stale relative to the official public leaderboard page retrieved during this review: its first row displayed **0.4544** for xiaofanhu. This is an **ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION**, not a receipt for any local or GEMSDOE TIFF, not HOLDOUT-DTI, and not evidence a new model can attain that value. The official page can change; its current visible state was checked on 2026-10-28. A separately saved 2026-10-28 capture records the same 0.4544 value ([JSON evidence](../evidence/public_leaderboard_observation_20261028.json)).
 
 ## Three review passes
 
-1. **Scope and evidence pass:** read the project charter, current run card, release audit, source recheck, nine-site portfolio and current research hypotheses; re-opened the official DrivenData problem/metric/submission specification and public leaderboard through the page renderer.
-2. **Challenge pass:** checked score evidence classes, B2 lineage, pairwise uniqueness definition, stale/local cache assumptions, and the mismatch between desired execution and missing lane/data/registry/template prerequisites. Kept claimed score, local measurements, and official public observation separate.
-3. **Final verification pass:** test suite completed at 350 passed / 12 skipped; readiness intentionally remains exit-2 blocked; no submission TIFF or estimated score was created. Static/readiness tests and the main project tests were run; complete data-dependent scientific holdout validation remains blocked.
+### Pass 1 — identify the project state and answer the B2 question carefully
+
+- Read `AGENTS.md`, this repository's session-start files, the canonical run card, release audit, current checkout-readiness output, and the previous repo review. The README already preserves the full original project brief and puts the negative release decision first.
+- Confirmed that the site has the requested nine per-site summaries and a nine-site decision table. They label historical values as claims, estimated new leaderboard score as unavailable, and every historical raster as **DO NOT SUBMIT**.
+- The strongest historical claim among the nine is GEMSDOE32 B2 at **0.2778 USER-REPORTED**. It is not an organizer-confirmed score tied to the audited file's SHA-256. The official competition description says the target is newly identified geological faults and acknowledges the public fault inventory can be incomplete or inaccurate; it does not provide hidden fault labels to this review.
+- The repository's byte-level lineage analysis reports: the GEMSDOE25 and GEMSDOE30 decoded prediction masks match inside the footprint; GEMSDOE32 B2 is the D2.8 mask after removing 6,436 points within two pixels of the mirrored known-fault catalogue (44,090 to 37,654); GEMSDOE36 adds 1,200 points to B2. These are mask comparisons, not evidence of why an organizer score changed.
+- A plausible mechanism is that sparse pruning reduces false-positive mass while retaining useful distance-weighted coverage. The official metric uses a 300 m triangular distance kernel and alpha=0.2 for false positives, beta=0.8 for false negatives. But pruning may also remove points earning true-positive distance credit. Without the exact receipt and hidden labels, the causal explanation is **not established**; neither this review nor the historical score proves B2 beats a newly validated method.
+
+### Pass 2 — compare the nine named sites, audit novelty and assess blockers
+
+Values below are the highest values recorded for the named historical artifacts in the pinned repository ledger, matching the user's supplied list. Every value is **USER-REPORTED / NOT ORGANIZER-CONFIRMED**. The downloaded/hashed TIFF is identified in each linked site page and in `config/registry_inputs.json`; no score receipt was available. Newer lower reported attempts mentioned in the prompt do not replace these maxima.
+
+| Site | Historical best file (research reference only) | Reported value | New score estimate | Unique under the requested registry rule? | Decision |
+|---|---|---:|---|---|---|
+| GEMSDOE24 | `gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif` | 0.2477 USER-REPORTED | Unavailable | No; focus-site proximity audit fails | DO NOT SUBMIT |
+| GEMSDOE25 | `gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif` | 0.2600 USER-REPORTED | Unavailable | No; its decoded mask matches GEMSDOE30 inside the footprint | DO NOT SUBMIT |
+| GEMSDOE27 | `gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif` | 0.2449 USER-REPORTED | Unavailable | No; focus-site proximity audit fails | DO NOT SUBMIT |
+| GEMSDOE28 | `gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif` | 0.2710 USER-REPORTED | Unavailable | No; focus-site proximity audit fails | DO NOT SUBMIT |
+| GEMSDOE30 | `gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif` | 0.2600 USER-REPORTED | Unavailable | No; its decoded mask matches GEMSDOE25 inside the footprint | DO NOT SUBMIT |
+| GEMSDOE31 | `gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif` | 0.2708 USER-REPORTED | Unavailable | No; focus-site proximity audit fails | DO NOT SUBMIT |
+| GEMSDOE32 | `gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif` | 0.2778 USER-REPORTED | Unavailable | No; focus-site proximity audit fails | DO NOT SUBMIT |
+| GEMSDOE33 | `GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif` | 0.2632 USER-REPORTED | Unavailable | No; focus-site proximity audit fails | DO NOT SUBMIT |
+| GEMSDOE36 | `gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif` | 0.2750 USER-REPORTED | Unavailable | No; it adds 1,200 points to B2 and the focus-site proximity audit fails | DO NOT SUBMIT |
+
+The nine values and paths are reproducible from `config/registry_inputs.json`, [`evidence/registry_audit.json`](../evidence/registry_audit.json), and the corresponding [`docs/sites/`](../docs/sites/) pages. The recorded directed overlap matrix (`data_public/focus_overlap_matrix.json`) counts the fraction of a row-site's points within three pixels of a column site's points; the best-match row overlap ranges from 97.40% to 100% across these nine. Thus every focus file fails the stated >70% final-dot stop against at least one other focus raster. The pinned registry is deliberately incomplete. A duplicate witness is sufficient to fail the stated stop; a pass against the incomplete witness set would not establish uniqueness. Exact mask equality between GEMSDOE25 and GEMSDOE30 is an additional direct non-uniqueness finding. The user's 0.2778 claim is the maximum among these nine, not an authenticated organizer result. The original pre-placement surfaces were not available in this review, so their rank correlations were not tested.
+
+The current checkout-readiness gate returned **BLOCKED / DO NOT SUBMIT** (exit 2). The checkout diagnostic recorded missing local official inputs, derived feature bank/shared-cache artifacts, unresolved lane assignment, incomplete fresh registry, unresolved continuous-prior support interpretation, and no corrected matched holdout/canary. This is a checkout snapshot; ignored caches may differ elsewhere. Do not confuse the previously restored owner mirror or previous-session reports with inputs present and authenticated in this checkout.
+
+### Pass 3 — verify candidate planning, official sources, build and test behavior
+
+The already documented N1–N4 shortlist satisfies the requested *planning* format. It is proposal-only and supplies no numeric score forecasts:
+
+| Rank (qualitative) | Existing proposal | Layers and physical signature | Why it could expose a missing fault / distinction in this repo | Named non-fault mimic | Cost |
+|---:|---|---|---|---|---|
+| 1 | N1, signed edge-pair cancellation | RTP magnetics, isostatic gravity anomaly, conductive-base depth; test signed multi-scale cross-normal gravity profiles for persistent steps versus balanced opposite-polarity lobes | A buried density boundary could persist under cover; proposed signed-profile/body-veto differs from the repo's unsigned shifted-gradient amplitudes | Unfaulted intrusive or lithologic contact; fault-bounded blocks can also be wrongly vetoed | Medium |
+| 2 | N2, radiometric-quiet magnetic-edge transfer | Total radiometric counts, RTP, conductive-base depth, conductivity, detrended slope; test magnetic edge persistence where a co-located surface radiometric edge fades under cover | Tests a cover-conditioned cross-modal transfer rather than adding another positive edge layer; distinguishes from existing flank/depth-shift work | Moist soil, uniform sediment, aircraft clearance, weak radiometry, buried non-faulted contact | Medium |
+| 3 | N3, catalogue-free edge-orientation transport | Isostatic gravity anomaly, RTP, detrended elevation; track axial edge normals and cross-field supported junctions | Tests blind structure junctions without catalogue endpoints; new graph transport differs from per-pixel ridges and local orientation products already in the repo | Dikes, intrusions, drainage intersections, acquisition seams | High |
+| 4 | N4, survey-axis notch-stability veto | Magnetic anomaly/RTP, total counts, plus published GeoDAWN line context; test local edge stability under orientation-selective spectral perturbation and rotated controls | Artefact sensitivity test, not another positive prior; current local implementation has no such spectral stability check | Real faults aligned with a survey axis, dike swarms, anisotropic lithology, gridding artefacts | Low–medium |
+
+Full N1–N4 layer provenance, operations, disconfirming alternatives, prior-art comparison and caveats are in [`research/hypotheses.md`](hypotheses.md). These proposals are not globally novel claims or results. No new candidate was selected or run because no lane is assigned and the checkout gate is closed. Creating a ranked shortlist does not override the explicit lane, cache, evaluator, canary, registry or selector gates.
+
+Official pages retrieved during this review support the following limited facts:
+
+- [DrivenData problem description](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) describes the target as geological faults, says the public known-fault set may be incomplete or inaccurate, lists the supplied geophysical feature families, and defines the distance-weighted Tversky index. It states alpha=0.2, beta=0.8, a 300 m triangular kernel, and GeoTIFF submission at EPSG:32611 / 100 m / one float32 band / values in [0,1] with null/NaN outside bounds.
+- [Official public leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/) displayed 0.4544 at rank 1 when retrieved in this review. Public leaderboard state is not a per-file receipt and can change.
+- [Organizer reference implementation](https://github.com/drivendataorg/gems-prize-reference-solution) is a repository starting point; reading its landing page does not validate a local candidate or establish its competition score.
+- The USGS GeoDAWN page request returned a gateway timeout in this review. We make no claim of having freshly verified its page content or downloaded new external data here. Its link remains a lead in the existing source register, not verification performed now.
+
+### Verification commands and results
+
+- Installed repository requirements into ignored `.venv/` because the base interpreter lacked NumPy, Rasterio, SciPy, scikit-learn and pytest.
+- Re-ran CI's evidence/site build sequence: `build_hypotheses.py`, `build_run_card.py`, `build_site.py`, `build_site_data.py`, `build_msptcd_site.py`, `build_release.py`, `build_release_review.py`; each exited successfully. `check_readiness.py` correctly returned the negative blocked diagnostic.
+- Ran `.venv/bin/python -m pytest -q`: **350 passed, 12 skipped, 32 warnings**. Warnings were Rasterio affine-operation pending deprecations. Skipped tests are data-dependent; no competition data or feature bank was reconstructed or inferred from those skips.
+- `git diff --check` passed. This review performed zero candidate experiments, used zero weekly slots and produced zero new TIFFs.
+
+## Outcome and work order
+
+The project now has a same-session repository review, an up-to-date official leaderboard observation, an auditable nine-site score table and an existing ranked geological proposal set. It still has **no approved or defensibly score-estimated TIFF**. The answer to “can we beat 0.2778?” is: *not established by this evidence*. It would be irresponsible to promise or project a score.
+
+Before the next model experiment: (1) explicitly assign one method paragraph/lane; (2) settle how continuous probability rasters are counted by the literal dot-overlap rule; (3) refresh/hash-pin the full current registry, including concurrent repositories; (4) restore and authenticate organizer inputs and the exact shared derived feature cache; (5) resolve the shared writer/format defect upstream; (6) use the pinned shared buffered whole-segment evaluator and run every feature-alone canary; (7) compare a preregistered proposal against a matched corrected incumbent with pooled HOLDOUT-DTI, evaluator version, withheld-positive count and spatial 95% CI; (8) only after all gates pass, use the separate selector to check actual quota and produce a named file with a note under 140 characters. Do not upload or spend a slot before that selector step.
+
+## Current run card
+
+```json
+{
+  "hypothesis": "No newly assigned or tested candidate; the repository's N1-N4 remain proposal-only.",
+  "mechanism": "No prediction surface or dots generated in this review. B2 pruning is a plausible but unproven false-positive-mass/recall tradeoff.",
+  "named_non_fault_mimic": "Unfaulted lithologic or intrusive contact can produce paired geophysical edges.",
+  "holdout_dti": null,
+  "holdout_evaluator_version": null,
+  "withheld_positive_count": null,
+  "holdout_ci95": null,
+  "holdout_status": "NOT RUN; lane unassigned and checkout readiness blocked.",
+  "preplacement_rank_correlation_vs_registry": null,
+  "final_dot_overlap_vs_registry": null,
+  "raster_sha256": null,
+  "validator": {
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "status": "No TIFF generated."
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "ok_to_download_and_submit": false,
+  "experiments_run": 0,
+  "weekly_slots_used": 0
+}
+```
