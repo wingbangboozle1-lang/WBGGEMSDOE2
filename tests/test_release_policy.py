@@ -260,13 +260,22 @@ def test_no_stale_positive_heading_or_unqualified_owned_download_anywhere():
             if tag=='a' and self.anchor is not None: self.anchors.append(self.anchor); self.anchor=None
             if tag in ('h1','h2','h3') and self.heading is not None: self.headings.append(self.heading[0]); self.heading=None
 
+    # A file may be offered as a real submission only if it is in the hash-pinned
+    # candidate register (config/release_register.json); every other owned
+    # download must still be labelled research / DO NOT SUBMIT.
+    from wbggems.release import approved_candidates
+    registered = {Path(p).name for p in approved_candidates(ROOT)}
     for path in [*ROOT.joinpath('docs').rglob('*.html'), *ROOT.joinpath('site').rglob('*.html')]:
         parsed=Copy(); parsed.feed(path.read_text())
-        assert not {'download and submit','submit this file','cleared for submission'} & {h.strip().lower() for h in parsed.headings}, path
+        links_registered = any(Path(urlsplit(h).path).name in registered for h, _ in parsed.anchors)
+        if not links_registered:
+            assert not {'download and submit','submit this file','cleared for submission'} & {h.strip().lower() for h in parsed.headings}, path
         assert 'cleared exactly one' not in ' '.join(parsed.words).lower(), path
         for href, label in parsed.anchors:
             parts=urlsplit(href)
             if parts.scheme or Path(parts.path).suffix.lower() not in ('.tif','.tiff','.zip'): continue
+            if Path(parts.path).name in registered:
+                continue
             assert 'research' in label.lower() and 'DO NOT SUBMIT' in label, (path,href,label)
 
 

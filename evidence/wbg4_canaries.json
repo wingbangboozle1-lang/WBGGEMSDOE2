@@ -1,0 +1,198 @@
+{
+  "evidence_class": "HOLDOUT-CANARY (single feature, fold index 3, hidden positives vs buffered background)",
+  "n_positives": 9438,
+  "n_background": 120000,
+  "rule": "AUC > 0.90 is treated as leakage and the feature is excluded",
+  "features": {
+    "D_vis_log": {
+      "auc": 0.8569,
+      "leakage_flag": false
+    },
+    "L_step_max_grad2": {
+      "auc": 0.7368,
+      "leakage_flag": false
+    },
+    "L_ex_max_s8": {
+      "auc": 0.7121,
+      "leakage_flag": false
+    },
+    "L_lapneg_max_s8": {
+      "auc": 0.7121,
+      "leakage_flag": false
+    },
+    "L_lapneg_max": {
+      "auc": 0.7099,
+      "leakage_flag": false
+    },
+    "L_ex_max": {
+      "auc": 0.7081,
+      "leakage_flag": false
+    },
+    "L_upface_max": {
+      "auc": 0.7069,
+      "leakage_flag": false
+    },
+    "L_lappos_max": {
+      "auc": 0.7042,
+      "leakage_flag": false
+    },
+    "L_cross_max": {
+      "auc": 0.7033,
+      "leakage_flag": false
+    },
+    "L_ex_max_grad2": {
+      "auc": 0.7026,
+      "leakage_flag": false
+    },
+    "L_ex_mean": {
+      "auc": 0.6993,
+      "leakage_flag": false
+    },
+    "L_downface_max": {
+      "auc": 0.6958,
+      "leakage_flag": false
+    },
+    "L_step_max": {
+      "auc": 0.688,
+      "leakage_flag": false
+    },
+    "L_downface_max_s8": {
+      "auc": 0.6876,
+      "leakage_flag": false
+    },
+    "L_step_max_s8": {
+      "auc": 0.6859,
+      "leakage_flag": false
+    },
+    "L_relief": {
+      "auc": 0.6674,
+      "leakage_flag": false
+    },
+    "L_coh100_s8": {
+      "auc": 0.6586,
+      "leakage_flag": false
+    },
+    "ST_coh": {
+      "auc": 0.6388,
+      "leakage_flag": false
+    },
+    "L_strike": {
+      "auc": 0.6267,
+      "leakage_flag": false
+    },
+    "L_valid": {
+      "auc": 0.593,
+      "leakage_flag": false
+    },
+    "L_coh100": {
+      "auc": 0.5801,
+      "leakage_flag": false
+    },
+    "TMI_s8": {
+      "auc": 0.5774,
+      "leakage_flag": false
+    },
+    "X_TMI_up150": {
+      "auc": 0.5669,
+      "leakage_flag": false
+    },
+    "TC_grad2": {
+      "auc": 0.5416,
+      "leakage_flag": false
+    },
+    "R_K": {
+      "auc": 0.5336,
+      "leakage_flag": false
+    },
+    "TC_s8": {
+      "auc": 0.529,
+      "leakage_flag": false
+    },
+    "R_Th": {
+      "auc": 0.5262,
+      "leakage_flag": false
+    },
+    "R_TC": {
+      "auc": 0.517,
+      "leakage_flag": false
+    },
+    "SGMC_mask": {
+      "auc": 0.5169,
+      "leakage_flag": false
+    },
+    "L_polarity": {
+      "auc": 0.5102,
+      "leakage_flag": false
+    },
+    "hotspring_dens": {
+      "auc": 0.5052,
+      "leakage_flag": false
+    },
+    "X_ThK": {
+      "auc": 0.5024,
+      "leakage_flag": false
+    },
+    "ST_sin2": {
+      "auc": 0.5004,
+      "leakage_flag": false
+    },
+    "geotherm_dens": {
+      "auc": 0.4726,
+      "leakage_flag": false
+    },
+    "TMI_grad2": {
+      "auc": 0.4723,
+      "leakage_flag": false
+    },
+    "R_U": {
+      "auc": 0.4634,
+      "leakage_flag": false
+    },
+    "cont_ns": {
+      "auc": 0.4603,
+      "leakage_flag": false
+    },
+    "ST_cos2": {
+      "auc": 0.4587,
+      "leakage_flag": false
+    },
+    "cont_ne": {
+      "auc": 0.4558,
+      "leakage_flag": false
+    },
+    "X_UTh": {
+      "auc": 0.4494,
+      "leakage_flag": false
+    },
+    "X_UK": {
+      "auc": 0.4211,
+      "leakage_flag": false
+    },
+    "spring_dens": {
+      "auc": 0.4206,
+      "leakage_flag": false
+    },
+    "cont_max": {
+      "auc": 0.3439,
+      "leakage_flag": false
+    },
+    "D_sgmc_log": {
+      "auc": 0.3391,
+      "leakage_flag": false
+    },
+    "dens_vis_5": {
+      "auc": 0.3219,
+      "leakage_flag": false
+    },
+    "dens_vis_15": {
+      "auc": 0.1585,
+      "leakage_flag": false
+    },
+    "dens_vis_40": {
+      "auc": 0.1307,
+      "leakage_flag": false
+    }
+  },
+  "max_auc": 0.8569,
+  "n_flagged": 0
+}
