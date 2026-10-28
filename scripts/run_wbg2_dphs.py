@@ -20,6 +20,15 @@ Protocol compliance:
 """
 from __future__ import annotations
 
+import sys
+
+# Keep the retired launcher self-test independent of optional shared-template imports.
+# The pinned ``gems57`` package is intentionally absent from a blocked checkout; a
+# self-test must still fail closed with the policy message rather than a traceback.
+if "--selftest" in sys.argv:
+    print("STOP: retired launcher; restore and verify the pinned shared template before use.", file=sys.stderr)
+    raise SystemExit(2)
+
 import datetime as dt
 import gc
 import hashlib

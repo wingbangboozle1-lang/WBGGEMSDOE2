@@ -1,32 +1,20 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28) — checkout is blocked; DO NOT SUBMIT
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**Current checked-out decision: no TIFF is cleared for competition upload.** The read-only readiness gate (`python scripts/check_readiness.py --check`) exits **2** and writes `ok_to_submit: false`. This checkout has no `data/` directory, organizer-input mirrors, cached model feature bands or derived feature bank. The shared holdout and writer files in `scripts/` are retired fail-closed wrappers; the required pinned shared implementation is not present. The registry audit is explicitly incomplete. Do not use older README sections, historical run cards, or files linked below as authorization to submit.
 
-| | |
+| Request | Verified status in this checkout |
 |---|---|
-| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
-| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
-| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
-| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
-| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
-| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+| Unique submission TIFF | **Not generated in this review. DO NOT SUBMIT any repository TIFF.** Existing files are historical research artifacts; format validity alone is not approval. |
+| Estimate / leaderboard score | **No current estimate.** GEMSDOE32's 0.2778 is a user/site-reported historical claim, not an organizer receipt. The cited public 0.3195/high score is also not verified here. |
+| Nine-site summary | Historical evidence and caveats are documented under `docs/sites/` and `docs/EXECUTIVE_SUMMARY.md`; site-reported scores are not treated as receipts. Exact bytes and full current-registry uniqueness are not established for every new site update. |
+| Hypotheses | See [`config/wbg4_hypotheses.json`](config/wbg4_hypotheses.json), ranked within the recorded WBG4-SSCC lane. The leading candidate was tested in an earlier checkout, but that work is not reproducible from current files and does not override current readiness. |
+| Slots | 0 slots used by this review. Promotion/selection is a separate step. |
 
-**Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
-· **Why 0.2778 was the highest score and what it would take to beat it:**
-[docs/lane/findings.html](docs/lane/findings.html) (source: [research/gemsdoe_findings.md](research/gemsdoe_findings.md))
-· **Site:** [docs/lane/index.html](docs/lane/index.html) ·
-[executive summary](docs/EXECUTIVE_SUMMARY.md)
+**Why B2 may have scored well:** the archived analysis hypothesizes that it pruned a catalogue-adjacent collar from a strong structural dot prior. Its evidence is derived from mirrored site files, not organizer receipts or hidden truth; it does not establish causality. No evidence in this checkout demonstrates a submission that beats 0.2778.
 
-The short version of the analysis: the organizer metric is
-`DTI = T / (T + 0.2 F + 0.8 (N - T))`. Inverting it on the one pair of fleet files that
-is provably the same detector at two masses (44,090 dots -> 0.2600 and its 37,654-dot
-pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's coverage at
-**40.9 %**. At 38,000 cells a submission scores 0.105 at 15 % coverage, 0.173 at 25 %,
-0.206 at 30 % and 0.277 at 41 %; the leaderboard's 0.4544 needs >= 50 % coverage at
-40,000 cells. The nine focus sites all sit in the same 0.40-0.48 coverage band and are
-97-100 % duplicates of each other, so resubmitting any of them cannot change a score.
+**Official submit-format reference:** <https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/>. A local format validator cannot prove organizer acceptance or scientific uniqueness. Current automatic status and blockers: [`docs/readiness.html`](docs/readiness.html), [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json). Detailed review: [`research/repo-review-20261028.md`](research/repo-review-20261028.md). This session’s checkout-level review, ranked hypotheses and JSON run card are in [`research/session-review-20261028-checkout.md`](research/session-review-20261028-checkout.md).
+
+The remainder of this README is a preserved project brief and historical record. Some older sections contain superseded approvals or estimates; the fail-closed checkout diagnostic above governs the present checkout.
 
 ### The prompt this repository is answering (verbatim, preserved as the brief)
 
