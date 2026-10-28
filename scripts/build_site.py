@@ -34,7 +34,9 @@ if (conduit.get('ok_to_submit') is not False or conduit.get('sha256') != run.get
     raise ValueError('Conduit-file evidence changed; review the static narrative before publishing.')
 sys.path.insert(0, str(ROOT / 'src'))
 from wbggems.release import load_negative_release
+from build_release import dphs_evidence
 release_audit = load_negative_release(ROOT)
+_, dphs_row, dphs_holdout = dphs_evidence(ROOT, release_audit)
 
 for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json', 'dense_prior_certificate.json', 'parallel_review.json', 'parallel_candidate_audit.json', 'conduit_review.json', 'shared_registry_index_summary.json', 'parallel_range_diagnostics_20261027.json', 'public_leaderboard_observation_20261027.json', 'feature_semantics_review.json', 'organizer_reference_review.json', 'public_leaderboard_recheck_20261027.json', 'request_claim_conflicts.json'):
     source = ROOT / 'evidence' / name
@@ -99,8 +101,9 @@ def msptcd_banner(suffix: str = '') -> str:
 
 
 def dphs_banner(suffix: str = '') -> str:
-    """WBG2-DPHS 60-feature multi-sensor + 300 m CELF submodular campaign & 467-raster audit (negative / DO NOT SUBMIT)."""
-    return f'''<section class="card guide-card" aria-labelledby="dphs-heading{suffix}"><h2 id="dphs-heading{suffix}">WBG2-DPHS &amp; 467-raster fleet audit: 0.1735 HOLDOUT-DTI — DO NOT SUBMIT</h2><p><strong>HOLDOUT-DTI 0.173477</strong>, 95% CI [0.152451, 0.194361], 60,988 withheld positives, evaluator <code>gems57-pooled-hide-v2</code> (61/61 feature canaries &le; 0.6180; all 15 byte/<code>[0,1]</code> zero-NaN checks PASS). Stopped fail-closed (<strong>DO NOT SUBMIT</strong>, 0 slots used) at the &gt;70% 3-px duplicate gate (95.87% vs <code>GEMSDOE12</code> scarp across 467 audited fleet rasters; 99.94% vs <code>13GEMSDOE</code> lattice; fleet empirical model LOSO R&sup2; = +0.4303 across 95 scored rasters).</p><p><a href="dphs/index.html">Open DPHS &amp; 9-site decision matrix →</a> · <a href="dphs/how-to-submit.html">Contest submission steps →</a> · <a href="dphs/executive-summary.html">Why 0.2778 won &amp; how to beat it →</a></p></section>'''
+    """Historic source result plus independently measured rejection, not a forecast."""
+    h = dphs_holdout
+    return f'''<section class="card guide-card" aria-labelledby="dphs-heading{suffix}"><h2 id="dphs-heading{suffix}">Historical DPHS: research only — DO NOT SUBMIT</h2><p><strong>SOURCE-REPORTED HOLDOUT-DTI {h['dti']:.6f}</strong>, 95% CI [{h['ci95'][0]:.6f}, {h['ci95'][1]:.6f}], {h['withheld_positive_pixels']:,} withheld positives, evaluator <code>{e(h['evaluator_version'])}</code>; the campaign and its canaries were not independently replayed. A passed canary does not prove no leakage. On independent readback, {dphs_row['lattice_overlap_3px']*100:.3f}% of this file's positive footprint pixels lie within three pixels of the registered binary lattice, exceeding the literal 70% stop. The old 467-raster audit and regression are not current uniqueness clearance or a leaderboard forecast.</p><p><a href="dphs/index.html">Open the DPHS research record &amp; nine-site table →</a> · <a href="dphs/how-to-submit.html">Future submission checklist →</a> · <a href="dphs/executive-summary.html">B2 evidence and uncertainty →</a></p></section>'''
 
 
 def decision(suffix: str = ''):

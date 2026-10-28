@@ -21,7 +21,10 @@ from audit_release_triage import audit_one
 RETIRED = (
     'make_candidate.py', 'final_audit.py', 'uniqueness_audit.py',
     'generate_h3_pack.py', 'write_h3_submission.py', 'run_wbg2_msptcd.py',
-    'run_wbg2_cbs.py', 'run_campaign_20261027.py',
+    'run_wbg2_cbs.py', 'run_campaign_20261027.py', 'run_wbg2_dphs.py',
+    'audit_dphs_and_fleet.py', 'candidate_estimate.py', 'score_model.py',
+    'focus_table.py', 'verify_prompt_ledger.py', 'h3_analysis.py',
+    'mass_balance.py', 'fleet_stats.py', 'fetch_external_layers.py',
 )
 
 
@@ -76,7 +79,7 @@ def copy_site_sources(destination: Path) -> None:
 def test_site_regeneration_cannot_restore_a_historical_approval(tmp_path):
     copy_site_sources(tmp_path)
     for name in ('build_hypotheses.py', 'build_run_card.py', 'build_site.py',
-                 'build_site_data.py', 'build_msptcd_site.py'):
+                 'build_site_data.py', 'build_msptcd_site.py', 'build_release.py'):
         result = subprocess.run([sys.executable, str(tmp_path / 'scripts' / name)],
                                 cwd=tmp_path, capture_output=True, text=True, timeout=25)
         assert result.returncode == 0, (name, result.stdout, result.stderr)
@@ -86,7 +89,12 @@ def test_site_regeneration_cannot_restore_a_historical_approval(tmp_path):
         'submit exactly one file:',
         'cleared exactly one submission',
         'zero-leakage holdout',
+        'zero-leakage verification',
         'forensic proof',
+        'exact path past',
+        'why 0.2778 won',
+        'portal-safe',
+        'proven empirically',
     )
     pages = [tmp_path / 'index.html', *list((tmp_path / 'docs').rglob('*.html')),
              *list((tmp_path / 'site').rglob('*.html'))]
@@ -101,10 +109,81 @@ def test_site_regeneration_cannot_restore_a_historical_approval(tmp_path):
                 'docs/msptcd/index.html'):
         text = (tmp_path / rel).read_text(encoding='utf-8')
         assert 'No file is approved for submission.' in text and 'DO NOT SUBMIT' in text, rel
+    for rel in ('docs/dphs/index.html', 'docs/dphs/executive-summary.html',
+                'docs/dphs/how-to-submit.html'):
+        text = (tmp_path / rel).read_text(encoding='utf-8').lower()
+        assert 'do not submit' in text and 'not independently' in text, rel
+        assert 'gems57-pooled-hide-v2' in text and '60,988' in text, rel
+        assert '99.836%' in text and 'portal acceptance' in text, rel
+    executive = (tmp_path / 'docs/dphs/executive-summary.html').read_text().lower()
+    assert 'exact known-fault pixels' in executive and 'not a two-pixel collar' in executive
+    assert 'causal effect is unmeasured' in executive
+    howto = (tmp_path / 'docs/dphs/how-to-submit.html').read_text().lower()
+    assert 'rejected bytes' in howto and 'null/nan outside' in howto
     card = json.loads((tmp_path / 'docs/data/RUN_CARD_FINAL.json').read_text())
     assert card['verdict'] == 'negative' and card['ok_to_submit'] is False
     assert card['raster_sha256'] is None and card['submission_name'] is None
     assert card['submission_note'] is None and len(card['note']) <= 140
+
+
+@pytest.mark.parametrize('change', ('score', 'ci', 'count', 'hash'))
+@pytest.mark.parametrize('builder', ('build_site.py', 'build_release.py'))
+def test_dphs_builders_refuse_changed_unmatched_historical_receipt(tmp_path, change, builder):
+    copy_site_sources(tmp_path)
+    path = tmp_path / 'evidence/wbg2_dphs_results.json'
+    result = json.loads(path.read_text())
+    score = result['pooled_holdout_summary']['scores']['exp3_dphs_submodular']
+    if change == 'score':
+        score['dti'] = 0.99
+    elif change == 'ci':
+        score['ci95'][0] = 0.99
+    elif change == 'count':
+        score['withheld_positive_pixels'] += 1
+    else:
+        result['emitted_candidate']['tif_sha256'] = '0' * 64
+    path.write_text(json.dumps(result))
+    run = subprocess.run([sys.executable, str(tmp_path / 'scripts' / builder)],
+                         cwd=tmp_path, capture_output=True, text=True, timeout=25)
+    assert run.returncode != 0 and 'Historical DPHS' in run.stderr
+
+
+@pytest.mark.parametrize('phrase', ('exact path past 0.4544', 'why 0.2778 won',
+                                    'portal-safe', 'proven empirically',
+                                    'zero-leakage verification'))
+def test_negative_publisher_rejects_unsupported_legacy_copy(tmp_path, phrase):
+    copy_site_sources(tmp_path)
+    (tmp_path / 'docs/legacy-unsafe.html').write_text(f'<html><body><h1>{phrase}</h1></body></html>')
+    run = subprocess.run([sys.executable, str(tmp_path / 'scripts/build_release.py')],
+                         cwd=tmp_path, capture_output=True, text=True, timeout=25)
+    assert run.returncode != 0 and 'Unsupported legacy campaign claim' in run.stderr
+
+
+@pytest.mark.parametrize('receipt', ('registry_independent_review_20261027.json',
+                                     'release_independent_review_20261027.json'))
+def test_run_card_rejects_changed_independent_measurements(tmp_path, receipt):
+    copy_site_sources(tmp_path)
+    path = tmp_path / 'evidence' / receipt
+    record = json.loads(path.read_text())
+    if receipt.startswith('registry'):
+        record['lattice_capacity']['covered_cells'] -= 1
+    else:
+        record['artifacts'][0]['lattice_overlap_3px'] = 0.5
+    path.write_text(json.dumps(record))
+    run = subprocess.run([sys.executable, str(tmp_path / 'scripts/build_run_card.py')],
+                         cwd=tmp_path, capture_output=True, text=True, timeout=25)
+    assert run.returncode != 0 and 'Independent recheck changed a measurement' in run.stderr
+
+
+def test_builder_replaces_legacy_dphs_html_before_publication(tmp_path):
+    copy_site_sources(tmp_path)
+    for name in ('index.html', 'executive-summary.html', 'how-to-submit.html'):
+        (tmp_path / 'docs/dphs' / name).write_text('<h1>Exact path past 0.4544</h1>')
+    run = subprocess.run([sys.executable, str(tmp_path / 'scripts/build_release.py')],
+                         cwd=tmp_path, capture_output=True, text=True, timeout=25)
+    assert run.returncode == 0, run.stderr
+    for name in ('index.html', 'executive-summary.html', 'how-to-submit.html'):
+        text = (tmp_path / 'docs/dphs' / name).read_text().lower()
+        assert 'exact path past' not in text and 'do not submit' in text
 
 
 def test_builder_refuses_if_historical_artifact_no_longer_matches_triage(tmp_path):

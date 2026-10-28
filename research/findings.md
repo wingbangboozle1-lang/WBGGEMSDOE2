@@ -1,9 +1,10 @@
 # Current reconciliation — 27 October 2026
 
-All seven saved TIFF identities fail literal registry duplication. Former DZ-16/H3 approvals are revoked;
+All eight saved TIFF identities fail literal registry duplication. Former DZ-16/H3 approvals are revoked;
 no new candidate, experiment, forecast or slot. [Current byte audit](../evidence/release_audit.json),
+[independent recheck](../evidence/release_independent_review_20261027.json),
 [one canonical run card](../evidence/run_card.json), [official-source recheck](source-verification-release-20261027.md),
-[revised N1–N4 proposals](hypotheses.md), and [three-pass review record](release-reconciliation-review.md).
+[revised N1–N4 proposals](hypotheses.md), and [latest three-pass review](three-pass-independent-review-20261027.md).
 
 The full 19-band owner mirror is restored, not organizer-authenticated. Historical MSPTCD v1
 HOLDOUT-DTI is source-reported, not reproduced. Corrected v2 orientation features and content-bound

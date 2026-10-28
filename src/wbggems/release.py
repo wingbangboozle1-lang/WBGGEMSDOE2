@@ -235,6 +235,14 @@ def validate_negative_html(root: Path) -> None:
         words = ' '.join(' '.join(parsed.words).lower().split())
         if 'cleared exactly one' in words or re.search(r'\b[1-9]\d* files? cleared\b', words):
             raise ValueError(f'Stale positive submission badge: {page}')
+        # These verbatim legacy claims materially overstated score causality,
+        # masking, leakage, or portal acceptance. This is deliberately a narrow
+        # negative-only copy guard, not a general scientific truth classifier.
+        unsafe = ('exact path past', 'why 0.2778 won', 'portal-safe',
+                  'proven empirically', 'zero-leakage holdout',
+                  'zero-leakage verification')
+        if any(phrase in words for phrase in unsafe):
+            raise ValueError(f'Unsupported legacy campaign claim in public HTML: {page}')
         for href, label in parsed.anchors:
             parts = urlsplit(href)
             if Path(parts.path).suffix.lower() not in ('.tif', '.tiff', '.zip'):

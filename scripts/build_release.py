@@ -112,6 +112,121 @@ The original continuous surface was not replayed. Changing compression, metadata
 <p><a href="release.html#nine-sites">All nine executive summaries →</a> · <a href="data/portfolio.json">Pinned-byte portfolio JSON</a> · <a href="research/why-b2-scored-2778.html">B2 lineage explanation</a></p></section>'''
 
 
+def dphs_evidence(root, audit):
+    """Bind the historical source and its negative card to the rejected TIFF."""
+    result = read_json(root / 'evidence/wbg2_dphs_results.json')
+    card = read_json(root / 'evidence/RUN_CARD_DPHS.json')
+    candidate = result['emitted_candidate']
+    rows = [r for r in audit['artifacts'] if r['sha256'] == candidate['tif_sha256']]
+    if (len(rows) != 1 or candidate['tif_path'] not in rows[0]['aliases']
+            or card.get('ok_to_submit') is not False or card.get('verdict') != 'negative'):
+        raise ValueError('Historical DPHS receipt is not bound to the rejected artifact')
+    row = rows[0]
+    score = result['pooled_holdout_summary']['scores']['exp3_dphs_submodular']
+    if (score['evidence_class'] != 'HOLDOUT-DTI'
+            or score['evaluator_version'] != result['evaluator_version']
+            or score['withheld_positive_pixels'] != result['withheld_positives_total']
+            or round(score['dti'], 6) != card['holdout_dti']
+            or [round(x, 6) for x in score['ci95']] != card['ci95']):
+        raise ValueError('Historical DPHS holdout source receipts disagree')
+    return candidate, row, score
+
+
+def public_dphs_card(root, audit):
+    """Publish a corrected summary, leaving the original campaign card archived."""
+    candidate, row, score = dphs_evidence(root, audit)
+    source = read_json(root / 'evidence/RUN_CARD_DPHS.json')
+    return {
+        'schema': 'wbggems.public-dphs-review.v1',
+        'review_status': 'HISTORICAL SOURCE; campaign, canaries and original surface not independently replayed',
+        'run_id': source['run_id'],
+        'hypothesis': source['hypothesis'],
+        'method_lane': 'UNASSIGNED in current review; historical DPHS is not an assignment',
+        'holdout_dti': score['dti'],
+        'ci95': score['ci95'],
+        'incumbent_dti': None,
+        'leakage_canary_max_auc': None,
+        'max_registry_corr': None,
+        'max_registry_dot_overlap': row['maximum_overlap_3px'],
+        'lattice_overlap_3px': row['lattice_overlap_3px'],
+        'format_valid': row['validator']['format_valid_against_reference'],
+        'status': 'negative', 'verdict': 'negative', 'ok_to_submit': False,
+        'submission_name': None, 'submission_note': None, 'leaderboard_score_estimate': None,
+        'evidence_details': {
+            'evidence_class': 'SOURCE-REPORTED HOLDOUT-DTI; NOT REPRODUCED',
+            'evaluator_version': score['evaluator_version'],
+            'withheld_positives': score['withheld_positive_pixels'],
+            'historical_source_canary_auc': source['leakage_canary_max_auc'],
+            'canary_caveat': 'Source-reported, not independently rerun; passing does not prove absence of leakage.',
+            'candidate_file': candidate['tif_path'], 'candidate_sha256': row['sha256'],
+            'registry_scope': '13 pinned witnesses; incomplete current registry. Continuous prior support interpretation remains unresolved.',
+            'original_surface_rank_correlation': None,
+            'local_format_caveat': 'Local checks against an owner mirror are not organizer acceptance.',
+            'historical_source': 'evidence/RUN_CARD_DPHS.json',
+            'independent_byte_audit': 'evidence/release_independent_review_20261027.json',
+            'ok_to_download_for_research': True, 'ok_to_submit': False,
+        },
+    }
+
+
+def dphs_pages(root, audit, portfolio):
+    """Rebuild legacy campaign URLs from scoped evidence, never from old claims.
+
+    The numerical receipt is historic source evidence, not an independent replay
+    or a leaderboard prediction. The lattice overlap comes from the separate
+    byte-bound negative audit, not the campaign's incompatible denominator.
+    """
+    candidate, row, score = dphs_evidence(root, audit)
+    claim = f'''<section class="card guide-card"><h2>Historical record, not a new validation</h2>
+<p>The campaign receipt reports <strong>HOLDOUT-DTI {score['dti']:.4f}</strong>,
+95% CI [{score['ci95'][0]:.4f}, {score['ci95'][1]:.4f}], {score['withheld_positive_pixels']:,} withheld positives,
+evaluator <code>{e(score['evaluator_version'])}</code>. This review did not replay the models, folds or reported canaries;
+the interval is conditional on the historical setup and is not a leaderboard forecast. A canary below 0.90 does not prove no leakage.</p>
+<p>The historical source also describes a 467-raster audit and an empirical regression. Their full inventory, original surface and
+score calibration were not independently reproduced here; neither proves a current all-registry pass or predicts a competition score.
+The release decision instead uses independently reopened, pinned witnesses.</p>
+<p><strong>Saved research artifact:</strong> <code>{e(Path(candidate['tif_path']).name)}</code><br>
+<span class="mono">SHA-256 {e(row['sha256'])}</span><br>
+<a href="{e(research_href(row))}">Research GeoTIFF — DO NOT SUBMIT</a></p>
+<p><strong>MEASURED, not unique:</strong> {row['lattice_overlap_3px']*100:.3f}% of its positive footprint pixels lie within
+three pixels of the registered 13GEMSDOE binary lattice. This exceeds the literal 70% stop. The saved TIFF passes local
+inside/grid and extra all-finite checks against an owner mirror, not an authenticated organizer template; that is not portal acceptance.
+The original pre-placement surface was not replayed.</p>
+<p><a href="release.html#research-downloads">Independent byte-audit table →</a> · <a href="data/run-card-dphs.json">Historical campaign card</a> ·
+<a href="research.html">Unassigned research proposals</a></p></section>'''
+    overview = status_banner()+'''<div class="intro"><div><p class="eyebrow">Historical campaign review</p>
+<h1>DPHS research, not a submission.</h1><p>One negative decision for every project lane.</p></div></div>'''+claim+focus_table(portfolio)
+    analysis = status_banner()+'''<div class="intro"><div><p class="eyebrow">B2 evidence and limitations</p>
+<h1>What can we infer from <code>0.2778</code>?</h1><p>The cause of the reported result is unknown.</p></div></div>
+<section class="card guide-card"><h2>Observation versus hypothesis</h2>
+<p><strong>USER-REPORTED:</strong> GEMSDOE32 B2 is associated with 0.2778 in the request; no organizer receipt binds that value to the pinned TIFF.
+The supplied 0.3195 was an earlier high-score claim. <strong>ORGANIZER-PUBLISHED snapshot:</strong> the public leader was 0.4544 on
+2026-10-27; this is not a receipt for our file and can change.</p>
+<p><strong>MEASURED:</strong> on the owner-mirrored grid, B2 is GEMSDOE25 D2.8 after deleting 6,436 dots within two pixels
+of the mapped catalogue; GEMSDOE36 adds 1,200 and removes none. This establishes lineage, not why any score changed.</p>
+<p>The organizer confirms masking the exact known-fault pixels, not a two-pixel collar. Near-catalogue dots are not automatically false positives:
+a removal can reduce false-positive weight but may also lose hidden-truth coverage. The causal effect is unmeasured without hidden labels and receipts.</p>
+<p>Distal coverage, physical features and alternative allocation are hypotheses to test against the same-fold incumbent, not a proven path to
+beat 0.2778 or 0.4544. <a href="research/why-b2-scored-2778.html">Full metric and lineage analysis →</a></p></section>'''+claim
+    instructions = status_banner()+'''<div class="intro"><div><p class="eyebrow">Future authorized submission only</p>
+<h1>Submission instructions, currently locked.</h1><p>There is no approved file, name or submission note.</p></div></div>
+<section class="card guide-card"><h2>Do not upload a research file</h2><ol>
+<li>First establish an assigned lane, complete registry preflight before placement and after placement, feature canaries,
+a matched buffered holdout and a byte-bound format receipt. A separate selector must authorize the slot.</li>
+<li>For an approved file, verify its SHA-256, unique tracking name and project note of at most 140 characters, then follow the
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">official submission portal</a> and check the actual quota.</li>
+<li>Retain the filename, hash, timestamp and organizer receipt. A local score or file-format pass is not an organizer result.</li></ol>
+<p>The public format specifies a single float32 band on the EPSG:32611 100 m reference grid, values in [0, 1], and null/NaN outside bounds.
+Our extra all-finite test is a diagnostic, not proof that zero outside is accepted. The shared validator's interior mask defect remains unresolved upstream.</p>
+<p>The prior error <code>Predicted values must be in range [0, 1]</code> cannot be attributed to a specific cause without the rejected bytes.
+A filename, a local range pass, or changing outside cells is not proof that the portal will accept an upload.</p>
+<p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">Official format →</a> ·
+<a href="executive-summary.html">Full future checklist →</a> · <a href="release.html">Current negative decision →</a></p></section>'''+claim
+    return {'dphs/index.html': shell('DPHS historical research', overview, base='../'),
+            'dphs/executive-summary.html': shell('B2 historical evidence and uncertainty', analysis, base='../'),
+            'dphs/how-to-submit.html': shell('Future submission instructions', instructions, base='../')}
+
+
 def build(root: Path = ROOT) -> None:
     root = Path(root)
     audit = load_negative_release(root)
@@ -173,6 +288,9 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
 <li>Single-feature leakage canaries are necessary warnings, not proof that leakage is absent.</li></ul>
 <p><a href="research/why-b2-scored-2778.html">Detailed epsilon-aware B2 metric analysis</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official equations</a> · <a href="release.html">Current byte-bound decision</a></p></section>'''
     outputs['methodology.html'] = shell('Method and metric without an unsupported forecast', metric_body)
+    # These legacy campaign URLs used to contain unreplicated claims and unsafe
+    # instructions. Rebuild them on every release instead of relying on hand edits.
+    outputs.update(dphs_pages(root, audit, portfolio))
     # Concurrent CBS research URLs use the same measured negative disposition.
     # The source-reported campaign results are retained, not replayed here.
     cbs_intro = '''<section class="card guide-card"><h1>CBS / D19-DOTTED — research only</h1><p>The historical CBS experiments were negative. Its saved D19 control and the concurrently merged E3-soft88 file both fail the literal all-registry overlap rule on independent readback. Their scientific scores were not replayed here and are not leaderboard receipts. The CBS physics experiments used the earlier MSPTCD feature implementation; those source statistics do not validate corrected v2.</p><p>Historical focus-site scores remain USER-REPORTED. No projection is a score or authorization. <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/29abbf694c2084569080fea6eaea275eb800f800/research/cbs_findings.md">Archived CBS research and caveats</a></p></section>'''
@@ -202,6 +320,12 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
     for folder in (docs / 'data', root / 'site/data'):
         folder.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(root / 'evidence/release_audit.json', folder / 'release_audit.json')
+    # Do not expose an unqualified empirical forecast or historical surface
+    # "PASS" as a current machine-readable decision. The full old JSON remains
+    # preserved outside Pages; regenerate both legacy public URLs fail-closed.
+    public_dphs = public_dphs_card(root, audit)
+    for name in ('run-card-dphs.json', 'dphs_audit_summary.json'):
+        (docs / 'data' / name).write_text(json.dumps(public_dphs, indent=2, allow_nan=False)+'\n')
     status = {k: audit[k] for k in ('schema', 'generated_utc', 'verdict', 'ok_to_submit', 'approved_submission', 'leaderboard_score_estimate', 'scope')}
     for folder in (docs / 'data', root / 'site/data'):
         for name in ('release_status.json', 'release.json'):

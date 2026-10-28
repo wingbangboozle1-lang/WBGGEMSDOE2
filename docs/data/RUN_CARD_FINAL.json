@@ -40,7 +40,7 @@
   },
   "raster_sha256": null,
   "validator": {
-    "status": "No new raster generated in this review. Seven existing identities (including two concurrently merged research artifacts) independently reopened; exact inside/grid and strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance.",
+    "status": "No new raster generated. 8 existing identities in 10 paths and 7 ZIPs were independently reopened; format checks are not organizer acceptance.",
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
     "crs_shape_transform_match": null,
@@ -153,7 +153,7 @@
     "owned_tif_paths": 10,
     "distinct_raster_sha256": 8,
     "pinned_witnesses": 13,
-    "zip_archives": 6,
+    "zip_archives": 7,
     "approved_submission": null,
     "leaderboard_score_estimate": null,
     "all_current_registry_cleared": false,
@@ -1181,5 +1181,18 @@
         "ok_to_submit": false
       }
     ]
+  },
+  "independent_forensic_recheck": {
+    "evidence_class": "BYTE-LEVEL-FORENSIC-MEASUREMENT; not an experiment or submission approval",
+    "registry_receipt": "evidence/registry_independent_review_20261027.json",
+    "registry_receipt_sha256": "774352fd4ac0efa6f4a2098d9540dee880281448d07438591476fda5c68a137a",
+    "registry_recorded_utc": "2026-10-27T23:47:35.666743+00:00",
+    "release_receipt": "evidence/release_independent_review_20261027.json",
+    "release_receipt_sha256": "18b28e9a0f008fd6349522d62f478d87188293f2d7fc1a6b02059693b7df750a",
+    "release_recorded_utc": "2026-10-27T23:47:55.642331+00:00",
+    "measurements_match_prior_receipts_excluding_timestamps": true,
+    "all_current_registry_rasters_checked": false,
+    "new_experiments": 0,
+    "weekly_slots_used": 0
   }
 }

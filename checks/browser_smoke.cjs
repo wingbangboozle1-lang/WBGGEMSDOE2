@@ -14,6 +14,12 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
   const auditResponse = await fetch(`${baseURL}/docs/data/release_audit.json`);
   if (!auditResponse.ok) throw new Error('Release-byte audit unavailable');
   const auditSnapshot = await auditResponse.json();
+  const portfolioResponse = await fetch(`${baseURL}/docs/data/portfolio.json`);
+  if (!portfolioResponse.ok) throw new Error('Nine-site portfolio unavailable');
+  const portfolio = await portfolioResponse.json();
+  if (!Array.isArray(auditSnapshot.artifacts) || !Array.isArray(portfolio.sites)) throw new Error('Invalid audit or portfolio');
+  const artifactCount = auditSnapshot.artifacts.length;
+  const siteCount = portfolio.sites.length;
   const expectedAuditTimestamp = new Date(auditSnapshot.generated_utc).toISOString().slice(0,19).replace('T',' ')+' UTC';
   const age = Date.now() - Date.parse(snapshot.captured_utc || '');
   const shouldStale = !['fresh', 'snapshot'].includes(snapshot.status) || !Number.isFinite(age) || age > 86400000 || age < -300000;
@@ -39,7 +45,7 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
       if (!view.main || !view.h1) bad.push('missing main/h1');
       if (view.scrollWidth > view.clientWidth+1) bad.push(`horizontal page overflow ${view.scrollWidth} > ${view.clientWidth}`);
       if (path === '/docs/' && view.auditTimestamp !== expectedAuditTimestamp) bad.push(`audit timestamp=${view.auditTimestamp}, exact receipt=${expectedAuditTimestamp}`);
-      if (path === '/docs/' && (view.rows !== 9 || (view.stale === 'true') !== shouldStale)) bad.push(`dashboard rows=${view.rows}, stale=${view.stale}`);
+      if (path === '/docs/' && (view.rows !== siteCount || (view.stale === 'true') !== shouldStale)) bad.push(`dashboard rows=${view.rows}, stale=${view.stale}`);
       if (path === '/site/' && view.leader !== expectedLeader) bad.push(`fieldnotes leader=${view.leader}, canonical=${expectedLeader}`);
       if (path === '/site/' && !view.refStatus?.includes('Newer rasters have not been audited')) bad.push(`fieldnotes freshness=${view.refStatus}`);
       if (/^\/docs\/(?:release\.html|submit\/index\.html|submission\/(?:index|executive-summary)\.html)$/.test(path)) {
@@ -51,12 +57,25 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
           skip:document.querySelector('a.skip')?.href,
           current:location.href
         }));
-        if (!release.blocked || release.button !== true || release.rows !== 16) bad.push(`release gate ${JSON.stringify(release)}`);
-        if (release.downloads.length !== 7 || release.downloads.some(t=>!t.includes('DO NOT SUBMIT'))) bad.push(`download labels ${JSON.stringify(release.downloads)}`);
+        if (!release.blocked || release.button !== true || release.rows !== artifactCount + siteCount) bad.push(`release gate ${JSON.stringify(release)}`);
+        if (release.downloads.length !== artifactCount || release.downloads.some(t=>!t.includes('DO NOT SUBMIT'))) bad.push(`download labels ${JSON.stringify(release.downloads)}`);
         if (release.skip !== release.current+'#main') bad.push(`skip link leaves the page: ${release.skip}`);
       }
-      if (path === '/docs/' || path === '/docs/release.html') {
-        const name = `${viewport.name}-${path.includes('release')?'release':'dashboard'}`;
+      if (/^\/docs\/dphs\/(?:index|executive-summary|how-to-submit)\.html$/.test(path)) {
+        const legacy = await page.evaluate(() => ({
+          blocked:!!document.querySelector('[data-release-status="blocked"]'),
+          disabled:document.querySelector('button')?.disabled,
+          body:document.body.innerText.toLowerCase(),
+          links:[...document.querySelectorAll('a')].filter(a=>a.href.endsWith('.tif')).map(a=>a.innerText)
+        }));
+        if (!legacy.blocked || !legacy.disabled || !legacy.body.includes('not independently') || !legacy.body.includes('99.836%')) bad.push('DPHS evidence/status missing');
+        if (['exact path past', 'why 0.2778 won', 'portal-safe', 'proven empirically'].some(s => legacy.body.includes(s))) bad.push('unsupported legacy claim');
+        if (legacy.links.some(t => !t.includes('DO NOT SUBMIT'))) bad.push(`DPHS download labels ${JSON.stringify(legacy.links)}`);
+        if (path.includes('executive-summary') && (!legacy.body.includes('not a two-pixel collar') || !legacy.body.includes('causal effect is unmeasured'))) bad.push('B2 masking/causality caveat missing');
+      }
+      if (path === '/docs/' || path === '/docs/release.html' || path === '/docs/dphs/index.html') {
+        const pageName = path.includes('dphs') ? 'dphs' : path.includes('release') ? 'release' : 'dashboard';
+        const name = `${viewport.name}-${pageName}`;
         await page.screenshot({path:require('node:path').join(root,`.cache/browser/${name}.png`),fullPage:true});
         await page.screenshot({path:require('node:path').join(root,`.cache/browser/${name}-top.png`),fullPage:false});
       }

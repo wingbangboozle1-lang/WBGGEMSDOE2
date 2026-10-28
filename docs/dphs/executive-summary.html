@@ -1,169 +1,43 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Forensic analysis of why GEMSDOE32 (0.2778) won among the 9 focus sites, how 0.2778 and 0.3195/0.4544 can be beaten, verified official sources, and flagged irregularities.">
-  <meta name="theme-color" content="#0b5d4d">
-  <title>Executive Summary: Why 0.2778 Won &amp; How to Beat It · WBG2-DPHS</title>
-  <link rel="stylesheet" href="../styles.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="shell">
-      <a href="index.html" class="brand" aria-label="WBG2-DPHS home">
-        <span class="brandmark">
-          <svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none">
-            <path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/>
-          </svg>
-        </span>
-        GEMS <small>EXECUTIVE BRIEF</small>
-      </a>
-      <nav class="nav" aria-label="DPHS navigation">
-        <a href="index.html">DPHS &amp; Decision Table</a>
-        <a href="executive-summary.html" aria-current="page">Why 0.2778 Won &amp; How to Beat It</a>
-        <a href="how-to-submit.html">How to Submit (Contest Steps)</a>
-        <a href="../index.html">← Main Dashboard</a>
-      </nav>
-      <div class="top-right">
-        <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a>
-        <span class="top-status"><span class="dot"></span> 467 Rasters Audited</span>
-      </div>
-    </div>
-  </header>
-
-  <main id="main" class="shell main">
-    <div class="intro">
-      <div>
-        <p class="eyebrow">Executive Summary &amp; Fleet Forensic Analysis</p>
-        <h1>Why <code>GEMSDOE32</code> Scored <code>0.2778</code> — and the Exact Path Past <code>0.3195</code> &rarr; <code>0.4544</code></h1>
-        <p>Byte-verified across <strong>467 real GeoTIFFs</strong> (`77` repos) and <strong>95 scored submissions</strong> (`68` sites), with links to every official USGS, DOE GDR, NBMG, and DrivenData source.</p>
-      </div>
-      <div class="intro-meta">LOSO Score Model<br><strong>R&sup2; = +0.4303 (n = 95)</strong></div>
-    </div>
-
-    <div class="grid">
-      <article class="card">
-        <div class="card-body">
-          <div class="section-header">
-            <div>
-              <h2>1. Why `GEMSDOE32` (`0.2778`) Beat the Other 8 Focus Sites</h2>
-              <p>File: <code>gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code> (<code>USER-REPORTED</code>).</p>
-            </div>
-            <span class="tag">#1 of 9 Focus Sites</span>
-          </div>
-          <ol>
-            <li><strong>Pure 4-Quadrant OOF Multi-Physics Surface (`19GEMSDOE H19-5`):</strong> Preserved <strong>34.01%</strong> of emitted dots (`12,806 / 37,654`) in distal piedmont / intrabasin terrain (`d_cat &gt; 32 px`, &gt;3.2 km from mapped faults) with high off-catalogue USGS SGMC fault alignment (`C_pied = 0.0888`).</li>
-            <li><strong>300 m Kernel Packing Economy (`d = 2.8 px` vs `1.5 px`):</strong> Under DTI ($\alpha=0.2, \beta=0.8$, 300 m triangular kernel), `1.5 px` spacing (`GEMSDOE24`, `60,069` dots, `0.2477`) stacks overlapping 300 m disks that multiply `FP_w` without raising `max`-kernel `TP_w`. Thinning to `2.8 px` (`GEMSDOE25/30`, `44,090` dots) lifted DTI to `0.2600` (`+0.0123`).</li>
-            <li><strong>200 m Catalogue-Collar Pruning (`EDT &le; 2.0 px`):</strong> Removing the `6,436` near-catalogue dots (`44,090 &rarr; 37,654` dots, `frac_le_2px: 14.60% &rarr; 0.00%`) cut pure false-positive waste inside the masked-catalogue corridor, lifting DTI from `0.2600` to `0.2778` (<strong>`+0.0178`</strong>). Adding `1,200` lower-precision dots (`GEMSDOE36`, `38,854` dots) diluted precision slightly (`0.2750`).</li>
-          </ol>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-body">
-          <div class="section-header">
-            <div>
-              <h2>2. Can `0.2778` (`0.3195` / `0.4544`) Be Beaten — and How?</h2>
-              <p>Proven empirically across 95 scored rasters and our `WBG2-DPHS` diagnostic.</p>
-            </div>
-            <span class="tag">Actionable Blueprint</span>
-          </div>
-          <p><strong>Yes.</strong> Seven GEMSDOE sites already reported `0.3052–0.3195 USER-REPORTED` (`74GEMSDOE = 0.3195`, `GEMSDOE81 = 0.3176`, `GEMSDOE70 = 0.3133`), and the dated public leaderboard snapshot stands at `0.4544` (`2026-10-27T17:21:43Z`).</p>
-          <p>Our <strong>11-feature Physics + SGMC + Geometry Ridge model</strong> (`n = 95` scored rasters across `68` sites: grouped leave-one-site-out `R² = +0.4303`, `RMSE = 0.0637`, `Spearman = +0.6488`; 9-focus external rank `Spearman = +0.7554`) reveals why Oct 25–27 range-front PU-HGBR runs (`GEMSDOE28 s21 = 0.0206`, `GEMSDOE31 pgr31 = 0.0176`, `GEMSDOE24 gvc1 = 0.0859`, and `DPHS-EXP3` `EMPIRICAL-ESTIMATE = 0.0713`) fell short while `GEMSDOE70` (`0.3133`, `C_pied = 0.2136`, `frac_gt_32px = 36.8%`) broke `0.31`:</p>
-          <ul>
-            <li><strong>Never blend in-sample full-map PU-HGBR into final packaging:</strong> `existing_faults.tif` is heavily biased toward steep bedrock range fronts; in-sample trees memorize range fronts (`96.4%` in `2..32 px`) and starve concealed basins.</li>
-            <li><strong>Regime-stratified 100% spatial-OOF multi-sensor scoring:</strong> Explicitly reserve `30%–40%` of the `36k–42k` CELF submodular dot budget for low-slope (`&lt;5&deg;`) piedmont/intrabasin corridors (`d_cat &gt; 25–32 px`) anchored by horizontal gravity benches, aeromagnetic tilt zero-crossings, 1 m LiDAR residual scarps, and GDR hydrothermal anomalies.</li>
-            <li><strong>Keep `EDT &gt; 2.05 px` collar, `min_sep = 2.4–2.8 px`, and `-zeros.tif` all-finite `[0, 1]` output.</strong></li>
-          </ul>
-        </div>
-      </article>
-    </div>
-
-    <section class="card table-card" id="official-sources">
-      <div class="table-heading">
-        <div>
-          <h2>3. Verified Official Trusted Sources (Manual Review Links)</h2>
-          <p>Every external physical dataset and competition rule verified against official agency endpoints (`evidence/external_layers_provenance.json`).</p>
-        </div>
-        <span class="tag">Provenance</span>
-      </div>
-      <div class="table-scroll">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th scope="col">Source / Dataset</th>
-              <th scope="col">Official Agency Link</th>
-              <th scope="col">Role &amp; Zero-Leakage Verification</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Source"><strong>DOE GEMS Prize Competition #306</strong></td>
-              <td data-label="Link"><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData Competition Overview ↗</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Leaderboard ↗</a></td>
-              <td data-label="Role">Official DTI metric ($\alpha=0.2, \beta=0.8$, 300 m kernel), `[0, 1]` format specification, and `3/week` submission cap.</td>
-            </tr>
-            <tr>
-              <td data-label="Source"><strong>USGS 3DEP 1 m LiDAR &amp; 10 m Seamless DEM</strong></td>
-              <td data-label="Link"><a href="https://www.usgs.gov/3d-elevation-program">USGS 3D Elevation Program (3DEP) ↗</a> · <a href="https://apps.nationalmap.gov/downloader/">The National Map ↗</a></td>
-              <td data-label="Role">Piedmont micro-scarp residual relief, multi-scale DoG curvature, and shoreline contour-orthogonality (`dem1m_piedmont_scarp_score`, `dem10_*`). Prior-gated `dem1m_high_prior_openness_lrm.npz` excluded.</td>
-            </tr>
-            <tr>
-              <td data-label="Source"><strong>USGS GeoDAWN Airborne Magnetic &amp; Radiometric Survey</strong></td>
-              <td data-label="Link"><a href="https://www.usgs.gov/centers/gggsc/science/geodawn-geophysical-data-acquisition-western-nevada">USGS GeoDAWN Program ↗</a> · <a href="https://www.sciencebase.gov/catalog/">USGS ScienceBase ↗</a></td>
-              <td data-label="Role">4-band aeromagnetic tilt/analytic signal and 3-band K-U-Th gamma-ray spectrometry (`K/Th` hydrothermal alteration &amp; magnetite destruction).</td>
-            </tr>
-            <tr>
-              <td data-label="Source"><strong>DOE Geothermal Data Repository (GDR) &amp; INGENIOUS Play Fairway</strong></td>
-              <td data-label="Link"><a href="https://gdr.openei.org/submissions/1391">GDR #1391 (INGENIOUS) ↗</a> · <a href="https://gdr.openei.org/submissions/1051">GDR #1051 ↗</a> · <a href="https://gdr.openei.org/submissions/1120">GDR #1120 ↗</a></td>
-              <td data-label="Role">Thermal wells, geothermometry, and Play Fairway permeability/heat indicators (`dist_known_fault_px` column explicitly stripped before ingestion).</td>
-            </tr>
-            <tr>
-              <td data-label="Source"><strong>NBMG Geothermal Springs &amp; Quaternary Contacts / USGS SGMC</strong></td>
-              <td data-label="Link"><a href="https://www.nbmg.unr.edu/Geothermal/">Nevada Bureau of Mines &amp; Geology ↗</a> · <a href="https://mrdata.usgs.gov/sgmc/">USGS State Geologic Map Compilation (SGMC) ↗</a></td>
-              <td data-label="Role">Quaternary alluvial pinch-outs &amp; spring conduits (`WBG2-DPHS` features); `SGMC` faults used <em>strictly</em> in post-hoc empirical score evaluation (`C_pied`), never as training features.</td>
-            </tr>
-            <tr>
-              <td data-label="Source"><strong>USGS ComCat Seismicity</strong></td>
-              <td data-label="Link"><a href="https://earthquake.usgs.gov/earthquakes/search/">USGS ANSS Comprehensive Earthquake Catalog ↗</a></td>
-              <td data-label="Role">Kernel-smoothed shallow microseismicity alignment across Walker Lane and Central Nevada Seismic Belt transfer zones.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card" id="irregularities">
-      <div class="card-body">
-        <div class="section-header">
-          <div>
-            <h2>4. Irregularities Flagged for Manual Review</h2>
-            <p>Five data, metric, and registry anomalies verified during line-by-line inspection.</p>
-          </div>
-          <span class="tag red">5 Flags</span>
-        </div>
-        <ol>
-          <li><strong>Conflicting Leaderboard Figures (`0.3195` vs `0.4413` vs `0.4544`):</strong> `0.3195` is the highest `USER-REPORTED` score in the 144-row fleet ledger (`74GEMSDOE`); `0.4413` is an earlier `USER-SUPPLIED` leaderboard reference in the prompt; `0.4544` is the dated `2026-10-27T17:21:43Z` public leaderboard snapshot. None is an `ORGANIZER-CONFIRMED` per-file receipt.</li>
-          <li><strong>Band 6 (`tc`) Naming Conflict:</strong> Official `training_features.tif` Band 6 (`tc`) is strictly positive airborne radiometric Total Count (`[7.64, 29.02]`), not magnetic tilt angle (`[-π/2, +π/2]`). True tilt derivatives are computed analytically in `src/wbggems/msptcd.py` and `src/wbggems/dphs.py`.</li>
-          <li><strong>189 / 467 Fleet GeoTIFFs Contain Outside-Footprint `NaN`s:</strong> Including `GEMSDOE24`, `GEMSDOE27`, `GEMSDOE28`, and `GEMSDOE31` primary `-nan.tif` files, which trigger `"Predicted values must be in range [0, 1]"` under whole-array checks. Always use `-zeros.tif` (`nodata = None`).</li>
-          <li><strong>Prior-Gated External Cache &amp; GDR Distance Column Stripped:</strong> `dem1m_high_prior_openness_lrm.npz` (`1.4%` prior-gated footprint) was excluded and `dist_known_fault_px` in GDR CSVs was stripped so zero catalogue geometry leaked into `X_train` (`61`-feature canary max AUC `0.61795 &lt;= 0.90`).</li>
-          <li><strong>Literal Registry Saturation by `13GEMSDOE` Lattice &amp; `WBGGEMSDOE1` Continuous Prior:</strong> `13GEMSDOE` stride-5 lattice covers `99.96%` of the footprint within 3 px, forcing any submission with `&ge; 22,164` dots over `70%` under literal blanket-inclusive overlap. Project owner policy must distinguish blanket priors from discrete submissions (`cov &le; 0.70`) before authorizing competitive slots.</li>
-        </ol>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="shell">
-      <div><strong>GEMS RESEARCH · EXECUTIVE BRIEF</strong> · Verified 2026-10-27</div>
-      <div>
-        <a href="index.html">← DPHS Decision Table</a> &nbsp;·&nbsp;
-        <a href="how-to-submit.html">How to Submit</a> &nbsp;·&nbsp;
-        <a href="../index.html">Main Dashboard</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b5d4d">
+<meta name="description" content="Byte-bound GEMS submission decision. All existing TIFFs are research-only; no file is approved.">
+<title>B2 historical evidence and uncertainty · GEMS Research</title><link rel="stylesheet" href="../styles.css"></head><body>
+<a class="skip" href="#main">Skip to content</a><header class="topbar"><div class="shell">
+<a class="brand" href="../index.html">GEMS <small>RESEARCH</small></a><nav class="nav" aria-label="Main navigation">
+<a href="../index.html">Overview</a><a href="../release.html" aria-current="page">Download status</a>
+<a href="../executive-summary.html">Submission guide</a><a href="../research.html">Research</a><a href="../sources.html">Sources</a></nav>
+</div></header><main id="main" class="shell main"><section class="banner" data-release-status="blocked" aria-labelledby="release-decision">
+<div class="banner-copy"><p class="banner-label">Authoritative repository decision · NEGATIVE</p>
+<h2 id="release-decision">No file is approved for submission. DO NOT SUBMIT.</h2>
+<p>DZ-16 and H3-PACK approvals are revoked. Every existing local TIFF exceeds the literal 70% registry overlap stop.
+No calibrated exemption, renamed file, projection, or format-only pass can override that failure.</p>
+</div><div class="actions"><button class="button" disabled>No submission file</button></div></section><div class="intro"><div><p class="eyebrow">B2 evidence and limitations</p>
+<h1>What can we infer from <code>0.2778</code>?</h1><p>The cause of the reported result is unknown.</p></div></div>
+<section class="card guide-card"><h2>Observation versus hypothesis</h2>
+<p><strong>USER-REPORTED:</strong> GEMSDOE32 B2 is associated with 0.2778 in the request; no organizer receipt binds that value to the pinned TIFF.
+The supplied 0.3195 was an earlier high-score claim. <strong>ORGANIZER-PUBLISHED snapshot:</strong> the public leader was 0.4544 on
+2026-10-27; this is not a receipt for our file and can change.</p>
+<p><strong>MEASURED:</strong> on the owner-mirrored grid, B2 is GEMSDOE25 D2.8 after deleting 6,436 dots within two pixels
+of the mapped catalogue; GEMSDOE36 adds 1,200 and removes none. This establishes lineage, not why any score changed.</p>
+<p>The organizer confirms masking the exact known-fault pixels, not a two-pixel collar. Near-catalogue dots are not automatically false positives:
+a removal can reduce false-positive weight but may also lose hidden-truth coverage. The causal effect is unmeasured without hidden labels and receipts.</p>
+<p>Distal coverage, physical features and alternative allocation are hypotheses to test against the same-fold incumbent, not a proven path to
+beat 0.2778 or 0.4544. <a href="../research/why-b2-scored-2778.html">Full metric and lineage analysis →</a></p></section><section class="card guide-card"><h2>Historical record, not a new validation</h2>
+<p>The campaign receipt reports <strong>HOLDOUT-DTI 0.1735</strong>,
+95% CI [0.1525, 0.1944], 60,988 withheld positives,
+evaluator <code>gems57-pooled-hide-v2</code>. This review did not replay the models, folds or reported canaries;
+the interval is conditional on the historical setup and is not a leaderboard forecast. A canary below 0.90 does not prove no leakage.</p>
+<p>The historical source also describes a 467-raster audit and an empirical regression. Their full inventory, original surface and
+score calibration were not independently reproduced here; neither proves a current all-registry pass or predicts a competition score.
+The release decision instead uses independently reopened, pinned witnesses.</p>
+<p><strong>Saved research artifact:</strong> <code>wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif</code><br>
+<span class="mono">SHA-256 31f3d8e61d195dd5ac09f380815cd08ea072d8812e2f5021d2c41fa423e6ccd9</span><br>
+<a href="../downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif">Research GeoTIFF — DO NOT SUBMIT</a></p>
+<p><strong>MEASURED, not unique:</strong> 99.836% of its positive footprint pixels lie within
+three pixels of the registered 13GEMSDOE binary lattice. This exceeds the literal 70% stop. The saved TIFF passes local
+inside/grid and extra all-finite checks against an owner mirror, not an authenticated organizer template; that is not portal acceptance.
+The original pre-placement surface was not replayed.</p>
+<p><a href="../release.html#research-downloads">Independent byte-audit table →</a> · <a href="../data/run-card-dphs.json">Historical campaign card</a> ·
+<a href="../research.html">Unassigned research proposals</a></p></section></main>
+<footer class="footer"><div class="shell"><strong>DO NOT SUBMIT</strong><span>Evidence before slots · <a href="../data/run-card.json">Current run card</a> · <a href="../data/release_audit.json">Byte audit JSON</a></span></div></footer>
+</body></html>
