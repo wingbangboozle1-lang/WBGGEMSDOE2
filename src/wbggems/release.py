@@ -27,6 +27,7 @@ NEGATIVE_RESEARCH_CARDS = (
     'evidence/RUN_CARD_H3.json', 'docs/data/RUN_CARD_H3.json',
     'evidence/RUN_CARD_MSPTCD.json', 'docs/data/RUN_CARD_MSPTCD.json',
     'evidence/RUN_CARD_DPHS.json', 'docs/data/run-card-dphs.json',
+    'evidence/RUN_CARD_GVCD.json', 'docs/data/run-card-gvcd.json',
     'data_public/final_audit.json',
 )
 

@@ -44,8 +44,8 @@ def receipt_root(tmp_path):
 
 def test_current_real_bytes_have_only_negative_decisions():
     report = load_negative_release(ROOT)
-    assert report['scope']['owned_tif_paths'] == 10
-    assert len(report['artifacts']) == 8 and len(report['zip_archives']) == 7
+    assert report['scope']['owned_tif_paths'] == 11
+    assert len(report['artifacts']) == 9 and len(report['zip_archives']) == 8
     assert report['scope']['registry_rasters_opened'] == 13
     assert all(r['lattice_overlap_3px'] > .70 and r['ok_to_submit'] is False for r in report['artifacts'])
     assert report['approved_submission'] is None and report['leaderboard_score_estimate'] is None

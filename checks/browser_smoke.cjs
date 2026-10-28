@@ -51,8 +51,8 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
           skip:document.querySelector('a.skip')?.href,
           current:location.href
         }));
-        if (!release.blocked || release.button !== true || release.rows !== 16) bad.push(`release gate ${JSON.stringify(release)}`);
-        if (release.downloads.length !== 7 || release.downloads.some(t=>!t.includes('DO NOT SUBMIT'))) bad.push(`download labels ${JSON.stringify(release.downloads)}`);
+        if (!release.blocked || release.button !== true || release.rows !== 18) bad.push(`release gate ${JSON.stringify(release)}`);
+        if (release.downloads.length !== 9 || release.downloads.some(t=>!t.includes('DO NOT SUBMIT'))) bad.push(`download labels ${JSON.stringify(release.downloads)}`);
         if (release.skip !== release.current+'#main') bad.push(`skip link leaves the page: ${release.skip}`);
       }
       if (path === '/docs/' || path === '/docs/release.html') {

@@ -1,0 +1,1560 @@
+{
+  "schema": "wbggems.gvcd-results.v1",
+  "generated_utc": "2026-10-28T02:18:42.439107+00:00",
+  "elapsed_seconds": 81.35,
+  "lane": "WBG2-GVCD (Geothermal Vent & Concealed Dilatational Conduit Synthesis)",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "evaluator_hashes": {
+    "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+    "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+    "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+    "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+  },
+  "withheld_positives_total": 60988,
+  "experiments_executed": 3,
+  "experiment_cap": 3,
+  "feature_count": 72,
+  "subsurface_specialist_feature_count": 60,
+  "leakage_canary": {
+    "threshold_symmetric_auc": 0.9,
+    "n_features_checked": 73,
+    "all_passed": true,
+    "max_symmetric_auc_observed": 0.61795,
+    "highest_signal_feature": "demag_along_strike_s3",
+    "new_gvcd_12_features": {
+      "stress_grav_dilation_tendency": {
+        "fold_aucs": [
+          0.52788,
+          0.5663,
+          0.5174,
+          0.54708
+        ],
+        "mean_auc": 0.53967,
+        "max_symmetric_auc": 0.5663,
+        "passed": true
+      },
+      "stress_mag_dilation_tendency": {
+        "fold_aucs": [
+          0.53267,
+          0.49772,
+          0.51241,
+          0.51041
+        ],
+        "mean_auc": 0.5133,
+        "max_symmetric_auc": 0.53267,
+        "passed": true
+      },
+      "stress_scarp_dilation_tendency": {
+        "fold_aucs": [
+          0.54536,
+          0.56221,
+          0.54399,
+          0.55823
+        ],
+        "mean_auc": 0.55245,
+        "max_symmetric_auc": 0.56221,
+        "passed": true
+      },
+      "transtensional_shear_dilation_gate": {
+        "fold_aucs": [
+          0.52691,
+          0.53099,
+          0.50593,
+          0.52066
+        ],
+        "mean_auc": 0.52112,
+        "max_symmetric_auc": 0.53099,
+        "passed": true
+      },
+      "borehole_heatflow_halo": {
+        "fold_aucs": [
+          0.5,
+          0.50565,
+          0.47409,
+          0.47453
+        ],
+        "mean_auc": 0.48857,
+        "max_symmetric_auc": 0.52591,
+        "passed": true
+      },
+      "gdr_volcanic_margin_conduit": {
+        "fold_aucs": [
+          0.49102,
+          0.48393,
+          0.49765,
+          0.46987
+        ],
+        "mean_auc": 0.48562,
+        "max_symmetric_auc": 0.53013,
+        "passed": true
+      },
+      "vent_structural_conduit_ridge": {
+        "fold_aucs": [
+          0.54752,
+          0.5783,
+          0.46318,
+          0.55444
+        ],
+        "mean_auc": 0.53586,
+        "max_symmetric_auc": 0.5783,
+        "passed": true
+      },
+      "epithermal_claycap_root_index": {
+        "fold_aucs": [
+          0.49579,
+          0.48356,
+          0.42563,
+          0.52758
+        ],
+        "mean_auc": 0.48314,
+        "max_symmetric_auc": 0.57437,
+        "passed": true
+      },
+      "comcat_post2021_blind_halo": {
+        "fold_aucs": [
+          0.49722,
+          0.50181,
+          0.47635,
+          0.50622
+        ],
+        "mean_auc": 0.4954,
+        "max_symmetric_auc": 0.52365,
+        "passed": true
+      },
+      "comcat_seismogenic_corridor": {
+        "fold_aucs": [
+          0.53287,
+          0.50961,
+          0.57548,
+          0.51553
+        ],
+        "mean_auc": 0.53337,
+        "max_symmetric_auc": 0.57548,
+        "passed": true
+      },
+      "basement_step_hessian_ridge": {
+        "fold_aucs": [
+          0.49987,
+          0.51751,
+          0.51781,
+          0.5118
+        ],
+        "mean_auc": 0.51175,
+        "max_symmetric_auc": 0.51781,
+        "passed": true
+      },
+      "basement_bouguer_dipole_asymmetry": {
+        "fold_aucs": [
+          0.50541,
+          0.51017,
+          0.50407,
+          0.51362
+        ],
+        "mean_auc": 0.50832,
+        "max_symmetric_auc": 0.51362,
+        "passed": true
+      }
+    },
+    "per_feature": {
+      "mag_anom": {
+        "fold_aucs": [
+          0.49898,
+          0.51577,
+          0.45473,
+          0.50191
+        ],
+        "mean_auc": 0.49285,
+        "max_symmetric_auc": 0.54527,
+        "passed": true
+      },
+      "rtp": {
+        "fold_aucs": [
+          0.50726,
+          0.49562,
+          0.54178,
+          0.50561
+        ],
+        "mean_auc": 0.51257,
+        "max_symmetric_auc": 0.54178,
+        "passed": true
+      },
+      "tmi_hg": {
+        "fold_aucs": [
+          0.52803,
+          0.48964,
+          0.53343,
+          0.49894
+        ],
+        "mean_auc": 0.51251,
+        "max_symmetric_auc": 0.53343,
+        "passed": true
+      },
+      "geod_2ndinv": {
+        "fold_aucs": [
+          0.56914,
+          0.53587,
+          0.57841,
+          0.518
+        ],
+        "mean_auc": 0.55035,
+        "max_symmetric_auc": 0.57841,
+        "passed": true
+      },
+      "iso_grav_anom_slope": {
+        "fold_aucs": [
+          0.52843,
+          0.5777,
+          0.46273,
+          0.56425
+        ],
+        "mean_auc": 0.53328,
+        "max_symmetric_auc": 0.5777,
+        "passed": true
+      },
+      "tc_radiometric": {
+        "fold_aucs": [
+          0.46361,
+          0.42866,
+          0.42633,
+          0.38702
+        ],
+        "mean_auc": 0.4264,
+        "max_symmetric_auc": 0.61298,
+        "passed": true
+      },
+      "geod_shearrate": {
+        "fold_aucs": [
+          0.57313,
+          0.50297,
+          0.59141,
+          0.5015
+        ],
+        "mean_auc": 0.54225,
+        "max_symmetric_auc": 0.59141,
+        "passed": true
+      },
+      "geod_dilaterate": {
+        "fold_aucs": [
+          0.49833,
+          0.54065,
+          0.45544,
+          0.56946
+        ],
+        "mean_auc": 0.51597,
+        "max_symmetric_auc": 0.56946,
+        "passed": true
+      },
+      "tmi_vg": {
+        "fold_aucs": [
+          0.49235,
+          0.48972,
+          0.47852,
+          0.47808
+        ],
+        "mean_auc": 0.48467,
+        "max_symmetric_auc": 0.52192,
+        "passed": true
+      },
+      "deq_n100a15": {
+        "fold_aucs": [
+          0.52905,
+          0.55958,
+          0.48754,
+          0.47564
+        ],
+        "mean_auc": 0.51295,
+        "max_symmetric_auc": 0.55958,
+        "passed": true
+      },
+      "iso_grav_anom_vg": {
+        "fold_aucs": [
+          0.5131,
+          0.5307,
+          0.52559,
+          0.56575
+        ],
+        "mean_auc": 0.53378,
+        "max_symmetric_auc": 0.56575,
+        "passed": true
+      },
+      "det_elev": {
+        "fold_aucs": [
+          0.4982,
+          0.45202,
+          0.52884,
+          0.47293
+        ],
+        "mean_auc": 0.488,
+        "max_symmetric_auc": 0.54798,
+        "passed": true
+      },
+      "iso_grav_anom": {
+        "fold_aucs": [
+          0.45722,
+          0.4819,
+          0.44753,
+          0.48352
+        ],
+        "mean_auc": 0.46754,
+        "max_symmetric_auc": 0.55247,
+        "passed": true
+      },
+      "tmi": {
+        "fold_aucs": [
+          0.49784,
+          0.5072,
+          0.46478,
+          0.49324
+        ],
+        "mean_auc": 0.49077,
+        "max_symmetric_auc": 0.53522,
+        "passed": true
+      },
+      "depth_to_base_surf": {
+        "fold_aucs": [
+          0.51501,
+          0.51927,
+          0.46656,
+          0.52686
+        ],
+        "mean_auc": 0.50692,
+        "max_symmetric_auc": 0.53344,
+        "passed": true
+      },
+      "ieq_n100a15": {
+        "fold_aucs": [
+          0.55098,
+          0.54453,
+          0.49777,
+          0.57539
+        ],
+        "mean_auc": 0.54217,
+        "max_symmetric_auc": 0.57539,
+        "passed": true
+      },
+      "cond_surf": {
+        "fold_aucs": [
+          0.50535,
+          0.46785,
+          0.45437,
+          0.54304
+        ],
+        "mean_auc": 0.49265,
+        "max_symmetric_auc": 0.54563,
+        "passed": true
+      },
+      "iso_grav_anom_hg": {
+        "fold_aucs": [
+          0.46762,
+          0.57038,
+          0.48628,
+          0.50961
+        ],
+        "mean_auc": 0.50847,
+        "max_symmetric_auc": 0.57038,
+        "passed": true
+      },
+      "det_elev_slope": {
+        "fold_aucs": [
+          0.54793,
+          0.55469,
+          0.5899,
+          0.56874
+        ],
+        "mean_auc": 0.56532,
+        "max_symmetric_auc": 0.5899,
+        "passed": true
+      },
+      "mag_tilt_grad": {
+        "fold_aucs": [
+          0.51239,
+          0.50414,
+          0.50839,
+          0.49152
+        ],
+        "mean_auc": 0.50411,
+        "max_symmetric_auc": 0.51239,
+        "passed": true
+      },
+      "grav_tilt_grad": {
+        "fold_aucs": [
+          0.51936,
+          0.5061,
+          0.52481,
+          0.47811
+        ],
+        "mean_auc": 0.50709,
+        "max_symmetric_auc": 0.52481,
+        "passed": true
+      },
+      "dip_offset_concordance": {
+        "fold_aucs": [
+          0.54378,
+          0.54008,
+          0.53173,
+          0.54931
+        ],
+        "mean_auc": 0.54123,
+        "max_symmetric_auc": 0.54931,
+        "passed": true
+      },
+      "cond_flank_asymmetry": {
+        "fold_aucs": [
+          0.49946,
+          0.50108,
+          0.50183,
+          0.51208
+        ],
+        "mean_auc": 0.50361,
+        "max_symmetric_auc": 0.51208,
+        "passed": true
+      },
+      "scarp_hessian_ridge_s15": {
+        "fold_aucs": [
+          0.51131,
+          0.49307,
+          0.52516,
+          0.51169
+        ],
+        "mean_auc": 0.51031,
+        "max_symmetric_auc": 0.52516,
+        "passed": true
+      },
+      "scarp_hessian_ridge_s35": {
+        "fold_aucs": [
+          0.53632,
+          0.57609,
+          0.56301,
+          0.57775
+        ],
+        "mean_auc": 0.56329,
+        "max_symmetric_auc": 0.57775,
+        "passed": true
+      },
+      "rad_terrain_residual_edge": {
+        "fold_aucs": [
+          0.4884,
+          0.4752,
+          0.44236,
+          0.46832
+        ],
+        "mean_auc": 0.46857,
+        "max_symmetric_auc": 0.55764,
+        "passed": true
+      },
+      "depth_cover_log_step": {
+        "fold_aucs": [
+          0.5033,
+          0.55449,
+          0.5016,
+          0.55681
+        ],
+        "mean_auc": 0.52905,
+        "max_symmetric_auc": 0.55681,
+        "passed": true
+      },
+      "grav_mag_orient_coherence": {
+        "fold_aucs": [
+          0.52044,
+          0.5321,
+          0.49888,
+          0.52447
+        ],
+        "mean_auc": 0.51897,
+        "max_symmetric_auc": 0.5321,
+        "passed": true
+      },
+      "strain_dilation_ratio": {
+        "fold_aucs": [
+          0.4341,
+          0.51749,
+          0.41182,
+          0.55546
+        ],
+        "mean_auc": 0.47972,
+        "max_symmetric_auc": 0.58818,
+        "passed": true
+      },
+      "strain_shear_edge_gate": {
+        "fold_aucs": [
+          0.53981,
+          0.51769,
+          0.53336,
+          0.49424
+        ],
+        "mean_auc": 0.52128,
+        "max_symmetric_auc": 0.53981,
+        "passed": true
+      },
+      "seismic_structural_index": {
+        "fold_aucs": [
+          0.55026,
+          0.52221,
+          0.47571,
+          0.60879
+        ],
+        "mean_auc": 0.53924,
+        "max_symmetric_auc": 0.60879,
+        "passed": true
+      },
+      "lidar_ex_max": {
+        "fold_aucs": [
+          0.53018,
+          0.56873,
+          0.60087,
+          0.59674
+        ],
+        "mean_auc": 0.57413,
+        "max_symmetric_auc": 0.60087,
+        "passed": true
+      },
+      "lidar_ex_mean": {
+        "fold_aucs": [
+          0.52287,
+          0.55864,
+          0.5816,
+          0.58223
+        ],
+        "mean_auc": 0.56134,
+        "max_symmetric_auc": 0.58223,
+        "passed": true
+      },
+      "lidar_step_max": {
+        "fold_aucs": [
+          0.53767,
+          0.57086,
+          0.60553,
+          0.5861
+        ],
+        "mean_auc": 0.57504,
+        "max_symmetric_auc": 0.60553,
+        "passed": true
+      },
+      "lidar_lap_dipole": {
+        "fold_aucs": [
+          0.54378,
+          0.58358,
+          0.60195,
+          0.59686
+        ],
+        "mean_auc": 0.58154,
+        "max_symmetric_auc": 0.60195,
+        "passed": true
+      },
+      "lidar_updown_asym": {
+        "fold_aucs": [
+          0.53065,
+          0.54672,
+          0.59879,
+          0.55717
+        ],
+        "mean_auc": 0.55833,
+        "max_symmetric_auc": 0.59879,
+        "passed": true
+      },
+      "lidar_relief": {
+        "fold_aucs": [
+          0.55849,
+          0.57701,
+          0.59996,
+          0.57418
+        ],
+        "mean_auc": 0.57741,
+        "max_symmetric_auc": 0.59996,
+        "passed": true
+      },
+      "lidar_coh100": {
+        "fold_aucs": [
+          0.48375,
+          0.47492,
+          0.5003,
+          0.45069
+        ],
+        "mean_auc": 0.47741,
+        "max_symmetric_auc": 0.54931,
+        "passed": true
+      },
+      "dem10_slope_max": {
+        "fold_aucs": [
+          0.54165,
+          0.57413,
+          0.60668,
+          0.58531
+        ],
+        "mean_auc": 0.57694,
+        "max_symmetric_auc": 0.60668,
+        "passed": true
+      },
+      "dem10_steep_ratio_max": {
+        "fold_aucs": [
+          0.51208,
+          0.53261,
+          0.59277,
+          0.55479
+        ],
+        "mean_auc": 0.54806,
+        "max_symmetric_auc": 0.59277,
+        "passed": true
+      },
+      "dem10_hgm20_max": {
+        "fold_aucs": [
+          0.54602,
+          0.56825,
+          0.60574,
+          0.5763
+        ],
+        "mean_auc": 0.57408,
+        "max_symmetric_auc": 0.60574,
+        "passed": true
+      },
+      "dem10_hgm50_max": {
+        "fold_aucs": [
+          0.55099,
+          0.56744,
+          0.60499,
+          0.57395
+        ],
+        "mean_auc": 0.57434,
+        "max_symmetric_auc": 0.60499,
+        "passed": true
+      },
+      "dem10_curv_absmax": {
+        "fold_aucs": [
+          0.53669,
+          0.55717,
+          0.5999,
+          0.56808
+        ],
+        "mean_auc": 0.56546,
+        "max_symmetric_auc": 0.5999,
+        "passed": true
+      },
+      "dem10_onesided3": {
+        "fold_aucs": [
+          0.49945,
+          0.468,
+          0.50209,
+          0.47551
+        ],
+        "mean_auc": 0.48626,
+        "max_symmetric_auc": 0.532,
+        "passed": true
+      },
+      "dem10_deconfounded_piedmont_scarp": {
+        "fold_aucs": [
+          0.50035,
+          0.4834,
+          0.51355,
+          0.48198
+        ],
+        "mean_auc": 0.49482,
+        "max_symmetric_auc": 0.51802,
+        "passed": true
+      },
+      "geodawn_k": {
+        "fold_aucs": [
+          0.45783,
+          0.40139,
+          0.39845,
+          0.40074
+        ],
+        "mean_auc": 0.4146,
+        "max_symmetric_auc": 0.60155,
+        "passed": true
+      },
+      "geodawn_th": {
+        "fold_aucs": [
+          0.46643,
+          0.4236,
+          0.47873,
+          0.38243
+        ],
+        "mean_auc": 0.4378,
+        "max_symmetric_auc": 0.61757,
+        "passed": true
+      },
+      "geodawn_u": {
+        "fold_aucs": [
+          0.49016,
+          0.48279,
+          0.47521,
+          0.41755
+        ],
+        "mean_auc": 0.46643,
+        "max_symmetric_auc": 0.58245,
+        "passed": true
+      },
+      "geodawn_k_th_alteration": {
+        "fold_aucs": [
+          0.48395,
+          0.4227,
+          0.39619,
+          0.48786
+        ],
+        "mean_auc": 0.44767,
+        "max_symmetric_auc": 0.60381,
+        "passed": true
+      },
+      "mag_shallow_demag": {
+        "fold_aucs": [
+          0.51155,
+          0.47629,
+          0.58184,
+          0.51553
+        ],
+        "mean_auc": 0.5213,
+        "max_symmetric_auc": 0.58184,
+        "passed": true
+      },
+      "gallardo_meju_parallelism": {
+        "fold_aucs": [
+          0.52584,
+          0.53159,
+          0.50831,
+          0.52779
+        ],
+        "mean_auc": 0.52338,
+        "max_symmetric_auc": 0.53159,
+        "passed": true
+      },
+      "gdr_wellspring_geotherm": {
+        "fold_aucs": [
+          0.54262,
+          0.52744,
+          0.44917,
+          0.49439
+        ],
+        "mean_auc": 0.5034,
+        "max_symmetric_auc": 0.55083,
+        "passed": true
+      },
+      "gdr_2m_probe_halo": {
+        "fold_aucs": [
+          0.50334,
+          0.55893,
+          0.47342,
+          0.54196
+        ],
+        "mean_auc": 0.51941,
+        "max_symmetric_auc": 0.55893,
+        "passed": true
+      },
+      "gdr_paleo_sinter_halo": {
+        "fold_aucs": [
+          0.47798,
+          0.51846,
+          0.48175,
+          0.49236
+        ],
+        "mean_auc": 0.49264,
+        "max_symmetric_auc": 0.52202,
+        "passed": true
+      },
+      "gdr_volcanic_vent_halo": {
+        "fold_aucs": [
+          0.49112,
+          0.48393,
+          0.49765,
+          0.46987
+        ],
+        "mean_auc": 0.48564,
+        "max_symmetric_auc": 0.53013,
+        "passed": true
+      },
+      "scarp_ridge_1m_s2": {
+        "fold_aucs": [
+          0.52621,
+          0.56135,
+          0.59387,
+          0.56973
+        ],
+        "mean_auc": 0.56279,
+        "max_symmetric_auc": 0.59387,
+        "passed": true
+      },
+      "scarp_ridge_10m_s2": {
+        "fold_aucs": [
+          0.53817,
+          0.54387,
+          0.59442,
+          0.55737
+        ],
+        "mean_auc": 0.55846,
+        "max_symmetric_auc": 0.59442,
+        "passed": true
+      },
+      "scarp_piedmont_contrast": {
+        "fold_aucs": [
+          0.52793,
+          0.5834,
+          0.56072,
+          0.55724
+        ],
+        "mean_auc": 0.55732,
+        "max_symmetric_auc": 0.5834,
+        "passed": true
+      },
+      "demag_along_strike_s3": {
+        "fold_aucs": [
+          0.50199,
+          0.50606,
+          0.38205,
+          0.4869
+        ],
+        "mean_auc": 0.46925,
+        "max_symmetric_auc": 0.61795,
+        "passed": true
+      },
+      "hydro_cond_coupling": {
+        "fold_aucs": [
+          0.54233,
+          0.57667,
+          0.45097,
+          0.56028
+        ],
+        "mean_auc": 0.53256,
+        "max_symmetric_auc": 0.57667,
+        "passed": true
+      },
+      "stress_grav_dilation_tendency": {
+        "fold_aucs": [
+          0.52788,
+          0.5663,
+          0.5174,
+          0.54708
+        ],
+        "mean_auc": 0.53967,
+        "max_symmetric_auc": 0.5663,
+        "passed": true
+      },
+      "stress_mag_dilation_tendency": {
+        "fold_aucs": [
+          0.53267,
+          0.49772,
+          0.51241,
+          0.51041
+        ],
+        "mean_auc": 0.5133,
+        "max_symmetric_auc": 0.53267,
+        "passed": true
+      },
+      "stress_scarp_dilation_tendency": {
+        "fold_aucs": [
+          0.54536,
+          0.56221,
+          0.54399,
+          0.55823
+        ],
+        "mean_auc": 0.55245,
+        "max_symmetric_auc": 0.56221,
+        "passed": true
+      },
+      "transtensional_shear_dilation_gate": {
+        "fold_aucs": [
+          0.52691,
+          0.53099,
+          0.50593,
+          0.52066
+        ],
+        "mean_auc": 0.52112,
+        "max_symmetric_auc": 0.53099,
+        "passed": true
+      },
+      "borehole_heatflow_halo": {
+        "fold_aucs": [
+          0.5,
+          0.50565,
+          0.47409,
+          0.47453
+        ],
+        "mean_auc": 0.48857,
+        "max_symmetric_auc": 0.52591,
+        "passed": true
+      },
+      "gdr_volcanic_margin_conduit": {
+        "fold_aucs": [
+          0.49102,
+          0.48393,
+          0.49765,
+          0.46987
+        ],
+        "mean_auc": 0.48562,
+        "max_symmetric_auc": 0.53013,
+        "passed": true
+      },
+      "vent_structural_conduit_ridge": {
+        "fold_aucs": [
+          0.54752,
+          0.5783,
+          0.46318,
+          0.55444
+        ],
+        "mean_auc": 0.53586,
+        "max_symmetric_auc": 0.5783,
+        "passed": true
+      },
+      "epithermal_claycap_root_index": {
+        "fold_aucs": [
+          0.49579,
+          0.48356,
+          0.42563,
+          0.52758
+        ],
+        "mean_auc": 0.48314,
+        "max_symmetric_auc": 0.57437,
+        "passed": true
+      },
+      "comcat_post2021_blind_halo": {
+        "fold_aucs": [
+          0.49722,
+          0.50181,
+          0.47635,
+          0.50622
+        ],
+        "mean_auc": 0.4954,
+        "max_symmetric_auc": 0.52365,
+        "passed": true
+      },
+      "comcat_seismogenic_corridor": {
+        "fold_aucs": [
+          0.53287,
+          0.50961,
+          0.57548,
+          0.51553
+        ],
+        "mean_auc": 0.53337,
+        "max_symmetric_auc": 0.57548,
+        "passed": true
+      },
+      "basement_step_hessian_ridge": {
+        "fold_aucs": [
+          0.49987,
+          0.51751,
+          0.51781,
+          0.5118
+        ],
+        "mean_auc": 0.51175,
+        "max_symmetric_auc": 0.51781,
+        "passed": true
+      },
+      "basement_bouguer_dipole_asymmetry": {
+        "fold_aucs": [
+          0.50541,
+          0.51017,
+          0.50407,
+          0.51362
+        ],
+        "mean_auc": 0.50832,
+        "max_symmetric_auc": 0.51362,
+        "passed": true
+      },
+      "gvcd_fold_visible_relay_tip_modulator": {
+        "fold_aucs": [
+          0.51688,
+          0.50043,
+          0.48347,
+          0.5516
+        ],
+        "mean_auc": 0.5131,
+        "max_symmetric_auc": 0.5516,
+        "passed": true
+      }
+    }
+  },
+  "pooled_holdout_summary": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "pooled": true,
+    "scores": {
+      "gvcd_exp1_ventstress72_celf": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.17488983277055814,
+        "ci95": [
+          0.15277417992581635,
+          0.1965775475340532
+        ],
+        "withheld_positive_pixels": 60988,
+        "tpw": 10036.979631576269,
+        "fpw": 32962.51070302773,
+        "fnw": 50951.02036842375
+      },
+      "gvcd_exp2_subsurface_ens_celf": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.17587509276460744,
+        "ci95": [
+          0.15543624324723507,
+          0.19686884515419834
+        ],
+        "withheld_positive_pixels": 60988,
+        "tpw": 10099.131265832459,
+        "fpw": 33059.769632147705,
+        "fnw": 50888.86873416757
+      },
+      "gvcd_exp3_dualregime_celf": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.17591470735855824,
+        "ci95": [
+          0.1554924660571521,
+          0.19693604045156685
+        ],
+        "withheld_positive_pixels": 60988,
+        "tpw": 10101.50321409421,
+        "fpw": 33060.16015643945,
+        "fnw": 50886.49678590581
+      }
+    },
+    "best_comparable_control": "gvcd_exp2_subsurface_ens_celf",
+    "paired_differences": {
+      "gvcd_exp1_ventstress72_celf": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.001024874588000102,
+        "ci95": [
+          -0.0021108843854188916,
+          0.0043532339309316215
+        ],
+        "withheld_positive_pixels": 60988
+      },
+      "gvcd_exp2_subsurface_ens_celf": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 3.961459395079858e-05,
+        "ci95": [
+          -0.00010623712045038855,
+          0.00018730470087165992
+        ],
+        "withheld_positive_pixels": 60988
+      }
+    },
+    "bootstrap": {
+      "method": "paired physical spatial-cluster percentile",
+      "clusters": 160,
+      "draws": 1000,
+      "seed": 520810,
+      "confidence": 0.95,
+      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+    },
+    "implementation_sha256": {
+      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+    }
+  },
+  "per_fold_metrics": {
+    "gvcd_exp1_ventstress72_celf": [
+      {
+        "fold": 0,
+        "dti": 0.149787,
+        "tpw": 4111.651,
+        "fpw": 15862.555,
+        "fnw": 25207.349,
+        "emitted": 17649,
+        "n_truth": 29319
+      },
+      {
+        "fold": 1,
+        "dti": 0.223196,
+        "tpw": 2755.894,
+        "fpw": 8597.102,
+        "fnw": 9840.106,
+        "emitted": 9847,
+        "n_truth": 12596
+      },
+      {
+        "fold": 2,
+        "dti": 0.168185,
+        "tpw": 1440.643,
+        "fpw": 3496.608,
+        "fnw": 8032.357,
+        "emitted": 4066,
+        "n_truth": 9473
+      },
+      {
+        "fold": 3,
+        "dti": 0.191513,
+        "tpw": 1728.791,
+        "fpw": 5006.246,
+        "fnw": 7871.209,
+        "emitted": 5677,
+        "n_truth": 9600
+      }
+    ],
+    "gvcd_exp2_subsurface_ens_celf": [
+      {
+        "fold": 0,
+        "dti": 0.151129,
+        "tpw": 4150.958,
+        "fpw": 15905.014,
+        "fnw": 25168.042,
+        "emitted": 17649,
+        "n_truth": 29319
+      },
+      {
+        "fold": 1,
+        "dti": 0.225887,
+        "tpw": 2792.41,
+        "fpw": 8633.517,
+        "fnw": 9803.59,
+        "emitted": 9847,
+        "n_truth": 12596
+      },
+      {
+        "fold": 2,
+        "dti": 0.16679,
+        "tpw": 1428.8,
+        "fpw": 3511.492,
+        "fnw": 8044.2,
+        "emitted": 4066,
+        "n_truth": 9473
+      },
+      {
+        "fold": 3,
+        "dti": 0.191304,
+        "tpw": 1726.963,
+        "fpw": 5009.746,
+        "fnw": 7873.037,
+        "emitted": 5677,
+        "n_truth": 9600
+      }
+    ],
+    "gvcd_exp3_dualregime_celf": [
+      {
+        "fold": 0,
+        "dti": 0.151207,
+        "tpw": 4153.149,
+        "fpw": 15904.171,
+        "fnw": 25165.851,
+        "emitted": 17649,
+        "n_truth": 29319
+      },
+      {
+        "fold": 1,
+        "dti": 0.225755,
+        "tpw": 2790.761,
+        "fpw": 8634.791,
+        "fnw": 9805.239,
+        "emitted": 9847,
+        "n_truth": 12596
+      },
+      {
+        "fold": 2,
+        "dti": 0.166997,
+        "tpw": 1430.63,
+        "fpw": 3511.452,
+        "fnw": 8042.37,
+        "emitted": 4066,
+        "n_truth": 9473
+      },
+      {
+        "fold": 3,
+        "dti": 0.191304,
+        "tpw": 1726.963,
+        "fpw": 5009.746,
+        "fnw": 7873.037,
+        "emitted": 5677,
+        "n_truth": 9600
+      }
+    ]
+  },
+  "emitted_candidate": {
+    "name": "wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros",
+    "note": "WBG2-GVCD 100%OOF 72f Vent+Stress+ComCat DualCELF 37400d (44%>32px) HOLDOUT-DTI=0.1759",
+    "tif_path": "docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+    "zip_path": "docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.zip",
+    "tif_sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+    "zip_sha256": "1a3618d3dabb81411937a18797f4c34db0893e39e316045e60119f0556cb98d7",
+    "tif_bytes": 136229,
+    "zip_bytes": 99046,
+    "in_sample_refit_fraction": 0.0,
+    "out_of_fold_footprint_fraction": 1.0,
+    "dots": 37400,
+    "min_sep_px": 2.75,
+    "min_dist_to_catalogue_px": 2.8284,
+    "median_dist_to_catalogue_px": 24.083,
+    "frac_dots_2_to_32px": 0.56,
+    "frac_dots_gt_32px": 0.44,
+    "validator": {
+      "path": "/home/user/WBGGEMSDOE2/docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+      "sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+      "grid_match_reference": true,
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "bands": 1,
+      "dtype": "float32",
+      "nodata": null,
+      "strict_all_finite_requested": true,
+      "reference_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "organizer_acceptance": "unknown",
+      "submission_approval": false,
+      "footprint_cells": 5167373,
+      "nonfinite_inside": 0,
+      "masked_inside": 0,
+      "nan_total": 0,
+      "inf_total": 0,
+      "nan_inside": 0,
+      "nan_outside": 0,
+      "inf_inside": 0,
+      "inf_outside": 0,
+      "below_zero_inside": 0,
+      "below_zero_outside": 0,
+      "above_one_inside": 0,
+      "above_one_outside": 0,
+      "positive_outside": 0,
+      "diagnostics_band": 1,
+      "all_finite": true,
+      "minimum_inside": 0.0,
+      "maximum_inside": 1.0,
+      "nonzero_inside": 37400,
+      "failures": [],
+      "format_valid_against_reference": true
+    },
+    "pre_placement_surface_correlation": {
+      "max_abs_spearman": 0.40691,
+      "max_artifact": "17GEMSDOE_dense_prior",
+      "passed_le_0_90": true,
+      "by_artifact": [
+        {
+          "id": "GEMSDOE24",
+          "repo": "buffedlizard55-lab/GEMSDOE24",
+          "filename": "GEMSDOE24.tif",
+          "spearman": 0.06784
+        },
+        {
+          "id": "GEMSDOE25",
+          "repo": "buffedlizard55-lab/GEMSDOE25",
+          "filename": "GEMSDOE25.tif",
+          "spearman": 0.05653
+        },
+        {
+          "id": "GEMSDOE27",
+          "repo": "buffedlizard55-lab/GEMSDOE27",
+          "filename": "GEMSDOE27.tif",
+          "spearman": 0.06777
+        },
+        {
+          "id": "GEMSDOE28",
+          "repo": "buffedlizard55-lab/GEMSDOE28",
+          "filename": "GEMSDOE28.tif",
+          "spearman": 0.04976
+        },
+        {
+          "id": "GEMSDOE30",
+          "repo": "buffedlizard55-lab/GEMSDOE30",
+          "filename": "GEMSDOE30.tif",
+          "spearman": 0.05653
+        },
+        {
+          "id": "GEMSDOE31",
+          "repo": "buffedlizard55-lab/GEMSDOE31",
+          "filename": "GEMSDOE31.tif",
+          "spearman": 0.05165
+        },
+        {
+          "id": "GEMSDOE32",
+          "repo": "buffedlizard55-lab/GEMSDOE32",
+          "filename": "GEMSDOE32.tif",
+          "spearman": 0.04852
+        },
+        {
+          "id": "GEMSDOE33",
+          "repo": "buffedlizard55-lab/GEMSDOE33",
+          "filename": "GEMSDOE33.tif",
+          "spearman": 0.05342
+        },
+        {
+          "id": "GEMSDOE36",
+          "repo": "buffedlizard55-lab/GEMSDOE36",
+          "filename": "GEMSDOE36.tif",
+          "spearman": 0.04917
+        },
+        {
+          "id": "13GEMSDOE",
+          "repo": "buffedlizard55-lab/13GEMSDOE",
+          "filename": "13GEMSDOE.tif",
+          "spearman": 0.00015
+        },
+        {
+          "id": "GEMSDOE27_H31",
+          "repo": "buffedlizard55-lab/GEMSDOE27",
+          "filename": "GEMSDOE27_H31.tif",
+          "spearman": 0.0609
+        },
+        {
+          "id": "GEMSDOE32_H47",
+          "repo": "buffedlizard55-lab/GEMSDOE32",
+          "filename": "GEMSDOE32_H47.tif",
+          "spearman": 0.02021
+        },
+        {
+          "id": "17GEMSDOE_dense_prior",
+          "repo": "buffedlizard55-lab/17GEMSDOE",
+          "filename": "17GEMSDOE_dense_prior.tif",
+          "spearman": 0.40691
+        }
+      ]
+    },
+    "pinned_registry_3px_overlap": {
+      "max_discrete_non_blanket": 0.390374,
+      "max_discrete_artifact": "GEMSDOE27_H31",
+      "passed_discrete_le_0_70": true,
+      "max_literal_all_registry": 1.0,
+      "max_literal_artifact": "13GEMSDOE",
+      "passed_literal_all_le_0_70": false,
+      "by_artifact": [
+        {
+          "id": "GEMSDOE24",
+          "repo": "buffedlizard55-lab/GEMSDOE24",
+          "filename": "GEMSDOE24.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.319679,
+          "spearman_dots": 0.01327
+        },
+        {
+          "id": "GEMSDOE25",
+          "repo": "buffedlizard55-lab/GEMSDOE25",
+          "filename": "GEMSDOE25.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.305856,
+          "spearman_dots": 0.00978
+        },
+        {
+          "id": "GEMSDOE27",
+          "repo": "buffedlizard55-lab/GEMSDOE27",
+          "filename": "GEMSDOE27.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.324759,
+          "spearman_dots": 0.01309
+        },
+        {
+          "id": "GEMSDOE28",
+          "repo": "buffedlizard55-lab/GEMSDOE28",
+          "filename": "GEMSDOE28.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.291684,
+          "spearman_dots": 0.01094
+        },
+        {
+          "id": "GEMSDOE30",
+          "repo": "buffedlizard55-lab/GEMSDOE30",
+          "filename": "GEMSDOE30.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.305856,
+          "spearman_dots": 0.00978
+        },
+        {
+          "id": "GEMSDOE31",
+          "repo": "buffedlizard55-lab/GEMSDOE31",
+          "filename": "GEMSDOE31.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.293797,
+          "spearman_dots": 0.01097
+        },
+        {
+          "id": "GEMSDOE32",
+          "repo": "buffedlizard55-lab/GEMSDOE32",
+          "filename": "GEMSDOE32.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.283503,
+          "spearman_dots": 0.01182
+        },
+        {
+          "id": "GEMSDOE33",
+          "repo": "buffedlizard55-lab/GEMSDOE33",
+          "filename": "GEMSDOE33.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.302193,
+          "spearman_dots": 0.01093
+        },
+        {
+          "id": "GEMSDOE36",
+          "repo": "buffedlizard55-lab/GEMSDOE36",
+          "filename": "GEMSDOE36.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.29254,
+          "spearman_dots": 0.01194
+        },
+        {
+          "id": "13GEMSDOE",
+          "repo": "buffedlizard55-lab/13GEMSDOE",
+          "filename": "13GEMSDOE.tif",
+          "is_space_filling_control": true,
+          "overlap_3px": 1.0,
+          "spearman_dots": -0.00028
+        },
+        {
+          "id": "GEMSDOE27_H31",
+          "repo": "buffedlizard55-lab/GEMSDOE27",
+          "filename": "GEMSDOE27_H31.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.390374,
+          "spearman_dots": 0.01955
+        },
+        {
+          "id": "GEMSDOE32_H47",
+          "repo": "buffedlizard55-lab/GEMSDOE32",
+          "filename": "GEMSDOE32_H47.tif",
+          "is_space_filling_control": false,
+          "overlap_3px": 0.303877,
+          "spearman_dots": 0.00824
+        },
+        {
+          "id": "17GEMSDOE_dense_prior",
+          "repo": "buffedlizard55-lab/17GEMSDOE",
+          "filename": "17GEMSDOE_dense_prior.tif",
+          "is_space_filling_control": true,
+          "overlap_3px": 1.0,
+          "spearman_dots": 0.03716
+        }
+      ]
+    },
+    "writer_receipt": {
+      "file": "wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+      "sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+      "bytes": 136229,
+      "submission_name": "wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros",
+      "note": "WBG2-GVCD 100%OOF 72f Vent+Stress+ComCat DualCELF 37400d (44%>32px) HOLDOUT-DTI=0.1759",
+      "note_chars": 86,
+      "validator": {
+        "file": "/home/user/WBGGEMSDOE2/docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+        "bytes": 136229,
+        "sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+        "meta": {
+          "crs": "EPSG:32611",
+          "shape": [
+            3730,
+            3292
+          ],
+          "dtype": "float32",
+          "count": 1,
+          "nodata": null,
+          "transform": [
+            100.0,
+            0.0,
+            243350.0,
+            0.0,
+            -100.0,
+            4508550.0
+          ],
+          "profile_compress": "deflate"
+        },
+        "band_description": [
+          null
+        ],
+        "n_finite": 12279160,
+        "n_nan": 0,
+        "n_infinite": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.003045810852199793,
+        "emitted_positive_pixels": 37400,
+        "checks": {
+          "single_band": true,
+          "dtype_float32": true,
+          "dimensions_3730x3292": true,
+          "crs_epsg_32611": true,
+          "transform_matches_sample_submission": true,
+          "no_nan_anywhere": true,
+          "no_inf_anywhere": true,
+          "no_sentinel_values": true,
+          "range_0_1_guaranteed": true,
+          "min_ge_0": true,
+          "max_le_1": true,
+          "in_footprint_all_finite": true,
+          "in_footprint_range_0_1": true,
+          "outside_footprint_zero": true,
+          "zero_dots_on_mapped_catalogue": true
+        },
+        "all_checks_passed": true,
+        "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+        "on_catalogue_positive_pixels": 0,
+        "in_footprint_positive_pixels": 37400,
+        "footprint_fraction": 0.007237720211024055
+      },
+      "template_report": {
+        "path": "/home/user/WBGGEMSDOE2/docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif",
+        "bytes": 136229,
+        "sha256": "b625e13b5b3e4d36ab80f1ad78318c96d35ac8c2c0f401aff6821365221850a9",
+        "bands": 1,
+        "dtype": "float32",
+        "crs": "EPSG:32611",
+        "width": 3292,
+        "height": 3730,
+        "bounds": [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        "ref_bounds": [
+          243350.0,
+          4135550.0,
+          572550.0,
+          4508550.0
+        ],
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "nodata": null,
+        "blocksize": [
+          256,
+          256
+        ],
+        "fixture_grid": false,
+        "has_validity_mask": false,
+        "nan_pixels": 0,
+        "infinity_pixels": 0,
+        "n_nan": 0,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.003045810852199793,
+        "n_nonzero": 37400,
+        "mass": 37400.0,
+        "mass_outside_footprint": 0,
+        "problems": [],
+        "ok": true,
+        "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+      },
+      "zip_file": "wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.zip",
+      "zip_sha256": "1a3618d3dabb81411937a18797f4c34db0893e39e316045e60119f0556cb98d7",
+      "approved_for_weekly_slot": false,
+      "promoted": false,
+      "submission_slots_used": 0,
+      "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+      "metadata": {
+        "lane": "WBG2-GVCD",
+        "winning_experiment": "GVCD-EXP3 (Dual-Regime Geothermal-Vent & Stress-Dilation Synthesis)",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "holdout_dti": 0.17591470735855824,
+        "holdout_ci95": [
+          0.1554924660571521,
+          0.19693604045156685
+        ],
+        "in_sample_refit_fraction": 0.0,
+        "out_of_fold_footprint_fraction": 1.0
+      }
+    }
+  }
+}
