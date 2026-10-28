@@ -1,0 +1,100 @@
+{
+  "schema": "wbg4.lane-config.v1",
+  "lane": "WBG4-SCORR",
+  "lane_name": "Strike-conditioned structural corridor (SSCC)",
+  "created_utc": "2026-10-28",
+  "method_paragraph": "Hide-and-recover on whole fault components with a 3 px buffer, spatially blocked 2x2 quadrants; every catalogue-derived feature is rebuilt from visible components only; a gradient-boosted model over public USGS-derived geophysical layers (GeoDAWN radiometrics + derivative extensions, lidar scarp morphology, SGMC fault geometry) plus visible-fault geometry predicts the withheld faults; the emitted raster is the model probability field thresholded at the DTI-optimal operating point and written as a dense corridor field, never as dots copied or jittered from another submission.",
+  "grid": {
+    "height": 3730,
+    "width": 3292,
+    "epsg": 32611,
+    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+    "resolution_m": 100.0,
+    "footprint_cells": 5167373
+  },
+  "metric": {
+    "alpha": 0.2,
+    "beta": 0.8,
+    "radius_px": 3,
+    "radius_m": 300,
+    "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/"
+  },
+  "holdout": {
+    "buffer_px": 3,
+    "folds": 4,
+    "blocking": "2x2 contiguous quadrants of the footprint; whole connected fault components assigned by centroid",
+    "evaluator": "wbg4-hide-recover-v1 (src/wbg4/lane.py + src/wbg3/metric.py)",
+    "negatives_per_positive": 5
+  },
+  "inputs": {
+    "official": {
+      "labels": {
+        "path": "data/labels.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830,
+        "source": "USGS Quaternary faults + INGENIOUS, mirror of the organizer download tab",
+        "mirror": "https://github.com/buffedlizard55-lab/57GEMSDOE/tree/822a0ce5546c7b6749cdd82eb145b6b3e616603d/data/official",
+        "corroboration": "identical SHA-256 in buffedlizard55-lab/GEMSDOE24 data/manifest.json and data/bridge/labels.tif"
+      },
+      "sample_submission": {
+        "path": "data/sample_submission.tif",
+        "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "bytes": 1599597,
+        "source": "organizer sample submission; defines CRS/shape/transform/footprint",
+        "corroboration": "identical SHA-256 in buffedlizard55-lab/GEMSDOE24 data/manifest.json"
+      }
+    },
+    "external": {
+      "lidar_scarp_features": {
+        "path": "data/external/lidar_scarp_features_u8.tif",
+        "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+        "bands": ["ex_max", "ex_mean", "step_max", "lapneg_max", "lappos_max",
+                  "downface_max", "upface_max", "cross_max", "relief", "coh100",
+                  "strike", "valid"],
+        "source": "USGS 3DEP lidar aggregated to the official 100 m grid (2 m slope/curvature statistics)",
+        "provenance_record": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/main/data/external/lidar_scarp_features.json"
+      },
+      "geodawn_rad": {
+        "path": "data/external/geodawn_rad_u8.tif",
+        "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+        "bands": ["K", "Th", "U", "TC"],
+        "doi": "10.5066/P93LGLVQ",
+        "source": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+        "sciencebase_item": "657e1d85d34e23d3533209f7"
+      },
+      "geodawn_extensions": {
+        "path": "data/external/geodawn_extensions_u8.tif",
+        "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+        "bands": ["ThK", "UK", "UTh", "TMI_up150"],
+        "doi": "10.5066/P93LGLVQ"
+      },
+      "sgmc_faults": {
+        "path": "data/external/derived_sgmc_faults_100m_u8.tif",
+        "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+        "source": "USGS State Geologic Map Compilation fault traces rasterised to the official grid"
+      },
+      "acquisition_blocks": {
+        "path": "data/acquisition_block_id_100m.tif",
+        "sha256": "2c0785c4b3ec46c734d1be7a7aedbb3e816201100ab358033a3af074418c894a",
+        "source": "GeoDAWN survey acquisition blocks derived from the published extent polygons"
+      },
+      "gdr_wellspring": {
+        "path": "data/external/gdr_wellspring_in_footprint.csv",
+        "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+        "rows": 27092,
+        "source": "DOE Geothermal Data Repository submission 1391 (spring/well chemistry + geothermometry)",
+        "url": "https://gdr.openei.org/submissions/1391"
+      }
+    }
+  },
+  "leakage_canary": {
+    "rule": "single-feature AUC > 0.90 is treated as leakage and the feature is dropped",
+    "reported_in": "evidence/wbg4_canaries.json"
+  },
+  "duplicate_rule": {
+    "rank_correlation_limit": 0.90,
+    "three_pixel_overlap_limit": 0.70,
+    "check_surface_before_placement": true,
+    "check_final_dots": true
+  }
+}

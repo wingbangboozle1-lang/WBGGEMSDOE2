@@ -1,0 +1,79 @@
+{
+  "schema": "wbg4.hypotheses.v1",
+  "created_utc": "2026-10-28",
+  "target": "Faults mapped by the sponsor's experts that are absent from the USGS Quaternary + INGENIOUS catalogue used as labels.",
+  "ranking_basis": "expected HOLDOUT-DTI improvement per unit implementation cost, then measured",
+  "hypotheses": [
+    {
+      "id": "W4-H1",
+      "rank": 1,
+      "name": "Strike-conditioned structural corridor (SSCC)",
+      "layers": [
+        "lidar_scarp_features_u8.tif (ex_max, ex_mean, step_max, lapneg_max, lappos_max, downface_max, upface_max, cross_max, relief, coh100)",
+        "geodawn_rad_u8.tif (K, Th, U, TC)",
+        "geodawn_extensions_u8.tif (ThK, UK, UTh, TMI_up150)",
+        "derived_sgmc_faults_100m_u8.tif",
+        "GDR 1391 spring/well chemistry density"
+      ],
+      "physical_signature": "Multi-scale scarp/curvature relief (0.1-5 km) with consistent strike continuity, supported by radiometric contrast and an independent structural map, i.e. the criteria a fault expert applies when drawing a trace.",
+      "why_unmapped": "The detector is fitted to recover *withheld whole fault components* from geophysical evidence alone (the blind variant excludes every catalogue-proximity feature), so it can fire on a trace that no catalogue contains. Absolute elevation is deliberately excluded; only relief texture and shape are used.",
+      "difference_from_repo": "Earlier lanes placed sparse dots on single-scale ridge/curvature maxima or closed topographic gaps with hand-set rules. This lane learns a continuous corridor field from a supervised multi-layer model, uses a rank-cut operating point chosen on the pooled DTI curve, and emits ~266k cells rather than ~37k dots.",
+      "non_fault_mimic": "Bedrock ridge crests, landslide head scarps and fluvial terrace edges also produce steep, coherent short-wavelength relief; alluvial fan constructional surfaces can produce radiometric boundaries.",
+      "cost": "medium (no new external data; 4 spatial folds x 200 s)",
+      "status": "tested",
+      "evidence": "evidence/wbg4_folds.json"
+    },
+    {
+      "id": "W4-H2",
+      "rank": 2,
+      "name": "Radiometric K-Th disequilibrium alteration corridor",
+      "layers": ["geodawn_rad_u8.tif (K, Th)", "geodawn_extensions_u8.tif (ThK, UK)"],
+      "physical_signature": "Along-strike K enrichment with Th depletion (low Th/K) caused by hydrothermal K-metasomatism / illite-adularia alteration above fracture conduits.",
+      "why_unmapped": "Alteration halos extend hundreds of metres beyond mapped traces and mark active conduits; faults under alluvium have no scarp but can still carry a radiometric signature.",
+      "difference_from_repo": "The sites' 'scarp-radiometric-fusion' lanes fused radiometrics with topography as an edge term; this hypothesis targets a *ratio disequilibrium* directional signature and is not implemented here.",
+      "non_fault_mimic": "Playa/lacustrine clays and evaporites (high K, low Th), rhyolitic ash and agricultural dust; also vegetation-dependent U mobility.",
+      "cost": "low-medium (needs only bands already cached, plus careful surrogate masking)",
+      "status": "proposed_not_tested",
+      "evidence": null
+    },
+    {
+      "id": "W4-H3",
+      "rank": 3,
+      "name": "Magnetic-lineament continuity under cover (upward-continued TMI)",
+      "layers": ["geodawn_extensions_u8.tif (TMI_up150)", "official training_features.tif magnetics once login data is available"],
+      "physical_signature": "Upward continuation suppresses shallow volcanic noise and reveals deep basement lineaments; faults cutting magnetite-bearing basement appear as narrow gradient ridges that do not depend on topography.",
+      "why_unmapped": "Faults buried under basin fill have no topographic expression, so catalogue maps built from surface geology can miss them entirely.",
+      "difference_from_repo": "Only one magnetic product (TMI upward-continued to 150 m) is cached; a full RTP/vertical-derivative/euler stack needs the organizer 19-band file (login) - no lane in this repo has used the upward-continuation geometry as its primary detector.",
+      "non_fault_mimic": "Lithological contacts, basalt flow margins and intrusive bodies produce the same narrow gradient ridges.",
+      "cost": "medium (needs the organizer training_features.tif, which requires an authenticated download)",
+      "status": "proposed_blocked_on_data",
+      "evidence": null
+    },
+    {
+      "id": "W4-H4",
+      "rank": 4,
+      "name": "Geothermal-discharge-weighted structural linkage",
+      "layers": ["GDR 1391 spring/well chemistry + geothermometry (gdr_wellspring_in_footprint.csv)", "INGENIOUS 2 m temperature probe campaign"],
+      "physical_signature": "Hot springs and high geothermometry cluster at fault intersections and relay zones; the prediction is the along-strike continuation and the step-over between two discharge sites.",
+      "why_unmapped": "A spring pins a permeable structure, but the mapped fault trace commonly stops short of it; the continuation is exactly what is missing from the catalogue.",
+      "difference_from_repo": "A 'thermal-pop' lane already scored 0.1894 (user-reported) using thermal evidence as a density prior; this version conditions on the *pairwise geometry* of discharge sites and is not implemented here.",
+      "non_fault_mimic": "Evaporite-brine discharge, magmatic heat without faulting, and agricultural wells.",
+      "cost": "low (point layers already cached)",
+      "status": "proposed_not_tested",
+      "evidence": null
+    },
+    {
+      "id": "W4-H5",
+      "rank": 5,
+      "name": "Multi-scale relief-texture entropy of the lidar surface",
+      "layers": ["lidar_scarp_features_u8.tif (relief, lapneg_max, lappos_max)"],
+      "physical_signature": "Fault-controlled topography has a characteristic band-limited roughness that is scale-invariant, so a local entropy/variance ratio separates it from smooth fans and from single-scale landforms.",
+      "why_unmapped": "It is blind to any catalogue and to the sign of the scarp, so it can fire on an unmapped trace in either fault-polarity setting.",
+      "difference_from_repo": "No lane in this repository used a texture-entropy statistic; existing scarp lanes use first/second derivatives only.",
+      "non_fault_mimic": "Drainage networks, bedrock-ridge fields and landslide complexes all raise texture entropy.",
+      "cost": "low",
+      "status": "proposed_not_tested",
+      "evidence": null
+    }
+  ]
+}

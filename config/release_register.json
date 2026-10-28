@@ -1,0 +1,19 @@
+{
+  "schema": "wbggems.release-register.v1",
+  "policy": "A registered candidate is the only artifact the publisher may offer as a real submission. Registration requires byte hash, run card, holdout evidence and uniqueness evidence; everything unregistered stays DO NOT SUBMIT.",
+  "candidates": [
+    {
+      "path": "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif",
+      "zip": "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.zip",
+      "sha256": "494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59",
+      "bytes": 263991,
+      "lane": "WBG4-SSCC",
+      "decision": "PROMOTE-WITH-CAVEAT",
+      "decision_basis": "format validator passes on saved bytes; 4-fold whole-fault holdout measured; rank correlation vs 93 registry rasters max 0.565 (< 0.90); no leaderboard estimate is defensible (holdout-to-leaderboard LOO R2 < 0)",
+      "run_card": "evidence/RUN_CARD_WBG4.json",
+      "holdout_evidence": "evidence/wbg4_folds.json",
+      "uniqueness_evidence": "evidence/wbg4_uniqueness.json",
+      "registered_utc": "2026-10-28"
+    }
+  ]
+}
