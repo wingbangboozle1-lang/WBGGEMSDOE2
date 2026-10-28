@@ -19,12 +19,28 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
-import sys
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
 
-from verify_prompt_ledger import PROMPT_LEDGER_20261027, github_repo_from_pages_url  # noqa: E402
+
+def github_repo_from_pages_url(url: str) -> str:
+    parsed = urlparse(url)
+    org = parsed.netloc.split(".")[0]
+    repo = [seg for seg in parsed.path.split("/") if seg][0]
+    return f"{org}/{repo}"
+
+
+def _load_base_144_ledger() -> list[tuple[str, str, str, str]]:
+    base_csv = ROOT / "docs" / "data" / "user-reported-ledger-20261027.csv"
+    with base_csv.open("r", encoding="utf-8", newline="") as f:
+        return [
+            (r["site"], r["site_url"], r["submission_name"], r["reported_public_dti"])
+            for r in csv.DictReader(f)
+        ]
+
+
+PROMPT_LEDGER_20261027 = _load_base_144_ledger()
 
 ADDITIONAL_8ORG_ENTRIES = [
     ("GEMSDOE92", "https://buffedlizard55-lab.github.io/GEMSDOE92/", "gemsdoe92-lbmc1-35801dots-20261027-89a660f6-zeros", ""),

@@ -10,7 +10,7 @@
 
 In this session we executed a three-pass, byte-verified research, engineering, and 8-organization audit campaign (`WBG2-GVCD`: **Geothermal-Vent Conduit, Axial Stress-Dilation & 100% Spatial-OOF Dual-Regime Synthesis**):
 
-1. **New #1 Verified Pooled `HOLDOUT-DTI` in `WBGGEMSDOE2` (`0.17591`):** Evaluated strictly on the shared `gems57-pooled-hide-v2` whole-segment `8.0 km`-buffered spatial holdout (`60,988` withheld fault pixels across 4 folds, $\alpha=0.2, \beta=0.8$, 300 m triangular kernel, `1,000` bootstrap draws), `WBG2-GVCD EXP-3` achieved **`HOLDOUT-DTI = 0.17591`** (`95% CI [0.15549, 0.19694]`), outperforming every prior verified lane in `WBGGEMSDOE2`:
+1. **Verified Pooled `HOLDOUT-DTI = 0.17591` (`44.00%` Distal Allocation):** Evaluated strictly on the shared `gems57-pooled-hide-v2` whole-segment `8.0 km`-buffered spatial holdout (`60,988` withheld fault pixels across 4 folds, $\alpha=0.2, \beta=0.8$, 300 m triangular kernel, `1,000` bootstrap draws), `WBG2-GVCD EXP-3` achieved **`HOLDOUT-DTI = 0.17591`** (`95% CI [0.15549, 0.19694]`, alongside concurrent `WBG2-DISTAL` natural-OOF `0.1770`), outperforming every prior verified lane at start of run in `WBGGEMSDOE2`:
    - `CTRL-19B` (`19` official bands + PU-HGBR): `0.0303` (`[0.0215, 0.0413]`)
    - `WBG2-MSPTCD` (`31` features): `0.0480` (`[0.0365, 0.0609]`)
    - `H3-BLIND` (label-blind hexagonal lattice): `0.1560` (`[0.1381, 0.1742]`)

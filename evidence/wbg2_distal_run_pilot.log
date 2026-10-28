@@ -1,0 +1,5 @@
+[distal] Footprint 5,167,373 | catalogue 60,988
+[dphs] Packing contiguous (5,167,373 x 60) float32 matrix in .cache/...
+[distal] piedmont percentiles scarp p50=0.2534 p90=0.5944 | slope p30=1.5024 p70=9.4043
+[canary] PASS 61 features, max symmetric AUC 0.6179 on demag_along_strike_s3
+[fold 0] (191.0s) | natural_oof=0.1541 (18,225, gt32=0.98) | quota35=0.0809 (8,968, gt32=0.71) | piedmont40=0.0828 (9,949, gt32=0.73)

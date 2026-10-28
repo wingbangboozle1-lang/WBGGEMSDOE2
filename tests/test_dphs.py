@@ -113,28 +113,26 @@ def test_dphs_fleet_uniqueness_audit_and_run_card_fail_closed():
     ext = models["physics_sgmc_geometry_11feat_external_9focus"]
     assert ext["spearman"] > 0.70
 
-    for card_path in (ROOT / "evidence" / "RUN_CARD_DPHS.json", ROOT / "docs" / "data" / "run-card-dphs.json"):
-        card = json.loads(card_path.read_text())
-        for key in (
-            "run_id",
-            "hypothesis",
-            "method_lane",
-            "holdout_dti",
-            "incumbent_dti",
-            "ci95",
-            "leakage_canary_max_auc",
-            "max_registry_corr",
-            "max_registry_dot_overlap",
-            "format_valid",
-            "status",
-        ):
-            assert key in card
-        assert card["status"] == "negative"
-        assert card["format_valid"] is True
-        assert card["leakage_canary_max_auc"] <= 0.90
-        assert card["max_registry_corr"] <= 0.90
-        assert card["max_registry_dot_overlap"] > 0.70
-        assert card["evidence_details"]["ok_to_submit"] is False
+    # Historical receipt is preserved, but its canaries and rank were not replayed.
+    historical = json.loads((ROOT / "evidence/RUN_CARD_DPHS.json").read_text())
+    assert historical["status"] == "negative" and historical["ok_to_submit"] is False
+    assert historical["leakage_canary_max_auc"] <= 0.90
+    assert historical["max_registry_corr"] <= 0.90
+    assert historical["max_registry_dot_overlap"] > 0.70
+
+    # Public data separates source-reported holdout from the independent rejection;
+    # it cannot publish unmeasured ranks, a projected score or an upload note.
+    public = json.loads((ROOT / "docs/data/run-card-dphs.json").read_text())
+    summary = json.loads((ROOT / "docs/data/dphs_audit_summary.json").read_text())
+    assert public == summary
+    assert public["status"] == public["verdict"] == "negative" and public["ok_to_submit"] is False
+    assert public["format_valid"] is True and public["max_registry_dot_overlap"] > 0.70
+    assert public["max_registry_corr"] is None and public["leakage_canary_max_auc"] is None
+    assert public["incumbent_dti"] is None and public["leaderboard_score_estimate"] is None
+    assert public["submission_name"] is None and public["submission_note"] is None
+    assert public["lattice_overlap_3px"] == pytest.approx(0.9983561643835617)
+    assert "SOURCE-REPORTED" in public["evidence_details"]["evidence_class"]
+    assert public["evidence_details"]["ok_to_submit"] is False
 
 
 def test_prompt_ledger_20261027_preserves_scored_and_blank_rows():

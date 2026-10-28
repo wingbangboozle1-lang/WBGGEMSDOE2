@@ -1,0 +1,130 @@
+{
+  "file": "wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif",
+  "sha256": "512609c135676fbd8d1a44c43aa37ec88e6da9b76dab6af76ec929ab71b0aa9c",
+  "bytes": 134568,
+  "submission_name": "wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros",
+  "note": "WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1770",
+  "note_chars": 81,
+  "validator": {
+    "file": "/home/user/WBGGEMSDOE2/docs/downloads/distal/wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif",
+    "bytes": 134568,
+    "sha256": "512609c135676fbd8d1a44c43aa37ec88e6da9b76dab6af76ec929ab71b0aa9c",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030946743208914995,
+    "emitted_positive_pixels": 38000,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 38000,
+    "footprint_fraction": 0.007353833369489681
+  },
+  "template_report": {
+    "path": "/home/user/WBGGEMSDOE2/docs/downloads/distal/wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif",
+    "bytes": 134568,
+    "sha256": "512609c135676fbd8d1a44c43aa37ec88e6da9b76dab6af76ec929ab71b0aa9c",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030946743208914995,
+    "n_nonzero": 38000,
+    "mass": 38000.0,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.zip",
+  "zip_sha256": "ab158e190ebdcbbc7062aea6ecbe04b368529fde9c22345437a10d5c0e5d4e3e",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "metadata": {
+    "lane": "WBG2-DISTAL",
+    "winning_experiment": "natural_oof",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "holdout_dti": 0.17702928064237153,
+    "holdout_ci95": [
+      0.15493037057599188,
+      0.19755401928900304
+    ],
+    "full_map_surface": "100% spatial-OOF, quantile-matched, zero in-sample pixels"
+  }
+}

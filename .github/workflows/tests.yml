@@ -29,4 +29,5 @@ jobs:
       - run: python scripts/build_msptcd_site.py
       - run: python scripts/build_release.py
       - run: python scripts/build_release_review.py
+      - run: python scripts/check_readiness.py
       - run: python -m pytest -q
