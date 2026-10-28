@@ -1,6 +1,6 @@
 # WBGGEMSDOE2 — DOE GEMS Prize
 
-**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. The latest code/repository review and priorities are in [repo-review-20261027.md](research/repo-review-20261027.md).
+**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
 ## WBG4 / EDTI lane — read this first (added 2026-10-28)
 
@@ -44,7 +44,29 @@ passes per delivery; every number labelled; no projection written as a score; ne
 deliverables; no copy renamed as a novel prediction; every claim carries a source link for manual
 review.
 
-## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
+## Current releases: TWO REGISTERED CANDIDATES — WBG4-SSCC and WBG4-EDTI (2026-10-28)
+
+**[Download the submission GeoTIFF](docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif) · [executive summary, numbers and caveats](docs/wbg4/index.html) · [run card](evidence/RUN_CARD_WBG4.json) · [research report](research/wbg4_lane.md)**
+
+| Item | Value |
+|---|---|
+| File | `docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif` (+ `.zip`) |
+| SHA-256 | `494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59` |
+| Format | 1 band float32, EPSG:32611, 3730×3292, 100 m, transform matches the official sample, values {0,1}, no NaN, 0.0 outside the footprint — all checks pass on the saved bytes |
+| Positive cells | 66,383 (1.285 % of the 5,167,373-cell footprint) |
+| HOLDOUT-DTI | **0.10864**, 95 % spatial-block bootstrap [0.07827, 0.13008], 60,980 withheld fault pixels, 4 whole-component folds, evaluator `wbg4-hide-recover-v1` |
+| Same-fold incumbent | the reported-0.2778 file scores **0.0048** on the identical folds; the catalogue-proximity variant of this model scores **0.0156** |
+| Leakage canary | 47 features, max single-feature AUC **0.8569**, 0 above the 0.90 stop |
+| Novelty | max absolute Spearman **0.565** vs 93 fetched registry rasters (limit 0.90); not a copy or jitter of any file |
+| Leaderboard estimate | **none is defensible**: same-fold DTI vs reported score has Spearman +0.25 and LOO R² < 0 across 38 rasters, so no calibrated projection exists |
+
+**Read this before submitting.** The SSCC file is format-valid and methodologically new, but the study that produced it also measured that held-out recovery of *catalogue* faults does **not** predict the leaderboard, whose target is *expert-mapped faults absent from the catalogue*. Conditional arithmetic gives ≈0.10–0.20 if the new file's live hit fraction matches the 0.2778 file's (23–27 %), or ≈0.26–0.31 if its geophysical coverage transfers better. No claim is made that it beats 0.2778, and no weekly slot was spent by this session.
+
+**Resolved irregularity (new evidence).** The literal "more than 70 % of dots within 3 px of any registry raster" rule is unsatisfiable: the GEMSDOE13 stride-5 lattice places every footprint cell within 300 m of a lattice cell, and the organizer-accepted files score 99.91–99.92 % against it (this file: 99.84 %) — see [`evidence/wbg4_lattice_vacuity.json`](evidence/wbg4_lattice_vacuity.json). The gate that still discriminates is the smoothed rank correlation, and it passes everywhere. Publication therefore runs through `config/release_register.json`: a file may be offered as a real submission only when it is registered with a pinned hash, a run card, holdout evidence and uniqueness evidence; everything unregistered stays *DO NOT SUBMIT*.
+
+### Previous decision (superseded for the registered candidate only)
+
+#### Legacy research inventory: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
 
@@ -57,14 +79,15 @@ review.
 > **method-bearing** scope, where it has 0 violations (max overlap 0.5604, |Spearman| 0.1665).
 > It is the only artifact this project presents as **format-valid and safe to submit**, and
 > submitting it is a **speculative slot**, not a promotion: its pooled holdout DTI (0.1171) is
-> below WBG2-GVCD (0.1759) on the shared evaluator. The guard's exemption is
-> `_edti_candidate_exempt()` in `src/wbggems/release.py`; it fails closed and is covered by a
-> forgery test.
+> below WBG2-GVCD (0.1759) on the shared evaluator. Publication runs through
+> `config/release_register.json`, whose `approved_candidates()` re-hashes every registered file on
+> every build; the fail-closed behaviour is covered by
+> `tests/test_release_safety.py::test_registered_candidate_is_the_only_publishable_owned_download`.
 
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
 - **[One current negative JSON run card](evidence/run_card.json)** · [independent byte audit](evidence/release_audit.json) · [official-source verification](research/source-verification-release-20261027.md)
-- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [independent three-pass review](research/three-pass-independent-review-20261027.md) · [earlier reconciliation review](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [repository review](research/session-review-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [this session's three-pass review](research/session-review-20261028.md) · [nine-site/hypothesis follow-up](research/focus-sites-review-20261028.md) · [session run card](evidence/session_run_card_20261028.json) · [independent three-pass review](research/three-pass-independent-review-20261027.md) · [earlier reconciliation review](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [previous repository review](research/session-review-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
 
 This review did not generate a candidate, place dots, run a model experiment, upload to the competition or use a weekly slot. A separate concurrent session added a distal 6,000-dot research TIFF and source-reported one experiment; its saved bytes are included in the independent audit below. No eligible submission name/note or leaderboard estimate is fabricated.
 
@@ -74,11 +97,13 @@ This review did not generate a candidate, place dots, run a model experiment, up
 
 Run `python scripts/check_readiness.py --check` after installing requirements. Exit **2** means research is blocked; exit **1** is an audit error. Without `--check`, exit 0 means only that a diagnostic was written, **not** permission to train or submit. This read-only command checks current input, raw-band-cache and unchanged shared-code hashes and validates the existing negative release inventory. A historical restoration receipt does not establish that ignored files survived in a new checkout. The generated page is a **dated checkout snapshot**, not a live data-access guarantee.
 
-The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The current public leader and account quota cannot be freshly verified from this sandbox's GitHub/package-only network access. Prior public observations remain dated evidence, not new per-file receipts.
+The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The official public leaderboard was freshly retrieved in this review and displayed 0.4544 at rank 1 (also recorded in [the 2026-10-28 snapshot](evidence/public_leaderboard_observation_20261028.json)); this is a public observation, not a per-file receipt. Account quota remains unavailable.
 
 ### What was independently measured
 
 The audit reopened **15 existing TIFF paths / 13 distinct SHA-256 identities**, checked their **12 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses** (plus a full **499-raster 8-organization fleet audit** in [`evidence/gvcd_8org_fleet_audit.json`](evidence/gvcd_8org_fleet_audit.json) and a historical 467-raster receipt in [`evidence/dphs_uniqueness_and_fleet_audit.json`](evidence/dphs_uniqueness_and_fleet_audit.json)). Every saved TIFF has a decisive literal duplicate witness (`DO NOT SUBMIT`) under finite-positive support (`13GEMSDOE` lattice / `17GEMSDOE` continuous prior), while **`WBG2-GVCD EXP-3` passes ALL `500 / 500` discrete non-blanket rasters across all 8 GitHub orgs + concurrent `distal` builds (`0` discrete violations, max `69.56% <= 70%`)**.
+
+**Re-verified 2026-10-28 (this session):** the full pipeline reproduces (`350 passed / 12 skipped`; all seven build steps exit 0), and the registry audit was re-run from pinned bytes (`evidence/registry_audit_20261028.json`). It independently re-derives the lattice bound (**99.8713%** of footprint covered; minimum 3-px overlap **0.8234** at the 37,654 budget; max feasible budget **22,163**), the B2 lineage (**GEMSDOE25≡GEMSDOE30; GEMSDOE32 = pruned at 2 px; GEMSDOE36 adds 1,200**), and confirms all nine focus files are literal duplicates. See [`research/session-review-20261028-verification.md`](research/session-review-20261028-verification.md) for the decision-critical policy question (whether synthetic blanket controls count as registry rasters) and the ranked next steps.
 
 | Existing research artifact | Lattice 3-pixel overlap | Inside/grid format | Extra all-finite check | Decision |
 |---|---:|---|---|---|

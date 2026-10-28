@@ -60,6 +60,7 @@ jobs:
           python scripts/build_site.py
           python scripts/build_site_data.py
           python scripts/build_msptcd_site.py
+          python scripts/build_edti_site.py
           python scripts/build_release.py
           python scripts/build_release_review.py
           python scripts/check_readiness.py

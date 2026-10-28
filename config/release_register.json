@@ -1,0 +1,31 @@
+{
+  "schema": "wbggems.release-register.v1",
+  "policy": "A registered candidate is the only artifact the publisher may offer as a real submission. Registration requires byte hash, run card, holdout evidence and uniqueness evidence; everything unregistered stays DO NOT SUBMIT.",
+  "candidates": [
+    {
+      "path": "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif",
+      "zip": "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.zip",
+      "sha256": "494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59",
+      "bytes": 263991,
+      "lane": "WBG4-SSCC",
+      "decision": "PROMOTE-WITH-CAVEAT",
+      "decision_basis": "format validator passes on saved bytes; 4-fold whole-fault holdout measured; rank correlation vs 93 registry rasters max 0.565 (< 0.90); no leaderboard estimate is defensible (holdout-to-leaderboard LOO R2 < 0)",
+      "run_card": "evidence/RUN_CARD_WBG4.json",
+      "holdout_evidence": "evidence/wbg4_folds.json",
+      "uniqueness_evidence": "evidence/wbg4_uniqueness.json",
+      "registered_utc": "2026-10-28"
+    },
+    {
+      "path": "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif",
+      "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
+      "bytes": 372561,
+      "lane": "WBG4-EDTI",
+      "decision": "PUBLISH-WITH-CAVEAT",
+      "decision_basis": "format validator passes on the saved bytes; pooled buffered-whole-segment holdout measured over 2 folds and 7,893 withheld positives (evaluator wbg4-edti-v1) at the 40k operating point; uniqueness measured against 437 registry rasters with 0 method-bearing violations (max 3 px overlap 0.5604, max |Spearman| 0.1665); no leaderboard score is defensible - the projection 0.20-0.30 is explicitly not a score, and the cross-lane evaluator difference makes the SSCC 0.1086 non-comparable",
+      "run_card": "evidence/RUN_CARD_WBG4_EDTI.json",
+      "holdout_evidence": "evidence/wbg4_exp2.json",
+      "uniqueness_evidence": "evidence/wbg4_edti_uniqueness.json",
+      "registered_utc": "2026-10-28"
+    }
+  ]
+}

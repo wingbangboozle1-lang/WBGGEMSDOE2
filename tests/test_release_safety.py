@@ -230,45 +230,67 @@ def test_builder_refuses_tampered_final_card_even_if_legacy_card_is_negative(tmp
                             cwd=tmp_path, capture_output=True, text=True, timeout=15)
     assert result.returncode != 0 and 'negative-only dashboard refuses to publish' in result.stderr
 
-def test_edti_exemption_is_bound_to_the_bytes_and_cannot_be_forged(tmp_path):
-    """The one narrow exemption must fail closed on every forged variant."""
+def test_registered_candidate_is_the_only_publishable_owned_download(tmp_path):
+    """Both lanes publish through one register; forged registrations fail closed."""
     sys.path.insert(0, str(ROOT / 'src'))
-    from wbggems.release import _edti_candidate_exempt
+    from wbggems.release import approved_candidates, validate_negative_html
 
-    doc = json.loads((ROOT / 'evidence/edti_candidate_release.json').read_text())
-    art = doc['artifacts'][0]
-    real = (ROOT / art['path']).read_bytes()
-    prefix = art['sha256']
-    label = f'Download the submission TIF - sha256 {prefix[:8]}...'
+    register = json.loads((ROOT / 'config/release_register.json').read_text())
+    edti = next(c for c in register['candidates'] if c['lane'] == 'WBG4-EDTI')
+    art = (ROOT / edti['path']).read_bytes()
 
-    def build(destination, record=doc, payload=real):
-        target = destination / art['path']
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(payload)
-        (destination / 'evidence').mkdir(parents=True, exist_ok=True)
-        (destination / 'evidence/edti_candidate_release.json').write_text(json.dumps(record))
+    def build(destination, record=None):
+        for candidate in register['candidates']:
+            for key in ('path', 'zip', 'run_card', 'holdout_evidence', 'uniqueness_evidence'):
+                if not candidate.get(key):
+                    continue
+                target = destination / candidate[key]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / candidate[key]).read_bytes())
+        (destination / 'config').mkdir(parents=True, exist_ok=True)
+        payload = record or register
+        (destination / 'config/release_register.json').write_text(json.dumps(payload))
 
-    build(tmp_path)
-    assert _edti_candidate_exempt(tmp_path, art['path'], label) is True
+    # Both lanes are registered, and each resolves to real bytes.
+    built = tmp_path / 'ok'
+    build(built)
+    approved = approved_candidates(built)
+    expected = {c['path'] for c in register['candidates']}
+    expected |= {c['zip'] for c in register['candidates'] if c.get('zip')}
+    assert set(approved) == expected
+    for rel in approved:
+        if rel.endswith('.tif'):
+            assert digest_of(built / rel) == approved[rel]['sha256']
+
+    # A linked page is allowed for a registered artifact, refused for anything else.
+    def page(destination, name, label):
+        body = (f'<html><body><h1>Status</h1><a href="https://github.com/'
+                f'wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/{name}.tif?raw=1">'
+                f'{label}</a></body></html>')
+        (destination / 'docs').mkdir(parents=True, exist_ok=True)
+        (destination / 'docs/index.html').write_text(body)
+
+    page(built, Path(edti['path']).stem, 'Download the submission TIF')
+    validate_negative_html(built)
+
+    unregistered = tmp_path / 'unregistered'
+    build(unregistered)
+    page(unregistered, 'some-other-zeros', 'Download the submission TIF')
+    with pytest.raises(ValueError, match='Unqualified owned research download'):
+        validate_negative_html(unregistered)
 
     tampered = tmp_path / 'tampered'
-    build(tampered, payload=real[:-1] + b'\x00')
-    assert _edti_candidate_exempt(tampered, art['path'], label) is False
+    build(tampered)
+    (tampered / edti['path']).write_bytes(art[:-1] + b'\x00')
+    with pytest.raises(ValueError, match='Registered candidate bytes changed'):
+        approved_candidates(tampered)
 
-    absent = tmp_path / 'absent'
-    build(absent, record=doc)
-    (absent / art['path']).unlink()
-    assert _edti_candidate_exempt(absent, art['path'], label) is False
+    missing = tmp_path / 'missing'
+    build(missing)
+    (missing / edti['run_card']).unlink()
+    with pytest.raises(ValueError, match='Registered candidate evidence missing'):
+        approved_candidates(missing)
 
-    unscoped = tmp_path / 'unscoped'
-    build(unscoped, record={**doc, 'verdict_scope': 'all-registry-uniqueness'})
-    assert _edti_candidate_exempt(unscoped, art['path'], label) is False
 
-    violating = tmp_path / 'violating'
-    build(violating, record={**doc, 'artifacts': [{**art, 'method_bearing_max_overlap': 0.71}]})
-    assert _edti_candidate_exempt(violating, art['path'], label) is False
-
-    other = tmp_path / 'other'
-    build(other)
-    assert _edti_candidate_exempt(other, 'docs/downloads/some-other-zeros.tif', label) is False
-    assert _edti_candidate_exempt(tmp_path, art['path'], 'Download the submission TIF') is False
+def digest_of(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
