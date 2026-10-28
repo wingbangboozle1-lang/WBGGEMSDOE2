@@ -367,16 +367,20 @@ DOI 10.5066/P93LGLVQ, ScienceBase item 657e1d85d34e23d3533209f7</td></tr>
 
 
 def build_banner() -> str:
-    """Prominent, one-click entry point injected at the top of the project dashboard."""
-    card = json.loads((ROOT / "submissions" / f"{CANDIDATE}.json").read_text())
-    return f'''<div class="lane-banner" data-lane="gemsdoe-20261028" style="margin:0 0 18px;padding:16px 18px;border:2px solid #0f7b3f;border-radius:12px;background:#e8f6ee;font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
-<div style="font-weight:700;font-size:15px;letter-spacing:.02em;color:#0f7b3f">SUBMISSION LANE OPENED 2026-10-28 · verdict: <span data-verdict="submit">SAFE TO SUBMIT</span></div>
-<p style="margin:6px 0 10px;color:#12181f">One unique file passed the format, grid and nine-site novelty checks:
-<code>{CANDIDATE}.tif</code> ({card['dots']:,} cells, {card['bytes']:,} bytes). It is <em>not</em> one of the historical
-near-duplicates below, and it carries no organizer receipt.</p>
-<p style="margin:0"><a class="btn" style="display:inline-block;background:#0f7b3f;color:#fff;text-decoration:none;font-weight:650;padding:10px 18px;border-radius:9px" href="lane/index.html">Open the submission lane &rarr;</a>
-&nbsp; <a href="lane/index.html#why" style="color:#12181f">Why this file, and what it will score &rarr;</a>
-&nbsp; <a href="release.html" style="color:#5b6673">Legacy audit of the rejected files &rarr;</a></p>
+    """Prominent entry point at the top of the project dashboard.
+
+    The 2026-10-28 verdict is NOT CLEARED: the literal duplicate rule was re-measured
+    against every SHA-256-verified registry raster that could be fetched, and the file
+    exceeds 70 % 3-px overlap with GEMSDOE3. The numbers are read from the recheck evidence.
+    """
+    rc = json.loads((ROOT / "evidence" / "candidate_uniqueness_recheck_20261028.json").read_text())
+    hit = next(c for c in rc["candidates"] if c["file"].endswith(f"{CANDIDATE}.tif"))
+    holdout = json.loads((ROOT / "evidence" / "gemsdoe_lane_holdout.json").read_text())
+    return f'''<div class="lane-banner" data-lane="gemsdoe-20261028" style="margin:0 0 18px;padding:16px 18px;border:2px solid #b42318;border-radius:12px;background:#fdecea;font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+<div style="font-weight:700;font-size:15px;letter-spacing:.02em;color:#b42318">NOT CLEARED 2026-10-28 · verdict: <span data-verdict="stop">DO NOT SUBMIT</span></div>
+<p style="margin:6px 0 10px;color:#12181f">This file (<code>{CANDIDATE}.tif</code>, {hit["dots"]:,} cells) passes the format checks but <strong>fails the literal duplicate rule</strong> on an independent recheck: <strong>{hit["max_overlap_non_covering"]*100:.1f}%</strong> of its dots lie within 3 px of <code>{hit["max_overlap_non_covering_site"]}</code> (limit 70%). Its own holdout record scores HOLDOUT-DTI {holdout["dti"]:.4f}, below the uniform-random control of 0.0481 recorded in the same file.</p>
+<p style="margin:0"><a class="btn" style="display:inline-block;background:#b42318;color:#fff;text-decoration:none;font-weight:650;padding:10px 18px;border-radius:9px" href="decision/index.html">Read why, and what would clear a file &rarr;</a>
+&nbsp; <a href="release.html" style="color:#12181f">Legacy audit &rarr;</a></p>
 </div>'''
 
 

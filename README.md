@@ -1,23 +1,38 @@
-## START HERE (2026-10-28) — one file is cleared to submit
+## START HERE (2026-10-28) — NO FILE IS CLEARED. DO NOT SUBMIT.
 
-**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
-format-valid and ready to upload.** Everything else in this repository is still
-research-only and must not be submitted.
+**Verdict: DO NOT SUBMIT.** No candidate passes the uniqueness rule against the GEMSDOE
+registry. The earlier statements in this README that one file was "cleared", "unique",
+"SAFE TO SUBMIT" or "OK TO DOWNLOAD" are **superseded** by the independent recheck
+[`evidence/candidate_uniqueness_recheck_20261028.json`](evidence/candidate_uniqueness_recheck_20261028.json).
+The live verdict page is generated: [docs/decision/index.html](docs/decision/index.html)
+(built by `scripts/build_decision_page.py`).
 
-| | |
+| | Measured (recheck, 119 registry rasters, 0 skipped) |
 |---|---|
-| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
-| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
-| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
-| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
-| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
-| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+| Best holdout proxy (HOLDOUT-DTI) | WBG2-DISTAL2 zeros: **0.1771**, 95% CI [0.1570, 0.1983], 60,988 withheld positives, `gems57-pooled-hide-v2` — **fails uniqueness: 0.9613 vs GEMSDOE22** |
+| EDTI zeros (40k) | HOLDOUT-DTI 0.11707 (maxcover@40000, 2 folds) — **fails uniqueness: 0.8547 vs GEMSDOE22** |
+| gems-wbg4 38k (NaN outside) | HOLDOUT-DTI 0.00862 (n_truth 60,940) — **fails uniqueness: 0.7322 vs GEMSDOE3**; **fails local all-finite validator** (its zero-outside twin passes) |
+| SSCC blind 66,383 dots | HOLDOUT-DTI 0.10864 (best point on a blind curve, optimistic) — **fails: 0.9522 vs 18GEMSDOE** |
 
-**Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
-· **Why 0.2778 was the highest score and what it would take to beat it:**
-[docs/lane/findings.html](docs/lane/findings.html) (source: [research/gemsdoe_findings.md](research/gemsdoe_findings.md))
-· **Site:** [docs/lane/index.html](docs/lane/index.html) ·
-[executive summary](docs/EXECUTIVE_SUMMARY.md)
+Scores here are proxies (HOLDOUT-DTI). None is an organizer score; **ORGANIZER-CONFIRMED: none.**
+No projected or structural estimate is presented as a score. The earlier "0.15–0.28" range was a
+structural estimate and is withdrawn as a score.
+
+**Unresolved and needing an owner decision:** the literal all-registry 70 % rule cannot be met by
+any non-empty file because the 13GEMSDOE lattice covers 99.87 % of the footprint. Even when covering
+rasters are excluded, every candidate still fails. Options: (a) an explicit, written policy exemption,
+or (b) a new file that passes the recheck. `config/release_register.json` still lists these files as
+registered (PROMOTE) and has not been changed, because the publisher tests encode that policy.
+
+**Leaderboard conflict:** the public leaderboard shows 0.4544 at rank 1. Figures supplied in conversation
+(0.4413, 0.3195 as high scores; 0.2778 and 0.2708 as GEMSDOE scores) are unverified and conflict with
+the page. All are recorded in [docs/decision/index.html](docs/decision/index.html).
+
+**Irregularities and official sources** are listed on the decision page, including the competition page,
+the NLR rules PDF and the public leaderboard.
+
+**Recheck reproduce:** `python scripts/verify_candidate_uniqueness.py <candidate.tif> [...] --out evidence/candidate_uniqueness_recheck_20261028.json`
+(downloads the SHA-256-pinned registry rasters through `gh api`, then streams one raster at a time).
 
 The short version of the analysis: the organizer metric is
 `DTI = T / (T + 0.2 F + 0.8 (N - T))`. Inverting it on the one pair of fleet files that
@@ -55,7 +70,8 @@ pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's cov
 
 The sections below describe the earlier *negative* release audit: 15 historical TIFFs,
 13 distinct SHA-256 identities and a literal all-registry stop. That verdict still holds
-for those files — it just no longer governs the one file in the lane above.
+for those files. The 2026-10-28 lane verdict at the top (**DO NOT SUBMIT**) supersedes every "OK TO DOWNLOAD",
+"SAFE TO SUBMIT", "cleared" or "unique" statement in the sections below; those statements are retained as history only.
 
 ---
 

@@ -1,6 +1,6 @@
 # WBG4 / EDTI executive summary
 
-**Verdict: FORMAT-VALID AND UNIQUE — SAFE TO SUBMIT** — `artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif` (download: https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif?raw=1)
+**Verdict: NOT CLEARED — DO NOT SUBMIT Independent recheck: 0.8547 of its dots lie within 3 px of GEMSDOE22 (limit 0.70).** — `artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif` (download: https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif?raw=1)
 (sha256 `9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1`).
 
 | item | value |

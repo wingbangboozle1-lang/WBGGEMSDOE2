@@ -283,7 +283,11 @@ def _fit_single_hgbr(
 
 
 def main() -> int:
-    t_start = time.time()
+    # Retired 2026-10-28: this runner's evaluation path was superseded and its output is
+    # not a registered candidate. The guard stops before any feature read or file write.
+    raise SystemExit("STOP: WBG2-DPHS runner retired (archive: evidence/retired_20261027). "
+                     "Its outputs are not registered candidates. DO NOT SUBMIT.")
+    t_start = time.time()  # noqa: unreachable, kept for the archived reference
     sample_path = ROOT / "data/official/sample_submission.tif"
     cat_path = ROOT / "data/official/existing_faults.tif"
 

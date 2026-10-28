@@ -1,0 +1,125 @@
+{
+  "schema": "wbggems.parallel-run-card.v1",
+  "date_utc": "2026-10-28",
+  "lane": "single GEMSDOE-compatible lane; registry = 119 SHA-256-pinned rasters (evidence/candidate_uniqueness_recheck_20261028.json)",
+  "hypothesis": "An existing candidate can be submitted with no duplicate of any registry raster (3-px overlap <=0.70, rank <=0.90).",
+  "mechanism": "Candidate pool re-measured against all pinned registry rasters, self-match excluded, covering rasters reported but not pass/fail.",
+  "mimicking_non_fault_process": "Uniform-random dot control (HOLDOUT-DTI 0.0481, recorded in evidence/gemsdoe_lane_holdout.json).",
+  "holdout": {
+    "gems_wbg4_38k_nan": {
+      "evidence_class": "HOLDOUT-DTI",
+      "dti": 0.008619795216029217,
+      "n_truth": 60940,
+      "ci95": null
+    },
+    "edti_zeros_40k_maxcover40000": {
+      "evidence_class": "HOLDOUT-DTI",
+      "dti": 0.11706916504851672,
+      "folds": [
+        0.11897808891820705,
+        0.11516024117882638
+      ],
+      "ci95": null
+    },
+    "distal2_zeros_38k": {
+      "evidence_class": "HOLDOUT-DTI",
+      "dti": 0.1771227706789678,
+      "ci95": [
+        0.15701337487860348,
+        0.19828810484496331
+      ],
+      "withheld_positives": 60988,
+      "evaluator_version": "gems57-pooled-hide-v2"
+    }
+  },
+  "uniqueness_candidates": [
+    {
+      "file": "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif",
+      "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
+      "dots": 40000,
+      "max_overlap_non_covering": 0.854675,
+      "max_overlap_non_covering_site": "GEMSDOE22",
+      "max_abs_spearman": 0.78621,
+      "overlap_violations": 5,
+      "rank_violations": 0,
+      "validator": {
+        "ok": true,
+        "problems": []
+      }
+    },
+    {
+      "file": "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-45f56803-nan.tif",
+      "sha256": "45f56803729c9354bd5fb586764652b435b40337d72c4a7bb59b60b491940fc1",
+      "dots": 40000,
+      "max_overlap_non_covering": 0.854675,
+      "max_overlap_non_covering_site": "GEMSDOE22",
+      "max_abs_spearman": 0.78621,
+      "overlap_violations": 5,
+      "rank_violations": 0,
+      "validator": {
+        "ok": false,
+        "problems": [
+          "7111787 NaN/infinite pixels: fail our all-finite export policy (public spec permits outside-footprint NaN)",
+          "nodata tag outside all-finite [0,1] export policy"
+        ]
+      }
+    },
+    {
+      "file": "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
+      "sha256": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
+      "dots": 38000,
+      "max_overlap_non_covering": 0.732184,
+      "max_overlap_non_covering_site": "GEMSDOE3",
+      "max_abs_spearman": 0.657487,
+      "overlap_violations": 1,
+      "rank_violations": 0,
+      "validator": {
+        "ok": false,
+        "problems": [
+          "7111787 NaN/infinite pixels: fail our all-finite export policy (public spec permits outside-footprint NaN)",
+          "nodata tag outside all-finite [0,1] export policy"
+        ]
+      }
+    },
+    {
+      "file": "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif",
+      "sha256": "494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59",
+      "dots": 66383,
+      "max_overlap_non_covering": 0.952217,
+      "max_overlap_non_covering_site": "18GEMSDOE",
+      "max_abs_spearman": 0.581579,
+      "overlap_violations": 16,
+      "rank_violations": 0,
+      "validator": {
+        "ok": true,
+        "problems": []
+      }
+    },
+    {
+      "file": "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif",
+      "sha256": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
+      "dots": 38000,
+      "max_overlap_non_covering": 0.961342,
+      "max_overlap_non_covering_site": "GEMSDOE22",
+      "max_abs_spearman": 0.65152,
+      "overlap_violations": 8,
+      "rank_violations": 0,
+      "validator": {
+        "ok": true,
+        "problems": []
+      }
+    }
+  ],
+  "rules": {
+    "overlap_limit": 0.7,
+    "rank_limit": 0.9,
+    "radius_px": 3,
+    "covering_threshold": 0.95
+  },
+  "organizer_confirmed_score": null,
+  "verdict": "negative",
+  "verdict_reason": "Every candidate fails the non-covering overlap rule (min max-overlap 0.7322, GEMSDOE3).",
+  "note": "Negative: 0 of 5 candidates clear uniqueness (0.73-0.96 overlap). Owner policy decision needed.",
+  "slots_spent": 0,
+  "experiments_this_session": 0
+}

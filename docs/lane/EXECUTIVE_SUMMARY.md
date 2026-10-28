@@ -1,6 +1,6 @@
 # ⭐ New submission — WBG2-DISTAL2 fresh-seed candidate (2026-10-28)
 
-**New, byte-unique file generated today — OK TO DOWNLOAD; promotion to a weekly slot is a separate selector decision.**
+**SUPERSEDED 2026-10-28 — NOT CLEARED, DO NOT SUBMIT.** The independent recheck (evidence/candidate_uniqueness_recheck_20261028.json) measures 0.9613 of this file's dots within 3 px of GEMSDOE22 (limit 0.70). The "OK TO DOWNLOAD" wording below is retained as the historical record only. Current verdict: [docs/decision/index.html](../decision/index.html).
 
 | Field | Value |
 |---|---|
@@ -42,7 +42,7 @@ Evidence: [uniqueness audit JSON](data/wbg2_distal2_uniqueness_audit.json) · [s
 > container can demonstrate 41 % on unseen faults. It is a legitimate, unique,
 > in-envelope attempt built from independent physics.
 >
-> **Decision: OK TO DOWNLOAD AND SUBMIT** — a format-valid, novel file. Submission is
+> **Decision (superseded): NOT CLEARED — DO NOT SUBMIT.** Earlier wording said "OK TO DOWNLOAD AND SUBMIT"; the 2026-10-28 recheck does not support it. Submission is
 > optional: with three slots per week, this is the best-supported file we can produce
 > today, and if the score disappoints the diagnosis in §3 says what to change next.
 

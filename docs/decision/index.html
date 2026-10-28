@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DOE GEMS — Executive summary and submit verdict (2026-10-28)</title>
+<style>
+body{font:16px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#12181f;max-width:1180px;margin:24px auto;padding:0 18px}
+table{border-collapse:collapse;width:100%;margin:12px 0 22px;font-size:14px}
+th,td{border:1px solid #d6dbe2;padding:7px 9px;vertical-align:top;text-align:left}
+th{background:#f1f4f8}
+.hero{border:3px solid #b42318;background:#fdecea;border-radius:12px;padding:18px 20px}
+.stop{color:#b42318} .ok{color:#067647}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#55606e}
+.label{font-size:12px;font-weight:700;background:#eef2ff;border-radius:4px;padding:1px 5px}
+</style></head><body>
+
+<div class="hero"><div style="font-size:26px;font-weight:800;color:#b42318">DO NOT SUBMIT — no file is cleared</div><p><b>Verdict (computed by <code>scripts/build_decision_page.py</code>):</b> none of the five registered candidate files passes the literal uniqueness rule. Each has more than 70 % of its dots within 3 px of one non-covering GEMSDOE raster. Earlier pages that said a file was "SAFE TO SUBMIT" or "OK TO DOWNLOAD" are not supported by the recheck.</p><p><b>What would change this:</b> the project owner changes the uniqueness policy, or a new file is generated and passes the recheck. This page regenerates, so the verdict updates automatically.</p></div>
+
+<h2>1. The five candidate files (download: none)</h2>
+<p>Every row is measured. Labels: <span class=label>HOLDOUT-DTI</span> = our proxy on withheld registry truth.
+No row is an <span class=label>ORGANIZER-CONFIRMED</span> score, because no organizer receipt exists here.
+A projection is never shown as a score.</p>
+<table>
+<tr><th>File</th><th>Estimated score (labelled)</th><th>Uniqueness vs GEMSDOE registry (independent recheck, 119 rows, 0 skipped)</th><th>Local format validator</th><th>Verdict</th></tr>
+<tr><td><code>artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif</code><br><span class=mono>sha256 9f5dbc9b820da220…</span><br>40,000 dots</td><td>HOLDOUT-DTI 0.11707 (maxcover@40000 in evidence/wbg4_exp2.json, 2 folds 0.11898 / 0.11516; 95% CI not computed)</td><td>max 0.8547 vs <b>GEMSDOE22</b> (limit 0.70); 5 overlap and 0 rank violations; max |Spearman| 0.786 (limit 0.90); 119 rasters compared, 3 covering excluded</td><td>validator ok=True; problems: none</td><td class=stop><b>DO NOT SUBMIT</b></td></tr><tr><td><code>artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-45f56803-nan.tif</code><br><span class=mono>sha256 45f56803729c9354…</span><br>40,000 dots</td><td>Same dots as the zeros file (name-matched, not byte-verified). Holdout as for the zeros file.</td><td>max 0.8547 vs <b>GEMSDOE22</b> (limit 0.70); 5 overlap and 0 rank violations; max |Spearman| 0.786 (limit 0.90); 119 rasters compared, 3 covering excluded</td><td>validator ok=False; problems: 7111787 NaN/infinite pixels: fail our all-finite export policy (public spec permits outside-footprint NaN); nodata tag outside all-finite [0,1] export policy</td><td class=stop><b>DO NOT SUBMIT</b></td></tr><tr><td><code>submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif</code><br><span class=mono>sha256 b14766fedf4953b7…</span><br>38,000 dots</td><td>HOLDOUT-DTI 0.00862 (n_truth 60,940; evidence/gemsdoe_lane_holdout.json; uniform-random control 0.0481 recorded in the same file; 95% CI not computed)</td><td>max 0.7322 vs <b>GEMSDOE3</b> (limit 0.70); 1 overlap and 0 rank violations; max |Spearman| 0.657 (limit 0.90); 119 rasters compared, 3 covering excluded</td><td>validator ok=False; problems: 7111787 NaN/infinite pixels: fail our all-finite export policy (public spec permits outside-footprint NaN); nodata tag outside all-finite [0,1] export policy</td><td class=stop><b>DO NOT SUBMIT</b></td></tr><tr><td><code>docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif</code><br><span class=mono>sha256 494afc75279346b6…</span><br>66,383 dots</td><td>HOLDOUT-DTI 0.10864 (n_truth 60,980; best point on the blind mass curve, selected on the same holdout, so optimistic)</td><td>max 0.9522 vs <b>18GEMSDOE</b> (limit 0.70); 16 overlap and 0 rank violations; max |Spearman| 0.582 (limit 0.90); 119 rasters compared, 3 covering excluded</td><td>validator ok=True; problems: none</td><td class=stop><b>DO NOT SUBMIT</b></td></tr><tr><td><code>docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif</code><br><span class=mono>sha256 0ebf5e2d717361af…</span><br>38,000 dots</td><td>HOLDOUT-DTI 0.1771, 95% CI [0.1570, 0.1983], 60,988 withheld positives, evaluator gems57-pooled-hide-v2</td><td>max 0.9613 vs <b>GEMSDOE22</b> (limit 0.70); 8 overlap and 0 rank violations; max |Spearman| 0.652 (limit 0.90); 119 rasters compared, 3 covering excluded</td><td>validator ok=True; problems: none</td><td class=stop><b>DO NOT SUBMIT</b></td></tr>
+</table>
+<p class=mono>Rules: overlap = share of the candidate's dots within 3 px of one registry raster's dots (limit 0.70);
+rank = smoothed Spearman correlation (limit 0.90). Covering rasters (a raster covering at least 95 % of the
+candidate) are reported and excluded from pass/fail, as stated in the rules. Source: evidence/candidate_uniqueness_recheck_20261028.json.</p>
+
+<h2>2. The nine focus-site tops (what the GEMSDOE lineage looks like)</h2>
+<p>Each focus top is measured against the other 118 registry rasters; its own bytes are excluded.
+Scores are <span class=label>USER-REPORTED</span> and have no authenticated receipt.</p>
+<table>
+<tr><th>Site</th><th>Score as reported</th><th>Dots</th><th>Uniqueness (recheck)</th><th>Verdict</th></tr>
+
+</table>
+<p>Source: evidence/focus_site_uniqueness_recheck_20261028.json and registry/focus_sites.json.
+The large overlap values show that these tops are near-duplicates of each other. Resubmitting one of them
+cannot pass the literal rule.</p>
+
+<h2>3. Leaderboard figures (conflict flagged)</h2>
+<p>Public leaderboard, fetched 2026-10-28 (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">DrivenData leaderboard</a>),
+labelled as the public-test score as shown there:</p>
+<table><tr><th>Rank</th><th>Team</th><th>Public score</th></tr><tr><td>1</td><td>xiaofanhu</td><td>0.4544</td></tr><tr><td>2</td><td>cfld__</td><td>0.3916</td></tr><tr><td>3</td><td>Batik Shirt Brothers</td><td>0.3911</td></tr><tr><td>4</td><td>BrandenKMurray</td><td>0.3724</td></tr><tr><td>5</td><td>No Fault of Our Own</td><td>0.3570</td></tr><tr><td>9</td><td>DARD</td><td>0.3404</td></tr><tr><td>22</td><td>kinghorton42</td><td>0.3261</td></tr></table>
+<p><b>Conflict:</b> figures supplied in conversation put the high score at <b>0.4413</b> and <b>0.3195</b>. Neither appears
+in the ranks above. The leaderboard shows 0.4544 at rank 1. The GEMSDOE-site figures supplied in conversation (0.2778 GEMSDOE32,
+0.2750 GEMSDOE36, 0.2710 GEMSDOE28, 0.2708 GEMSDOE31) are <span class=label>USER-REPORTED</span>. The focus-site file records these
+values for all nine sites: GEMSDOE24 0.2477, GEMSDOE25 0.2600, GEMSDOE27 0.2449, GEMSDOE28 0.2710, GEMSDOE30 0.2600, GEMSDOE31 0.2708, GEMSDOE32 0.2778, GEMSDOE33 0.2632, GEMSDOE36 0.2750. Both sets are recorded here and neither is verified.</p>
+
+<h2>4. Irregularities to review manually (sources listed)</h2>
+<ul>
+<li>The official sample submission equals the training labels (60,988 of 60,988 cells). It is therefore not a usable value reference. Source: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition page</a>; the copy used here is an owner mirror (<code>data/official/</code>), not authenticated.</li>
+<li><code>config/release_register.json</code> still lists the candidate files as registered (PROMOTE). The banners above say DO NOT SUBMIT. The register governs the publisher, and changing it breaks tests that encode the current policy, so it is left for review. Rules text: <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NLR rules PDF</a>.</li>
+<li>The EDTI repo uniqueness record (0.5604, 437 rasters) cannot be reproduced from in-repo sources. The independent recheck gives 0.854675 against GEMSDOE22 10pct. The two are unreconciled.</li>
+<li>The EDTI 0.11714 holdout figure belongs to the 32,000-dot configuration. The 40,000-dot configuration recorded in the same file is 0.11707.</li>
+<li>The NaN-outside 38k submission fails the project's all-finite validator (7,111,787 NaN pixels). Its zero-outside twin passes. The earlier README "format PASS" was incorrect for the NaN file.</li>
+<li>The README inverse-coverage formula, DTI = c/(c + 0.8 + 0.2f), is algebraically wrong. The binary identity is DTI = T / (0.2·D + 0.8·N). Figures derived from the wrong formula are withdrawn.</li>
+</ul>
+
+<h2>5. Limitations and remaining work</h2>
+<ul>
+<li>No organizer score exists for any file here. All numbers above are proxies unless a receipt is added.</li>
+<li>The full original prompt is not preserved verbatim in the repository. The README's "verbatim" brief is a condensed version. The owner should paste the full text.</li>
+<li>Decision needed from the owner: the literal all-registry rule cannot be met by any non-empty file, because the 13GEMSDOE lattice covers 99.87 % of the footprint. Either (a) exempt covering rasters explicitly, with the exemption written into the rules record, or (b) generate a new file that passes the recheck. Option (a) is still judged against the non-covering rasters, and every current candidate fails that check too.</li>
+<li>Not done in this pass: reconciling the EDTI record, the run-card set for the policy decision, and the PR merge. The merge is deferred to a later session as instructed.</li>
+</ul>
+
+<p class=mono>Built by scripts/build_decision_page.py from evidence/*.json and docs/data/*.json. Regenerate with
+<code>python scripts/build_decision_page.py</code>.</p>
+</body></html>

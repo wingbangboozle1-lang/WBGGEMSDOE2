@@ -108,9 +108,20 @@ def main() -> int:
     n_viol = uniq.get("n_method_bearing_violations")
     fmt_ok = cks.get("all_format_checks_pass", False)
 
+    # The old verdict trusted evidence/wbg4_edti_uniqueness.json alone. That record cites
+    # 437 registry rasters that the repository cannot reproduce. The independent recheck
+    # (scripts/verify_candidate_uniqueness.py) must also pass before any SAFE wording appears.
+    recheck = load("evidence/candidate_uniqueness_recheck_20261028.json", {}) or {}
+    rc = next((c for c in recheck.get("candidates", [])
+               if c.get("sha256") == "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1"), None)
+    recheck_clear = bool(rc) and not rc.get("non_covering_overlap_violations") and not rc.get("non_covering_rank_violations")
+    recheck_note = ("" if recheck_clear or not rc else
+                    f" Independent recheck: {rc.get('max_overlap_non_covering', 0):.4f} of its dots lie within 3 px of "
+                    f"{rc.get('max_overlap_non_covering_site')} (limit 0.70).")
     verdict_banner = ("FORMAT-VALID AND UNIQUE \u2014 SAFE TO SUBMIT"
-                      if (fmt_ok and n_viol == 0) else "DO NOT SUBMIT")
-    vclass = "ok" if (fmt_ok and n_viol == 0) else "stop"
+                      if (fmt_ok and n_viol == 0 and recheck_clear)
+                      else "NOT CLEARED \u2014 DO NOT SUBMIT" + recheck_note)
+    vclass = "ok" if (fmt_ok and n_viol == 0 and recheck_clear) else "stop"
 
     # Scope of the claim. Cross-lane DTI comparison is invalid (different
     # evaluators, different withheld-positive counts), so none is attempted here.
