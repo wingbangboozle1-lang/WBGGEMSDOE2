@@ -41,12 +41,18 @@
     "evidence_path": "evidence/checkout_readiness.json"
   },
   "test_suite": {
-    "command": "PYTHONPATH=src .venv/bin/python -m pytest -q",
-    "passed": 350,
-    "skipped": 12,
-    "failed": 0
+    "command": "PYTHONPATH=src .venv/bin/python -m pytest -q -rs",
+    "passed": 373,
+    "skipped": 16,
+    "failed": 0,
+    "notes": "All local tests pass; skips require absent official rasters/labels or the pinned shared template. Rasterio emits 32 pending affine-operation deprecation warnings."
   },
   "weekly_slots_used": 0,
   "experiments_run": 0,
-  "verdict": "negative"
+  "verdict": "negative",
+  "review_passes": {
+    "pass_1": "Re-read charter, current prompt brief, focus-site audit and run card. Confirmed no new candidate experiment is authorized because the lane is unassigned and required cache/shared evaluator are absent.",
+    "pass_2": "Found README and multiple Pages routes that still claimed historical candidates were ready/approved. Changed release policy so registration alone cannot authorize a slot; archived candidate pages now render negative-only, and historical TIF links are explicitly research-only.",
+    "pass_3": "Ran the full Pages build sequence, release guard, link checks, test suite and a final stale-download/label scan. No eligible TIFF link remains; readiness remains blocked."
+  }
 }

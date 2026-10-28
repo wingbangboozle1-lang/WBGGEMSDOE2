@@ -101,7 +101,7 @@ def focus_table(portfolio):
     rows = []
     for row in sorted(portfolio['sites'], key=lambda r: float(r['user_reported_score']), reverse=True):
         rows.append(f'''<tr><td data-label="Site"><a href="sites/{e(row['site'])}.html"><strong>{e(row['site'])}</strong></a></td>
-<td data-label="Historical file"><a href="{e(row['download_url'])}">Research reference ↗</a><br><code>{e(Path(row['path']).name)}</code></td>
+<td data-label="Historical file"><a href="{e(row['download_url'])}">Research TIFF — DO NOT SUBMIT ↗</a><br><code>{e(Path(row['path']).name)}</code></td>
 <td data-label="Reported value">{e(row['user_reported_score'])}<br><small>USER-REPORTED</small></td>
 <td data-label="Estimate">Unavailable</td><td data-label="Unique?">No · {row['max_3px_overlap_vs_other_focus']*100:.2f}% near {e(row['max_overlap_witness_site'])}</td>
 <td data-label="Verdict"><strong>DO NOT RESUBMIT</strong></td></tr>''')
@@ -118,7 +118,7 @@ def site_body(row):
 <p><strong>USER-REPORTED:</strong> {e(row['user_reported_score'])}. No receipt binds that claim to these bytes. <strong>Estimated leaderboard score: unavailable.</strong></p>
 <p><strong>Not unique:</strong> {row['max_3px_overlap_vs_other_focus']*100:.2f}% of its dots are within 3 pixels of {e(row['max_overlap_witness_site'])}, exceeding the literal 70% stop.
 The original continuous surface was not replayed. Changing compression, metadata or filename does not make a new prediction.</p>
-<p class="mono">SHA-256 {e(row['sha256'])}</p><p><a href="{e(row['download_url'])}">Download historical TIFF for research only ↗</a></p>
+<p class="mono">SHA-256 {e(row['sha256'])}</p><p><a href="{e(row['download_url'])}">Research TIFF — DO NOT SUBMIT ↗</a></p>
 <p>The grid/footprint reference is an unauthenticated owner mirror. A local format pass is not evidence of portal acceptance.</p>
 <p><a href="release.html#nine-sites">All nine executive summaries →</a> · <a href="data/portfolio.json">Pinned-byte portfolio JSON</a> · <a href="research/why-b2-scored-2778.html">B2 lineage explanation</a></p></section>'''
 
@@ -388,7 +388,7 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
         out.write_text(html, encoding='utf-8')
     md_rows = ['# Current nine-site executive decision — NEGATIVE', '', '**No file is approved. DO NOT SUBMIT.** Former DZ-16/H3 approvals are revoked. All audited TIFFs fail the literal registry gate under finite-positive support (`WBG2-GVCD EXP-3` achieves `0.17591 HOLDOUT-DTI` `[0.15549, 0.19694]` and passes `496 / 496` discrete 8-org rasters at `max 69.56% <= 70%`; `0` weekly slots used).', '', '[WBG2-GVCD & 8-org dashboard](gvcd/index.html) · [Contest submission how-to subpage](how-to-submit/index.html) · [Exact research downloads and byte audit](release.html) · [Submission instructions](executive-summary.html) · [Canonical run card](data/run-card.json)', '', 'The rows below are the strongest named historical claims supplied in the request, not verified receipts or each site\'s current best. New-score estimates are unavailable. Original surfaces were not replayed and newer site HEADs were not raster-audited.', '', '| Site brief | Exact historical research TIFF | Claim / evidence | Unique? | Submit? |', '|---|---|---|---|---|']
     for row in sorted(portfolio['sites'], key=lambda r: float(r['user_reported_score']), reverse=True):
-        md_rows.append(f'| [{row["site"]}](sites/{row["site"]}.html) | [`{Path(row["path"]).name}`]({row["download_url"]}) | {row["user_reported_score"]} USER-REPORTED | No: {row["max_3px_overlap_vs_other_focus"]*100:.2f}% near {row["max_overlap_witness_site"]} | DO NOT RESUBMIT |')
+        md_rows.append(f'| [{row["site"]}](sites/{row["site"]}.html) | [Research TIFF — DO NOT SUBMIT: `{Path(row["path"]).name}`]({row["download_url"]}) | {row["user_reported_score"]} USER-REPORTED | No: {row["max_3px_overlap_vs_other_focus"]*100:.2f}% near {row["max_overlap_witness_site"]} | DO NOT RESUBMIT |')
     md_rows += ['', 'B2 = D2.8 minus 6,436 near-catalogue dots; GEMSDOE36 adds 1,200 to B2. This is measured lineage, not a causal score explanation. Corrected MSPTCD v2 has no measured holdout result; archived v1 results are source-reported and not reproduced.', '', '[Full metric analysis](research/why-b2-scored-2778.html) · [Sources and limitations](sources.html)', '']
     for rel in ('EXECUTIVE_SUMMARY.md', 'executive-summary.md', 'CURRENT_EXECUTIVE_SUMMARY.md'):
         (docs / rel).write_text('\n'.join(md_rows), encoding='utf-8')

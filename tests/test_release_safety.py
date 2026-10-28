@@ -230,16 +230,16 @@ def test_builder_refuses_tampered_final_card_even_if_legacy_card_is_negative(tmp
                             cwd=tmp_path, capture_output=True, text=True, timeout=15)
     assert result.returncode != 0 and 'negative-only dashboard refuses to publish' in result.stderr
 
-def test_registered_candidate_is_the_only_publishable_owned_download(tmp_path):
-    """Both lanes publish through one register; forged registrations fail closed."""
+def test_registered_release_bytes_do_not_replace_selector_authorization(tmp_path):
+    """Hash registration remains auditable but cannot authorize a slot or page link."""
     sys.path.insert(0, str(ROOT / 'src'))
-    from wbggems.release import approved_candidates, validate_negative_html
+    from wbggems.release import approved_candidates, registered_release_assets, validate_negative_html
 
     register = json.loads((ROOT / 'config/release_register.json').read_text())
     edti = next(c for c in register['candidates'] if c['lane'] == 'WBG4-EDTI')
     art = (ROOT / edti['path']).read_bytes()
 
-    def build(destination, record=None):
+    def build(destination, payload=None):
         for candidate in register['candidates']:
             for key in ('path', 'zip', 'run_card', 'holdout_evidence', 'uniqueness_evidence'):
                 if not candidate.get(key):
@@ -248,21 +248,14 @@ def test_registered_candidate_is_the_only_publishable_owned_download(tmp_path):
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes((ROOT / candidate[key]).read_bytes())
         (destination / 'config').mkdir(parents=True, exist_ok=True)
-        payload = record or register
-        (destination / 'config/release_register.json').write_text(json.dumps(payload))
+        (destination / 'config/release_register.json').write_text(json.dumps(payload or register))
 
-    # Both lanes are registered, and each resolves to real bytes.
-    built = tmp_path / 'ok'
+    built = tmp_path / 'registered-only'
     build(built)
-    approved = approved_candidates(built)
-    expected = {c['path'] for c in register['candidates']}
-    expected |= {c['zip'] for c in register['candidates'] if c.get('zip')}
-    assert set(approved) == expected
-    for rel in approved:
-        if rel.endswith('.tif'):
-            assert digest_of(built / rel) == approved[rel]['sha256']
+    assets = registered_release_assets(built)
+    assert edti['path'] in assets
+    assert approved_candidates(built) == {}
 
-    # A linked page is allowed for a registered artifact, refused for anything else.
     def page(destination, name, label):
         body = (f'<html><body><h1>Status</h1><a href="https://github.com/'
                 f'wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/{name}.tif?raw=1">'
@@ -270,27 +263,27 @@ def test_registered_candidate_is_the_only_publishable_owned_download(tmp_path):
         (destination / 'docs').mkdir(parents=True, exist_ok=True)
         (destination / 'docs/index.html').write_text(body)
 
-    page(built, Path(edti['path']).stem, 'Download the submission TIF')
+    page(built, Path(edti['path']).stem, 'Research TIFF — DO NOT SUBMIT')
     validate_negative_html(built)
 
-    unregistered = tmp_path / 'unregistered'
-    build(unregistered)
-    page(unregistered, 'some-other-zeros', 'Download the submission TIF')
-    with pytest.raises(ValueError, match='Unqualified owned research download'):
-        validate_negative_html(unregistered)
+    attempted = tmp_path / 'selector-without-receipt'
+    forged = json.loads(json.dumps(register))
+    forged['candidates'][0]['selector_authorized'] = True
+    forged['candidates'][0]['selector_receipt'] = 'looks-good-is-not-a-receipt'
+    build(attempted, forged)
+    assert approved_candidates(attempted) == {}, 'a selector boolean or free-text claim is not authority'
 
     tampered = tmp_path / 'tampered'
     build(tampered)
-    (tampered / edti['path']).write_bytes(art[:-1] + b'\x00')
+    (tampered / edti['path']).write_bytes(art[:-1] + b"\x00")
     with pytest.raises(ValueError, match='Registered candidate bytes changed'):
-        approved_candidates(tampered)
+        registered_release_assets(tampered)
 
     missing = tmp_path / 'missing'
     build(missing)
     (missing / edti['run_card']).unlink()
     with pytest.raises(ValueError, match='Registered candidate evidence missing'):
-        approved_candidates(missing)
-
+        registered_release_assets(missing)
 
 def digest_of(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()

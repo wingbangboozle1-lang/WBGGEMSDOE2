@@ -76,11 +76,10 @@ def test_validator_outcome_matches_summary(rel, expect_ok):
     assert bool(report["ok"]) is expect_ok
 
 
-def test_readme_start_here_is_do_not_submit_and_names_the_zero_variant():
+def test_readme_start_here_is_do_not_submit_and_points_to_nine_site_evidence():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
     head = text[: text.index("## WBG4 / EDTI lane")]
     assert "DO NOT SUBMIT" in head
-    assert Path(D2).name in head
-    assert Path(ZERO).name in head  # triphysics variant still documented
-    assert "7,111,787" in head  # the NaN variant's failure is documented
+    assert "EXECUTIVE_SUMMARY_NINE_SITES_20261028.md" in head
+    assert "no file offered for download" in head.lower()
     assert "cleared to submit" not in head.lower()

@@ -20,12 +20,20 @@ Protocol compliance:
 """
 from __future__ import annotations
 
+import sys
+
+# Retired campaign entry points must fail closed even in a minimal checkout where
+# optional scientific/shared-template dependencies are absent. Keep this check
+# before importing NumPy, scikit-learn, or the external pinned template.
+if "--selftest" in sys.argv:
+    print("STOP: historical campaign launcher is retired; no lane, data, or release authorization.", file=sys.stderr)
+    raise SystemExit(2)
+
 import datetime as dt
 import gc
 import hashlib
 import json
 from pathlib import Path
-import sys
 import time
 
 import numpy as np

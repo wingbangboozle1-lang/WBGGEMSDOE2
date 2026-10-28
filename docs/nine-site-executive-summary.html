@@ -16,11 +16,11 @@ a{color:#0b57d0}
 <p><a href="index.html">&larr; Site home</a></p>
 <h1 id="executive-summary-gemsdoe-nine-site-review-and-the-one-tif-file-2026-10-28">Executive summary — GEMSDOE nine-site review and the one TIF file (2026-10-28)</h1>
 <blockquote>
-<p><strong>Verdict in one line:</strong> Do <strong>not</strong> spend a weekly slot on any file in this repository as a leaderboard attempt. Four files pass the format gate and the nine-site uniqueness check. The best measured proxy among them is the <strong>distal2 TIF</strong> (<code>wbg2-distal2-…-zeros.tif</code>). You may download it for the record, but <strong>nothing here shows it can beat the 0.2778 reference, and it is not a leaderboard pick.</strong></p>
+<p><strong>Verdict in one line:</strong> Do <strong>not</strong> spend a weekly slot on any file in this repository as a leaderboard attempt. Four files pass the format gate and the nine-site uniqueness check. The best measured proxy among them is the <strong>distal2 TIF</strong> (<code>wbg2-distal2-…-zeros.tif</code>). It is <strong>not offered for download</strong>, and <strong>nothing here shows it can beat the 0.2778 reference, and it is not a leaderboard pick.</strong></p>
 </blockquote>
 <p>Labels used below: <strong>ORGANIZER-CONFIRMED</strong> = copied from an official submission-page receipt (none exists for any file here) · <strong>USER-REPORTED</strong> = score supplied in the request, no receipt · <strong>HOLDOUT-DTI</strong> = local proxy (evaluator and count given) · <strong>PROJECTION</strong> = model output, never a score · <strong>MEASURED</strong> = re-computed this session from bytes.</p>
 <hr />
-<h2 id="1-download-box">1. Download box</h2>
+<h2 id="1-download-status-no-file-offered">1. Download status (no file offered)</h2>
 <table>
 <thead>
 <tr>
@@ -30,8 +30,8 @@ a{color:#0b57d0}
 </thead>
 <tbody>
 <tr>
-<td><strong>File to download</strong></td>
-<td><a href="downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif"><code>downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif</code></a> (zip: <a href="downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.zip"><code>…-zeros.zip</code></a>)</td>
+<td><strong>File offered for download</strong></td>
+<td><strong>None.</strong> Per the repo fail-closed decision (README START HERE), no file is eligible. The best measured proxy is the distal2 TIF below; it is evidence only and is not linked here.</td>
 </tr>
 <tr>
 <td><strong>SHA-256</strong></td>
@@ -193,8 +193,8 @@ a{color:#0b57d0}
 <td><strong>NO</strong></td>
 </tr>
 <tr>
-<td><strong>distal2 — download pick</strong> <code>docs/downloads/distal_exp2/…-062373ad-zeros.tif</code></td>
-<td><strong>Yes (pick)</strong></td>
+<td><strong>distal2 — best measured proxy (not offered)</strong> <code>docs/downloads/distal_exp2/…-062373ad-zeros.tif</code></td>
+<td>No (evidence only)</td>
 <td>PASS</td>
 <td>PASS (63.7 %, ρ 0.42)</td>
 <td>HOLDOUT-DTI <strong>0.1771 [0.1570, 0.1983]</strong>, 60,988, <code>gems57-pooled-hide-v2</code>, <strong>per-fold regenerated</strong> (its run card). Fixed-raster on the same folds: 0.0289 [0.0247, 0.0332]</td>
@@ -242,7 +242,7 @@ a{color:#0b57d0}
 <li><strong>Metric &amp; format:</strong> distance-weighted Tversky, α = 0.2, β = 0.8, R = 300 m; submission is float32, single band, EPSG:32611, 100 m; values in [0, 1]; "data outside the bounds is null or nan." (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a>)</li>
 <li><strong>Scored truth:</strong> the public and private test sets are new faults not in the USGS database; the final round re-scores on an expanded label set. (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a>)</li>
 <li><strong>Known faults masked:</strong> see §4 item 2 (<a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">community reply</a>).</li>
-<li><strong>NaN vs zero outside:</strong> the official text permits NaN outside bounds. This repo's stricter all-finite gate rejects NaN, so the zero-outside file is the safer download. Both pass the official range rule.</li>
+<li><strong>NaN vs zero outside:</strong> the official text permits NaN outside bounds. This repo's stricter all-finite gate rejects NaN, so the zero-outside file is the safer of the two for any future decision. Both pass the official range rule.</li>
 </ul>
 <h2 id="7-irregularities-flagged-for-review">7. Irregularities flagged for review</h2>
 <ol>
@@ -262,7 +262,7 @@ a{color:#0b57d0}
 <ul>
 <li><strong>Experiment 1:</strong> re-fetched the nine pinned focus rasters (sha256 verified), re-ran the uniqueness and rank checks, and built the full 9×9 overlap matrix. Script: <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/scripts/recheck_nine_site_20261028.py"><code>scripts/recheck_nine_site_20261028.py</code></a>.</li>
 <li><strong>Experiment 2:</strong> scored fixed rasters on the shared folds and evaluator, with random-dot controls. Script: <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/scripts/fixed_raster_holdout_20261028.py"><code>scripts/fixed_raster_holdout_20261028.py</code></a>.</li>
-<li><strong>No new TIFF was generated.</strong> The file to download was chosen by measured proxy among existing files, not by any leaderboard evidence. The reason is §5 plus the missing lane. No weekly slot was spent. No submission was made.</li>
+<li><strong>No new TIFF was generated.</strong> The distal2 file was ranked best by measured proxy among existing files, not by any leaderboard evidence. The reason is §5 plus the missing lane. No weekly slot was spent. No submission was made.</li>
 </ul>
 <h2 id="9-limitations-and-what-would-unblock-a-real-attempt">9. Limitations and what would unblock a real attempt</h2>
 <ul>
