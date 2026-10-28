@@ -289,6 +289,11 @@ def _fit_single_hgbr(
 
 
 def main() -> int:
+    # The historical runner is retained only for provenance. Its CI self-test must
+    # fail closed before opening local competition inputs or creating artifacts.
+    if "--selftest" in sys.argv:
+        print("[STOP] retired DPHS runner is disabled; use the active selector and current evidence gates")
+        return 2
     t_start = time.time()
     sample_path = ROOT / "data/official/sample_submission.tif"
     cat_path = ROOT / "data/official/existing_faults.tif"

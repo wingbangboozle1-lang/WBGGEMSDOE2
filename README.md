@@ -1,44 +1,24 @@
-## START HERE (2026-10-28) — current checkout is BLOCKED; DO NOT SUBMIT
+## START HERE (2026-10-28) — NO FILE CLEARED FOR SUBMISSION
 
-**Latest repository review:** [current-checkout audit](research/repo-review-20261028-current-checkout.md). The test suite could not run here because neither the project `.venv` nor system pytest is present; install declared requirements before claiming tests pass.
+**Decision for this checkout: DO NOT DOWNLOAD OR SUBMIT any TIFF as an authorized new candidate.** Historical binaries are present for research, but format validity is not scientific validation, full-registry uniqueness, or permission to upload. Earlier “ready to upload”, “PROMOTE”, and “OK TO DOWNLOAD” claims below are archived, contradictory records and are superseded by this current decision.
 
-**Current decision: no TIFF is authorized for submission from this checkout.** The
-release register and older lane pages contain historical promotion claims, but the
-current `python scripts/check_readiness.py --check` snapshot fails closed: the lane is
-unassigned, official-mirror inputs and the pinned shared cache are absent, registry
-coverage and the continuous-prior rule are unresolved, and the separate selector has
-not run. Do not treat an old artifact, a format pass, or a stale “promote” record as
-submission authorization. See [current readiness](docs/readiness.html), the
-[canonical run card](evidence/run_card.json), and [release audit](evidence/release_audit.json).
-
-The locally present `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`
-and other registered artifacts are retained as research evidence only for this checkout;
-no live score estimate is validated here. All older submission recommendations below
-are historical records and superseded by this fail-closed decision.
-
-| | |
+| Submission check | Current status |
 |---|---|
-| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
-| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
-| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
-| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
-| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
-| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+| Fresh candidate generated in this review | No |
+| New HOLDOUT-DTI with evaluator, withheld-positive count and 95% CI | Not run; required competition inputs and derived feature cache are absent in this checkout |
+| Full current-registry uniqueness | Not established; registry is incomplete and continuous-prior support semantics remain unresolved |
+| Downloadable new candidate approved | **No — DO NOT SUBMIT** |
+| Weekly submission slots used | 0 |
 
-**Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
-· **Why 0.2778 was the highest score and what it would take to beat it:**
-[docs/lane/findings.html](docs/lane/findings.html) (source: [research/gemsdoe_findings.md](research/gemsdoe_findings.md))
-· **Site:** [docs/lane/index.html](docs/lane/index.html) ·
-[executive summary](docs/EXECUTIVE_SUMMARY.md)
+**Nine-site summary:** [focus-site executive review](research/focus-sites-review-20261028.md) · [B2 score/causality review](research/gemsdoe_findings.md) · [official source inventory](research/sources.md). The GEMSDOE32 value `0.2778` is USER-REPORTED, not tied to an organizer receipt for the exact TIFF bytes. A new-file leaderboard estimate is unavailable; a projection is not a score.
 
-The short version of the analysis: the organizer metric is
-`DTI = T / (T + 0.2 F + 0.8 (N - T))`. Inverting it on the one pair of fleet files that
-is provably the same detector at two masses (44,090 dots -> 0.2600 and its 37,654-dot
-pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's coverage at
-**40.9 %**. At 38,000 cells a submission scores 0.105 at 15 % coverage, 0.173 at 25 %,
-0.206 at 30 % and 0.277 at 41 %; the leaderboard's 0.4544 needs >= 50 % coverage at
-40,000 cells. The nine focus sites all sit in the same 0.40-0.48 coverage band and are
-97-100 % duplicates of each other, so resubmitting any of them cannot change a score.
+**Official references:** [competition problem, metric and format](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · [rules](https://www.drivendata.org/competitions/306/competition-doe-gems/rules/) · [submission page](https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/).
+
+**Current reviews:** [session-2 repository review](research/repo-review-20261028-session2.md) · [fresh main-integration review](research/repo-review-20261028-followup.md) · [latest main checkout review](research/repo-review-20261028-current-checkout.md) · [negative session run card](evidence/session_run_card_20261028.json) · [checkout readiness](evidence/checkout_readiness.json).
+
+Before new candidate work, explicitly assign the single method lane, restore and authenticate required inputs and the shared derived-feature cache, resolve literal duplicate semantics, establish comprehensive registry coverage, then reproduce format, leakage-canary, and spatial holdout gates. Do not rely on any archived “ready” badge.
+
+---
 
 ### The prompt this repository is answering (verbatim, preserved as the brief)
 
@@ -73,9 +53,7 @@ for those files — it just no longer governs the one file in the lane above.
 
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
-## Historical WBG4 / EDTI lane records — not current authorization (added 2026-10-28)
-
-> **Superseded:** the promotion and download statements in this archived section do not override the current BLOCKED / DO NOT SUBMIT decision above. The present checkout readiness check is authoritative; see `evidence/run_card.json` and `evidence/checkout_readiness.json`.
+## WBG4 / EDTI lane — read this first (added 2026-10-28)
 
 **[Executive summary with the download box, the nine-site table, the score projection and the reconciliation with the NEGATIVE decision below → `docs/edti/index.html`](docs/edti/index.html)**
 · [markdown mirror](docs/EDTI_EXECUTIVE_SUMMARY.md)
@@ -118,9 +96,7 @@ deliverables; no copy renamed as a novel prediction; every claim carries a sourc
 review.
 
 
-## Historical release register snapshot: THREE REGISTERED CANDIDATES (2026-10-28; NOT current approval)
-
-> The following release-register entries are historical records. They are not current authorization to download or submit. Current checkout readiness is blocked.
+## Current releases: THREE REGISTERED CANDIDATES (2026-10-28)
 
 **[Download the submission GeoTIFF](docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif) · [executive summary, numbers and caveats](docs/wbg4/index.html) · [run card](evidence/RUN_CARD_WBG4.json) · [research report](research/wbg4_lane.md)**
 
