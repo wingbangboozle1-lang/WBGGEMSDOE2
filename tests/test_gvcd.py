@@ -253,7 +253,7 @@ def test_gvcd_and_howto_html_pages_and_rfc8259_json():
 
     gvcd_html = (ROOT / "docs/gvcd/index.html").read_text(encoding="utf-8")
     howto_html = (ROOT / "docs/how-to-submit/index.html").read_text(encoding="utf-8")
-    assert "0.17591" in gvcd_html and "496 / 496" in gvcd_html and "DO NOT SUBMIT" in gvcd_html
-    for site in ("GEMSDOE24", "GEMSDOE25", "GEMSDOE27", "GEMSDOE28", "GEMSDOE30", "GEMSDOE31", "GEMSDOE32", "GEMSDOE33", "GEMSDOE36"):
-        assert site in gvcd_html
+    assert "NO FILE APPROVED" in gvcd_html and "DO NOT SUBMIT" in gvcd_html
+    assert ".tif" not in gvcd_html and ".zip" not in gvcd_html
+    assert "OK TO DOWNLOAD AND SUBMIT" not in gvcd_html
     assert "Predicted values must be in range [0, 1]" in howto_html and "DO NOT SUBMIT" in howto_html

@@ -20,12 +20,20 @@ Protocol compliance:
 """
 from __future__ import annotations
 
+import sys
+
+# Retired campaign entry points must fail closed even in a minimal checkout where
+# optional scientific/shared-template dependencies are absent. Keep this check
+# before importing NumPy, scikit-learn, or the external pinned template.
+if "--selftest" in sys.argv:
+    print("STOP: historical campaign launcher is retired; no lane, data, or release authorization.", file=sys.stderr)
+    raise SystemExit(2)
+
 import datetime as dt
 import gc
 import hashlib
 import json
 from pathlib import Path
-import sys
 import time
 
 import numpy as np
@@ -38,12 +46,6 @@ from sklearn.metrics import roc_auc_score
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / ".cache" / "shared-template" / "src"))
-
-# Retired campaign entry point: make the safety probe independent of optional
-# shared-template availability so it always fails closed before importing or writing.
-if "--selftest" in sys.argv:
-    print("STOP: retired WBG2-DPHS campaign; do not run or write outputs.", file=sys.stderr)
-    raise SystemExit(2)
 
 from gems57 import emit, evaluate_holdout, spatial, submission_writer  # noqa: E402
 from wbggems.dphs import (  # noqa: E402

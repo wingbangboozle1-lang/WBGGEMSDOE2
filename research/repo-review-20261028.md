@@ -81,3 +81,29 @@ Ranks and expected potential are qualitative, **not score projections**. No cand
 - [Organizer reference solution](https://github.com/drivendataorg/gems-prize-reference-solution)
 
 Links are provided for review; their current contents were not freshly verified in this offline-access review.
+
+## Follow-up implementation passes — 2026-10-28
+
+The original review above is preserved as a timestamped snapshot. A follow-up pass found a safety issue: the README and several archived Pages routes still contradicted the negative-only release evidence, and the register treated hash-bound historical candidates as though registration alone could authorize publishing. I corrected the current release state and reran the generated site.
+
+### Pass 1 — make release authority explicit
+
+- The README now opens with **NO eligible TIFF / DO NOT SUBMIT**, identifies B2's 0.2778 as USER-REPORTED, and states that a new-score estimate is unavailable. Its older sections remain intact but are explicitly marked historical/superseded.
+- `config/release_register.json` now labels every extant candidate `RESEARCH_ONLY_DO_NOT_SUBMIT`, sets `selector_authorized: false`, and stores no selector receipt.
+- `registered_release_assets()` now validates and preserves historical byte-bound records separately from `approved_candidates()`. A candidate is not an approval. A future approval requires an explicit receipt document bound by path and SHA-256 to the candidate, a PROMOTE decision and positive remaining weekly quota. No such receipt exists here.
+- Archived EDTI, WBG4, DISTAL, DISTAL2, GVCD and focus-site pages are generated as negative-only pages with no current submission download links. Historical TIFF links, where retained for audit, are labeled `Research ... — DO NOT SUBMIT`.
+
+### Pass 2 — repair build/test defects and stale narrative
+
+- Retired `run_wbg2_dphs.py --selftest` now prints STOP before importing optional scientific/shared-template dependencies. This fixes a real minimal-checkout regression where the command crashed on missing `gems57` instead of failing closed.
+- Updated tests to encode the current selector boundary and negative-only page contract; tests no longer treat obsolete projections or former candidate recommendations as current release evidence.
+- Regenerated the main dashboard, executive summary, site briefs, hypotheses and run-card mirrors. The nine-site executive table remains complete; all new-score estimate cells are unavailable, and the action column is DO NOT SUBMIT.
+
+### Pass 3 — final verification and unchanged blocker
+
+- Ran the complete local Pages build sequence, including `build_release.py` and `build_release_review.py`; release publication guard passed with all submission gates closed.
+- Ran `.venv/bin/python -m pytest -q -rs`: **373 passed, 16 skipped, 0 failed**, with 32 Rasterio pending-deprecation warnings. Skips are explicitly due to missing official labels/sample rasters or the pinned shared template.
+- `python scripts/check_readiness.py --check` continues to return exit 2, `BLOCKED / DO NOT SUBMIT`; no experiment, TIFF, score estimate, or weekly submission slot was created.
+- A final scan found **zero unqualified TIFF/ZIP links** in `docs/` HTML. `git diff --check` passes.
+
+This follow-up does not resolve the missing assigned lane, absent authenticated data/cache/evaluator, incomplete current registry, or continuous-prior rule interpretation. It makes the published decision consistent with those blockers; it does not claim a new scientific result.

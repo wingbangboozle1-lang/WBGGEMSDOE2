@@ -1,72 +1,23 @@
 {
- "schema": "wbggems.submission-lane.v1",
- "lane": "gemsdoe-triphysics-consensus-20261028",
- "status": "submit_candidate",
- "positive_pages": [
-  "docs/lane/index.html",
-  "docs/lane/how-to-submit.html",
-  "docs/lane/sources.html",
-  "docs/lane/findings.html"
- ],
- "files": [
-  {
-   "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
-   "sha256": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
-   "bytes": 212133,
-   "role": "primary"
-  },
-  {
-   "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip",
-   "sha256": "444da164e79da7fbf99ff4b82c3952d9adc119f66e3f831c3ae23683bdc787ae",
-   "bytes": 129232,
-   "role": "alternate"
-  },
-  {
-   "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif",
-   "sha256": "c8f41c0490f84a26d86073df12fea351464a12e8934a55ca538da5af9253813c",
-   "bytes": 142065,
-   "role": "alternate"
-  },
-  {
-   "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip",
-   "sha256": "3cfebe90b991f64bd10433e80f13caf1d5af82843bb2425a33f5e675928eb391",
-   "bytes": 106609,
-   "role": "alternate"
-  }
- ],
- "primary_file": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
- "format_validation": {
-  "shape_matches": true,
-  "crs_matches": true,
-  "transform_matches": true,
-  "single_band_float32": true,
-  "no_nan_inside_footprint": true,
-  "values_in_0_1_inside": true,
-  "outside_footprint_all_nan": true,
-  "min_inside": 0.0,
-  "max_inside": 1.0,
-  "positive_cells": 38000,
-  "footprint_cells": 5167373,
-  "all_pass": true
- },
- "novelty": {
-  "unique_bytes": true,
-  "passes_halo_rule": true,
-  "passes_rank_rule": true,
-  "max_frac_my_dots_within_3px": 0.3483684210526316,
-  "max_abs_smoothed_spearman": 0.3629420920838068,
-  "n_compared": 30
- },
- "estimate": {
-  "range": [
-   0.2,
-   0.3
+  "schema": "wbggems.submission-lane.v2",
+  "status": "blocked_do_not_submit",
+  "primary_file": null,
+  "estimated_leaderboard_score": null,
+  "organizer_receipt": null,
+  "ok_to_download_and_submit": false,
+  "decision_evidence": "evidence/session_run_card_20261028.json",
+  "checkout_readiness": "evidence/checkout_readiness.json",
+  "reason": "No assigned lane; required cached shared evaluator/data absent; registry incomplete; separate selector not run.",
+  "focus_sites": [
+    "GEMSDOE24",
+    "GEMSDOE25",
+    "GEMSDOE27",
+    "GEMSDOE28",
+    "GEMSDOE30",
+    "GEMSDOE31",
+    "GEMSDOE32",
+    "GEMSDOE33",
+    "GEMSDOE36"
   ],
-  "evidence_class": "EMPIRICAL-BAND ESTIMATE",
-  "label": "EMPIRICAL-BAND ESTIMATE: the candidate matches the measured envelope (binary, 38k cells, reach 0.17) of the fleet's highest scoring submissions; no local measurement can certify a value above the observed maximum of 0.2778."
- },
- "organizer_receipt": null,
- "leaderboard_score": null,
- "note_140": "multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells",
- "why_this_is_a_separate_lane": "The negative release is a closed audited set; this lane is a positive submission candidate whose published bytes, format checks and novelty verdicts are re-verified by src/wbggems/release.py::submission_lane on every build. Nothing here is an organizer receipt or a leaderboard score."
+  "last_build_utc": "2026-10-28T20:30:49.700522+00:00"
 }

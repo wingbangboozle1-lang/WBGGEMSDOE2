@@ -45,13 +45,13 @@ def digest(path: Path) -> str:
 CANDIDATE_REGISTER = Path("config/release_register.json")
 
 
-def approved_candidates(root: Path) -> dict:
-    """Return {relative path -> record} for artifacts a selector has promoted.
+def registered_release_assets(root: Path) -> dict:
+    """Validate and return every historically registered release artifact.
 
-    The negative publisher refuses every unregistered owned download.  A file may
-    be offered as a real submission candidate only by being listed here, with a
-    byte hash, a measured holdout, a uniqueness record and a run card, all of
-    which must exist and agree.  Anything else stays negative.
+    Registration binds bytes and evidence for audit purposes; it is *not* selector
+    authorization. Keep registered TIFFs out of the older forensic inventory while
+    separately requiring an explicit selector flag and receipt before exposing any
+    file as an eligible submission.
     """
     path = root / CANDIDATE_REGISTER
     if not path.exists():
@@ -76,8 +76,52 @@ def approved_candidates(root: Path) -> dict:
             z = root / rec["zip"]
             if not z.is_file() or z.is_symlink():
                 raise ValueError(f"Registered candidate archive missing: {rec['zip']}")
+            if rec.get("zip_sha256") and digest(z) != rec["zip_sha256"]:
+                raise ValueError(f"Registered candidate archive bytes changed: {rec['zip']}")
             out[rec["zip"]] = rec
     return out
+
+
+def approved_candidates(root: Path) -> dict:
+    """Return only artifacts explicitly promoted by a separate selector receipt.
+
+    Candidate creation, registration, format validation, uniqueness evidence and
+    holdout evidence do not themselves grant permission to spend a competition
+    slot. The selector must set ``selector_authorized`` and attach a nonempty
+    organizer/slot receipt reference; no current register entry does so.
+    """
+    assets = registered_release_assets(root)
+    approved = {}
+    records = {rec["path"]: rec for rec in assets.values()}
+    for rel, rec in records.items():
+        receipt = rec.get("selector_receipt")
+        if rec.get("selector_authorized") is not True or not isinstance(receipt, dict):
+            continue
+        receipt_path = receipt.get("path")
+        receipt_hash = receipt.get("sha256")
+        if not isinstance(receipt_path, str) or not isinstance(receipt_hash, str):
+            continue
+        receipt_rel = Path(receipt_path)
+        receipt_file = root / receipt_rel
+        try:
+            receipt_inside_root = receipt_file.resolve().is_relative_to(root.resolve())
+        except (OSError, RuntimeError):
+            receipt_inside_root = False
+        if (receipt_rel.is_absolute() or not receipt_inside_root or not receipt_file.is_file()
+                or receipt_file.is_symlink() or digest(receipt_file) != receipt_hash):
+            raise ValueError(f"Selector receipt missing or hash-mismatched: {receipt_path}")
+        record = read_json(receipt_file)
+        if (record.get("schema") != "wbggems.selector-receipt.v1"
+                or record.get("decision") != "PROMOTE"
+                or record.get("candidate_path") != rel
+                or record.get("candidate_sha256") != rec.get("sha256")
+                or type(record.get("weekly_slots_remaining")) is not int
+                or record["weekly_slots_remaining"] < 1):
+            raise ValueError(f"Selector receipt does not authorize this file and available slot: {receipt_path}")
+        approved[rel] = rec
+        if rec.get("zip"):
+            approved[rec["zip"]] = rec
+    return approved
 
 
 def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
@@ -105,13 +149,11 @@ def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
                     raise ValueError(f'Research asset must not be a symlink: {path.relative_to(root)}')
                 if path.is_file() and path.suffix.lower() in suffixes:
                     paths.add(path.relative_to(root).as_posix())
-    promoted = set()
-    try:
-        promoted = set(approved_candidates(root))
-        promoted |= {Path(p).with_suffix('.zip').as_posix() for p in promoted}
-    except ValueError:
-        promoted = set()
-    return paths - promoted
+    # Registered release bytes have their own hash-bound records and are not part
+    # of the legacy negative witness inventory, whether or not a selector has
+    # authorized them. Registration is not an upload approval.
+    registered = set(registered_release_assets(root))
+    return paths - registered
 
 
 def read_json(path: Path):

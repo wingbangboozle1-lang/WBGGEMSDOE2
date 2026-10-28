@@ -1,51 +1,50 @@
-## START HERE (2026-10-28) — checkout is blocked; DO NOT SUBMIT
+## START HERE (2026-10-28) — authoritative decision: NEGATIVE / DO NOT SUBMIT
 
-**Current checked-out decision: no TIFF is cleared for competition upload.** The read-only readiness gate (`python scripts/check_readiness.py --check`) exits **2** and writes `ok_to_submit: false`. This checkout has no `data/` directory, organizer-input mirrors, cached model feature bands or derived feature bank. The shared holdout and writer files in `scripts/` are retired fail-closed wrappers; the required pinned shared implementation is not present. The registry audit is explicitly incomplete. Do not use older README sections, historical run cards, or files linked below as authorization to submit.
+**There is currently no eligible submission TIFF. Do not download or submit any prediction file in this repository.** This is the fail-closed decision from the latest checkout review, not a claim that all historical approaches failed scientifically. No new experiment was authorized or run in this review, no new raster was generated, and no competition slot was used.
 
-| Request | Verified status in this checkout |
+| Requested item | Current verified answer |
 |---|---|
-| Unique submission TIFF | **Not generated in this review. DO NOT SUBMIT any repository TIFF.** Existing files are historical research artifacts; format validity alone is not approval. |
-| Estimate / leaderboard score | **No current estimate.** GEMSDOE32's 0.2778 is a user/site-reported historical claim, not an organizer receipt. The cited public 0.3195/high score is also not verified here. |
-| Nine-site summary | Historical evidence and caveats are documented under `docs/sites/` and `docs/EXECUTIVE_SUMMARY.md`; site-reported scores are not treated as receipts. Exact bytes and full current-registry uniqueness are not established for every new site update. |
-| Hypotheses | See [`config/wbg4_hypotheses.json`](config/wbg4_hypotheses.json), ranked within the recorded WBG4-SSCC lane. The leading candidate was tested in an earlier checkout, but that work is not reproducible from current files and does not override current readiness. |
-| Slots | 0 slots used by this review. Promotion/selection is a separate step. |
+| Best historical claim among the nine named sites | GEMSDOE32 B2, **0.2778 USER-REPORTED**; no organizer receipt bound to the exact file bytes was obtained. |
+| New submission score estimate | **Unavailable.** A projection is not a score, and no protocol-compliant matched holdout was run in this checkout. |
+| Is the GEMSDOE32 TIFF unique against the requested sites? | **No.** The pinned-byte audit records it as a near-duplicate/subset of the shared historical family. Do not resubmit it. |
+| New TIFF / SHA-256 | **None generated.** There is no new submission file to download. |
+| Format validator / organizer acceptance | No new TIFF to validate. Historical format checks are not evidence of organizer acceptance. |
+| Current checkout | `BLOCKED / DO NOT SUBMIT`; see [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json). |
+| Executive summary table | [`docs/executive-summary.html`](docs/executive-summary.html) (all nine requested sites; historical claims, file, overlap, estimate and action). |
+| Submission instructions | [`docs/lane/how-to-submit.html`](docs/lane/how-to-submit.html); this page explicitly says no file is currently eligible. |
+| Current JSON run card | [`evidence/session_run_card_20261028.json`](evidence/session_run_card_20261028.json). |
 
-**Why B2 may have scored well:** the archived analysis hypothesizes that it pruned a catalogue-adjacent collar from a strong structural dot prior. Its evidence is derived from mirrored site files, not organizer receipts or hidden truth; it does not establish causality. No evidence in this checkout demonstrates a submission that beats 0.2778.
+### Why GEMSDOE32 B2 may have scored 0.2778 — and what we can conclude
 
-**Official submit-format reference:** <https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/>. A local format validator cannot prove organizer acceptance or scientific uniqueness. Current automatic status and blockers: [`docs/readiness.html`](docs/readiness.html), [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json). Detailed review: [`research/repo-review-20261028.md`](research/repo-review-20261028.md). This session’s checkout-level review, ranked hypotheses and JSON run card are in [`research/session-review-20261028-checkout.md`](research/session-review-20261028-checkout.md).
+A repository byte audit reports a plausible lineage: GEMSDOE25 and GEMSDOE30 decode to the same in-footprint array; GEMSDOE32 B2 is that family after removing near-catalogue dots. This is a measured relationship between historical raster bytes, **not proof that pruning caused the reported score**. DTI is recall/false-positive asymmetric; pruning can improve it only if avoided false-positive mass outweighs lost truth coverage. The hidden labels and a receipt for the precise submitted bytes are not available here, so the contribution of either term is unknown. Whether a new method can beat 0.2778 is **unknown**, not a forecast.
 
-The remainder of this README is a preserved project brief and historical record. Some older sections contain superseded approvals or estimates; the fail-closed checkout diagnostic above governs the present checkout.
+### Stop conditions and prerequisites
 
-### The prompt this repository is answering (verbatim, preserved as the brief)
+The current review records all of these blockers: no method lane is assigned in the research ledger; official competition rasters, cached feature stack, and pinned shared evaluator are absent from this checkout; the full current raster registry and historical source surfaces are not established; the literal registry-overlap rule has a decisive dense/lattice witness and the continuous-prior interpretation is unresolved; no separate selector or account-specific weekly quota check has run. Do not bypass these by treating a registered file, a format pass, or a historical projection as release authority.
 
-> **Task.** Executive summary + the single best submission + a download table across
-> GEMSDOE24/25/27/28/30/31/32/33/36 with uniqueness measured against all sites; a
-> PhD-level explanation of why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`
-> (GEMSDOE32) scored 0.2778 and whether it can be beaten; **highest urgency: one unique
-> `.tif`** with an unambiguous submit / do-not-submit verdict and a one-click download at
-> the top; a fix for the `"Predicted values must be in range [0, 1]"` rejection; the
-> PARALLEL-RUN PROTOCOL (single lane, duplicate stop at rank-correlation > 0.90 or > 70 %
-> of dots within 3 px, cached stack, JSON run card, 3 experiments / 2 h); 3-5 untried
-> geological hypotheses with physical signatures; verified research stored in the repo
-> with an automated feed; refreshed GitHub Pages; a multi-pass review followed by a PR
-> merged to main; and a closing statement of remaining work and limitations.
->
-> **Standing constraints.** No hallucination — verify line by line, give official links
-> for manual review, flag every irregularity. Work autonomously, no human in the loop.
-> The TIF must be unique against every listed site; copying is only for learning. The
-> verdict must be blindingly obvious. Deliver a `.tif` (or `.zip`) on the organizer
-> grid/CRS with values in [0,1] and no NaN inside the footprint. Validation must run
-> programmatically. Every number must be labelled HOLDOUT-DTI (proxy truth) or
-> ORGANIZER-CONFIRMED (with the forum post/leaderboard link). Keep the Core Values /
-> Maximize P(Win) / Own the Outcome framing. Multi-pass review, then PR -> main.
+The next allowed action is to resolve the rule interpretation and explicitly assign a single method paragraph/lane. After restoring the authenticated competition data and unchanged shared template, run each feature-alone leakage canary, then the buffered whole-segment hide-and-recover comparison, with pooled HOLDOUT-DTI, evaluator version, number of withheld positives and paired spatial 95% CI. Stop at three experiments or two hours. Promotion into a weekly slot remains a separate selector decision.
 
-### The rest of this README is the legacy record
+### Session brief to read before every project session
 
-The sections below preserve historical audits and decisions for context; none of their candidate approvals or download links is current checkout authorization.
+Build a scientifically defensible DOE GEMS fault-prediction workflow, not a visually persuasive but unvalidated TIFF. Review the requested GEMSDOE24/25/27/28/30/31/32/33/36 historical submissions; clearly identify file, score evidence, pairwise uniqueness and submission eligibility. Any score must be explicitly **HOLDOUT-DTI** with evaluator/version, withheld-positive count and 95% CI, or **ORGANIZER-CONFIRMED** with an archived submission receipt. Label all user-supplied historical scores as USER-REPORTED and any projections as projections—not scores. Keep current evidence, official source links, methods, data provenance, hashes, limitations, negative results, and freshness in auditable files and the Pages dashboard.
+
+Before implementing a hypothesis, list 3–5 candidates with exact available layer(s), physical signature, uncatalogued-fault rationale, named non-fault mimic, distinction from prior repo methods, qualitative ranking and implementation cost. If new data are essential, identify a free official source and verify it is obtainable before calling it viable. Reuse the pinned shared feature stack/evaluator/writer; derive all catalogue features only from visible faults in each buffered whole-segment holdout; mask visible faults pixel-exactly; use the specified alpha 0.2, beta 0.8, 300 m triangular kernel. Check every feature alone for leakage (AUC >0.90 is a leakage alarm). Apply the strict duplicate stop to the surface before placement and final dots against the whole registry: absolute rank correlation >0.90 or >70% of dots within 3 px is a stop. Do not silently exempt dense controls or call an incomplete registry complete. Stop after three experiments or two hours. Do not select/spend a weekly submission slot in an experiment run.
+
+Any future candidate needs a downloadable single-band GeoTIFF that matches the organizer CRS, shape and transform, has predictions in [0,1] (including any cells read by the portal), no NaN inside the footprint, a unique name, and a comment no longer than 140 characters. Validate saved bytes programmatically, hash them, compare against the complete current registry, and make the page say unmistakably either **OK TO DOWNLOAD AND SUBMIT** or **DO NOT SUBMIT**. A local format check is not proof of portal acceptance. For this checkout the only safe status is **DO NOT SUBMIT**.
+
+### Core values
+
+- **Maximize P(Win):** choose research and engineering work by its evidence-backed contribution to the probability of success; avoid using a weekly slot on an unvalidated idea.
+- **Own the Outcome:** own the end-to-end result; expose blockers and failed checks, correct shared tools at their source, and treat negative findings as deliverables.
+
+### Read-first records
+
+Read [`AGENTS.md`](AGENTS.md), this README section, [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), [`research/findings.md`](research/findings.md), [`evidence/run_card.json`](evidence/run_card.json), [`evidence/release_audit.json`](evidence/release_audit.json), [`research/repo-review-20261028.md`](research/repo-review-20261028.md) (including the follow-up implementation passes), [`research/session-review-20261028-checkout.md`](research/session-review-20261028-checkout.md), [`research/repo-review-20261028-followup.md`](research/repo-review-20261028-followup.md), [`research/focus-sites-review-20261028.md`](research/focus-sites-review-20261028.md), [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json), and [`evidence/session_run_card_20261028.json`](evidence/session_run_card_20261028.json). The extensive material below this section is historical unless it agrees with those latest negative records. In any conflict, the fail-closed current run card and readiness diagnostic govern.
+
+> **Historical material warning:** the older sections below include prior, now-superseded “ready to submit” and score-estimate language for WBG4/EDTI and other candidates. Those claims are retained for audit history only. They do not authorize download, promotion or upload. See [`config/release_register.json`](config/release_register.json), which now marks historical candidates `RESEARCH_ONLY_DO_NOT_SUBMIT` and requires separate selector authorization.
 
 ---
 
-**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
 ## WBG4 / EDTI lane — read this first (added 2026-10-28)
 
