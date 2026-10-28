@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.release-register.v1",
-  "policy": "A registered candidate is the only artifact the publisher may offer as a real submission. Registration requires byte hash, run card, holdout evidence and uniqueness evidence; everything unregistered stays DO NOT SUBMIT.",
+  "policy": "Hash-bound registration preserves provenance only. No file is authorized for a real competition slot unless a separate selector explicitly sets selector_authorized=true and records selector_receipt; current entries are research-only / DO NOT SUBMIT.",
   "candidates": [
     {
       "path": "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif",
@@ -8,12 +8,14 @@
       "sha256": "494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59",
       "bytes": 263991,
       "lane": "WBG4-SSCC",
-      "decision": "PROMOTE-WITH-CAVEAT",
-      "decision_basis": "format validator passes on saved bytes; 4-fold whole-fault holdout measured; rank correlation vs 93 registry rasters max 0.565 (< 0.90); no leaderboard estimate is defensible (holdout-to-leaderboard LOO R2 < 0)",
+      "decision": "RESEARCH_ONLY_DO_NOT_SUBMIT",
+      "decision_basis": "Historical format/holdout/novelty record only. Not eligible: no separate selector authorization; current checkout readiness is BLOCKED; all-lane negative audit and/or literal registry rule prevents upload. See evidence/session_run_card_20261028.json and evidence/checkout_readiness.json.",
       "run_card": "evidence/RUN_CARD_WBG4.json",
       "holdout_evidence": "evidence/wbg4_folds.json",
       "uniqueness_evidence": "evidence/wbg4_uniqueness.json",
-      "registered_utc": "2026-10-28"
+      "registered_utc": "2026-10-28",
+      "selector_authorized": false,
+      "selector_receipt": null
     },
     {
       "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
@@ -22,12 +24,14 @@
       "bytes": 212133,
       "zip_sha256": "444da164e79da7fbf99ff4b82c3952d9adc119f66e3f831c3ae23683bdc787ae",
       "lane": "GEMSDOE",
-      "decision": "PROMOTE",
-      "decision_basis": "format validator passes on the saved bytes (3730x3292, EPSG:32611, 100 m, single band float32, values in [0,1], NaN outside the footprint or 0.0 for the all-finite twin); novelty passes byte / 70 % 3-px halo / 0.90 rank against 30 fleet rasters (worst 34.8 % and 0.36); the value is the same file the submissions/ copy carries (submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif); score is an EMPIRICAL-BAND / STRUCTURAL estimate 0.15-0.28 with no organizer receipt",
+      "decision": "RESEARCH_ONLY_DO_NOT_SUBMIT",
+      "decision_basis": "Historical format/holdout/novelty record only. Not eligible: no separate selector authorization; current checkout readiness is BLOCKED; all-lane negative audit and/or literal registry rule prevents upload. See evidence/session_run_card_20261028.json and evidence/checkout_readiness.json.",
       "run_card": "evidence/gemsdoe_lane_run_card.json",
       "holdout_evidence": "evidence/gemsdoe_lane_holdout.json",
       "uniqueness_evidence": "evidence/gemsdoe_lane_uniqueness.json",
-      "registered_utc": "2026-10-28"
+      "registered_utc": "2026-10-28",
+      "selector_authorized": false,
+      "selector_receipt": null
     },
     {
       "path": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif",
@@ -36,24 +40,28 @@
       "bytes": 142065,
       "zip_sha256": "3cfebe90b991f64bd10433e80f13caf1d5af82843bb2425a33f5e675928eb391",
       "lane": "GEMSDOE",
-      "decision": "PROMOTE",
-      "decision_basis": "format validator passes on the saved bytes (3730x3292, EPSG:32611, 100 m, single band float32, values in [0,1], NaN outside the footprint or 0.0 for the all-finite twin); novelty passes byte / 70 % 3-px halo / 0.90 rank against 30 fleet rasters (worst 34.8 % and 0.36); the value is the same file the submissions/ copy carries (submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif); score is an EMPIRICAL-BAND / STRUCTURAL estimate 0.15-0.28 with no organizer receipt",
+      "decision": "RESEARCH_ONLY_DO_NOT_SUBMIT",
+      "decision_basis": "Historical format/holdout/novelty record only. Not eligible: no separate selector authorization; current checkout readiness is BLOCKED; all-lane negative audit and/or literal registry rule prevents upload. See evidence/session_run_card_20261028.json and evidence/checkout_readiness.json.",
       "run_card": "evidence/gemsdoe_lane_run_card.json",
       "holdout_evidence": "evidence/gemsdoe_lane_holdout.json",
       "uniqueness_evidence": "evidence/gemsdoe_lane_uniqueness.json",
-      "registered_utc": "2026-10-28"
+      "registered_utc": "2026-10-28",
+      "selector_authorized": false,
+      "selector_receipt": null
     },
     {
       "path": "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif",
       "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
       "bytes": 372561,
       "lane": "WBG4-EDTI",
-      "decision": "PUBLISH-WITH-CAVEAT",
-      "decision_basis": "format validator passes on the saved bytes; pooled buffered-whole-segment holdout measured over 2 folds and 15,816 withheld positives (7,893 and 7,923 per fold) (evaluator wbg4-edti-v1) at the 40k operating point; uniqueness measured against 437 registry rasters with 0 method-bearing violations (max 3 px overlap 0.5604, max |Spearman| 0.1665); no leaderboard score is defensible - the 0.20-0.30 projection is explicitly not a score, and the differing evaluators make the SSCC 0.1086 and this lane's 0.1171 non-comparable",
+      "decision": "RESEARCH_ONLY_DO_NOT_SUBMIT",
+      "decision_basis": "Historical format/holdout/novelty record only. Not eligible: no separate selector authorization; current checkout readiness is BLOCKED; all-lane negative audit and/or literal registry rule prevents upload. See evidence/session_run_card_20261028.json and evidence/checkout_readiness.json.",
       "run_card": "evidence/RUN_CARD_WBG4_EDTI.json",
       "holdout_evidence": "evidence/wbg4_exp2.json",
       "uniqueness_evidence": "evidence/wbg4_edti_uniqueness.json",
-      "registered_utc": "2026-10-28"
+      "registered_utc": "2026-10-28",
+      "selector_authorized": false,
+      "selector_receipt": null
     },
     {
       "path": "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif",
@@ -61,12 +69,14 @@
       "sha256": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
       "bytes": 134932,
       "lane": "WBG2-DISTAL2",
-      "decision": "PROMOTE-TO-SELECTOR",
-      "decision_basis": "fresh-seed SEED 20261028; 4-fold pooled HOLDOUT-DTI 0.1771 [0.1570, 0.1983]; unique vs all nine focus sites (max 3-px 0.6792) and 69 sparse peers (max 0.6856); whole-array [0,1]/zero-NaN PASS; still fails the literal all-registry stop (continuous prior 17GEMSDOE = 100%; accessible registry incomplete); ok_to_submit False, 0 slots spent",
+      "decision": "RESEARCH_ONLY_DO_NOT_SUBMIT",
+      "decision_basis": "Historical format/holdout/novelty record only. Not eligible: no separate selector authorization; current checkout readiness is BLOCKED; all-lane negative audit and/or literal registry rule prevents upload. See evidence/session_run_card_20261028.json and evidence/checkout_readiness.json.",
       "run_card": "evidence/RUN_CARD_DISTAL2.json",
       "holdout_evidence": "evidence/wbg2_distal_exp2_results.json",
       "uniqueness_evidence": "evidence/wbg2_distal2_uniqueness_audit.json",
-      "registered_utc": "2026-10-28"
+      "registered_utc": "2026-10-28",
+      "selector_authorized": false,
+      "selector_receipt": null
     }
   ]
 }

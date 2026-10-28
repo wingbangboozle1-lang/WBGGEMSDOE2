@@ -225,7 +225,7 @@ def test_all_legacy_entry_pages_show_same_block_and_research_only_links():
         text = (ROOT / f'docs/sites/GEMSDOE{site}.html').read_text()
         assert 'USER-REPORTED' in text and 'DO NOT SUBMIT' in text
         assert 'Estimated leaderboard score: unavailable.' in text
-        assert 'Download historical TIFF for research only' in text
+        assert 'Research TIFF — DO NOT SUBMIT' in text
 
 
 def test_reviewed_historical_metrics_are_not_relabelled_as_v2_validation():
@@ -263,8 +263,8 @@ def test_no_stale_positive_heading_or_unqualified_owned_download_anywhere():
     # A file may be offered as a real submission only if it is in the hash-pinned
     # candidate register (config/release_register.json); every other owned
     # download must still be labelled research / DO NOT SUBMIT.
-    from wbggems.release import approved_candidates
-    registered = {Path(p).name for p in approved_candidates(ROOT)}
+    from wbggems.release import registered_release_assets
+    registered = {Path(p).name for p in registered_release_assets(ROOT)}
     for path in [*ROOT.joinpath('docs').rglob('*.html'), *ROOT.joinpath('site').rglob('*.html')]:
         parsed=Copy(); parsed.feed(path.read_text())
         links_registered = any(Path(urlsplit(h).path).name in registered for h, _ in parsed.anchors)

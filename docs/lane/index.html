@@ -1,149 +1,18 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GEMS — Executive summary</title><style>
-:root{--ink:#12181f;--muted:#5b6673;--line:#dfe5ec;--bg:#f7f9fc;--card:#fff;
---ok:#0f7b3f;--okbg:#e8f6ee;--warn:#8a5a00;--warnbg:#fff6e0;--bad:#a11b1b;--badbg:#fdeaea;--accent:#1b57c4}
-*{box-sizing:border-box}
-body{margin:0;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-header{background:#0e1b2b;color:#fff;padding:14px 20px}
-header a{color:#cfe0ff;text-decoration:none;margin-right:18px;font-size:14px}
-header a:hover{text-decoration:underline}
-main{max-width:1080px;margin:0 auto;padding:26px 20px 60px}
-h1{font-size:30px;line-height:1.2;margin:8px 0 6px}
-h2{font-size:21px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-h3{font-size:17px;margin:22px 0 6px}
-p.lead{font-size:17px;color:var(--muted)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
-.hero{border:2px solid var(--ok);background:var(--okbg)}
-.hero h2{border:0;margin-top:0}
-.btn{display:inline-block;background:var(--ok);color:#fff;text-decoration:none;font-weight:650;
-padding:13px 22px;border-radius:9px;margin:8px 10px 8px 0;font-size:16px}
-.btn.alt{background:var(--accent)}
-.btn:hover{filter:brightness(1.07)}
-code,kbd{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:13px;word-break:break-all}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;background:#fff}
-th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
-th{background:#eef2f7;font-weight:650}
-td.num{text-align:right;font-variant-numeric:tabular-nums}
-.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:650}
-.ok{background:var(--okbg);color:var(--ok)}
-.warn{background:var(--warnbg);color:var(--warn)}
-.bad{background:var(--badbg);color:var(--bad)}
-.muted{color:var(--muted);font-size:14px}
-ul.tight li{margin:3px 0}
-.note{border-left:4px solid var(--accent);background:#eef4ff;padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0}
-footer{border-top:1px solid var(--line);margin-top:40px;padding-top:14px;color:var(--muted);font-size:13px}
-</style></head>
-<body><header><a href="../lane/index.html">Submission lane</a><a href="../lane/how-to-submit.html">How to submit</a><a href="../lane/findings.html">Findings</a><a href="../lane/sources.html">Sources</a><a href="../index.html">Project dashboard</a><a href="../release.html">Legacy byte audit</a></header><main>
-<div class="note" data-evidence-class="EMPIRICAL-BAND ESTIMATE">
-<strong>Submission lane.</strong> Evidence class: EMPIRICAL-BAND ESTIMATE. The score range
-below is an estimate derived from the published metric; there is no organizer receipt and
-no leaderboard score for this file. Format and novelty are measured, not assumed.</div>
-
-<h1>Executive summary</h1>
-<p class="lead">Nine focus sites, one dot field: every one of the nine highest-scoring
-submissions is a near-duplicate of another. The file at the top of this page is new,
-measured, and ready to submit.</p>
-
-<div class="card hero">
-  <h2>Submit this file</h2>
-  <p><code>submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif</code></p>
-  <p class="muted">SHA-256 <code>b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe</code> · 212,133 bytes ·
-  38,000 unit cells</p>
-  <a class="btn" href="../downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif" download>⬇ Download .tif</a>
-  <a class="btn alt" href="../downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip" download>Download .zip</a>
-  <a class="btn alt" href="../downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip" download>All-finite .zip (validator workaround)</a>
-  <p><span class="pill ok">Format: PASS</span>
-     <span class="pill ok">Unique: PASS</span>
-     <span class="pill warn">Estimate 0.15 – 0.28</span></p>
-  <p class="muted">Estimated score is an empirical-band estimate, not a receipt and not a
-  promise to beat 0.2778. See “Can we beat 0.2778?” below.</p>
-</div>
-
-<h2>The nine focus sites, measured</h2>
-<table>
-<tr><th>Site</th><th>Best reported file</th><th>Reported score</th><th>Cells</th>
-<th>Nearest other site</th><th>Overlap within 300 m</th><th>Unique?</th></tr>
-<tr><td><strong>GEMSDOE32</strong></td><td><code>gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif</code></td><td class='num'>0.2778</td><td class='num'>37,654</td><td>GEMSDOE36</td><td class='num'>100.0%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE36</strong></td><td><code>gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-nan.tif</code></td><td class='num'>0.2750</td><td class='num'>38,854</td><td>GEMSDOE27</td><td class='num'>97.6%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE28</strong></td><td><code>gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif</code></td><td class='num'>0.2710</td><td class='num'>37,660</td><td>GEMSDOE25</td><td class='num'>100.0%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE31</strong></td><td><code>gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif</code></td><td class='num'>0.2708</td><td class='num'>40,199</td><td>GEMSDOE25</td><td class='num'>100.0%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE33</strong></td><td><code>GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e-nanoutside.tif</code></td><td class='num'>0.2632</td><td class='num'>41,865</td><td>GEMSDOE27</td><td class='num'>99.7%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE25</strong></td><td><code>gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</code></td><td class='num'>0.2600</td><td class='num'>44,090</td><td>GEMSDOE30</td><td class='num'>100.0%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE30</strong></td><td><code>gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca-nanoutside.tif</code></td><td class='num'>0.2600</td><td class='num'>44,090</td><td>GEMSDOE25</td><td class='num'>100.0%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE24</strong></td><td><code>gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</code></td><td class='num'>0.2477</td><td class='num'>60,069</td><td>GEMSDOE25</td><td class='num'>100.0%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr><tr><td><strong>GEMSDOE27</strong></td><td><code>gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</code></td><td class='num'>0.2449</td><td class='num'>61,328</td><td>GEMSDOE24</td><td class='num'>98.0%</td><td><span class='pill bad'>NO — near-duplicate</span></td></tr>
-</table>
-<p class="muted">Scores are USER-REPORTED from the project brief; uniqueness is MEASURED
-here (<code>data_public/site_best_overlap.json</code>) as the share of one file’s positive
-cells lying within an inclusive 3-pixel (300 m) halo of another site’s positives.
-GEMSDOE25 and GEMSDOE30 decode to <em>identical</em> prediction arrays.</p>
-
-<div class="note"><strong>Consequence.</strong> Resubmitting any historical file from these
-nine sites cannot improve a score: an identical or near-identical prediction has already
-been scored. The only useful artefact in those sites is the <em>lesson</em> in the next
-section.</div>
-
-<h2>Why 0.2778 topped these sites</h2>
-<ul class="tight">
-<li>With α = 0.2 and β = 0.8, one unit of hit mass is worth up to <strong>17 units</strong>
-of false-alarm mass at s = 0.2778 — long, thin and correct beats wide.</li>
-<li>Every file in the 0.24–0.28 band is 37.6k–42.3k binary cells whose 300 m halo covers
-0.151–0.167 of the footprint: one saturated design, re-parameterised.</li>
-<li>GEMSDOE32 <code>…h33-2-b2…</code> is the GEMSDOE25/30 array <strong>minus exactly 6,436
-dots, 100 % of them within 2 px of the mapped catalogue</strong>. The 0.0178 gain is a
-pruning step, consistent with the organizer ruling that known-fault pixels are masked.</li>
-</ul>
-
-<h2 id="why">Why 0.2778 scored highest — the inverted formula</h2>
-<p>With <code>DTI = T/(T + 0.2F + 0.8(N&minus;T))</code>, and the one pair of fleet files that
-is provably the same detector at two masses (44,090 dots &rarr; 0.2600, its 37,654-dot pruned
-subset &rarr; 0.2778), the pair solves to <strong>N = 12,783 scored truth pixels</strong> and
-<strong>40.9 % coverage</strong> for both. The implied coverage is stable (0.407&ndash;0.410)
-even when the reported scores move by &plusmn;0.001 or 10 % of the mass is exempt from the
-false-positive term; the truth size is not (11.4k&ndash;12.9k).</p>
-<table>
-<tr><th>Mass at B2's coverage</th><th>10,000</th><th>30,000</th><th>37,654 (B2)</th>
-<th>44,090 (D2.8)</th><th>90,000</th></tr>
-<tr><td>Predicted DTI</td><td class="num">0.394</td><td class="num">0.302</td>
-<td class="num"><strong>0.2778</strong></td><td class="num">0.2600</td>
-<td class="num">0.178</td></tr>
-</table>
-<p class="muted">The 44,090 entry reproduces the independent 0.2600 report — the only
-out-of-sample check the pair can supply. Machine-readable:
-<a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/data_public/gemsdoe_metric_model.json">gemsdoe_metric_model.json</a>,
-<a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/data_public/candidate_measurements.json">candidate_measurements.json</a>,
-<a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/scripts/gemsdoe_metric_model.py">the script that computes them</a>.</p>
-
-<h2>Can we beat 0.2778?</h2>
-<p>At ≈38,000 unit cells the published formula requires covering
-<strong>35–46 %
-of the hidden expert labels</strong> to reach 0.2778, and
-<strong>50–78 %</strong>
-to reach the live leaderboard top of 0.4544. This checkout contains no detector that covers
-that share of <em>unseen</em> faults: the best per-pixel model reached AUC 0.57 inside a
-region, and the external lidar-scarp and radiometric products 0.569 and 0.549.
-So: a unique, well-formed, in-envelope submission — yes; a guaranteed improvement — no.</p>
-
-<h2>Validation of the submitted file</h2>
-<table><tr><th>Check</th><th>Result</th></tr><tr><td>shape_matches</td><td><span class='pill ok'>True</span></td></tr><tr><td>crs_matches</td><td><span class='pill ok'>True</span></td></tr><tr><td>transform_matches</td><td><span class='pill ok'>True</span></td></tr><tr><td>single_band_float32</td><td><span class='pill ok'>True</span></td></tr><tr><td>no_nan_inside_footprint</td><td><span class='pill ok'>True</span></td></tr><tr><td>values_in_0_1_inside</td><td><span class='pill ok'>True</span></td></tr><tr><td>outside_footprint_all_nan</td><td><span class='pill ok'>True</span></td></tr><tr><td>min_inside</td><td><span class='pill warn'>0.0</span></td></tr><tr><td>max_inside</td><td><span class='pill warn'>1.0</span></td></tr><tr><td>positive_cells</td><td><span class='pill warn'>38000</span></td></tr><tr><td>footprint_cells</td><td><span class='pill warn'>5167373</span></td></tr><tr><td>all_pass</td><td><span class='pill ok'>True</span></td></tr></table>
-
-<h2>Novelty of the submitted file</h2>
-<table>
-<tr><th>Rule</th><th>Measured</th><th>Limit</th><th>Verdict</th></tr>
-<tr><td>Byte identity vs fleet</td><td class="num">0 matches</td>
-<td>0</td><td><span class="pill ok">PASS</span></td></tr>
-<tr><td>My cells inside any one file’s 300 m halo</td>
-<td class="num">34.8 %</td><td>70 %</td>
-<td><span class="pill ok">PASS</span></td></tr>
-<tr><td>Smoothed rank correlation vs any file</td>
-<td class="num">0.36</td><td>0.90</td>
-<td><span class="pill ok">PASS</span></td></tr>
-</table>
-
-<h2>How to submit</h2>
-<p>Five steps, two minutes — see <a href="how-to-submit.html">How to submit</a>.</p>
-
-<h2>The full analysis</h2>
-<p><a href="findings.html">Measured findings</a> contains the metric algebra, the three
-experiments, the negative results, the ranked hypotheses H1–H5, and the irregularities
-flagged for review. Sources with links: <a href="sources.html">Sources</a>.</p>
-
-<footer>Generated from the evidence files in this repository. Scores quoted as
-<strong>USER-REPORTED</strong> carry no organizer receipt; measured quantities are
-reproducible with the scripts named in the executive summary.
-Last build: see <code>data_public/gemsdoe_estimate.json</code>.</footer>
-</main></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>GEMS focus sites — negative release decision</title><style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#15202b;background:#f5f7fa;line-height:1.55}
+*{box-sizing:border-box}body{margin:0}header{background:#12263a;color:#fff;padding:14px max(20px,calc((100% - 1040px)/2))}
+header a{color:#e6efff;margin-right:18px}main{max-width:1040px;margin:auto;padding:28px 20px 60px}
+.banner{background:#fff0f0;border:2px solid #a61b1b;border-radius:12px;padding:20px;margin:16px 0}
+.banner h1{margin:0 0 8px;color:#8b1515}.card{background:white;border:1px solid #d9e0e7;border-radius:10px;padding:18px;margin:16px 0}
+button{font:inherit;padding:10px 14px;background:#d9dee5;color:#333;border:0;border-radius:7px}table{border-collapse:collapse;width:100%}
+th,td{padding:9px;border:1px solid #d9e0e7;text-align:left;vertical-align:top}th{background:#edf1f5}
+code{overflow-wrap:anywhere}.muted{color:#536272}.tag{font-weight:700;color:#971717}
+</style></head><body>
+<header><a href="../index.html">Project dashboard</a><a href="../executive-summary.html">Nine-site executive summary</a><a href="../release.html">Byte audit</a><a href="../research.html">Hypotheses</a></header>
+<main><section class="banner" role="alert"><h1>NO FILE APPROVED — DO NOT SUBMIT</h1>
+<p>This project currently has no eligible submission GeoTIFF. There is no one-click submission download. The nine historical GEMSDOE files are research references, not eligible submissions.</p>
+<p><strong>Score estimate for a new submission: unavailable.</strong> Historical scores in the table are user-reported claims; they are not new-score estimates or organizer receipts.</p><button disabled aria-disabled="true">No submission file available</button>
+<p><a href="../executive-summary.html">Open the nine-site executive summary and historical file table →</a></p></section><section class="card"><h2>Executive summary</h2>
+<p>The requested comparison table is published on the <a href="../executive-summary.html">nine-site executive summary page</a>. It lists the exact historical file links, user-reported scores, measured pinned-file overlap, unavailable new-score estimates, and the DO NOT SUBMIT decision for GEMSDOE24, 25, 27, 28, 30, 31, 32, 33 and 36.</p>
+<p>The highest claim in that list is GEMSDOE32 B2 at 0.2778 (USER-REPORTED). Byte-level lineage is consistent with its being a pruned member of the GEMSDOE25/30 raster family, but this does not prove why the organizer score changed. The hidden labels and a receipt bound to the exact submitted bytes are not available here, so no causal score decomposition or new-score estimate is asserted.</p></section>
+<section class="card"><h2>Why no candidate is offered</h2><p>The current checkout is blocked: method lane is unassigned; authenticated competition rasters, derived feature cache and pinned shared evaluator are absent; the current registry is incomplete; the literal duplicate gate has decisive witnesses; the continuous-prior interpretation is unresolved; and a separate selector decision has not occurred.</p><p>The latest diagnostic and session card are linked from the <a href="../readiness.html">readiness page</a>. Existing rasters are research artifacts only.</p></section><footer class="muted">Updated 2026-10-28 UTC · negative release status is not an organizer receipt.</footer></main></body></html>

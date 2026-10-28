@@ -108,4 +108,6 @@ def test_distal_site_pages_exist_and_are_qualified():
     index = (ROOT / "docs/distal/index.html").read_text(encoding="utf-8")
     card = json.loads((ROOT / "evidence/RUN_CARD_DISTAL_OOF.json").read_text())
     assert card["evidence_details"]["submission_name"] in index
-    assert "USER-REPORTED" in index and "EMPIRICAL" in index
+    assert "HOLDOUT-DTI" in index
+    assert "no current leaderboard-score estimate is available" in index
+    assert "Research TIFF" not in index and ".tif" not in index
