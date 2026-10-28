@@ -12,6 +12,7 @@
 | Current checkout | `BLOCKED / DO NOT SUBMIT`; see [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json). |
 | Executive summary table | [`docs/executive-summary.html`](docs/executive-summary.html) (all nine requested sites; historical claims, file, overlap, estimate and action). |
 | Submission instructions | [`docs/lane/how-to-submit.html`](docs/lane/how-to-submit.html); this page explicitly says no file is currently eligible. |
+| Nine-site measured-proxy evidence (2026-10-28) | [`docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md`](docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md) — HOLDOUT-DTI proxies, uniqueness and format gate for the four valid files; **no file offered for download**; the fixed-raster caveat applies. |
 | Current JSON run card | [`evidence/session_run_card_20261028.json`](evidence/session_run_card_20261028.json). |
 
 ### Why GEMSDOE32 B2 may have scored 0.2778 — and what we can conclude

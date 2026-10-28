@@ -1,0 +1,149 @@
+{
+ "schema": "wbggems.fixed-raster-holdout.v1",
+ "evidence_class": "HOLDOUT-DTI (shared evaluator, fixed raster; not a leaderboard score)",
+ "evaluator_version": "gems57-pooled-hide-v2",
+ "evaluator_implementation_sha256": {
+  "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+  "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+  "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+  "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+ },
+ "folds": "gems57.spatial.folds(catalogue, footprint, buffer_px=80)",
+ "catalogue_cells": 60988,
+ "footprint_cells": 5167373,
+ "caveat": "Fixed rasters evaluated on each fold without regeneration from fold-visible features; the 0.2778 raster was derived from the full catalogue, so this is a placement test, not a hide-and-recover generalisation test.",
+ "rows": [
+  {
+   "raster": "GEMSDOE32 (user-reported 0.2778)",
+   "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+   "label": "GEMSDOE32 (user-reported 0.2778)",
+   "dots": 37654,
+   "dots_inside_footprint": 37654,
+   "frac_dots_within_2px_of_catalogue": 0.0,
+   "frac_dots_within_3px_of_catalogue": 0.0577,
+   "per_fold_dti": [
+    0.006132,
+    0.008544,
+    0.007532,
+    0.005094
+   ],
+   "pooled_dti_HOLDOUT_DTI": 0.006697,
+   "ci95_spatial_cluster_bootstrap": [
+    0.00599,
+    0.007368
+   ],
+   "withheld_positive_pixels": 60988,
+   "evaluator_version": "gems57-pooled-hide-v2"
+  },
+  {
+   "raster": "triphysics_zerooutside",
+   "sha256": "c8f41c0490f84a26d86073df12fea351464a12e8934a55ca538da5af9253813c",
+   "label": "triphysics_zerooutside",
+   "dots": 38000,
+   "dots_inside_footprint": 38000,
+   "frac_dots_within_2px_of_catalogue": 0.0,
+   "frac_dots_within_3px_of_catalogue": 0.0832,
+   "per_fold_dti": [
+    0.010507,
+    0.006304,
+    0.025192,
+    0.010697
+   ],
+   "pooled_dti_HOLDOUT_DTI": 0.012064,
+   "ci95_spatial_cluster_bootstrap": [
+    0.010067,
+    0.013974
+   ],
+   "withheld_positive_pixels": 60988,
+   "evaluator_version": "gems57-pooled-hide-v2"
+  },
+  {
+   "raster": "distal2_zeros",
+   "sha256": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
+   "label": "distal2_zeros",
+   "dots": 38000,
+   "dots_inside_footprint": 38000,
+   "frac_dots_within_2px_of_catalogue": 0.0,
+   "frac_dots_within_3px_of_catalogue": 0.1911,
+   "per_fold_dti": [
+    0.02507,
+    0.039876,
+    0.024294,
+    0.029957
+   ],
+   "pooled_dti_HOLDOUT_DTI": 0.028878,
+   "ci95_spatial_cluster_bootstrap": [
+    0.024676,
+    0.033206
+   ],
+   "withheld_positive_pixels": 60988,
+   "evaluator_version": "gems57-pooled-hide-v2"
+  },
+  {
+   "raster": "uniform random 37654 dots (seed 1) - control",
+   "sha256": null,
+   "label": "uniform random 37654 dots (seed 1) - control",
+   "dots": 37654,
+   "dots_inside_footprint": 37654,
+   "frac_dots_within_2px_of_catalogue": 0.0587,
+   "frac_dots_within_3px_of_catalogue": 0.0869,
+   "per_fold_dti": [
+    0.069824,
+    0.067424,
+    0.067698,
+    0.067253
+   ],
+   "pooled_dti_HOLDOUT_DTI": 0.06859,
+   "ci95_spatial_cluster_bootstrap": [
+    0.065843,
+    0.071349
+   ],
+   "withheld_positive_pixels": 60988,
+   "evaluator_version": "gems57-pooled-hide-v2"
+  },
+  {
+   "raster": "uniform random 37654 dots (seed 2) - control",
+   "sha256": null,
+   "label": "uniform random 37654 dots (seed 2) - control",
+   "dots": 37654,
+   "dots_inside_footprint": 37654,
+   "frac_dots_within_2px_of_catalogue": 0.059,
+   "frac_dots_within_3px_of_catalogue": 0.0877,
+   "per_fold_dti": [
+    0.070884,
+    0.067268,
+    0.070283,
+    0.06588
+   ],
+   "pooled_dti_HOLDOUT_DTI": 0.069233,
+   "ci95_spatial_cluster_bootstrap": [
+    0.065832,
+    0.072321
+   ],
+   "withheld_positive_pixels": 60988,
+   "evaluator_version": "gems57-pooled-hide-v2"
+  },
+  {
+   "raster": "uniform random 37654 dots (seed 3) - control",
+   "sha256": null,
+   "label": "uniform random 37654 dots (seed 3) - control",
+   "dots": 37654,
+   "dots_inside_footprint": 37654,
+   "frac_dots_within_2px_of_catalogue": 0.0599,
+   "frac_dots_within_3px_of_catalogue": 0.0863,
+   "per_fold_dti": [
+    0.069031,
+    0.069343,
+    0.0701,
+    0.07025
+   ],
+   "pooled_dti_HOLDOUT_DTI": 0.069448,
+   "ci95_spatial_cluster_bootstrap": [
+    0.066573,
+    0.07237
+   ],
+   "withheld_positive_pixels": 60988,
+   "evaluator_version": "gems57-pooled-hide-v2"
+  }
+ ]
+}

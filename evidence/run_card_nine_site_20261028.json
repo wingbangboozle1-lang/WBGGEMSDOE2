@@ -1,0 +1,185 @@
+{
+  "schema": "wbggems.run-card.v2",
+  "date_utc": "2026-10-28",
+  "session_scope": "Review + verification of existing candidates against the nine focus GEMSDOE sites; no new raster generated.",
+  "lane": "NONE ASSIGNED. The PARALLEL-RUN PROTOCOL 'single method paragraph' is a placeholder in the brief ([0.90], [70%] unfilled, no method text). Per AGENTS.md this is a blocker: no new candidate was generated under a self-assigned lane.",
+  "hypothesis": "H0: at least one existing format-valid, nine-site-unique raster in this repository has measured evidence of beating the user-reported 0.2778 leaderboard value. Result: NOT SUPPORTED.",
+  "mechanism": "The local HOLDOUT-DTI proxy scores withheld KNOWN catalogue faults. Official scoring masks known USGS/INGENIOUS fault pixels (DrivenData staff community reply, dated Sep 16) and scores only new faults. The 0.2778 raster has 0.000 of its dots within 2 px of the catalogue, so the proxy gives it almost no credit.",
+  "named_non_fault_process_that_could_mimic_a_proxy_score": "Catalogue-proximity bias: a holdout that scores withheld catalogue traces rewards placement next to mapped lineaments and drifting dense ridges, which is a mapping-density artefact rather than discovery of unmapped faults.",
+  "holdout": {
+    "GEMSDOE32_user_reported_0.2778": {
+      "pooled_dti": 0.006697,
+      "ci95": [
+        0.00599,
+        0.007368
+      ],
+      "withheld_positives": 60988,
+      "evaluator": "gems57-pooled-hide-v2",
+      "protocol": "fixed raster on shared folds",
+      "evidence_class": "HOLDOUT-DTI",
+      "file": "evidence/fixed_raster_holdout_20261028.json"
+    },
+    "uniform_random_37654_dots_control": {
+      "pooled_dti": [
+        0.0686,
+        0.0694
+      ],
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "evidence_class": "HOLDOUT-DTI (control)",
+      "file": "evidence/fixed_raster_holdout_20261028.json"
+    },
+    "triphysics_zerooutside": {
+      "pooled_dti": 0.012064,
+      "ci95": [
+        0.010067,
+        0.013974
+      ],
+      "withheld_positives": 60988,
+      "evaluator": "gems57-pooled-hide-v2",
+      "protocol": "fixed raster on shared folds",
+      "evidence_class": "HOLDOUT-DTI"
+    },
+    "triphysics_run_card_claim": {
+      "pooled_dti": 0.00862,
+      "withheld_positives": 60940,
+      "evaluator": "UNRECORDED",
+      "evidence_class": "HOLDOUT-DTI (unverified provenance; not reproduced here)",
+      "file": "evidence/gemsdoe_lane_holdout.json"
+    },
+    "distal2_zeros_regenerated_per_fold": {
+      "pooled_dti": 0.177123,
+      "ci95": [
+        0.157013,
+        0.198288
+      ],
+      "withheld_positives": 60988,
+      "evaluator": "gems57-pooled-hide-v2",
+      "protocol": "regenerated per fold (hide-and-recover)",
+      "evidence_class": "HOLDOUT-DTI",
+      "file": "evidence/RUN_CARD_DISTAL2.json"
+    },
+    "distal2_zeros_fixed_raster": {
+      "pooled_dti": 0.028878,
+      "ci95": [
+        0.024676,
+        0.033206
+      ],
+      "withheld_positives": 60988,
+      "evaluator": "gems57-pooled-hide-v2",
+      "protocol": "fixed raster on shared folds",
+      "evidence_class": "HOLDOUT-DTI",
+      "file": "evidence/fixed_raster_holdout_20261028.json"
+    },
+    "wbg4_edti_mc40k": {
+      "mean_of_2_folds_dti": 0.117135,
+      "evaluator": "wbg4-edti-v1",
+      "evidence_class": "HOLDOUT-DTI (mean of folds, labelled 'pooled' in the repo - irregular)",
+      "file": "evidence/wbg4_exp2.json"
+    },
+    "wbg4_sscc_blind_66383": {
+      "pooled_dti": 0.10864,
+      "ci95": [
+        0.07827,
+        0.13008
+      ],
+      "withheld_positives": 60980,
+      "evaluator": "wbg4-hide-recover-v1 (NOT comparable to gems57)",
+      "evidence_class": "HOLDOUT-DTI",
+      "file": "evidence/RUN_CARD_WBG4.json"
+    }
+  },
+  "estimate": {
+    "distal2_fleet_regression": {
+      "value": 0.1497,
+      "loso_r2": 0.2128,
+      "n": 93,
+      "evidence_class": "EMPIRICAL-ESTIMATE (not a score)",
+      "file": "evidence/RUN_CARD_DISTAL2.json"
+    },
+    "triphysics_0.15_0.28_band": "NO DERIVATION IN REPO. The run card's only target is a footprint-reach envelope [0.15, 0.17] (fraction of the footprint within 3 px), which is not truth coverage. Projection withdrawn."
+  },
+  "correlation_overlap_vs_nine_sites": {
+    "evidence": "evidence/nine_site_recheck_20261028.json",
+    "triphysics_zerooutside": {
+      "max_halo_overlap": 0.2354,
+      "worst_site": "GEMSDOE27",
+      "max_abs_smoothed_spearman": 0.2094,
+      "passes": true
+    },
+    "distal2_zeros": {
+      "max_halo_overlap": 0.6372,
+      "worst_site": "GEMSDOE27",
+      "max_abs_smoothed_spearman": 0.4221,
+      "passes": true
+    },
+    "wbg4_mc40k_zeros": {
+      "max_halo_overlap": 0.4679,
+      "worst_site": "GEMSDOE27",
+      "max_abs_smoothed_spearman": 0.3888,
+      "passes": true
+    },
+    "wbg4_sscc_blind_66383": {
+      "max_halo_overlap": 0.6408,
+      "worst_site": "GEMSDOE27",
+      "max_abs_smoothed_spearman": 0.2523,
+      "passes": true
+    },
+    "nine_site_family_min_pairwise_overlap": 0.8672,
+    "note": "Only the nine focus rasters were compared. The wider 30-raster and 437-raster checks in earlier evidence were NOT re-run here."
+  },
+  "raster_sha256": {
+    "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif": "c8f41c0490f84a26d86073df12fea351464a12e8934a55ca538da5af9253813c",
+    "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
+    "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
+    "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
+    "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif": "494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59"
+  },
+  "validator_output": {
+    "tool": "scripts/validate_submission.py (shared gems57 gate + independent read-back)",
+    "triphysics_zerooutside": {
+      "ok": true,
+      "n_nan": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "problems": []
+    },
+    "triphysics_nan_outside": {
+      "ok": false,
+      "n_nan": 7111787,
+      "problems": [
+        "7111787 NaN/infinite pixels: fail our all-finite export policy (public spec permits outside-footprint NaN)"
+      ],
+      "note": "Spec-compliant per DrivenData format text, but fails this repo's stricter gate. README 'PASS' claim was WRONG."
+    },
+    "distal2_zeros": {
+      "ok": true,
+      "n_nan": 0,
+      "problems": []
+    },
+    "wbg4_mc40k_zeros": {
+      "ok": true,
+      "n_nan": 0,
+      "problems": []
+    },
+    "wbg4_sscc_blind_66383": {
+      "ok": true,
+      "n_nan": 0,
+      "problems": []
+    },
+    "grid": "EPSG:32611, 3730 x 3292, transform (100, 0, 243350, 0, -100, 4508550), float32, single band (matches data/official/sample_submission.tif)"
+  },
+  "submission_name": "NONE SUBMITTED",
+  "submission_note_140": "not submitted; no slot spent",
+  "weekly_slot_spent": false,
+  "verdict": "negative",
+  "verdict_detail": "No candidate is cleared to spend a weekly slot as a leaderboard pick. distal2 is the download pick for the record only. Held pending: lane assignment, a holdout whose truth matches the official unmapped-fault target, or an organizer receipt.",
+  "download_for_record_only": {
+    "file": "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif",
+    "sha256": "0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10",
+    "reason": "highest measured proxy among the four format-valid, nine-site-unique files"
+  }
+}
