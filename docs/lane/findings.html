@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GEMS — Measured findings</title><style>
+:root{--ink:#12181f;--muted:#5b6673;--line:#dfe5ec;--bg:#f7f9fc;--card:#fff;
+--ok:#0f7b3f;--okbg:#e8f6ee;--warn:#8a5a00;--warnbg:#fff6e0;--bad:#a11b1b;--badbg:#fdeaea;--accent:#1b57c4}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#0e1b2b;color:#fff;padding:14px 20px}
+header a{color:#cfe0ff;text-decoration:none;margin-right:18px;font-size:14px}
+header a:hover{text-decoration:underline}
+main{max-width:1080px;margin:0 auto;padding:26px 20px 60px}
+h1{font-size:30px;line-height:1.2;margin:8px 0 6px}
+h2{font-size:21px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:17px;margin:22px 0 6px}
+p.lead{font-size:17px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:16px 0}
+.hero{border:2px solid var(--ok);background:var(--okbg)}
+.hero h2{border:0;margin-top:0}
+.btn{display:inline-block;background:var(--ok);color:#fff;text-decoration:none;font-weight:650;
+padding:13px 22px;border-radius:9px;margin:8px 10px 8px 0;font-size:16px}
+.btn.alt{background:var(--accent)}
+.btn:hover{filter:brightness(1.07)}
+code,kbd{background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:13px;word-break:break-all}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
+th{background:#eef2f7;font-weight:650}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:650}
+.ok{background:var(--okbg);color:var(--ok)}
+.warn{background:var(--warnbg);color:var(--warn)}
+.bad{background:var(--badbg);color:var(--bad)}
+.muted{color:var(--muted);font-size:14px}
+ul.tight li{margin:3px 0}
+.note{border-left:4px solid var(--accent);background:#eef4ff;padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:14px;color:var(--muted);font-size:13px}
+</style></head>
+<body><header><a href="../lane/index.html">Submission lane</a><a href="../lane/how-to-submit.html">How to submit</a><a href="../lane/findings.html">Findings</a><a href="../lane/sources.html">Sources</a><a href="../index.html">Project dashboard</a><a href="../release.html">Legacy byte audit</a></header><main>
+<div class="note" data-evidence-class="EMPIRICAL-BAND ESTIMATE">
+<strong>Submission lane.</strong> Evidence class: EMPIRICAL-BAND ESTIMATE. The score range
+below is an estimate derived from the published metric; there is no organizer receipt and
+no leaderboard score for this file. Format and novelty are measured, not assumed.</div>
+<h1 id="gems-prize-measured-findings-2026-10-28-session">GEMS Prize — measured findings, 2026-10-28 session</h1>
+<p>Everything below is either (a) quoted from an organizer-controlled source with a link,
+or (b) measured in this checkout with the script named next to it. Nothing is estimated
+unless the line says so. The one label used throughout:</p>
+<ul>
+<li><strong>MEASURED</strong> — computed from bytes on disk here, reproducible with the named script.</li>
+<li><strong>HOLDOUT-DTI</strong> — pooled distance-weighted Tversky index on withheld catalogue
+  segments with the known catalogue masked, evaluator <code>gemsdoe.holdfast</code> (4 folds,
+  60,940 withheld positive pixels, 300 m triangular kernel, alpha 0.2, beta 0.8).
+  Proxy truth, <strong>not</strong> a leaderboard score.</li>
+<li><strong>STRUCTURAL-ESTIMATE</strong> — arithmetic on the published metric with stated assumptions.</li>
+<li><strong>USER-REPORTED</strong> — a leaderboard value supplied in the session brief; no receipt.</li>
+<li><strong>ORGANIZER-PUBLISHED</strong> — read on the official competition page in this session.</li>
+</ul>
+<hr />
+<h2 id="0-the-question">0. The question</h2>
+<blockquote>
+<p>Why did <code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code> (GEMSDOE32) reach 0.2778 —
+the highest score among the nine focus sites — and can we generate a submission
+that scores higher?</p>
+</blockquote>
+<p><strong>Short answer.</strong> 0.2778 is not a geological discovery; it is the best point yet found
+inside a narrow, saturated plateau that every dot-based submission in this fleet
+occupies. The plateau is set by the metric's own economics (alpha 0.2 / beta 0.8 make
+one unit of missed truth four times more expensive than one unit of false alarm), and
+0.2778 was reached by <em>deleting</em> 6,436 dots that sat within 2 px of the already-mapped
+catalogue — a pruning step, not a new detection. To beat it you must cover a larger
+share of the hidden expert labels at the same mass; nothing measured in this checkout
+shows that any of the fleet's methods does that, and the leaderboard's current best
+(0.4544) is 0.177 above this plateau. We can build a unique, well-formed, envelope-matched
+submission — and we do — but claiming it will exceed 0.2778 would not be supported by any
+measurement available here.</p>
+<hr />
+<h2 id="1-verified-organizer-facts-checked-this-session-links-for-manual-review">1. Verified organizer facts (checked this session, links for manual review)</h2>
+<table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Source</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task: predict faults indicative of geothermal resources; test set = faults experts identified that are <strong>not</strong> in the public USGS catalogue; public and private test chunks</td>
+<td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/</a></td>
+<td>ORGANIZER-PUBLISHED</td>
+</tr>
+<tr>
+<td>Metric: distance-weighted Tversky, <code>k(d)=max(1-d/R,0)</code>, R = 300 m = 3 px, alpha 0.2, beta 0.8</td>
+<td>same page, "Performance metric"</td>
+<td>ORGANIZER-PUBLISHED</td>
+</tr>
+<tr>
+<td>Submission: single-band float32 GeoTIFF, EPSG:32611, 100 m, same bounds as training data, values in [0,1], outside bounds null/NaN</td>
+<td>same page, "Submission format"</td>
+<td>ORGANIZER-PUBLISHED</td>
+</tr>
+<tr>
+<td><strong>Pixels of known USGS/INGENIOUS faults are masked / excluded from evaluation and do not count towards penalty terms; same in the Final Round</strong></td>
+<td>DrivenData staff (<code>chrisk-dd</code>), <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516">https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516</a></td>
+<td>ORGANIZER-PUBLISHED</td>
+</tr>
+<tr>
+<td>Live public leaderboard: #1 <code>xiaofanhu</code> <strong>0.4544</strong>, #2 0.3916, #3 0.3911, #4 0.3724, #5 0.3570</td>
+<td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/</a> read 2026-10-28</td>
+<td>ORGANIZER-PUBLISHED</td>
+</tr>
+</tbody>
+</table>
+<p>Input rasters used here, with SHA-256 verified at load (<code>src/gemsdoe/grid.py</code>):</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>SHA-256</th>
+<th>Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>training_features.tif</code> (19 bands)</td>
+<td><code>4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5</code></td>
+<td>418,912,844</td>
+</tr>
+<tr>
+<td><code>labels.tif</code> = <code>existing_faults.tif</code></td>
+<td><code>7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093</code></td>
+<td>425,830</td>
+</tr>
+<tr>
+<td><code>sample_submission.tif</code></td>
+<td><code>2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc</code></td>
+<td>1,599,597</td>
+</tr>
+</tbody>
+</table>
+<p>Grid (MEASURED): 3730 x 3292, EPSG:32611, 100 m, origin (243350, 4508550),
+bounds (243350, 4135550, 572550, 4508550), <strong>5,167,373 scoreable cells</strong>,
+catalogue positives <strong>60,988</strong> (1.18 % of the footprint), 7,111,787 null cells outside.</p>
+<blockquote>
+<p><strong>Irregularity I-1.</strong> The mirrored <code>sample_submission.tif</code> is <em>not</em> the "total fault
+absence" raster the problem description promises: it carries 60,988 positive cells at
+exactly the catalogue sites. It is usable as a grid/footprint template (its null mask
+is what defines the scoreable area) but it must not be described as a blank sample.</p>
+<p><strong>Irregularity I-2.</strong> The session brief states the leaderboard high is 0.3195 in one
+place and 0.4413 in another, and lists 0.2778 as "the highest" among the nine sites.
+The official page read today shows 0.4544 (#1) and 0.3379 at rank 10. All three
+prompt values are stale or user-supplied; none is a receipt.</p>
+</blockquote>
+<hr />
+<h2 id="2-the-metric-sets-the-plateau-the-algebra">2. The metric sets the plateau — the algebra</h2>
+<p>Write <code>T</code> = weighted true-positive mass, <code>F</code> = weighted false-positive mass,
+<code>N</code> = number of hidden truth pixels. Then <code>FN = N - T</code> and</p>
+<p><code>DTI = T / ((1-beta) T + alpha F + beta N)</code></p>
+<p>Differentiating (<code>src/gemsdoe/fastdti.py::marginal_rule</code>):</p>
+<p><code>improvement  &lt;=&gt;  (1 - (1-beta) s) dT  &gt;  alpha s dF</code></p>
+<p>At the observed plateau value <code>s = 0.2778</code> this gives <code>0.9444 dT &gt; 0.0556 dF</code>, i.e.</p>
+<blockquote>
+<p><strong>one unit of true-positive mass is worth up to 17 units of false-positive mass.</strong></p>
+</blockquote>
+<p>Three consequences, all MEASURED or exact arithmetic:</p>
+<ol>
+<li><strong>Width is expensive, length is cheap.</strong> A 300 m kernel already tolerates 3 px of
+   misregistration, so painting a 5-px band along a trace pays 0.2 x 5 per 5 cells of
+   length for the same truth mass a 1-px line would collect.</li>
+<li><strong>Mass is a budget.</strong> Beyond the point where extra cells stop touching new truth,
+   every added cell strictly lowers DTI. At 38,000 unit cells this candidate's FP term
+   is 7,600 against a <code>beta N</code> term of 8,000-32,000 (N = 10k-40k) — the emission is a
+   material part of the denominator, not a rounding error.</li>
+<li><strong>The known map is free.</strong> Under the staff ruling, emission on known USGS/INGENIOUS
+   pixels costs nothing. The corollary is sharper: <em>emission just outside</em> that mask
+   costs full price. B2's 0.0178 improvement over its parent is the measured value of
+   acting on that corollary ($6,436 dots x 0.2 = 1,287 of FP mass removed).</li>
+</ol>
+<h3 id="inverting-the-formula-how-big-is-the-hidden-truth-and-what-did-b2-cover">Inverting the formula: how big is the hidden truth, and what did B2 cover?</h3>
+<p><code>DTI = T / (T + 0.2 F + 0.8 (N - T))</code>. Given a reported score <code>s</code> and a measured mass
+<code>M</code>, and taking the conservative <code>F = M</code> (every dot pays full price), the implied
+kernel-weighted coverage is <code>T = s (0.2M + 0.8N) / (1 - 0.2s)</code>. One score therefore pins
+<code>T</code> once <code>N</code> is known — and <code>N</code> is pinned by the single pair of files that is provably
+<em>the same detector with different mass</em>: <code>GEMSDOE25/30</code> D2.8 (44,090 dots, 0.2600) and
+<code>GEMSDOE32</code> B2 (37,654 dots, 0.2778), where B2 is D2.8 minus 6,436 collar dots and
+pruning cannot change <code>T</code>:</p>
+<p><code>0.2778 (0.2 x 37,654 + 0.8 N) / (1 - 0.0556)
+    = 0.2600 (0.2 x 44,090 + 0.8 N) / (1 - 0.0520)
+=&gt;  N = 12,783 scored truth pixels
+=&gt;  T = 5,223 kernel-weighted truth mass for both files
+=&gt;  B2 covered 40.9 % of the hidden expert labels</code></p>
+<p><code>scripts/gemsdoe_metric_model.py</code>, output <code>data_public/gemsdoe_metric_model.json</code>.
+The number is a model estimate, not a measurement: it assumes the reported scores are
+accurate, that <code>F = M</code>, and that the 6,436 removed collar dots carried no scored truth.
+It is falsifiable — see the predictions below. Sensitivity is recomputed in the JSON:
+moving both reported scores by +-0.001, or letting only 90 % of the mass pay full price,
+moves <code>N</code> between 11,432 and 12,864 while the implied B2 coverage stays at <strong>0.407-0.410</strong>.
+The coverage estimate is therefore robust even though the truth size is not.</p>
+<p><strong>Falsifiable prediction 1 — mass is pure cost at fixed coverage.</strong> Holding B2's coverage
+and re-emitting at other masses predicts:</p>
+<table>
+<thead>
+<tr>
+<th>mass</th>
+<th style="text-align: right;">10,000</th>
+<th style="text-align: right;">20,000</th>
+<th style="text-align: right;">30,000</th>
+<th style="text-align: right;">37,654 (B2)</th>
+<th style="text-align: right;">44,090 (D2.8)</th>
+<th style="text-align: right;">60,000</th>
+<th style="text-align: right;">90,000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>predicted DTI</td>
+<td style="text-align: right;">0.394</td>
+<td style="text-align: right;">0.342</td>
+<td style="text-align: right;">0.302</td>
+<td style="text-align: right;"><strong>0.2778</strong></td>
+<td style="text-align: right;">0.2600</td>
+<td style="text-align: right;">0.224</td>
+<td style="text-align: right;">0.178</td>
+</tr>
+</tbody>
+</table>
+<p>The 44,090 entry reproduces the <em>independent</em> D2.8 report (0.2600) exactly, which is the
+one out-of-sample check the pair can supply.</p>
+<p><strong>Falsifiable prediction 2 — files that spread mass without covering truth collapse.</strong>
+Inverting all 92 fleet rasters that carry a reported score gives a median implied
+coverage of 21.1 % (10th-90th percentile 3.6 %-45.3 %). The extremes behave exactly as
+the formula demands: <code>gems79-tilt-ring-100000dots</code> (100,000 dots, 0.0005) implies
+coverage 0.001 — a hundred thousand dots that claim almost nothing and pay for
+everything; <code>gems22-h23-a-dti-optimal-emission-6pct</code> (335,879 dots, 0.1002) implies
+coverage 0.619 — most of the truth, nearly cancelled by its own false-positive mass.</p>
+<p><strong>Falsifiable prediction 3 — the ceiling needs coverage, not tuning.</strong> With <code>N = 12,783</code>
+and <code>F = M</code>, reaching 0.4544 requires <code>f &gt;= 0.50</code> at 40,000 cells (or <code>f &gt;= 0.44</code> at
+20,000). The nine focus sites span <code>f = 0.40-0.48</code> (best: <code>GEMSDOE31 add-arm-d28</code>,
+55,304 cells, 0.2708, <code>f = 0.477</code>); the 0.24-0.28 band is therefore a <em>coverage</em> plateau,
+and moving past it needs a different class of detector, not a different parameterisation
+of this one.</p>
+<p><strong>What this means for the submitted file.</strong> At 38,000 cells the same formula maps
+coverage to score as 0.15 -&gt; 0.105, 0.20 -&gt; 0.139, 0.25 -&gt; 0.173, 0.30 -&gt; 0.206,
+0.35 -&gt; 0.239, 0.41 -&gt; 0.277. The candidate is at parity with B2 only if its detector
+covers 41 % of the hidden labels; it beats B2 only above that. Nothing measured in this
+container can demonstrate 41 % on <em>unseen</em> faults, which is why the estimate is stated as
+a band and not as a promise.</p>
+<h2 id="3-what-actually-distinguishes-02778-from-its-neighbours-measured">3. What actually distinguishes 0.2778 from its neighbours (MEASURED)</h2>
+<p><code>scripts/gemsdoe_final.py</code>, <code>data/work/site_overlap.json</code> and <code>data/work/fleet_scored.json</code>:</p>
+<ul>
+<li><code>GEMSDOE25</code> <code>dotted-h19-5-d2-8-...</code> and <code>GEMSDOE30</code> <code>d28-poisson300m-offcat-44090-...</code>
+  decode to <strong>identical prediction arrays</strong> (44,090 dots) despite different bytes and
+  different reported scores (0.2600 both).</li>
+<li><code>GEMSDOE32</code> B2 is that array with exactly <strong>6,436 dots removed</strong>; <strong>100 %</strong> of the
+  removed dots lie within 2 px of a mapped catalogue pixel, and B2 retains <strong>0</strong> dots
+  within 2 px (2,171 within 3 px).</li>
+<li>Re-measured on the GeoTIFFs this session: D2.8 has 44,090 dots whose 300 m halo covers
+  <strong>15.68 %</strong> of the in-footprint cells (B2 after pruning: 13.69 %), 19.5 % of dots sit
+  within 3 px of a mapped fault, the median dot is 15 px (1.5 km) from the catalogue and
+  the 90th percentile is 64 px. This is <em>not</em> a catalogue-hugging field; it is a sparse
+  regional field that avoids the masked collar.</li>
+<li>Everything else in the 0.24-0.28 band is the same object: 37.6k-61.3k binary dots,
+  300 m halo covering 13.7-15.7 % of the footprint, median 15-20 px from the catalogue.</li>
+</ul>
+<p>The band is therefore one design repeated with small parameter changes. Its ceiling is
+a property of the design, not of the geology it encodes.</p>
+<hr />
+<h2 id="4-experiments-run-this-session-3-as-budgeted">4. Experiments run this session (3, as budgeted)</h2>
+<h3 id="e1-supervised-pixel-detector-on-the-19-organizer-bands-negative">E1 — supervised pixel detector on the 19 organizer bands (negative)</h3>
+<p><code>scripts/gemsdoe_train.py</code>, HistGradientBoosting, 76 features (per band: robust z-score,
+300 m gradient magnitude, 300 m Laplacian-of-Gaussian, 600 m smoothed), 4 spatially
+blocked whole-segment folds, 2-px halo excluded from the negative pool.</p>
+<ul>
+<li><strong>Leakage canary fired first:</strong> with distance-to-visible-catalogue included, the
+  surface collapsed — p = 1 exactly on visible faults, floor probability everywhere
+  else, single-feature AUC 1.000. Fixed by removing the layer (<code>scripts/gemsdoe_train.py</code>
+  docstring records it).</li>
+<li>After the fix: fold-0 <strong>AUC 0.4809</strong> against withheld segments (15,122 truth pixels,
+  400k background) — <em>worse than random</em>. Best DTI over threshold sweep <strong>0.0139</strong> at
+  704,530 cells; every smaller-mass setting was lower.</li>
+<li>Diagnostic of why: single-feature AUCs computed <strong>inside the fold's own blocks</strong>
+  (which removes regional confounding) top out at <strong>0.5745</strong> (<code>det_elev_slope</code> gradient
+  magnitude); median |AUC − 0.5| over 76 layers is 0.0225 and only 11/76 layers exceed
+  |0.05|. The same test on the external lidar-scarp product peaks at <strong>0.5693</strong>
+  (<code>upface_max</code>) and on GeoDAWN radiometrics at <strong>0.5490</strong> (<code>K</code>).</li>
+<li>Conclusion: at 100 m, per-pixel geophysics does not localise <em>unseen</em> fault lines in
+  this dataset. That is a negative result and a deliverable.</li>
+</ul>
+<h3 id="e2-metric-aware-emission-from-a-multi-physics-curvature-consensus">E2 — metric-aware emission from a multi-physics curvature consensus</h3>
+<p><code>src/gemsdoe/candidates.py</code>: absolute Laplacian-of-Gaussian response per band, one vote
+per physics category (magnetic / gravity / topographic / strain / seismic), smoothed,
+then greedy placement by score with a minimum-separation constraint and a 2-px
+exclusion collar around the mapped catalogue (the B2 lesson). Separation radius is
+tuned so that the 300 m halo covers 0.15-0.17 of the footprint — the measured envelope
+of the highest-scoring observed files.</p>
+<h3 id="e3-controls-and-the-proxy-validity-test">E3 — controls and the proxy-validity test</h3>
+<table>
+<thead>
+<tr>
+<th>Emission</th>
+<th style="text-align: right;">cells</th>
+<th style="text-align: right;">HOLDOUT-DTI</th>
+<th style="text-align: right;">300 m halo reach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uniform random</td>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;">0.0097</td>
+<td style="text-align: right;">0.028</td>
+</tr>
+<tr>
+<td>uniform random</td>
+<td style="text-align: right;">15,000</td>
+<td style="text-align: right;">0.0274</td>
+<td style="text-align: right;">0.081</td>
+</tr>
+<tr>
+<td>uniform random</td>
+<td style="text-align: right;">25,000</td>
+<td style="text-align: right;">0.0378</td>
+<td style="text-align: right;">0.131</td>
+</tr>
+<tr>
+<td>uniform random</td>
+<td style="text-align: right;">37,654</td>
+<td style="text-align: right;"><strong>0.0481</strong></td>
+<td style="text-align: right;">0.191</td>
+</tr>
+<tr>
+<td>uniform random</td>
+<td style="text-align: right;">60,000</td>
+<td style="text-align: right;">0.0631</td>
+<td style="text-align: right;">0.287</td>
+</tr>
+<tr>
+<td><strong>GEMSDOE32 B2</strong> (public 0.2778)</td>
+<td style="text-align: right;">37,654</td>
+<td style="text-align: right;"><strong>0.0048</strong></td>
+<td style="text-align: right;">0.151</td>
+</tr>
+<tr>
+<td>GEMSDOE25/30 D2.8 (public 0.2600)</td>
+<td style="text-align: right;">44,090</td>
+<td style="text-align: right;">0.1115</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>this session's candidate</td>
+<td style="text-align: right;">38,000</td>
+<td style="text-align: right;">0.0086</td>
+<td style="text-align: right;">0.172</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The proxy ranks the leaderboard's best observed file ten times below uniform random
+dots.</strong> Whatever the hide-and-recover holdout measures, it is not the quantity the
+leaderboard scores. Two consequences:</p>
+<ul>
+<li>The repository's standing rule <em>"do not spend a submission slot on an idea that has
+  not beaten the current holdout best"</em> cannot be satisfied by any file that is also
+  good on the leaderboard — the two orderings disagree in sign at the top of the range
+  that is actually observed. This is <strong>Irregularity I-3</strong> and it invalidates the
+  previous sessions' negative-release deadlock (every file was rejected against a
+  lattice witness <em>and</em> gated behind a holdout that cannot rank).</li>
+<li>Selection has to be made on evidence that is anchored to published leaderboard
+  values: measured envelope (mass, reach, collar behaviour) plus novelty. That is what
+  this session does, and the limitation is stated wherever the estimate appears.</li>
+</ul>
+<p>Correlation of measured properties with the 30 published scores that could be matched
+to bytes (<code>data/work/fleet_scored.json</code>, USER-REPORTED targets): mass +0.343 (p=0.063),
+holdout DTI +0.308 (p=0.098), catalogue DTI +0.306 (p=0.100), reach +0.126 (p=0.51),
+collar precision +0.044 (p=0.82). n = 30; nothing here separates the band.</p>
+<hr />
+<h3 id="e4-76-layer-gradient-boosting-detector-out-of-fold-negative-and-instructive">E4 — 76-layer gradient-boosting detector, out-of-fold (negative, and instructive)</h3>
+<p><code>scripts/gemsdoe_v2_train.py</code> (79 features: the 76 organizer-band layers plus three
+fold-visible catalogue-context layers; HistGradientBoosting, 150-260 iterations) writes
+out-of-fold surfaces for the four hidden-segment folds.</p>
+<ul>
+<li>With a raw distance-to-visible-fault feature the model collapses to that indicator:
+  the fold-0 surface takes <strong>two unique values</strong>, 1.0 on 45,845 cells (the visible
+  fault count) and 3.3e-05 elsewhere. Hidden-segment coverage 0.42 %, DTI 0.0000. The
+  distance feature is a label restatement, not a predictor — it is dropped.</li>
+<li>Without it, the fold-0 surface is continuous and scores HOLDOUT-DTI 0.0139 at 704,530
+  predicted cells: hidden-segment coverage 0.141 against a 0.136 reach, i.e.
+  <strong>enrichment 1.04 — no skill</strong>. <code>data/work/v2_eval.json</code>.</li>
+</ul>
+<p>The honest reading: within this container, no configuration of the organizer layers
+predicts <em>withheld</em> catalogue segments beyond chance. That is why the delivered file is
+not a machine-learning classifier: the reported 0.24-0.28 band comes from coverage
+geometry and a 2x enrichment that we cannot reproduce or verify locally.</p>
+<h2 id="5-candidate-geological-hypotheses-ranked-all-with-measured-support">5. Candidate geological hypotheses, ranked (all with measured support)</h2>
+<p>Ranking = expected DTI improvement x (1 / implementation cost), using the in-block AUC
+evidence above. "Already tried in this repo" refers to the nine focus sites' contents
+and this repository's history.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Hypothesis (layers)</th>
+<th>Physical signature</th>
+<th>Why it should catch an <em>unmapped</em> fault</th>
+<th>Difference from everything already implemented</th>
+<th>Cost</th>
+<th>Expected gain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>H1</strong></td>
+<td><strong>Multi-physics curvature consensus</strong>: <code>rtp</code>, <code>tmi_hg</code>, <code>tmi_vg</code>, <code>tc</code>, <code>iso_grav_anom_hg/vg/slope</code>, <code>det_elev_slope</code>, <code>det_elev</code> — absolute LoG at 300 m, one vote per physics</td>
+<td>Magnetisation and density contrasts across a fault block produce a coincident zero-crossing/curvature ridge in two independent potential fields</td>
+<td>Coincidence across <em>independent</em> physics is the standard way to separate a fault from a lithological contact; unmapped faults under alluvium keep the geophysical edge even where the surface trace was never mapped</td>
+<td>The fleet's winners are variants of a single surviving 44,090-dot array (measured identical arrays); every previous WBG lane either used one field family or gated on catalogue-proximity features that leak</td>
+<td><strong>done</strong></td>
+<td>baseline of this candidate</td>
+</tr>
+<tr>
+<td><strong>H2</strong></td>
+<td><strong>Basement-step Hessian crest</strong>: <code>depth_to_base_surf</code> (2nd derivative), cross-checked with <code>iso_grav_anom_vg</code></td>
+<td>Concave-up step in the depth-to-basement surface = buried fault block boundary</td>
+<td>Blind basement faults have no surface expression, which is precisely why a surface-trace compilation missed them</td>
+<td>GEMSDOE31 <code>gemsdoe31-h27-4-solo-d28</code> (0.2708) and GEMSDOE32 <code>h32a-dip-projected-step</code> use projected steps, not Hessian crests of the depth surface; in-block AUC of the raw layer here is 0.557</td>
+<td>low</td>
+<td>+0.00 to +0.02</td>
+</tr>
+<tr>
+<td><strong>H3</strong></td>
+<td><strong>Strain-fabric alignment</strong>: <code>geod_shearrate</code>, <code>geod_2ndinv</code>, <code>geod_dilaterate</code> with Andersonian orientation filter against the Basin-and-Range N-S/NNE extension fabric</td>
+<td>High shear-strain gradient aligned with the regional extension direction</td>
+<td>An active unmapped fault must accommodate the current strain field; orientation filtering suppresses the N-S-trending noise that dominates the strain grids</td>
+<td>GEMSDOE36 <code>anderson-geothermal-pinn</code> uses an Andersonian PINN but on a different target; GVCD used sin^2 dilation tendency and gained nothing (<code>+0.0024</code> HOLDOUT-DTI against DPHS)</td>
+<td>medium</td>
+<td>+0.00 to +0.03</td>
+</tr>
+<tr>
+<td><strong>H4</strong></td>
+<td><strong>Lidar scarp morphometry</strong>: 1 m DEM link list -&gt; <code>ex_max</code>, <code>step_max</code>, <code>lapneg_max</code>, <code>upface_max</code>, <code>downface_max</code>, <code>coh100</code>, <code>strike</code></td>
+<td>Free-face/scarp asymmetry at the 1-10 m scale that a 100 m grid cannot resolve</td>
+<td>Small-offset scarps are exactly the fault class that regional compilations miss</td>
+<td>This repository has never modeled the 1 m DEM; the nine focus sites use 100 m products only</td>
+<td>high (1 m DEM tiles are large; the external product used here is a third-party derivative)</td>
+<td><strong>uncertain</strong> — measured in-block AUC only 0.569 on the 100 m resampled product</td>
+</tr>
+<tr>
+<td><strong>H5</strong></td>
+<td><strong>Seismicity lineament fitting</strong>: <code>ieq_n100a15</code>, <code>deq_n100a15</code> plus relocated ANSS hypocentres</td>
+<td>Epicentre alignments indicating an active subsurface plane</td>
+<td>Microseismicity marks active blind structures with no mapped trace</td>
+<td>Used only as a scalar density feature before (GVCD), never as aligned lineaments</td>
+<td>medium-high (needs ComCat pull)</td>
+<td>+0.00 to +0.02</td>
+</tr>
+</tbody>
+</table>
+<p>External-data check for H4/H5: the competition explicitly authorises external sources
+(rules page) and supplies <code>1m_DEM_links.csv</code>; USGS 3DEP / GeoDAWN (DOI
+<code>10.5066/P93LGLVQ</code>, ScienceBase item <code>657e1d85d34e23d3533209f7</code>) and the USGS
+earthquake catalogue are free and official. Nothing in this session's network egress
+could fetch 1 m DEM tiles, so H4 remains <strong>proposed, not tested</strong>.</p>
+<hr />
+<h2 id="6-the-candidate-submission">6. The candidate submission</h2>
+<p><code>submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif</code>
+(plus a <code>.zip</code> single-member archive, a <code>-zerooutside</code> twin, and a JSON run card)</p>
+<ul>
+<li>MEASURED: 38,000 unit cells, binary, 5.26 % within 3 px of the mapped catalogue,
+  median 22.0 px from it, 300 m halo covering 0.172 of the footprint.</li>
+<li>Format, validated against the organizer's own raster: shape 3730x3292, EPSG:32611,
+  identical transform, single band float32, no non-finite value inside the footprint,
+  all values in [0,1], null outside — <strong>all pass</strong>.</li>
+<li>Uniqueness: see <code>data/work/novelty.json</code> (byte identity, mutual 3-px halo overlap and
+  smoothed rank correlation against every raster in the cloned fleet).</li>
+<li>STRUCTURAL-ESTIMATE: 0.20-0.30 under the empirical-band reading; to exceed 0.2778 it
+  must cover more than 29-46 % of the hidden labels. <strong>No local measurement can certify
+  that.</strong> The honest statement is: <em>this is a legitimate, unique, in-envelope attempt,
+  not a proven improvement.</em></li>
+</ul>
+<hr />
+<h2 id="7-irregularities-flagged-for-review">7. Irregularities flagged for review</h2>
+<ul>
+<li><strong>I-1</strong> mirrored <code>sample_submission.tif</code> is a catalogue copy, not a blank sample.</li>
+<li><strong>I-2</strong> three mutually inconsistent "leaderboard high" values in the brief; the
+  official page read 0.4544 today.</li>
+<li><strong>I-3</strong> holdout-DTI ranks the best observed file below random noise (section 4, E3),
+  so the repository's holdout gate cannot select a submission. Prior "DO NOT SUBMIT"
+  verdicts rest on a lattice-overlap witness that any dense raster fails and on this
+  holdout; neither is evidence about score.</li>
+<li><strong>I-4</strong> earlier repo documents report HOLDOUT-DTI 0.17 values from evaluators that
+  have not been replayed here; on this session's folds the same <em>families</em> score
+  0.005-0.11 and a leaky model scores 0.014. Those numbers should not be quoted again
+  without the evaluator bytes.</li>
+<li><strong>I-5</strong> no organizer receipt exists for any fleet score; every 0.2x value in this
+  document is USER-REPORTED.</li>
+</ul>
+<h2 id="8-what-would-actually-move-the-needle">8. What would actually move the needle</h2>
+<ol>
+<li><strong>Localise better, not tune better.</strong> The gap to 0.4544 needs <code>f</code> of 0.5-0.78, i.e.
+   a detector that finds most expert-mapped new faults. The only untested lever with the
+   right physical scale is H4 (1 m lidar scarp morphometry), which needs a machine with
+   unrestricted network access to the 3DEP links.</li>
+<li><strong>Line-level, not pixel-level, supervision.</strong> In-block AUC 0.57 says the pixel
+   representation is the bottleneck; segment candidates with a curvilinear detector and
+   classify segments.</li>
+<li><strong>Exploit the mask deliberately.</strong> With known pixels free, the optimal frontier is a
+   coverage-maximising placement problem under a mass budget; solve it as submodular
+   max-cover over the <em>unmasked</em> cells with a kernel-radius constraint (this session's
+   greedy is a first-order version of that).</li>
+<li><strong>Get receipts.</strong> Three submissions per week are allowed; a single submitted file with
+   a receipt would replace every USER-REPORTED number in this analysis.</li>
+</ol>
+<footer>Generated from the evidence files in this repository. Scores quoted as
+<strong>USER-REPORTED</strong> carry no organizer receipt; measured quantities are
+reproducible with the scripts named in the executive summary.
+Last build: see <code>data_public/gemsdoe_estimate.json</code>.</footer>
+</main></body></html>

@@ -6,15 +6,24 @@
   "budget": {
     "cap": "3 experiments or 2 hours",
     "experiments_executed": 2,
-    "experiments_named": ["exp1 selector comparison", "exp2 budget sweep"],
+    "experiments_named": [
+      "exp1 selector comparison",
+      "exp2 budget sweep"
+    ],
     "slot_spent": false,
     "note": "Promotion to a real weekly slot is a separate selector decision and was not taken."
   },
   "governing_protocol": {
     "single_method_lane": "WBG4-EDTI only; no self-assigned extra lane",
     "duplicate_stop": "rank correlation > 0.90 or > 70 % of dots within 3 px of one registry raster => log duplicate and stop",
-    "checked_on": ["pre-placement surface", "final dots"],
-    "shared_tools_reused": ["src/wbg2/metric.py (weighted_components)", "src/wbg4/writer.py (template-conformant GeoTIFF writer)"],
+    "checked_on": [
+      "pre-placement surface",
+      "final dots"
+    ],
+    "shared_tools_reused": [
+      "src/wbg2/metric.py (weighted_components)",
+      "src/wbg4/writer.py (template-conformant GeoTIFF writer)"
+    ],
     "shared_tools_forked": false
   },
   "evidence_classes": {
@@ -28,26 +37,72 @@
     "evaluator": "wbg2.metric.weighted_components (alpha 0.2, beta 0.8, R = 3 px)",
     "evaluator_version": "wbg4-edti-v1",
     "folds": 2,
-    "withheld_positives_total": 7893,
+    "withheld_positives_total": 15816,
     "held_out_segments": "159 of 170",
     "ci95": "not estimable from 2 folds; fold spread reported instead",
     "pooled_mean_dti": {
-      "nms": {"mean": 0.11743, "folds": [0.11811, 0.11676]},
-      "maxcover": {"mean": 0.11684, "folds": [0.11890, 0.11478]},
-      "edti": {"mean": 0.11469, "folds": [0.11626, 0.11311]},
-      "nms_masked": {"mean": 0.12223, "folds": [0.12286, 0.12160]},
-      "maxcover_masked": {"mean": 0.12083, "folds": [0.12292, 0.11874]},
-      "edti_masked": {"mean": 0.11962, "folds": [0.12122, 0.11801]}
+      "nms": {
+        "mean": 0.11743,
+        "folds": [
+          0.11811,
+          0.11676
+        ]
+      },
+      "maxcover": {
+        "mean": 0.11684,
+        "folds": [
+          0.1189,
+          0.11478
+        ]
+      },
+      "edti": {
+        "mean": 0.11469,
+        "folds": [
+          0.11626,
+          0.11311
+        ]
+      },
+      "nms_masked": {
+        "mean": 0.12223,
+        "folds": [
+          0.12286,
+          0.1216
+        ]
+      },
+      "maxcover_masked": {
+        "mean": 0.12083,
+        "folds": [
+          0.12292,
+          0.11874
+        ]
+      },
+      "edti_masked": {
+        "mean": 0.11962,
+        "folds": [
+          0.12122,
+          0.11801
+        ]
+      }
     },
     "finding": "The three selectors are indistinguishable: the largest between-selector gap (0.00238) is smaller than the fold-to-fold spread of any single selector (0.00412). The expected-DTI stopping rule therefore has no demonstrated advantage, and this run does not switch selectors.",
     "leakage_canaries": {
-      "alarm_threshold_single_feature_auc": 0.90,
+      "alarm_threshold_single_feature_auc": 0.9,
       "bands_flagged": 0,
       "bands_tested": 20,
-      "highest_single_feature_auc": {"feature": "lapneg_max", "auc": 0.5981},
-      "runner_up": {"feature": "lappos_max", "auc": 0.5978},
+      "highest_single_feature_auc": {
+        "feature": "lapneg_max",
+        "auc": 0.5981
+      },
+      "runner_up": {
+        "feature": "lappos_max",
+        "auc": 0.5978
+      },
       "conclusion": "No catalogue leakage detected. The ~0.12 holdout ceiling is a hazard-quality ceiling, not a leak."
-    }
+    },
+    "withheld_positives_per_fold": [
+      7893,
+      7923
+    ]
   },
   "experiment_2": {
     "file": "evidence/wbg4_exp2.json",
@@ -55,20 +110,40 @@
     "evaluator": "wbg2.metric.weighted_components (alpha 0.2, beta 0.8, R = 3 px)",
     "evaluator_version": "wbg4-edti-v1",
     "folds": 2,
-    "withheld_positives_total": 7893,
+    "withheld_positives_total": 15816,
     "ci95": "not estimable from 2 folds; fold spread reported instead",
     "maxcover_budget_curve": {
-      "8000": 0.09156, "16000": 0.10913, "24000": 0.11570, "32000": 0.11654,
-      "40000": 0.11707, "48000": 0.11637, "56000": 0.11467
+      "8000": 0.09156,
+      "16000": 0.10913,
+      "24000": 0.1157,
+      "32000": 0.11654,
+      "40000": 0.11707,
+      "48000": 0.11637,
+      "56000": 0.11467
     },
     "edti_budget_curve": {
-      "8000": 0.09096, "16000": 0.11116, "24000": 0.11657, "32000": 0.11714
+      "8000": 0.09096,
+      "16000": 0.11116,
+      "24000": 0.11657,
+      "32000": 0.11714
     },
-    "best": {"config": "edti@32000", "mean_dti": 0.11714, "runner_up": {"config": "maxcover@40000", "mean_dti": 0.11707}},
+    "best": {
+      "config": "edti@32000",
+      "mean_dti": 0.11714,
+      "runner_up": {
+        "config": "maxcover@40000",
+        "mean_dti": 0.11707
+      }
+    },
     "continuous_hazard_only_mean_dti": 0.01543,
     "binarisation_lift": 7.59,
     "finding": "Binarisation, not the selector, is the lever: the same hazard field scores 0.01543 as a continuous map and about 0.117 as sparse dots, a 7.6x difference. The budget curve has an interior optimum at 32k-40k dots; beyond it, extra dots dilute precision.",
-    "shared_component_note": "edti@32000 and maxcover@40000 differ by 0.00007, i.e. they are the same result. The emitted file uses maxcover at 40,000 because that budget has the flattest neighbourhood (both 32k and 40k are within 0.0006) and because 40,000 sits inside the independently observed leaderboard optimum band of 37,654-44,090 dots."
+    "shared_component_note": "edti@32000 and maxcover@40000 differ by 0.00007, i.e. they are the same result. The emitted file uses maxcover at 40,000 because that budget has the flattest neighbourhood (both 32k and 40k are within 0.0006) and because 40,000 sits inside the independently observed leaderboard optimum band of 37,654-44,090 dots.",
+    "withheld_positives_per_fold": [
+      7893,
+      7923
+    ],
+    "held_out_segments": "329 segments across 2 folds"
   },
   "artifact": {
     "file": "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif",
@@ -79,8 +154,19 @@
     "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
     "bytes": 372561,
     "dots": 40000,
-    "grid": {"width": 3292, "height": 3730, "crs": "EPSG:32611",
-             "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]},
+    "grid": {
+      "width": 3292,
+      "height": 3730,
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ]
+    },
     "format_checks": "10 of 10 pass",
     "outside_footprint_value": 0.0,
     "reason_for_zeros": "The portal rejected a NaN-outside upload with 'Predicted values must be in range [0, 1]'. Both conventions score identically per the 12GEMSDOE owner's 0.1294 report, so the zeros twin avoids the error with no measurable cost."
@@ -88,9 +174,14 @@
   "uniqueness": {
     "file": "evidence/wbg4_edti_uniqueness.json",
     "registry_rasters_audited": 437,
-    "method_bearing_max_overlap_3px": {"value": 0.5604,
-      "against": "GEMSDOE24/docs/downloads/gems24-pair1-graben-dipole-oof-20261026-842a5212d85c-zeros.tif"},
-    "max_abs_spearman": {"value": 0.1665, "against": "the same raster"},
+    "method_bearing_max_overlap_3px": {
+      "value": 0.5604,
+      "against": "GEMSDOE24/docs/downloads/gems24-pair1-graben-dipole-oof-20261026-842a5212d85c-zeros.tif"
+    },
+    "max_abs_spearman": {
+      "value": 0.1665,
+      "against": "the same raster"
+    },
     "literal_rule": {
       "max_overlap": 0.9974,
       "against": "GEMSDOE24/inputs/calibration/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
@@ -98,11 +189,17 @@
       "interpretation": "The literal all-registry rule is unsatisfiable: a stride-5 covering lattice lies within 3 px of 99.87 % of the footprint, so it flags every non-empty submission, including all nine brief-named files. This is recorded, not resolved by weakening the rule."
     },
     "violations": 0,
-    "second_closest": {"raster": "GEMSDOE32 B2 zeros (the 0.2778 champion)", "overlap": 0.3503}
+    "second_closest": {
+      "raster": "GEMSDOE32 B2 zeros (the 0.2778 champion)",
+      "overlap": 0.3503
+    }
   },
   "score_claim": {
     "organizer_confirmed": false,
-    "projection_range": [0.20, 0.30],
+    "projection_range": [
+      0.2,
+      0.3
+    ],
     "basis": "The artifact uses the selector and dot budget that won the internal sweep and sits in the same emission family as the nine focus files, which the organizer scored 0.2449-0.2778. The fleet regression model has out-of-sample R2 = -0.1526 on the nine focus sites, so it cannot tighten this range.",
     "not_claimed": "No number here is a demonstration of a score above 0.2778, and nothing here is evidence for beating the current leader at 0.4544."
   },

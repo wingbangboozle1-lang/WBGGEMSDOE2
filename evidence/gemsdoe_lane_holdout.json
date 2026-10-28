@@ -1,0 +1,25 @@
+{
+ "schema": "wbggems.holdout-evidence.v1",
+ "lane": "GEMSDOE",
+ "file": "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
+ "tp": 682.6064910888672,
+ "fp": 151510.24040456847,
+ "fn": 60257.39350891113,
+ "n_truth": 60940,
+ "dti": 0.008619795216029217,
+ "fold_dti": [
+  0.008955655914563876,
+  0.007295758799384829,
+  0.006580163218357356,
+  0.011635806704325352
+ ],
+ "fold_truth": [
+  15122,
+  15174,
+  15294,
+  15350
+ ],
+ "known_dilation_px": 0,
+ "evidence_class": "HOLDOUT-DTI (proxy truth = withheld catalogue segments; not a leaderboard score)",
+ "reading": "HOLDOUT-DTI on withheld catalogue segments. Measured to be uninformative about the leaderboard (the reported-0.2778 file scores 0.0048 on the same folds while uniform random dots score 0.0481), so it is reported as a negative control, not a forecast."
+}
