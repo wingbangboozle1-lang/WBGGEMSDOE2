@@ -1,5 +1,3 @@
-# WBGGEMSDOE2 — DOE GEMS Prize
-
 ## START HERE (2026-10-28) — one file is cleared to submit
 
 **Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
@@ -61,7 +59,7 @@ for those files — it just no longer governs the one file in the lane above.
 
 ---
 
-**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. The latest code/repository review and priorities are in [repo-review-20261027.md](research/repo-review-20261027.md).
+**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
 
 ## Legacy release: NEGATIVE for every historical TIFF. DO NOT SUBMIT those.
 
@@ -70,7 +68,8 @@ for those files — it just no longer governs the one file in the lane above.
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
 - **[One current negative JSON run card](evidence/run_card.json)** · [independent byte audit](evidence/release_audit.json) · [official-source verification](research/source-verification-release-20261027.md)
-- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [independent three-pass review](research/three-pass-independent-review-20261027.md) · [earlier reconciliation review](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [repository review](research/session-review-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [this session's three-pass review](research/session-review-20261028.md) · [nine-site/hypothesis follow-up](research/focus-sites-review-20261028.md) · [session run card](evidence/session_run_card_20261028.json) · [independent three-pass review](research/three-pass-independent-review-20261027.md) · [earlier reconciliation review](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [previous repository review](research/session-review-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **This lane's evidence:** [submission site](docs/lane/index.html) · [executive summary](docs/EXECUTIVE_SUMMARY.md) · [findings](research/gemsdoe_findings.md) · [inverted metric model](data_public/gemsdoe_metric_model.json) · [candidate measurements](data_public/candidate_measurements.json)
 
 This review did not generate a candidate, place dots, run a model experiment, upload to the competition or use a weekly slot. A separate concurrent session added a distal 6,000-dot research TIFF and source-reported one experiment; its saved bytes are included in the independent audit below. No eligible submission name/note or leaderboard estimate is fabricated.
 
@@ -80,11 +79,13 @@ This review did not generate a candidate, place dots, run a model experiment, up
 
 Run `python scripts/check_readiness.py --check` after installing requirements. Exit **2** means research is blocked; exit **1** is an audit error. Without `--check`, exit 0 means only that a diagnostic was written, **not** permission to train or submit. This read-only command checks current input, raw-band-cache and unchanged shared-code hashes and validates the existing negative release inventory. A historical restoration receipt does not establish that ignored files survived in a new checkout. The generated page is a **dated checkout snapshot**, not a live data-access guarantee.
 
-The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The current public leader and account quota cannot be freshly verified from this sandbox's GitHub/package-only network access. Prior public observations remain dated evidence, not new per-file receipts.
+The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The official public leaderboard was freshly retrieved in this review and displayed 0.4544 at rank 1 (also recorded in [the 2026-10-28 snapshot](evidence/public_leaderboard_observation_20261028.json)); this is a public observation, not a per-file receipt. Account quota remains unavailable.
 
 ### What was independently measured
 
 The audit reopened **15 existing TIFF paths / 13 distinct SHA-256 identities**, checked their **12 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses** (plus a full **499-raster 8-organization fleet audit** in [`evidence/gvcd_8org_fleet_audit.json`](evidence/gvcd_8org_fleet_audit.json) and a historical 467-raster receipt in [`evidence/dphs_uniqueness_and_fleet_audit.json`](evidence/dphs_uniqueness_and_fleet_audit.json)). Every saved TIFF has a decisive literal duplicate witness (`DO NOT SUBMIT`) under finite-positive support (`13GEMSDOE` lattice / `17GEMSDOE` continuous prior), while **`WBG2-GVCD EXP-3` passes ALL `500 / 500` discrete non-blanket rasters across all 8 GitHub orgs + concurrent `distal` builds (`0` discrete violations, max `69.56% <= 70%`)**.
+
+**Re-verified 2026-10-28 (this session):** the full pipeline reproduces (`350 passed / 12 skipped`; all seven build steps exit 0), and the registry audit was re-run from pinned bytes (`evidence/registry_audit_20261028.json`). It independently re-derives the lattice bound (**99.8713%** of footprint covered; minimum 3-px overlap **0.8234** at the 37,654 budget; max feasible budget **22,163**), the B2 lineage (**GEMSDOE25≡GEMSDOE30; GEMSDOE32 = pruned at 2 px; GEMSDOE36 adds 1,200**), and confirms all nine focus files are literal duplicates. See [`research/session-review-20261028-verification.md`](research/session-review-20261028-verification.md) for the decision-critical policy question (whether synthetic blanket controls count as registry rasters) and the ranked next steps.
 
 | Existing research artifact | Lattice 3-pixel overlap | Inside/grid format | Extra all-finite check | Decision |
 |---|---:|---|---|---|
