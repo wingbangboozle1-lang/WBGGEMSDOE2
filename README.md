@@ -76,6 +76,16 @@ Prior MSPTCD **SOURCE-REPORTED HOLDOUT-DTI**: 0.042554, 95% spatial-bootstrap CI
 
 The **full pinned 19-band raw stack and caches were restored**: 418,912,844 source bytes, SHA-256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`. Organizer provenance, band-unit semantics and the separate shared derived bank remain unresolved. Do not claim the raw stack is absent or that lack of GPU prevents this audit. [Input receipt](evidence/data_preparation.json) · [raw feature diagnostic](evidence/feature_semantics_review.json).
 
+## WBG2-DISTAL-OOF Campaign (2026-10-28, HOLDOUT-DTI = 0.1770, promote-to-selector)
+
+This lane is **distinct from the concurrent 6,000-dot `candidate/` distal file** governed by the negative `evidence/RUN_CARD_DISTAL.json`. The earlier DPHS campaign hit a **local ceiling of 0.1735 HOLDOUT-DTI** but diagnosed a fatal structural defect: its winning recipe was 97.3% in-sample, so the full map collapsed to only **3.64% distal dots** and copied the known catalogue. The next prescribed action was to produce a **100% spatial-OOF main offspring surface** with a distal (3.2–10 km) piedmont allocation. The **WBG2-DISTAL** lane did exactly that across three pre-registered experiments inside the unchanged shared evaluator and writer:
+
+* **`natural_oof` (recommended to selector, HOLDOUT-DTI 0.1770 [0.1549, 0.1976])**: the highest hide-and-recover score in this repository to date. On the full map it naturally recovered an **18.7% distal share** with median visible-fault distance 1.06 km. The candidate is an exact new byte identity, is unique against all 477 audited fleet files under the *sparse-peer, comparable-budget* duplicate rule (max 3-px overlap 0.6785; nine focus champions ≤ 0.6307), and passes every strict format, finite-value and whole-array [0,1] check. It is explicitly promoted **to the separate selector only**; the canonical release decision above remains negative and **0 weekly slots were spent**.
+* **`quota35` (0.1548)** and **`piedmont40` (0.1515)**: mechanically reproduced B2-like distal shares (35.0% and 39.8%) and B2-like median distances, but scored lower on the matched holdout and did not earn a higher fleet empirical estimate. This is the campaign's key geological lesson: **distal allocation is a side-effect of a good blind-fault surface, not a free dial.**
+* **Honest estimate**: the independent fleet empirical model estimates about **0.10–0.11** for these files (95% PI up to about 0.23). The directly observed public leaderboard high was **0.4544** (xiaofanhu, 2026-10-27/28 ORGANIZER-PUBLISHED PUBLIC OBSERVATION, `evidence/public_leaderboard_observation_20261028.json`). There is **no supportable claim** that any local file already beats the USER-REPORTED 0.2778 or the observed leaderboard high; only an organizer receipt for an exact submitted SHA-256 can change that.
+
+[DISTAL-OOF selector decision table](docs/distal/index.html) · [Executive summary](docs/distal/executive-summary.html) · [How a selector would submit](docs/distal/how-to-submit.html) · [Findings](research/distal_findings.md) · [Pre-registration + Amendment A1](research/distal_preregistration_20261027.md) · [Run card](evidence/RUN_CARD_DISTAL_OOF.json)
+
 ## Reproduce safely
 
 ```bash

@@ -1,0 +1,51 @@
+{
+  "schema": "wbggems.distal-b2-gate-diagnostic.v1",
+  "generated_utc": "2026-10-28T01:16:03.389709+00:00",
+  "champion": "GEMSDOE32 B2 (0.2778 USER-REPORTED, not an organizer receipt)",
+  "champion_dots": 37654,
+  "references": {
+    "GEMSDOE22_h23a_dense_6pct": {
+      "file": "GEMSDOE22__gems22-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan.tif",
+      "reference_dots": 335879,
+      "b2_dots_within_3px_fraction": 0.9995,
+      "literal_gate_rejects_b2": true
+    },
+    "GEMSDOE12_dem10_scarp": {
+      "file": "GEMSDOE12__12GEMSDOE_r7-nms3-dem10-scarp_0c9199f14e62.tif",
+      "reference_dots": 103347,
+      "b2_dots_within_3px_fraction": 0.6945,
+      "literal_gate_rejects_b2": false
+    },
+    "GEMSDOE77_h85_skeleton": {
+      "file": "GEMSDOE77__gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros.tif",
+      "reference_dots": 201260,
+      "b2_dots_within_3px_fraction": 0.7861,
+      "literal_gate_rejects_b2": true
+    },
+    "GEMSDOE37_physics_80k": {
+      "file": "GEMSDOE37__gemsdoe37-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c.tif",
+      "reference_dots": 80000,
+      "b2_dots_within_3px_fraction": 0.5596,
+      "literal_gate_rejects_b2": false
+    },
+    "GEMSDOE23_h30_habitat": {
+      "file": "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+      "reference_dots": 91533,
+      "b2_dots_within_3px_fraction": 0.7255,
+      "literal_gate_rejects_b2": true
+    },
+    "13GEMSDOE_stride5_lattice": {
+      "file": "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+      "reference_dots": 206895,
+      "b2_dots_within_3px_fraction": 0.9992,
+      "literal_gate_rejects_b2": true
+    },
+    "WBGGEMSDOE1_continuous_prior": {
+      "file": "WBGGEMSDOE1__wbg-c1-commutator-research-surface-20261026-acea88448272.tif",
+      "reference_dots": 5106385,
+      "b2_dots_within_3px_fraction": 1.0,
+      "literal_gate_rejects_b2": true
+    }
+  },
+  "conclusion": "The literal any-registry >70% within-3px rule rejects the champion itself against dense/blanket references; it cannot distinguish copying from coverage. Uniqueness is therefore also reported against sparse peer-budget emissions (reference dots <= 65,000)."
+}

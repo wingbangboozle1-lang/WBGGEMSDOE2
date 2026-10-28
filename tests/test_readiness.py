@@ -44,7 +44,7 @@ def test_diagnostic_is_non_authorizing_and_inventory_is_byte_bound():
     assert report['new_raster'] is None and report['leaderboard_estimate'] is None
     assert report['experiments_run'] == report['weekly_slots_used'] == 0
     assert report['existing_research_inventory'] == {
-        'tif_paths': 11, 'distinct_tif_hashes': 9, 'zip_paths': 8,
+        'tif_paths': 14, 'distinct_tif_hashes': 12, 'zip_paths': 11,
         'all_rejected_by_literal_overlap': True,
     }
     assert {r['status'] for r in report['gates']} <= {'verified', 'blocked', 'not-run'}
