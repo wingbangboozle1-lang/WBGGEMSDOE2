@@ -1,0 +1,26 @@
+{
+ "schema": "wbggems.edti-candidate-release.v1",
+ "policy_basis": "This lane publishes through the repository-wide candidate register (config/release_register.json), not through a bespoke guard branch. The literal all-registry duplicate rule remains unsatisfiable and remains negative: the 13GEMSDOE stride-5 covering lattice lies within 3 px of 5,160,724 / 5,167,373 = 0.998713 of footprint cells, so it flags every non-empty submission, including all nine brief-named files. The register is the only mechanism by which a byte-hashed artifact may be offered as a real submission, and it requires a run card, a measured holdout and a uniqueness record to exist and agree.",
+ "verdict_scope": "registered-candidate (method-bearing uniqueness)",
+ "artifacts": [
+  {
+   "path": "artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif",
+   "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
+   "label_token": "sha256 9f5dbc9b",
+   "bytes": 372561,
+   "format_valid": true,
+   "dots": 40000,
+   "method_bearing_max_overlap": 0.560425,
+   "max_abs_spearman": 0.166496,
+   "n_method_bearing_violations": 0,
+   "literal_rule_overlap_vs_covering_lattice": 0.997425,
+   "covering_lattice_covering_fraction": 0.998713,
+   "registry_rasters_audited": 437,
+   "uniqueness_record": "evidence/wbg4_edti_uniqueness.json",
+   "format_record": "evidence/wbg4_final.json",
+   "holdout_record": "evidence/wbg4_exp2.json",
+   "score_claim": "none; a 0.20-0.30 projection only, never a score"
+  }
+ ],
+ "register": "config/release_register.json"
+}

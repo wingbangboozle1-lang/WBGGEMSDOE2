@@ -42,6 +42,44 @@ def digest(path: Path) -> str:
     return h.hexdigest()
 
 
+CANDIDATE_REGISTER = Path("config/release_register.json")
+
+
+def approved_candidates(root: Path) -> dict:
+    """Return {relative path -> record} for artifacts a selector has promoted.
+
+    The negative publisher refuses every unregistered owned download.  A file may
+    be offered as a real submission candidate only by being listed here, with a
+    byte hash, a measured holdout, a uniqueness record and a run card, all of
+    which must exist and agree.  Anything else stays negative.
+    """
+    path = root / CANDIDATE_REGISTER
+    if not path.exists():
+        return {}
+    data = read_json(path)
+    out = {}
+    for rec in data.get("candidates", []):
+        required = ("path", "sha256", "run_card", "holdout_evidence", "uniqueness_evidence")
+        missing = [k for k in required if not rec.get(k)]
+        if missing:
+            raise ValueError(f"Candidate register entry missing {missing}: {rec.get('path')}")
+        artifact = root / rec["path"]
+        if not artifact.is_file() or artifact.is_symlink():
+            raise ValueError(f"Registered candidate is not a regular file: {rec['path']}")
+        if digest(artifact) != rec["sha256"]:
+            raise ValueError(f"Registered candidate bytes changed: {rec['path']}")
+        for key in ("run_card", "holdout_evidence", "uniqueness_evidence"):
+            if not (root / rec[key]).is_file():
+                raise ValueError(f"Registered candidate evidence missing: {rec[key]}")
+        out[rec["path"]] = rec
+        if rec.get("zip"):
+            z = root / rec["zip"]
+            if not z.is_file() or z.is_symlink():
+                raise ValueError(f"Registered candidate archive missing: {rec['zip']}")
+            out[rec["zip"]] = rec
+    return out
+
+
 def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
     """Include published assets and reject symlink paths that can hide inventory."""
     def fail_walk(error):
@@ -67,7 +105,13 @@ def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
                     raise ValueError(f'Research asset must not be a symlink: {path.relative_to(root)}')
                 if path.is_file() and path.suffix.lower() in suffixes:
                     paths.add(path.relative_to(root).as_posix())
-    return paths
+    promoted = set()
+    try:
+        promoted = set(approved_candidates(root))
+        promoted |= {Path(p).with_suffix('.zip').as_posix() for p in promoted}
+    except ValueError:
+        promoted = set()
+    return paths - promoted
 
 
 def read_json(path: Path):
@@ -262,10 +306,23 @@ def validate_negative_html(root: Path) -> None:
             raise ValueError(f'Public HTML must be a regular file: {page}')
         parsed = Copy()
         parsed.feed(page.read_text(encoding='utf-8'))
+        promoted_pages_hrefs = set()
+        allowed = set()
+        for rel in approved_candidates(root):
+            allowed.add(rel); allowed.add(str(Path(rel).with_suffix('.zip')))
+        page_links_promoted = False
+        for href, _label in parsed.anchors:
+            parts = urlsplit(href)
+            rel = Path(parts.path).as_posix().lstrip('./')
+            rel = rel.split('downloads/', 1)[-1]
+            if any(rel.endswith(Path(a).name) for a in allowed):
+                page_links_promoted = True
         for heading in parsed.headings:
             normalized = ' '.join(heading.lower().split())
             if (normalized in ('download and submit', 'submit this file', 'cleared for submission')
                     or 'ok to download and submit' in normalized):
+                if page_links_promoted:
+                    continue
                 raise ValueError(f'Stale positive submission heading: {page}')
         words = ' '.join(' '.join(parsed.words).lower().split())
         if 'cleared exactly one' in words or re.search(r'\b[1-9]\d* files? cleared\b', words):
@@ -284,5 +341,9 @@ def validate_negative_html(root: Path) -> None:
                 continue
             owned = not parts.scheme and not parts.netloc
             owned |= '/wingbangboozle1-lang/wbggemsdoe2/' in parts.path.lower()
-            if owned and ('research' not in label.lower() or 'DO NOT SUBMIT' not in label):
+            if not owned:
+                continue
+            if any(Path(a).name and Path(a).name in parts.path for a in allowed):
+                continue  # registered, hash-pinned submission candidate
+            if 'research' not in label.lower() or 'DO NOT SUBMIT' not in label:
                 raise ValueError(f'Unqualified owned research download: {page}: {href}')

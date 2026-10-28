@@ -1,0 +1,100 @@
+{
+  "path": "/home/user/WBGGEMSDOE2/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif",
+  "ok": true,
+  "checks": {
+    "single_band": true,
+    "float32": true,
+    "shape": true,
+    "epsg32611": true,
+    "transform_matches": true,
+    "no_nan": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "positive_inside_footprint": 66383,
+    "grid_matches_reference": true
+  },
+  "notes": [],
+  "positive_pixels": 66383,
+  "positive_inside_footprint": 66383,
+  "unique_values": [
+    0.0,
+    1.0
+  ],
+  "dtype": "float32",
+  "crs": "EPSG:32611",
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "shape": [
+    3730,
+    3292
+  ],
+  "sha256": "494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59",
+  "bytes": 263991,
+  "zip": {
+    "wbg4-sscc-blind-66383dots-20261028T170239Z.zip": {
+      "bytes": 179085,
+      "sha256": "bd2986e0ede5f727cc3ffc1feaeb9564ff87fdb14d58155e685bf36851080bfd"
+    }
+  },
+  "name": "wbg4-sscc-blind-66383dots-20261028T170239Z",
+  "mass": 66383,
+  "mass_fraction_holdout": 0.013,
+  "feature_set": "blind",
+  "features_used": [
+    "L_ex_max",
+    "L_ex_mean",
+    "L_step_max",
+    "L_lapneg_max",
+    "L_lappos_max",
+    "L_downface_max",
+    "L_upface_max",
+    "L_cross_max",
+    "L_relief",
+    "L_coh100",
+    "L_strike",
+    "L_valid",
+    "L_polarity",
+    "L_ex_max_s8",
+    "L_step_max_s8",
+    "L_lapneg_max_s8",
+    "L_downface_max_s8",
+    "L_coh100_s8",
+    "L_ex_max_grad2",
+    "L_step_max_grad2",
+    "R_K",
+    "R_Th",
+    "R_U",
+    "R_TC",
+    "X_ThK",
+    "X_UK",
+    "X_UTh",
+    "X_TMI_up150",
+    "TC_s8",
+    "TC_grad2",
+    "TMI_s8",
+    "TMI_grad2",
+    "ST_coh",
+    "ST_cos2",
+    "ST_sin2",
+    "D_sgmc_log",
+    "SGMC_mask",
+    "spring_dens",
+    "hotspring_dens",
+    "geotherm_dens"
+  ],
+  "near_catalogue_exclusion_px": 0,
+  "holdout": {
+    "dti": 0.10864274206558487,
+    "mass_fraction": 0.013,
+    "withheld_positives": 60980,
+    "evaluator": "wbg4-hide-recover-v1 (whole components, 3 px buffer, 2x2 quadrants, visible-only catalogue features, exact visible mask, rank-cut operating point)",
+    "evidence_class": "HOLDOUT-DTI"
+  },
+  "generated_utc": "20261028T170239Z"
+}

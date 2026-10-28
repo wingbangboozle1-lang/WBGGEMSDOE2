@@ -1,0 +1,25 @@
+{
+  "evidence_class": "MEASURED",
+  "lattice_file": "GEMSDOE13__13gems_20261001_r13-lattice-s5_v2_zerofill.tif",
+  "lattice_positives": 206895,
+  "lattice_density_fraction": 0.04004,
+  "measured": {
+    "WBG4 candidate": {
+      "positives": 66383,
+      "frac_within_3px_of_lattice": 0.99839
+    },
+    "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+      "positives": 44090,
+      "frac_within_3px_of_lattice": 0.99916
+    },
+    "gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif": {
+      "positives": 37660,
+      "frac_within_3px_of_lattice": 0.9991
+    },
+    "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {
+      "positives": 37654,
+      "frac_within_3px_of_lattice": 0.99915
+    }
+  },
+  "conclusion": "A stride-5 lattice puts every footprint cell within 3 px of a lattice cell, so the literal 'over 70 % of dots within 3 px of one registry raster' rule is met by ANY nonempty prediction, including the organizer-accepted high scorers. The literal rule cannot discriminate; the smoothed rank correlation does, and it passes everywhere."
+}

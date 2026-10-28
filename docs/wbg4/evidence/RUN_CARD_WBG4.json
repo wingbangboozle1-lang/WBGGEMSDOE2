@@ -1,0 +1,112 @@
+{
+  "schema": "wbg4.run-card.v1",
+  "generated_utc": "20261028T170239Z",
+  "lane": "WBG4-SSCC (strike-conditioned structural corridor), blind feature set",
+  "hypothesis": "A supervised detector fitted on public USGS-derived layers only \u2014 lidar scarp morphology, GeoDAWN radiometrics and their ratio/upward-continuation extensions, SGMC fault geometry, GDR-1391 spring density \u2014 recovers withheld whole fault components better than a structure-only dot prior does, and therefore has a better chance of firing on faults that are absent from the catalogues.",
+  "mechanism": "Multi-scale scarp/curvature relief with strike continuity, radiometric contrast and independent structural context; per-pixel probabilities from gradient-boosted trees; emitted set = top-k model scores at the operating point that maximises pooled holdout DTI.",
+  "non_fault_mimic": "Bedrock ridge crests, landslide head scarps and fluvial terrace edges produce the same short-wavelength coherent relief; alluvial-fan and playa boundaries produce radiometric contrast without faulting.",
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator": "wbg4-hide-recover-v1 (whole components, 3 px buffer, 2x2 quadrants, visible-only catalogue features, exact visible mask, rank-cut operating point)",
+    "withheld_positives": 60980,
+    "dti": 0.10864,
+    "ci95_spatial_block_bootstrap": [
+      0.07827,
+      0.13008
+    ],
+    "ci95_method": "4 spatial quadrant blocks resampled with replacement, 256 resamples; coarse by construction",
+    "per_fold_dti": [
+      0.1294,
+      0.1312,
+      0.0761,
+      0.0805
+    ],
+    "mass_fraction": 0.013,
+    "note": "Holdout target is withheld CATALOGUE faults, not the experts' new faults; the registry comparison below shows this metric does not predict leaderboard score (LOO R2 < 0)."
+  },
+  "negative_result": {
+    "variant": "catalogue-proximity features enabled",
+    "dti": 0.015598169166486067,
+    "interpretation": "'Be near the mapped catalogue' is not a fault detector under hide-and-recover: it re-detects the faults that were not withheld and earns no credit for the withheld ones."
+  },
+  "leakage_canary": {
+    "max_single_feature_auc": 0.8569,
+    "n_features": 47,
+    "n_flagged_above_0.90": 0
+  },
+  "uniqueness": {
+    "registry_rasters_measured": 93,
+    "max_abs_smoothed_spearman": 0.5652,
+    "rank_correlation_limit": 0.9,
+    "max_frac_within_3px": 0.99839,
+    "literal_3px_rule": "unsatisfiable: the GEMSDOE13 stride-5 lattice gives the organizer-accepted files 99.91-99.92 % overlap and this file 99.84 %",
+    "lattice_vacuity_witness": {
+      "WBG4 candidate": {
+        "positives": 66383,
+        "frac_within_3px_of_lattice": 0.99839
+      },
+      "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+        "positives": 44090,
+        "frac_within_3px_of_lattice": 0.99916
+      },
+      "gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif": {
+        "positives": 37660,
+        "frac_within_3px_of_lattice": 0.9991
+      },
+      "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {
+        "positives": 37654,
+        "frac_within_3px_of_lattice": 0.99915
+      }
+    },
+    "verdict": "not a copy; method is new and rank correlation passes everywhere"
+  },
+  "registry_calibration": {
+    "n_rasters": 38,
+    "spearman_holdout_vs_reported": 0.2513,
+    "loo_r2": -0.0554,
+    "loo_rmse": 0.09543,
+    "conclusion": "no defensible leaderboard point estimate for this file"
+  },
+  "raster": {
+    "name": "wbg4-sscc-blind-66383dots-20261028T170239Z",
+    "path": "downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif",
+    "zip": "downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.zip",
+    "sha256": "494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59",
+    "bytes": 263991,
+    "positive_cells": 66383,
+    "grid": {
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "dtype": "float32"
+    }
+  },
+  "validator": {
+    "single_band": true,
+    "float32": true,
+    "shape": true,
+    "epsg32611": true,
+    "transform_matches": true,
+    "no_nan": true,
+    "values_in_0_1": true,
+    "zero_outside_footprint": true,
+    "positive_inside_footprint": 66383,
+    "grid_matches_reference": true
+  },
+  "submission_name": "wbg4-sscc-blind-66383dots-20261028T170239Z",
+  "submission_note": "WBG4-SSCC: strike-conditioned structural corridor, geophysics-only features, 4-fold whole-fault holdout, unique raster",
+  "note_length": 118,
+  "verdict": "PROMOTE-WITH-CAVEAT: format valid, method novel, holdout measured; no claim of beating 0.2778 because no validated estimator exists",
+  "experiments_run": 3,
+  "weekly_slots_used": 0
+}

@@ -1,0 +1,60 @@
+{
+ "schema": "wbggems.candidate-measurements.v1",
+ "file": "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
+ "bytes": 212133,
+ "sha256": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
+ "raster": {
+  "height": 3730,
+  "width": 3292,
+  "count": 1,
+  "dtypes": [
+   "float32"
+  ],
+  "crs": "EPSG:32611",
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0
+  ],
+  "nodata": null
+ },
+ "cells": 38000,
+ "mass": 38000.0,
+ "binary": true,
+ "values_in_0_1_inside_footprint": true,
+ "nan_inside_footprint": 0,
+ "reach_in_footprint": 0.17236746795712252,
+ "reach_all_cells": 0.07295604911085123,
+ "kernel_weighted_coverage": 0.06432495427983649,
+ "reach_definition": "reach_in_footprint = share of the 5,167,373 in-footprint cells whose centre is within 300 m (inclusive) of a predicted cell -- this is what the run card's 0.1724 means; kernel_weighted_coverage = mean organizer kernel weight over the same cells, i.e. the share of a uniformly placed truth pixel that would be claimed, which is the quantity DTI actually pays for",
+ "frac_dots_within_px_of_catalogue": {
+  "1": 0.0,
+  "2": 0.0,
+  "3": 0.08323684210526316
+ },
+ "median_px_to_catalogue": 20.248456731316587,
+ "p90_px_to_catalogue": 63.00079360080933,
+ "structural_score_curve": {
+  "n_truth": 12782.96233707872,
+  "mass": 38000.0,
+  "by_coverage": {
+   "0.150": 0.10529704694378449,
+   "0.200": 0.13941738003105206,
+   "0.250": 0.17306530943800952,
+   "0.300": 0.2062505785178927,
+   "0.350": 0.23898266451050681,
+   "0.409": 0.27703619706293087,
+   "0.450": 0.3031239194028933,
+   "0.500": 0.33455079162109197
+  }
+ },
+ "zero_outside_twin": {
+  "bytes": 142065,
+  "sha256": "c8f41c0490f84a26d86073df12fea351464a12e8934a55ca538da5af9253813c",
+  "identical_inside_footprint": true
+ },
+ "evidence_class": "MEASURED (geometry, format) + STRUCTURAL-ESTIMATE (score curve)"
+}

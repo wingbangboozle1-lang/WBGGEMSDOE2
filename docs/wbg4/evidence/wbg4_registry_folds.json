@@ -1,0 +1,445 @@
+{
+  "evidence_class": "MEASURED holdout scores vs USER-REPORTED leaderboard values",
+  "evaluator": "wbg4-hide-recover-v1",
+  "n_rasters": 38,
+  "holdout_dti_range": [
+    0.0,
+    0.15445
+  ],
+  "reported_range": [
+    0.0107,
+    0.2778
+  ],
+  "spearman_holdout_vs_reported": 0.2513,
+  "pearson_holdout_vs_reported": 0.235,
+  "linear_fit": {
+    "slope": 0.494851,
+    "intercept": 0.152792
+  },
+  "loo": {
+    "mae": 0.08697,
+    "rmse": 0.09543,
+    "r2": -0.0554
+  },
+  "rows": [
+    {
+      "site": "GEMSDOE24",
+      "file": "GEMSDOE24__gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "bytes": 1632732,
+      "reported_score": 0.2477,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.10862,
+      "holdout_coverage": 0.17435,
+      "holdout_mass": 240276,
+      "positives_in_footprint": 60069
+    },
+    {
+      "site": "GEMSDOE25",
+      "file": "GEMSDOE25__gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif",
+      "bytes": 836982,
+      "reported_score": 0.26,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.11152,
+      "holdout_coverage": 0.15575,
+      "holdout_mass": 176360,
+      "positives_in_footprint": 44090
+    },
+    {
+      "site": "GEMSDOE27",
+      "file": "GEMSDOE27__gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "bytes": 1635084,
+      "reported_score": 0.2449,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.10846,
+      "holdout_coverage": 0.1759,
+      "holdout_mass": 245312,
+      "positives_in_footprint": 61328
+    },
+    {
+      "site": "GEMSDOE27",
+      "file": "GEMSDOE27__gems27-h29-hydrothermal-piedmont-celf-20261025-511898747886-nan.tif",
+      "bytes": 1590668,
+      "reported_score": 0.219,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.01606,
+      "holdout_coverage": 0.0208,
+      "holdout_mass": 150616,
+      "positives_in_footprint": 37654
+    },
+    {
+      "site": "GEMSDOE27",
+      "file": "GEMSDOE27__gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-nan.tif",
+      "bytes": 1590948,
+      "reported_score": 0.225,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.01705,
+      "holdout_coverage": 0.02208,
+      "holdout_mass": 150616,
+      "positives_in_footprint": 37654
+    },
+    {
+      "site": "GEMSDOE28",
+      "file": "GEMSDOE28__gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "bytes": 1595850,
+      "reported_score": 0.2708,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.03452,
+      "holdout_coverage": 0.04599,
+      "holdout_mass": 160796,
+      "positives_in_footprint": 40199
+    },
+    {
+      "site": "GEMSDOE28",
+      "file": "GEMSDOE28__gems28-h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan.tif",
+      "bytes": 1599962,
+      "reported_score": 0.2649,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.07119,
+      "holdout_coverage": 0.09722,
+      "holdout_mass": 169176,
+      "positives_in_footprint": 42294
+    },
+    {
+      "site": "GEMSDOE28",
+      "file": "GEMSDOE28__gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+      "bytes": 1590848,
+      "reported_score": 0.271,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.03302,
+      "holdout_coverage": 0.04288,
+      "holdout_mass": 150640,
+      "positives_in_footprint": 37660
+    },
+    {
+      "site": "GEMSDOE28",
+      "file": "GEMSDOE28__gems28-h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan.tif",
+      "bytes": 1591212,
+      "reported_score": 0.2707,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.03296,
+      "holdout_coverage": 0.04288,
+      "holdout_mass": 151440,
+      "positives_in_footprint": 37860
+    },
+    {
+      "site": "GEMSDOE30",
+      "file": "GEMSDOE30__gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+      "bytes": 806758,
+      "reported_score": 0.26,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.11152,
+      "holdout_coverage": 0.15575,
+      "holdout_mass": 176360,
+      "positives_in_footprint": 44090
+    },
+    {
+      "site": "GEMSDOE31",
+      "file": "GEMSDOE31__gemsdoe31-add-arm-d28-20261004-8acb75e1-nan.tif",
+      "bytes": 212925,
+      "reported_score": 0.2708,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.0464,
+      "holdout_coverage": 0.07092,
+      "holdout_mass": 221216,
+      "positives_in_footprint": 55304
+    },
+    {
+      "site": "GEMSDOE32",
+      "file": "GEMSDOE32__gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "bytes": 219065,
+      "reported_score": 0.2778,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00479,
+      "holdout_coverage": 0.0062,
+      "holdout_mass": 150616,
+      "positives_in_footprint": 37654
+    },
+    {
+      "site": "GEMSDOE33",
+      "file": "GEMSDOE33__GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+      "bytes": 917544,
+      "reported_score": 0.2632,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.06023,
+      "holdout_coverage": 0.08181,
+      "holdout_mass": 167460,
+      "positives_in_footprint": 41865
+    },
+    {
+      "site": "GEMSDOE36",
+      "file": "GEMSDOE36__gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+      "bytes": 318190,
+      "reported_score": 0.275,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00491,
+      "holdout_coverage": 0.00643,
+      "holdout_mass": 155416,
+      "positives_in_footprint": 38854
+    },
+    {
+      "site": "GEMSDOE70",
+      "file": "GEMSDOE70__gems70e3-scarpcurv-60k-ex3-20261020-zeros.tif",
+      "bytes": 184165,
+      "reported_score": 0.2478,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.0,
+      "holdout_coverage": 0.0,
+      "holdout_mass": 240000,
+      "positives_in_footprint": 60000
+    },
+    {
+      "site": "GEMSDOE49",
+      "file": "GEMSDOE49__gems49-gate_ortho_w0.25-40k-20261006T213721Z-zeros.tif",
+      "bytes": 230827,
+      "reported_score": 0.2376,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.0,
+      "holdout_coverage": 0.0,
+      "holdout_mass": 160000,
+      "positives_in_footprint": 40000
+    },
+    {
+      "site": "GEMSDOE63",
+      "file": "GEMSDOE63__gemsdoe63-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros.tif",
+      "bytes": 330275,
+      "reported_score": 0.2303,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.01118,
+      "holdout_coverage": 0.017,
+      "holdout_mass": 219456,
+      "positives_in_footprint": 54864
+    },
+    {
+      "site": "GEMSDOE76",
+      "file": "GEMSDOE76__gems76-ptcf-tiltworm-submod39k-20261021T034000Z-6316481d-zeros.tif",
+      "bytes": 137028,
+      "reported_score": 0.2343,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00242,
+      "holdout_coverage": 0.00318,
+      "holdout_mass": 156800,
+      "positives_in_footprint": 39200
+    },
+    {
+      "site": "GEMSDOE48",
+      "file": "GEMSDOE48__gemsdoe48-h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8.tif",
+      "bytes": 117434,
+      "reported_score": 0.2296,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.07015,
+      "holdout_coverage": 0.09117,
+      "holdout_mass": 149098,
+      "positives_in_footprint": 37723
+    },
+    {
+      "site": "GEMSDOE29",
+      "file": "GEMSDOE29__gems29-wormrank-d28-20261003-59dcaf6dd11d-zeros.tif",
+      "bytes": 801710,
+      "reported_score": 0.256,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.11019,
+      "holdout_coverage": 0.14988,
+      "holdout_mass": 165352,
+      "positives_in_footprint": 41338
+    },
+    {
+      "site": "GEMSDOE28",
+      "file": "GEMSDOE28__gems28-s21-puhgb-20261026-16bbf281ba9b-nan.tif",
+      "bytes": 1590770,
+      "reported_score": 0.0206,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.03812,
+      "holdout_coverage": 0.04942,
+      "holdout_mass": 150616,
+      "positives_in_footprint": 37654
+    },
+    {
+      "site": "GEMSDOE36",
+      "file": "GEMSDOE36__gemsdoe36-kpl36-exp3-20261026-fc869911e88c-zeros.tif",
+      "bytes": 827142,
+      "reported_score": 0.1647,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00332,
+      "holdout_coverage": 0.00429,
+      "holdout_mass": 150616,
+      "positives_in_footprint": 37654
+    },
+    {
+      "site": "GEMSDOE19",
+      "file": "GEMSDOE19__gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "bytes": 1712322,
+      "reported_score": 0.1922,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.08355,
+      "holdout_coverage": 0.20004,
+      "holdout_mass": 484524,
+      "positives_in_footprint": 121131
+    },
+    {
+      "site": "GEMSDOE10",
+      "file": "GEMSDOE10__gems10-h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686.tif",
+      "bytes": 1717585,
+      "reported_score": 0.0921,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.15445,
+      "holdout_coverage": 0.41708,
+      "holdout_mass": 584934,
+      "positives_in_footprint": 153957
+    },
+    {
+      "site": "GEMSDOE16",
+      "file": "GEMSDOE16__gems16-h18-4-usgs-geologic-map-faults-gap-20260930-aef8f42c-nan.tif",
+      "bytes": 1620132,
+      "reported_score": 0.036,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.0,
+      "holdout_coverage": 0.0,
+      "holdout_mass": 231132,
+      "positives_in_footprint": 57783
+    },
+    {
+      "site": "GEMSDOE91",
+      "file": "GEMSDOE91__gems91-s17-lftg-20261025T160014Z-7b6bf90844-zeros.tif",
+      "bytes": 141713,
+      "reported_score": 0.1823,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00509,
+      "holdout_coverage": 0.00658,
+      "holdout_mass": 150616,
+      "positives_in_footprint": 37654
+    },
+    {
+      "site": "GEMSDOE3",
+      "file": "GEMSDOE3__pindrop-v4-nodes-20260925T152420Z-f347b70daa.tif",
+      "bytes": 777822,
+      "reported_score": 0.1193,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.09685,
+      "holdout_coverage": 0.27787,
+      "holdout_mass": 620084,
+      "positives_in_footprint": 155021
+    },
+    {
+      "site": "GEMSDOE85",
+      "file": "GEMSDOE85__gemsdoe85-hjcd-ventbridge-submod-zeros.tif",
+      "bytes": 110277,
+      "reported_score": 0.111,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.0,
+      "holdout_coverage": 0.0,
+      "holdout_mass": 85336,
+      "positives_in_footprint": 21334
+    },
+    {
+      "site": "GEMSDOE28b",
+      "file": "GEMSDOE28b__gems28-s18-mxtp-20261025-3e95505c011a-allfinite.tif",
+      "bytes": 775700,
+      "reported_score": 0.0217,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00177,
+      "holdout_coverage": 0.00167,
+      "holdout_mass": 44328,
+      "positives_in_footprint": 11082
+    },
+    {
+      "site": "GEMSDOE52",
+      "file": "GEMSDOE52__h97b-candidate.tif",
+      "bytes": 111139,
+      "reported_score": 0.0856,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00532,
+      "holdout_coverage": 0.00603,
+      "holdout_mass": 101600,
+      "positives_in_footprint": 25400
+    },
+    {
+      "site": "GEMSDOE44",
+      "file": "GEMSDOE44__GEMS44_h46-twostageAB_20261006T160000Z_b0cfe956-zeros.tif",
+      "bytes": 315429,
+      "reported_score": 0.0715,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.01383,
+      "holdout_coverage": 0.01869,
+      "holdout_mass": 168000,
+      "positives_in_footprint": 42000
+    },
+    {
+      "site": "GEMSDOE29",
+      "file": "GEMSDOE29__gemsdoe29-wormsurv-filter-20261003-921f10960d6e-zeros.tif",
+      "bytes": 798295,
+      "reported_score": 0.0532,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.02487,
+      "holdout_coverage": 0.03268,
+      "holdout_mass": 155628,
+      "positives_in_footprint": 38907
+    },
+    {
+      "site": "GEMSDOE90",
+      "file": "GEMSDOE90__gems90-cnc-35000dots-20261024T084324Z.tif",
+      "bytes": 241734,
+      "reported_score": 0.0749,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00029,
+      "holdout_coverage": 0.00036,
+      "holdout_mass": 140000,
+      "positives_in_footprint": 35000
+    },
+    {
+      "site": "GEMSDOE68",
+      "file": "GEMSDOE68__gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-zeros.tif",
+      "bytes": 345388,
+      "reported_score": 0.0437,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.00041,
+      "holdout_coverage": 0.00052,
+      "holdout_mass": 140000,
+      "positives_in_footprint": 35000
+    },
+    {
+      "site": "GEMSDOE9",
+      "file": "GEMSDOE9__gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "bytes": 439456,
+      "reported_score": 0.0107,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.0217,
+      "holdout_coverage": 0.05869,
+      "holdout_mass": 584514,
+      "positives_in_footprint": 343816
+    },
+    {
+      "site": "GEMSDOE23",
+      "file": "GEMSDOE23__gemsdoe23-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan.tif",
+      "bytes": 1692444,
+      "reported_score": 0.1352,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.11283,
+      "holdout_coverage": 0.22901,
+      "holdout_mass": 366132,
+      "positives_in_footprint": 91533
+    },
+    {
+      "site": "GEMSDOE39",
+      "file": "GEMSDOE39__gemsdoe39-h40-e-disc-h40e-30k-zeros.tif",
+      "bytes": 122131,
+      "reported_score": 0.0339,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.04653,
+      "holdout_coverage": 0.05561,
+      "holdout_mass": 120000,
+      "positives_in_footprint": 30000
+    },
+    {
+      "site": "GEMSDOE61",
+      "file": "GEMSDOE61__gems61-h61o-vardepth-none-40000dots-20261011T160711Z-28d4fac611ea-zeros-zeros.tif",
+      "bytes": 133448,
+      "reported_score": 0.0751,
+      "score_evidence": "USER-REPORTED; not an organizer receipt",
+      "holdout_dti": 0.0,
+      "holdout_coverage": 0.0,
+      "holdout_mass": 160000,
+      "positives_in_footprint": 40000
+    }
+  ],
+  "generated_utc": "2026-10-28T17:05:55"
+}

@@ -1,0 +1,151 @@
+{
+ "experiment": "WBG4-FINAL",
+ "generated_utc": "2026-10-28T16:52:05Z",
+ "hypothesis": "A catalogue-free hazard surface (LiDAR scarp morphometry + GeoDAWN radiometrics/magnetics, 20 bands) emitted as sparse dots at the holdout-optimal budget reproduces the leaderboard-favourable emission family without copying any registered submission.",
+ "mechanism": "beta=0.8 makes DTI recall-dominated; a dot is worth placing while d > lambda*dF, so dense-but-accurate emission near structural evidence beats probability thresholding.",
+ "non_fault_mimic": "Alluvial/landslide scarps, eolian ridge crests, drainage bank edges, and radiometric striping can imitate a fault scarp; the downface/upface asymmetry pair plus strike coherence suppress some but not all of these.",
+ "inputs": {
+  "shape": [
+   3730,
+   3292
+  ],
+  "crs": "EPSG:32611",
+  "transform": [
+   100.0,
+   0.0,
+   243350.0,
+   0.0,
+   -100.0,
+   4508550.0,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "footprint_pixels": 5167373,
+  "label_positives": 60988,
+  "prevalence": 0.011802515514169385,
+  "n_features": 20,
+  "feature_names": [
+   "ex_max",
+   "ex_mean",
+   "step_max",
+   "lapneg_max",
+   "lappos_max",
+   "downface_max",
+   "upface_max",
+   "cross_max",
+   "relief",
+   "coh100",
+   "strike",
+   "valid",
+   "K",
+   "Th",
+   "U",
+   "TC",
+   "ThK",
+   "UK",
+   "UTh",
+   "TMI_up150"
+  ]
+ },
+ "hazard_mass_inside_footprint": 242609.078125,
+ "placement": {
+  "mode": "maxcover",
+  "dots": 40000,
+  "budget": 40000,
+  "n_cand": 140000,
+  "P": 34139.02734375,
+  "F_expected": 5659.958651602268,
+  "lam": 0.0
+ },
+ "submission_name": "wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros",
+ "note": "Catalogue-free LiDAR+GeoDAWN hazard; 40k max-cover dots at holdout optimum 0.1190. Projection, not a score.",
+ "note_len": 107,
+ "zeros_twin": {
+  "path": "/home/user/WBGGEMSDOE2/downloads/wbg4/wbg4-mc40k-scarprad20-20261028-zeros.tif",
+  "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
+  "bytes": 372561,
+  "meta": {
+   "shape": [
+    3730,
+    3292
+   ],
+   "count": 1,
+   "dtype": "float32",
+   "crs": "EPSG:32611",
+   "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "nodata": null,
+   "width": 3292,
+   "height": 3730
+  },
+  "checks": {
+   "shape_matches": true,
+   "count_is_one": true,
+   "dtype_is_float32": true,
+   "crs_matches": true,
+   "transform_matches": true,
+   "no_nan_inside_footprint": true,
+   "values_in_0_1_inside_footprint": true,
+   "no_inf_anywhere": true,
+   "positives_inside": 40000,
+   "outside_all_zero": true,
+   "outside_all_nan": false,
+   "all_format_checks_pass": true
+  },
+  "format_valid": true
+ },
+ "nan_twin": {
+  "path": "/home/user/WBGGEMSDOE2/downloads/wbg4/wbg4-mc40k-scarprad20-20261028-nan.tif",
+  "sha256": "45f56803729c9354bd5fb586764652b435b40337d72c4a7bb59b60b491940fc1",
+  "bytes": 447518,
+  "meta": {
+   "shape": [
+    3730,
+    3292
+   ],
+   "count": 1,
+   "dtype": "float32",
+   "crs": "EPSG:32611",
+   "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "nodata": NaN,
+   "width": 3292,
+   "height": 3730
+  },
+  "checks": {
+   "shape_matches": true,
+   "count_is_one": true,
+   "dtype_is_float32": true,
+   "crs_matches": true,
+   "transform_matches": true,
+   "no_nan_inside_footprint": true,
+   "values_in_0_1_inside_footprint": true,
+   "no_inf_anywhere": true,
+   "positives_inside": 40000,
+   "outside_all_zero": false,
+   "outside_all_nan": true,
+   "all_format_checks_pass": true
+  },
+  "format_valid": true
+ },
+ "elapsed_s": 104.0
+}

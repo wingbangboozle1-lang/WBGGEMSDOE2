@@ -1,0 +1,50 @@
+{
+ "evidence_class": "STRUCTURAL-ESTIMATE (arithmetic on the published metric; assumptions stated)",
+ "candidate": "gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2",
+ "mass": 38000.0,
+ "assumption_F": "every unit cell of the emission contributes full false-positive weight (1-k = 1); upper bound on cost",
+ "grid": {
+  "N=10000": {
+   "f=0.20": 0.125,
+   "f=0.30": 0.1852,
+   "f=0.40": 0.2439,
+   "f=0.50": 0.3012
+  },
+  "N=20000": {
+   "f=0.20": 0.1639,
+   "f=0.30": 0.2419,
+   "f=0.40": 0.3175,
+   "f=0.50": 0.3906
+  },
+  "N=40000": {
+   "f=0.20": 0.1942,
+   "f=0.30": 0.2857,
+   "f=0.40": 0.3738,
+   "f=0.50": 0.4587
+  }
+ },
+ "required_coverage_to_match": {
+  "public_0.2778": {
+   "N=10000": 0.457,
+   "N=20000": 0.346,
+   "N=40000": 0.291
+  },
+  "public_0.4544": {
+   "N=10000": 0.78,
+   "N=20000": 0.59,
+   "N=40000": 0.495
+  }
+ },
+ "fleet_observed_band": {
+  "min": 0.2449,
+  "median": 0.2632,
+  "max": 0.2778,
+  "n_files": 8,
+  "evidence": "USER-REPORTED public leaderboard values"
+ },
+ "candidate_estimate_range": [
+  0.2,
+  0.3
+ ],
+ "candidate_estimate_label": "EMPIRICAL-BAND ESTIMATE: the candidate matches the measured envelope (binary, 38k cells, reach 0.17) of the fleet's highest scoring submissions; no local measurement can certify a value above the observed maximum of 0.2778."
+}

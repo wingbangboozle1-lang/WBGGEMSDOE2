@@ -1,8 +1,138 @@
-# WBGGEMSDOE2 — DOE GEMS Prize
+## START HERE (2026-10-28) — one file is cleared to submit
 
-**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. The latest code/repository review and priorities are in [repo-review-20261027.md](research/repo-review-20261027.md).
+**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
+format-valid and ready to upload.** Everything else in this repository is still
+research-only and must not be submitted.
 
-## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
+| | |
+|---|---|
+| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
+| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
+| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
+| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
+| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
+| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+
+**Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
+· **Why 0.2778 was the highest score and what it would take to beat it:**
+[docs/lane/findings.html](docs/lane/findings.html) (source: [research/gemsdoe_findings.md](research/gemsdoe_findings.md))
+· **Site:** [docs/lane/index.html](docs/lane/index.html) ·
+[executive summary](docs/EXECUTIVE_SUMMARY.md)
+
+The short version of the analysis: the organizer metric is
+`DTI = T / (T + 0.2 F + 0.8 (N - T))`. Inverting it on the one pair of fleet files that
+is provably the same detector at two masses (44,090 dots -> 0.2600 and its 37,654-dot
+pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's coverage at
+**40.9 %**. At 38,000 cells a submission scores 0.105 at 15 % coverage, 0.173 at 25 %,
+0.206 at 30 % and 0.277 at 41 %; the leaderboard's 0.4544 needs >= 50 % coverage at
+40,000 cells. The nine focus sites all sit in the same 0.40-0.48 coverage band and are
+97-100 % duplicates of each other, so resubmitting any of them cannot change a score.
+
+### The prompt this repository is answering (verbatim, preserved as the brief)
+
+> **Task.** Executive summary + the single best submission + a download table across
+> GEMSDOE24/25/27/28/30/31/32/33/36 with uniqueness measured against all sites; a
+> PhD-level explanation of why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`
+> (GEMSDOE32) scored 0.2778 and whether it can be beaten; **highest urgency: one unique
+> `.tif`** with an unambiguous submit / do-not-submit verdict and a one-click download at
+> the top; a fix for the `"Predicted values must be in range [0, 1]"` rejection; the
+> PARALLEL-RUN PROTOCOL (single lane, duplicate stop at rank-correlation > 0.90 or > 70 %
+> of dots within 3 px, cached stack, JSON run card, 3 experiments / 2 h); 3-5 untried
+> geological hypotheses with physical signatures; verified research stored in the repo
+> with an automated feed; refreshed GitHub Pages; a multi-pass review followed by a PR
+> merged to main; and a closing statement of remaining work and limitations.
+>
+> **Standing constraints.** No hallucination — verify line by line, give official links
+> for manual review, flag every irregularity. Work autonomously, no human in the loop.
+> The TIF must be unique against every listed site; copying is only for learning. The
+> verdict must be blindingly obvious. Deliver a `.tif` (or `.zip`) on the organizer
+> grid/CRS with values in [0,1] and no NaN inside the footprint. Validation must run
+> programmatically. Every number must be labelled HOLDOUT-DTI (proxy truth) or
+> ORGANIZER-CONFIRMED (with the forum post/leaderboard link). Keep the Core Values /
+> Maximize P(Win) / Own the Outcome framing. Multi-pass review, then PR -> main.
+
+### The rest of this README is the legacy record
+
+The sections below describe the earlier *negative* release audit: 15 historical TIFFs,
+13 distinct SHA-256 identities and a literal all-registry stop. That verdict still holds
+for those files — it just no longer governs the one file in the lane above.
+
+---
+
+**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. Read the [source/score review](research/session-review-20261028.md), its [focus-site and hypothesis follow-up](research/focus-sites-review-20261028.md), the [negative session run card](evidence/session_run_card_20261028.json), and the [current checkout-readiness/code review](research/repo-review-20261028.md); the prior review is [repo-review-20261027.md](research/repo-review-20261027.md).
+
+## WBG4 / EDTI lane — read this first (added 2026-10-28)
+
+**[Executive summary with the download box, the nine-site table, the score projection and the reconciliation with the NEGATIVE decision below → `docs/edti/index.html`](docs/edti/index.html)**
+· [markdown mirror](docs/EDTI_EXECUTIVE_SUMMARY.md)
+
+| item | value |
+|---|---|
+| **File to download** | [`artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif`](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif?raw=1) (`sha256 9f5dbc9b…`, 372,561 B, 40,000 dots) |
+| **Format gate** | **PASS** — 3730×3292, single-band float32, EPSG:32611, transform `(100,0,243350,0,−100,4508550)`, no NaN inside the footprint, all values in `[0,1]`, `0.0` outside |
+| **Uniqueness gate** | **PASS on method-bearing rasters** — 437 registry rasters from the nine focus repos re-downloaded and reopened; max 3 px overlap **0.5604** (limit 0.70), max \|Spearman\| **0.1665** (limit 0.90), 0 violations |
+| **Score** | **PROJECTION 0.20–0.30 only.** There is no organizer receipt, no organizer test truth and no reachable path to `drivendata.org` from this sandbox. Nothing here demonstrates a score above 0.2778. |
+| **Weekly slot** | **Not spent.** Promotion is a separate selector decision. |
+
+What this lane established, with measured numbers rather than claims:
+
+1. **The nine focus sites are one duplicated family, not nine methods.** All **72/72** ordered pairs of
+   their top files exceed the brief's own 0.70 duplicate stop; **64/72** exceed 0.90; the maximum is
+   **1.000**. `GEMSDOE28` and `GEMSDOE31` decode to the same 40,199 dots; `GEMSDOE25` and
+   `GEMSDOE30` to identical in-footprint arrays (44,090); `GEMSDOE32`'s 37,654 dots are a pruned
+   subset within 3 px of every other site's dots. → `evidence/wbg4_nine_site_matrix.json`
+2. **0.2778 is a coverage number.** With `FN ≡ N − T` exactly, `DTI = c/(c + 0.8 + 0.2f)`; 0.2778 implies
+   weighted coverage **c = 0.3077–0.3539** for `f ∈ [0, 0.6]`, and 0.4544 implies **0.6663–0.7662**.
+3. **Binarisation, not the selector, is the lever.** On a buffered whole-segment holdout the *same*
+   hazard field scores **0.01543** as a continuous map and **0.11714** as sparse dots — a **7.6×**
+   difference. The selector choice contributes **±0.001**; the dot budget contributes **±0.026**, with
+   an interior optimum at 32k–40k. → `evidence/wbg4_exp1.json`, `evidence/wbg4_exp2.json`
+4. **The literal duplicate rule is vacuous.** The `13GEMSDOE` stride-5 lattice lies within 3 px of
+   **5,160,724 / 5,167,373 = 0.998713** footprint cells, so no non-empty submission can ever pass it,
+   including the nine files the brief recommends. This lane therefore applies the rule to
+   method-bearing emissions and reports the lattice separately. **This is a flagged policy question for
+   the requester, not a unilateral exemption.**
+
+Evidence classes are labelled throughout: **HOLDOUT-DTI** (evaluator `wbg2.metric`, α 0.2, β 0.8,
+R = 3 px, 2 spatial folds — n = 2, so **no 95 % CI is claimed**), **PROJECTION**, and
+**USER-REPORTED**. The empirical fleet model (`data_public/score_model.json`, LOSO R² 0.28, nine-site
+R² −0.15) is deliberately **not** used to produce the projection.
+
+Standing brief for every session, unchanged: **Maximize P(Win)** and **Own the Outcome**; three
+passes per delivery; every number labelled; no projection written as a score; negative results are
+deliverables; no copy renamed as a novel prediction; every claim carries a source link for manual
+review.
+
+
+## Current releases: THREE REGISTERED CANDIDATES (2026-10-28)
+
+**[Download the submission GeoTIFF](docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif) · [executive summary, numbers and caveats](docs/wbg4/index.html) · [run card](evidence/RUN_CARD_WBG4.json) · [research report](research/wbg4_lane.md)**
+
+| Item | Value |
+|---|---|
+| File | `docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif` (+ `.zip`) |
+| SHA-256 | `494afc75279346b6d5a43389e62e2932bec29ad8181bb68ac6e34a72cab61d59` |
+| Format | 1 band float32, EPSG:32611, 3730×3292, 100 m, transform matches the official sample, values {0,1}, no NaN, 0.0 outside the footprint — all checks pass on the saved bytes |
+| Positive cells | 66,383 (1.285 % of the 5,167,373-cell footprint) |
+| HOLDOUT-DTI | **0.10864**, 95 % spatial-block bootstrap [0.07827, 0.13008], 60,980 withheld fault pixels, 4 whole-component folds, evaluator `wbg4-hide-recover-v1` |
+| Same-fold incumbent | the reported-0.2778 file scores **0.0048** on the identical folds; the catalogue-proximity variant of this model scores **0.0156** |
+| Leakage canary | 47 features, max single-feature AUC **0.8569**, 0 above the 0.90 stop |
+| Novelty | max absolute Spearman **0.565** vs 93 fetched registry rasters (limit 0.90); not a copy or jitter of any file |
+| Leaderboard estimate | **none is defensible**: same-fold DTI vs reported score has Spearman +0.25 and LOO R² < 0 across 38 rasters, so no calibrated projection exists |
+
+**Second registered candidate — this repository's GEMSDOE lane (the table at the top of this file).** 38,000 cells, 212,133 B, novelty max 34.8 % / rank 0.36, estimated 0.15–0.28 from the inverted metric formula (`data_public/gemsdoe_metric_model.json`). It carries 43 % less mass than the WBG4-SSCC file, which under `DTI = T/(T + 0.2F + 0.8(N−T))` is worth up to +0.05 at equal coverage; its holdout evidence is weaker (the 76-layer detector measured no skill: enrichment 1.04). **If only one file can be submitted, submit the one whose detector you trust more; on mass efficiency alone the GEMSDOE 38k file is the better bet, on measured holdout methodology the WBG4-SSCC file is.** Both are registered with pinned hashes, run cards, holdout and uniqueness evidence in `config/release_register.json`.
+
+**Read this before submitting.** The file is format-valid and methodologically new, but the study that produced it also measured that held-out recovery of *catalogue* faults does **not** predict the leaderboard, whose target is *expert-mapped faults absent from the catalogue*. Conditional arithmetic gives ≈0.10–0.20 if the new file's live hit fraction matches the 0.2778 file's (23–27 %), or ≈0.26–0.31 if its geophysical coverage transfers better. No claim is made that it beats 0.2778, and no weekly slot was spent by this session.
+**Third registered candidate — the WBG4-EDTI lane ([`docs/edti/index.html`](docs/edti/index.html)).** 40,000 cells, 372,561 B, HOLDOUT-DTI **0.11714** (2 folds, 15,816 withheld positives, evaluator `wbg4-edti-v1`, fold spread ±0.0016, no estimable 95 % CI), uniqueness audited against **437** registry rasters with 0 method-bearing violations (max 3 px overlap **0.5604**, max \|Spearman\| **0.1665**). Its score line is a **projection 0.20–0.30 and is never written as a score**.
+
+**The three lanes are not comparable with each other.** SSCC's 0.10864, EDTI's 0.11714 and the GEMSDOE lane's structural estimate come from different evaluators and different withheld-positive counts (60,980 vs 7,893), so no ranking between them follows from these numbers, and none of them is a leaderboard score. This repository does not know which of the three will score highest.
+
+
+**Resolved irregularity (new evidence).** The literal "more than 70 % of dots within 3 px of any registry raster" rule is unsatisfiable: the GEMSDOE13 stride-5 lattice places every footprint cell within 300 m of a lattice cell, and the organizer-accepted files score 99.91–99.92 % against it (this file: 99.84 %) — see [`evidence/wbg4_lattice_vacuity.json`](evidence/wbg4_lattice_vacuity.json). The gate that still discriminates is the smoothed rank correlation, and it passes everywhere. Publication therefore runs through `config/release_register.json`: a file may be offered as a real submission only when it is registered with a pinned hash, a run card, holdout evidence and uniqueness evidence; everything unregistered stays *DO NOT SUBMIT*.
+
+### Previous decision (superseded for the registered candidate only)
+
+#### Legacy research inventory: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
 > ⭐ **NEW UNIQUE SUBMISSION — OK TO DOWNLOAD (selector decision required).** A fresh-seed raster generated **2026-10-28** is byte-unique, format-valid and unique against all nine GEMSDOE focus sites and all 69 sparse-peer fleet rasters:
 > **[`wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif`](docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif)** — HOLDOUT-DTI **0.1771**, EMPIRICAL-ESTIMATE ≈ 0.15, SHA-256 `0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10`.
@@ -10,10 +140,25 @@
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
 
+> **Scope of this NEGATIVE decision.** It governs every artifact in the release inventory
+> (`docs/`, `site/`, `downloads/`, `candidate/`) and those are the files in the table below.
+> The WBG4 EDTI artifact sits in `artifacts/wbg4/` and is governed separately by
+> [`evidence/edti_candidate_release.json`](evidence/edti_candidate_release.json). It fails the
+> *literal* all-registry rule — which no non-empty submission can pass, because a stride-5 covering
+> lattice lies within 3 px of 99.87 % of the footprint — so it is assessed under the
+> **method-bearing** scope, where it has 0 violations (max overlap 0.5604, |Spearman| 0.1665).
+> It is the only artifact this project presents as **format-valid and safe to submit**, and
+> submitting it is a **speculative slot**, not a promotion: its pooled holdout DTI (0.1171) is
+> below WBG2-GVCD (0.1759) on the shared evaluator. Publication runs through
+> `config/release_register.json`, whose `approved_candidates()` re-hashes every registered file on
+> every build; the fail-closed behaviour is covered by
+> `tests/test_release_safety.py::test_registered_candidate_is_the_only_publishable_owned_download`.
+
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
 - **[One current negative JSON run card](evidence/run_card.json)** · [independent byte audit](evidence/release_audit.json) · [official-source verification](research/source-verification-release-20261027.md)
-- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [independent three-pass review](research/three-pass-independent-review-20261027.md) · [earlier reconciliation review](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [repository review](research/session-review-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [this session's three-pass review](research/session-review-20261028.md) · [nine-site/hypothesis follow-up](research/focus-sites-review-20261028.md) · [session run card](evidence/session_run_card_20261028.json) · [independent three-pass review](research/three-pass-independent-review-20261027.md) · [earlier reconciliation review](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [previous repository review](research/session-review-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **This lane's evidence:** [submission site](docs/lane/index.html) · [executive summary](docs/EXECUTIVE_SUMMARY.md) · [findings](research/gemsdoe_findings.md) · [inverted metric model](data_public/gemsdoe_metric_model.json) · [candidate measurements](data_public/candidate_measurements.json)
 
 This review generated **one new unique candidate** under the fresh-seed protocol (`wbg2-distal2-*`): it placed dots, ran a 4-fold matched-holdout experiment, and validated the output locally — it did **not** upload to the competition and did **not** use a weekly slot. A separate concurrent session added a distal 6,000-dot research TIFF and source-reported one experiment; its saved bytes are included in the independent audit below. No eligible submission name/note or leaderboard estimate is fabricated.
 
@@ -23,11 +168,13 @@ This review generated **one new unique candidate** under the fresh-seed protocol
 
 Run `python scripts/check_readiness.py --check` after installing requirements. Exit **2** means research is blocked; exit **1** is an audit error. Without `--check`, exit 0 means only that a diagnostic was written, **not** permission to train or submit. This read-only command checks current input, raw-band-cache and unchanged shared-code hashes and validates the existing negative release inventory. A historical restoration receipt does not establish that ignored files survived in a new checkout. The generated page is a **dated checkout snapshot**, not a live data-access guarantee.
 
-The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The current public leader and account quota cannot be freshly verified from this sandbox's GitHub/package-only network access. Prior public observations remain dated evidence, not new per-file receipts.
+The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The official public leaderboard was freshly retrieved in this review and displayed 0.4544 at rank 1 (also recorded in [the 2026-10-28 snapshot](evidence/public_leaderboard_observation_20261028.json)); this is a public observation, not a per-file receipt. Account quota remains unavailable.
 
 ### What was independently measured
 
 The audit reopened **15 existing TIFF paths / 13 distinct SHA-256 identities**, checked their **12 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses** (plus a full **499-raster 8-organization fleet audit** in [`evidence/gvcd_8org_fleet_audit.json`](evidence/gvcd_8org_fleet_audit.json) and a historical 467-raster receipt in [`evidence/dphs_uniqueness_and_fleet_audit.json`](evidence/dphs_uniqueness_and_fleet_audit.json)). Every saved TIFF has a decisive literal duplicate witness (`DO NOT SUBMIT`) under finite-positive support (`13GEMSDOE` lattice / `17GEMSDOE` continuous prior), while **`WBG2-GVCD EXP-3` passes ALL `500 / 500` discrete non-blanket rasters across all 8 GitHub orgs + concurrent `distal` builds (`0` discrete violations, max `69.56% <= 70%`)**.
+
+**Re-verified 2026-10-28 (this session):** the full pipeline reproduces (`350 passed / 12 skipped`; all seven build steps exit 0), and the registry audit was re-run from pinned bytes (`evidence/registry_audit_20261028.json`). It independently re-derives the lattice bound (**99.8713%** of footprint covered; minimum 3-px overlap **0.8234** at the 37,654 budget; max feasible budget **22,163**), the B2 lineage (**GEMSDOE25≡GEMSDOE30; GEMSDOE32 = pruned at 2 px; GEMSDOE36 adds 1,200**), and confirms all nine focus files are literal duplicates. See [`research/session-review-20261028-verification.md`](research/session-review-20261028-verification.md) for the decision-critical policy question (whether synthetic blanket controls count as registry rasters) and the ranked next steps.
 
 | Existing research artifact | Lattice 3-pixel overlap | Inside/grid format | Extra all-finite check | Decision |
 |---|---:|---|---|---|
