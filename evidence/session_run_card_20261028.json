@@ -1,0 +1,52 @@
+{
+  "schema": "wbggems.session-run-card.v1",
+  "review_date_utc": "2026-10-28",
+  "hypothesis": "No hypothesis tested. Ranked proposals N1-N4 remain desk proposals; method lane is unassigned.",
+  "mechanism": "No new candidate surface or dot placement was constructed. This review audited existing records and reviewed the official problem/metric/submission descriptions.",
+  "named_non_fault_mimic": "For the highest-ranked untested proposal N1: an unfaulted intrusive or lithologic contact can produce a persistent geophysical edge; a narrow fault-bounded block may also be incorrectly vetoed.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positive_pixels": null,
+    "value": null,
+    "ci95": null,
+    "status": "NOT RUN in this review; no lane assignment, fresh feature cache, or matched experiment. No new score claimed."
+  },
+  "feature_canary": {
+    "status": "NOT RUN; no candidate feature computed or evaluated"
+  },
+  "registry_comparison": {
+    "candidate_surface_rank_correlation": null,
+    "candidate_final_dot_overlap": null,
+    "status": "No candidate generated. Existing artifact audit is incomplete (13 pinned rasters, not the full current registry).",
+    "existing_witness": "The checked-in byte audit reports decisive overlap witnesses for the existing TIFF inventory; continuous-prior support interpretation remains unresolved and is not waived."
+  },
+  "raster_sha256": null,
+  "validator": {
+    "status": "No new raster was written, so no candidate validator output exists.",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null
+  },
+  "submission": {
+    "name": null,
+    "note": null,
+    "ok_to_download_and_submit": false,
+    "reason": "No eligible new raster. All existing TIFFs remain research-only / DO NOT SUBMIT."
+  },
+  "checkout_readiness": {
+    "command": "python scripts/check_readiness.py --check",
+    "exit_code": 2,
+    "status": "BLOCKED / DO NOT SUBMIT",
+    "evidence_path": "evidence/checkout_readiness.json"
+  },
+  "test_suite": {
+    "command": "PYTHONPATH=src .venv/bin/python -m pytest -q",
+    "passed": 350,
+    "skipped": 12,
+    "failed": 0
+  },
+  "weekly_slots_used": 0,
+  "experiments_run": 0,
+  "verdict": "negative"
+}
