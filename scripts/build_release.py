@@ -118,6 +118,8 @@ def build(root: Path = ROOT) -> None:
     card = read_json(root / 'evidence/run_card.json')
     if card.get('verdict') != 'negative' or card.get('ok_to_submit') is not False:
         raise ValueError('Canonical run card disagrees with negative release')
+    input_summary = card.get('raw_feature_inputs', {}).get('current_availability', {}).get(
+        'summary', 'Current local data availability has not been checked; no input is authorized for an experiment.')
     portfolio = read_json(root / 'docs/data/portfolio.json')
     if len(portfolio.get('sites', [])) != 9 or any(r.get('eligible_for_submission') is not False for r in portfolio['sites']):
         raise ValueError('Nine-site evidence changed; review before publishing')
@@ -147,7 +149,7 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
 <p><a href="msptcd/index.html">Historical campaign with caveats →</a> · <a href="data/RUN_CARD_MSPTCD.json">Historical card and review correction</a> · <a href="research.html">Four genuinely unimplemented local proposals →</a></p></section>
 <section class="card guide-card" id="next"><h2>Next steps, in order</h2><ol>
 <li>Record one explicit method lane and resolve registry support policy centrally. Do not silently exempt dense controls or move points to footprint-edge exceptions.</li>
-<li>Restore a complete, fresh, immutable registry and authenticate competition inputs against an organizer download. Public research mirrors and raw band caches are restored, not authenticated.</li>
+<li>Restore a complete, fresh, immutable registry and authenticate competition inputs against an organizer download. Current local-input check: {e(input_summary)} Historical public-mirror receipts do not authenticate organizer data.</li>
 <li>Resolve the shared format-mask defect upstream; keep the pinned evaluator/writer unchanged. Run whole-segment buffered hide-and-recover and every feature-alone canary using visible-only catalogue features.</li>
 <li>Compare a candidate with the corrected current incumbent on identical spatial folds, pooled DTI and paired spatial 95% CI. Recheck the original surface before placement and final dots against every registry raster.</li>
 <li>Only a separate authorized selector can release a file and use a weekly slot. The official rules state up to three submissions per week; account-specific remaining quota was not accessible.</li>

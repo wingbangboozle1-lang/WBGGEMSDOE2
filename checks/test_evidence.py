@@ -84,6 +84,34 @@ class LinkParser(HTMLParser):
         if tag=='table': self.tables+=1
 
 
+def test_rendered_inventory_counts_and_local_input_status_are_current():
+    release = json.loads((ROOT / 'evidence/release_audit.json').read_text())
+    card = json.loads((ROOT / 'evidence/run_card.json').read_text())
+    scope = release['scope']
+    summary = card['raw_feature_inputs']['current_availability']['summary']
+    expected_counts = (
+        f"{scope['owned_tif_paths']} TIFF paths",
+        f"{scope['distinct_tif_sha256']} distinct SHA-256 identities",
+        f"{len(release['zip_archives'])} ZIP archives",
+    )
+    for phrase in expected_counts:
+        assert phrase in card['validator']['status']
+    readme = (ROOT / 'README.md').read_text()
+    charter = (ROOT / 'docs/PROJECT_CHARTER.md').read_text()
+    assert f"{scope['owned_tif_paths']} existing TIFF paths" in readme
+    assert f"{scope['distinct_tif_sha256']} distinct SHA-256 identities" in readme
+    assert f"{len(release['zip_archives'])} ZIPs" in readme
+    for phrase in (f"{scope['owned_tif_paths']} TIFF paths",
+                   f"{scope['distinct_tif_sha256']} distinct SHA-256 identities",
+                   f"{len(release['zip_archives'])} ZIPs"):
+        assert phrase in charter
+    for rel in ('docs/release.html', 'docs/sources.html', 'site/research.html'):
+        assert summary in (ROOT / rel).read_text()
+    for rel in ('site/index.html', 'site/executive.html'):
+        assert 'all seven saved' not in (ROOT / rel).read_text().lower()
+    assert 'not present in this checkout' in (ROOT / 'README.md').read_text()
+
+
 def test_site_links_and_approval_copy_match_the_audit_artifact():
     """A former normalized PASS may never authorize a literal-failing TIFF."""
     audit = json.loads((ROOT / 'data_public/final_audit.json').read_text())

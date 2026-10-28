@@ -2,6 +2,8 @@
 
 **27 October 2026 UTC · completed software/forensic review · NEGATIVE / DO NOT SUBMIT.**
 
+> **Historical snapshot notice:** the byte counts later in this report describe the earlier audit and are intentionally preserved as historical evidence. The subsequent [repository review](repo-review-20261027.md) and canonical run card supersede them: the current checkout audit is 10 TIFF paths / 8 identities / 7 ZIP archives, with 13 pinned witnesses.
+
 This is not a new candidate campaign. This review generated no prediction TIFF, placed no dots, trained no model, reran no scientific holdout, and used no competition slot. Two additional existing raster identities arrived through concurrently merged PRs #24/#26; their TIFF/ZIP bytes are preserved, not presented as this review's novel work. The deliverable is one canonical [`evidence/run_card.json`](../evidence/run_card.json), mirrored at nine current/legacy aliases.
 
 ## Pass 1 — independent evidence and implementation

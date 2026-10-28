@@ -67,7 +67,7 @@ def test_literal_stop_is_strictly_over_seventy_percent_and_never_approves(tmp_pa
 
 
 def copy_site_sources(destination: Path) -> None:
-    for name in ('scripts', 'src', 'config', 'docs', 'site', 'evidence', 'downloads', 'research', 'data_public'):
+    for name in ('scripts', 'src', 'config', 'docs', 'site', 'evidence', 'downloads', 'research', 'data_public', 'registry'):
         shutil.copytree(ROOT / name, destination / name,
                         ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
     shutil.copy(ROOT / 'index.html', destination / 'index.html')

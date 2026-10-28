@@ -1,17 +1,17 @@
 ## Current disposition: negative / DO NOT SUBMIT
 
-Independent readback now covers 9 existing TIFF paths / 7 SHA-256 identities, 6 ZIP archives and 13 hash-pinned registry witnesses. Every saved identity fails the literal any-registry overlap stop. This is a rejection witness audit, not exhaustive current-registry or pre-placement-surface clearance. No new model experiment or weekly slot was used in this review.
+The latest independent readback covers 10 existing TIFF paths / 8 SHA-256 identities, 7 ZIP archives and 13 hash-pinned registry witnesses. Every saved identity fails the literal any-registry overlap stop. This is a rejection witness audit, not exhaustive current-registry or pre-placement-surface clearance. No new model experiment or weekly slot was used in this review. The 418,912,844-byte feature stack and per-band caches are not present in the current checkout; earlier restore receipts are historical and the owner mirror is not organizer-authenticated.
 
 Two artifacts arrived through concurrently merged PRs #24/#26. Their TIFF and ZIP bytes are preserved, but publication must not inherit other lane approvals:
 - D19-DOTTED SHA-256 `7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36`: 0.9914736842105263 overlap with the pinned binary lattice.
 - E3-soft88 SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`: 0.99923 overlap with that lattice; 100,000 saved positive-support cells.
-Both pass the conservative local strict-finite [0,1] checks; neither is eligible under the stated novelty rule. All seven overlap the registered positive-support continuous prior by 1.0 under the literal definition; no implicit exemption is applied.
+Both pass the conservative local strict-finite [0,1] checks; neither is eligible under the stated novelty rule. All eight identities overlap the registered positive-support continuous prior by 1.0 under the literal definition; no implicit exemption is applied.
 
 ## Unresolved blockers
 
 - No explicit single-method assignment. The ranked N1–N4 shortlist is proposal-only, not permission to launch a fourth/historical campaign.
 - Current registry incomplete. Nine focus HEAD changes are not fresh raster audits. Original pre-placement surfaces were not independently replayed.
-- Input/reference bytes come from hash-pinned owner mirrors, not authenticated organizer downloads. The restored 19-band raw stack does not resolve physical band-semantics or binary provenance by itself.
+- Input/reference bytes come from hash-pinned owner mirrors, not authenticated organizer downloads. Earlier receipts record a 19-band raw-stack restore, but the full raster and per-band caches are absent from this checkout; prior hashes do not resolve physical band semantics or organizer provenance.
 - Corrected MSPTCD v2 fixes perpendicular-edge coherence and cache identity; only synthetic tests validate the correction. Historical v1, CBS and E3 source-reported scientific metrics were not rerun and are not a matched corrected-v2 incumbent.
 - Pinned shared format gate accepts finite NoData/masked pixels within the footprint. A strict supplemental readback catches that; the upstream code was not privately forked. Creating the report in `buffedlizard55-lab/57GEMSDOE` was denied by integration permissions. Reproducer: `research/shared-template-format-report.md`. Upstream fix remains outstanding.
 - The actual rejected upload bytes and organizer acceptance receipt are unavailable. Outside NaN, masked interior cells and out-of-range values must be reported separately, not assumed to be the cause.

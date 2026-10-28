@@ -1,14 +1,8 @@
 # Current reconciliation — 27 October 2026
 
-All seven saved TIFF identities fail literal registry duplication. Former DZ-16/H3 approvals are revoked;
-no new candidate, experiment, forecast or slot. [Current byte audit](../evidence/release_audit.json),
-[one canonical run card](../evidence/run_card.json), [official-source recheck](source-verification-release-20261027.md),
-[revised N1–N4 proposals](hypotheses.md), and [three-pass review record](release-reconciliation-review.md).
+All eight saved TIFF identities fail literal registry duplication. The latest independent byte audit covers 10 TIFF paths, 8 distinct SHA-256 identities, 7 ZIPs and 13 pinned registry witnesses; the registry is still incomplete. Former DZ-16/H3 approvals are revoked; no new candidate, experiment, forecast or slot. The full feature raster and raw-band caches are absent from this checkout even though earlier hash receipts exist. [Current byte audit](../evidence/release_audit.json), [one canonical run card](../evidence/run_card.json), [official-source recheck](source-verification-release-20261027.md), [revised N1–N4 proposals](hypotheses.md), and [latest three-pass repository review](repo-review-20261027.md). The earlier [release reconciliation](release-reconciliation-review.md) remains historical context.
 
-The full 19-band owner mirror is restored, not organizer-authenticated. Historical MSPTCD v1
-HOLDOUT-DTI is source-reported, not reproduced. Corrected v2 orientation features and content-bound
-caches have synthetic tests only; old metrics are not evidence for v2. Former web band-schema and
-“zero leakage” claims are corrected. All new raster/score/promotion fields remain null/false.
+A prior restore receipt records a full 19-band owner mirror, but its TIFF and raw caches are absent from this checkout and the mirror is not organizer-authenticated. Historical MSPTCD v1 HOLDOUT-DTI is source-reported, not reproduced. Corrected v2 orientation features and content-bound caches have synthetic tests only; old metrics are not evidence for v2. Former web band-schema and “zero leakage” claims are corrected. All new raster/score/promotion fields remain null/false.
 
 ---
 
@@ -20,7 +14,7 @@ caches have synthetic tests only; old metrics are not evidence for v2. Former we
 
 ## Recheck on 27 October 2026
 
-The 13 hash-pinned witness files and both parallel TIFFs were reopened; the measured lattice bound, B2 lineage and rejected-file results agree with the previous audit. The shared raw-band cache was restored locally, but the organizer sample is still unauthenticated. A [pinned, older shared index](../evidence/shared_registry_index_summary.json) has 695 unique raster-hash rows, of which 684 are outside our witness manifest. Those are metadata counts, not 684 byte-level raster audits and not proof of a complete current registry.
+The 13 hash-pinned witness files and both parallel TIFFs were reopened; the measured lattice bound, B2 lineage and rejected-file results agree with the previous audit. An earlier session restored the shared raw-band cache, but those ignored files are not present in this checkout; the latest file-level inventory is in the canonical run card. The organizer sample remains unauthenticated. A [pinned, older shared index](../evidence/shared_registry_index_summary.json) has 695 unique raster-hash rows, of which 684 are outside our witness manifest. Those are metadata counts, not 684 byte-level raster audits and not proof of a complete current registry.
 
 An **ORGANIZER-PUBLISHED PUBLIC LEADERBOARD OBSERVATION** showed 0.4544 on 27 October at approximately 17:21 UTC ([source](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/), [record](../evidence/public_leaderboard_observation_20261027.json)). It is not a submission-page receipt or a score for a project TIFF. A subsequent automated refresh failed and the dashboard labels the snapshot stale. The historic GEMSDOE32 **USER-REPORTED** 0.2778 remains unverified; no new leaderboard estimate exists.
 
@@ -64,7 +58,7 @@ The public mirrored reference has the right-looking CRS/grid but its 60,988 posi
 ## Next session
 
 1. Reconcile the literal “any registry raster” rule with the lattice and the continuous-prior support ambiguity as a **policy decision**; the binary-lattice bound alone does not rule out smaller budgets, but the fully positive prior blocks them under the shared definition. Do not quietly exclude controls.
-2. Authenticate the official sample, catalogue, feature bytes, license and available weekly quota. The public owner mirror is restored and hash checked, but does not prove organizer provenance. The shared 19-band, label-free cache was rebuilt from the owner mirror; the shared derived feature bank is not present in the pinned public template tree.
+2. Authenticate the official sample, catalogue, feature bytes, license and available weekly quota. Earlier receipts record hash-checked owner-mirror bytes, but do not prove organizer provenance or current file availability. The large feature raster and shared 19-band raw cache are absent from this checkout; the pinned public template also omits the derived feature bank.
 3. Restore a complete, fresh, hash-pinned registry. A subset can prove a duplicate but cannot prove uniqueness. Recompute all catalogue-derived fold features from visible faults only.
 4. Preregister one lane, run each feature canary, and use the **same** buffered component folds and shared evaluator for candidate/control. Report pooled HOLDOUT-DTI, evaluator, withheld positives, and block-bootstrap confidence intervals. A holdout score is a proxy, not an organizer score.
 5. Before any candidate is considered, fix the shared validator’s masked-interior issue upstream and retain the independent mask check; then use the shared writer, validate the saved bytes and ZIP, and let a separate selector check the current quota. The project deliberately has no automatic competition upload.

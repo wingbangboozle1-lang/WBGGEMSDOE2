@@ -9,7 +9,7 @@
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
 - **[One current negative JSON run card](evidence/run_card.json)** · [independent byte audit](evidence/release_audit.json) · [official-source verification](research/source-verification-release-20261027.md)
-- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [three-pass review record](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [latest three-pass repository review](research/repo-review-20261027.md) · [historical release reconciliation](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
 
 No new candidate, dot placement, model experiment, competition upload, or weekly slot was used in this review. No eligible submission name/note or leaderboard estimate is fabricated. New-file fields remain `null`.
 
@@ -66,7 +66,7 @@ The official public leaderboard displayed **0.4544** for xiaofanhu on 2026-10-27
 
 Prior MSPTCD **SOURCE-REPORTED HOLDOUT-DTI**: 0.042554, 95% spatial-bootstrap CI [0.032059, 0.054765], 60,988 withheld positives, evaluator `gems57-pooled-hide-v2`; historical control 0.023409. This review **did not reproduce it**. A v1 orientation defect treated perpendicular edges as coherent. Corrected `msptcd-v2-axial-cos-squared` has synthetic tests and **no measured holdout result**. Content-bound/versioned caches replace existence-only reuse. Passing AUC canaries does not prove no leakage. The former web table also invented nonexistent/misindexed bands; its replacement uses the actual source schema. [Corrected historical report](docs/msptcd/index.html) · [historical card with corrections](evidence/RUN_CARD_MSPTCD.json).
 
-The **full pinned 19-band raw stack and caches were restored**: 418,912,844 source bytes, SHA-256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`. Organizer provenance, band-unit semantics and the separate shared derived bank remain unresolved. Do not claim the raw stack is absent or that lack of GPU prevents this audit. [Input receipt](evidence/data_preparation.json) · [raw feature diagnostic](evidence/feature_semantics_review.json).
+A **prior restoration receipt** records the hash-pinned 19-band owner-mirror source: 418,912,844 bytes, SHA-256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`. The large feature TIFF, per-band caches, shared evaluator/writer cache and derived feature bank are **not present in this checkout**; the current file-level snapshot is recorded in the [canonical run card](evidence/run_card.json). The receipt proves a past hash check, not present persistence, organizer provenance or verified band units. The byte-only audit required no GPU. [Historical input receipt](evidence/data_preparation.json) · [raw feature diagnostic](evidence/feature_semantics_review.json).
 
 ## Reproduce safely
 

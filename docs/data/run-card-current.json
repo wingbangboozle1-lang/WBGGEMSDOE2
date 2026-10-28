@@ -1,6 +1,6 @@
 {
   "schema": "wbggems.run-card.v1",
-  "generated_utc": "2026-10-27T19:44:34.426353+00:00",
+  "generated_utc": "2026-10-28T00:01:24.682072+00:00",
   "hypothesis": "No implemented candidate hypothesis. Revised N1\u2013N4 shortlist is proposal-only; method lane UNASSIGNED.",
   "mechanism": "No candidate surface, dot placement or corrected-v2 scientific holdout was constructed in this review.",
   "non_fault_mimic": "For unimplemented N1: an unfaulted intrusive or volcanic body margin can produce paired multi-physics edges.",
@@ -18,7 +18,7 @@
     "withheld_positive_pixels": null,
     "dti": null,
     "ci95": null,
-    "status": "NOT RUN: lane unassigned and literal preflight blocked. Full 19-band owner mirror/raw caches are restored, but not organizer-authenticated. Shared derived feature bank remains absent; v2 has no holdout result.",
+    "status": "NOT RUN: method lane remains unassigned and the literal preflight blocks candidate placement. Current local-input check: At check time, 0/4 pinned data/official owner-mirror inputs are present and hash/size verified (4 missing or mismatched); the full feature mirror is not present or not verified; 0/19 raw-band caches are present and hash verified (0 files present); shared evaluator/writer code is not verified in the local cache; the derived feature bank is not present. 2/2 small audit mirrors are verified. These are owner-mirror bytes, not authenticated organizer downloads. No corrected-v2 holdout result exists.",
     "intended_evaluator_version": "gems57-pooled-hide-v2"
   },
   "feature_canary": {
@@ -40,7 +40,7 @@
   },
   "raster_sha256": null,
   "validator": {
-    "status": "No new raster generated in this review. Seven existing identities (including two concurrently merged research artifacts) independently reopened; exact inside/grid and strict whole-array outputs in evidence/release_audit.json. Format PASS is not organizer acceptance.",
+    "status": "No new raster generated. Independent readback covers 10 TIFF paths / 8 distinct SHA-256 identities, 7 ZIP archives, and 13 pinned registry witnesses; each saved TIFF identity exceeds the 70% three-pixel overlap stop against the registered binary lattice. Format PASS is not organizer acceptance.",
     "no_nan_inside_footprint": null,
     "values_in_0_1": null,
     "crs_shape_transform_match": null,
@@ -61,7 +61,7 @@
     "withheld_positives": null,
     "value": null,
     "ci95": null,
-    "reason": "No assigned lane or complete registry; no HOLDOUT-DTI was measured. Raw owner-mirrored bands were restored, not organizer-authenticated."
+    "reason": "No assigned lane or complete current registry; no HOLDOUT-DTI was measured. Current local-input check: At check time, 0/4 pinned data/official owner-mirror inputs are present and hash/size verified (4 missing or mismatched); the full feature mirror is not present or not verified; 0/19 raw-band caches are present and hash verified (0 files present); shared evaluator/writer code is not verified in the local cache; the derived feature bank is not present. 2/2 small audit mirrors are verified. These are owner-mirror bytes, not authenticated organizer downloads."
   },
   "registry": {
     "evidence_class": "REGISTRY-MEASUREMENT",
@@ -75,7 +75,7 @@
   },
   "submission_note": null,
   "ok_to_download_new_tif": false,
-  "updated_utc": "2026-10-27T17:48:48.076904+00:00",
+  "updated_utc": "2026-10-28T00:01:24.682072+00:00",
   "parallel_session": {
     "evidence": "evidence/parallel_review.json",
     "reported_experiments": 3,
@@ -140,12 +140,371 @@
   "hypothesis_id": null,
   "named_non_fault_mimic": "For unimplemented N1: an unfaulted intrusive or volcanic body margin can produce paired multi-physics edges.",
   "raw_feature_inputs": {
-    "status": "RESTORED from pinned owner mirror; not organizer-authenticated",
+    "status": "At check time, 0/4 pinned data/official owner-mirror inputs are present and hash/size verified (4 missing or mismatched); the full feature mirror is not present or not verified; 0/19 raw-band caches are present and hash verified (0 files present); shared evaluator/writer code is not verified in the local cache; the derived feature bank is not present. 2/2 small audit mirrors are verified. These are owner-mirror bytes, not authenticated organizer downloads.",
     "source_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
     "source_bytes": 418912844,
     "raw_bands": 19,
     "feature_cache_receipt": "evidence/feature_cache.json",
-    "derived_shared_bank_available": false
+    "derived_shared_bank_available": false,
+    "current_availability": {
+      "checked_utc": "2026-10-28T00:01:24.682072+00:00",
+      "summary": "At check time, 0/4 pinned data/official owner-mirror inputs are present and hash/size verified (4 missing or mismatched); the full feature mirror is not present or not verified; 0/19 raw-band caches are present and hash verified (0 files present); shared evaluator/writer code is not verified in the local cache; the derived feature bank is not present. 2/2 small audit mirrors are verified. These are owner-mirror bytes, not authenticated organizer downloads.",
+      "competition_inputs_from_prior_receipt": [
+        {
+          "path": "data/official/labels.tif",
+          "present": false,
+          "expected_sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+          "sha256": null,
+          "expected_bytes": 425830,
+          "bytes": null,
+          "hash_match": false,
+          "size_match": false,
+          "verified": false
+        },
+        {
+          "path": "data/official/existing_faults.tif",
+          "present": false,
+          "expected_sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+          "sha256": null,
+          "expected_bytes": 425830,
+          "bytes": null,
+          "hash_match": false,
+          "size_match": false,
+          "verified": false
+        },
+        {
+          "path": "data/official/sample_submission.tif",
+          "present": false,
+          "expected_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "sha256": null,
+          "expected_bytes": 1599597,
+          "bytes": null,
+          "hash_match": false,
+          "size_match": false,
+          "verified": false
+        },
+        {
+          "path": "data/official/training_features.tif",
+          "present": false,
+          "expected_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+          "sha256": null,
+          "expected_bytes": 418912844,
+          "bytes": null,
+          "hash_match": false,
+          "size_match": false,
+          "verified": false
+        }
+      ],
+      "full_feature_mirror": {
+        "path": "data/training_features_mirror.tif",
+        "present": false,
+        "expected_sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+        "sha256": null,
+        "expected_bytes": 418912844,
+        "bytes": null,
+        "hash_match": false,
+        "size_match": false,
+        "verified": false
+      },
+      "raw_band_cache": {
+        "directory": ".cache/features",
+        "expected_count": 19,
+        "present_count": 0,
+        "verified_count": 0,
+        "filenames": [],
+        "files": [
+          {
+            "path": ".cache/features/band-01.npy",
+            "present": false,
+            "expected_sha256": "c3c9ff7be463e80a2215d897b5f543f462c405375d0779516a25ef3ab0882fed",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-02.npy",
+            "present": false,
+            "expected_sha256": "032b1f28be6adb74f8fc9a7af00538b669bac86fafc6bb3e28d8d04c86a6fb32",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-03.npy",
+            "present": false,
+            "expected_sha256": "f4e8056b307e6057f32c3204e41b66629b9e64a1141f28ba140b41c4929979bf",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-04.npy",
+            "present": false,
+            "expected_sha256": "00bd2f792614ce5419765ce9b6ea8e89f059392bba8564d3daba4d45f26c2c05",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-05.npy",
+            "present": false,
+            "expected_sha256": "f59f8010b0edc814606090d016cd2a22d7b08585e97a32a2b394921a9b212b0e",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-06.npy",
+            "present": false,
+            "expected_sha256": "952921832eb7a55dc069bbd2628210e2a9e6e2e7ab5aca934ce433716d230681",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-07.npy",
+            "present": false,
+            "expected_sha256": "5b74daa1d4cb84bcc599c2466dd24b531e4b282a798772ea41aba13d3f446def",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-08.npy",
+            "present": false,
+            "expected_sha256": "367451caeb817a83b946130ab17680927de75f784681c2832946e7cfbce09e82",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-09.npy",
+            "present": false,
+            "expected_sha256": "0389aeacf19c532857e834149d70c1919c7851caa459ff965d73cfd67f6a40ec",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-10.npy",
+            "present": false,
+            "expected_sha256": "c326f37826cff179a18bc4416b512ef1cda1cbe0c6a115b0fc835141bcaa08dd",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-11.npy",
+            "present": false,
+            "expected_sha256": "3117dd59e58d63f55209343ba6738375bf182c564230516ebb556b4004aeb7dd",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-12.npy",
+            "present": false,
+            "expected_sha256": "739d6373125abf164e0f56163b8d9d02f651eb8d622decfe0360882085a0de32",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-13.npy",
+            "present": false,
+            "expected_sha256": "a4de05be78cb6e03be15f976e9f7ad31dd7b290c3fdca29c20d2c4d6f88a215f",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-14.npy",
+            "present": false,
+            "expected_sha256": "5c1ba32be4821d1a3038c455378026ea5f0cbf022713d47c974f98acddf3f4cf",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-15.npy",
+            "present": false,
+            "expected_sha256": "5507230ae758d0c347c2b9e42850b2742b01754f8683e6d84e0655021225a300",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-16.npy",
+            "present": false,
+            "expected_sha256": "27a54f645c7f7f6da155434e10f324eb873bdff3075eb897507ceebab50670b7",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-17.npy",
+            "present": false,
+            "expected_sha256": "7261a2f3ca9dab07af4186b92a1f4346a6f71dead76689795c38ee1792fbd767",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-18.npy",
+            "present": false,
+            "expected_sha256": "e747b424131c9462a2c7c434bc7e64585e262f2fcc99f5d52d71878517e85080",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/features/band-19.npy",
+            "present": false,
+            "expected_sha256": "47cc1cb1472c123c5b8069dc07f6e2f8fbc7e2c688e228a3fe50b2438314c934",
+            "sha256": null,
+            "expected_bytes": null,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          }
+        ]
+      },
+      "shared_template": {
+        "repository": "buffedlizard55-lab/57GEMSDOE",
+        "commit": "822a0ce5546c7b6749cdd82eb145b6b3e616603d",
+        "required_tools_verified": false,
+        "required_files": [
+          {
+            "path": ".cache/shared-template/src/gems57/evaluate_holdout.py",
+            "present": false,
+            "expected_sha256": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+            "sha256": null,
+            "expected_bytes": 7490,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": ".cache/shared-template/src/gems57/submission_writer.py",
+            "present": false,
+            "expected_sha256": "41220185ac2823fe5358603d38f2a915ea3e5f1ab1f94f0b237295b38b4a2565",
+            "sha256": null,
+            "expected_bytes": 6387,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": "data/shared_template/src/gems57/evaluate_holdout.py",
+            "present": false,
+            "expected_sha256": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+            "sha256": null,
+            "expected_bytes": 7490,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          },
+          {
+            "path": "data/shared_template/src/gems57/submission_writer.py",
+            "present": false,
+            "expected_sha256": "41220185ac2823fe5358603d38f2a915ea3e5f1ab1f94f0b237295b38b4a2565",
+            "sha256": null,
+            "expected_bytes": 6387,
+            "bytes": null,
+            "hash_match": false,
+            "size_match": false,
+            "verified": false
+          }
+        ]
+      },
+      "derived_shared_feature_bank": {
+        "available": false,
+        "paths": []
+      },
+      "small_audit_mirrors": [
+        {
+          "path": "data/reference_grid_mirror.tif",
+          "present": true,
+          "expected_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "expected_bytes": 1599597,
+          "bytes": 1599597,
+          "hash_match": true,
+          "size_match": true,
+          "verified": true
+        },
+        {
+          "path": "data/existing_faults_mirror.tif",
+          "present": true,
+          "expected_sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+          "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+          "expected_bytes": 425830,
+          "bytes": 425830,
+          "hash_match": true,
+          "size_match": true,
+          "verified": true
+        }
+      ],
+      "organizer_authenticated": false
+    }
   },
   "release_reconciliation": {
     "status": "ALL EXISTING TIFFS RESEARCH-ONLY / DO NOT SUBMIT",
@@ -153,7 +512,7 @@
     "owned_tif_paths": 10,
     "distinct_raster_sha256": 8,
     "pinned_witnesses": 13,
-    "zip_archives": 6,
+    "zip_archives": 7,
     "approved_submission": null,
     "leaderboard_score_estimate": null,
     "all_current_registry_cleared": false,
@@ -173,8 +532,8 @@
   "existing_artifact_audit": {
     "evidence_class": "BYTE-LEVEL-FORENSIC-MEASUREMENT; NOT A CANDIDATE EXPERIMENT",
     "source_path": "evidence/release_audit.json",
-    "source_sha256": "cfe2b6ee4cb474181aefbe28095e41ace6befcebaa00ff726187050db126a413",
-    "recorded_utc": "2026-10-27T21:35:34.553390+00:00",
+    "source_sha256": "ff8a75e7b62329e2f67bc0bc43296c67c5699fee4d4d623cc27090eef39ac12e",
+    "recorded_utc": "2026-10-27T23:54:31.738466+00:00",
     "scope": {
       "registry_rasters_opened": 13,
       "all_current_registry_rasters_checked": false,
