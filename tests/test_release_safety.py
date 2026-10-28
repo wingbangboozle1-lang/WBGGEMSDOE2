@@ -70,7 +70,7 @@ def test_literal_stop_is_strictly_over_seventy_percent_and_never_approves(tmp_pa
 
 
 def copy_site_sources(destination: Path) -> None:
-    for name in ('scripts', 'src', 'config', 'docs', 'site', 'evidence', 'downloads', 'research', 'data_public'):
+    for name in ('scripts', 'src', 'config', 'docs', 'site', 'evidence', 'downloads', 'candidate', 'research', 'data_public'):
         shutil.copytree(ROOT / name, destination / name,
                         ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
     shutil.copy(ROOT / 'index.html', destination / 'index.html')
@@ -124,6 +124,30 @@ def test_site_regeneration_cannot_restore_a_historical_approval(tmp_path):
     assert card['verdict'] == 'negative' and card['ok_to_submit'] is False
     assert card['raster_sha256'] is None and card['submission_name'] is None
     assert card['submission_note'] is None and len(card['note']) <= 140
+
+
+def test_concurrent_distal_is_rejected_not_passed_or_projected():
+    audit = json.loads((ROOT / 'evidence/release_audit.json').read_text())
+    row = next(r for r in audit['artifacts'] if r['path'].startswith('candidate/'))
+    assert row['positive_support_cells'] == 6000
+    assert row['lattice_overlap_3px'] == pytest.approx(0.6716666666666666)
+    assert row['maximum_overlap_3px'] == 1.0
+    assert row['duplicate_witnesses'] == ['17GEMSDOE_dense_prior']
+    assert row['strict_all_finite_validator']['format_valid_against_reference'] is True
+    assert row['ok_to_submit'] is False and row['surface_rank_correlation'] is None
+    paths = ('docs/data/RUN_CARD_DISTAL.json', 'evidence/RUN_CARD_DISTAL.json',
+             'evidence/wbg2_distal_candidate.json', str(Path(row['path']).with_suffix('.json')))
+    cards = [json.loads((ROOT / p).read_text()) for p in paths]
+    assert all(card == cards[0] for card in cards)
+    card = cards[0]
+    assert card['verdict'] == 'negative' and card['ok_to_submit'] is False
+    assert card['raster_sha256'] == row['sha256']
+    assert card['surface_rank_correlation'] is card['holdout_dti'] is None
+    assert card['leaderboard_score_estimate'] is card['submission_name'] is card['submission_note'] is None
+    assert 'unresolved' in card['continuous_prior_caveat'].lower()
+    page = (ROOT / 'docs/candidate.html').read_text().lower()
+    assert 'do not submit' in page and '67.167%' in page and '100.0%' in page
+    assert 'format+uniqueness pass' not in page and 'empirical 0.23' not in page
 
 
 @pytest.mark.parametrize('change', ('score', 'ci', 'count', 'hash'))

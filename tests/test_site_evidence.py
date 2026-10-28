@@ -59,8 +59,8 @@ def test_published_evidence_is_fail_closed_and_synced():
         raw = (ROOT / rerun[f'{kind}_receipt']).read_bytes()
         assert sha256(raw).hexdigest() == rerun[f'{kind}_receipt_sha256']
     audit = json.loads((ROOT / 'evidence/release_audit.json').read_text())
-    assert source_card['release_reconciliation']['distinct_raster_sha256'] == len(audit['artifacts']) == 8
-    assert source_card['release_reconciliation']['zip_archives'] == len(audit['zip_archives']) == 7
+    assert source_card['release_reconciliation']['distinct_raster_sha256'] == len(audit['artifacts']) == 9
+    assert source_card['release_reconciliation']['zip_archives'] == len(audit['zip_archives']) == 8
     rows = json.loads((SITE / 'data/focus.json').read_text())['entries']
     assert len(rows) == 9 and len({r['site'] for r in rows}) == 9
     assert all(not r['ok_to_submit'] and not r['unique_under_literal_rule'] for r in rows)

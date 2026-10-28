@@ -73,8 +73,13 @@ const baseURL = process.env.BROWSER_BASE_URL || 'http://127.0.0.1:8000';
         if (legacy.links.some(t => !t.includes('DO NOT SUBMIT'))) bad.push(`DPHS download labels ${JSON.stringify(legacy.links)}`);
         if (path.includes('executive-summary') && (!legacy.body.includes('not a two-pixel collar') || !legacy.body.includes('causal effect is unmeasured'))) bad.push('B2 masking/causality caveat missing');
       }
-      if (path === '/docs/' || path === '/docs/release.html' || path === '/docs/dphs/index.html') {
-        const pageName = path.includes('dphs') ? 'dphs' : path.includes('release') ? 'release' : 'dashboard';
+      if (path === '/docs/candidate.html') {
+        const text = (await page.evaluate(() => document.body.innerText)).toLowerCase();
+        if (!text.includes('do not submit') || !text.includes('67.167%') || !text.includes('100.0%') || !text.includes('unresolved')) bad.push('concurrent artifact caveats missing');
+        if (text.includes('format+uniqueness pass') || text.includes('empirical 0.23')) bad.push('concurrent artifact has an unsupported pass/forecast');
+      }
+      if (path === '/docs/' || path === '/docs/release.html' || path === '/docs/dphs/index.html' || path === '/docs/candidate.html') {
+        const pageName = path.includes('dphs') ? 'dphs' : path.includes('release') ? 'release' : path.includes('candidate') ? 'candidate' : 'dashboard';
         const name = `${viewport.name}-${pageName}`;
         await page.screenshot({path:require('node:path').join(root,`.cache/browser/${name}.png`),fullPage:true});
         await page.screenshot({path:require('node:path').join(root,`.cache/browser/${name}-top.png`),fullPage:false});

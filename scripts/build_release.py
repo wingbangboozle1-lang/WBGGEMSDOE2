@@ -50,16 +50,21 @@ def shell(title, body, *, base=""):
 def research_href(row):
     if row['path'].startswith('docs/'):
         return row['path'].removeprefix('docs/')
-    return f'https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/{ARCHIVE_COMMIT}/{row["path"]}?raw=1'
+    # The concurrent artifact arrived after the older archive commit. Pin its
+    # actual introducing commit, never a mutable branch or a nonexistent path.
+    commit = 'e0479a8f0a5c78d0e50e9138374db4afcd5e14fd' if row['path'].startswith('candidate/') else ARCHIVE_COMMIT
+    return f'https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/{commit}/{row["path"]}?raw=1'
 
 
 def status_banner():
     return '''<section class="banner" data-release-status="blocked" aria-labelledby="release-decision">
 <div class="banner-copy"><p class="banner-label">Authoritative repository decision · NEGATIVE</p>
 <h2 id="release-decision">No file is approved for submission. DO NOT SUBMIT.</h2>
-<p>DZ-16 and H3-PACK approvals are revoked. Every existing local TIFF exceeds the literal 70% registry overlap stop.
-No calibrated exemption, renamed file, projection, or format-only pass can override that failure.</p>
-</div><div class="actions"><button class="button" disabled>No submission file</button></div></section>'''
+<p>DZ-16 and H3-PACK approvals are revoked. Every audited TIFF exceeds the literal 70% overlap stop under
+finite-positive support, including a continuous prior whose interpretation remains unresolved. No calibrated exemption,
+renamed file, projection, or format-only pass can override that failure.</p>
+</div><div class="actions"><button class="button" disabled>No submission file</button>
+<a class="button secondary" href="readiness.html">Checkout readiness &amp; blockers</a></div></section>'''
 
 
 def artifact_table(audit):
@@ -69,9 +74,15 @@ def artifact_table(audit):
         local_txt = 'PASS' if local['format_valid_against_reference'] else 'FAIL'
         strict_txt = 'PASS' if strict['format_valid_against_reference'] else 'FAIL'
         reasons = '; '.join(local['failures'] or strict['failures']) or 'Local format only; organizer acceptance unknown'
+        lattice = row['lattice_overlap_3px'] * 100
+        if row['lattice_overlap_3px'] > .70:
+            duplicate = f'No · lattice overlap {lattice:.3f}%'
+        else:
+            duplicate = (f'No · continuous-prior overlap {row["maximum_overlap_3px"]*100:.3f}% '
+                         f'(literal support; interpretation unresolved); lattice {lattice:.3f}%')
         rows.append(f'''<tr><td data-label="File / research only"><a href="{e(research_href(row))}" download>Research TIFF — DO NOT SUBMIT</a><br>
 <code>{e(Path(row['path']).name)}</code><br><small class="mono">SHA-256 {e(row['sha256'])}</small></td>
-<td data-label="Leaderboard estimate">Unavailable</td><td data-label="Unique?">No · lattice overlap {row['lattice_overlap_3px']*100:.3f}%</td>
+<td data-label="Leaderboard estimate">Unavailable</td><td data-label="Unique?">{e(duplicate)}</td>
 <td data-label="Local format">Inside/grid {local_txt}<br>Whole-array finite {strict_txt}<br><small>{e(reasons)}</small></td>
 <td data-label="Verdict"><strong>DO NOT SUBMIT</strong></td></tr>''')
     return '''<section class="card table-card" id="research-downloads"><div class="table-heading"><div>
@@ -169,6 +180,69 @@ def public_dphs_card(root, audit):
     }
 
 
+def concurrent_distal_evidence(root, audit):
+    """Bind the concurrent session's existing TIFF to the independent audit."""
+    report = read_json(root / 'evidence/run_card.json').get('concurrent_distal_candidate', {})
+    rows = [row for row in audit['artifacts'] if row['sha256'] == report.get('sha256')]
+    if (len(rows) != 1 or not rows[0]['path'].startswith('candidate/')
+            or report.get('ok_to_submit') is not False
+            or report.get('holdout_dti') is not None
+            or report.get('original_surface_rank_correlation') is not None
+            or report.get('lattice_overlap_3px') != rows[0]['lattice_overlap_3px']
+            or report.get('continuous_prior_overlap_3px') != rows[0]['maximum_overlap_3px']):
+        raise ValueError('Concurrent distal artifact changed; review its negative evidence before publishing')
+    return report, rows[0]
+
+
+def public_distal_card(root, audit):
+    """Separate the saved file's observed facts from unverified session claims."""
+    report, row = concurrent_distal_evidence(root, audit)
+    return {
+        'schema': 'wbggems.public-distal-review.v1',
+        'hypothesis': 'Source-reported distal piedmont allocation; no method lane is assigned in this review.',
+        'mechanism': 'Proposed distant piedmont scarps may indicate missing faults; not scientifically tested here.',
+        'non_fault_mimic': 'Lake shorelines, roads and erosional edges can resemble fault scarps.',
+        'lane_status': 'UNASSIGNED; a concurrent session self-description is not authorization',
+        'other_session_source_reported_experiments': report['source_reported_experiments'],
+        'this_review_new_experiments': 0, 'weekly_submission_slots_used_this_review': 0,
+        'holdout_dti': None, 'holdout_ci95': None, 'evaluator_version': None,
+        'withheld_positive_pixels': None, 'feature_canaries': None,
+        'surface_rank_correlation': None, 'final_rank_correlation': None,
+        'lattice_overlap_3px': row['lattice_overlap_3px'],
+        'continuous_prior_overlap_3px': report['continuous_prior_overlap_3px'],
+        'registry_scope': '13 pinned references; not a complete current-registry proof',
+        'continuous_prior_caveat': report['continuous_prior_interpretation'],
+        'raster_sha256': row['sha256'], 'research_path': row['path'],
+        'validator': row['strict_all_finite_validator'],
+        'format_caveat': 'Local finite [0,1] and grid checks use an owner mirror; organizer acceptance is unknown.',
+        'leaderboard_score_estimate': None, 'organizer_receipt': None,
+        'submission_name': None, 'submission_note': None,
+        'ok_to_download_for_research': True, 'ok_to_submit': False, 'verdict': 'negative',
+        'historical_source': 'evidence/retired_20261027/evidence--RUN_CARD_DISTAL.json.txt',
+        'independent_byte_audit': 'evidence/release_independent_review_20261027.json',
+    }
+
+
+def concurrent_distal_page(root, audit):
+    """A concurrent candidate remains accessible for research, never for upload."""
+    report, row = concurrent_distal_evidence(root, audit)
+    body = status_banner()+f'''<div class="intro"><div><p class="eyebrow">Concurrent research artifact</p>
+<h1>Distal piedmont <span>6,000-dot audit</span></h1><p>Existing bytes from a separate session, independently reopened after arriving on main.</p></div></div>
+<section class="card guide-card"><h2>Negative decision — DO NOT SUBMIT</h2>
+<p>Under the literal finite-positive support definition, <strong>{report['continuous_prior_overlap_3px']*100:.1f}%</strong>
+of the dots overlap the registered continuous prior, above the 70% stop. Whether a continuous probability prior should
+count as “dots” is an unresolved policy question; it is not implicitly exempted. The binary lattice overlap is
+<strong>{row['lattice_overlap_3px']*100:.3f}%</strong>, below 70%, so the lattice itself is not the failing witness for this file.</p>
+<p>No original surface preflight, per-feature leakage canaries, matched blocked HOLDOUT-DTI or organizer receipt was reproduced.
+The method lane remains unassigned. The separate session reported one experiment; this independent review did not run it or use a weekly slot.
+The former regression estimate is not calibrated evidence of a leaderboard score.</p>
+<p>The saved TIFF has SHA-256 <code>{e(row['sha256'])}</code>, {row['positive_support_cells']:,} positive pixels and passes the local
+strict finite/grid readback against an owner mirror. That is not organizer acceptance or evidence of uniqueness.</p>
+<p><a href="{e(research_href(row))}" download>Research TIFF — DO NOT SUBMIT</a> ·
+<a href="data/RUN_CARD_DISTAL.json">Scoped negative artifact card</a> · <a href="release.html#nine-sites">Nine-site comparison</a></p></section>'''
+    return shell('Concurrent distal research audit', body)
+
+
 def dphs_pages(root, audit, portfolio):
     """Rebuild legacy campaign URLs from scoped evidence, never from old claims.
 
@@ -241,7 +315,7 @@ def build(root: Path = ROOT) -> None:
 <h1>Protect the slot.<br><span>Follow the evidence.</span></h1>
 <p>Forensic audit recorded {e(audit['generated_utc'])}; no new candidate experiment or competition upload in this review.</p></div></div>
 <section class="card guide-card"><h2>What to download and submit now?</h2><p><strong>Nothing is cleared for competition upload.</strong>
-The table below offers existing research bytes only. No new TIFF was fabricated to satisfy a download request after the mandatory stop.
+The table below offers existing research bytes only. This review generated no new TIFF after the mandatory stop; a concurrent session's file is included and remains blocked.
 The missing method lane, incomplete current registry, and unverified organizer reference also remain blockers.</p>
 <p><a href="#research-downloads">Existing TIFFs and validation →</a> · <a href="#nine-sites">Nine-site table →</a> · <a href="executive-summary.html">Exact submission procedure →</a>
  · <a href="data/run-card.json" download>Download the current negative run card</a></p></section>'''
@@ -291,6 +365,7 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
     # These legacy campaign URLs used to contain unreplicated claims and unsafe
     # instructions. Rebuild them on every release instead of relying on hand edits.
     outputs.update(dphs_pages(root, audit, portfolio))
+    outputs['candidate.html'] = concurrent_distal_page(root, audit)
     # Concurrent CBS research URLs use the same measured negative disposition.
     # The source-reported campaign results are retained, not replayed here.
     cbs_intro = '''<section class="card guide-card"><h1>CBS / D19-DOTTED — research only</h1><p>The historical CBS experiments were negative. Its saved D19 control and the concurrently merged E3-soft88 file both fail the literal all-registry overlap rule on independent readback. Their scientific scores were not replayed here and are not leaderboard receipts. The CBS physics experiments used the earlier MSPTCD feature implementation; those source statistics do not validate corrected v2.</p><p>Historical focus-site scores remain USER-REPORTED. No projection is a score or authorization. <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/29abbf694c2084569080fea6eaea275eb800f800/research/cbs_findings.md">Archived CBS research and caveats</a></p></section>'''
@@ -311,7 +386,7 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
         out = docs / rel
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html, encoding='utf-8')
-    md_rows = ['# Current nine-site executive decision — NEGATIVE', '', '**No file is approved. DO NOT SUBMIT.** Former DZ-16/H3 approvals are revoked. All saved local TIFFs fail the literal registry gate; no new candidate or weekly slot.', '', '[Exact research downloads and byte audit](release.html) · [Submission instructions](executive-summary.html) · [Canonical run card](data/run-card.json)', '', 'The rows below are the strongest named historical claims supplied in the request, not verified receipts or each site\'s current best. New-score estimates are unavailable. Original surfaces were not replayed and newer site HEADs were not raster-audited.', '', '| Site brief | Exact historical research TIFF | Claim / evidence | Unique? | Submit? |', '|---|---|---|---|---|']
+    md_rows = ['# Current nine-site executive decision — NEGATIVE', '', '**No file is approved. DO NOT SUBMIT.** Former DZ-16/H3 approvals are revoked. All audited TIFFs fail the literal registry gate under finite-positive support; no weekly slot was used in this review.', '', '[Exact research downloads and byte audit](release.html) · [Submission instructions](executive-summary.html) · [Canonical run card](data/run-card.json)', '', 'The rows below are the strongest named historical claims supplied in the request, not verified receipts or each site\'s current best. New-score estimates are unavailable. Original surfaces were not replayed and newer site HEADs were not raster-audited.', '', '| Site brief | Exact historical research TIFF | Claim / evidence | Unique? | Submit? |', '|---|---|---|---|---|']
     for row in sorted(portfolio['sites'], key=lambda r: float(r['user_reported_score']), reverse=True):
         md_rows.append(f'| [{row["site"]}](sites/{row["site"]}.html) | [`{Path(row["path"]).name}`]({row["download_url"]}) | {row["user_reported_score"]} USER-REPORTED | No: {row["max_3px_overlap_vs_other_focus"]*100:.2f}% near {row["max_overlap_witness_site"]} | DO NOT RESUBMIT |')
     md_rows += ['', 'B2 = D2.8 minus 6,436 near-catalogue dots; GEMSDOE36 adds 1,200 to B2. This is measured lineage, not a causal score explanation. Corrected MSPTCD v2 has no measured holdout result; archived v1 results are source-reported and not reproduced.', '', '[Full metric analysis](research/why-b2-scored-2778.html) · [Sources and limitations](sources.html)', '']
@@ -326,6 +401,13 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
     public_dphs = public_dphs_card(root, audit)
     for name in ('run-card-dphs.json', 'dphs_audit_summary.json'):
         (docs / 'data' / name).write_text(json.dumps(public_dphs, indent=2, allow_nan=False)+'\n')
+    # The concurrent session's raw claims remain archived, but every current
+    # alias reports the independent dense-prior stop and unmeasured holdout.
+    distal = public_distal_card(root, audit)
+    distal_text = json.dumps(distal, indent=2, allow_nan=False) + '\n'
+    for target in (docs / 'data/RUN_CARD_DISTAL.json', root / 'evidence/RUN_CARD_DISTAL.json',
+                   root / 'evidence/wbg2_distal_candidate.json', (root / distal['research_path']).with_suffix('.json')):
+        target.write_text(distal_text, encoding='utf-8')
     status = {k: audit[k] for k in ('schema', 'generated_utc', 'verdict', 'ok_to_submit', 'approved_submission', 'leaderboard_score_estimate', 'scope')}
     for folder in (docs / 'data', root / 'site/data'):
         for name in ('release_status.json', 'release.json'):

@@ -27,7 +27,8 @@ NEGATIVE_RESEARCH_CARDS = (
     'evidence/RUN_CARD_H3.json', 'docs/data/RUN_CARD_H3.json',
     'evidence/RUN_CARD_MSPTCD.json', 'docs/data/RUN_CARD_MSPTCD.json',
     'evidence/RUN_CARD_DPHS.json', 'docs/data/run-card-dphs.json',
-    'data_public/final_audit.json',
+    'evidence/RUN_CARD_DISTAL.json', 'docs/data/RUN_CARD_DISTAL.json',
+    'evidence/wbg2_distal_candidate.json', 'data_public/final_audit.json',
 )
 
 
@@ -40,9 +41,9 @@ def digest(path: Path) -> str:
 
 
 def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
-    """All public assets plus root research downloads; no extension/path bypass."""
+    """Include published assets and the root candidate/download directories."""
     return {p.relative_to(root).as_posix()
-            for folder in (root / 'docs', root / 'site', root / 'downloads')
+            for folder in (root / 'docs', root / 'site', root / 'downloads', root / 'candidate')
             for p in folder.rglob('*') if p.is_file() and p.suffix.lower() in suffixes}
 
 
@@ -77,7 +78,7 @@ def _research_path(root: Path, relative: str) -> Path:
     p = root / relative
     resolved = p.resolve()
     if (p.is_symlink() or not p.is_file()
-            or not any(resolved.is_relative_to(root / folder) for folder in ('docs/downloads', 'downloads'))):
+            or not any(resolved.is_relative_to(root / folder) for folder in ('docs/downloads', 'downloads', 'candidate'))):
         raise ValueError(f"Artifact path outside the regular-file research inventory: {relative}")
     return p
 
@@ -110,8 +111,15 @@ def load_negative_release(root: Path) -> dict:
         raise ValueError('Release audit scope changed; rerun the independent forensic audit')
     inputs = read_json(manifest_path)['inputs']
     pins = {r['id']: r for r in inputs}
-    if len(pins) != len(inputs) or scope.get('registry_rasters_opened') != len(pins):
-        raise ValueError('Pinned witness count changed')
+    if (len(pins) != len(inputs) or scope.get('registry_rasters_opened') != len(pins)
+            or not {'13GEMSDOE', '17GEMSDOE_dense_prior'} <= set(pins)):
+        raise ValueError('Pinned witness count or required references changed')
+    recheck_path = root / 'evidence/release_independent_review_20261027.json'
+    if recheck_path.exists():
+        recheck = read_json(recheck_path)
+        without_time = lambda value: {k: v for k, v in value.items() if k != 'generated_utc'}
+        if without_time(recheck) != without_time(report):
+            raise ValueError('Independent recheck changed a measurement; decisive witness mismatch')
     rows = report.get('artifacts', [])
     if not rows or len({r['sha256'] for r in rows}) != len(rows):
         raise ValueError('Empty or repeated release inventory')
@@ -133,8 +141,11 @@ def load_negative_release(root: Path) -> dict:
                     or c.get('duplicate_stop') is not (overlap > .70)):
                 raise ValueError('Witness measurement not bound to its immutable pin or literal threshold')
         witnesses = {r['registry_id'] for r in comparisons if r['overlap_3px'] > .70}
-        if not {'13GEMSDOE', '17GEMSDOE_dense_prior'} <= witnesses:
-            raise ValueError('Missing decisive literal-rule witnesses; no release clearance inferred')
+        # The lattice is measured for every file but need not reject a small
+        # raster. Under the current literal finite-positive rule the dense prior
+        # must still be a decisive witness; its interpretation is not silently exempted.
+        if '17GEMSDOE_dense_prior' not in witnesses:
+            raise ValueError('Missing decisive literal-rule witness; no release clearance inferred')
         if set(row.get('duplicate_witnesses', [])) != witnesses:
             raise ValueError('Duplicate witness list disagrees with measurements')
         lattice = next(c['overlap_3px'] for c in comparisons if c['registry_id'] == '13GEMSDOE')
@@ -178,12 +189,13 @@ def load_negative_release(root: Path) -> dict:
     # An incoming lane or a stale current-card alias cannot independently grant
     # permission. Portable receipt-only fixtures may omit cards; actual builders
     # separately require the canonical card and regenerate all of its aliases.
-    for relative in (*CANONICAL_RUN_CARDS, *NEGATIVE_RESEARCH_CARDS):
-        path = root / relative
+    card_paths = [root / relative for relative in (*CANONICAL_RUN_CARDS, *NEGATIVE_RESEARCH_CARDS)]
+    card_paths.extend((root / 'candidate').rglob('*.json'))
+    for path in card_paths:
         if path.exists():
             card = read_json(path)
             if card.get('verdict') != 'negative' or card.get('ok_to_submit') is not False:
-                raise ValueError(f'negative-only dashboard refuses to publish conflicting card: {relative}')
+                raise ValueError(f'negative-only dashboard refuses to publish conflicting card: {path.relative_to(root)}')
     return report
 
 

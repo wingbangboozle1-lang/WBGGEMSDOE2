@@ -1,6 +1,6 @@
 # WBGGEMSDOE2 — DOE GEMS Prize
 
-**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), and the [canonical run card](evidence/run_card.json). The earlier project prompt and the recorded current-request amendments are preserved below; neither is a receipt or permission to bypass a failed gate.
+**Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. The latest code/repository review and priorities are in [repo-review-20261027.md](research/repo-review-20261027.md).
 
 ## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
@@ -9,16 +9,25 @@
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
 - **[One current negative JSON run card](evidence/run_card.json)** · [independent byte audit](evidence/release_audit.json) · [official-source verification](research/source-verification-release-20261027.md)
-- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [three-pass review record](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
+- **[Ranked N1–N4 research proposals](research/hypotheses.md)** · [independent three-pass review](research/three-pass-independent-review-20261027.md) · [earlier reconciliation review](research/release-reconciliation-review.md) · [current blocker register](research/release-blockers-20261027.md) · [repository review](research/session-review-20261027.md) · [issue #23](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/issues/23)
 
-No new candidate, dot placement, model experiment, competition upload, or weekly slot was used in this review. No eligible submission name/note or leaderboard estimate is fabricated. New-file fields remain `null`.
+This review did not generate a candidate, place dots, run a model experiment, upload to the competition or use a weekly slot. A separate concurrent session added a distal 6,000-dot research TIFF and source-reported one experiment; its saved bytes are included in the independent audit below. No eligible submission name/note or leaderboard estimate is fabricated.
+
+### Current checkout readiness — run before research
+
+**[Readiness and blockers](docs/readiness.html)** · [JSON snapshot](evidence/checkout_readiness.json) · [this review's three passes](research/session-review-035d0f43.md).
+
+Run `python scripts/check_readiness.py --check` after installing requirements. Exit **2** means research is blocked; exit **1** is an audit error. Without `--check`, exit 0 means only that a diagnostic was written, **not** permission to train or submit. This read-only command checks current input, raw-band-cache and unchanged shared-code hashes and validates the existing negative release inventory. A historical restoration receipt does not establish that ignored files survived in a new checkout. The generated page is a **dated checkout snapshot**, not a live data-access guarantee.
+
+The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The current public leader and account quota cannot be freshly verified from this sandbox's GitHub/package-only network access. Prior public observations remain dated evidence, not new per-file receipts.
 
 ### What was independently measured
 
-The audit reopened **10 existing TIFF paths / 8 distinct SHA-256 identities**, checked their **7 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses** (plus a **source-reported 467-raster fleet audit** that was not independently replayed ([historical receipt](evidence/dphs_uniqueness_and_fleet_audit.json))). Every saved TIFF has a decisive literal duplicate witness (`DO NOT SUBMIT`).
+The audit reopened **11 existing TIFF paths / 9 distinct SHA-256 identities**, checked their **8 ZIPs**, and compared final positive support against **13 hash-pinned registry witnesses** (plus a **source-reported 467-raster fleet audit** that was not independently replayed ([historical receipt](evidence/dphs_uniqueness_and_fleet_audit.json))). Every saved TIFF has a decisive literal duplicate witness (`DO NOT SUBMIT`), conditional on interpreting the registered continuous prior by finite-positive support; whether it should count as dots remains unresolved.
 
 | Existing research artifact | Lattice 3-pixel overlap | Inside/grid format | Extra all-finite check | Decision |
 |---|---:|---|---|---|
+| `wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros` *(concurrent session; holdout not run)* | 67.167% | PASS | PASS | **DO NOT SUBMIT** — 100% continuous-prior overlap under literal support |
 | `wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros` *(historical, source-reported HOLDOUT-DTI 0.1735)* | 99.836% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros` | 99.147% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros` | 99.923% | PASS | PASS | **DO NOT SUBMIT** |

@@ -85,7 +85,7 @@ card['independent_forensic_recheck'] = {
     'weekly_slots_used': 0,
 }
 card['validator']['status'] = (
-    f"No new raster generated. {len(release['artifacts'])} existing identities in "
+    f"No raster generated in this review. {len(release['artifacts'])} existing identities in "
     f"{release['scope']['owned_tif_paths']} paths and {len(release['zip_archives'])} ZIPs "
     "were independently reopened; format checks are not organizer acceptance."
 )

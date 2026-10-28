@@ -1,11 +1,13 @@
 ## Current disposition: negative / DO NOT SUBMIT
 
-Independent readback now covers 10 existing TIFF paths / 8 SHA-256 identities, 7 ZIP archives and 13 hash-pinned registry witnesses. Every saved identity fails the literal any-registry overlap stop. This is a rejection witness audit, not exhaustive current-registry or pre-placement-surface clearance. No new model experiment or weekly slot was used in this review. See [the independent rerun](../evidence/release_independent_review_20261027.json).
+Independent readback now covers 11 existing TIFF paths / 9 SHA-256 identities, 8 ZIP archives and 13 hash-pinned registry witnesses. Every saved identity fails the literal any-registry overlap stop under finite-positive support. This is a rejection witness audit, not exhaustive current-registry or pre-placement-surface clearance. No new model experiment or weekly slot was used in this review. See [the independent rerun](../evidence/release_independent_review_20261027.json).
 
 Two artifacts arrived through concurrently merged PRs #24/#26. Their TIFF and ZIP bytes are preserved, but publication must not inherit other lane approvals:
 - D19-DOTTED SHA-256 `7c9915f6f5c8bb3fa9145b7ca310b3cb778f7d2d8f9bf5ddd412165d20be6a36`: 0.9914736842105263 overlap with the pinned binary lattice.
 - E3-soft88 SHA-256 `d75bf8ee99576a80fe26d00c0afca6cc76ad54a4caae196b96bfdb742404b05f`: 0.99923 overlap with that lattice; 100,000 saved positive-support cells.
-Both pass the conservative local strict-finite [0,1] checks; neither is eligible under the stated novelty rule. All eight identities overlap the registered positive-support continuous prior by 1.0 under the literal definition; no implicit exemption is applied.
+Both pass the conservative local strict-finite [0,1] checks; neither is eligible under the stated novelty rule. All nine identities overlap the registered positive-support continuous prior by 1.0 under the literal definition; no implicit exemption is applied.
+
+A later concurrent PR #38 introduced a 6,000-dot distal TIFF. Its binary-lattice overlap is 0.6716666667 (below the stop), but its continuous-prior overlap is 1.0 under the same literal definition. The full registry, original surface, canaries, blocked holdout, method assignment and organizer receipt remain unavailable. The concurrent session source-reported one experiment; this review did not run it. Its original claims and bytes are preserved, while the current card and page state the negative decision.
 
 ## Unresolved blockers
 
