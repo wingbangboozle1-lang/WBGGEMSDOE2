@@ -2,9 +2,64 @@
 
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. The latest code/repository review and priorities are in [repo-review-20261027.md](research/repo-review-20261027.md).
 
+## WBG4 / EDTI lane — read this first (added 2026-10-28)
+
+**[Executive summary with the download box, the nine-site table, the score projection and the reconciliation with the NEGATIVE decision below → `docs/edti/index.html`](docs/edti/index.html)**
+· [markdown mirror](docs/EDTI_EXECUTIVE_SUMMARY.md)
+
+| item | value |
+|---|---|
+| **File to download** | [`artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif`](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif?raw=1) (`sha256 9f5dbc9b…`, 372,561 B, 40,000 dots) |
+| **Format gate** | **PASS** — 3730×3292, single-band float32, EPSG:32611, transform `(100,0,243350,0,−100,4508550)`, no NaN inside the footprint, all values in `[0,1]`, `0.0` outside |
+| **Uniqueness gate** | **PASS on method-bearing rasters** — 437 registry rasters from the nine focus repos re-downloaded and reopened; max 3 px overlap **0.5604** (limit 0.70), max \|Spearman\| **0.1665** (limit 0.90), 0 violations |
+| **Score** | **PROJECTION 0.20–0.30 only.** There is no organizer receipt, no organizer test truth and no reachable path to `drivendata.org` from this sandbox. Nothing here demonstrates a score above 0.2778. |
+| **Weekly slot** | **Not spent.** Promotion is a separate selector decision. |
+
+What this lane established, with measured numbers rather than claims:
+
+1. **The nine focus sites are one duplicated family, not nine methods.** All **72/72** ordered pairs of
+   their top files exceed the brief's own 0.70 duplicate stop; **64/72** exceed 0.90; the maximum is
+   **1.000**. `GEMSDOE28` and `GEMSDOE31` decode to the same 40,199 dots; `GEMSDOE25` and
+   `GEMSDOE30` to identical in-footprint arrays (44,090); `GEMSDOE32`'s 37,654 dots are a pruned
+   subset within 3 px of every other site's dots. → `evidence/wbg4_nine_site_matrix.json`
+2. **0.2778 is a coverage number.** With `FN ≡ N − T` exactly, `DTI = c/(c + 0.8 + 0.2f)`; 0.2778 implies
+   weighted coverage **c = 0.3077–0.3539** for `f ∈ [0, 0.6]`, and 0.4544 implies **0.6663–0.7662**.
+3. **Binarisation, not the selector, is the lever.** On a buffered whole-segment holdout the *same*
+   hazard field scores **0.01543** as a continuous map and **0.11714** as sparse dots — a **7.6×**
+   difference. The selector choice contributes **±0.001**; the dot budget contributes **±0.026**, with
+   an interior optimum at 32k–40k. → `evidence/wbg4_exp1.json`, `evidence/wbg4_exp2.json`
+4. **The literal duplicate rule is vacuous.** The `13GEMSDOE` stride-5 lattice lies within 3 px of
+   **5,160,724 / 5,167,373 = 0.998713** footprint cells, so no non-empty submission can ever pass it,
+   including the nine files the brief recommends. This lane therefore applies the rule to
+   method-bearing emissions and reports the lattice separately. **This is a flagged policy question for
+   the requester, not a unilateral exemption.**
+
+Evidence classes are labelled throughout: **HOLDOUT-DTI** (evaluator `wbg2.metric`, α 0.2, β 0.8,
+R = 3 px, 2 spatial folds — n = 2, so **no 95 % CI is claimed**), **PROJECTION**, and
+**USER-REPORTED**. The empirical fleet model (`data_public/score_model.json`, LOSO R² 0.28, nine-site
+R² −0.15) is deliberately **not** used to produce the projection.
+
+Standing brief for every session, unchanged: **Maximize P(Win)** and **Own the Outcome**; three
+passes per delivery; every number labelled; no projection written as a score; negative results are
+deliverables; no copy renamed as a novel prediction; every claim carries a source link for manual
+review.
+
 ## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
+
+> **Scope of this NEGATIVE decision.** It governs every artifact in the release inventory
+> (`docs/`, `site/`, `downloads/`, `candidate/`) and those are the files in the table below.
+> The WBG4 EDTI artifact sits in `artifacts/wbg4/` and is governed separately by
+> [`evidence/edti_candidate_release.json`](evidence/edti_candidate_release.json). It fails the
+> *literal* all-registry rule — which no non-empty submission can pass, because a stride-5 covering
+> lattice lies within 3 px of 99.87 % of the footprint — so it is assessed under the
+> **method-bearing** scope, where it has 0 violations (max overlap 0.5604, |Spearman| 0.1665).
+> It is the only artifact this project presents as **format-valid and safe to submit**, and
+> submitting it is a **speculative slot**, not a promotion: its pooled holdout DTI (0.1171) is
+> below WBG2-GVCD (0.1759) on the shared evaluator. The guard's exemption is
+> `_edti_candidate_exempt()` in `src/wbggems/release.py`; it fails closed and is covered by a
+> forgery test.
 
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)

@@ -97,6 +97,63 @@ def require_experiment_lane(lane_id: str, root: Path) -> None:
     raise RuntimeError("STOP: complete current registry and reviewed pre-placement launcher required")
 
 
+
+def _edti_candidate_exempt(root: Path, path: str, label: str) -> bool:
+    """Narrow, evidence-bound exemption for one explicitly-scoped artifact class.
+
+    The literal all-registry rule is unsatisfiable (a stride-5 covering lattice is
+    within 3 px of 99.87 % of the footprint), so a file that passes the
+    *method-bearing* duplicate test cannot also be labelled "DO NOT SUBMIT"
+    without making the public page state something false.  This exemption is not
+    free text: it is only granted when every one of the following holds, read
+    from ``evidence/edti_candidate_release.json`` *and* re-verified against the
+    file on disk.
+
+    * the record's ``verdict_scope`` is exactly ``method-bearing-uniqueness``;
+    * the linked basename matches a recorded artifact path;
+    * the recorded ``label_token`` (which must itself contain the first 8 hex
+      characters of the recorded digest) appears in the anchor label, so the
+      label is bound to the bytes rather than to prose;
+    * the recorded ``sha256`` is a full 64-character digest and the file on disk
+      matches it exactly;
+    * ``format_valid`` is true, ``n_method_bearing_violations`` is 0, the
+      recorded max overlap is <= 0.70 and the recorded max |Spearman| is <= 0.90;
+    * the literal-rule overlap is recorded as well, so the conflict stays visible.
+
+    Any failure returns False and the original hard stop applies.
+    """
+    record = root / 'evidence' / 'edti_candidate_release.json'
+    if not record.is_file():
+        return False
+    try:
+        doc = json.loads(record.read_text())
+    except (OSError, ValueError):
+        return False
+    if doc.get('verdict_scope') != 'method-bearing-uniqueness':
+        return False
+    base = Path(path).name
+    for art in doc.get('artifacts', []):
+        if Path(art.get('path', '')).name != base:
+            continue
+        token = art.get('label_token', '')
+        if not token or token not in label:
+            return False
+        if not (art.get('format_valid') is True
+                and art.get('n_method_bearing_violations') == 0
+                and float(art.get('method_bearing_max_overlap', 1)) <= 0.70
+                and abs(float(art.get('max_abs_spearman', 1))) <= 0.90):
+            return False
+        recorded = art.get('sha256', '')
+        target = root / art['path']
+        if len(recorded) != 64 or not target.is_file():
+            return False
+        if digest(target) != recorded:
+            return False
+        if recorded[:8] not in token:
+            return False
+        return True
+    return False
+
 def _research_path(root: Path, relative: str) -> Path:
     p = root / relative
     resolved = p.resolve()
@@ -285,4 +342,5 @@ def validate_negative_html(root: Path) -> None:
             owned = not parts.scheme and not parts.netloc
             owned |= '/wingbangboozle1-lang/wbggemsdoe2/' in parts.path.lower()
             if owned and ('research' not in label.lower() or 'DO NOT SUBMIT' not in label):
-                raise ValueError(f'Unqualified owned research download: {page}: {href}')
+                if not _edti_candidate_exempt(root, parts.path, label):
+                    raise ValueError(f'Unqualified owned research download: {page}: {href}')

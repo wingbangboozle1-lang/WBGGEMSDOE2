@@ -70,7 +70,8 @@ def test_literal_stop_is_strictly_over_seventy_percent_and_never_approves(tmp_pa
 
 
 def copy_site_sources(destination: Path) -> None:
-    for name in ('scripts', 'src', 'config', 'docs', 'site', 'evidence', 'downloads', 'candidate', 'research', 'data_public'):
+    for name in ('scripts', 'src', 'config', 'docs', 'site', 'evidence', 'downloads', 'candidate',
+                 'research', 'data_public', 'artifacts'):
         shutil.copytree(ROOT / name, destination / name,
                         ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
     shutil.copy(ROOT / 'index.html', destination / 'index.html')
@@ -228,3 +229,46 @@ def test_builder_refuses_tampered_final_card_even_if_legacy_card_is_negative(tmp
     result = subprocess.run([sys.executable, str(tmp_path / 'scripts/build_site.py')],
                             cwd=tmp_path, capture_output=True, text=True, timeout=15)
     assert result.returncode != 0 and 'negative-only dashboard refuses to publish' in result.stderr
+
+def test_edti_exemption_is_bound_to_the_bytes_and_cannot_be_forged(tmp_path):
+    """The one narrow exemption must fail closed on every forged variant."""
+    sys.path.insert(0, str(ROOT / 'src'))
+    from wbggems.release import _edti_candidate_exempt
+
+    doc = json.loads((ROOT / 'evidence/edti_candidate_release.json').read_text())
+    art = doc['artifacts'][0]
+    real = (ROOT / art['path']).read_bytes()
+    prefix = art['sha256']
+    label = f'Download the submission TIF - sha256 {prefix[:8]}...'
+
+    def build(destination, record=doc, payload=real):
+        target = destination / art['path']
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(payload)
+        (destination / 'evidence').mkdir(parents=True, exist_ok=True)
+        (destination / 'evidence/edti_candidate_release.json').write_text(json.dumps(record))
+
+    build(tmp_path)
+    assert _edti_candidate_exempt(tmp_path, art['path'], label) is True
+
+    tampered = tmp_path / 'tampered'
+    build(tampered, payload=real[:-1] + b'\x00')
+    assert _edti_candidate_exempt(tampered, art['path'], label) is False
+
+    absent = tmp_path / 'absent'
+    build(absent, record=doc)
+    (absent / art['path']).unlink()
+    assert _edti_candidate_exempt(absent, art['path'], label) is False
+
+    unscoped = tmp_path / 'unscoped'
+    build(unscoped, record={**doc, 'verdict_scope': 'all-registry-uniqueness'})
+    assert _edti_candidate_exempt(unscoped, art['path'], label) is False
+
+    violating = tmp_path / 'violating'
+    build(violating, record={**doc, 'artifacts': [{**art, 'method_bearing_max_overlap': 0.71}]})
+    assert _edti_candidate_exempt(violating, art['path'], label) is False
+
+    other = tmp_path / 'other'
+    build(other)
+    assert _edti_candidate_exempt(other, 'docs/downloads/some-other-zeros.tif', label) is False
+    assert _edti_candidate_exempt(tmp_path, art['path'], 'Download the submission TIF') is False
