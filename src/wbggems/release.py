@@ -10,6 +10,7 @@ import hashlib
 from html.parser import HTMLParser
 import json
 import math
+import os
 from pathlib import Path
 import re
 from urllib.parse import urlsplit
@@ -41,10 +42,31 @@ def digest(path: Path) -> str:
 
 
 def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
-    """Include published assets and the root candidate/download directories."""
-    return {p.relative_to(root).as_posix()
-            for folder in (root / 'docs', root / 'site', root / 'downloads', root / 'candidate')
-            for p in folder.rglob('*') if p.is_file() and p.suffix.lower() in suffixes}
+    """Include published assets and reject symlink paths that can hide inventory."""
+    def fail_walk(error):
+        raise ValueError(f'Could not enumerate research inventory: {error.filename}') from error
+
+    paths = set()
+    folders = (root / 'docs', root / 'site', root / 'downloads', root / 'candidate')
+    for folder in folders:
+        if folder.is_symlink():
+            raise ValueError(f'Research inventory root must not be a symlink: {folder.relative_to(root)}')
+        if not folder.exists():
+            continue
+        for current, directories, files in os.walk(
+                folder, topdown=True, onerror=fail_walk, followlinks=False):
+            base = Path(current)
+            linked_directories = [name for name in directories if (base / name).is_symlink()]
+            if linked_directories:
+                raise ValueError(
+                    f'Research inventory must not contain symlink directories: {base.relative_to(root)}')
+            for name in files:
+                path = base / name
+                if path.is_symlink() and path.suffix.lower() in suffixes:
+                    raise ValueError(f'Research asset must not be a symlink: {path.relative_to(root)}')
+                if path.is_file() and path.suffix.lower() in suffixes:
+                    paths.add(path.relative_to(root).as_posix())
+    return paths
 
 
 def read_json(path: Path):

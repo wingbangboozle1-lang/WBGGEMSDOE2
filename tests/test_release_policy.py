@@ -87,6 +87,18 @@ def test_no_boolean_score_policy_or_scope_override(receipt_root, section, key, v
         load_negative_release(root)
 
 
+def test_inventory_rejects_nested_symlink_directory_that_could_hide_rasters(receipt_root):
+    root, report = receipt_root
+    external = root / 'outside'; external.mkdir()
+    (external / 'hidden.tif').write_bytes(b'unreviewed raster')
+    alias = root / 'candidate' / 'hidden'
+    alias.parent.mkdir(parents=True, exist_ok=True)
+    alias.symlink_to(external, target_is_directory=True)
+    write_report(root, report)
+    with pytest.raises(ValueError, match='symlink director'):
+        load_negative_release(root)
+
+
 @pytest.mark.parametrize('mutation', ['missing', 'repeated', 'sha', 'url', 'support', 'threshold', 'boolean_overlap', 'outside_unit_interval'])
 def test_witness_measurements_must_match_pins_and_literal_threshold(receipt_root, mutation):
     root, report = receipt_root
