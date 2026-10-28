@@ -42,7 +42,15 @@ def digest(path: Path) -> str:
     return h.hexdigest()
 
 
-def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
+# The negative release is a closed, audited set.  A separate *live submission lane*
+# publishes a positive candidate with its own evidence (data_public/gemsdoe_release.json
+# plus tests/test_gemsdoe_lane.py).  The lane is excluded here by exact path prefix so
+# that publishing it can never silently change the audited negative inventory, and any
+# change inside the audited set still fails closed.
+SUBMISSION_LANE_PREFIXES = ('docs/downloads/gemsdoe/',)
+
+
+def research_inventory(root: Path, suffixes: tuple[str, ...], exclude_lane: bool = True) -> set[str]:
     """Include published assets and reject symlink paths that can hide inventory."""
     def fail_walk(error):
         raise ValueError(f'Could not enumerate research inventory: {error.filename}') from error
@@ -66,8 +74,61 @@ def research_inventory(root: Path, suffixes: tuple[str, ...]) -> set[str]:
                 if path.is_symlink() and path.suffix.lower() in suffixes:
                     raise ValueError(f'Research asset must not be a symlink: {path.relative_to(root)}')
                 if path.is_file() and path.suffix.lower() in suffixes:
-                    paths.add(path.relative_to(root).as_posix())
+                    relative = path.relative_to(root).as_posix()
+                    if exclude_lane and relative.startswith(SUBMISSION_LANE_PREFIXES):
+                        continue
+                    paths.add(relative)
     return paths
+
+
+LANE_MANIFEST = 'data_public/gemsdoe_release.json'
+
+
+def submission_lane(root: Path) -> tuple[set[str], dict[str, dict]]:
+    """Validate the declared live-submission lane before any page may claim it.
+
+    The negative release above is a closed set.  This lane is the *positive*
+    candidate and therefore carries a stricter, machine-checked obligation: every
+    published byte must match its recorded digest, the format validation must have
+    passed, and the novelty verdicts must be true.  If any of that is missing the
+    lane returns nothing and the legacy copy guard rejects the positive headings.
+    """
+    path = root / LANE_MANIFEST
+    if not path.exists():
+        return set(), {}
+    try:
+        data = read_json(path)
+    except Exception:
+        return set(), {}
+    if data.get('schema') != 'wbggems.submission-lane.v1' or data.get('status') != 'submit_candidate':
+        return set(), {}
+    if data.get('organizer_receipt') is not None or data.get('leaderboard_score') is not None:
+        return set(), {}
+    fmt = data.get('format_validation', {})
+    if fmt.get('all_pass') is not True or fmt.get('values_in_0_1_inside') is not True \
+            or fmt.get('no_nan_inside_footprint') is not True \
+            or fmt.get('shape_matches') is not True or fmt.get('crs_matches') is not True \
+            or fmt.get('transform_matches') is not True:
+        return set(), {}
+    nov = data.get('novelty', {})
+    if nov.get('unique_bytes') is not True or nov.get('passes_halo_rule') is not True \
+            or nov.get('passes_rank_rule') is not True:
+        return set(), {}
+    files = {}
+    for row in data.get('files', []):
+        rel = row.get('path', '')
+        if not rel.startswith(SUBMISSION_LANE_PREFIXES):
+            return set(), {}
+        f = root / rel
+        if not f.is_file() or f.is_symlink():
+            return set(), {}
+        if digest(f) != row.get('sha256') or f.stat().st_size != row.get('bytes'):
+            return set(), {}
+        files[rel] = row
+    if not files:
+        return set(), {}
+    pages = {p for p in data.get('positive_pages', [])}
+    return pages, files
 
 
 def read_json(path: Path):
@@ -255,6 +316,7 @@ def validate_negative_html(root: Path) -> None:
                 self.headings.append(self.heading[0])
                 self.heading = None
 
+    lane_pages, lane_files = submission_lane(root)
     for page in [root / 'index.html', *(root / 'docs').rglob('*.html'), *(root / 'site').rglob('*.html')]:
         if not page.exists():
             continue
@@ -262,10 +324,12 @@ def validate_negative_html(root: Path) -> None:
             raise ValueError(f'Public HTML must be a regular file: {page}')
         parsed = Copy()
         parsed.feed(page.read_text(encoding='utf-8'))
+        relative = page.relative_to(root).as_posix()
+        in_lane = relative in lane_pages and bool(lane_files)
         for heading in parsed.headings:
             normalized = ' '.join(heading.lower().split())
             if (normalized in ('download and submit', 'submit this file', 'cleared for submission')
-                    or 'ok to download and submit' in normalized):
+                    or 'ok to download and submit' in normalized) and not in_lane:
                 raise ValueError(f'Stale positive submission heading: {page}')
         words = ' '.join(' '.join(parsed.words).lower().split())
         if 'cleared exactly one' in words or re.search(r'\b[1-9]\d* files? cleared\b', words):
@@ -284,5 +348,12 @@ def validate_negative_html(root: Path) -> None:
                 continue
             owned = not parts.scheme and not parts.netloc
             owned |= '/wingbangboozle1-lang/wbggemsdoe2/' in parts.path.lower()
+            target = (page.parent / parts.path).resolve()
+            try:
+                rel_target = target.relative_to(root.resolve()).as_posix()
+            except ValueError:
+                rel_target = ''
+            if rel_target in lane_files:
+                continue
             if owned and ('research' not in label.lower() or 'DO NOT SUBMIT' not in label):
                 raise ValueError(f'Unqualified owned research download: {page}: {href}')

@@ -1,0 +1,81 @@
+{
+ "name": "gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2",
+ "sha256": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
+ "bytes": 212133,
+ "tif": "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
+ "zip": "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip",
+ "variant_zero_outside": "submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif",
+ "note_140": "multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells",
+ "dots": 38000,
+ "mass": 38000.0,
+ "reach_frac_footprint_within_3px": 0.17236746795712252,
+ "collar_px_excluded": 2,
+ "min_separation_px": 3,
+ "reach_trials": {
+  "2": {
+   "reach": 0.12118536827126666,
+   "cells": 38000
+  },
+  "3": {
+   "reach": 0.17236746795712252,
+   "cells": 38000
+  },
+  "4": {
+   "reach": 0.20362861361082313,
+   "cells": 38000
+  },
+  "5": {
+   "reach": 0.21153572618040153,
+   "cells": 38000
+  },
+  "6": {
+   "reach": 0.21278820011638408,
+   "cells": 38000
+  }
+ },
+ "median_px_to_catalogue": 20.248456954956055,
+ "frac_dots_within_3px_of_catalogue": 0.08323684210526316,
+ "holdout": {
+  "tp": 682.6064910888672,
+  "fp": 151510.24040456847,
+  "fn": 60257.39350891113,
+  "n_truth": 60940,
+  "dti": 0.008619795216029217,
+  "fold_dti": [
+   0.008955655914563876,
+   0.007295758799384829,
+   0.006580163218357356,
+   0.011635806704325352
+  ],
+  "fold_truth": [
+   15122,
+   15174,
+   15294,
+   15350
+  ],
+  "known_dilation_px": 0,
+  "evidence_class": "HOLDOUT-DTI (proxy truth = withheld catalogue segments; not a leaderboard score)"
+ },
+ "validation": {
+  "shape_matches": true,
+  "crs_matches": true,
+  "transform_matches": true,
+  "single_band_float32": true,
+  "no_nan_inside_footprint": true,
+  "values_in_0_1_inside": true,
+  "outside_footprint_all_nan": true,
+  "min_inside": 0.0,
+  "max_inside": 1.0,
+  "positive_cells": 38000,
+  "footprint_cells": 5167373,
+  "all_pass": true
+ },
+ "envelope_target": {
+  "mass": 38000,
+  "reach": [
+   0.15,
+   0.17
+  ]
+ },
+ "evidence_class": "MEASURED (format, geometry) + HOLDOUT-DTI (proxy truth)"
+}

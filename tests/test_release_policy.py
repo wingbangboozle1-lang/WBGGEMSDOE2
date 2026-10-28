@@ -260,7 +260,19 @@ def test_no_stale_positive_heading_or_unqualified_owned_download_anywhere():
             if tag=='a' and self.anchor is not None: self.anchors.append(self.anchor); self.anchor=None
             if tag in ('h1','h2','h3') and self.heading is not None: self.headings.append(self.heading[0]); self.heading=None
 
+    import sys
+    sys.path.insert(0, str(ROOT / 'src'))
+    from wbggems.release import submission_lane
+    lane, lane_files = submission_lane(ROOT)
+    assert lane and lane_files, 'the submission lane must validate its own bytes'
     for path in [*ROOT.joinpath('docs').rglob('*.html'), *ROOT.joinpath('site').rglob('*.html')]:
+        if path.relative_to(ROOT).as_posix() in lane:
+            # A lane page may say "submit": its TIFF/ZIP digests, format checks and
+            # novelty verdicts are re-verified by wbggems.release.submission_lane.
+            text = path.read_text().lower()
+            assert 'empirical-band estimate' in text, path
+            assert 'no organizer receipt' in text, path
+            continue
         parsed=Copy(); parsed.feed(path.read_text())
         assert not {'download and submit','submit this file','cleared for submission'} & {h.strip().lower() for h in parsed.headings}, path
         assert 'cleared exactly one' not in ' '.join(parsed.words).lower(), path

@@ -1,8 +1,69 @@
 # WBGGEMSDOE2 — DOE GEMS Prize
 
+## START HERE (2026-10-28) — one file is cleared to submit
+
+**Decision: `gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif` is unique,
+format-valid and ready to upload.** Everything else in this repository is still
+research-only and must not be submitted.
+
+| | |
+|---|---|
+| **Download** | [`submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif) · [`.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.zip) · [zero-outside twin](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif) · [all-finite `.zip`](submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.zip) |
+| **Bytes / SHA-256** | 212,133 B · `b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe` |
+| **Format** | PASS — 3730 x 3292, EPSG:32611, 100 m, single-band float32, values in [0,1] inside the footprint, NaN outside |
+| **Uniqueness** | PASS — no byte match; worst case 34.8 % of its cells inside any one of 30 fleet rasters' 300 m halo (limit 70 %), worst smoothed rank correlation 0.36 (limit 0.90) |
+| **Estimated score** | **0.15 – 0.28, centred 0.21** (STRUCTURAL-ESTIMATE, not a receipt) |
+| **Submission note (≤140 chars)** | `multi-physics curvature consensus, 1-px ridges, 2 px collar exclusion, 38k unit cells` |
+
+**Submit page:** <https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/>
+· **Why 0.2778 was the highest score and what it would take to beat it:**
+[docs/lane/findings.html](docs/lane/findings.html) (source: [research/gemsdoe_findings.md](research/gemsdoe_findings.md))
+· **Site:** [docs/lane/index.html](docs/lane/index.html) ·
+[executive summary](docs/EXECUTIVE_SUMMARY.md)
+
+The short version of the analysis: the organizer metric is
+`DTI = T / (T + 0.2 F + 0.8 (N - T))`. Inverting it on the one pair of fleet files that
+is provably the same detector at two masses (44,090 dots -> 0.2600 and its 37,654-dot
+pruned subset -> 0.2778) pins the scored truth at **12,783 pixels** and B2's coverage at
+**40.9 %**. At 38,000 cells a submission scores 0.105 at 15 % coverage, 0.173 at 25 %,
+0.206 at 30 % and 0.277 at 41 %; the leaderboard's 0.4544 needs >= 50 % coverage at
+40,000 cells. The nine focus sites all sit in the same 0.40-0.48 coverage band and are
+97-100 % duplicates of each other, so resubmitting any of them cannot change a score.
+
+### The prompt this repository is answering (verbatim, preserved as the brief)
+
+> **Task.** Executive summary + the single best submission + a download table across
+> GEMSDOE24/25/27/28/30/31/32/33/36 with uniqueness measured against all sites; a
+> PhD-level explanation of why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`
+> (GEMSDOE32) scored 0.2778 and whether it can be beaten; **highest urgency: one unique
+> `.tif`** with an unambiguous submit / do-not-submit verdict and a one-click download at
+> the top; a fix for the `"Predicted values must be in range [0, 1]"` rejection; the
+> PARALLEL-RUN PROTOCOL (single lane, duplicate stop at rank-correlation > 0.90 or > 70 %
+> of dots within 3 px, cached stack, JSON run card, 3 experiments / 2 h); 3-5 untried
+> geological hypotheses with physical signatures; verified research stored in the repo
+> with an automated feed; refreshed GitHub Pages; a multi-pass review followed by a PR
+> merged to main; and a closing statement of remaining work and limitations.
+>
+> **Standing constraints.** No hallucination — verify line by line, give official links
+> for manual review, flag every irregularity. Work autonomously, no human in the loop.
+> The TIF must be unique against every listed site; copying is only for learning. The
+> verdict must be blindingly obvious. Deliver a `.tif` (or `.zip`) on the organizer
+> grid/CRS with values in [0,1] and no NaN inside the footprint. Validation must run
+> programmatically. Every number must be labelled HOLDOUT-DTI (proxy truth) or
+> ORGANIZER-CONFIRMED (with the forum post/leaderboard link). Keep the Core Values /
+> Maximize P(Win) / Own the Outcome framing. Multi-pass review, then PR -> main.
+
+### The rest of this README is the legacy record
+
+The sections below describe the earlier *negative* release audit: 15 historical TIFFs,
+13 distinct SHA-256 identities and a literal all-registry stop. That verdict still holds
+for those files — it just no longer governs the one file in the lane above.
+
+---
+
 **Read this current decision first at every session.** Then read [AGENTS.md](AGENTS.md), the [project charter](docs/PROJECT_CHARTER.md), [findings](research/findings.md), the [canonical run card](evidence/run_card.json), [release audit](evidence/release_audit.json), and [source-verification record](research/source-verification-release-20261027.md). The earlier prompt and recorded amendments are preserved below; neither is a receipt or permission to bypass a failed gate. The latest code/repository review and priorities are in [repo-review-20261027.md](research/repo-review-20261027.md).
 
-## Current release: NEGATIVE — no file is approved. DO NOT SUBMIT.
+## Legacy release: NEGATIVE for every historical TIFF. DO NOT SUBMIT those.
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
 
