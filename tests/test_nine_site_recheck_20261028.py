@@ -78,8 +78,9 @@ def test_validator_outcome_matches_summary(rel, expect_ok):
 
 def test_readme_start_here_is_do_not_submit_and_points_to_nine_site_evidence():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
-    head = text[: text.index("## WBG4 / EDTI lane")]
+    head = text[: text.index("## Original project prompt")]
     assert "DO NOT SUBMIT" in head
     assert "EXECUTIVE_SUMMARY_NINE_SITES_20261028.md" in head
-    assert "no file offered for download" in head.lower()
+    assert "no new submission file to download" in head.lower()
     assert "cleared to submit" not in head.lower()
+    assert "session_run_card_20261029.json" in head

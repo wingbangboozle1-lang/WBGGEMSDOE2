@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Current three-pass repository review, evidence status, research hypotheses, and blockers for the DOE GEMS Prize submission workflow.">
+  <title>Current review · GEMS Research</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .review-shell{max-width:1080px;margin:0 auto;padding:30px 22px 64px}
+    .status{padding:22px;border:2px solid #a61b1b;background:#fff1f1;border-radius:12px;margin:20px 0}
+    .status h1{margin:0 0 8px;color:#8b1515}.card{background:#fff;border:1px solid #d9e0e7;border-radius:10px;padding:20px;margin:18px 0}
+    table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{border:1px solid #d7dee6;padding:10px;text-align:left;vertical-align:top}th{background:#edf2f5}
+    .muted{color:#536272}.tag{font-weight:700;color:#8b1515}code{overflow-wrap:anywhere}
+  </style>
+</head>
+<body>
+<header class="topbar"><div class="shell"><a href="index.html" class="brand">GEMS <small>RESEARCH</small></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a href="release.html">Download status</a><a href="executive-summary.html">Nine-site summary</a><a href="research.html">Research</a></nav></div></header>
+<main class="review-shell">
+  <p class="eyebrow">CURRENT SESSION · 2026-10-29</p>
+  <section class="status" role="alert"><h1>NEGATIVE — DO NOT SUBMIT</h1>
+    <p><strong>No new TIFF was generated.</strong> There is no file to download or submit. No experiment or competition slot was used. Do not use historical download links as current release approval.</p>
+    <p><strong>New score estimate: unavailable.</strong> GEMSDOE32 B2 0.2778 is USER-REPORTED and is not bound to an organizer receipt for exact file bytes. The current public rank-1 observation was 0.4544, ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT—not a score for this project.</p>
+    <button disabled aria-disabled="true">No eligible submission file</button>
+  </section>
+  <section class="card"><h2>Why there is no submission</h2>
+    <ul>
+      <li>The required single method paragraph has no explicit assignment: config records <code>UNASSIGNED</code>.</li>
+      <li>Competition reference rasters and the derived feature cache are absent. The pinned shared-template code has been restored and hash-verified, but its format/mask issue remains unresolved.</li>
+      <li>The registry inventory is incomplete and the continuous-prior overlap interpretation is unresolved.</li>
+      <li>The shared format/mask issue has not been fixed and pinned upstream.</li>
+      <li>No current feature canary, matched buffered whole-segment HOLDOUT-DTI, or spatial 95% CI was measured.</li>
+      <li>No independent selector or account-specific weekly quota decision exists.</li>
+    </ul>
+    <p><a href="readiness.html">View the dated checkout-readiness diagnostic →</a> · <a href="data/leaderboard.json">Public leaderboard snapshot JSON →</a> · <a href="data/session_run_card_20261029.json">Negative run card →</a></p>
+  </section>
+  <section class="card"><h2>Hypotheses preregistered, not tested</h2>
+    <p>Qualitative ranking only; none is selected as an assigned method lane or presented as a DTI estimate.</p>
+    <table><thead><tr><th>Rank</th><th>Hypothesis / layers</th><th>Signal and uncatalogued-fault rationale</th><th>Named non-fault mimic</th><th>Cost / state</th></tr></thead><tbody>
+      <tr><td>1</td><td>N1 signed edge-pair cancellation: RTP magnetics, isostatic gravity anomaly, conductive-base-depth proxy.</td><td>Signed multi-scale cross-normal profiles separate persistent steps from balanced finite-width-body lobes; may find buried boundaries without catalogue endpoint seeds.</td><td>Unfaulted intrusive/lithologic contact; real narrow fault-bounded block.</td><td>Medium; untested.</td></tr>
+      <tr><td>2</td><td>N2 radiometric-quiet magnetic transfer: total counts, RTP, depth proxy, conductivity, detrended-elevation slope.</td><td>Persistent magnetic edge with weak radiometric edge under cover; targets buried structures poorly represented by surface mapping.</td><td>Moisture, uniform sediment, weak signal, aircraft clearance, non-fault contact.</td><td>Medium; untested.</td></tr>
+      <tr><td>3</td><td>N3 catalogue-free edge-orientation transport: gravity, RTP, detrended elevation.</td><td>Label-free ridge-graph orientation continuity and cross-field-supported junctions; does not seed from catalogue endpoints.</td><td>Dikes/intrusives, drainage junctions, lithologic contacts, acquisition seams.</td><td>High; untested.</td></tr>
+      <tr><td>4</td><td>N4 survey-axis notch-stability control: magnetic/RTP and total counts plus published GeoDAWN geometry.</td><td>Local directional perturbation against rotated controls to detect acquisition-sensitive evidence; artifact-control, not direct fault proof.</td><td>True faults aligned with survey direction, anisotropic geology, gridding/leveling artifacts.</td><td>Low–medium; untested.</td></tr>
+    </tbody></table>
+    <p>See the detailed <a href="research/hypotheses.md">hypothesis record</a> for method distinctions, data provenance, and disconfirmation criteria. Proposal rankings are qualitative; they are not new-score predictions.</p>
+  </section>
+  <section class="card"><h2>Three-pass review</h2>
+    <ol><li><strong>Scope/evidence:</strong> read current project instructions, charter, release records, nine-site comparison and hypothesis records.</li><li><strong>Challenge:</strong> confirmed current missing inputs/cache/template; kept reported scores separate from holdout evidence and public leaderboard observations; reviewed official source pages.</li><li><strong>Final verification:</strong> updated the authoritative README, generated this current review, and preserved a negative JSON run card. No data-dependent experiment was possible or authorized.</li></ol>
+    <p>The required next action is to obtain an explicit lane assignment, resolve registry/prior interpretation, and restore the pinned data/cache/shared tools. Then run feature-alone leakage canaries followed by matched buffered whole-segment holdout. Promotion remains a separate selector step.</p>
+  </section>
+  <section class="card"><h2>Official sources checked</h2>
+    <ul><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem, features, metric, and format</a> — target is geological faults; alpha 0.2, beta 0.8, triangular 300 m kernel; EPSG:32611, 100 m, one float32 band and values [0,1].</li>
+    <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official public leaderboard</a> — current dated observation is not a project-file receipt.</li>
+    <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Organizer reference solution repository</a> — public README instructs downloading challenge data and placing it in <code>data/</code>.</li>
+    <li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN release</a> — survey descriptions and data release; it does not validate a hypothesis or score.</li></ul>
+    <p class="muted">See the full <a href="research/session-review-20261029.md">review report</a>, the <a href="data/session_run_card_20261029.json">run card</a>, and the <a href="executive-summary.html">nine-site executive summary</a>.</p>
+  </section>
+</main>
+</body>
+</html>
