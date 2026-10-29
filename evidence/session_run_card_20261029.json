@@ -1,0 +1,66 @@
+{
+  "schema": "wbggems.session-run-card.v1",
+  "review_date_utc": "2026-10-29",
+  "hypothesis": "No candidate tested. The four ranked proposals N1-N4 remain desk hypotheses and the required single method lane is unassigned.",
+  "mechanism": "Repository review, readiness check, historical nine-site audit review, and local test run only. No prediction surface, dot placement, holdout experiment, or TIFF generation was authorized or performed.",
+  "named_non_fault_process_that_could_mimic_it": "For N1, the leading untested proposal, an unfaulted intrusive or lithologic contact can produce a gravity/magnetic edge; a real narrow fault-bounded block could also be mistakenly vetoed.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positive_count": null,
+    "status": "NOT RUN; no lane assignment and required cached input/shared code are missing."
+  },
+  "historical_control_not_a_forecast": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": 0.006697,
+    "ci95": [0.005990, 0.007368],
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_count": 60988,
+    "file": "evidence/fixed_raster_holdout_20261028.json",
+    "limitation": "Fixed-raster catalogue-fault recovery, not regenerated hide-and-recover and not the competition's hidden unmapped-fault target. Never treat as a leaderboard estimate."
+  },
+  "feature_canary": {
+    "status": "NOT RUN; no new features or surface evaluated"
+  },
+  "registry_comparison": {
+    "candidate_surface_rank_correlation": null,
+    "candidate_final_dot_overlap": null,
+    "all_current_registry_rasters_checked": false,
+    "status": "No candidate exists. Historical nine-site pins were compared in the dated 2026-10-28 audit; the full current registry is incomplete and newer site HEADs are not fully audited.",
+    "policy_blocker": "Continuous-prior support is not exempted; its intended interpretation remains unresolved."
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "NOT RUN on a new raster; no new TIF generated.",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "ok_to_download_and_submit": false,
+  "weekly_slots_used": 0,
+  "experiments_run": 0,
+  "readiness": {
+    "command": "python scripts/check_readiness.py --check",
+    "exit_code": 2,
+    "status": "BLOCKED / DO NOT SUBMIT",
+    "report": "evidence/checkout_readiness.json"
+  },
+  "test_suite": {
+    "command": ".venv/bin/python -m pytest -q -rs",
+    "passed": 379,
+    "skipped": 18,
+    "failed": 0,
+    "warnings": 32,
+    "limitation": "Skipped tests require absent samples/labels or pinned shared template; pass is not evidence of data-backed pipeline readiness."
+  },
+  "verdict": "negative",
+  "review_passes": {
+    "pass_1": "Read project agreement, README, charter, findings, current run cards, readiness, release audit, nine-site table and previous review. Confirmed lane and cache blockers.",
+    "pass_2": "Re-ran readiness, identified and corrected stale positive README download/submit claims that conflicted with current negative gates; documented the ranked N1-N4 hypotheses and nine-site score/uniqueness comparison.",
+    "pass_3": "Installed declared requirements, ran full pytest suite (379 passed, 18 skipped), and re-checked no new candidate or slot was created. Final decision remains negative."
+  }
+}

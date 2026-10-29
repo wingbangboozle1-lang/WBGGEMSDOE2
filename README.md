@@ -1,4 +1,4 @@
-## START HERE (2026-10-28) — authoritative decision: NEGATIVE / DO NOT SUBMIT
+## START HERE (2026-10-29) — authoritative decision: NEGATIVE / DO NOT SUBMIT
 
 **There is currently no eligible submission TIFF. Do not download or submit any prediction file in this repository.** This is the fail-closed decision from the latest checkout review, not a claim that all historical approaches failed scientifically. No new experiment was authorized or run in this review, no new raster was generated, and no competition slot was used.
 
@@ -120,9 +120,7 @@ review.
 
 #### Legacy research inventory: NEGATIVE — no file is approved. DO NOT SUBMIT.
 
-> ⭐ **NEW UNIQUE SUBMISSION — OK TO DOWNLOAD (selector decision required).** A fresh-seed raster generated **2026-10-28** is byte-unique, format-valid and unique against all nine GEMSDOE focus sites and all 69 sparse-peer fleet rasters:
-> **[`wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif`](docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif)** — HOLDOUT-DTI **0.1771**, EMPIRICAL-ESTIMATE ≈ 0.15, SHA-256 `0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10`.
-> **Not** auto-approved for a weekly slot: it still fails the literal all-registry stop (continuous prior `17GEMSDOE` = 100%; accessible registry incomplete). Full detail: [`docs/distal_exp2/`](docs/distal_exp2/index.html) · [run card](evidence/RUN_CARD_DISTAL2.json) · [see the WBG2-DISTAL2 section below](#wbg2-distal2-fresh-seed-campaign-2026-10-28-holdout-dti-01771-new-unique-submission).
+> **WITHDRAWN ARCHIVE RECORD — DO NOT DOWNLOAD OR SUBMIT.** A 2026-10-28 historical distal2 raster was format-checked and tested against a limited sparse-peer inventory; it still fails the literal all-registry stop (continuous prior `17GEMSDOE` = 100%, with an incomplete registry). Its historical holdout value is not a leaderboard estimate and did not authorize a slot. The old direct TIFF download link is intentionally omitted here. See the archived research record and current negative disposition in [`evidence/RUN_CARD_DISTAL2.json`](evidence/RUN_CARD_DISTAL2.json) and [`evidence/session_run_card_20261029.json`](evidence/session_run_card_20261029.json).
 
 **All existing TIFFs are research-only.** Former DZ-16 and H3-PACK approvals are revoked. Different lanes, filenames, packaging, projection fits, or density-normalized diagnostics do not override the requested literal all-registry stop.
 
@@ -133,12 +131,7 @@ review.
 > *literal* all-registry rule — which no non-empty submission can pass, because a stride-5 covering
 > lattice lies within 3 px of 99.87 % of the footprint — so it is assessed under the
 > **method-bearing** scope, where it has 0 violations (max overlap 0.5604, |Spearman| 0.1665).
-> It is the only artifact this project presents as **format-valid and safe to submit**, and
-> submitting it is a **speculative slot**, not a promotion: its pooled holdout DTI (0.1171) is
-> below WBG2-GVCD (0.1759) on the shared evaluator. Publication runs through
-> `config/release_register.json`, whose `approved_candidates()` re-hashes every registered file on
-> every build; the fail-closed behaviour is covered by
-> `tests/test_release_safety.py::test_registered_candidate_is_the_only_publishable_owned_download`.
+> **WITHDRAWN — RESEARCH ONLY / DO NOT DOWNLOAD OR SUBMIT.** This historical EDTI artifact is not cleared under the current literal registry policy. Its old format and holdout results do not authorize an upload or weekly slot.
 
 - **[Download status: exact research TIFFs, hashes and read-back validation](docs/release.html)**
 - **[Live dashboard](https://wingbangboozle1-lang.github.io/WBGGEMSDOE2/)** · [submission instructions](docs/executive-summary.html) · [nine-site executive table](docs/release.html#nine-sites)
@@ -154,7 +147,13 @@ This review generated **one new unique candidate** under the fresh-seed protocol
 
 Run `python scripts/check_readiness.py --check` after installing requirements. Exit **2** means research is blocked; exit **1** is an audit error. Without `--check`, exit 0 means only that a diagnostic was written, **not** permission to train or submit. This read-only command checks current input, raw-band-cache and unchanged shared-code hashes and validates the existing negative release inventory. A historical restoration receipt does not establish that ignored files survived in a new checkout. The generated page is a **dated checkout snapshot**, not a live data-access guarantee.
 
-The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The official public leaderboard was freshly retrieved in this review and displayed 0.4544 at rank 1 (also recorded in [the 2026-10-28 snapshot](evidence/public_leaderboard_observation_20261028.json)); this is a public observation, not a per-file receipt. Account quota remains unavailable.
+The current request's unique-TIFF priority, nine-site focus, three-experiment/two-hour budget, separate slot selector, evidence labels, no private shared-tool forks, and Core Values remain the governing project brief preserved below. It still supplies no explicit single-method lane. No new TIFF, canary or HOLDOUT-DTI is invented to bypass that stop. The prior 2026-10-28 review recorded a public leaderboard observation of 0.4544 at rank 1 in [its dated snapshot](evidence/public_leaderboard_observation_20261028.json). This session did not refresh the live leaderboard; the saved observation is not a per-file receipt. Account quota remains unavailable.
+
+### Current-session update — 2026-10-29
+
+The current review is recorded in [`research/session-review-20261029.md`](research/session-review-20261029.md) and [`evidence/session_run_card_20261029.json`](evidence/session_run_card_20261029.json). Readiness remains **BLOCKED / DO NOT SUBMIT**. This session generated no TIFF, ran no new holdout experiment, spent no slot, and makes no numerical leaderboard estimate. The nine-site summary table now explicitly includes an unavailable-estimate column; all supplied site scores remain USER-REPORTED. The final full test suite passed **379**, skipped **18** because of absent external inputs/shared template, and failed **0**.
+
+**Archive-link warning:** a later section of this long README contains old candidate filenames and download paths. They are retained only as historical evidence. Any old “OK TO DOWNLOAD,” “safe to submit,” or selector recommendation is superseded and revoked by the current negative run card. **Do not download or submit those files. There is no eligible TIFF in this checkout.**
 
 ### What was independently measured
 
@@ -166,7 +165,7 @@ The audit reopened **15 existing TIFF paths / 13 distinct SHA-256 identities**, 
 |---|---:|---|---|---|
 | `wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros` *(WBG2-GVCD · HOLDOUT-DTI 0.17591 · 496/496 discrete 8-org PASS)* | 100.000% | PASS | PASS | **DO NOT SUBMIT** — 3 blanket controls |
 | `wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros` *(WBG2-DISTAL · HOLDOUT-DTI 0.1770)* | 99.887% | PASS | PASS | **DO NOT SUBMIT** — blanket/dense stop |
-| ⭐ `wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros` *(WBG2-DISTAL2 · HOLDOUT-DTI 0.1771 · NEW, generated today · unique vs 9 focus sites + 69 sparse peers)* | focus max 0.679 · sparse max 0.686 (both ≤ 0.70) | PASS | PASS | **OK TO DOWNLOAD** — selector decision; literal continuous-prior stop |
+| `wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros` *(historical WBG2-DISTAL2 research artifact)* | limited-scope focus/sparse audit only; literal all-registry stop unresolved | historical local check | historical local check | **WITHDRAWN — DO NOT DOWNLOAD OR SUBMIT** |
 | `wbg2-distaloof-quota35-37988dots-20261028T003932Z-cbdb172d-zeros` | 99.863% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros` | 99.860% | PASS | PASS | **DO NOT SUBMIT** |
 | `wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros` *(concurrent session; holdout not run)* | 67.167% | PASS | PASS | **DO NOT SUBMIT** — 100% continuous-prior overlap under literal support |
@@ -227,26 +226,26 @@ Prior MSPTCD **SOURCE-REPORTED HOLDOUT-DTI**: 0.042554, 95% spatial-bootstrap CI
 
 The **full pinned 19-band raw stack and caches were restored**: 418,912,844 source bytes, SHA-256 `4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5`. Organizer provenance, band-unit semantics and the separate shared derived bank remain unresolved. Do not claim the raw stack is absent or that lack of GPU prevents this audit. [Input receipt](evidence/data_preparation.json) · [raw feature diagnostic](evidence/feature_semantics_review.json).
 
-## WBG2-DISTAL-OOF Campaign (2026-10-28, HOLDOUT-DTI = 0.1770, promote-to-selector)
+## Archived WBG2-DISTAL-OOF campaign (2026-10-28; research record only; no current promotion)
 
 This lane is **distinct from the concurrent 6,000-dot `candidate/` distal file** governed by the negative `evidence/RUN_CARD_DISTAL.json`. The earlier DPHS campaign hit a **local ceiling of 0.1735 HOLDOUT-DTI** but diagnosed a fatal structural defect: its winning recipe was 97.3% in-sample, so the full map collapsed to only **3.64% distal dots** and copied the known catalogue. The next prescribed action was to produce a **100% spatial-OOF main offspring surface** with a distal (3.2–10 km) piedmont allocation. The **WBG2-DISTAL** lane did exactly that across three pre-registered experiments inside the unchanged shared evaluator and writer:
 
-* **`natural_oof` (recommended to selector, HOLDOUT-DTI 0.1770 [0.1549, 0.1976])**: the highest hide-and-recover score in this repository to date. On the full map it naturally recovered an **18.7% distal share** with median visible-fault distance 1.06 km. The candidate is an exact new byte identity, is unique against all 477 audited fleet files under the *sparse-peer, comparable-budget* duplicate rule (max 3-px overlap 0.6785; nine focus champions ≤ 0.6307), and passes every strict format, finite-value and whole-array [0,1] check. It is explicitly promoted **to the separate selector only**; the canonical release decision above remains negative and **0 weekly slots were spent**.
+* **Historical `natural_oof` experiment (former selector recommendation withdrawn; source-reported HOLDOUT-DTI 0.1770 [0.1549, 0.1976])**: the highest hide-and-recover score in this repository to date. On the full map it naturally recovered an **18.7% distal share** with median visible-fault distance 1.06 km. The candidate is an exact new byte identity, is unique against all 477 audited fleet files under the *sparse-peer, comparable-budget* duplicate rule (max 3-px overlap 0.6785; nine focus champions ≤ 0.6307), and passes every strict format, finite-value and whole-array [0,1] check. Its former selector recommendation is withdrawn by the current negative release decision; **0 weekly slots were spent**.
 * **`quota35` (0.1548)** and **`piedmont40` (0.1515)**: mechanically reproduced B2-like distal shares (35.0% and 39.8%) and B2-like median distances, but scored lower on the matched holdout and did not earn a higher fleet empirical estimate. This is the campaign's key geological lesson: **distal allocation is a side-effect of a good blind-fault surface, not a free dial.**
 * **Honest estimate**: the independent fleet empirical model estimates about **0.10–0.11** for these files (95% PI up to about 0.23). The directly observed public leaderboard high was **0.4544** (xiaofanhu, 2026-10-27/28 ORGANIZER-PUBLISHED PUBLIC OBSERVATION, `evidence/public_leaderboard_observation_20261028.json`). There is **no supportable claim** that any local file already beats the USER-REPORTED 0.2778 or the observed leaderboard high; only an organizer receipt for an exact submitted SHA-256 can change that.
 
 [DISTAL-OOF selector decision table](docs/distal/index.html) · [Executive summary](docs/distal/executive-summary.html) · [How a selector would submit](docs/distal/how-to-submit.html) · [Findings](research/distal_findings.md) · [Pre-registration + Amendment A1](research/distal_preregistration_20261027.md) · [Run card](evidence/RUN_CARD_DISTAL_OOF.json)
 
-## WBG2-DISTAL2 Fresh-Seed Campaign (2026-10-28, HOLDOUT-DTI = 0.1771, new unique submission)
+## Archived WBG2-DISTAL2 campaign (2026-10-28; research record only; withdrawn)
 
-This is the **newest generated submission** — a byte-unique raster produced today under the parallel-run protocol's fresh-seed rule (SEED `20261028`), the one assigned method lane (`natural_oof`), the pinned shared template, and the unchanged shared evaluator and writer. It is **distinct from** the historical `wbg2-distaloof-*` files above.
+This is an archived historical experiment. Its local uniqueness and holdout evidence were limited in scope and are not current upload clearance; current policy explicitly says **DO NOT DOWNLOAD OR SUBMIT**. The literal registry check and incomplete-registry blocker remain unresolved.
 
 * Pipeline: pinned official 19-band GeoDAWN stack + 60-feature DPHS bank (60 features / 61.9 s, zero missing, operator names exact), `natural_oof` distal piedmont, 38,000 dots, packaged by the unchanged shared writer.
 * **HOLDOUT-DTI 0.1771**, 95% CI [0.1570, 0.1983], 60,988 withheld positives, evaluator `gems57-pooled-hide-v2` (61/61 leakage canaries ≤ 0.6179; strict whole-array [0,1] / zero-NaN PASS). Pooled across 4 folds: `natural_oof` 0.1771 vs `quota35` 0.1555 vs `piedmont40` 0.1533 → selection rule picks `natural_oof`; `winner_is_quota_arm: false`.
 * **New file**: [`wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif`](docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif) · [`.zip`](docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.zip) · SHA-256 `0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10` · note `WBG2-DISTAL natural_oof 100pctOOF CELF300m 38000dots gt32=0.19 HOLDOUT-DTI=0.1771`.
 * **Uniqueness**: rebuilt a local registry from 95 locally-fetched fleet rasters (`data_public/rasters/`; accessible-registry snapshot `data_public/registry_index_snapshot.json` has 655 rasters / 56 repos and is incomplete). Focus-site 3-px overlap **max 0.6792 ≤ 0.70** (9 sites × 22 candidates); sparse-peer (≤65k dots) 69 rasters **max 0.6856 ≤ 0.70**; worst Spearman 0.0931. The literal all-registry gate still FAILs only because the registered *continuous* prior `17GEMSDOE` covers 100% of any nonempty raster and because the accessible scan is incomplete — **the same two reasons that reject the 0.2778 champion.**
 * **Estimated score**: `EMPIRICAL-ESTIMATE` ≈ **0.15** (RidgeCV + StandardScaler, LOSO R² 0.2128, Spearman 0.6478 over 93 USER-REPORTED fleet scores) — explicitly **not a competition score**. The observed public-leaderboard high remains **0.4544** (xiaofanhu, ORGANIZER-PUBLISHED PUBLIC OBSERVATION).
-* **Status**: **OK TO DOWNLOAD**; `ok_to_submit: False`. Promotion to a real competition slot is a **separate selector decision**. **0 weekly slots spent.** No score is fabricated; this file cannot reproduce the earlier “Predicted values must be in range [0, 1]” failure (whole array finite in [0,1], 0 NaN).
+* **Current status**: **WITHDRAWN ARCHIVE — DO NOT DOWNLOAD OR SUBMIT**. The historical local format check does not establish complete-registry uniqueness, organizer acceptance, or selector approval. No weekly slot was spent.
 
 [WBG2-DISTAL2 executive summary + download subpage](docs/distal_exp2/index.html) · [uniqueness audit](evidence/wbg2_distal2_uniqueness_audit.json) · [score estimate](evidence/wbg2_distal2_score_estimate.json) · [experiment results](evidence/wbg2_distal_exp2_results.json) · [run card](evidence/RUN_CARD_DISTAL2.json) · [script](scripts/run_wbg2_distal_exp2.py)
 

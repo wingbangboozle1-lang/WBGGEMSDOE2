@@ -76,3 +76,19 @@ def test_ranked_proposals_match_both_dashboards():
     for row in rows:
         assert row["title"] in ranking and row["title"] in docs and row["title"] in fieldnotes
     assert "UNASSIGNED" in docs and "UNASSIGNED" in fieldnotes
+
+
+def test_current_submission_summary_is_fail_closed_and_score_estimates_are_honest():
+    """Current landing summaries must not resurrect archived download approvals."""
+    import json
+
+    summary = (ROOT / "docs/lane/EXECUTIVE_SUMMARY.md").read_text(encoding="utf-8")
+    card = json.loads((ROOT / "evidence/session_run_card_20261029.json").read_text())
+    assert "No competition TIFF is currently eligible" in summary
+    assert "DO NOT DOWNLOAD OR SUBMIT" in summary
+    assert "File to download | **None**" in summary
+    assert card["ok_to_download_and_submit"] is False
+    assert card["raster_sha256"] is None and card["submission_name"] is None
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "Any old “OK TO DOWNLOAD,” “safe to submit,” or selector recommendation is superseded and revoked" in readme
+    assert "There is no eligible TIFF in this checkout" in readme
