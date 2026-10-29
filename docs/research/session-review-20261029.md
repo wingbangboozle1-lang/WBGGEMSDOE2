@@ -44,6 +44,8 @@ The request's lane instruction says to use a single method paragraph, but the cu
 - The shared template's format/mask issue is documented but not resolved upstream in the pinned implementation. A local replacement evaluator/writer would violate the reuse rule.
 - No feature-alone leakage canary, prescribed whole-segment buffered hide-and-recover, matched incumbent test, or spatial 95% CI was run for these hypotheses.
 - No separate selector receipt, account-specific weekly quota check, or organizer acceptance receipt exists.
+- Prior owner-mirror records report identical SHA-256 values for `labels.tif` and `existing_faults.tif` (`7ba308cc…4093`). Both files are absent in this checkout, so I did not re-open them. If an authenticated organizer download also has this identity, a holdout that treats one as hidden positives and the other as known faults is degenerate; do not rely on such holdout results until official files are compared. See [`evidence/data_preparation.json`](../evidence/data_preparation.json). The official problem page was retrievable for source review, but competition binaries were not authenticated or downloaded.
+- The exact TIFF that triggered the reported portal error “Predicted values must be in range [0, 1]” is not present, so its cause remains unknown. The shared validator mask defect is real in the pinned code but cannot be asserted as the cause of that distinct upload error.
 
 Thus a HOLDOUT-DTI number, CI, validation claim, and unique TIFF would be fabricated if supplied. Stopping is required by the method-lane and data gates, as well as the request's explicit stop-on-duplicate rule. This review does not create or select a weekly submission.
 

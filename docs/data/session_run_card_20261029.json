@@ -26,7 +26,7 @@
   "submission_note": null,
   "submission_note_max_characters": 140,
   "verdict": "negative",
-  "reason": "Explicit method lane is unassigned; authenticated competition rasters and derived feature cache are absent; pinned shared-template code is restored/hash-verified but its format/mask issue is unresolved; complete current registry and prior interpretation are unresolved; no separate selector authorization exists.",
+  "reason": "Explicit method lane is unassigned; authenticated competition rasters and derived feature cache are absent; pinned shared-template code is restored/hash-verified but its format/mask issue is unresolved; complete current registry and prior interpretation are unresolved; a prior owner-mirror receipt reports identical labels/existing-faults hashes and must be checked against authenticated organizer inputs; no separate selector authorization exists.",
   "experiments_run": 0,
   "weekly_slots_used": 0,
   "sources": [

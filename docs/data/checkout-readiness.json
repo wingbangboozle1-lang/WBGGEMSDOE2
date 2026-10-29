@@ -1,13 +1,13 @@
 {
   "schema": "wbggems.checkout-readiness.v1",
-  "checked_utc": "2026-10-29T20:35:12.898623+00:00",
+  "checked_utc": "2026-10-29T20:37:01.905184+00:00",
   "evidence_class": "CHECKOUT-DIAGNOSTIC; NOT HOLDOUT-DTI OR AN ORGANIZER RECEIPT",
   "scope": "Dated local checkout snapshot. CI and other machines can have different ignored caches. No network, raster generation, model experiment, or submission.",
   "sources": {
     "evidence/release_audit.json": "980aa0739927d0b001400ab6f507b970b653f8db44291b033d39ed7591bd8e3b",
     "config/research_hypotheses.json": "53405f971d5c6615ef8ccaf31b6ce0b241af740dede23ad1af593c85dd95beeb",
     "registry/template_pins.json": "c25b455d2c44828508bbfbb94d4145ca7ca7b7a3df35d9916f643ad48b24656c",
-    "evidence/data_preparation.json": "c4ff097ad6da68997f67eeed8d0c3c286142024083a4ad1132190e6c3dc0f84e",
+    "evidence/data_preparation.json": "a3fddde26447be8cc9ccd748290c7e989ef073afbc81dc9d379608640afd276d",
     "evidence/feature_cache.json": "9195d416f11a37d11aaf0980926e21b605c1993ac715a5fd8be824068e515639"
   },
   "research_launch_authorized": false,
