@@ -1,4 +1,17 @@
-## START HERE (2026-10-28) — authoritative decision: NEGATIVE / DO NOT SUBMIT
+## START HERE (2026-10-29) — still NEGATIVE / DO NOT SUBMIT
+
+**Latest session:** [`research/session-review-20261029.md`](research/session-review-20261029.md) · run card [`evidence/session_run_card_20261029.json`](evidence/session_run_card_20261029.json).
+
+- **No TIFF is offered for download.** No method lane is assigned, the derived feature bank and holdout are not run, and the registry check is incomplete. A submission-ready file needs all of these.
+- **Reachable from the sandbox:** GitHub, npm and PyPI only. DrivenData, Dropbox, OpenEI, USGS and NLR are unreachable, so official files cannot be downloaded here.
+- **Owner-mirror inputs restored and hash-verified** (`scripts/prepare_data.py --fetch`). This is identity evidence only, not an organizer copy.
+- **Irregularity for review:** the mirror's `labels.tif` and `existing_faults.tif` are byte-identical (SHA-256 `7ba308cc…4093`). Holdout numbers are not valid until the official files are compared.
+- **Leaderboard conflict:** the prompt cites 0.4413 and 0.3195; the 2026-10-28 public observation was 0.4544. Not re-checked today.
+- **Candidates (desk proposals, not run):** C1 gravity-slope ridge veto (top, the one band never configured in this repo), C2 earthquake-intensity prior, C3 conductive-base step, C4 strain-rate coincidence.
+- **Decisions needed from you:** (1) assign one method lane; (2) authenticate the official labels against your own DrivenData login; (3) confirm the leaderboard.
+- Tests: 378 passed, 18 skipped (skips are for absent official inputs), 0 failed.
+
+## Previous decision (2026-10-28) — authoritative decision: NEGATIVE / DO NOT SUBMIT
 
 **There is currently no eligible submission TIFF. Do not download or submit any prediction file in this repository.** This is the fail-closed decision from the latest checkout review, not a claim that all historical approaches failed scientifically. No new experiment was authorized or run in this review, no new raster was generated, and no competition slot was used.
 
