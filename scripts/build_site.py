@@ -38,11 +38,12 @@ from build_release import dphs_evidence
 release_audit = load_negative_release(ROOT)
 _, dphs_row, dphs_holdout = dphs_evidence(ROOT, release_audit)
 
-for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json', 'dense_prior_certificate.json', 'parallel_review.json', 'parallel_candidate_audit.json', 'conduit_review.json', 'shared_registry_index_summary.json', 'parallel_range_diagnostics_20261027.json', 'public_leaderboard_observation_20261027.json', 'feature_semantics_review.json', 'organizer_reference_review.json', 'public_leaderboard_recheck_20261027.json', 'request_claim_conflicts.json'):
+for name in ('data_preparation.json', 'feature_cache.json', 'b2_local_format.json', 'dense_prior_certificate.json', 'parallel_review.json', 'parallel_candidate_audit.json', 'conduit_review.json', 'shared_registry_index_summary.json', 'parallel_range_diagnostics_20261027.json', 'public_leaderboard_observation_20261027.json', 'public_leaderboard_observation_20261029.json', 'session_run_card_20261029.json', 'feature_semantics_review.json', 'organizer_reference_review.json', 'public_leaderboard_recheck_20261027.json', 'request_claim_conflicts.json'):
     source = ROOT / 'evidence' / name
     if source.is_file():
         shutil.copyfile(source, DOCS / 'data' / name)
 shutil.copyfile(ROOT / 'config/research_hypotheses.json', DOCS / 'data/research_hypotheses.json')
+shutil.copyfile(ROOT / 'research/session-review-20261029.md', DOCS / 'research/session-review-20261029.md')
 
 
 def e(value) -> str:
@@ -63,7 +64,7 @@ def icon(name: str) -> str:
 
 
 def header(current: str) -> str:
-    nav = [('index.html','Overview'),('release.html','Download status'),('executive-summary.html','Executive summary'),('distal_exp2/index.html','⭐ WBG2-DISTAL2'),('research.html','Research'),('sources.html','Sources')]
+    nav = [('index.html','Overview'),('release.html','Download status'),('executive-summary.html','Executive summary'),('distal_exp2/index.html','⭐ WBG2-DISTAL2'),('research.html','Research'),('session-review-20261029.html','Current review'),('sources.html','Sources')]
     links = ''.join('<a href="{}"{}>{}</a>'.format(href, ' aria-current="page"' if href == current else '', label) for href, label in nav)
     return f'''<a class="skip" href="#main">Skip to content</a><header class="topbar"><div class="shell">
 <a href="index.html" class="brand" aria-label="GEMS research home"><span class="brandmark"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/></svg></span>GEMS <small>RESEARCH</small></a>

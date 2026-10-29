@@ -1,0 +1,9 @@
+{
+  "evidence_class": "ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT; NOT A RECEIPT",
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "captured_utc": "2026-10-29T20:28:34Z",
+  "capture_method": "Arena page retrieval of the official public leaderboard during the 2026-10-29 repository review",
+  "rank_1_public_dti": 0.4544,
+  "rank_1_participant": "xiaofanhu",
+  "note": "The official page displayed 0.4544 at rank 1 when retrieved. Public leaderboard observation only; not HOLDOUT-DTI and not an organizer receipt for any project raster. The page can change."
+}

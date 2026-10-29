@@ -1,61 +1,38 @@
 {
   "schema": "wbggems.session-run-card.v1",
-  "review_date_utc": "2026-10-29",
-  "hypothesis": "No hypothesis tested. Candidates C1-C4 are desk proposals in research/session-review-20261029.md; top candidate C1 (iso_grav_anom_slope gravity-slope ridge veto) is not assigned to a lane.",
-  "mechanism": "None executed. No candidate surface or dot placement was constructed.",
-  "named_non_fault_mimic": "For C1: basin-margin density contrast without a fault can produce a gravity-slope ridge co-located with a magnetic edge.",
-  "holdout_dti": {
-    "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": null,
-    "withheld_positive_pixels": null,
-    "value": null,
-    "ci95": null,
-    "status": "NOT RUN. Method lane UNASSIGNED; derived feature bank and matched experiment absent."
-  },
-  "feature_canary": { "status": "NOT RUN" },
-  "registry_comparison": {
-    "candidate_surface_rank_correlation": null,
-    "candidate_final_dot_overlap": null,
-    "status": "No candidate generated; registry audit remains incomplete."
+  "review_date": "2026-10-29",
+  "hypothesis": "No experiment authorized or run; N1 signed edge-pair cancellation is the highest-ranked qualitative proposal only.",
+  "mechanism": "Proposed: distinguish persistent gravity/magnetic structural steps from balanced signed cross-normal lobes of finite-width bodies; no feature was generated or tested.",
+  "named_non_fault_process_that_could_mimic_it": "An unfaulted intrusive or lithologic contact can create a persistent geophysical edge; a real narrow fault-bounded block could also be falsely rejected by the proposed cancellation test.",
+  "holdout_dti": null,
+  "holdout_ci_95": null,
+  "withheld_positives": null,
+  "evaluator_version": null,
+  "evidence_label": "No HOLDOUT-DTI measured. USER-REPORTED 0.2778 for GEMSDOE32 B2 is not an organizer receipt. Official public leaderboard snapshot 0.4544 is a public observation, not a project-file receipt.",
+  "correlation_overlap_vs_registry": {
+    "preplacement_surface_rank_correlation": null,
+    "final_dots_overlap_within_3px": null,
+    "result": "Not measured for a new candidate because no candidate or placement exists. Existing audit is incomplete; a continuous-prior rule interpretation remains unresolved. No uniqueness pass claimed."
   },
   "raster_sha256": null,
-  "validator": {
-    "status": "No new raster written.",
+  "validator_output": {
+    "raster_exists": false,
     "no_nan_inside_footprint": null,
-    "values_in_0_1": null,
-    "crs_shape_transform_match": null
+    "values_in_range_0_1": null,
+    "crs_shape_transform_match": null,
+    "status": "NOT RUN — no new TIFF exists; existing local checks do not authorize submission."
   },
-  "input_identity": {
-    "evidence_class": "OWNER-MIRROR hash identity only; NOT an authenticated organizer copy",
-    "data/official/training_features.tif": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
-    "data/official/labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-    "data/official/existing_faults.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
-    "data/official/sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
-    "irregularity": "labels.tif and existing_faults.tif are byte-identical; flagged for manual review"
-  },
-  "submission": {
-    "name": null,
-    "note": null,
-    "ok_to_download_and_submit": false,
-    "reason": "No lane, no holdout, no complete registry check, no selector receipt."
-  },
-  "checkout_readiness": {
-    "command": "PYTHONPATH=src .venv/bin/python scripts/check_readiness.py --check",
-    "exit_code": 2,
-    "status": "BLOCKED / DO NOT SUBMIT",
-    "evidence_path": "evidence/checkout_readiness.json"
-  },
-  "test_suite": {
-    "command": "PYTHONPATH=src .venv/bin/python -m pytest -q -rs",
-    "passed": 378,
-    "skipped": 18,
-    "failed": 0
-  },
-  "network": {
-    "reachable": ["github.com", "api.github.com", "registry.npmjs.org", "pypi.org"],
-    "unreachable": ["www.drivendata.org", "www.dropbox.com", "gdr.openei.org", "docs.nlr.gov", "www.usgs.gov", "epsg.io"]
-  },
-  "weekly_slots_used": 0,
+  "submission_name": null,
+  "submission_note": null,
+  "submission_note_max_characters": 140,
+  "verdict": "negative",
+  "reason": "Explicit method lane is unassigned; authenticated competition rasters and derived feature cache are absent; pinned shared-template code is restored/hash-verified but its format/mask issue is unresolved; complete current registry and prior interpretation are unresolved; a prior owner-mirror receipt reports identical labels/existing-faults hashes and must be checked against authenticated organizer inputs; no separate selector authorization exists.",
   "experiments_run": 0,
-  "verdict": "negative"
+  "weekly_slots_used": 0,
+  "sources": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://github.com/drivendataorg/gems-prize-reference-solution",
+    "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and"
+  ]
 }

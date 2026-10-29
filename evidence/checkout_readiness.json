@@ -1,13 +1,13 @@
 {
   "schema": "wbggems.checkout-readiness.v1",
-  "checked_utc": "2026-10-29T20:27:30.646729+00:00",
+  "checked_utc": "2026-10-29T20:37:01.905184+00:00",
   "evidence_class": "CHECKOUT-DIAGNOSTIC; NOT HOLDOUT-DTI OR AN ORGANIZER RECEIPT",
   "scope": "Dated local checkout snapshot. CI and other machines can have different ignored caches. No network, raster generation, model experiment, or submission.",
   "sources": {
     "evidence/release_audit.json": "980aa0739927d0b001400ab6f507b970b653f8db44291b033d39ed7591bd8e3b",
     "config/research_hypotheses.json": "53405f971d5c6615ef8ccaf31b6ce0b241af740dede23ad1af593c85dd95beeb",
     "registry/template_pins.json": "c25b455d2c44828508bbfbb94d4145ca7ca7b7a3df35d9916f643ad48b24656c",
-    "evidence/data_preparation.json": "c4ff097ad6da68997f67eeed8d0c3c286142024083a4ad1132190e6c3dc0f84e",
+    "evidence/data_preparation.json": "a3fddde26447be8cc9ccd748290c7e989ef073afbc81dc9d379608640afd276d",
     "evidence/feature_cache.json": "9195d416f11a37d11aaf0980926e21b605c1993ac715a5fd8be824068e515639"
   },
   "research_launch_authorized": false,
@@ -24,7 +24,7 @@
     },
     {
       "id": "shared-code",
-      "status": "blocked",
+      "status": "verified",
       "detail": "Pinned shared code hashes only; this does not resolve the documented upstream format-mask defect."
     },
     {
@@ -204,146 +204,146 @@
     {
       "path": ".cache/shared-template/src/gems57/__init__.py",
       "expected_sha256": "bd7f12b45caf67b7b4d0da4656c7c3895513bec524ec0b7f251227ecbdd39d26",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "bd7f12b45caf67b7b4d0da4656c7c3895513bec524ec0b7f251227ecbdd39d26",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/anatomy.py",
       "expected_sha256": "f47103ae0f615a0f04ef0427ea83ad2dd11ecd4af34e53b99f2e20e557025cf9",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "f47103ae0f615a0f04ef0427ea83ad2dd11ecd4af34e53b99f2e20e557025cf9",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/damagezone_envelope.py",
       "expected_sha256": "5e5cc359f3ccc239a0906d96f642057461ae7928e967f02249b62dab2ac98a36",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "5e5cc359f3ccc239a0906d96f642057461ae7928e967f02249b62dab2ac98a36",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/emit.py",
       "expected_sha256": "05c473e736e4a599b35be77b2791b62d72460383853c8fba0eb56ea26c99055d",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "05c473e736e4a599b35be77b2791b62d72460383853c8fba0eb56ea26c99055d",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/evaluate_holdout.py",
       "expected_sha256": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/evaluator_provenance.py",
       "expected_sha256": "6f1d1932fbe427ceb028f74d80926aa836b2cb77c982625c97d1c4141b7b80e2",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "6f1d1932fbe427ceb028f74d80926aa836b2cb77c982625c97d1c4141b7b80e2",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/faultzone.py",
       "expected_sha256": "620537490173e565898911577f6cdf95e288d8eff326830a1da9c71f4b467bdd",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "620537490173e565898911577f6cdf95e288d8eff326830a1da9c71f4b467bdd",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/fit.py",
       "expected_sha256": "936488cc00c0f71c64d7e36a94dd1ddd0f17625abeefb41e7c6e75360ac14ae8",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "936488cc00c0f71c64d7e36a94dd1ddd0f17625abeefb41e7c6e75360ac14ae8",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/fitting.py",
       "expected_sha256": "91fbc11fc51374ca07b5246d5221edee33636e546fa457331e84272b80a7cbc7",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "91fbc11fc51374ca07b5246d5221edee33636e546fa457331e84272b80a7cbc7",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/gates.py",
       "expected_sha256": "7c57f70dbba58bb1112df4193a3de56516af0f981970d4b943b394f99b573dae",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "7c57f70dbba58bb1112df4193a3de56516af0f981970d4b943b394f99b573dae",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/geo.py",
       "expected_sha256": "4320d4fb718a66a794b21c35af28cc1f2ce7b6e49649b17e86b3e9eb34235ff8",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "4320d4fb718a66a794b21c35af28cc1f2ce7b6e49649b17e86b3e9eb34235ff8",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/grid.py",
       "expected_sha256": "b96df7ec0f33658a61b0baa5db85fcd19be2cd8b1873f99699bd26bddae8cd8d",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "b96df7ec0f33658a61b0baa5db85fcd19be2cd8b1873f99699bd26bddae8cd8d",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/holdout.py",
       "expected_sha256": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/metric.py",
       "expected_sha256": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/network.py",
       "expected_sha256": "d5e53d7df182e69bb22a6e39ac16f43d3f5b730e503d86538d5f8f7360020943",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "d5e53d7df182e69bb22a6e39ac16f43d3f5b730e503d86538d5f8f7360020943",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/offcatalogue.py",
       "expected_sha256": "5c1937dda9f16563d8679446bb60e66c8c878e7440c522c44afa0e7879b7b6e8",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "5c1937dda9f16563d8679446bb60e66c8c878e7440c522c44afa0e7879b7b6e8",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/relay_bend_anatomy.py",
       "expected_sha256": "cb9b79b9b61feaaaf6305009f571b6222c1ec390d1f94a1b05a91e05e7eb5dcb",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "cb9b79b9b61feaaaf6305009f571b6222c1ec390d1f94a1b05a91e05e7eb5dcb",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/spatial.py",
       "expected_sha256": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/strand_orientation.py",
       "expected_sha256": "c1dd6d8bc39c48c4cda11321c116e600b59b18cf1764e23ce3d5438bea9dd0bc",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "c1dd6d8bc39c48c4cda11321c116e600b59b18cf1764e23ce3d5438bea9dd0bc",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/strike_zone.py",
       "expected_sha256": "eaf5b1030b731ec743650568d28598d3b6104e641a089dd6cca196e05be4e9c4",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "eaf5b1030b731ec743650568d28598d3b6104e641a089dd6cca196e05be4e9c4",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/submission_writer.py",
       "expected_sha256": "41220185ac2823fe5358603d38f2a915ea3e5f1ab1f94f0b237295b38b4a2565",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "41220185ac2823fe5358603d38f2a915ea3e5f1ab1f94f0b237295b38b4a2565",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/uniqueness.py",
       "expected_sha256": "1c5094b814277ae801ccea6a47cf744429cffcdc10f9cc79f229d5fc44a8df95",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "1c5094b814277ae801ccea6a47cf744429cffcdc10f9cc79f229d5fc44a8df95",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/src/gems57/validate.py",
       "expected_sha256": "e7849554b47f6a2b66aeb2f7cfd5db06267412f049f52a73f1c41f934a2c34dd",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "e7849554b47f6a2b66aeb2f7cfd5db06267412f049f52a73f1c41f934a2c34dd",
+      "status": "verified"
     },
     {
       "path": ".cache/shared-template/scripts/prepare_data.py",
       "expected_sha256": "73c743e8ab7238b44ce82b9a8d4f9c7a17312fc023ee894ebd0e3788a456d7d6",
-      "actual_sha256": null,
-      "status": "missing"
+      "actual_sha256": "73c743e8ab7238b44ce82b9a8d4f9c7a17312fc023ee894ebd0e3788a456d7d6",
+      "status": "verified"
     }
   ],
   "existing_research_inventory": {

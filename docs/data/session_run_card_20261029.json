@@ -1,0 +1,38 @@
+{
+  "schema": "wbggems.session-run-card.v1",
+  "review_date": "2026-10-29",
+  "hypothesis": "No experiment authorized or run; N1 signed edge-pair cancellation is the highest-ranked qualitative proposal only.",
+  "mechanism": "Proposed: distinguish persistent gravity/magnetic structural steps from balanced signed cross-normal lobes of finite-width bodies; no feature was generated or tested.",
+  "named_non_fault_process_that_could_mimic_it": "An unfaulted intrusive or lithologic contact can create a persistent geophysical edge; a real narrow fault-bounded block could also be falsely rejected by the proposed cancellation test.",
+  "holdout_dti": null,
+  "holdout_ci_95": null,
+  "withheld_positives": null,
+  "evaluator_version": null,
+  "evidence_label": "No HOLDOUT-DTI measured. USER-REPORTED 0.2778 for GEMSDOE32 B2 is not an organizer receipt. Official public leaderboard snapshot 0.4544 is a public observation, not a project-file receipt.",
+  "correlation_overlap_vs_registry": {
+    "preplacement_surface_rank_correlation": null,
+    "final_dots_overlap_within_3px": null,
+    "result": "Not measured for a new candidate because no candidate or placement exists. Existing audit is incomplete; a continuous-prior rule interpretation remains unresolved. No uniqueness pass claimed."
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "raster_exists": false,
+    "no_nan_inside_footprint": null,
+    "values_in_range_0_1": null,
+    "crs_shape_transform_match": null,
+    "status": "NOT RUN — no new TIFF exists; existing local checks do not authorize submission."
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "submission_note_max_characters": 140,
+  "verdict": "negative",
+  "reason": "Explicit method lane is unassigned; authenticated competition rasters and derived feature cache are absent; pinned shared-template code is restored/hash-verified but its format/mask issue is unresolved; complete current registry and prior interpretation are unresolved; a prior owner-mirror receipt reports identical labels/existing-faults hashes and must be checked against authenticated organizer inputs; no separate selector authorization exists.",
+  "experiments_run": 0,
+  "weekly_slots_used": 0,
+  "sources": [
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "https://github.com/drivendataorg/gems-prize-reference-solution",
+    "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and"
+  ]
+}
