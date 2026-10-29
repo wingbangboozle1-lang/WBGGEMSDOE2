@@ -53,21 +53,21 @@ Any future candidate needs a downloadable single-band GeoTIFF that matches the o
 
 ### Read-first records
 
-Read [`AGENTS.md`](AGENTS.md), this README section, [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), [`research/findings.md`](research/findings.md), [`evidence/run_card.json`](evidence/run_card.json), [`evidence/release_audit.json`](evidence/release_audit.json), [`research/repo-review-20261028.md`](research/repo-review-20261028.md) (including the follow-up implementation passes), [`research/session-review-20261028-checkout.md`](research/session-review-20261028-checkout.md), [`research/repo-review-20261028-followup.md`](research/repo-review-20261028-followup.md), [`research/focus-sites-review-20261028.md`](research/focus-sites-review-20261028.md), [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json), and [`evidence/session_run_card_20261028.json`](evidence/session_run_card_20261028.json). The extensive material below this section is historical unless it agrees with those latest negative records. In any conflict, the fail-closed current run card and readiness diagnostic govern.
+Read [`AGENTS.md`](AGENTS.md), this README section, [the 2026-10-29 repository review](research/repo-review-20261029.md), [`docs/PROJECT_CHARTER.md`](docs/PROJECT_CHARTER.md), [`research/findings.md`](research/findings.md), [`evidence/run_card.json`](evidence/run_card.json), [`evidence/release_audit.json`](evidence/release_audit.json), [`research/repo-review-20261028.md`](research/repo-review-20261028.md) (including the follow-up implementation passes), [`research/session-review-20261028-checkout.md`](research/session-review-20261028-checkout.md), [`research/repo-review-20261028-followup.md`](research/repo-review-20261028-followup.md), [`research/focus-sites-review-20261028.md`](research/focus-sites-review-20261028.md), [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json), and [`evidence/session_run_card_20261028.json`](evidence/session_run_card_20261028.json). The extensive material below this section is historical unless it agrees with those latest negative records. In any conflict, the fail-closed current run card and readiness diagnostic govern.
 
 > **Historical material warning:** the older sections below include prior, now-superseded “ready to submit” and score-estimate language for WBG4/EDTI and other candidates. Those claims are retained for audit history only. They do not authorize download, promotion or upload. See [`config/release_register.json`](config/release_register.json), which now marks historical candidates `RESEARCH_ONLY_DO_NOT_SUBMIT` and requires separate selector authorization.
 
 ---
 
 
-## WBG4 / EDTI lane — read this first (added 2026-10-28)
+## WBG4 / EDTI lane — archived research only; NOT current release guidance (2026-10-28)
 
-**[Executive summary with the download box, the nine-site table, the score projection and the reconciliation with the NEGATIVE decision below → `docs/edti/index.html`](docs/edti/index.html)**
+**Historical page only:** [`docs/edti/index.html`](docs/edti/index.html) preserves a former candidate summary for audit. Its historical download links and projection are superseded by the current negative release decision above; do not download or submit those files. The current status is **BLOCKED / DO NOT SUBMIT**.
 · [markdown mirror](docs/EDTI_EXECUTIVE_SUMMARY.md)
 
 | item | value |
 |---|---|
-| **File to download** | [`artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif`](https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/main/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif?raw=1) (`sha256 9f5dbc9b…`, 372,561 B, 40,000 dots) |
+| **Historical file (research only; DO NOT DOWNLOAD OR SUBMIT)** | `artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif` (retained for audit; not a current recommendation) |
 | **Format gate** | **PASS** — 3730×3292, single-band float32, EPSG:32611, transform `(100,0,243350,0,−100,4508550)`, no NaN inside the footprint, all values in `[0,1]`, `0.0` outside |
 | **Uniqueness gate** | **PASS on method-bearing rasters** — 437 registry rasters from the nine focus repos re-downloaded and reopened; max 3 px overlap **0.5604** (limit 0.70), max \|Spearman\| **0.1665** (limit 0.90), 0 violations |
 | **Score** | **PROJECTION 0.20–0.30 only.** There is no organizer receipt, no organizer test truth and no reachable path to `drivendata.org` from this sandbox. Nothing here demonstrates a score above 0.2778. |
