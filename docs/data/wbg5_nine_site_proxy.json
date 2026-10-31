@@ -1,0 +1,71 @@
+{
+ "schema": "wbg5.nine-site-proxy.v1",
+ "generated_utc": "2026-10-31T00:00:00Z",
+ "evidence_class": "CATALOGUE-TRUTH-PROXY (un-masked, NOT a leaderboard score and NOT HOLDOUT-DTI)",
+ "note": "Truth = the public catalogue; the catalogue is NOT masked. That is the opposite of the organizer rule, so only the ordering across files is meaningful, never the absolute values.",
+ "rows": [
+  {
+   "site": "GEMSDOE27",
+   "file": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+   "dots": 61328,
+   "frac_dots_within3_of_catalogue": 0.1987,
+   "catalogue_truth_dti_unmasked": 0.1727
+  },
+  {
+   "site": "GEMSDOE24",
+   "file": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+   "dots": 60069,
+   "frac_dots_within3_of_catalogue": 0.1987,
+   "catalogue_truth_dti_unmasked": 0.1719
+  },
+  {
+   "site": "GEMSDOE25",
+   "file": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+   "dots": 44090,
+   "frac_dots_within3_of_catalogue": 0.1952,
+   "catalogue_truth_dti_unmasked": 0.1618
+  },
+  {
+   "site": "GEMSDOE30",
+   "file": "gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+   "dots": 44090,
+   "frac_dots_within3_of_catalogue": 0.1952,
+   "catalogue_truth_dti_unmasked": 0.1618
+  },
+  {
+   "site": "GEMSDOE33",
+   "file": "GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+   "dots": 41865,
+   "frac_dots_within3_of_catalogue": 0.1439,
+   "catalogue_truth_dti_unmasked": 0.0865
+  },
+  {
+   "site": "GEMSDOE31",
+   "file": "gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+   "dots": 40199,
+   "frac_dots_within3_of_catalogue": 0.1173,
+   "catalogue_truth_dti_unmasked": 0.0491
+  },
+  {
+   "site": "GEMSDOE28",
+   "file": "gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+   "dots": 37660,
+   "frac_dots_within3_of_catalogue": 0.1162,
+   "catalogue_truth_dti_unmasked": 0.0462
+  },
+  {
+   "site": "GEMSDOE36",
+   "file": "gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+   "dots": 38854,
+   "frac_dots_within3_of_catalogue": 0.0587,
+   "catalogue_truth_dti_unmasked": 0.0069
+  },
+  {
+   "site": "GEMSDOE32",
+   "file": "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+   "dots": 37654,
+   "frac_dots_within3_of_catalogue": 0.0577,
+   "catalogue_truth_dti_unmasked": 0.0067
+  }
+ ]
+}

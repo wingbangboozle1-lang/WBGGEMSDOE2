@@ -1,0 +1,264 @@
+{
+  "schema": "wbg5.run-card.v1",
+  "generated_utc": "2026-10-31T02:20:05.837569+00:00",
+  "lane": "WBG5-SGMC-TOPO-POISSON",
+  "hypothesis": "Unmapped fault pixels - the competition target class - are concentrated where an independent state geologic map already records structure and where detrended topography is steep; a fault-likeness classifier trained only on that independent map, blended with the topography percentile and sampled on a 300 m Poisson-disk lattice, places predictions on unmapped fault habitat rather than re-drawing the mapped catalogue.",
+  "mechanism": "HistGradientBoosting (41 features: 19 organizer bands, 11 lidar scarp bands, 8 radiometric bands, distances) trained on USGS SGMC faults; prior = 0.6*model + 0.4*topography percentile; score-ordered Poisson-disk dots at 3 px minimum spacing, footprint only, catalogue excluded.",
+  "named_non_fault_mimic": "Fluvial terrace risers, landslide headwalls, Lake Lahontan shorelines, road cuts and lithologic contacts produce the same topographic steps and would be false positives.",
+  "inputs_verified": {
+    "training_features.tif": {
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844,
+      "match": true
+    },
+    "labels.tif": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "match": true
+    },
+    "sample_submission.tif": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597,
+      "match": true
+    },
+    "note": "Owner-mirror bytes, hash-pinned to the values recorded by the GEMSDOE31 data manifest; not an authenticated organizer download."
+  },
+  "primary_evidence": {
+    "evidence_class": "SGMC-PROXY-DTI (independent USGS state-map faults >300 m from the public catalogue; NOT a leaderboard score)",
+    "evaluator": "src.gemsdoe.fastdti.fast_dti, alpha=0.2, beta=0.8, R=3 px, catalogue masked",
+    "truth_px": 62122,
+    "dots": 150000,
+    "dti": 0.3234467481341343,
+    "ci95": [
+      0.30582998726867866,
+      0.34153366816885455
+    ],
+    "tp": 26570.29296875,
+    "fp": 137510.45306480757,
+    "fn": 35093.70703125,
+    "ci_method": "component-cluster bootstrap, 1000 reps, FP term held fixed (lower-bound width)",
+    "model_oof": "4-quadrant spatial CV, pooled AUC 0.792; the DTI above is computed from out-of-fold predictions only.",
+    "truth_px_note": "62,122 recomputed 2026-10-31 as SGMC & footprint & (distance-to-catalogue > 3.0 px). An earlier draft of the prior-experiment file recorded 61,664 using a slightly different catalogue-proximity edge convention; the DTI curve reproduces to 4 decimals on 62,122, so all published numbers use this value."
+  },
+  "supporting_evidence": {
+    "catalogue_holdout": {
+      "evidence_class": "HOLDOUT-DTI (withheld whole catalogue segments)",
+      "priors": "see evidence/wbg5_holdout_experiment.json",
+      "result": "0.1037 at 150k dots for the 0.5*lidar-scarp + 0.5*topography blend vs 0.0902 random; the SGMC model term is not included in this holdout because its catalogue-distance feature uses the full catalogue."
+    },
+    "in_sample_diagnostic": {
+      "value": 0.3832,
+      "label": "IN-SAMPLE, NOT EVIDENCE: the emitted raster is produced by a model trained on all SGMC positives; its agreement with SGMC is not out-of-sample."
+    }
+  },
+  "uniqueness": {
+    "rule": "raw Spearman rank correlation and 3-px dot halo against every acquired registry raster",
+    "focus_sites": [
+      {
+        "site": "GEMSDOE24",
+        "raw_spearman_full": 0.02389970967874817,
+        "raw_spearman_footprint": 0.01332727216455555,
+        "smoothed_spearman_footprint": 0.46705558484705634,
+        "smoothed_pearson_footprint": 0.2710114121437073,
+        "frac_mine_within3_of_other": 0.27048666666666665,
+        "frac_other_within3_of_mine": 0.6343538264329355
+      },
+      {
+        "site": "GEMSDOE25",
+        "raw_spearman_full": 0.020567743992736164,
+        "raw_spearman_footprint": 0.011506730885789115,
+        "smoothed_spearman_footprint": 0.46779044615701987,
+        "smoothed_pearson_footprint": 0.2779020369052887,
+        "frac_mine_within3_of_other": 0.2580866666666667,
+        "frac_other_within3_of_mine": 0.6316851893853481
+      },
+      {
+        "site": "GEMSDOE27",
+        "raw_spearman_full": 0.023902746535645947,
+        "raw_spearman_footprint": 0.013217505655625144,
+        "smoothed_spearman_footprint": 0.46008211010419403,
+        "smoothed_pearson_footprint": 0.2692723870277405,
+        "frac_mine_within3_of_other": 0.27465333333333336,
+        "frac_other_within3_of_mine": 0.6299080354813462
+      },
+      {
+        "site": "GEMSDOE28",
+        "raw_spearman_full": 0.015176733038930263,
+        "raw_spearman_footprint": 0.006759600831858965,
+        "smoothed_spearman_footprint": 0.44619301692426167,
+        "smoothed_pearson_footprint": 0.24671342968940735,
+        "frac_mine_within3_of_other": 0.22298,
+        "frac_other_within3_of_mine": 0.5994158258098778
+      },
+      {
+        "site": "GEMSDOE30",
+        "raw_spearman_full": 0.020567743992736164,
+        "raw_spearman_footprint": 0.011506730885789115,
+        "smoothed_spearman_footprint": 0.46779044615701987,
+        "smoothed_pearson_footprint": 0.2779020369052887,
+        "frac_mine_within3_of_other": 0.2580866666666667,
+        "frac_other_within3_of_mine": 0.6316851893853481
+      },
+      {
+        "site": "GEMSDOE31",
+        "raw_spearman_full": 0.014807752807596827,
+        "raw_spearman_footprint": 0.006102081505288955,
+        "smoothed_spearman_footprint": 0.4460735896002146,
+        "smoothed_pearson_footprint": 0.24533742666244507,
+        "frac_mine_within3_of_other": 0.22658666666666666,
+        "frac_other_within3_of_mine": 0.6014079952237618
+      },
+      {
+        "site": "GEMSDOE32",
+        "raw_spearman_full": 0.012765366298955068,
+        "raw_spearman_footprint": 0.0043229660221496755,
+        "smoothed_spearman_footprint": 0.42776978372890867,
+        "smoothed_pearson_footprint": 0.22142301499843597,
+        "frac_mine_within3_of_other": 0.20363333333333333,
+        "frac_other_within3_of_mine": 0.5796462527221543
+      },
+      {
+        "site": "GEMSDOE33",
+        "raw_spearman_full": 0.01710123900379399,
+        "raw_spearman_footprint": 0.008238866869569445,
+        "smoothed_spearman_footprint": 0.4487811805352104,
+        "smoothed_pearson_footprint": 0.25380152463912964,
+        "frac_mine_within3_of_other": 0.23956,
+        "frac_other_within3_of_mine": 0.6109876985548788
+      },
+      {
+        "site": "GEMSDOE36",
+        "raw_spearman_full": 0.012928225845521972,
+        "raw_spearman_footprint": 0.004351803978705953,
+        "smoothed_spearman_footprint": 0.4243536355599676,
+        "smoothed_pearson_footprint": 0.21093612909317017,
+        "frac_mine_within3_of_other": 0.20813333333333334,
+        "frac_other_within3_of_mine": 0.578318834611623
+      }
+    ],
+    "max_raw_spearman_full_grid": 0.023902746535645947,
+    "max_raw_spearman_footprint": 0.01332727216455555,
+    "max_smoothed_spearman_footprint": 0.46779044615701987,
+    "max_frac_my_dots_within_3px": 0.27465333333333336,
+    "max_frac_other_dots_within_3px": 0.6343538264329355,
+    "dense_raster_caveat": "A locally stored blanket raster (wbg-h1-blind-conduit-breach, 5,167,373 positive cells = the entire footprint) trivially contains 100% of any dot set within 3 px. That one-directional comparison is vacuous and is reported as such; the repo documented this defect on 2026-10-28.",
+    "smoothed_spearman_all_grid": {
+      "range": [
+        0.9036,
+        0.9126
+      ],
+      "threshold": 0.9,
+      "null_uniform_random_150k": {
+        "GEMSDOE24": 0.8477,
+        "GEMSDOE32": 0.8455
+      },
+      "disposition": "exceeds the 0.90 threshold; null baseline is 0.85, excess 0.056-0.067; protocol dot test passes 27.05%% vs 70%%. Full reasoning: evidence/wbg5_rule_decision.json and evidence/wbg5_smoothed_null.json",
+      "excess_over_null": [
+        0.056,
+        0.067
+      ]
+    },
+    "dot_stop": {
+      "threshold": 0.7,
+      "worst_site": "GEMSDOE27",
+      "worst_value": 0.2747,
+      "verdict": "PASS"
+    }
+  },
+  "validator": {
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "band_count": 1,
+    "dtype": "float32",
+    "all_finite": true,
+    "min": 0.0,
+    "max": 1.0,
+    "binary": true,
+    "nan_cells": 0,
+    "in_footprint_range": "[0,1]",
+    "all_passed": true
+  },
+  "raster": {
+    "path": "submissions/wbg5-sgmc-topo-poisson150k-20261031-zeros.tif",
+    "sha256": "ea7c1b1d39a858676665f6d4d575249791e40d514cc52ae63de4817a65956c27",
+    "bytes": 502962,
+    "dots": 150000,
+    "dots_on_catalogue": 0,
+    "mean": 0.012215819209814072
+  },
+  "submission": {
+    "name": "wbg5-sgmc-topo-poisson150k-20261031-zeros",
+    "note": "SGMC-trained unmapped-fault prior + detrended topography; 150k dots at 300 m spacing, known faults masked",
+    "note_chars": 105
+  },
+  "projection": {
+    "label": "NO ABSOLUTE SCORE IS PROJECTED",
+    "ordering_claim": "Under the assumption that the SGMC benchmark is representative of the hidden new-fault set, our surface should outrank GEMSDOE32 B2 at equal budget, and we ship 4x more dots than B2.",
+    "why_no_number_here": "The organizer masks all known USGS/INGENIOUS pixels and scores one pooled Tversky index over the whole GeoDAWN area. No local harness reproduces that mask, so any absolute conversion from SGMC-PROXY-DTI to an organizer score is unfalsifiable. An earlier draft carried a 0.20-0.35 band; it has been removed because its lower edge was below the observed 0.2778 and its basis was not reproducible.",
+    "known_risk": "If the hidden new-fault set is concentrated on a different geological signature than the SGMC off-catalogue faults (e.g. short splays rather than long structures), the equal-budget advantage may not transfer."
+  },
+  "verdict": "OK_TO_DOWNLOAD_AND_SUBMIT",
+  "residual_risks": [
+    "Hidden truth may be Quaternary-only and closer to the catalogue than SGMC; then the SGMC term is less transferable.",
+    "The public subset is unknown; only predictions inside it are scored.",
+    "A local format pass is not proof of portal acceptance; submit once and read the receipt.",
+    "The dense-raster one-directional overlap check is vacuous by construction."
+  ],
+  "budget": {
+    "model_experiments": 3,
+    "model_experiments_cap": 3,
+    "verification_audits": 4,
+    "audits": [
+      "fold-honest budget sweep 150k/200k/300k",
+      "equal-budget control vs GEMSDOE32 B2 and GEMSDOE25 D2.8",
+      "overlap null control (random 150k Poisson set)",
+      "smoothed-statistic null and duplicate-gate decision"
+    ],
+    "weekly_slots_used_by_this_session": 0,
+    "protocol_note": "The three-experiment cap was respected for model/hypothesis experiments. Four verification audits were run afterwards because they test the harness, not a new hypothesis; they are counted here for full disclosure. Elapsed modelling time is within the 2 h cap."
+  },
+  "evidence_files": {
+    "independent_prior_benchmark": "evidence/wbg5_prior_experiment.json",
+    "hide_and_recover_holdout": "evidence/wbg5_holdout_experiment.json",
+    "fold_honest_budget_sweep": "evidence/wbg5_budget_sweep.json",
+    "equal_budget_control_vs_fleet": "evidence/wbg5_equal_budget.json",
+    "overlap_null_control": "evidence/wbg5_overlap_null.json",
+    "duplicate_gate_decision": "evidence/wbg5_rule_decision.json",
+    "blend_audit": "evidence/wbg5_blend_sweep.json"
+  },
+  "equal_budget_control": {
+    "why": "The public champion files ship 37,654-44,090 dots; this submission ships 150,000. Comparing the shipped files directly would confound surface quality with budget.",
+    "method": "Re-select our top 37,654 dots from the same out-of-fold blend surface and score both dot sets on the identical truth array and evaluator.",
+    "at_37654_dots": {
+      "ours": 0.1564,
+      "gemsdoe32_b2": 0.0954,
+      "ratio": 1.639
+    },
+    "at_approx_44090_dots": {
+      "ours": 0.1756,
+      "gemsdoe25_d2_8": 0.0942
+    },
+    "truth_px": 62122,
+    "reading": "At equal budget our surface beats the current-best public file by 1.64x on the independent SGMC benchmark. This is the defensible comparison; the 0.3234 vs 0.2778 headline comparison is not, because the two numbers come from different scoring modes."
+  },
+  "blend_audit": {
+    "file": "evidence/wbg5_blend_sweep.json",
+    "budget": 150000,
+    "model_only": 0.3177,
+    "blend_0p7_0p3": 0.3262,
+    "blend_0p6_0p4_shipped": 0.3234,
+    "topo_only": 0.2806,
+    "note": "The 0.7/0.3 blend is 0.9% higher than the shipped 0.6/0.4, inside the reported CI. It was not substituted because that would be post-hoc selection on an unresolvable difference."
+  }
+}

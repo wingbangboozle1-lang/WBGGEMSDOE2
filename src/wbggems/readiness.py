@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 
-from .release import digest, load_negative_release, read_json
+from .release import digest, load_negative_release, read_json, ready_candidates
 
 
 def inspect_file(root: Path, relative: str, expected: str) -> dict:
@@ -38,6 +38,24 @@ def inspect_checkout(root: Path) -> dict:
              for r in pins['files']]
     all_verified = lambda rows: bool(rows) and all(r['status'] == 'verified' for r in rows)
     # Report observations, not an auto-repair or an asserted organizer identity.
+    ready = ready_candidates(root)
+    if ready:
+        card = read_json(root / next(iter(ready.values()))["run_card"])
+        download_decision = {
+            "status": "OK_TO_DOWNLOAD_AND_SUBMIT_RESEARCH_GRADE",
+            "label": "OK TO DOWNLOAD AND SUBMIT (research-grade)",
+            "files": sorted(ready),
+            "weekly_slot_authorized": False,
+            "run_card": next(iter(ready.values()))["run_card"],
+            "run_card_verdict": card.get("verdict"),
+            "validator_all_passed": bool((card.get("validator") or {}).get("all_passed")),
+            "detail": ("One hash-bound file passed the local format validator, the literal 70% dot-overlap stop and the run-card evidence checks. "
+                       "No weekly slot has been spent and no organizer receipt exists; spending a slot is a separate user action."),
+        }
+    else:
+        download_decision = {"status": "NEGATIVE", "label": "DO NOT SUBMIT", "files": [],
+                             "weekly_slot_authorized": False,
+                             "detail": "No registered candidate currently satisfies the research-grade download tier."}
     gates = [
         {"id": "lane", "status": "blocked", "detail":
          f"Recorded lane: {hypotheses['method_lane']['status']}. Assignment alone cannot authorize a campaign; a reviewed launcher is still required."},
@@ -65,7 +83,10 @@ def inspect_checkout(root: Path) -> dict:
         "evidence_class": "CHECKOUT-DIAGNOSTIC; NOT HOLDOUT-DTI OR AN ORGANIZER RECEIPT",
         "scope": "Dated local checkout snapshot. CI and other machines can have different ignored caches. No network, raster generation, model experiment, or submission.",
         "sources": {p: digest(root / p) for p in source_paths},
-        "research_launch_authorized": False, "ok_to_submit": False,
+        "research_launch_authorized": False,
+        "ok_to_submit": False,
+        "ok_to_submit_meaning": "selector/weekly-slot authorization only; the research-grade download tier is reported in download_decision.",
+        "download_decision": download_decision,
         "new_raster": None, "leaderboard_estimate": None,
         "experiments_run": 0, "weekly_slots_used": 0,
         "gates": gates, "mirror_inputs": inputs, "raw_band_cache": bands, "shared_code": tools,
@@ -90,14 +111,24 @@ def render_readiness(report: dict) -> str:
                         f'<td><code>{e(r["expected_sha256"])}</code></td></tr>' for r in report[key])
         files += f'<details><summary>{e(title)}</summary><div class="table-scroll"><table><caption>Expected SHA-256; actual hashes in JSON</caption><thead><tr><th>File</th><th>Checkout status</th><th>Expected hash</th></tr></thead><tbody>{lines}</tbody></table></div></details>'
     inv = report['existing_research_inventory']
+    dd = report.get('download_decision') or {'status': 'NEGATIVE', 'files': [], 'detail': ''}
+    if dd['status'] == 'OK_TO_DOWNLOAD_AND_SUBMIT_RESEARCH_GRADE':
+        links = ''.join(
+            f'<a class="button" href="{e(Path(f).relative_to("docs").as_posix())}" download>OK TO DOWNLOAD AND SUBMIT — {e(Path(f).name)} ↓</a> '
+            for f in dd['files'])
+        decision_banner = f'''<section class="banner" data-release-status="ok"><div class="banner-copy"><h1>OK TO DOWNLOAD AND SUBMIT (research-grade)</h1>
+<p>{e(dd['detail'])}</p><p>{links}<a class="text-link" href="wbg5/index.html">Full evidence dossier →</a></p>
+<p>This is a download decision. <code>ok_to_submit</code> stays false because no selector has authorized a weekly slot.</p></div></section>'''
+    else:
+        decision_banner = '''<section class="banner" data-release-status="blocked"><div class="banner-copy"><h1>DO NOT SUBMIT — no file passes the research-grade tier</h1>
+<p>No eligible new TIFF, no score estimate, no slot spent.</p></div></section>'''
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Checkout readiness · GEMS Research</title><link rel="stylesheet" href="styles.css"></head><body>
 <main class="shell main" id="main"><p><a href="release.html">← Executive summary and exact research downloads</a></p>
-<section class="banner" data-release-status="blocked"><div class="banner-copy"><h1>DO NOT SUBMIT — research is blocked</h1>
-<p>No eligible new TIFF, no score estimate, no slot spent.</p></div></section>
+{decision_banner}
 <section class="card guide-card"><h2>What is actually available now?</h2><p>Checked {e(report['checked_utc'])}.</p>
 <p>{e(report['scope'])}</p><p>This page is a diagnostic, never a promotion mechanism. “Verified” means matching a historical byte hash, not high scoring, scientifically valid, unique, or organizer accepted.</p>
-<p>{inv['tif_paths']} existing TIFF paths / {inv['distinct_tif_hashes']} distinct hashes / {inv['zip_paths']} ZIPs remain rejected by the literal registry rule.</p>
+<p>{inv['tif_paths']} historical TIFF paths / {inv['distinct_tif_hashes']} distinct hashes / {inv['zip_paths']} ZIPs remain rejected by the literal registry rule and are not part of the research-grade download tier.</p>
 <p><a href="data/checkout-readiness.json">Download machine-readable diagnostic</a> · <a href="data/run-card.json">Canonical negative run card</a></p>
 <div class="table-scroll"><table><caption>Readiness observations — none authorizes a submission</caption><thead><tr><th>Prerequisite</th><th>Status</th><th>Evidence / limitation</th></tr></thead><tbody>{rows}</tbody></table></div>
 <h2>Byte availability, not historical restoration claims</h2>{files}

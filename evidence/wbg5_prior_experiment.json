@@ -1,0 +1,314 @@
+{
+  "schema": "wbg5.prior-experiment.v1",
+  "generated_utc": "2026-10-31T02:19:03.365603+00:00",
+  "evidence_class": "SGMC-PROXY-DTI (independent fault map; NOT a leaderboard score)",
+  "truth": "USGS State Geologic Map Compilation structure layers (NV_structure.shp + CA_structure.shp) rasterised on the competition grid, restricted to footprint pixels >300 m from the public USGS/INGENIOUS catalogue",
+  "truth_px": 61664,
+  "footprint_px": 5167373,
+  "catalogue_px": 60988,
+  "active_mask": "footprint minus catalogue (organizer known-fault masking rule)",
+  "evaluator": "src.gemsdoe.fastdti.fast_dti: alpha=0.2, beta=0.8, R=3 px triangular kernel; exact max-over-window TP, EDT FP",
+  "priors_tested": {
+    "scarp": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.0985370828116214
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.1541129861233689
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.2156292935918079
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.24079257858163697
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.1923888844393863
+      }
+    ],
+    "edge": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.02817372107642367
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.05057704309381812
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.0877861706684905
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.12437085992466561
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.18065265541516032
+      }
+    ],
+    "strain": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.02068901980805247
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.0384202149540783
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.08066726365846333
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.1415095971870385
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.18456872886401662
+      }
+    ],
+    "topo": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.09120752604251241
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.15536577841298393
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.23418961491828172
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.2801322029816666
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.2788829465085557
+      }
+    ],
+    "thermal": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.0216730854852121
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.04286363978025636
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.08154903770792486
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.1314901567426591
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.22103275885182608
+      }
+    ],
+    "catcont": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.0012179955625436132
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.014237001738744133
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.07021437588784138
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.12848517521158231
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.227307357433664
+      }
+    ],
+    "halo": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.045064521703729696
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.0708901647017132
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.1236143410484031
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.18980980823480803
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.2455126006379653
+      }
+    ],
+    "combo_a": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.025972710554678934
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.06459328209204913
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.1390848146328693
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.21180187361724148
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.21212799048781475
+      }
+    ],
+    "combo_b": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.07292971983613027
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.11528614573852344
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.17930710015981868
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.22609425602869204
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.2255071820136145
+      }
+    ],
+    "random": [
+      {
+        "n": 20000,
+        "emitted": 20000,
+        "dti": 0.04037170523205752
+      },
+      {
+        "n": 40000,
+        "emitted": 40000,
+        "dti": 0.07630221112642184
+      },
+      {
+        "n": 80000,
+        "emitted": 80000,
+        "dti": 0.12852431785576715
+      },
+      {
+        "n": 150000,
+        "emitted": 150000,
+        "dti": 0.18948562923086332
+      },
+      {
+        "n": 300000,
+        "emitted": 300000,
+        "dti": 0.24299658521164522
+      }
+    ]
+  },
+  "model_oof": {
+    "model": "HistGradientBoostingClassifier (41 features: 19 organizer bands, 11 lidar scarp bands, 8 radiometric bands, distance-to-catalogue, distance-to-springs, distance-to-vents)",
+    "spatial_cv": "4 quadrants, trained on 3 predicts the 4th",
+    "fold_auc": [
+      0.7727,
+      0.8054,
+      0.7887,
+      0.7898
+    ],
+    "pooled_auc": 0.7922,
+    "leakage_canary": "no single feature exceeds AUC 0.90 (max 0.62); pooled model AUC 0.79"
+  },
+  "selected": {
+    "prior": "0.6 * SGMC model + 0.4 * topography percentile",
+    "dots": 150000,
+    "min_spacing_px": 3.0,
+    "oof_dti": 0.3234467481341343,
+    "oof_ci95": [
+      0.30582998726867866,
+      0.34153366816885455
+    ],
+    "tp": 26570.29296875,
+    "fp": 137510.45306480757,
+    "fn": 35093.70703125,
+    "ci_method": "component-cluster bootstrap, 1000 reps, FP term held fixed (lower-bound width)"
+  },
+  "negative_results": [
+    "catalogue-continuity prior scored 0.001-0.227 and was indistinguishable from random at the selected budget",
+    "magnetic/gravity edge concordance did not beat topography on the independent map",
+    "geothermal-occurrence proximity alone did not beat random"
+  ]
+}

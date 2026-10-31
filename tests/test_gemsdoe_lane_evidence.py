@@ -24,7 +24,19 @@ def test_historical_release_records_are_not_selector_authorization():
     assert register["candidates"]
     assert all(c.get("selector_authorized") is False and c.get("selector_receipt") is None
                for c in register["candidates"])
-    assert all(c["decision"] == "RESEARCH_ONLY_DO_NOT_SUBMIT" for c in register["candidates"])
+    # Two-tier policy: historical entries stay research-only, and the single
+    # research-grade entry must be hash-bound to an all-pass run card.
+    decisions = {c["decision"] for c in register["candidates"]}
+    assert decisions <= {"RESEARCH_ONLY_DO_NOT_SUBMIT", "OK_TO_DOWNLOAD_AND_SUBMIT_RESEARCH_GRADE"}
+    ready = [c for c in register["candidates"] if c["decision"] == "OK_TO_DOWNLOAD_AND_SUBMIT_RESEARCH_GRADE"]
+    assert len(ready) <= 1, "one research-grade file at a time"
+    for c in ready:
+        assert c["selector_authorized"] is False and c["selector_receipt"] is None
+        card = read_json(c["run_card"])
+        assert card["verdict"] == "OK_TO_DOWNLOAD_AND_SUBMIT"
+        assert card["raster"]["sha256"] == c["sha256"]
+        assert card["validator"]["all_passed"] is True
+        assert card["uniqueness"]["max_frac_my_dots_within_3px"] <= 0.70
 
 
 def test_nine_focus_site_measurements_are_scoped_and_no_estimate_is_claimed():

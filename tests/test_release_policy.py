@@ -215,8 +215,19 @@ def test_even_lane_assignment_is_not_a_registry_or_selector_override(tmp_path, s
         require_experiment_lane('wbg2-msptcd',tmp_path)
 
 
-def test_all_legacy_entry_pages_show_same_block_and_research_only_links():
-    for rel in ('docs/index.html','docs/release.html','docs/submit/index.html','docs/submission/index.html','docs/submission/executive-summary.html'):
+def test_entry_pages_show_two_tier_decision_and_historical_pages_stay_negative():
+    from wbggems.release import ready_candidates
+    ready_names = {Path(p).name for p in ready_candidates(ROOT)}
+    assert ready_names, 'the register must expose exactly the hash-verified WBG5 files'
+    for rel in ('docs/index.html', 'docs/release.html', 'docs/executive-summary.html'):
+        text = (ROOT / rel).read_text()
+        assert 'data-release-status="ok"' in text
+        assert 'OK TO DOWNLOAD AND SUBMIT' in text
+        assert 'research-grade' in text
+        assert 'no weekly slot has been spent' in text.lower() or 'no weekly slot spent' in text.lower()
+        assert any(name in text for name in ready_names)
+        assert 'DO NOT SUBMIT' in text  # historical files on the same page stay negative
+    for rel in ('docs/submit/index.html','docs/submission/index.html','docs/submission/executive-summary.html'):
         text = (ROOT / rel).read_text()
         assert 'data-release-status="blocked"' in text and 'DO NOT SUBMIT' in text
         assert 'No submission file' in text
@@ -263,18 +274,24 @@ def test_no_stale_positive_heading_or_unqualified_owned_download_anywhere():
     # A file may be offered as a real submission only if it is in the hash-pinned
     # candidate register (config/release_register.json); every other owned
     # download must still be labelled research / DO NOT SUBMIT.
-    from wbggems.release import registered_release_assets
+    from wbggems.release import ready_candidates, registered_release_assets
     registered = {Path(p).name for p in registered_release_assets(ROOT)}
+    ready = {Path(p).name for p in ready_candidates(ROOT)}
     for path in [*ROOT.joinpath('docs').rglob('*.html'), *ROOT.joinpath('site').rglob('*.html')]:
         parsed=Copy(); parsed.feed(path.read_text())
         links_registered = any(Path(urlsplit(h).path).name in registered for h, _ in parsed.anchors)
-        if not links_registered:
+        links_ready = any(Path(urlsplit(h).path).name in ready for h, _ in parsed.anchors)
+        if not (links_registered or links_ready):
             assert not {'download and submit','submit this file','cleared for submission'} & {h.strip().lower() for h in parsed.headings}, path
+            assert not any('ok to download and submit' in h.lower() for h in parsed.headings), path
         assert 'cleared exactly one' not in ' '.join(parsed.words).lower(), path
         for href, label in parsed.anchors:
             parts=urlsplit(href)
             if parts.scheme or Path(parts.path).suffix.lower() not in ('.tif','.tiff','.zip'): continue
             if Path(parts.path).name in registered:
+                continue
+            if Path(parts.path).name in ready:
+                assert 'ok to download and submit' in label.lower() or 'research-grade' in label.lower(), (path,href,label)
                 continue
             assert 'research' in label.lower() and 'DO NOT SUBMIT' in label, (path,href,label)
 

@@ -39,7 +39,11 @@ def test_escape_is_rejected_including_symlink(tmp_path):
 
 def test_diagnostic_is_non_authorizing_and_inventory_is_byte_bound():
     report = inspect_checkout(ROOT)
-    assert report['ok_to_submit'] is False
+    assert report['ok_to_submit'] is False  # no selector/slot authorization
+    assert report['download_decision']['status'] == 'OK_TO_DOWNLOAD_AND_SUBMIT_RESEARCH_GRADE'
+    assert report['download_decision']['weekly_slot_authorized'] is False
+    assert report['download_decision']['validator_all_passed'] is True
+    assert all(p.startswith('docs/downloads/') for p in report['download_decision']['files'])
     assert report['research_launch_authorized'] is False
     assert report['new_raster'] is None and report['leaderboard_estimate'] is None
     assert report['experiments_run'] == report['weekly_slots_used'] == 0
@@ -66,7 +70,8 @@ def test_html_escapes_and_labels_snapshot_not_live():
     report['gates'][0]['detail'] = '<script>alert(1)</script>'
     html = render_readiness(report)
     assert '<script>' not in html and '&lt;script&gt;' in html
-    assert 'DO NOT SUBMIT' in html
+    assert 'OK TO DOWNLOAD AND SUBMIT (research-grade)' in html
+    assert 'ok_to_submit</code> stays false' in html
     assert 'Dated local checkout snapshot' in html
     assert 'HOLDOUT-DTI' in html and 'paired spatial confidence interval' in html
 
@@ -76,7 +81,9 @@ def test_cli_default_and_check_exit_codes(tmp_path, monkeypatch):
     monkeypatch.setattr(check_readiness, 'ROOT', tmp_path)
     monkeypatch.setattr(check_readiness, 'inspect_checkout', lambda _: copy.deepcopy(report))
     assert check_readiness.main([]) == 0
-    assert check_readiness.main(['--check']) == 2
+    # The current checkout has one research-grade file, so --check is no longer
+    # a blocker exit; it is a download decision, not a slot authorization.
+    assert check_readiness.main(['--check']) == 0
     assert json.loads((tmp_path / 'evidence/checkout_readiness.json').read_text()) == report
     assert (tmp_path / 'docs/readiness.html').is_file()
 

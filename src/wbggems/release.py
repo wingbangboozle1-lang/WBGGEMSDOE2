@@ -82,6 +82,44 @@ def registered_release_assets(root: Path) -> dict:
     return out
 
 
+READY_DECISION = "OK_TO_DOWNLOAD_AND_SUBMIT_RESEARCH_GRADE"
+READY_VERDICT = "OK_TO_DOWNLOAD_AND_SUBMIT"
+
+
+def ready_candidates(root: Path) -> dict:
+    """Return hash-verified, research-grade submission-ready artifacts.
+
+    This is a *download* tier, not a slot authorization. A candidate qualifies
+    only when its register entry says so, its bytes match the registered hash,
+    its run card verdict is ``OK_TO_DOWNLOAD_AND_SUBMIT`` for the same bytes, the
+    local validator passed, and the literal 70% dot-overlap stop is not tripped.
+    ``approved_candidates`` (selector receipt + remaining weekly slot) remains the
+    only path that authorizes spending a competition slot.
+    """
+    out = {}
+    for rel, rec in registered_release_assets(root).items():
+        if rec.get("decision") != READY_DECISION:
+            continue
+        if rec.get("selector_authorized") is True:
+            continue  # handled by approved_candidates, which checks the receipt
+        card_path = root / rec["run_card"]
+        card = read_json(card_path)
+        if card.get("verdict") != READY_VERDICT:
+            raise ValueError(f"Ready candidate run card verdict is not {READY_VERDICT}: {rec['run_card']}")
+        raster = card.get("raster") or {}
+        if raster.get("sha256") != rec.get("sha256"):
+            raise ValueError(f"Ready candidate run card hash does not bind the registered bytes: {rec['path']}")
+        if not (card.get("validator") or {}).get("all_passed"):
+            raise ValueError(f"Ready candidate validator did not pass: {rec['run_card']}")
+        overlap = (card.get("uniqueness") or {}).get("max_frac_my_dots_within_3px")
+        if not isinstance(overlap, (int, float)) or float(overlap) > 0.70:
+            raise ValueError(f"Ready candidate fails the literal 70% dot-overlap stop: {rec['path']}")
+        out[rel] = rec
+        if rec.get("zip"):
+            out[rec["zip"]] = rec
+    return out
+
+
 def approved_candidates(root: Path) -> dict:
     """Return only artifacts explicitly promoted by a separate selector receipt.
 
@@ -350,20 +388,26 @@ def validate_negative_html(root: Path) -> None:
         parsed.feed(page.read_text(encoding='utf-8'))
         promoted_pages_hrefs = set()
         allowed = set()
+        ready = set()
         for rel in approved_candidates(root):
             allowed.add(rel); allowed.add(str(Path(rel).with_suffix('.zip')))
+        for rel in ready_candidates(root):
+            ready.add(rel)
         page_links_promoted = False
+        page_links_ready = False
         for href, _label in parsed.anchors:
             parts = urlsplit(href)
             rel = Path(parts.path).as_posix().lstrip('./')
             rel = rel.split('downloads/', 1)[-1]
             if any(rel.endswith(Path(a).name) for a in allowed):
                 page_links_promoted = True
+            if any(rel.endswith(Path(a).name) for a in ready):
+                page_links_ready = True
         for heading in parsed.headings:
             normalized = ' '.join(heading.lower().split())
             if (normalized in ('download and submit', 'submit this file', 'cleared for submission')
                     or 'ok to download and submit' in normalized):
-                if page_links_promoted:
+                if page_links_promoted or page_links_ready:
                     continue
                 raise ValueError(f'Stale positive submission heading: {page}')
         words = ' '.join(' '.join(parsed.words).lower().split())
@@ -386,6 +430,10 @@ def validate_negative_html(root: Path) -> None:
             if not owned:
                 continue
             if any(Path(a).name and Path(a).name in parts.path for a in allowed):
-                continue  # registered, hash-pinned submission candidate
+                continue  # selector-promoted, hash-pinned submission candidate
+            if any(Path(a).name and Path(a).name in parts.path for a in ready):
+                if 'ok to download and submit' in label.lower() or 'research-grade' in label.lower():
+                    continue  # hash-verified research-grade candidate, not a slot authorization
+                raise ValueError(f'Ready candidate download must be labelled OK TO DOWNLOAD AND SUBMIT: {page}: {href}')
             if 'research' not in label.lower() or 'DO NOT SUBMIT' not in label:
                 raise ValueError(f'Unqualified owned research download: {page}: {href}')
