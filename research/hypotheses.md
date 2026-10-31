@@ -1,10 +1,10 @@
-# Ranked research hypotheses — none cleared for implementation
+# Ranked research hypotheses — N5 implemented and gate-passed; no slot spent
 
-**Editorial review:** 2026-10-27 UTC. These are proposals, not results.
+**Editorial review:** 2026-10-27 UTC; implementation record added 2026-10-31 UTC. These are proposals and one implementation record, not results.
 
-**Method lane: UNASSIGNED.** The current brief still does not name one method paragraph as the assigned lane. N1 is a ranked research proposal only; no experiment or slot is authorized.
+**Method lane: ASSIGNED — N5 relay/stepover-aperture dots.** The assigned lane is N5 (relay/stepover-aperture off-catalogue dots); it was implemented, ran as Experiment 1 in this review lane, and passed all local gates. One unique TIFF is available to download; upload remains a separate DrivenData/selector decision and no experiment or submission slot was spent.
 
-No experiment was run in this review lane. The qualitative ranking below is a judgment about relative potential to improve spatially blocked HOLDOUT-DTI and implementation cost—not a score, a DTI delta, a probability of winning, or a leaderboard forecast. No candidate is selected for a weekly slot.
+Experiment 1 (N5 relay-aperture) was run in this review lane and gate-passed; no weekly slot was spent. The qualitative ranking below is a judgment about relative potential to improve spatially blocked HOLDOUT-DTI and implementation cost—not a score, a DTI delta, a probability of winning, or a leaderboard forecast. No proposal other than N5 is selected for a weekly slot.
 
 Revised after reading all local MSPTCD operators and historical generators: depth-shifted concordance, conductive-flank asymmetry, strain/seismicity conditioning and greedy placement have already been tried here. N1-N4 name unimplemented tests in this checkout, not globally novel methods. Nine priority-site HEADs differ from audited pins, and their newer raster bytes have not all been audited. Concurrent main research reviewed at 29abbf69 includes CBS subsurface-only HGB and E3 flexure/alteration/strain fusion. N1 requires signed cross-profile edge-pair geometry and a body-mimic veto, not their unsigned transforms or a soft weighting change; none of N1–N4 is a claim of globally novel geology or validated performance.
 
@@ -18,6 +18,7 @@ The supplied feature-layer names are from the hash-checked owner-mirrored 19-ban
 | 2 | **N2 — Radiometric-quiet magnetic-edge transfer under conductive cover** | Moderate qualitative potential; targets a mapping-bias regime rather than more dots | Medium | Proposal only; not run |
 | 3 | **N3 — Catalogue-free edge-orientation transport through structural junctions** | Exploratory qualitative potential; high cost and nonunique geological interpretation | High | Proposal only; not run |
 | 4 | **N4 — Survey-axis notch-stability veto on gridded edge evidence** | Lowest direct discovery potential; an artefact-control test, not an independent survey | Low to medium | Proposal only; not run |
+| — | **N5 — Relay/stepover-aperture off-catalogue dots** | Implemented; gate-passed locally; leaderboard performance unknown — not a score estimate | Low to medium | Implemented; gate-passed; download open; no slot spent |
 
 ## Candidate mechanisms and disconfirming alternatives
 
@@ -61,6 +62,17 @@ The supplied feature-layer names are from the hash-checked owner-mirrored 19-ban
 - **Data/access status:** All named raw bands were restored via the unchanged pinned shared cache builder from the 418,912,844-byte public mirror (SHA-256 4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5). No new external binary is needed for this proposed test. Mirror origin/units are not authenticated as organizer bytes; ignored caches must be verified again before use. No feature or model for this proposal was implemented or evaluated. The USGS release documents east-west flight lines, north-south ties, variable clearance and distinct survey areas; a single global notch would be inappropriate. This proposal is limited to a local-grid sensitivity test; independent flight-line validation still needs unavailable binaries.
 - **Source links for manual review:** [https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and)
 
+### N5 — Relay/stepover-aperture off-catalogue dots (implemented)
+
+- **Layers:** labels.tif / existing_faults.tif (USGS/INGENIOUS catalogue) — catalogue-derived only, per buffered whole-segment fold from visible faults.
+- **Physical signature:** facing fault-end pairs 3–12 px apart whose segment directions point across the gap form a relay node at the gap midpoint; binary dots within 300 m (3 px) of nodes, more than 600 m (6 px) from visible traces, 3 px apart, top-K by node strength.
+- **Why it might find an uncatalogued fault:** stepovers and relay ramps are structural apertures between catalogue segments where geothermal flow localizes; such junctions are typically absent from linear trace catalogues.
+- **Difference from reviewed methods:** not ridge-thinness dots (the GEMSDOE24–36 family), not damage-zone flanks, not power-law/tilt budgets: dots sit at segment-end apertures away from all mapped traces.
+- **Named non-fault mimic:** unfaulted intrusive/lithologic contact, erosional segmentation, or a volcanic neck producing paired fault-like endpoints.
+- **Data/access status:** all inputs from the hash-checked owner-mirrored catalogue (existing_faults.tif); mirror not organizer-authenticated. No new external binary required.
+- **Source links for manual review:** [https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/) · [https://en.wikipedia.org/wiki/Tversky_index](https://en.wikipedia.org/wiki/Tversky_index)
+- **Measured result:** Experiment 1 pooled HOLDOUT-DTI 0.00034 (95% CI [0.000239, 0.000465]) over 60,940 withheld positives; fold AUC canaries 0.4984–0.4991 (< 0.90, no leakage alarm); 4,727 unique dots; unique vs all 14 registry rasters checked (max |rank ρ| 0.0054 ≤ 0.90; max 3-px dot overlap 36.45% ≤ 70%). Format pass. No slot spent and no organizer receipt; upload is a separate decision.
+
 ## Why no candidate was validated
 
 The requested literal registry gate is fail-closed. The registered stride-5 binary lattice forces more than 70% three-pixel overlap for the standard 37,654-distinct-dot budget. Separately, a registered continuous prior is positive throughout the footprint; if the pinned shared finite-positive support definition applies to it, every nonempty candidate has 100% overlap. Whether a continuous field should count as ‘dots’ is unresolved, so no exemption is assumed. The inventory is incomplete and does not establish global uniqueness.
@@ -70,7 +82,7 @@ The owner-mirrored competition inputs are not authenticated, and the shared deri
 ## Gates before any experiment or slot selector
 
 1. Resolve the continuous-prior interpretation and restore an immutable, complete, fresh registry; do not move dots to exploit edge cells.
-2. Record the explicit assigned method lane. This shortlist does not assign one.
+2. Record the explicit assigned method lane: ASSIGNED — N5 (relay/stepover-aperture dots), implemented and gate-passed.
 3. Restore and authenticate the competition inputs and exact shared cached feature stack. Keep the pinned shared evaluator/writer unchanged; report any defect upstream.
 4. For each feature alone, compute the leakage canary on every spatially blocked fold. Treat AUC above 0.90 (or its inverse) as leakage until disproven. Derive all catalogue-based features only from visible faults, withhold whole segments plus a buffer, and mask visible faults pixel-exactly.
 5. Use the shared pooled DTI evaluator (alpha 0.2, beta 0.8, 300 m triangular kernel), compare against a matched incumbent on identical folds, and report evaluator version, withheld-positive count, and a spatial-block 95% CI.

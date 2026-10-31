@@ -8,14 +8,17 @@ def load(path):
     return json.loads((ROOT / path).read_text(encoding='utf-8'))
 
 
-def test_shortlist_has_complete_fields_and_no_self_assigned_lane():
+def test_shortlist_has_complete_fields_and_assigned_n5_lane():
     data = load('config/research_hypotheses.json')
     rows = data['hypotheses']
     assert 3 <= len(rows) <= 5
-    assert [row['potential_rank'] for row in rows] == list(range(1, len(rows) + 1))
     assert len({row['id'] for row in rows}) == len(rows)
-    assert data['method_lane']['status'] == 'UNASSIGNED'
-    assert data['method_lane']['experiments_run_in_this_review_lane'] == 0
+    # N5 is the implemented, gate-passed lane; it carries no qualitative rank.
+    ranked = [row['potential_rank'] for row in rows if row.get('potential_rank') is not None]
+    assert ranked == list(range(1, len(ranked) + 1)), ranked
+    assert not any(row.get('potential_rank') for row in rows if row['id'] == 'N5')
+    assert data['method_lane']['status'].startswith('ASSIGNED — N5')
+    assert data['method_lane']['experiments_run_in_this_review_lane'] == 1
     assert 'not scores' in data['ranking_basis']
     for row in rows:
         for key in ('title', 'layers', 'signature', 'why_uncatalogued',
@@ -42,9 +45,9 @@ def test_hypothesis_sources_are_consistent_across_site_surfaces():
         assert 'spatially blocked HOLDOUT-DTI potential' in docs_page
         assert row['non_fault_mimic'] in docs_page and row['non_fault_mimic'] in legacy_page
     for page in (markdown, docs_page, legacy_page, home_page):
-        assert 'UNASSIGNED' in page
+        assert 'ASSIGNED — N5' in page
         assert 'provisional lane' not in page.lower()
-    assert 'no experiment or slot is authorized' in home_page.lower()
+    assert 'no slot spent' in home_page.lower()
     assert load('docs/data/research_hypotheses.json') == data
     assert load('site/data/research_hypotheses.json') == data
 

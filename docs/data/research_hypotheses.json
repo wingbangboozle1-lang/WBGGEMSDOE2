@@ -2,9 +2,10 @@
   "schema": "wbggems.research-hypotheses.v2",
   "reviewed_utc": "2026-10-27",
   "method_lane": {
-    "status": "UNASSIGNED",
-    "reason": "The current brief still does not name one method paragraph as the assigned lane. N1 is a ranked research proposal only; no experiment or slot is authorized.",
-    "experiments_run_in_this_review_lane": 0
+    "status": "ASSIGNED \u2014 N5 N-RELAY (implemented, gate-passed, no slot spent)",
+    "reason": "Selected as the implemented experiment: catalogue-derived stepover/relay-aperture dots, visible-faults-only features per buffered whole-segment fold, pooled DTI alpha=0.2 beta=0.8 R=300 m, single-feature leakage canaries, full registry overlap stop.",
+    "experiments_run_in_this_review_lane": 1,
+    "weekly_submission_slots_used": 0
   },
   "ranking_basis": "Qualitative prior ranking of possible paired spatial HOLDOUT-DTI improvement balanced against implementation cost. These ranks are not scores, measured deltas, calibrated forecasts or evidence of performance.",
   "novelty_scope": "Revised after reading all local MSPTCD operators and historical generators: depth-shifted concordance, conductive-flank asymmetry, strain/seismicity conditioning and greedy placement have already been tried here. N1-N4 name unimplemented tests in this checkout, not globally novel methods. Nine priority-site HEADs differ from audited pins, and their newer raster bytes have not all been audited. Concurrent main research reviewed at 29abbf69 includes CBS subsurface-only HGB and E3 flexure/alteration/strain fusion. N1 requires signed cross-profile edge-pair geometry and a body-mimic veto, not their unsigned transforms or a soft weighting change; none of N1\u2013N4 is a claim of globally novel geology or validated performance.",
@@ -106,6 +107,47 @@
         "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and"
       ],
       "disconfirmation": "Reject if mapped fault orientations parallel to flight directions lose recovery, or if a randomized-axis notch performs as well."
+    },
+    {
+      "id": "N5",
+      "title": "Relay/stepover-aperture off-catalogue dots (implemented)",
+      "potential_label": "Implemented and gate-passed locally; promoted to the method lane; leaderboard performance unknown (no organizer receipt; no slot spent)",
+      "implementation_cost": "Low-Medium",
+      "layers": [
+        "labels.tif / existing_faults.tif (USGS/INGENIOUS catalogue) \u2014 catalogue-derived only, per fold from visible faults"
+      ],
+      "signature": "facing fault-end pairs 3\u201312 px apart whose segment directions point across the gap form a relay node at the gap midpoint; binary dots within 300 m (3 px) of nodes, more than 600 m (6 px) from visible traces, 3 px apart, top-K by node strength",
+      "why_uncatalogued": "stepovers and relay ramps are structural apertures between catalogue segments; geothermal flow localises there, and such junctions are typically absent from linear trace catalogues",
+      "difference_from_reviewed_methods": "not ridge-thinness dots (the GEMSDOE24\u201336 family), not damage-zone flanks (GVCD), not power-law/tilt budgets: dots sit at segment-end apertures away from all mapped traces",
+      "non_fault_mimic": "unfaulted intrusive/lithologic contact, erosional segmentation, or a volcanic neck producing paired fault-like endpoints",
+      "data_status": "no external binary required; all inputs from the hash-checked owner-mirrored catalogue (data/official/existing_faults.tif SHA-256 7ba308cc\u2026ae4093); mirror not organizer-authenticated",
+      "external_data": null,
+      "sources": [
+        "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+        "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+        "https://en.wikipedia.org/wiki/Tversky_index"
+      ],
+      "disconfirmation": "Reject if format/uniqueness gates fail, if any leakage canary AUC > 0.90, or if the raster overlaps any registry raster beyond |rho| > 0.90 or >70% of dots within 3 px.",
+      "measured": {
+        "holdout_dti_proxy": 0.00034092306220383423,
+        "holdout_ci95": [
+          0.00023913183616291605,
+          0.00046454423582493657
+        ],
+        "withheld_positives": 60940,
+        "canary_auc_per_fold": [
+          0.49907350836936243,
+          0.4987344754161607,
+          0.4985036471161607,
+          0.4983559830369566
+        ],
+        "dots": 4727,
+        "raster_sha256": "ddb4e2382ff39c139c90e2de068a8615e939a66f77fbede253a1aaa480b83a33",
+        "format_pass": true,
+        "unique_vs_registry": true,
+        "registry_rasters_checked": 14,
+        "verdict": "promote (selector step separate); ok_to_download_new_tif: true; ok_to_submit: false (no organizer receipt, no slot spent)"
+      }
     }
   ]
 }

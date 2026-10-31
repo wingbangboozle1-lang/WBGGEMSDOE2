@@ -1,0 +1,216 @@
+{
+  "schema": "wbggems.run-card.v1",
+  "generated_utc": "2026-10-31T01:15:11.629735+00:00",
+  "hypothesis": "N5 \u2014 N-RELAY: geothermal flow localises at fault stepovers/relay ramps (facing ends of catalogue segments across a 3\u201312 px gap), a structural process linear USGS/INGENIOUS trace catalogues miss; dots target off-catalogue faults while staying >600 m from visible traces.",
+  "mechanism": "per fold: endpoints = visible-fault pixels with one 8-connected neighbour; endpoint pairs facing across a gap define relay nodes at midpoints (strength = |alignment| x (1 - gap/12px)); dots = binary cells within 300 m (3 px) of a node, >600 m (6 px) from any visible catalogue trace, inside the footprint; 3 px non-max separation; top 30,000 by strength (4,727 cells realised); pooled across 4 buffered whole-segment folds.",
+  "named_non_fault_mimic": "an unfaulted intrusive/lithologic contact or erosional segmentation can produce paired fault-like endpoints without a fault; volcanic necks and drainage junctions can also look like relay nodes.",
+  "holdout": {
+    "evidence_class": "HOLDOUT-DTI (proxy truth = withheld catalogue segments; NOT a leaderboard score)",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positives": 60940,
+    "dti": 0.00034092306220383423,
+    "ci95": [
+      0.00023913183616291605,
+      0.00046454423582493657
+    ],
+    "fold_dti": [
+      0.0010619747045255428,
+      0.00015308596525622368,
+      0.00012682269258616912,
+      2.996610687010748e-05
+    ],
+    "fold_truth": [
+      15122,
+      15174,
+      15294,
+      15350
+    ],
+    "method": "pooled distance-weighted Tversky, alpha=0.2 beta=0.8, R=300 m=3 px triangular kernel, known-fault pixels masked per fold"
+  },
+  "feature_canary": {
+    "status": "run",
+    "auc_per_fold": [
+      0.49907350836936243,
+      0.4987344754161607,
+      0.4985036471161772,
+      0.4983559830369566
+    ],
+    "leakage_alarm": false,
+    "rule": "AUC > 0.90 on any fold is a leakage alarm"
+  },
+  "uniqueness": {
+    "registry_rasters_checked": 14,
+    "results": [
+      {
+        "path": "/home/user/WBGGEMSDOE2/submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif",
+        "sha256": "c8f41c0490f84a26d86073df12fea351464a12e8934a55ca538da5af9253813c",
+        "focus_site": null,
+        "rank_corr": 0.0024942929169546072,
+        "frac_my_dots_within_3px_of_theirs": 0.15168182779775757,
+        "their_positive_cells": 38000
+      },
+      {
+        "path": "/home/user/WBGGEMSDOE2/submissions/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif",
+        "sha256": "b14766fedf4953b79a8315adb3c82b6c8a8a3eab4b9132e61e902b261dc4f2fe",
+        "focus_site": null,
+        "rank_corr": 0.000991866838207582,
+        "frac_my_dots_within_3px_of_theirs": 0.15168182779775757,
+        "their_positive_cells": 38000
+      },
+      {
+        "path": "/home/user/WBGGEMSDOE2/candidate/wbg2-distal-blind-piedmont-6000dots-20261027T120000Z-7a3f9c1d-zeros.tif",
+        "sha256": "ffb41224d073844bb90303fe455ac09daa08f4279d851457cacf8011b3ec38e7",
+        "focus_site": null,
+        "rank_corr": 0.0003175176419152411,
+        "frac_my_dots_within_3px_of_theirs": 0.008462026655383965,
+        "their_positive_cells": 6000
+      },
+      {
+        "path": "/home/user/WBGGEMSDOE2/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-45f56803-nan.tif",
+        "sha256": "45f56803729c9354bd5fb586764652b435b40337d72c4a7bb59b60b491940fc1",
+        "focus_site": null,
+        "rank_corr": 0.0036088458866028886,
+        "frac_my_dots_within_3px_of_theirs": 0.36450179818066425,
+        "their_positive_cells": 40000
+      },
+      {
+        "path": "/home/user/WBGGEMSDOE2/artifacts/wbg4/wbg4-mc40k-scarprad20-20261028-9f5dbc9b-zeros.tif",
+        "sha256": "9f5dbc9b820da220b6ce21bedab6a486ef33c702a71bec3bc1d2d9aa42b51ce1",
+        "focus_site": null,
+        "rank_corr": 0.005143794230684944,
+        "frac_my_dots_within_3px_of_theirs": 0.36450179818066425,
+        "their_positive_cells": 40000
+      },
+      {
+        "path": "GEMSDOE24",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE24",
+        "rank_corr": 0.004123677199179986,
+        "frac_my_dots_within_3px_of_theirs": 0.32874973556166703,
+        "their_positive_cells": 60069
+      },
+      {
+        "path": "GEMSDOE25",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE25",
+        "rank_corr": 0.003178360775368374,
+        "frac_my_dots_within_3px_of_theirs": 0.31796065157605247,
+        "their_positive_cells": 44090
+      },
+      {
+        "path": "GEMSDOE27",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE27",
+        "rank_corr": 0.004072665924882689,
+        "frac_my_dots_within_3px_of_theirs": 0.34567378887243494,
+        "their_positive_cells": 61328
+      },
+      {
+        "path": "GEMSDOE28",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE28",
+        "rank_corr": 0.0031269394315102997,
+        "frac_my_dots_within_3px_of_theirs": 0.22889782102813624,
+        "their_positive_cells": 37660
+      },
+      {
+        "path": "GEMSDOE30",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE30",
+        "rank_corr": 0.004790945640353098,
+        "frac_my_dots_within_3px_of_theirs": 0.31796065157605247,
+        "their_positive_cells": 44090
+      },
+      {
+        "path": "GEMSDOE31",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE31",
+        "rank_corr": 0.0035867084501742634,
+        "frac_my_dots_within_3px_of_theirs": 0.23355193568859742,
+        "their_positive_cells": 40199
+      },
+      {
+        "path": "GEMSDOE32",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE32",
+        "rank_corr": 0.0011641654932957864,
+        "frac_my_dots_within_3px_of_theirs": 0.1658557224455257,
+        "their_positive_cells": 37654
+      },
+      {
+        "path": "GEMSDOE33",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE33",
+        "rank_corr": 0.005404491032617423,
+        "frac_my_dots_within_3px_of_theirs": 0.29680558493759257,
+        "their_positive_cells": 41865
+      },
+      {
+        "path": "GEMSDOE36",
+        "sha256": "focus-raster",
+        "focus_site": "GEMSDOE36",
+        "rank_corr": 0.0012597953227912503,
+        "frac_my_dots_within_3px_of_theirs": 0.17304844510260206,
+        "their_positive_cells": 38854
+      }
+    ],
+    "duplicate_stop": false,
+    "stop_reasons": [],
+    "note": "checked against locally saved registry rasters plus the nine focus-site historical rasters fetched from GitHub; the registry inventory is incomplete so this supports, but does not prove, global uniqueness"
+  },
+  "raster": {
+    "path": "submissions/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.tif",
+    "sha256": "ddb4e2382ff39c139c90e2de068a8615e939a66f77fbede253a1aaa480b83a33",
+    "bytes": 71639,
+    "zip": "submissions/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.zip",
+    "zip_sha256": "bd6732576982a4a0a4d77cd5eaa4815f8ff6f5c42c12b0ee6b380d8ee94ed4dc",
+    "dots": 4727,
+    "mass": 4727.0
+  },
+  "validator": {
+    "no_nan_inside_footprint": true,
+    "no_nan_anywhere": true,
+    "values_in_0_1_inside": true,
+    "values_in_0_1_everywhere": true,
+    "crs_shape_transform_match": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "single_band_float32": true,
+    "outside_footprint_is_zero": true,
+    "all_pass": true,
+    "reference": "owner mirror sample_submission.tif (SHA-256 2176d08e\u202635cbc); not organizer-authenticated"
+  },
+  "submission": {
+    "name": "wbg-relay-aperture-4727dots-20261031T011356Z-574197fc",
+    "note": "relay-aperture off-catalogue dots 30k cells stepover nodes >600m from catalogue traces",
+    "note_length": 86,
+    "lane": "N-RELAY relay/stepover-aperture off-catalogue dots"
+  },
+  "verdict": "promote",
+  "ok_to_download_new_tif": true,
+  "ok_to_submit": false,
+  "gates_pass": true,
+  "experiment_count": 1,
+  "weekly_submission_slots_used": 0,
+  "evidence_class": "LOCAL-MEASUREMENT; estimate is a projection, not an organizer score",
+  "limitations": [
+    "leaderboard truth is unavailable; holdout-DTI proxy uses withheld CATALOGUE segments and is uninformative for this leaderboard (prior repo finding)",
+    "registry inventory is incomplete (13 pinned references); overlap checked against all locally available rasters + 9 focus-site historical rasters fetched via gh api \u2014 supports, but does not prove, global uniqueness",
+    "continuous-prior support interpretation unresolved (dense-prior caveat applies)",
+    "no DrivenData credentials; no organizer receipt; no weekly slot spent"
+  ]
+}
