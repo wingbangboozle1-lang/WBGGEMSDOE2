@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Submit · GEMS Research</title>
+<link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+<style>
+  .step-card { background: #fff; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 16px 0; position: relative; }
+  .step-card .num { position: absolute; top: -12px; left: 20px; background: #0b5d4d; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9em; }
+  .step-card h3 { margin-top: 8px; color: #0b5d4d; }
+  .code-box { background: #f8f9fa; border: 1px solid #dee2e6; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.9em; margin: 10px 0; }
+  .warning { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 12px; border-radius: 6px; margin: 16px 0; }
+  .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 12px; border-radius: 6px; margin: 16px 0; }
+  .hash-box { background: #f8f9fa; border: 1px solid #dee2e6; padding: 8px; font-family: monospace; font-size: 0.85em; border-radius: 4px; word-break: break-all; margin: 10px 0; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="shell">
+    <a href="index.html" class="brand" aria-label="GEMS research home"><span class="brandmark"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/></svg></span>GEMS <small>RESEARCH</small></a>
+    <nav class="nav" aria-label="Main navigation"><a href="index.html">Overview</a><a href="executive-summary-wbg.html">Executive summary</a><a href="how-to-submit-wbg.html" aria-current="page">How to submit</a><a href="release.html">Download status</a></nav>
+    <div class="top-right"><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a></div>
+  </div>
+</header>
+
+<main id="main" class="shell main">
+  <div class="intro">
+    <div>
+      <p class="eyebrow">Submission Guide</p>
+      <h1>How to submit your TIF to the DOE GEMS Prize</h1>
+      <p>Step-by-step instructions for uploading your competition submission to DrivenData.</p>
+    </div>
+  </div>
+
+  <div class="success">
+    <strong>&#10003; Your submission file is ready:</strong> <code>wbg-optimized-v3-binary-37654dots-20261031-zeros.tif</code><br>
+    HOLDOUT-DTI 0.2879 (95% CI [0.2289, 0.3466]) · Unique vs all nine GEMSDOE sites · Format validated
+  </div>
+
+  <div class="step-card">
+    <span class="num">1</span>
+    <h3>Download the submission file</h3>
+    <p>Download the GeoTIFF from the <a href="executive-summary-wbg.html">executive summary</a> or directly:</p>
+    <a href="../release/archive-wbg-optimized-v3/wbg-optimized-v3-binary-37654dots-20261031-zeros.tif" style="display:inline-block;background:#0b5d4d;color:#fff;padding:10px 20px;text-decoration:none;border-radius:6px;margin:8px 0;">Research bytes (quarantined) — DO NOT SUBMIT</a>
+    <a href="../release/archive-wbg-optimized-v3/wbg-optimized-v3-binary-37654dots-20261031-zeros.zip" style="display:inline-block;background:#6c757d;color:#fff;padding:10px 20px;text-decoration:none;border-radius:6px;margin:8px 0;">Research ZIP (quarantined) — DO NOT SUBMIT</a>
+    <div class="hash-box"><strong>Verify SHA-256:</strong> 030737cbdcbe37ba28223ca2e792f060f943b4198049212af53edba61ab491da</div>
+  </div>
+
+  <div class="step-card">
+    <span class="num">2</span>
+    <h3>Verify the file before uploading</h3>
+    <p>Check that the downloaded file matches these specifications:</p>
+    <ul>
+      <li><strong>Format:</strong> Single-band GeoTIFF (.tif)</li>
+      <li><strong>CRS:</strong> EPSG:32611 (UTM Zone 11N)</li>
+      <li><strong>Resolution:</strong> 100 m</li>
+      <li><strong>Shape:</strong> 3730 × 3292 pixels</li>
+      <li><strong>Transform:</strong> [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]</li>
+      <li><strong>Data type:</strong> float32</li>
+      <li><strong>Values:</strong> All in [0, 1] inside the footprint</li>
+      <li><strong>No NaN:</strong> Inside the scored footprint</li>
+      <li><strong>Outside footprint:</strong> Set to 0.0</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <span class="num">3</span>
+    <h3>Submit on DrivenData</h3>
+    <ol>
+      <li>Sign in to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/" target="_blank">DrivenData GEMS Prize competition</a></li>
+      <li>Navigate to the submission page</li>
+      <li>Click <strong>File to submit</strong> and select your .tif file</li>
+      <li>Enter a note (optional, max 140 characters). Suggested: "Near-fault geophysical dot clusters for blind geothermal fault discovery"</li>
+      <li>Click <strong>Submit</strong></li>
+    </ol>
+  </div>
+
+  <div class="warning">
+    <strong>&#10071; Important notes:</strong>
+    <ul>
+      <li>A local format check is <strong>not</strong> organizer acceptance. The DrivenData portal may reject files for reasons not visible locally.</li>
+      <li>If you see "Predicted values must be in range [0, 1]", it typically means NaN or out-of-range values appear where the portal reads them. This file uses 0.0 outside the footprint to avoid that issue.</li>
+      <li>Keep the organizer submission receipt as your score of record. A local HOLDOUT-DTI is not a leaderboard score.</li>
+      <li>Check your remaining weekly submission allowance on the submission page.</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <span class="num">4</span>
+    <h3>After submission</h3>
+    <ul>
+      <li>Record the exact filename, SHA-256, note, and timestamp</li>
+      <li>Wait for the organizer to process and display your score on the leaderboard</li>
+      <li>Compare your organizer-confirmed score against the HOLDOUT-DTI estimate of 0.2879</li>
+      <li>Check the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" target="_blank">public leaderboard</a> for your ranking</li>
+    </ul>
+  </div>
+
+  <p><a href="executive-summary-wbg.html">&larr; Back to executive summary</a></p>
+</main>
+<footer class="footer"><div class="shell"><div><strong>GEMS RESEARCH</strong> · Evidence before submission</div></div></footer>
+</body>
+</html>

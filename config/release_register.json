@@ -79,6 +79,22 @@
    "selector_receipt": null
   },
   {
+   "path": "docs/downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.tif",
+   "zip": "docs/downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.zip",
+   "sha256": "4a4700a93827c7090409a464af798f4e3a2c7004344d1c85c1aadee65890dbcb",
+   "zip_sha256": "b5a5626222e524b00b3f94bc64710ea8de50ced1bbcc61fa4797e4926672382d",
+   "bytes": 59912,
+   "lane": "WBG2-OCM",
+   "decision": "RESEARCH_ONLY_DO_NOT_SUBMIT",
+   "decision_basis": "Owner-directed candidate of 2026-10-31: generated a UNIQUE TIF per the project brief. Automated gates PASS: shared strict validator ok:true (float32, EPSG:32611, exact sample transform, values in [0,1], 0 NaN anywhere, 0 mass outside footprint, 0 mass on mapped catalogue); uniqueness vs 25 audited rasters passes the sparse dot rule (worst halo 48.2% <= 70%, worst |rho| 0.083 <= 0.90); dense continuous-prior exemption documented in evidence/ocm_uniqueness_20261031.json. SCORE UNVERIFIED: PROJECTION band 0.15-0.28 only; beating 0.3195 not demonstrated. Mechanical verdict remains DO NOT SUBMIT until the project owner records a wbggems.selector-receipt.v1 (template on docs/ocm/how-to-submit.html); the owner's real weekly quota must be filled in, not guessed. See evidence/session_run_card_20261031.json and research/ocm-campaign-20261031.md.",
+   "run_card": "evidence/session_run_card_20261031.json",
+   "holdout_evidence": "evidence/ocm_holdout_20261031.json",
+   "uniqueness_evidence": "evidence/ocm_uniqueness_20261031.json",
+   "registered_utc": "2026-10-31",
+   "selector_authorized": false,
+   "selector_receipt": null
+  },
+  {
    "path": "docs/downloads/wbg5/wbg5-sgmc-topo-poisson150k-20261031-zeros.tif",
    "zip": "docs/downloads/wbg5/wbg5-sgmc-topo-poisson150k-20261031-zeros.zip",
    "sha256": "ea7c1b1d39a858676665f6d4d575249791e40d514cc52ae63de4817a65956c27",

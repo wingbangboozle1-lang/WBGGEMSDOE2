@@ -16,6 +16,17 @@
 | Full evidence | [`docs/wbg5/index.html`](docs/wbg5/index.html) · run card [`evidence/wbg5_run_card.json`](evidence/wbg5_run_card.json) · equal-budget control [`evidence/wbg5_equal_budget.json`](evidence/wbg5_equal_budget.json) · budget sweep [`evidence/wbg5_budget_sweep.json`](evidence/wbg5_budget_sweep.json) · duplicate-gate decision [`evidence/wbg5_rule_decision.json`](evidence/wbg5_rule_decision.json). |
 | Nine-site table | [`docs/executive-summary.html`](docs/executive-summary.html) (file, USER-REPORTED score, uniqueness, action); measured-proxy detail in [`docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md`](docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md). |
 
+### Parallel lanes in this session (research-only; not covered by the WBG5 decision)
+
+Two other sessions published candidates on 2026-10-31. They are **not** part of the WBG5 research-grade tier and stay **DO NOT SUBMIT** until the owner records the missing slot facts. Their evidence is retained rather than erased:
+
+- **WBG3-DTOE** — `release/wbg3/wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros.tif`, HOLDOUT-DTI 0.177566 [0.155788, 0.200564] on 60,988 withheld positives, format PASS, nine-site dot shares 54.4–62.9% (< 70%), 558-target registry scan with max Spearman 0.2527. Its [`evidence/selector_receipt_wbg3_20261031.json`](evidence/selector_receipt_wbg3_20261031.json) is a **CONDITIONAL PUBLISH APPROVAL** that does not satisfy `approved_candidates()`: the decision must be `PROMOTE` and a remaining weekly slot must be recorded, and neither is present. Status: research-only pending an owner selector receipt.
+- **WBG2-OCM** — `docs/downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.tif`, format PASS, worst sparse halo 48.2% (< 70%), worst |ρ| 0.083 (< 0.90) across 25 audited rasters; nothing above 0.2778 is demonstrated and no organizer receipt exists. See [`evidence/ocm_uniqueness_20261031.json`](evidence/ocm_uniqueness_20261031.json) and [`evidence/session_run_card_20261031.json`](evidence/session_run_card_20261031.json). Historical negative card: [`evidence/session_run_card_20261029.json`](evidence/session_run_card_20261029.json).
+
+Neither file is hash-bound to a run card with verdict `OK_TO_DOWNLOAD_AND_SUBMIT`, so neither appears in `ready_candidates()`. That is the mechanical gate working as designed, not a judgement that their science is wrong.
+
+
+
 ### What changed on 2026-10-31
 
 - A single lane (`WBG5-SGMC-TOPO-POISSON`) was executed under the three-experiment cap: an independent-prior benchmark, a hide-and-recover catalogue holdout, and a learned SGMC model with a calibrated budget. Four further verification audits (budget sweep, equal-budget control, overlap null, duplicate-gate decision) are counted and disclosed in the run card.

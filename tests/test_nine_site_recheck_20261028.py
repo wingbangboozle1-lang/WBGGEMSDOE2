@@ -79,11 +79,19 @@ def test_validator_outcome_matches_summary(rel, expect_ok):
 def test_readme_start_here_states_the_two_tier_decision_and_points_to_evidence():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
     head = text[: text.index("## Original project prompt")]
+    # WBG5 research-grade decision
     assert "OK TO DOWNLOAD AND SUBMIT (research-grade)" in head
     assert "wbg5-sgmc-topo-poisson150k-20261031-zeros" in head
     assert "ea7c1b1d39a858676665f6d4d575249791e40d514cc52ae63de4817a65956c27" in head
     assert "EXECUTIVE_SUMMARY_NINE_SITES_20261028.md" in head
     assert "no weekly slot has been spent" in head.lower()
     assert "ok_to_submit" in head and "false" in head
-    assert "DO NOT SUBMIT" in head  # historical lanes remain negative
+    assert "DO NOT SUBMIT" in head  # historical lanes and parallel lanes remain negative
     assert "evidence/wbg5_run_card.json" in head
+    # parallel lanes must be referenced, not erased, and must not claim clearance
+    assert "selector receipt" in head.lower()
+    assert "session_run_card_20261031.json" in head
+    assert "ocm_uniqueness_20261031.json" in head
+    assert "session_run_card_20261029.json" in head
+    assert "cleared to submit" not in head.lower()
+    return

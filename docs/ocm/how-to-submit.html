@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Owner sign-off and submission steps for the WBG2-OCM GeoTIFF (DO NOT SUBMIT until sign-off)."><meta name="theme-color" content="#0b5d4d"><title>Sign-off &amp; How to Submit · OCM · GEMS Research</title><link rel="stylesheet" href="../styles.css"></head><body><a class="skip" href="#main">Skip to content</a><header class="topbar"><div class="shell">
+<a href="../index.html" class="brand"><span class="brandmark"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/></svg></span>GEMS <small>RESEARCH</small></a>
+<nav class="nav"><a href="../index.html">Overview</a><a href="index.html">⭐ OCM 2026-10-31</a><a href="how-to-submit.html" aria-current="page">Sign-off &amp; submit</a></nav>
+<div class="top-right"><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub ↗</a></div>
+</div></header><main id="main" class="shell main">
+<div class="intro"><div><p class="eyebrow">Two steps: owner sign-off, then upload · no manual file editing</p><h1>The file is ready. <span>Sign off, then upload.</span></h1><p>The GeoTIFF was generated, hash-validated and uniqueness-audited by this project with zero human image inspection. Every check you would do by hand is already automated and recorded. Until the owner records the selector receipt, the repo's mechanical verdict is DO NOT SUBMIT — this page shows the one-file sign-off that flips it.</p></div></div>
+
+<section class="card"><div class="card-body">
+<h2>Step 0 — Owner sign-off (one file, two minutes)</h2>
+<p>The release machinery separates <em>research</em> from <em>slot authorization</em>. The OCM candidate is registered and hash-bound; the only open gate is <code>selector_authorized</code>. As project owner:</p>
+<ol style="line-height:1.9">
+<li>Check your remaining weekly quota on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">competition submission page</a>.</li>
+<li>Create <code>config/selector_receipt.json</code> exactly like this (replace <code>REMAINING</code> with your real integer quota — do not guess it):</li>
+</ol>
+<pre style="background:#0f172a;color:#d1fae5;padding:14px;border-radius:8px;overflow:auto"><code>{
+  "schema": "wbggems.selector-receipt.v1",
+  "decision": "PROMOTE",
+  "candidate_path": "docs/downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.tif",
+  "candidate_sha256": "4a4700a93827c7090409a464af798f4e3a2c7004344d1c85c1aadee65890dbcb",
+  "weekly_slots_remaining": REMAINING
+}</code></pre>
+<p>3. Then set <code>"selector_authorized": true</code> and <code>"selector_receipt": {"path": "config/selector_receipt.json", "sha256": "&lt;sha256 of that file&gt;"}</code> on the OCM entry in <code>config/release_register.json</code> (the entry already binds the TIF, ZIP, run card, holdout and uniqueness evidence). Any release page rebuild will then treat the file as the single approved candidate.</p>
+<p class="small-meta">Why the indirection: weekly slots are a real, limited resource and the competition's remaining-quota number lives on YOUR account page — this project refuses to guess it. Everything else (format, uniqueness, identity) is already machine-verified below.</p>
+
+<h2>Step 1 — Download the file</h2>
+<p><a href="../downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.tif">OCM research candidate .tif — DO NOT SUBMIT until Step 0 is done ↓</a> · <a href="../downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.zip">Research ZIP — same bytes, DO NOT SUBMIT until Step 0 is done ↓</a></p>
+<p class="small-meta">SHA-256: <code>4a4700a93827c7090409a464af798f4e3a2c7004344d1c85c1aadee65890dbcb</code></p>
+
+<h2>Step 2 — Upload on DrivenData</h2>
+<ol style="line-height:1.9">
+<li>Open the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">competition → Submit tab</a> (requires your DrivenData login).</li>
+<li>Click <strong>Choose file</strong> and select the downloaded <code>.tif</code> (or the <code>.zip</code> — same bytes; the portal accepts either).</li>
+<li>In <strong>Note (optional)</strong>, paste: <code>OCM conc6 x repulsion2-5px greedy300m unique-20261031</code> (52 characters).</li>
+<li>Click <strong>Create submission</strong>. The confirmation page shows the organizer's public-test score — paste it into the next project session; it calibrates the projection model.</li>
+</ol>
+
+<h2>Why this file will not repeat the earlier portal error</h2>
+<p>The earlier rejection — <em>“Predicted values must be in range [0, 1]”</em> — is caused by NaN or out-of-range values anywhere the portal reads. This file was re-read from disk after writing and measured:</p>
+<div class="table-wrap"><table><thead><tr><th>Portal requirement (official rules)</th><th>This file</th></tr></thead><tbody>
+<tr><td>Single-band GeoTIFF (or zip with one)</td><td><span class="status-yes">✓</span> float32, 1 band, zip contains exactly this TIF</td></tr>
+<tr><td>Match competition CRS / shape / geotransform</td><td><span class="status-yes">✓</span> EPSG:32611 · 3730 × 3292 · (100, 0, 243350, 0, −100, 4508550)</td></tr>
+<tr><td>Predicted values in [0, 1]</td><td><span class="status-yes">✓</span> min 0.0 max 1.0 (all 12,279,160 cells finite)</td></tr>
+<tr><td>Outside the study area null/NaN tolerated</td><td><span class="status-yes">✓</span> written as 0.0 (stricter than required — 0 NaN anywhere)</td></tr>
+<tr><td>Unique, identifiable name + short note</td><td><span class="status-yes">✓</span> name and note ≤ 140 chars</td></tr>
+</tbody></table></div>
+
+<h2>What score should you expect?</h2>
+<p>Honest answer: <strong>unknown</strong>. Fleet evidence for off-catalogue ~38k-dot emissions is 0.245–0.278 USER-REPORTED; our prior is new, so we publish a wide PROJECTION band <strong>0.15–0.28</strong> and nothing more. The public leaderboard top is 0.4544 (snapshot 2026-10-29). Beating 0.3195 is not demonstrated by any measurement available here.</p>
+
+<p><a class="text-link" href="index.html">← Back to the executive summary</a></p>
+</div></section>
+</main><footer class="footer"><div class="shell"><div><strong>GEMS RESEARCH</strong> · Evidence before submission</div><div><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition ↗</a></div></div></footer></body></html>
