@@ -1,0 +1,11 @@
+{
+ "per_field_auc": {
+  "b02_rtp": 0.5051801166315784,
+  "b06_tc": 0.5029595907126261,
+  "b13_grav": 0.5146533665640979,
+  "b15_depth": 0.4950175634237409,
+  "b17_cond": 0.5018729891219225,
+  "b19_slope": 0.5612351912086461
+ },
+ "evidence_class": "HOLDOUT-DTI canary (catalogue-recovery instrument)"
+}

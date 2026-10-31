@@ -76,11 +76,16 @@ def test_validator_outcome_matches_summary(rel, expect_ok):
     assert bool(report["ok"]) is expect_ok
 
 
-def test_readme_start_here_is_do_not_submit_and_points_to_nine_site_evidence():
+def test_readme_start_here_is_do_not_submit_and_points_to_current_evidence():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
     head = text[: text.index("## Original project prompt")]
     assert "DO NOT SUBMIT" in head
     assert "EXECUTIVE_SUMMARY_NINE_SITES_20261028.md" in head
-    assert "no new submission file to download" in head.lower()
+    # 2026-10-31: a unique candidate file now exists; the README must keep the
+    # mechanical negative verdict and bind the new session evidence instead of
+    # claiming no file exists.
+    assert "selector receipt" in head.lower()
+    assert "session_run_card_20261031.json" in head
+    assert "ocm_uniqueness_20261031.json" in head
     assert "cleared to submit" not in head.lower()
     assert "session_run_card_20261029.json" in head

@@ -1,0 +1,88 @@
+{
+ "schema": "wbg2.ocm-holdout.v1",
+ "evaluator": "shared gems57.holdout.evaluate (exact fold DTI, alpha0.2 beta0.8 300m)",
+ "evidence_class": "HOLDOUT-DTI (catalogue-recovery instrument; see misalignment caveat)",
+ "caveat": "Mirror labels == existing faults; official scoring masks mapped faults, so this holdout is the INVERSE of the leaderboard task for off-catalogue emitters. Compare arms only against controls on the same instrument.",
+ "arms": {
+  "arm_a_dti_bar": {
+   "pooled_dti": 0.0,
+   "ci95_quadrant_bootstrap": [
+    0.0,
+    0.0
+   ],
+   "pooled_coverage": 0.0,
+   "pooled_n_truth": 22641,
+   "mean_fold_dti": 0.0,
+   "emitted_pixels": 39871,
+   "on_visible_catalogue": 0,
+   "per_fold_dti": {
+    "draw20_foldNW_all": 0.0,
+    "draw20_foldNE_all": 0.0,
+    "draw20_foldSW_all": 0.0,
+    "draw20_foldSE_all": 0.0,
+    "draw21_foldNW_all": 0.0,
+    "draw21_foldNE_all": 0.0,
+    "draw21_foldSW_all": 0.0,
+    "draw21_foldSE_all": 0.0
+   }
+  },
+  "arm_b_budget39k": {
+   "pooled_dti": 0.0,
+   "ci95_quadrant_bootstrap": [
+    0.0,
+    0.0
+   ],
+   "pooled_coverage": 0.0,
+   "pooled_n_truth": 22641,
+   "mean_fold_dti": 0.0,
+   "emitted_pixels": 39000,
+   "on_visible_catalogue": 0,
+   "per_fold_dti": {
+    "draw20_foldNW_all": 0.0,
+    "draw20_foldNE_all": 0.0,
+    "draw20_foldSW_all": 0.0,
+    "draw20_foldSE_all": 0.0,
+    "draw21_foldNW_all": 0.0,
+    "draw21_foldNE_all": 0.0,
+    "draw21_foldSW_all": 0.0,
+    "draw21_foldSE_all": 0.0
+   }
+  },
+  "ref_gemsdoe32_b2": {
+   "pooled_dti": 0.004384809290509451,
+   "ci95_quadrant_bootstrap": [
+    0.003902775374553953,
+    0.005275748449379897
+   ],
+   "pooled_coverage": 0.0062471799292281825,
+   "pooled_n_truth": 22641,
+   "mean_fold_dti": 0.004418799268365232,
+   "emitted_pixels": 37654,
+   "on_visible_catalogue": 0,
+   "per_fold_dti": {
+    "draw20_foldNW_all": 0.005119234300348168,
+    "draw20_foldNE_all": 0.005721849025628992,
+    "draw20_foldSW_all": 0.0036614968254688987,
+    "draw20_foldSE_all": 0.0034797123829621137,
+    "draw21_foldNW_all": 0.0031000233064623294,
+    "draw21_foldNE_all": 0.0058060526566376,
+    "draw21_foldSW_all": 0.004172962032270323,
+    "draw21_foldSE_all": 0.004289063617143429
+   }
+  }
+ },
+ "random_controls": {
+  "random_seed1": {
+   "pooled_dti": 0.044851216216756376,
+   "pooled_coverage": 0.0651840684181814
+  },
+  "random_seed2": {
+   "pooled_dti": 0.04328323425481558,
+   "pooled_coverage": 0.06290202158441958
+  },
+  "random_seed3": {
+   "pooled_dti": 0.04176637002290426,
+   "pooled_coverage": 0.06061915443690923
+  }
+ }
+}
