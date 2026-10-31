@@ -1,6 +1,6 @@
 {
   "evidence_class": "DATA-MEASUREMENT",
-  "recorded_utc": "2026-10-31T00:53:58.866607+00:00",
+  "recorded_utc": "2026-10-31T00:55:46.508317+00:00",
   "origin": "Owner-published mirror; not an authenticated DrivenData download",
   "template_repository": "buffedlizard55-lab/57GEMSDOE",
   "template_commit": "822a0ce5546c7b6749cdd82eb145b6b3e616603d",
@@ -26,6 +26,6 @@
       "bytes": 418912844
     }
   ],
-  "band_cache_built": false,
+  "band_cache_built": true,
   "authenticated_organizer_copy": false
 }

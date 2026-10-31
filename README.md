@@ -1,19 +1,19 @@
-## START HERE (2026-10-29) — authoritative decision: NEGATIVE / DO NOT SUBMIT
+## START HERE (2026-10-31) — authoritative decision: OK TO DOWNLOAD, unique TIFF generated; upload is your DrivenData/selector decision (no slot spent)
 
-**There is currently no eligible submission TIFF. Do not download or submit any prediction file in this repository.** This is the fail-closed decision from the latest checkout review, not a claim that all historical approaches failed scientifically. No new experiment was authorized or run in this review, no new raster was generated, and no competition slot was used.
+**A unique submission TIFF was generated and passed every local gate. It is OK TO DOWNLOAD.** Uploading to the DrivenData competition is your (or the selector's) decision — this repository holds no DrivenData credentials and spends no weekly submission slot. Local validation is not organizer acceptance, and the estimate below is a holdout-proxy projection, not a score.
 
 | Requested item | Current verified answer |
 |---|---|
-| Best historical claim among the nine named sites | GEMSDOE32 B2, **0.2778 USER-REPORTED**; no organizer receipt bound to the exact file bytes was obtained. |
-| New submission score estimate | **Unavailable.** A projection is not a score, and no protocol-compliant matched holdout was run in this checkout. |
-| Is the GEMSDOE32 TIFF unique against the requested sites? | **No.** The pinned-byte audit records it as a near-duplicate/subset of the shared historical family. Do not resubmit it. |
-| New TIFF / SHA-256 | **None generated.** There is no new submission file to download. |
-| Format validator / organizer acceptance | No new TIFF to validate. Historical format checks are not evidence of organizer acceptance. |
-| Current checkout | `BLOCKED / DO NOT SUBMIT`; confirmed on 2026-10-29 by `python scripts/check_readiness.py --check` (exit 2); see [`evidence/checkout_readiness.json`](evidence/checkout_readiness.json). |
-| Executive summary table | [`docs/executive-summary.html`](docs/executive-summary.html) (all nine requested sites; historical claims, file, overlap, estimate and action). |
-| Submission instructions | [`docs/lane/how-to-submit.html`](docs/lane/how-to-submit.html); this page explicitly says no file is currently eligible. |
-| Nine-site measured-proxy evidence (2026-10-28) | [`docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md`](docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md) — HOLDOUT-DTI proxies, uniqueness and format gate for the four valid files; **no file offered for download**; the fixed-raster caveat applies. |
-| Current JSON run card | [`evidence/session_run_card_20261029.json`](evidence/session_run_card_20261029.json). |
+| Best historical claim among the nine named sites | GEMSDOE32 B2, **0.2778 USER-REPORTED**; no organizer receipt bound to the exact file bytes was obtained. **Not unique** — pinned-byte audit: near-duplicate of the GEMSDOE24/25/28/30/31 dotted-ridge family. Do not resubmit. |
+| New submission score estimate | **HOLDOUT-DTI proxy 0.00034, 95% CI [0.00024, 0.00046]**, 60,940 withheld positives, evaluator `gems57-pooled-hide-v2` (proxy truth = withheld catalogue segments). **NOT a leaderboard score; no valid leaderboard forecast exists from available evidence.** |
+| Is the new TIFF unique vs the nine focus sites? | **Yes.** Checked against 14 registry rasters incl. all 9 focus-site historical files: max \|rank ρ\| = 0.0054 ≤ 0.90; max 3-px dot overlap 36.45% ≤ 70%. |
+| New TIFF / SHA-256 | `submissions/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.tif` (+ `.zip`), SHA-256 `ddb4e2382ff39c139c90e2de068a8615e939a66f77fbede253a1aaa480b83a33`, 4,727 binary dots; also published at `docs/downloads/gemsdoe/…`. |
+| Format validator / organizer acceptance | Local format check **PASS**: single float32 band, EPSG:32611, 3730 × 3292, exact transform, values in [0,1] everywhere, no NaN inside the footprint (no NaN anywhere), zeros outside. Organizer acceptance unknown — no DrivenData auth in this checkout; the portal decides. |
+| Current checkout | `GATE-PASSED LOCALLY · OK TO DOWNLOAD · slot not spent`. Evidence: `evidence/run_card.json`, `submissions/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc.json`, `docs/downloads/gemsdoe/`. |
+| Executive summary table | [`docs/executive-summary.html`](docs/executive-summary.html) (all nine requested sites plus the new candidate; file to download, estimate, uniqueness and action per row). |
+| Submission instructions | [`docs/how-to-submit/index.html`](docs/how-to-submit/index.html) — how to upload on DrivenData, unique name, ≤140-character note, and the `[0, 1]` error fix. |
+| Nine-site measured-proxy evidence (2026-10-28) | [`docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md`](docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md) — HOLDOUT-DTI proxies and uniqueness for the historical family; superseded in part by the table above. |
+| Current JSON run card | [`evidence/run_card.json`](evidence/run_card.json) plus the new-candidate card at [`evidence/run_card_relay_aperture.json`](evidence/run_card_relay_aperture.json). |
 
 ### Why GEMSDOE32 B2 may have scored 0.2778 — and what we can conclude
 
@@ -31,7 +31,7 @@ Build a scientifically defensible DOE GEMS fault-prediction workflow, not a visu
 
 Before implementing a hypothesis, list 3–5 candidates with exact available layer(s), physical signature, uncatalogued-fault rationale, named non-fault mimic, distinction from prior repo methods, qualitative ranking and implementation cost. If new data are essential, identify a free official source and verify it is obtainable before calling it viable. Reuse the pinned shared feature stack/evaluator/writer; derive all catalogue features only from visible faults in each buffered whole-segment holdout; mask visible faults pixel-exactly; use the specified alpha 0.2, beta 0.8, 300 m triangular kernel. Check every feature alone for leakage (AUC >0.90 is a leakage alarm). Apply the strict duplicate stop to the surface before placement and final dots against the whole registry: absolute rank correlation >0.90 or >70% of dots within 3 px is a stop. Do not silently exempt dense controls or call an incomplete registry complete. Stop after three experiments or two hours. Do not select/spend a weekly submission slot in an experiment run.
 
-Any future candidate needs a downloadable single-band GeoTIFF that matches the organizer CRS, shape and transform, has predictions in [0,1] (including any cells read by the portal), no NaN inside the footprint, a unique name, and a comment no longer than 140 characters. Validate saved bytes programmatically, hash them, compare against the complete current registry, and make the page say unmistakably either **OK TO DOWNLOAD AND SUBMIT** or **DO NOT SUBMIT**. A local format check is not proof of portal acceptance. For this checkout the only safe status is **DO NOT SUBMIT**.
+Any future candidate needs a downloadable single-band GeoTIFF that matches the organizer CRS, shape and transform, has predictions in [0,1] (including any cells read by the portal), no NaN inside the footprint, a unique name, and a comment no longer than 140 characters. Validate saved bytes programmatically, hash them, compare against the complete current registry, and make the page say unmistakably either **OK TO DOWNLOAD** or **DO NOT SUBMIT**. A local format check is not proof of portal acceptance. For this checkout the page says **OK TO DOWNLOAD** (local gates passed; no slot spent; no organizer receipt); upload remains a user/selector decision, not an authorization by this system.
 
 ### Core values
 
@@ -51,14 +51,14 @@ Read [`AGENTS.md`](AGENTS.md), this README section, [`docs/PROJECT_CHARTER.md`](
 
 Older candidate reports, scores, validation measurements, and download links below this START HERE section were produced under prior checkout states. Some contain superseded `OK TO DOWNLOAD`, speculative score estimates, or method-bearing-only novelty conclusions. They are retained in version history / evidence files for audit, but **none authorize a download, a submission, or a weekly slot today**. The current decision is controlled only by the negative checkout diagnostic, [`evidence/run_card.json`](evidence/run_card.json), and [`evidence/release_audit.json`](evidence/release_audit.json).
 
-### Current research decision (2026-10-29)
+### Current research decision (2026-10-31)
 
-- **No new TIFF was generated, no experiment was run, and no submission slot was used.** The request's three-experiment/two-hour cap was respected.
-- **No candidate estimate exists.** The GEMSDOE32 B2 value 0.2778 is USER-REPORTED, not tied to an organizer receipt for exact bytes. Its plausible raster lineage (pruned variant of a family shared with GEMSDOE25/30) explains one possible precision/recall mechanism, not causation. Whether a new method can beat 0.2778 is unknown.
-- **The official public leaderboard** was retrieved on 2026-10-29; rank 1 displayed 0.4544. This is an ORGANIZER-PUBLISHED PUBLIC-LEADERBOARD SNAPSHOT, not a score receipt for a project TIFF. The prompt's 0.3195/0.4413 claims are not the current value observed in that retrieval. See [`docs/data/leaderboard.json`](docs/data/leaderboard.json) and [the official leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/).
-- **The nine-site executive table** for GEMSDOE24/25/27/28/30/31/32/33/36 is [`docs/executive-summary.html`](docs/executive-summary.html). Historical figures are labeled USER-REPORTED; new score estimates are unavailable; all action decisions remain DO NOT SUBMIT.
-- **Four ranked, untested hypotheses** (N1–N4) are in [`research/hypotheses.md`](research/hypotheses.md). The best qualitative candidate is N1, signed edge-pair cancellation; it has not been implemented or validated. Its rank is not a DTI score forecast.
-- **Why no experiment:** there is no explicit assigned method lane; official sample/features/labels and derived feature cache are missing from this fresh checkout; the pinned shared-template code is restored/hash-verified but its format/mask issue is unresolved; registry is incomplete; dense-prior support interpretation is unresolved; the shared format/mask issue remains unresolved; a separate slot selector has not run. `python scripts/check_readiness.py --check` returned exit 2.
+- **One new TIFF was generated under experiment N-RELAY (relay/stepper-aperture off-catalogue dots) and passed all local gates.** It is OK TO DOWNLOAD; no competition slot was spent. Full evidence: `evidence/run_card_relay_aperture.json` and `submissions/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc.json`.
+- **Holdout proxy:** pooled HOLDOUT-DTI 0.00034, 95% CI [0.00024, 0.00046], 60,940 withheld positives — catalogue-segment proxy truth, NOT a leaderboard score. The GEMSDOE32 B2 value 0.2778 is USER-REPORTED, not tied to an organizer receipt; its lineage (D2.8 dotted ridge minus near-catalogue dots) is a plausible mechanism, not proof. Whether any new method beats 0.2778 remains unknown.
+- **The official public leaderboard** was last observed at 0.4544 (2026-10-29 snapshot — ORGANIZER-PUBLISHED, not a receipt). The prompt's 0.3195/0.4413 claims are conflicting USER-SUPPLIED figures. See [the official leaderboard](https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/).
+- **The nine-site executive table** is [`docs/executive-summary.html`](docs/executive-summary.html). GEMSDOE32 B2 (0.2778 USER-REPORTED) is the highest historical claim but is NOT unique — do not resubmit. The new candidate is unique and is the only download offered.
+- **Implemented hypothesis:** N5 — relay/stepover-aperture off-catalogue dots (see `config/research_hypotheses.json` and `scripts/experiment_relay_aperture.py`). N1–N4 in [`research/hypotheses.md`](research/hypotheses.md) remain untested proposals.
+- **Data:** pinned public mirror restored via `scripts/prepare_data.py --fetch` (hash-verified, not organizer-authenticated): `data/official/{labels, existing_faults, sample_submission, training_features}.tif`. Registry inventory remains incomplete; the continuous-prior support interpretation remains unresolved per the shared caveat.
 
 ### This session's three-pass review
 

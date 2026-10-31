@@ -38,10 +38,15 @@ def test_leaderboard_capture_is_dated_public_observation_not_project_receipt():
     assert "not a receipt" in snapshot["note"].lower()
 
 
-def test_shortlist_remains_proposal_only_and_lane_is_unassigned():
+def test_lane_assigned_to_n5_without_spending_a_slot():
     research = json.loads((ROOT / "config/research_hypotheses.json").read_text())
-    assert research["method_lane"]["status"] == "UNASSIGNED"
+    assert research["method_lane"]["status"].startswith("ASSIGNED — N5")
+    assert research["method_lane"]["experiments_run_in_this_review_lane"] == 1
     assert 3 <= len(research["hypotheses"]) <= 5
+    ids = {row["id"] for row in research["hypotheses"]}
+    assert ids == {"N1", "N2", "N3", "N4", "N5"}
     for hypothesis in research["hypotheses"]:
         for key in ("layers", "signature", "why_uncatalogued", "difference_from_reviewed_methods", "non_fault_mimic", "implementation_cost"):
-            assert hypothesis.get(key)
+            assert hypothesis.get(key), (hypothesis.get("id"), key)
+    n5 = next(h for h in research["hypotheses"] if h["id"] == "N5")
+    assert "gate-passed" in n5["potential_label"].lower()

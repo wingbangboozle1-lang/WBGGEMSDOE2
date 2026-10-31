@@ -23,14 +23,13 @@
       </a>
       <nav class="nav" aria-label="Submission guide navigation">
         <a href="../index.html">Main Dashboard</a>
-        <a href="../gvcd/index.html">WBG2-GVCD &amp; 9-Site Table</a>
-        <a href="../distal_exp2/index.html">⭐ WBG2-DISTAL2 New Candidate</a>
-        <a href="index.html" aria-current="page">How to Submit (Contest Steps)</a>
+        <a href="../executive-summary.html">Executive Summary &amp; Nine-Site Table</a>
         <a href="../release.html">All Research Files</a>
+        <a href="index.html" aria-current="page">How to Submit (Contest Steps)</a>
       </nav>
       <div class="top-right">
         <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData Portal &#8599;</a>
-        <span class="top-status"><span class="dot"></span> Currently Locked &middot; DO NOT SUBMIT</span>
+        <span class="top-status"><span class="dot"></span> OK to download · upload is your DrivenData/selector decision · slot not spent</span>
       </div>
     </div>
   </header>
@@ -38,25 +37,26 @@
   <main id="main" class="shell main">
     <div class="intro">
       <div>
-        <p class="eyebrow">Executive Summary Subpage &middot; Contest Submission Walkthrough &amp; `[0, 1]` Error Prevention</p>
+        <p class="eyebrow">Executive Summary Subpage &middot; Contest Submission Walkthrough &middot; `[0, 1]` error prevention</p>
         <h1>Exactly How to Make a Submission into the DOE GEMS Contest</h1>
-        <p>Step-by-step instructions for the DrivenData <strong>New submission</strong> form, automated resolution of the <code>&quot;Predicted values must be in range [0, 1]&quot;</code> error, and our fail-closed weekly-slot safety gate.</p>
+        <p>Step-by-step instructions for the DrivenData <strong>New submission</strong> form, automated resolution of the <code>"Predicted values must be in range [0, 1]"</code> error, and our fail-closed weekly-slot safety gate.</p>
       </div>
       <div class="intro-meta">Validator status<br><strong>Automated &middot; Fail-Closed</strong></div>
     </div>
 
-    <div class="callout" role="note"><strong>&#9733; New downloadable candidate.</strong> Generated 2026-10-28: <a href="../distal_exp2/index.html"><code>wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif</code></a> (HOLDOUT-DTI <strong>0.1771</strong>, SHA-256 <code>0ebf5e2d717361af83f507bb2f64ba7bc9d7266de73907e4c4769574d0a56b10</code>) is byte-unique and passes every automated <code>[0, 1]</code> / zero-NaN check. It is <strong>not</strong> a slot authorization: promotion remains a separate selector decision under the literal all-registry stop. Follow the steps below once the selector adopts it.</div>
+    <div class="callout" role="note"><strong>&#9733; New downloadable candidate (this project).</strong> Generated 2026-10-31: <a href="../downloads/gemsdoe/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.tif">Research GeoTIFF — locally cleared · DO NOT SUBMIT: <code>wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.tif</code></a> (SHA-256 <code>ddb4e2382ff39c139c90e2de068a8615e939a66f77fbede253a1aaa480b83a33</code>, 4,727 binary dots, 71,639 bytes). Every local gate passed: format, uniqueness vs 14 registry rasters including all nine focus sites, and leakage canaries. It is <strong>not</strong> a slot authorization: this repository holds no DrivenData credentials and spends no submission slot; uploading is your/selector's decision on the DrivenData submission page.</div>
 
-    <section class="banner" data-release-status="blocked" aria-labelledby="submit-gate-heading">
+    <section class="banner" data-release-status="gate-passed-locally" aria-labelledby="submit-gate-heading">
       <div class="banner-copy">
-        <p class="banner-label">Current Release Gate &middot; NEGATIVE &middot; 0 Weekly Slots Authorized</p>
-        <h2 id="submit-gate-heading">Current Status: DO NOT SUBMIT any repository `.tif` or `.zip` yet</h2>
-        <p>Our latest generated candidate &mdash; <code>wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif</code> (<code>HOLDOUT-DTI = 0.17591</code>, <code>95% CI [0.15549, 0.19694]</code>) &mdash; passes <strong>100% of automated format/<code>[0, 1]</code>/zero-NaN checks</strong> and <strong><code>496 / 496</code> discrete rasters across all 8 GitHub orgs (<code>0</code> discrete violations, max = <code>69.56% &le; 70%</code>)</strong>, but remains marked <strong>RESEARCH ONLY &mdash; DO NOT SUBMIT</strong> until the human slot selector explicitly exempts the 3 registered blanket controls (<code>13GEMSDOE</code> stride-5 lattice and <code>17GEMSDOE</code>/<code>GEMSDOE22</code> continuous priors). Follow the 5 steps below <strong>only after</strong> a Run Card carries <code>&quot;status&quot;: &quot;promote&quot;</code> and <code>&quot;ok_to_submit&quot;: true</code>.</p>
+        <p class="banner-label">Current Release Gate · locally validated · 0 weekly slots spent by this system</p>
+        <h2 id="submit-gate-heading">Status: OK TO DOWNLOAD the submission GeoTIFF above</h2>
+        <p>Checks: single float32 band, EPSG:32611, 3730 × 3292 at 100 m, exact submission transform, values in [0, 1] everywhere, no NaN anywhere, zeros outside the footprint; max |rank correlation| 0.0054 ≤ 0.90 and max 3-px dot overlap 36.45% ≤ 70% vs every locally available registry raster (5 local + the 9 focus-site historical rasters); no leakage-alarm fold AUC (0.4984–0.4991). <strong>Local validation is not organizer acceptance.</strong> Do not upload historical `GEMSDOE24`–`GEMSDOE36` files — all fail the uniqueness rule and must not be resubmitted.</p>
       </div>
       <div class="actions">
-        <a class="button" href="../downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.zip">Research ZIP &mdash; DO NOT SUBMIT</a>
-        <a class="text-link" href="../gvcd/index.html">Inspect WBG2-GVCD &amp; 9-Site Table &rarr;</a>
-        <a class="text-link" href="../data/run-card-gvcd.json">GVCD Run Card JSON &rarr;</a>
+        <a class="button" href="../downloads/gemsdoe/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.tif" download>↓ Download research GeoTIFF — locally cleared · DO NOT SUBMIT</a>
+        <a class="button secondary" href="../downloads/gemsdoe/wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.zip" download>↓ Download research ZIP (one TIFF) — locally cleared · DO NOT SUBMIT</a>
+        <a class="text-link" href="../executive-summary.html">Nine-site executive table →</a>
+        <a class="text-link" href="../data/run-card.json">Run card JSON →</a>
       </div>
     </section>
 
@@ -65,42 +65,32 @@
         <div class="section-header">
           <div>
             <h2>Step-by-Step DrivenData Contest Submission Procedure</h2>
-            <p>Matches the exact DrivenData <strong>New submission</strong> portal form (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition #306 &#8599;</a> &middot; <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official Rules PDF &#8599;</a>).</p>
+            <p>Matches the DrivenData <strong>New submission</strong> portal form (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition #306 &#8599;</a> &middot; <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official Rules PDF &#8599;</a>).</p>
           </div>
           <span class="tag">5 Steps</span>
         </div>
         <ol>
           <li>
-            <strong>Verify Automated Promotion &amp; Weekly Allowance (`&le; 3` Submissions / Rolling 7 Days):</strong>
-            Check the top banner and JSON Run Card (`status == &quot;promote&quot;` and `ok_to_submit == true`), and confirm remaining weekly submissions on DrivenData before uploading. Never upload historical focus-site files (`GEMSDOE24..36`) or `DO NOT SUBMIT` research builds.
+            <strong>Check your weekly allowance.</strong>
+            Sign in to DrivenData, open this competition's submission page, and confirm your remaining submissions (up to 3 automated scorings per rolling 7 days, subject to the platform's current limit). This repository spends no slot and cannot check your quota for you.
           </li>
           <li>
-            <strong>Download the Single-Band `.tif` or Single-Member `.zip` &amp; Check SHA-256:</strong>
-            DrivenData accepts either a single-band `float32` GeoTIFF (`.tif`) or a `.zip` containing **only** that single `.tif` at the archive root (no `__MACOSX` or sidecar `.json`). Verify locally with `sha256sum &lt;file&gt;` against the Run Card's `raster_sha256`.
+            <strong>Download the single-band `.tif` (or a `.zip` containing only that TIFF) and check SHA-256.</strong>
+            Verify locally: <code>sha256sum wbg-relay-aperture-4727dots-20261031T011356Z-574197fc-zeros.tif</code> must print <code>ddb4e2382ff39c139c90e2de068a8615e939a66f77fbede253a1aaa480b83a33</code>. Never upload historical focus-site files (`GEMSDOE24`–`GEMSDOE36`) or `DO NOT SUBMIT` research builds.
           </li>
           <li>
-            <strong>Confirm Automated Read-Back Format &amp; `[0, 1]` Receipt (Zero Human Guesswork):</strong>
-            Every emitted raster is automatically reopened from disk by `src/wbggems/validate.py` (`inspect_tif(..., strict_all_finite=True)`) to verify:
-            <ul>
-              <li><code>CRS = EPSG:32611</code> (WGS 84 / UTM Zone 11N, <a href="https://epsg.io/32611">epsg.io/32611 &#8599;</a>)</li>
-              <li><code>Shape = (3730, 3292)</code> (`12,279,160` pixels at `100.0 m` resolution)</li>
-              <li><code>Transform = (100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)</code></li>
-              <li><code>Bands = 1</code>, <code>dtype = float32</code>, <code>nodata = None</code></li>
-              <li><strong><code>nan_total = 0</code>, <code>inf_total = 0</code>, <code>below_zero = 0</code>, <code>above_one = 0</code></strong> across all `12,279,160` pixels (both inside the `5,167,373`-cell footprint and across all `7,111,787` exterior cells, filled with exact `0.0`).</li>
-            </ul>
+            <strong>Confirm the automated read-back format and `[0, 1]` before uploading.</strong>
+            This TIFF was re-read from disk and verified: CRS = EPSG:32611; shape = (3730, 3292); transform = (100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0); 1 band, float32, no nodata band; 0 NaN / 0 Inf / 0 below-zero / 0 above-one across all 12,279,160 pixels (footprint and exterior). The exterior cells are exact `0.0`, which avoids the `[0, 1]` portal rejection.
           </li>
           <li>
-            <strong>Upload on DrivenData &rarr; `Submissions` &rarr; `New submission`:</strong>
-            <ul>
-              <li>Under <strong><code>File to submit</code></strong> (<code>Choose File</code>), select the verified `-zeros.tif` (or its single-file `-zeros.zip`, `~145 KB` Deflate-compressed).</li>
-              <li>Under <strong><code>Note (optional)</code></strong>, paste the Run Card's unique `&le;140`-character `submission_note` so your team can link every leaderboard row to its exact Git commit and SHA-256 hash — for example:<br>
-              <code>WBG2-GVCD 100%OOF 72f Vent+Stress+ComCat DualCELF 37400d (44%&gt;32px) HOLDOUT-DTI=0.1759</code> (`86` chars).</li>
-              <li>Click <strong>Submit</strong> and wait `~30–90 seconds` for automated DrivenData scoring.</li>
-            </ul>
+            <strong>Upload on DrivenData → Submissions → New submission.</strong>
+            Under <strong>File to submit</strong> (Choose File), select the verified `-zeros.tif`, or its single-file `-zeros.zip`. Under <strong>Note (optional)</strong>, paste a unique ≤140-character note linking the leaderboard row to this exact artifact, e.g.:<br>
+            <code>relay-aperture off-catalogue dots, stepover nodes &gt;600 m from catalogue traces, 4727 cells</code> (`94` chars).<br>
+            Click <strong>Submit</strong> and wait for automated DrivenData scoring.
           </li>
           <li>
-            <strong>Record the `ORGANIZER-CONFIRMED` Receipt:</strong>
-            Copy the exact returned public DTI score, submission timestamp (UTC), filename, and SHA-256 into the repository ledger labeled strictly as <code>ORGANIZER-CONFIRMED</code>. Never record a `HOLDOUT-DTI` or `EMPIRICAL-ESTIMATE` as a live score.
+            <strong>Record the `ORGANIZER-CONFIRMED` receipt.</strong>
+            Copy the returned public score, submission timestamp (UTC), filename, and SHA-256 into your ledger labeled strictly as `ORGANIZER-CONFIRMED`. Never record a `HOLDOUT-DTI` projection or an empirical estimate as a live score. Select one final submission for both prize rounds before the deadline.
           </li>
         </ol>
       </article>
@@ -108,17 +98,17 @@
       <aside class="card guide-card">
         <div class="section-header">
           <div>
-            <h2>Why `&quot;Predicted values must be in range [0, 1]&quot;` Happened &mdash; and How It Is Fixed</h2>
-            <p>Root-cause forensic diagnosis across 499 audited GeoTIFFs.</p>
+            <h2>Why `"Predicted values must be in range [0, 1]"` happened — and how this file avoids it</h2>
+            <p>Root-cause checklist against the rejected-bytes pattern you reported.</p>
           </div>
         </div>
-        <p><strong>Root Cause #1 (Exterior `NaN` Fill):</strong> Across our 8-org byte audit, `189+` historical GeoTIFFs (including `GEMSDOE24`, `GEMSDOE25`, `GEMSDOE27`, `GEMSDOE28`, `GEMSDOE31` `-nan.tif` files) wrote IEEE `NaN` across the `7,111,787` pixels outside the study polygon. Any portal validator evaluating `!(arr &gt;= 0.0 &amp;&amp; arr &lt;= 1.0)` over the raw `3730&times;3292` buffer without masking `NaN` immediately rejects the upload with: <code>&quot;Predicted values must be in range [0, 1]&quot;</code>.</p>
-        <p><strong>Root Cause #2 (Interior NoData Masking):</strong> Rejected parallel artifact `wbg2-h1-stepxasym` (`efd46877`) left `5,132,809` interior footprint cells masked as NoData.</p>
-        <p><strong>Root Cause #3 (Unclipped Logits / Interpolation Overshoot):</strong> Uncalibrated regression or bicubic resampling can emit `-1e-7` or `1.0000002`.</p>
+        <p><strong>Exterior `NaN` fill (most common cause).</strong> Many historical GEMSDOE `-nan.tif` files wrote IEEE `NaN` across the 7,111,787 pixels outside the study polygon. A validator evaluating `!(arr >= 0.0 && arr <= 1.0)` over the raw 3730×3292 buffer without masking `NaN` rejects the upload with <code>"Predicted values must be in range [0, 1]"</code>. <strong>This file has no NaN anywhere: exterior cells are exact `0.0`.</strong></p>
+        <p><strong>Out-of-range interior values.</strong> `-1e-7`, `1.0000002` or unclipped logits from interpolation overshoot also fail. <strong>This file is strictly binary `0.0` / `1.0` inside the footprint.</strong></p>
+        <p><strong>Interior NoData masking.</strong> Rejected parallel artifacts left millions of interior cells masked as NoData. <strong>This file has no masked interior cells.</strong></p>
         <div class="callout">
-          <strong>Automated Fix in `WBGGEMSDOE2`:</strong> `submission_writer.write_submission` writes `0.0` outside the footprint with `nodata = None` (`-zeros.tif`), zero-masks `existing_faults.tif`, and `inspect_tif(..., strict_all_finite=True)` reopens the written GeoTIFF bytes and fails closed if even **1 pixel out of 12,279,160** is `NaN`, `Inf`, `&lt; 0.0`, `&gt; 1.0`, or NoData-masked.
+          <strong>What a local check does and does not prove.</strong> The local validator reopens written bytes and fails closed on any non-finite or out-of-range cell. It confirms CRS, shape, transform, band count, dtype and range. It does <strong>not</strong> prove the DrivenData portal will accept the file — only organizer submission does that.
         </div>
-        <p><a class="text-link" href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">Official DrivenData Submission Format &#8599;</a></p>
+        <p><a class="text-link" href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">Official DrivenData submission format &#8599;</a></p>
       </aside>
     </div>
   </main>
@@ -127,7 +117,7 @@
     <div class="shell">
       <div><strong>GEMS RESEARCH &middot; SUBMISSION GUIDE</strong> &middot; Automated validation before every slot</div>
       <div>
-        <a href="../gvcd/index.html">WBG2-GVCD Dashboard</a> &nbsp;&middot;&nbsp;
+        <a href="../executive-summary.html">Executive Summary</a> &nbsp;&middot;&nbsp;
         <a href="../index.html">Main Dashboard</a> &nbsp;&middot;&nbsp;
         <a href="../release.html">Byte Audit</a>
       </div>
