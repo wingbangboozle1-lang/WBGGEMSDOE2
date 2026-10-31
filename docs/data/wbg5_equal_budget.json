@@ -1,0 +1,57 @@
+{
+ "schema": "wbg5.equal-budget.v1",
+ "evidence_class": "SGMC-PROXY-DTI (un-masked; truth = SGMC faults in footprint >3 px from catalogue)",
+ "truth_px": 62122,
+ "evaluator": "src.gemsdoe.fastdti.fast_dti R=3 alpha=0.2 beta=0.8",
+ "rows": [
+  {
+   "name": "ours_oof_blend@20000",
+   "dots": 20000,
+   "dti": 0.0937
+  },
+  {
+   "name": "ours_oof_blend@37654",
+   "dots": 37654,
+   "dti": 0.1564
+  },
+  {
+   "name": "ours_oof_blend@44090",
+   "dots": 44090,
+   "dti": 0.1756
+  },
+  {
+   "name": "ours_oof_blend@80000",
+   "dots": 80000,
+   "dti": 0.2566
+  },
+  {
+   "name": "ours_oof_blend@150000",
+   "dots": 150000,
+   "dti": 0.3234
+  },
+  {
+   "name": "ours_oof_blend@300000",
+   "dots": 300000,
+   "dti": 0.2928
+  },
+  {
+   "name": "gemsdoe32_b2_shipped",
+   "dots": 37654,
+   "dti": 0.0954
+  },
+  {
+   "name": "gemsdoe25_d2_8_shipped",
+   "dots": 44090,
+   "dti": 0.0942
+  },
+  {
+   "name": "ours_shipped_150k_in_sample",
+   "dots": 150000,
+   "dti": 0.3834
+  }
+ ],
+ "equal_budget_37654_ratio_ours_over_b2": 1.639,
+ "note": "ours_oof_blend@N uses the 4-quadrant out-of-fold SGMC model blended 0.6/0.4 with the topography percentile, Poisson-disk 3 px. gemsdoe32_b2_shipped and gemsdoe25_d2_8_shipped are the public rasters scored unchanged on the same truth.",
+ "caveat": "Budgets are not equal across shipped files (150k vs 37,654/44,090 dots). The 37,654 row is the like-for-like comparison. The 150k shipped row uses the full-fit (in-sample) surface and is therefore optimistic relative to the OOF rows.",
+ "generated_utc": "2026-10-31T00:00:00Z"
+}

@@ -1,0 +1,52 @@
+{
+ "schema": "wbg5.overlap-null.v1",
+ "generated_utc": "2026-10-31T00:00:00Z",
+ "note": "Null = 150,000 Poisson-disk dots (3 px min spacing) on uniform random scores inside footprint-minus-catalogue, identical placement geometry to the real submission. Distance transform; <=3.0 px counts as within.",
+ "rows": {
+  "GEMSDOE24": {
+   "other_dots": 60069,
+   "frac_other_within3_of_mine": 0.1785,
+   "frac_random150k_within3_of_other": 0.6595
+  },
+  "GEMSDOE25": {
+   "other_dots": 44090,
+   "frac_other_within3_of_mine": 0.1693,
+   "frac_random150k_within3_of_other": 0.6587
+  },
+  "GEMSDOE27": {
+   "other_dots": 61328,
+   "frac_other_within3_of_mine": 0.1829,
+   "frac_random150k_within3_of_other": 0.6595
+  },
+  "GEMSDOE28": {
+   "other_dots": 37660,
+   "frac_other_within3_of_mine": 0.157,
+   "frac_random150k_within3_of_other": 0.6658
+  },
+  "GEMSDOE30": {
+   "other_dots": 44090,
+   "frac_other_within3_of_mine": 0.1693,
+   "frac_random150k_within3_of_other": 0.6587
+  },
+  "GEMSDOE31": {
+   "other_dots": 40199,
+   "frac_other_within3_of_mine": 0.1595,
+   "frac_random150k_within3_of_other": 0.666
+  },
+  "GEMSDOE32": {
+   "other_dots": 37654,
+   "frac_other_within3_of_mine": 0.151,
+   "frac_random150k_within3_of_other": 0.6682
+  },
+  "GEMSDOE33": {
+   "other_dots": 41865,
+   "frac_other_within3_of_mine": 0.1646,
+   "frac_random150k_within3_of_other": 0.6635
+  },
+  "GEMSDOE36": {
+   "other_dots": 38854,
+   "frac_other_within3_of_mine": 0.1549,
+   "frac_random150k_within3_of_other": 0.6683
+  }
+ }
+}

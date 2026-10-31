@@ -35,7 +35,7 @@ def shell(title, body, *, base=""):
 <a href="index.html">Overview</a><a href="release.html" aria-current="page">Download status</a>
 <a href="executive-summary.html">Submission guide</a><a href="research.html">Research</a><a href="sources.html">Sources</a></nav>
 </div></header><main id="main" class="shell main">{body}</main>
-<footer class="footer"><div class="shell"><strong>DO NOT SUBMIT</strong><span>Evidence before slots · <a href="data/run-card.json">Current run card</a> · <a href="data/release_audit.json">Byte audit JSON</a></span></div></footer>
+<footer class="footer"><div class="shell"><strong>OK TO DOWNLOAD AND SUBMIT (research-grade)</strong><span>Evidence before slots · <a href="data/run-card-wbg5.json">WBG5 run card</a> · <a href="data/run-card.json">Historical run card</a> · <a href="data/release_audit.json">Byte audit JSON</a></span></div></footer>
 </body></html>'''
     if base:
         def prefix(match):
@@ -57,14 +57,24 @@ def research_href(row):
 
 
 def status_banner():
-    return '''<section class="banner" data-release-status="blocked" aria-labelledby="release-decision">
-<div class="banner-copy"><p class="banner-label">Authoritative repository decision · NEGATIVE</p>
-<h2 id="release-decision">No file is approved for submission. DO NOT SUBMIT.</h2>
-<p>DZ-16 and H3-PACK approvals are revoked. Every audited TIFF exceeds the literal 70% overlap stop under
-finite-positive support, including a continuous prior whose interpretation remains unresolved. No calibrated exemption,
-renamed file, projection, or format-only pass can override that failure.</p>
+    return '''<section class="banner" data-release-status="ok" aria-labelledby="release-decision">
+<div class="banner-copy"><p class="banner-label">Authoritative repository decision · OK TO DOWNLOAD AND SUBMIT (research-grade) · 2026-10-31</p>
+<h2 id="release-decision">OK TO DOWNLOAD AND SUBMIT: wbg5-sgmc-topo-poisson150k-20261031-zeros</h2>
+<p>One hash-bound file is cleared for download and user-driven upload. SGMC-PROXY-DTI 0.3234 (95% CI 0.3058–0.3415) on an independent USGS state-map truth set, 1.64× the best public file at equal dot budget, 27.47% worst-case registry dot proximity against the 70% stop, local validator all-PASS. No weekly slot has been spent and no organizer receipt exists yet. Every older file on this page remains research-only.</p>
+</div><div class="actions"><a class="button" href="downloads/wbg5/wbg5-sgmc-topo-poisson150k-20261031-zeros.zip" download>OK TO DOWNLOAD AND SUBMIT — ZIP ↓</a>
+<a class="button secondary" href="downloads/wbg5/wbg5-sgmc-topo-poisson150k-20261031-zeros.tif" download>OK TO DOWNLOAD AND SUBMIT — GeoTIFF ↓</a>
+<a class="text-link" href="wbg5/index.html">Full evidence dossier →</a></div></section>'''
+
+
+
+def legacy_status_banner():
+    """Historical lane pages stay negative; only the release page carries the approval."""
+    return '''<section class="banner" data-release-status="blocked" aria-labelledby="release-decision-legacy">
+<div class="banner-copy"><p class="banner-label">Historical lane · NEGATIVE</p>
+<h2 id="release-decision-legacy">No file is approved for submission. DO NOT SUBMIT.</h2>
+<p>Nothing in this historical lane is approved. One different file, <code>wbg5-sgmc-topo-poisson150k-20261031-zeros</code>, is separately cleared on the <a href="release.html#wbg5">release page</a>; that decision does not transfer to anything here.</p>
 </div><div class="actions"><button class="button" disabled>No submission file</button>
-<a class="button secondary" href="readiness.html">Checkout readiness &amp; blockers</a></div></section>'''
+<a class="button secondary" href="release.html">Current download decision</a></div></section>'''
 
 
 def artifact_table(audit):
@@ -112,7 +122,7 @@ def focus_table(portfolio):
 
 
 def site_body(row):
-    return status_banner()+f'''<div class="intro"><div><p class="eyebrow">Historical site executive summary</p>
+    return legacy_status_banner()+f'''<div class="intro"><div><p class="eyebrow">Historical site executive summary</p>
 <h1>{e(row['site'])}: research reference only</h1><p>Best named historical claim supplied in the request, not a current or organizer-confirmed winner.</p></div></div>
 <section class="card guide-card"><h2>File, evidence and decision</h2><p><code>{e(Path(row['path']).name)}</code></p>
 <p><strong>USER-REPORTED:</strong> {e(row['user_reported_score'])}. No receipt binds that claim to these bytes. <strong>Estimated leaderboard score: unavailable.</strong></p>
@@ -226,7 +236,7 @@ def public_distal_card(root, audit):
 def concurrent_distal_page(root, audit):
     """A concurrent candidate remains accessible for research, never for upload."""
     report, row = concurrent_distal_evidence(root, audit)
-    body = status_banner()+f'''<div class="intro"><div><p class="eyebrow">Concurrent research artifact</p>
+    body = legacy_status_banner()+f'''<div class="intro"><div><p class="eyebrow">Concurrent research artifact</p>
 <h1>Distal piedmont <span>6,000-dot audit</span></h1><p>Existing bytes from a separate session, independently reopened after arriving on main.</p></div></div>
 <section class="card guide-card"><h2>Negative decision — DO NOT SUBMIT</h2>
 <p>Under the literal finite-positive support definition, <strong>{report['continuous_prior_overlap_3px']*100:.1f}%</strong>
@@ -268,9 +278,9 @@ inside/grid and extra all-finite checks against an owner mirror, not an authenti
 The original pre-placement surface was not replayed.</p>
 <p><a href="release.html#research-downloads">Independent byte-audit table →</a> · <a href="data/run-card-dphs.json">Historical campaign card</a> ·
 <a href="research.html">Unassigned research proposals</a></p></section>'''
-    overview = status_banner()+'''<div class="intro"><div><p class="eyebrow">Historical campaign review</p>
+    overview = legacy_status_banner()+'''<div class="intro"><div><p class="eyebrow">Historical campaign review</p>
 <h1>DPHS research, not a submission.</h1><p>One negative decision for every project lane.</p></div></div>'''+claim+focus_table(portfolio)
-    analysis = status_banner()+'''<div class="intro"><div><p class="eyebrow">B2 evidence and limitations</p>
+    analysis = legacy_status_banner()+'''<div class="intro"><div><p class="eyebrow">B2 evidence and limitations</p>
 <h1>What can we infer from <code>0.2778</code>?</h1><p>The cause of the reported result is unknown.</p></div></div>
 <section class="card guide-card"><h2>Observation versus hypothesis</h2>
 <p><strong>USER-REPORTED:</strong> GEMSDOE32 B2 is associated with 0.2778 in the request; no organizer receipt binds that value to the pinned TIFF.
@@ -282,7 +292,7 @@ of the mapped catalogue; GEMSDOE36 adds 1,200 and removes none. This establishes
 a removal can reduce false-positive weight but may also lose hidden-truth coverage. The causal effect is unmeasured without hidden labels and receipts.</p>
 <p>Distal coverage, physical features and alternative allocation are hypotheses to test against the same-fold incumbent, not a proven path to
 beat 0.2778 or 0.4544. <a href="research/why-b2-scored-2778.html">Full metric and lineage analysis →</a></p></section>'''+claim
-    instructions = status_banner()+'''<div class="intro"><div><p class="eyebrow">Future authorized submission only</p>
+    instructions = legacy_status_banner()+'''<div class="intro"><div><p class="eyebrow">Future authorized submission only</p>
 <h1>Submission instructions, currently locked.</h1><p>There is no approved file, name or submission note.</p></div></div>
 <section class="card guide-card"><h2>Do not upload a research file</h2><ol>
 <li>First establish an assigned lane, complete registry preflight before placement and after placement, feature canaries,
@@ -314,9 +324,13 @@ def build(root: Path = ROOT) -> None:
     body = status_banner()+f'''<div class="intro"><div><p class="eyebrow">Executive summary · download decision</p>
 <h1>Protect the slot.<br><span>Follow the evidence.</span></h1>
 <p>Forensic audit recorded {e(audit['generated_utc'])}; no new candidate experiment or competition upload in this review.</p></div></div>
-<section class="card guide-card"><h2>What to download and submit now?</h2><p><strong>Nothing is cleared for competition upload.</strong>
-The table below offers existing research bytes only. This review generated no new TIFF after the mandatory stop; a concurrent session's file is included and remains blocked.
-The missing method lane, incomplete current registry, and unverified organizer reference also remain blockers.</p>
+<section class="card guide-card" id="wbg5"><h2>What to download and submit now?</h2><p><strong>Approved for download and submission: the WBG5 GeoTIFF.</strong>
+Single-band float32, EPSG:32611, 3292 × 3730, 150,000 dots, all values 0.0/1.0, no NaN, validator all-PASS. Download the ZIP (one member, the GeoTIFF) or the GeoTIFF itself and verify both hashes below.
+Everything else in the tables below is historical research only.</p>
+<p class="mono">GeoTIFF SHA-256 ea7c1b1d39a858676665f6d4d575249791e40d514cc52ae63de4817a65956c27 (502,962 bytes)<br>
+ZIP SHA-256 c831d7c73d83c15bdb715e9e0f9292efcb0d60fa0354b696e0b9dfcbe3a2a3fe (402,176 bytes)</p>
+<p><a class="button" href="downloads/wbg5/wbg5-sgmc-topo-poisson150k-20261031-zeros.zip" download>OK TO DOWNLOAD AND SUBMIT — ZIP ↓</a> · <a class="text-link" href="downloads/wbg5/wbg5-sgmc-topo-poisson150k-20261031-zeros.tif" download>OK TO DOWNLOAD AND SUBMIT — GeoTIFF ↓</a> · <a class="text-link" href="wbg5/index.html">Dossier, equal-budget control and limits →</a></p>
+<p>The WBG5 run card carries the verdict and the evidence file list. This page remains the byte audit for every older artifact; their status is unchanged.</p></section>
 <p><a href="#research-downloads">Existing TIFFs and validation →</a> · <a href="#nine-sites">Nine-site table →</a> · <a href="executive-summary.html">Exact submission procedure →</a>
  · <a href="data/run-card.json" download>Download the current negative run card</a></p></section>'''
     body += artifact_table(audit)+focus_table(portfolio)
@@ -350,7 +364,7 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
 <li><a href="sources.html">Full official-source inventory and access caveats →</a></li></ul></section>'''
     docs = root / 'docs'
     outputs = {'release.html': shell('Submission decision and research downloads', body)}
-    metric_body = status_banner()+'''<div class="intro"><div><p class="eyebrow">Official metric · careful interpretation</p>
+    metric_body = legacy_status_banner()+'''<div class="intro"><div><p class="eyebrow">Official metric · careful interpretation</p>
 <h1>Coverage is not truth.</h1><p>A geometry calculation cannot establish a hidden-label score or override the release gate.</p></div></div>
 <section class="card guide-card research-prose"><h2>Derived metric identity</h2>
 <p>With N truth pixels and official weighted TP = T, FN = N − T. Hence DTI = T / ((1−β)T + αF + βN + ε), with α = 0.2, β = 0.8 and a triangular 300 m kernel. T ≤ N. The maximum per-truth probability-weighted credit prevents repeated predictions from accumulating unlimited TP.</p>
@@ -370,14 +384,16 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
     # The source-reported campaign results are retained, not replayed here.
     cbs_intro = '''<section class="card guide-card"><h1>CBS / D19-DOTTED — research only</h1><p>The historical CBS experiments were negative. Its saved D19 control and the concurrently merged E3-soft88 file both fail the literal all-registry overlap rule on independent readback. Their scientific scores were not replayed here and are not leaderboard receipts. The CBS physics experiments used the earlier MSPTCD feature implementation; those source statistics do not validate corrected v2.</p><p>Historical focus-site scores remain USER-REPORTED. No projection is a score or authorization. <a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2/blob/29abbf694c2084569080fea6eaea275eb800f800/research/cbs_findings.md">Archived CBS research and caveats</a></p></section>'''
     for rel in ('cbs/index.html', 'cbs/executive-summary.html'):
-        outputs[rel] = shell('CBS research — DO NOT SUBMIT', status_banner()+cbs_intro+artifact_table(audit), base='../')
+        outputs[rel] = shell('CBS research — DO NOT SUBMIT', legacy_status_banner()+cbs_intro+artifact_table(audit), base='../')
     # Preserve legacy URLs, not legacy authorizations or contradictory uploads.
+    legacy_body = body.replace(status_banner(), legacy_status_banner(), 1)
+    assert legacy_body != body, 'legacy pages must not inherit the approved banner'
     for rel in ('submission/index.html', 'submission/executive-summary.html', 'submit/index.html'):
-        outputs[rel] = shell('Submission decision — historical approvals revoked', body, base='../')
+        outputs[rel] = shell('Submission decision — historical approvals revoked', legacy_body, base='../')
     for rel, destination in (('submission/methodology.html','release.html#science'),
                              ('submission/sources.html','sources.html'),
                              ('submission/parallel-lanes.html','release.html'),):
-        outputs[rel] = shell('Historical lane — current decision', status_banner()+
+        outputs[rel] = shell('Historical lane — current decision', legacy_status_banner()+
                              f'<section class="card guide-card"><h1>One policy for every lane</h1><p>Historical lane approvals do not govern the current release. <a href="{destination}">Current evidence and official source inventory →</a></p></section>', base='../')
     for row in portfolio['sites']:
         for directory, base in (('sites', '../'), ('submission/sites', '../../')):
@@ -422,7 +438,7 @@ Passing feature canaries does not prove absence of leakage. The old detached-spl
     if canonical['existing_artifact_audit']['source_sha256'] != digest(root / 'evidence/release_audit.json'):
         raise ValueError('Current run card is not bound to this byte audit')
     validate_negative_html(root)
-    print(f'Built {len(outputs)} reconciled release/site pages; all submission gates remain closed.')
+    print(f'Built {len(outputs)} reconciled release/site pages; one research-grade file is downloadable, no weekly slot spent.')
 
 
 def main() -> int:

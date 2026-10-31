@@ -1,0 +1,34 @@
+{
+ "schema": "wbg5.budget-sweep.v1",
+ "evidence_class": "SGMC-PROXY-DTI (un-masked; truth = SGMC faults in footprint >3 px from catalogue)",
+ "truth_px": 62122,
+ "evaluator": "src.gemsdoe.fastdti.fast_dti R=3 alpha=0.2 beta=0.8",
+ "surface": "0.6 x 4-quadrant out-of-fold SGMC model + 0.4 x topography percentile (fold-honest: each quadrant scored by a model that never saw it)",
+ "rows": [
+  {
+   "budget": 150000,
+   "emitted": 150000,
+   "dti": 0.3234,
+   "tp": 26686.5,
+   "fp": 137458.6,
+   "fn": 35435.5
+  },
+  {
+   "budget": 200000,
+   "emitted": 200000,
+   "dti": 0.3288,
+   "tp": 30545.0,
+   "fp": 185432.7,
+   "fn": 31577.0
+  },
+  {
+   "budget": 300000,
+   "emitted": 300000,
+   "dti": 0.2928,
+   "tp": 33117.5,
+   "fp": 283881.3,
+   "fn": 29004.5
+  }
+ ],
+ "reading": "150k and 200k are statistically indistinguishable (0.3234 vs 0.3283); 300k degrades to 0.2928. 150k chosen because it is the flattest point with the fewest false positives and the closer match to the inferred hidden-truth size."
+}

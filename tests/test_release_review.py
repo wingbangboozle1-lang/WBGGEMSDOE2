@@ -52,10 +52,14 @@ def test_every_current_candidate_card_rejects_promotion():
 
 
 def test_every_public_release_entrypoint_rejects_submission():
+    from wbggems.release import ready_candidates
+    ready = {Path(p).name for p in ready_candidates(ROOT)}
     for rel in ('docs/index.html', 'docs/executive-summary.html'):
         text = (ROOT / rel).read_text()
         assert 'DO NOT SUBMIT' in text, rel
-        assert 'OK TO DOWNLOAD AND SUBMIT' not in text, rel
+        assert 'OK TO DOWNLOAD AND SUBMIT' in text and 'research-grade' in text, rel
+        assert any(name in text for name in ready), rel
+        assert 'no weekly slot has been spent' in text.lower(), rel
     for rel in ('docs/submission/index.html', 'docs/submission/executive-summary.html',
                 'docs/submit/index.html'):
         text = (ROOT / rel).read_text()

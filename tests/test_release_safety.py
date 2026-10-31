@@ -102,10 +102,18 @@ def test_site_regeneration_cannot_restore_a_historical_approval(tmp_path):
     for page in pages:
         text = page.read_text(encoding='utf-8').lower()
         assert all(phrase not in text for phrase in rejected_phrases), page
-    # Every entrypoint must retain the independently measured negative decision.
+    # The two-tier decision: one hash-verified research-grade file may be offered,
+    # but every historical artifact on the same page must stay negative.
+    from wbggems.release import ready_candidates
+    ready = {Path(p).name for p in ready_candidates(ROOT)}
     for rel in ('docs/index.html', 'docs/executive-summary.html'):
         text = (tmp_path / rel).read_text(encoding='utf-8')
-        assert 'DO NOT SUBMIT' in text and 'OK TO DOWNLOAD AND SUBMIT' not in text, rel
+        assert 'OK TO DOWNLOAD AND SUBMIT' in text and 'research-grade' in text, rel
+        assert 'DO NOT SUBMIT' in text, rel
+        assert any(name in text for name in ready), rel
+        assert not any(phrase in text.lower() for phrase in (
+            'one file is approved to download and submit',
+            'one file is ready to download and submit')), rel
     for rel in ('docs/submit/index.html', 'docs/submission/index.html',
                 'docs/msptcd/index.html'):
         text = (tmp_path / rel).read_text(encoding='utf-8')

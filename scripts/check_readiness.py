@@ -37,8 +37,14 @@ def main(argv=None) -> int:
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f'Readiness diagnostic failed closed: {exc}', file=sys.stderr)
         return 1
-    print('BLOCKED / DO NOT SUBMIT. Diagnostic written; no experiment or slot used.')
-    return 2 if args.check else 0
+    decision = (report.get('download_decision') or {}).get('status')
+    if decision == 'OK_TO_DOWNLOAD_AND_SUBMIT_RESEARCH_GRADE':
+        print('OK TO DOWNLOAD AND SUBMIT (research-grade): one hash-bound file; no weekly slot spent.')
+        ok = True
+    else:
+        print('BLOCKED / DO NOT SUBMIT. Diagnostic written; no experiment or slot used.')
+        ok = False
+    return (0 if ok else 2) if args.check else 0
 
 
 if __name__ == '__main__':

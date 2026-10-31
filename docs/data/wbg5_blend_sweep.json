@@ -1,0 +1,11 @@
+{
+ "schema": "wbg5.blend-sweep.v1",
+ "budget": 150000,
+ "truth_px": 62122,
+ "rows": {
+  "model_only": 0.3177,
+  "blend_0p7_0p3": 0.3262,
+  "blend_0p6_0p4": 0.3234,
+  "topo_only": 0.2806
+ }
+}

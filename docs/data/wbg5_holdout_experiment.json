@@ -1,0 +1,27 @@
+{
+  "schema": "wbg5.holdout-experiment.v1",
+  "generated_utc": "2026-10-31T02:19:03.366139+00:00",
+  "evidence_class": "HOLDOUT-DTI (withheld whole catalogue segments; NOT a leaderboard score)",
+  "protocol": "3199 catalogue components assigned to 4 quadrant folds by centroid; truth = fold components minus a 2 px collar around visible faults; active = footprint minus visible faults; candidates see visible faults only",
+  "budget": 100000,
+  "priors": {
+    "scarp": 0.089575,
+    "edge": 0.074365,
+    "strain": 0.071645,
+    "topo": 0.06338,
+    "thermal": 0.059331,
+    "random": 0.081976,
+    "catcont": 0.002059,
+    "halo": 0.063757,
+    "combo_topocat": 0.011469,
+    "combo_scarpcat": 0.048692,
+    "combo_toposcarp": 0.086797
+  },
+  "density_curve_blend_0p5scarp_0p5topo": {
+    "40000": 0.0373,
+    "80000": 0.0733,
+    "150000": 0.1037,
+    "random_150000": 0.0902
+  },
+  "reading": "At the selected 150k budget the topographic lidar blend is 15% above random on withheld catalogue segments; the prior is weak but positive. Absolute holdout values are not comparable to leaderboard values."
+}
