@@ -45,7 +45,8 @@ def test_local_links_and_html_anchors_are_in_pages_artifact():
             target = (ROOT / unquote(url.path).lstrip("/")).resolve()
             if target.is_dir():
                 target = target / "index.html"
-            staged = target == ROOT / "index.html" or ROOT / "docs" in target.parents or ROOT / "site" in target.parents
+            staged = (target == ROOT / "index.html" or ROOT / "docs" in target.parents
+                      or ROOT / "site" in target.parents or ROOT / "release" in target.parents)
             if not staged or not target.is_file():
                 problems.append(f"{file.relative_to(ROOT)}: {ref} is missing or not staged for Pages")
             elif url.fragment and target in parsed and unquote(url.fragment) not in parsed[target].ids:

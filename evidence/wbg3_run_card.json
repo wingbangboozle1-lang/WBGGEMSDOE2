@@ -1,0 +1,1464 @@
+{
+ "schema": "wbggems.wbg3-run-card.v1",
+ "generated_utc": "2026-10-31T01:26:54.740291+00:00",
+ "lane": "WBG3-DTOE (DTI-optimal tail emission on the pinned DPHS OOF stack)",
+ "preregistration": "research/wbg3_preregistration_20261031.md",
+ "hypothesis": "H1 DTI-optimal tail emission (budget x gain-bar x modulator grid) on the pinned DPHS EXP-3 OOF surface recovers DTI otherwise lost to tail false positives.",
+ "mechanism": "Exact DW-Tversky break-even bar in the shared CELF allocator stops emission when expected kernel credit cannot pay the 0.2-alpha FP price; the incumbent always filled its 38k cap.",
+ "named_non_fault_mimic": "Miscalibrated distal basins (fans, playas, Lahontan shorelines) could make the bar reject good distal dots, losing recall.",
+ "seeds": {
+  "fold_seed_base": 20261031,
+  "note": "fresh seed; DPHS EXP-3 training ops otherwise identical"
+ },
+ "experiments_run": 3,
+ "experiment_cap": 3,
+ "weekly_slots_used": 0,
+ "leakage_canary": {
+  "threshold_symmetric_auc": 0.9,
+  "n_features_checked": 61,
+  "all_passed": true,
+  "max_symmetric_auc_observed": 0.61795,
+  "highest_signal_feature": "demag_along_strike_s3",
+  "per_feature": {
+   "mag_anom": {
+    "fold_aucs": [
+     0.49897,
+     0.5158,
+     0.45472,
+     0.50187
+    ],
+    "mean_auc": 0.49284,
+    "max_symmetric_auc": 0.54528,
+    "passed": true
+   },
+   "rtp": {
+    "fold_aucs": [
+     0.50726,
+     0.49569,
+     0.5413,
+     0.50549
+    ],
+    "mean_auc": 0.51243,
+    "max_symmetric_auc": 0.5413,
+    "passed": true
+   },
+   "tmi_hg": {
+    "fold_aucs": [
+     0.52806,
+     0.48958,
+     0.53394,
+     0.49888
+    ],
+    "mean_auc": 0.51262,
+    "max_symmetric_auc": 0.53394,
+    "passed": true
+   },
+   "geod_2ndinv": {
+    "fold_aucs": [
+     0.56916,
+     0.53567,
+     0.58018,
+     0.51829
+    ],
+    "mean_auc": 0.55083,
+    "max_symmetric_auc": 0.58018,
+    "passed": true
+   },
+   "iso_grav_anom_slope": {
+    "fold_aucs": [
+     0.52843,
+     0.5777,
+     0.46256,
+     0.56434
+    ],
+    "mean_auc": 0.53326,
+    "max_symmetric_auc": 0.5777,
+    "passed": true
+   },
+   "tc_radiometric": {
+    "fold_aucs": [
+     0.46357,
+     0.42866,
+     0.42701,
+     0.38726
+    ],
+    "mean_auc": 0.42662,
+    "max_symmetric_auc": 0.61274,
+    "passed": true
+   },
+   "geod_shearrate": {
+    "fold_aucs": [
+     0.57315,
+     0.50269,
+     0.59321,
+     0.50184
+    ],
+    "mean_auc": 0.54272,
+    "max_symmetric_auc": 0.59321,
+    "passed": true
+   },
+   "geod_dilaterate": {
+    "fold_aucs": [
+     0.49837,
+     0.54049,
+     0.45651,
+     0.56939
+    ],
+    "mean_auc": 0.51619,
+    "max_symmetric_auc": 0.56939,
+    "passed": true
+   },
+   "tmi_vg": {
+    "fold_aucs": [
+     0.49235,
+     0.48972,
+     0.47844,
+     0.47809
+    ],
+    "mean_auc": 0.48465,
+    "max_symmetric_auc": 0.52191,
+    "passed": true
+   },
+   "deq_n100a15": {
+    "fold_aucs": [
+     0.52906,
+     0.55944,
+     0.48919,
+     0.47595
+    ],
+    "mean_auc": 0.51341,
+    "max_symmetric_auc": 0.55944,
+    "passed": true
+   },
+   "iso_grav_anom_vg": {
+    "fold_aucs": [
+     0.51311,
+     0.5307,
+     0.52552,
+     0.56576
+    ],
+    "mean_auc": 0.53377,
+    "max_symmetric_auc": 0.56576,
+    "passed": true
+   },
+   "det_elev": {
+    "fold_aucs": [
+     0.4982,
+     0.45202,
+     0.52869,
+     0.47294
+    ],
+    "mean_auc": 0.48796,
+    "max_symmetric_auc": 0.54798,
+    "passed": true
+   },
+   "iso_grav_anom": {
+    "fold_aucs": [
+     0.45723,
+     0.48192,
+     0.44697,
+     0.48336
+    ],
+    "mean_auc": 0.46737,
+    "max_symmetric_auc": 0.55303,
+    "passed": true
+   },
+   "tmi": {
+    "fold_aucs": [
+     0.49782,
+     0.50727,
+     0.4647,
+     0.49324
+    ],
+    "mean_auc": 0.49076,
+    "max_symmetric_auc": 0.5353,
+    "passed": true
+   },
+   "depth_to_base_surf": {
+    "fold_aucs": [
+     0.51502,
+     0.51926,
+     0.46666,
+     0.5268
+    ],
+    "mean_auc": 0.50694,
+    "max_symmetric_auc": 0.53334,
+    "passed": true
+   },
+   "ieq_n100a15": {
+    "fold_aucs": [
+     0.551,
+     0.54434,
+     0.4995,
+     0.57572
+    ],
+    "mean_auc": 0.54264,
+    "max_symmetric_auc": 0.57572,
+    "passed": true
+   },
+   "cond_surf": {
+    "fold_aucs": [
+     0.50535,
+     0.46795,
+     0.45385,
+     0.54305
+    ],
+    "mean_auc": 0.49255,
+    "max_symmetric_auc": 0.54615,
+    "passed": true
+   },
+   "iso_grav_anom_hg": {
+    "fold_aucs": [
+     0.46762,
+     0.57037,
+     0.48624,
+     0.50966
+    ],
+    "mean_auc": 0.50847,
+    "max_symmetric_auc": 0.57037,
+    "passed": true
+   },
+   "det_elev_slope": {
+    "fold_aucs": [
+     0.54792,
+     0.55469,
+     0.59002,
+     0.56877
+    ],
+    "mean_auc": 0.56535,
+    "max_symmetric_auc": 0.59002,
+    "passed": true
+   },
+   "mag_tilt_grad": {
+    "fold_aucs": [
+     0.51243,
+     0.50414,
+     0.50839,
+     0.49152
+    ],
+    "mean_auc": 0.50412,
+    "max_symmetric_auc": 0.51243,
+    "passed": true
+   },
+   "grav_tilt_grad": {
+    "fold_aucs": [
+     0.51942,
+     0.5061,
+     0.52481,
+     0.47811
+    ],
+    "mean_auc": 0.50711,
+    "max_symmetric_auc": 0.52481,
+    "passed": true
+   },
+   "dip_offset_concordance": {
+    "fold_aucs": [
+     0.54379,
+     0.54008,
+     0.53173,
+     0.54931
+    ],
+    "mean_auc": 0.54123,
+    "max_symmetric_auc": 0.54931,
+    "passed": true
+   },
+   "cond_flank_asymmetry": {
+    "fold_aucs": [
+     0.49946,
+     0.50108,
+     0.50183,
+     0.51208
+    ],
+    "mean_auc": 0.50361,
+    "max_symmetric_auc": 0.51208,
+    "passed": true
+   },
+   "scarp_hessian_ridge_s15": {
+    "fold_aucs": [
+     0.51133,
+     0.49307,
+     0.52516,
+     0.51169
+    ],
+    "mean_auc": 0.51031,
+    "max_symmetric_auc": 0.52516,
+    "passed": true
+   },
+   "scarp_hessian_ridge_s35": {
+    "fold_aucs": [
+     0.53636,
+     0.57609,
+     0.56301,
+     0.57775
+    ],
+    "mean_auc": 0.5633,
+    "max_symmetric_auc": 0.57775,
+    "passed": true
+   },
+   "rad_terrain_residual_edge": {
+    "fold_aucs": [
+     0.48842,
+     0.4752,
+     0.44236,
+     0.46832
+    ],
+    "mean_auc": 0.46858,
+    "max_symmetric_auc": 0.55764,
+    "passed": true
+   },
+   "depth_cover_log_step": {
+    "fold_aucs": [
+     0.5033,
+     0.55449,
+     0.5016,
+     0.55681
+    ],
+    "mean_auc": 0.52905,
+    "max_symmetric_auc": 0.55681,
+    "passed": true
+   },
+   "grav_mag_orient_coherence": {
+    "fold_aucs": [
+     0.52044,
+     0.5321,
+     0.49888,
+     0.52447
+    ],
+    "mean_auc": 0.51897,
+    "max_symmetric_auc": 0.5321,
+    "passed": true
+   },
+   "strain_dilation_ratio": {
+    "fold_aucs": [
+     0.43414,
+     0.51749,
+     0.41182,
+     0.55546
+    ],
+    "mean_auc": 0.47973,
+    "max_symmetric_auc": 0.58818,
+    "passed": true
+   },
+   "strain_shear_edge_gate": {
+    "fold_aucs": [
+     0.53982,
+     0.51769,
+     0.53336,
+     0.49424
+    ],
+    "mean_auc": 0.52128,
+    "max_symmetric_auc": 0.53982,
+    "passed": true
+   },
+   "seismic_structural_index": {
+    "fold_aucs": [
+     0.55027,
+     0.52221,
+     0.47571,
+     0.60879
+    ],
+    "mean_auc": 0.53925,
+    "max_symmetric_auc": 0.60879,
+    "passed": true
+   },
+   "lidar_ex_max": {
+    "fold_aucs": [
+     0.53017,
+     0.57078,
+     0.59824,
+     0.59483
+    ],
+    "mean_auc": 0.57351,
+    "max_symmetric_auc": 0.59824,
+    "passed": true
+   },
+   "lidar_ex_mean": {
+    "fold_aucs": [
+     0.52287,
+     0.55864,
+     0.57981,
+     0.58035
+    ],
+    "mean_auc": 0.56042,
+    "max_symmetric_auc": 0.58035,
+    "passed": true
+   },
+   "lidar_step_max": {
+    "fold_aucs": [
+     0.53812,
+     0.56674,
+     0.60339,
+     0.58455
+    ],
+    "mean_auc": 0.5732,
+    "max_symmetric_auc": 0.60339,
+    "passed": true
+   },
+   "lidar_lap_dipole": {
+    "fold_aucs": [
+     0.54403,
+     0.58049,
+     0.59908,
+     0.59479
+    ],
+    "mean_auc": 0.5796,
+    "max_symmetric_auc": 0.59908,
+    "passed": true
+   },
+   "lidar_updown_asym": {
+    "fold_aucs": [
+     0.52886,
+     0.54388,
+     0.59855,
+     0.55803
+    ],
+    "mean_auc": 0.55733,
+    "max_symmetric_auc": 0.59855,
+    "passed": true
+   },
+   "lidar_relief": {
+    "fold_aucs": [
+     0.55941,
+     0.56268,
+     0.59595,
+     0.57259
+    ],
+    "mean_auc": 0.57266,
+    "max_symmetric_auc": 0.59595,
+    "passed": true
+   },
+   "lidar_coh100": {
+    "fold_aucs": [
+     0.48408,
+     0.47172,
+     0.50073,
+     0.45001
+    ],
+    "mean_auc": 0.47663,
+    "max_symmetric_auc": 0.54999,
+    "passed": true
+   },
+   "dem10_slope_max": {
+    "fold_aucs": [
+     0.54162,
+     0.57413,
+     0.60668,
+     0.58531
+    ],
+    "mean_auc": 0.57693,
+    "max_symmetric_auc": 0.60668,
+    "passed": true
+   },
+   "dem10_steep_ratio_max": {
+    "fold_aucs": [
+     0.51208,
+     0.53261,
+     0.59277,
+     0.55479
+    ],
+    "mean_auc": 0.54806,
+    "max_symmetric_auc": 0.59277,
+    "passed": true
+   },
+   "dem10_hgm20_max": {
+    "fold_aucs": [
+     0.54602,
+     0.56825,
+     0.60574,
+     0.5763
+    ],
+    "mean_auc": 0.57408,
+    "max_symmetric_auc": 0.60574,
+    "passed": true
+   },
+   "dem10_hgm50_max": {
+    "fold_aucs": [
+     0.55097,
+     0.56744,
+     0.60499,
+     0.57395
+    ],
+    "mean_auc": 0.57434,
+    "max_symmetric_auc": 0.60499,
+    "passed": true
+   },
+   "dem10_curv_absmax": {
+    "fold_aucs": [
+     0.53669,
+     0.55717,
+     0.5999,
+     0.56808
+    ],
+    "mean_auc": 0.56546,
+    "max_symmetric_auc": 0.5999,
+    "passed": true
+   },
+   "dem10_onesided3": {
+    "fold_aucs": [
+     0.49945,
+     0.468,
+     0.50209,
+     0.47551
+    ],
+    "mean_auc": 0.48626,
+    "max_symmetric_auc": 0.532,
+    "passed": true
+   },
+   "dem10_deconfounded_piedmont_scarp": {
+    "fold_aucs": [
+     0.50035,
+     0.4834,
+     0.51355,
+     0.48198
+    ],
+    "mean_auc": 0.49482,
+    "max_symmetric_auc": 0.51802,
+    "passed": true
+   },
+   "geodawn_k": {
+    "fold_aucs": [
+     0.45782,
+     0.40133,
+     0.3989,
+     0.40096
+    ],
+    "mean_auc": 0.41475,
+    "max_symmetric_auc": 0.6011,
+    "passed": true
+   },
+   "geodawn_th": {
+    "fold_aucs": [
+     0.4664,
+     0.42364,
+     0.47935,
+     0.38269
+    ],
+    "mean_auc": 0.43802,
+    "max_symmetric_auc": 0.61731,
+    "passed": true
+   },
+   "geodawn_u": {
+    "fold_aucs": [
+     0.49015,
+     0.48282,
+     0.47556,
+     0.41766
+    ],
+    "mean_auc": 0.46655,
+    "max_symmetric_auc": 0.58234,
+    "passed": true
+   },
+   "geodawn_k_th_alteration": {
+    "fold_aucs": [
+     0.48395,
+     0.4227,
+     0.39619,
+     0.48786
+    ],
+    "mean_auc": 0.44767,
+    "max_symmetric_auc": 0.60381,
+    "passed": true
+   },
+   "mag_shallow_demag": {
+    "fold_aucs": [
+     0.51155,
+     0.47629,
+     0.58184,
+     0.51553
+    ],
+    "mean_auc": 0.5213,
+    "max_symmetric_auc": 0.58184,
+    "passed": true
+   },
+   "gallardo_meju_parallelism": {
+    "fold_aucs": [
+     0.52584,
+     0.53159,
+     0.50831,
+     0.52779
+    ],
+    "mean_auc": 0.52338,
+    "max_symmetric_auc": 0.53159,
+    "passed": true
+   },
+   "gdr_wellspring_geotherm": {
+    "fold_aucs": [
+     0.54262,
+     0.52744,
+     0.44917,
+     0.49439
+    ],
+    "mean_auc": 0.5034,
+    "max_symmetric_auc": 0.55083,
+    "passed": true
+   },
+   "gdr_2m_probe_halo": {
+    "fold_aucs": [
+     0.50334,
+     0.55893,
+     0.47342,
+     0.54196
+    ],
+    "mean_auc": 0.51941,
+    "max_symmetric_auc": 0.55893,
+    "passed": true
+   },
+   "gdr_paleo_sinter_halo": {
+    "fold_aucs": [
+     0.47798,
+     0.51846,
+     0.48175,
+     0.49236
+    ],
+    "mean_auc": 0.49264,
+    "max_symmetric_auc": 0.52202,
+    "passed": true
+   },
+   "gdr_volcanic_vent_halo": {
+    "fold_aucs": [
+     0.49112,
+     0.48393,
+     0.49765,
+     0.46987
+    ],
+    "mean_auc": 0.48564,
+    "max_symmetric_auc": 0.53013,
+    "passed": true
+   },
+   "scarp_ridge_1m_s2": {
+    "fold_aucs": [
+     0.5262,
+     0.56147,
+     0.59179,
+     0.56861
+    ],
+    "mean_auc": 0.56202,
+    "max_symmetric_auc": 0.59179,
+    "passed": true
+   },
+   "scarp_ridge_10m_s2": {
+    "fold_aucs": [
+     0.53817,
+     0.54387,
+     0.59442,
+     0.55737
+    ],
+    "mean_auc": 0.55846,
+    "max_symmetric_auc": 0.59442,
+    "passed": true
+   },
+   "scarp_piedmont_contrast": {
+    "fold_aucs": [
+     0.52793,
+     0.5834,
+     0.56072,
+     0.55724
+    ],
+    "mean_auc": 0.55732,
+    "max_symmetric_auc": 0.5834,
+    "passed": true
+   },
+   "demag_along_strike_s3": {
+    "fold_aucs": [
+     0.50199,
+     0.50606,
+     0.38205,
+     0.4869
+    ],
+    "mean_auc": 0.46925,
+    "max_symmetric_auc": 0.61795,
+    "passed": true
+   },
+   "hydro_cond_coupling": {
+    "fold_aucs": [
+     0.54233,
+     0.57667,
+     0.45097,
+     0.56028
+    ],
+    "mean_auc": 0.53256,
+    "max_symmetric_auc": 0.57667,
+    "passed": true
+   },
+   "dphs_h2_fold_visible_relay_tip_modulator": {
+    "fold_aucs": [
+     0.51688,
+     0.50043,
+     0.48347,
+     0.5516
+    ],
+    "mean_auc": 0.5131,
+    "max_symmetric_auc": 0.5516,
+    "passed": true
+   }
+  }
+ },
+ "evaluator_version": "gems57-pooled-hide-v2",
+ "evaluator_hashes": {
+  "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+  "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+  "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+  "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+ },
+ "withheld_positives_total": 60988,
+ "exp1_fixed_raster_anchors": [
+  {
+   "label": "distal2_zeros (repo incumbent)",
+   "file": "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif",
+   "evidence_class": "HOLDOUT-DTI (fixed raster on shared folds; NOT a leaderboard score)",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "pooled_dti": 0.028878,
+   "per_fold": [
+    {
+     "fold": 0,
+     "dti": 0.02507,
+     "emitted": 18714
+    },
+    {
+     "fold": 1,
+     "dti": 0.039876,
+     "emitted": 9759
+    },
+    {
+     "fold": 2,
+     "dti": 0.024294,
+     "emitted": 3860
+    },
+    {
+     "fold": 3,
+     "dti": 0.029957,
+     "emitted": 5667
+    }
+   ]
+  },
+  {
+   "label": "GEMSDOE32-B2 (user-reported 0.2778)",
+   "file": "data_public/rasters_focus/GEMSDOE32__gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+   "evidence_class": "HOLDOUT-DTI (fixed raster on shared folds; NOT a leaderboard score)",
+   "evaluator_version": "gems57-pooled-hide-v2",
+   "pooled_dti": 0.006697,
+   "per_fold": [
+    {
+     "fold": 0,
+     "dti": 0.006132,
+     "emitted": 18028
+    },
+    {
+     "fold": 1,
+     "dti": 0.008544,
+     "emitted": 9588
+    },
+    {
+     "fold": 2,
+     "dti": 0.007532,
+     "emitted": 4795
+    },
+    {
+     "fold": 3,
+     "dti": 0.005094,
+     "emitted": 5243
+    }
+   ]
+  }
+ ],
+ "pooled_holdout_summary": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "alpha": 0.2,
+  "beta": 0.8,
+  "triangular_radius_m": 300.0,
+  "pooled": true,
+  "scores": {
+   "A0_inc_b38_g020_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.1775634688316106,
+    "ci95": [
+     0.15581034675863403,
+     0.20059857311760285
+    ],
+    "withheld_positive_pixels": 60988,
+    "tpw": 10234.172619815685,
+    "fpw": 33997.33402031128,
+    "fnw": 50753.82738018431
+   },
+   "A1_b26_g020_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.14587005179434476,
+    "ci95": [
+     0.12569132855582904,
+     0.16685377452217046
+    ],
+    "withheld_positive_pixels": 60988,
+    "tpw": 8020.076032176549,
+    "fpw": 22932.74279532583,
+    "fnw": 52967.923967823466
+   },
+   "A2_b38_g035_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.1775634688316106,
+    "ci95": [
+     0.15581034675863403,
+     0.20059857311760285
+    ],
+    "withheld_positive_pixels": 60988,
+    "tpw": 10234.172619815685,
+    "fpw": 33997.33402031128,
+    "fnw": 50753.82738018431
+   },
+   "A3_b26_g035_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.14587005179434476,
+    "ci95": [
+     0.12569132855582904,
+     0.16685377452217046
+    ],
+    "withheld_positive_pixels": 60988,
+    "tpw": 8020.076032176549,
+    "fpw": 22932.74279532583,
+    "fnw": 52967.923967823466
+   },
+   "A4_b26_g020_nomod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.14596457186748282,
+    "ci95": [
+     0.12567946113176623,
+     0.16696192841602275
+    ],
+    "withheld_positive_pixels": 60988,
+    "tpw": 8025.413015882084,
+    "fpw": 22932.207627137,
+    "fnw": 52962.586984117945
+   },
+   "A5_b38_g035_nomod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.17756604150560878,
+    "ci95": [
+     0.15578816757896535,
+     0.20056398802558711
+    ],
+    "withheld_positive_pixels": 60988,
+    "tpw": 10234.36715052735,
+    "fpw": 33998.441829518495,
+    "fnw": 50753.63284947264
+   }
+  },
+  "best_comparable_control": "A0_inc_b38_g020_mod",
+  "paired_differences": {
+   "A0_inc_b38_g020_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": 2.5726739981968283e-06,
+    "ci95": [
+     -0.00012261770072037465,
+     0.0001758365306674843
+    ],
+    "withheld_positive_pixels": 60988
+   },
+   "A1_b26_g020_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": 0.03169598971126403,
+    "ci95": [
+     0.027660857337915543,
+     0.035986877374587715
+    ],
+    "withheld_positive_pixels": 60988
+   },
+   "A2_b38_g035_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": 2.5726739981968283e-06,
+    "ci95": [
+     -0.00012261770072037465,
+     0.0001758365306674843
+    ],
+    "withheld_positive_pixels": 60988
+   },
+   "A3_b26_g035_mod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": 0.03169598971126403,
+    "ci95": [
+     0.027660857337915543,
+     0.035986877374587715
+    ],
+    "withheld_positive_pixels": 60988
+   },
+   "A4_b26_g020_nomod": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": 0.03160146963812596,
+    "ci95": [
+     0.027542810497657787,
+     0.035848065142853214
+    ],
+    "withheld_positive_pixels": 60988
+   }
+  },
+  "bootstrap": {
+   "method": "paired physical spatial-cluster percentile",
+   "clusters": 160,
+   "draws": 1000,
+   "seed": 520810,
+   "confidence": 0.95,
+   "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+  },
+  "implementation_sha256": {
+   "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+   "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+   "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+   "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+  }
+ },
+ "per_fold_metrics": {
+  "A0_inc_b38_g020_mod": [
+   {
+    "fold": 0,
+    "dti": 0.154582,
+    "tpw": 4262.57,
+    "fpw": 16335.348,
+    "fnw": 25056.43,
+    "emitted": 18225,
+    "n_truth": 29319,
+    "budget": 18225,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0032,
+    "frac_10_to_32px": 0.0147,
+    "frac_gt_32px": 0.9821,
+    "median_px": 662.001
+   },
+   {
+    "fold": 1,
+    "dti": 0.229345,
+    "tpw": 2847.562,
+    "fpw": 8848.786,
+    "fnw": 9748.438,
+    "emitted": 10169,
+    "n_truth": 12596,
+    "budget": 10169,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.003,
+    "frac_10_to_32px": 0.0337,
+    "frac_gt_32px": 0.9632,
+    "median_px": 464.039
+   },
+   {
+    "fold": 2,
+    "dti": 0.16076,
+    "tpw": 1379.431,
+    "fpw": 3632.038,
+    "fnw": 8093.569,
+    "emitted": 4198,
+    "n_truth": 9473,
+    "budget": 4198,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0021,
+    "frac_10_to_32px": 0.0572,
+    "frac_gt_32px": 0.9407,
+    "median_px": 146.281
+   },
+   {
+    "fold": 3,
+    "dti": 0.192452,
+    "tpw": 1744.609,
+    "fpw": 5181.162,
+    "fnw": 7855.391,
+    "emitted": 5862,
+    "n_truth": 9600,
+    "budget": 5862,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0002,
+    "frac_10_to_32px": 0.0292,
+    "frac_gt_32px": 0.9707,
+    "median_px": 195.128
+   }
+  ],
+  "A1_b26_g020_mod": [
+   {
+    "fold": 0,
+    "dti": 0.124839,
+    "tpw": 3286.993,
+    "fpw": 11086.303,
+    "fnw": 26032.007,
+    "emitted": 12470,
+    "n_truth": 29319,
+    "budget": 12470,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0037,
+    "frac_10_to_32px": 0.0142,
+    "frac_gt_32px": 0.9821,
+    "median_px": 650.0
+   },
+   {
+    "fold": 1,
+    "dti": 0.198819,
+    "tpw": 2331.121,
+    "fpw": 5909.076,
+    "fnw": 10264.879,
+    "emitted": 6957,
+    "n_truth": 12596,
+    "budget": 6957,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0033,
+    "frac_10_to_32px": 0.0342,
+    "frac_gt_32px": 0.9625,
+    "median_px": 450.318
+   },
+   {
+    "fold": 2,
+    "dti": 0.123779,
+    "tpw": 1023.941,
+    "fpw": 2445.631,
+    "fnw": 8449.059,
+    "emitted": 2872,
+    "n_truth": 9473,
+    "budget": 2872,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0024,
+    "frac_10_to_32px": 0.0609,
+    "frac_gt_32px": 0.9366,
+    "median_px": 138.132
+   },
+   {
+    "fold": 3,
+    "dti": 0.159236,
+    "tpw": 1378.021,
+    "fpw": 3491.732,
+    "fnw": 8221.979,
+    "emitted": 4011,
+    "n_truth": 9600,
+    "budget": 4011,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0002,
+    "frac_10_to_32px": 0.0314,
+    "frac_gt_32px": 0.9683,
+    "median_px": 185.132
+   }
+  ],
+  "A2_b38_g035_mod": [
+   {
+    "fold": 0,
+    "dti": 0.154582,
+    "tpw": 4262.57,
+    "fpw": 16335.348,
+    "fnw": 25056.43,
+    "emitted": 18225,
+    "n_truth": 29319,
+    "budget": 18225,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0032,
+    "frac_10_to_32px": 0.0147,
+    "frac_gt_32px": 0.9821,
+    "median_px": 662.001
+   },
+   {
+    "fold": 1,
+    "dti": 0.229345,
+    "tpw": 2847.562,
+    "fpw": 8848.786,
+    "fnw": 9748.438,
+    "emitted": 10169,
+    "n_truth": 12596,
+    "budget": 10169,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.003,
+    "frac_10_to_32px": 0.0337,
+    "frac_gt_32px": 0.9632,
+    "median_px": 464.039
+   },
+   {
+    "fold": 2,
+    "dti": 0.16076,
+    "tpw": 1379.431,
+    "fpw": 3632.038,
+    "fnw": 8093.569,
+    "emitted": 4198,
+    "n_truth": 9473,
+    "budget": 4198,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0021,
+    "frac_10_to_32px": 0.0572,
+    "frac_gt_32px": 0.9407,
+    "median_px": 146.281
+   },
+   {
+    "fold": 3,
+    "dti": 0.192452,
+    "tpw": 1744.609,
+    "fpw": 5181.162,
+    "fnw": 7855.391,
+    "emitted": 5862,
+    "n_truth": 9600,
+    "budget": 5862,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0002,
+    "frac_10_to_32px": 0.0292,
+    "frac_gt_32px": 0.9707,
+    "median_px": 195.128
+   }
+  ],
+  "A3_b26_g035_mod": [
+   {
+    "fold": 0,
+    "dti": 0.124839,
+    "tpw": 3286.993,
+    "fpw": 11086.303,
+    "fnw": 26032.007,
+    "emitted": 12470,
+    "n_truth": 29319,
+    "budget": 12470,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0037,
+    "frac_10_to_32px": 0.0142,
+    "frac_gt_32px": 0.9821,
+    "median_px": 650.0
+   },
+   {
+    "fold": 1,
+    "dti": 0.198819,
+    "tpw": 2331.121,
+    "fpw": 5909.076,
+    "fnw": 10264.879,
+    "emitted": 6957,
+    "n_truth": 12596,
+    "budget": 6957,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0033,
+    "frac_10_to_32px": 0.0342,
+    "frac_gt_32px": 0.9625,
+    "median_px": 450.318
+   },
+   {
+    "fold": 2,
+    "dti": 0.123779,
+    "tpw": 1023.941,
+    "fpw": 2445.631,
+    "fnw": 8449.059,
+    "emitted": 2872,
+    "n_truth": 9473,
+    "budget": 2872,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0024,
+    "frac_10_to_32px": 0.0609,
+    "frac_gt_32px": 0.9366,
+    "median_px": 138.132
+   },
+   {
+    "fold": 3,
+    "dti": 0.159236,
+    "tpw": 1378.021,
+    "fpw": 3491.732,
+    "fnw": 8221.979,
+    "emitted": 4011,
+    "n_truth": 9600,
+    "budget": 4011,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0002,
+    "frac_10_to_32px": 0.0314,
+    "frac_gt_32px": 0.9683,
+    "median_px": 185.132
+   }
+  ],
+  "A4_b26_g020_nomod": [
+   {
+    "fold": 0,
+    "dti": 0.124801,
+    "tpw": 3285.995,
+    "fpw": 11087.556,
+    "fnw": 26033.005,
+    "emitted": 12470,
+    "n_truth": 29319,
+    "budget": 12470,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0034,
+    "frac_10_to_32px": 0.0139,
+    "frac_gt_32px": 0.9827,
+    "median_px": 650.535
+   },
+   {
+    "fold": 1,
+    "dti": 0.199222,
+    "tpw": 2335.964,
+    "fpw": 5907.19,
+    "fnw": 10260.036,
+    "emitted": 6957,
+    "n_truth": 12596,
+    "budget": 6957,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0029,
+    "frac_10_to_32px": 0.0326,
+    "frac_gt_32px": 0.9645,
+    "median_px": 451.638
+   },
+   {
+    "fold": 2,
+    "dti": 0.123845,
+    "tpw": 1024.512,
+    "fpw": 2446.063,
+    "fnw": 8448.488,
+    "emitted": 2872,
+    "n_truth": 9473,
+    "budget": 2872,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0028,
+    "frac_10_to_32px": 0.0571,
+    "frac_gt_32px": 0.9401,
+    "median_px": 138.472
+   },
+   {
+    "fold": 3,
+    "dti": 0.15934,
+    "tpw": 1378.942,
+    "fpw": 3491.399,
+    "fnw": 8221.058,
+    "emitted": 4011,
+    "n_truth": 9600,
+    "budget": 4011,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0002,
+    "frac_10_to_32px": 0.0312,
+    "frac_gt_32px": 0.9686,
+    "median_px": 185.219
+   }
+  ],
+  "A5_b38_g035_nomod": [
+   {
+    "fold": 0,
+    "dti": 0.15451,
+    "tpw": 4260.568,
+    "fpw": 16336.91,
+    "fnw": 25058.432,
+    "emitted": 18225,
+    "n_truth": 29319,
+    "budget": 18225,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0032,
+    "frac_10_to_32px": 0.0142,
+    "frac_gt_32px": 0.9827,
+    "median_px": 662.192
+   },
+   {
+    "fold": 1,
+    "dti": 0.229718,
+    "tpw": 2852.324,
+    "fpw": 8846.901,
+    "fnw": 9743.676,
+    "emitted": 10169,
+    "n_truth": 12596,
+    "budget": 10169,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.003,
+    "frac_10_to_32px": 0.0328,
+    "frac_gt_32px": 0.9642,
+    "median_px": 464.332
+   },
+   {
+    "fold": 2,
+    "dti": 0.160532,
+    "tpw": 1377.452,
+    "fpw": 3633.136,
+    "fnw": 8095.548,
+    "emitted": 4198,
+    "n_truth": 9473,
+    "budget": 4198,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0024,
+    "frac_10_to_32px": 0.056,
+    "frac_gt_32px": 0.9416,
+    "median_px": 146.538
+   },
+   {
+    "fold": 3,
+    "dti": 0.192389,
+    "tpw": 1744.023,
+    "fpw": 5181.495,
+    "fnw": 7855.977,
+    "emitted": 5862,
+    "n_truth": 9600,
+    "budget": 5862,
+    "frac_le_2px": 0.0,
+    "frac_2_to_10px": 0.0002,
+    "frac_10_to_32px": 0.029,
+    "frac_gt_32px": 0.9708,
+    "median_px": 195.283
+   }
+  ]
+ },
+ "pooled_dti_by_arm": {
+  "A0_inc_b38_g020_mod": 0.177563,
+  "A1_b26_g020_mod": 0.14587,
+  "A2_b38_g035_mod": 0.177563,
+  "A3_b26_g035_mod": 0.14587,
+  "A4_b26_g020_nomod": 0.145965,
+  "A5_b38_g035_nomod": 0.177566
+ },
+ "arm_rank_order": [
+  "A5_b38_g035_nomod",
+  "A0_inc_b38_g020_mod",
+  "A2_b38_g035_mod",
+  "A4_b26_g020_nomod",
+  "A1_b26_g020_mod",
+  "A3_b26_g035_mod"
+ ],
+ "selection_rule": "argmax pooled HOLDOUT-DTI among preregistered arms, subject to the focus-site duplicate stop; fall through DTI order on failure",
+ "chosen_arm": "A5_b38_g035_nomod",
+ "focus_uniqueness_phaseA": {
+  "rows": [
+   {
+    "their_raster": "GEMSDOE24__gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+    "share_of_my_dots_within_3px": 0.6238,
+    "spearman_full_footprint": 0.04,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE25__gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+    "share_of_my_dots_within_3px": 0.6006,
+    "spearman_full_footprint": 0.0324,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE27__gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+    "share_of_my_dots_within_3px": 0.6286,
+    "spearman_full_footprint": 0.0397,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE28__gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+    "share_of_my_dots_within_3px": 0.5667,
+    "spearman_full_footprint": 0.0341,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE30__gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+    "share_of_my_dots_within_3px": 0.6006,
+    "spearman_full_footprint": 0.0324,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE31__gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+    "share_of_my_dots_within_3px": 0.5711,
+    "spearman_full_footprint": 0.0346,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE32__gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+    "share_of_my_dots_within_3px": 0.5438,
+    "spearman_full_footprint": 0.0362,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE33__GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+    "share_of_my_dots_within_3px": 0.5858,
+    "spearman_full_footprint": 0.0331,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   },
+   {
+    "their_raster": "GEMSDOE36__gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+    "share_of_my_dots_within_3px": 0.5459,
+    "spearman_full_footprint": 0.0356,
+    "duplicate_by_overlap": false,
+    "duplicate_by_rho": false
+   }
+  ],
+  "worst_share_within_3px": 0.6286,
+  "pass": true,
+  "note": "literal all-registry scan is phase B (scripts/scan_wbg3_registry.py); dense/lattice witnesses documented in preregistration"
+ },
+ "candidate": {
+  "name": "wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros",
+  "note_140": "WBG3-DTOE A5_b38_g035_nomod 100pctOOF CELF300m 38000dots HOLDOUT-DTI=0.1776 [0.1558,0.2006] not-a-score",
+  "note_chars": 103,
+  "tif": "docs/downloads/wbg3/wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros.tif",
+  "zip": "docs/downloads/wbg3/wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros.zip",
+  "sha256": "c9c0c16224c323366a3c134175b91df0a87d7990ebd90da53a765ddefb7f922f",
+  "bytes": 134511,
+  "dots": 38000,
+  "band_fractions": {
+   "frac_le_2px": 0.0,
+   "frac_2_to_10px": 0.4611,
+   "frac_10_to_32px": 0.3267,
+   "frac_gt_32px": 0.2122,
+   "median_px": 11.402
+  },
+  "validator": {
+   "file": "/home/user/WBGGEMSDOE2/docs/downloads/wbg3/wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros.tif",
+   "bytes": 134511,
+   "sha256": "c9c0c16224c323366a3c134175b91df0a87d7990ebd90da53a765ddefb7f922f",
+   "meta": {
+    "crs": "EPSG:32611",
+    "shape": [
+     3730,
+     3292
+    ],
+    "dtype": "float32",
+    "count": 1,
+    "nodata": null,
+    "transform": [
+     100.0,
+     0.0,
+     243350.0,
+     0.0,
+     -100.0,
+     4508550.0
+    ],
+    "profile_compress": "deflate"
+   },
+   "band_description": [
+    null
+   ],
+   "n_finite": 12279160,
+   "n_nan": 0,
+   "n_infinite": 0,
+   "min": 0.0,
+   "max": 1.0,
+   "mean": 0.0030946743208914995,
+   "emitted_positive_pixels": 38000,
+   "checks": {
+    "single_band": true,
+    "dtype_float32": true,
+    "dimensions_3730x3292": true,
+    "crs_epsg_32611": true,
+    "transform_matches_sample_submission": true,
+    "no_nan_anywhere": true,
+    "no_inf_anywhere": true,
+    "no_sentinel_values": true,
+    "range_0_1_guaranteed": true,
+    "min_ge_0": true,
+    "max_le_1": true,
+    "in_footprint_all_finite": true,
+    "in_footprint_range_0_1": true,
+    "outside_footprint_zero": true,
+    "zero_dots_on_mapped_catalogue": true
+   },
+   "all_checks_passed": true,
+   "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+   "on_catalogue_positive_pixels": 0,
+   "in_footprint_positive_pixels": 38000,
+   "footprint_fraction": 0.007353833369489681
+  },
+  "approved_for_weekly_slot": false
+ },
+ "holdout_dti": 0.17756604150560873,
+ "holdout_ci_95": [
+  0.15578816757896535,
+  0.20056398802558711
+ ],
+ "evidence_label": "HOLDOUT-DTI, evaluator gems57-pooled-hide-v2, 60988 withheld positives; never a leaderboard score or projection",
+ "elapsed_seconds": 576.4,
+ "verdict": "promote_to_selector",
+ "verdict_scope": "Promotion is a separate selector decision; this run card spends no weekly slot."
+}

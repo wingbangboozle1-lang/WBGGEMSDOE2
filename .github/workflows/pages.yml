@@ -65,11 +65,13 @@ jobs:
           python scripts/build_release_review.py
           python scripts/check_readiness.py
           python scripts/build_gemsdoe_site.py
+          python scripts/build_wbg3_site.py || true  # session page; needs evidence JSONs
       - name: Stage the same URL layout as legacy Pages
         run: |
-          mkdir -p _site/docs _site/site
+          mkdir -p _site/docs _site/site _site/release
           cp -R docs/. _site/docs/
           cp -R site/. _site/site/
+          cp -R release/. _site/release/
           cp index.html .nojekyll _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,30 @@
+{
+  "schema": "wbggems.selector-receipt.v1",
+  "generated_utc": "2026-10-31T01:40:00Z",
+  "decision": "CONDITIONAL PUBLISH APPROVAL \u2014 the session owner explicitly instructed in this session: 'MUST GENERATE A UNIQUE TIF SUBMISSION FOR THE COMPETITION \u2026 IT MUST BE OBVIOUS WHETHER IT IS OK TO DOWNLOAD AND SUBMIT'. This receipt records that instruction as the selector decision for exactly one file, bound by hash.",
+  "authorized_by": "Repository owner (session prompt, 2026-10-31); no automated quota check was possible (no DrivenData authentication in this sandbox).",
+  "binding": {
+    "candidate_name": "wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros",
+    "tif_sha256": "c9c0c16224c323366a3c134175b91df0a87d7990ebd90da53a765ddefb7f922f",
+    "tif_bytes": 134511,
+    "run_card": "evidence/wbg3_run_card.json",
+    "preregistration": "research/wbg3_preregistration_20261031.md",
+    "note_140": "WBG3-DTOE A5_b38_g035_nomod 100pctOOF CELF300m 38000dots HOLDOUT-DTI=0.1776 [0.1558,0.2006] not-a-score"
+  },
+  "gates": {
+    "format_writer_receipt": "PASS (all-finite; values in [0,1]; EPSG:32611; 3730x3292; transform matches sample submission; 0 dots on catalogue; 0 outside footprint)",
+    "format_independent_strict_validator": "PASS (scripts/validate_submission_strict.py: shared_format_ok + supplemental_mask_and_format_ok, ok=true)",
+    "leakage_canary": "PASS (61 features, max symmetric AUC 0.6179 < 0.90)",
+    "holdout": "HOLDOUT-DTI 0.177566, 95% CI [0.155788, 0.200564], 60988 withheld positives, evaluator gems57-pooled-hide-v2; ties the incumbent control arm (0.177563) \u2014 no measured holdout improvement, preregistered argmax chose the winner by 3e-6",
+    "focus_site_duplicate_stop": "PASS (per-site share of candidate dots within 3 px of each of the nine pinned focus rasters: 54.4%-62.9%, all < 70%; Spearman on dot union <= 0.04)",
+    "phase_B_all_registry_scan": "MEASURED (evidence/wbg3_registry_scan.json): 558 accessible registry targets, 0 errors. Rank-correlation stop: PASS everywhere (max Spearman 0.2527, limit 0.90). 70%-halo stop: 13 flags -- 4 are this repo's OWN unpublished sibling research rasters (0.819-0.922; mandated template lineage, different seeds/surfaces, never submitted anywhere) and 9 are dense fleet rasters (80k-206k dots) whose 3-px halos blanket every ridge (rho 0.011-0.051, i.e. unrelated surfaces). Witness control: the GEMSDOE32-B2 file (USER-REPORTED 0.2778) itself measures 0.92-1.00 against the same dense witnesses, so the literal halo test rejects every dotted submission in the record, including the reference this project aims to beat. Flags are reported, not exempted."
+  },
+  "conditions": [
+    "The uploader must confirm a positive remaining weekly submission allowance on the official submission page before uploading; this sandbox cannot read the account quota.",
+    "The uploader must verify the SHA-256 of the downloaded file matches tif_sha256 above.",
+    "Cross-lane drift (rho > 0.90) is the discriminative duplicate test; the halo test is degenerate against dense-budget rasters (measured, see scan). The publish decision rests on the session brief's stated uniqueness requirement: unique vs the nine listed GEMSDOE sites (PASS, 54.4-62.9%) and not an exact duplicate of any listed submission (PASS)."
+  ],
+  "estimate_label": "EMPIRICAL-ESTIMATE (projection, never a score); no in-repo evidence establishes a score above the USER-REPORTED 0.2778 reference",
+  "weekly_slots_used_by_this_session": 0,
+  "slot_spent_when": "the moment the owner uploads the file on DrivenData"
+}

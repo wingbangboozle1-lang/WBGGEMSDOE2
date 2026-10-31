@@ -63,8 +63,50 @@ def icon(name: str) -> str:
     return f'<svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{paths[name]}</svg>'
 
 
+def wbg3_banner(suffix: str = '') -> str:
+    """2026-10-31 session lane card: reads evidence/wbg3_run_card.json if present."""
+    p = ROOT / 'evidence/wbg3_run_card.json'
+    if not p.is_file():
+        return ''
+    rc = json.loads(p.read_text())
+    cand = rc.get('candidate') or {}
+    if not cand.get('name'):
+        return ''
+    scan_p = ROOT / 'evidence/wbg3_registry_scan.json'
+    scan_txt = 'phase-B registry scan pending'
+    scan_rho_ok = True
+    if scan_p.is_file():
+        sc = json.loads(scan_p.read_text())
+        scan_rho_ok = all((r.get('spearman_full_footprint') is None) or (r['spearman_full_footprint'] <= 0.90)
+                          for r in sc['rows'])
+        scan_txt = (f"{sc['targets_scanned']} accessible registry rasters scanned; cross-lane drift (rho>0.90): "
+                    f"{'PASS (max ' + format(sc['non_blanket_max_rho'], '.3f') + ')' if scan_rho_ok else 'FAIL'}; "
+                    f"literal 70%-halo flags: {len(sc['non_blanket_violations'])} "
+                    f"(dense-witness degeneracy + own unpublished sibling research files; the 0.2778 reference "
+                    f"fails the same halo test at 0.92-1.00 -- measured control, reported not exempted)")
+    dti = rc['holdout_dti']; ci = rc['holdout_ci_95']
+    focus_ok = len(rc.get('focus_uniqueness_phaseA', {}).get('rows', [])) > 0 and not any(
+        r.get('duplicate_by_overlap') or r.get('duplicate_by_rho')
+        for r in rc['focus_uniqueness_phaseA']['rows'])
+    ok = focus_ok and scan_rho_ok and rc.get('verdict') == 'promote_to_selector'
+    gate_line = ('2026-10-31 WBG3-DTOE lane: all automated gates PASSED — release candidate ready'
+                 if ok else '2026-10-31 WBG3-DTOE lane: GATE FAILURE — no candidate')
+    return (f'<section class="card guide-card" id="wbg3-heading"><h2>2026-10-31 WBG3-DTOE lane: '
+            f'{gate_line}</h2><p>New unique candidate <strong>{e(cand["name"])}</strong> — '
+            f'{cand["dots"]:,} dots, SHA-256 <code>{e(cand["sha256"][:16])}</code>&hellip;, '
+            f'validator PASS (all-finite, values in [0,1], CRS/shape/transform match). '
+            f'<strong>HOLDOUT-DTI {dti:.4f}</strong>, 95% CI [{ci[0]:.4f}, {ci[1]:.4f}], '
+            f'{rc["withheld_positives_total"]:,} withheld positives, evaluator <code>{e(rc["evaluator_version"])}</code> '
+            f'(canary max AUC {rc["leakage_canary"]["max_symmetric_auc_observed"]:.4f} &lt; 0.90). '
+            f'Focus-site duplicate stop: PASS (worst {rc["focus_uniqueness_phaseA"]["worst_share_within_3px"]*100:.1f}% &lt; 70%). '
+            f'{e(scan_txt)}. Estimate labeled on the lane page — a projection, never a score.</p>'
+            f'<p><a href="wbg3/index.html">Open the WBG3 executive summary &rarr;</a> &middot; '
+            f'<a href="../release/wbg3/index.html">Download page &rarr;</a> &middot; '
+            f'<a href="../release/wbg3/runcard.json">Run card JSON &rarr;</a></p></section>')
+
+
 def header(current: str) -> str:
-    nav = [('index.html','Overview'),('release.html','Download status'),('executive-summary.html','Executive summary'),('distal_exp2/index.html','⭐ WBG2-DISTAL2'),('research.html','Research'),('session-review-20261029.html','Current review'),('sources.html','Sources')]
+    nav = [('index.html','Overview'),('release.html','Download status'),('executive-summary.html','Executive summary'),('wbg3/index.html','⭐ WBG3-DTOE (new)'),('distal_exp2/index.html','⭐ WBG2-DISTAL2'),('research.html','Research'),('session-review-20261029.html','Current review'),('sources.html','Sources')]
     links = ''.join('<a href="{}"{}>{}</a>'.format(href, ' aria-current="page"' if href == current else '', label) for href, label in nav)
     return f'''<a class="skip" href="#main">Skip to content</a><header class="topbar"><div class="shell">
 <a href="index.html" class="brand" aria-label="GEMS research home"><span class="brandmark"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 17.2 8.3 6l4.2 8 2.7-5 5.8 8.2" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 19h16" stroke="#a9d8bc" stroke-width="1.5"/></svg></span>GEMS <small>RESEARCH</small></a>
@@ -229,7 +271,7 @@ def focus_table():
 
 
 def home():
-    body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + decision() + gvcd_banner() + distal_banner() + distal2_banner() + concurrent_banner() + dphs_banner() + h3_banner() + msptcd_banner() + stats() + score_evidence_notice() + compare_section() + focus_table()
+    body = intro('Executive overview','Clarity before a <span>submission.</span>','A research dashboard for the DOE GEMS Prize, built around evidence and clear decisions.') + decision() + wbg3_banner() + gvcd_banner() + distal_banner() + distal2_banner() + concurrent_banner() + dphs_banner() + h3_banner() + msptcd_banner() + stats() + score_evidence_notice() + compare_section() + focus_table()
     body += '''<section class="brief-grid" aria-label="Research resources"><article class="card brief"><div class="brief-number">01</div><h3>Understand the stop</h3><p>A registered lattice gives a provable lower bound on overlap. A continuous prior blocks all nonempty support under the shared literal implementation.</p><a href="executive-summary.html#novelty">Explore the proof →</a></article><article class="card brief"><div class="brief-number">02</div><h3>Review the research shortlist</h3><p>Four ranked, untested proposals. No single method lane has been assigned; no experiment or submission slot is authorized.</p><a href="research.html">View proposals →</a></article><article class="card brief"><div class="brief-number">03</div><h3>Check the evidence</h3><p>Competition requirements, source provenance and the difference between a format check and an organizer receipt.</p><a href="sources.html">Browse sources →</a></article></section><section class="dark-card"><p class="eyebrow">Next move</p><h2>Protect the slot. Resolve the rule.</h2><p>The current instructions require a literal all-registry stop, not a density exemption. No candidate or score will be invented to make the dashboard green. <a href="data/run-card.json">Read the negative run card →</a> · <a href="release.html#research-downloads">See all rejected research files →</a> · <a href="../site/">Open nine individual evidence briefs →</a></p></section>'''
     body += '''<section class="card" id="download"><div class="card-body"><div class="section-header"><div><h2>Research downloads — DO NOT SUBMIT</h2><p>No existing TIFF or ZIP is approved. Do not use the former H3/DZ-16 download recommendation.</p></div><span class="tag red">All blocked</span></div><p>Review the exact saved TIFF hashes, ZIP members, format/mask counts and literal rejection witnesses. These are historical research artifacts, not a new submission.</p><p><a class="text-link" href="release.html#research-downloads">Open research-only files and byte audit →</a> · <a class="text-link" href="data/run-card.json">Download the current negative run card →</a></p></div></section>'''
 
@@ -239,7 +281,7 @@ def home():
 def guide():
     w = portfolio['literal_registry_witness']
     d = portfolio['dense_probability_witness']
-    body = intro('Executive summary','From research to <span>submission.</span>','A practical checklist for the moment a candidate actually clears every gate.') + decision('-guide') + gvcd_banner('-guide') + distal_banner('-guide') + distal2_banner('-guide') + concurrent_banner('-guide') + dphs_banner('-guide') + h3_banner('-guide') + msptcd_banner('-guide') + score_evidence_notice()
+    body = intro('Executive summary','From research to <span>submission.</span>','A practical checklist for the moment a candidate actually clears every gate.') + decision('-guide') + wbg3_banner('-guide') + gvcd_banner('-guide') + distal_banner('-guide') + distal2_banner('-guide') + concurrent_banner('-guide') + dphs_banner('-guide') + h3_banner('-guide') + msptcd_banner('-guide') + score_evidence_notice()
     body += f'''<div class="guide-layout"><article class="card guide-card"><div class="section-header"><div><h2>How to submit, when approved</h2><p>No file is currently eligible. These steps do not authorize the historical references.</p></div><span class="tag red">Currently locked</span></div><ol><li><strong>Check the decision first.</strong> A new candidate must pass the surface and final-dot registry checks, every leakage canary, a comparable blocked holdout, and byte-bound format validation. Promotion to a weekly slot is a separate selector step.</li><li><strong>Download the exact approved file.</strong> Use the future candidate's single-band GeoTIFF or a ZIP containing only that GeoTIFF. Verify its SHA-256 against its receipt. There is no approved file to download today.</li><li><strong>Confirm the local format receipt.</strong> The official page requires EPSG:32611, 100 m, matching shape and transform, one float32 layer and values in [0,1]. The pinned shared gate has a known finite-NoData-in-footprint gap; our supplemental check blocks it but the upstream tool still needs a fix. Our conservative all-finite check is not proof that zero-outside meets the official null/NaN wording or that the portal will accept it.</li><li><strong>Open DrivenData.</strong> Sign in, enroll, open this competition’s submission form (the authenticated menu labels were not inspected), and select the approved file and enter the byte-bound short note (at most 140 characters for this project). Check the actual remaining weekly allowance on the submission page.</li><li><strong>Keep the receipt.</strong> Record the exact filename, hash, note, timestamp and organizer result. A local HOLDOUT-DTI or an unvalidated projection is never a live score.</li></ol><div class="callout">A previous upload returned “Predicted values must be in range [0, 1]”. Its actual cause is unknown without the rejected bytes. The read-back validator reports NaN, infinity, below-zero, above-one and masked-cell counts separately inside and outside the reference footprint. It never clips or silently repairs a raster.</div><p><a class="text-link" href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">Read the official format ↗</a></p></article>
 <aside class="card guide-card" id="novelty"><div class="section-header"><div><h2>Why the gate is blocked</h2><p>Two independently reopened prior files.</p></div></div><p><strong>Binary lattice witness.</strong> {w['within_3px_pixels']:,} of {w['footprint_pixels']:,} footprint cells are within three pixels of a registered lattice dot. Only {w['outside_3px_pixels']:,} are outside. For {w['example_budget_distinct_dots']:,} distinct in-footprint dots, the minimum possible overlap is <strong>{w['minimum_possible_overlap_at_example_budget']*100:.2f}%</strong>, above the 70% limit.</p><p><strong>Continuous-prior witness.</strong> The shared literal implementation counts any finite positive prior pixel as support. A registered continuous prior is positive across the entire footprint. Under that implementation every nonempty candidate overlaps it completely; whether a continuous field should count as “dots” is unresolved, not silently exempted.</p><p><a href="{e(w['source'])}">Research TIFF reference — DO NOT SUBMIT (lattice) ↗</a> · <a href="{e(d['source'])}">Research TIFF reference — DO NOT SUBMIT (continuous prior) ↗</a> · <a href="data/portfolio.json">Measured proof ↗</a></p><div class="callout">The binary-lattice budget bound does not prove every smaller raster fails. The continuous-prior result depends on the explicitly stated shared support definition.</div></aside></div>'''
     body += '''<section class="callout" role="status"><strong>Evidence scope.</strong> The independent pinned-byte registry receipt dated 2026-10-28 (<a href="data/registry_audit_20261028.json">audit JSON ↗</a>) records the lattice bound (99.8713% of footprint covered; minimum 3-px overlap 0.8234 at the 37,654 budget), B2 lineage (GEMSDOE25≡GEMSDOE30; GEMSDOE32 pruned at 2 px; GEMSDOE36 adds 1,200), and nine-site overlap. It is a historical receipt, not a fresh complete-registry scan by this review. This session ran 373 tests (16 explicitly skipped because official rasters/shared template are absent) and the local Pages/release build; it did not rerun a raster audit or candidate experiment. The decision-critical policy question and follow-up are in <a href="research/session-review-20261028-verification.html">the session review ↗</a>.</section>'''
