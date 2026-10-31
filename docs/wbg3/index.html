@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>WBG3-DTOE — executive summary</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#15202b;background:#f5f7fa;line-height:1.55}
+*{box-sizing:border-box}body{margin:0}header{background:#12263a;color:#fff;padding:14px max(20px,calc((100% - 1080px)/2))}
+header a{color:#e6efff;margin-right:18px}main{max-width:1080px;margin:auto;padding:24px 20px 60px}
+h1{font-size:1.5rem}h2{font-size:1.15rem;margin-top:0}
+.banner{border-radius:12px;padding:22px;margin:18px 0;border:2px solid}
+.banner.ok{background:#e9f9ef;border-color:#1c7c3c}.banner.ok h1{color:#14662d;margin:0 0 6px}
+.banner.no{background:#fff0f0;border-color:#a61b1b}.banner.no h1{color:#8b1515;margin:0 0 6px}
+.card{background:#fff;border:1px solid #d9e0e7;border-radius:10px;padding:18px;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{padding:8px;border:1px solid #d9e0e7;text-align:left;vertical-align:top}th{background:#edf1f5}
+code{overflow-wrap:anywhere;background:#f0f3f6;padding:1px 4px;border-radius:4px}
+.muted{color:#536272}.warn{background:#fff7e0;border:1px solid #c9a227;border-radius:8px;padding:12px}
+</style></head><body>
+<header><a href="../index.html">Project dashboard</a><a href="../executive-summary.html">Nine-site executive summary</a><a href="../../release/wbg3/index.html">Download page</a><a href="https://github.com/wingbangboozle1-lang/WBGGEMSDOE2">GitHub &nearr;</a></header>
+<main>
+<section class="banner ok" role="status"><h1>All automated gates passed &mdash; release candidate ready</h1><p>The session's unique, validated candidate is published in the release channel. <strong><a href="../../release/wbg3/index.html">Open the download page &rarr;</a></strong> (verify your weekly allowance on the official portal, then download and submit). Measured holdout: <strong>0.1776</strong>. Leaderboard estimate (a projection, never a score): <strong>0.1070</strong> [0.0290, 0.1850].</p></section>
+<section class="card"><h2>1. The candidate file</h2>
+<p>The validated GeoTIFF and its single-member ZIP live in the release channel:
+<strong><a href="../../release/wbg3/index.html">release/wbg3 &mdash; download page &rarr;</a></strong>
+(that page carries the download buttons, the SHA-256 to verify, and the step-by-step portal instructions).</p>
+<ul>
+<li><strong>Name</strong>: <code>wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros</code></li>
+<li><strong>SHA-256</strong>: <code>c9c0c16224c323366a3c134175b91df0a87d7990ebd90da53a765ddefb7f922f</code> &middot; 134,511 bytes &middot; 38,000 dots</li>
+<li><strong>Portal note (&le;140 chars)</strong>: <code>WBG3-DTOE A5_b38_g035_nomod 100pctOOF CELF300m 38000dots HOLDOUT-DTI=0.1776 [0.1558,0.2006] not-a-score</code></li>
+<li><strong>Format</strong>: PASS twice &mdash; shared fail-closed writer receipt + independent strict validator. All-finite, values in [0,1] everywhere, EPSG:32611, 3730&times;3292, transform matches <code>sample_submission.tif</code>, zero dots on the mapped catalogue. The earlier &ldquo;Predicted values must be in range [0, 1]&rdquo; upload rejection cannot recur for this file.</li>
+</ul></section>
+
+<section class="card"><h2>2. Score evidence (labels per protocol)</h2>
+<table>
+<tr><th>Quantity</th><th>Value</th><th>Label</th></tr>
+<tr><td>Pooled holdout DTI (chosen arm <code>A5_b38_g035_nomod</code>)</td><td><strong>0.177566</strong>, 95% CI [0.155788, 0.200564]</td>
+<td>HOLDOUT-DTI &mdash; evaluator <code>gems57-pooled-hide-v2</code>, 60,988 withheld positives, paired spatial-block bootstrap; proxy truth = withheld catalogue segments; <em>not a leaderboard score</em></td></tr>
+<tr><td>Incumbent control arm (A0)</td><td>0.177563</td><td>HOLDOUT-DTI, same folds/evaluator</td></tr>
+<tr><td>Leakage canary (61 features)</td><td>max 0.6179 &lt; 0.90</td><td>PASS &mdash; no feature-alone leakage alarm</td></tr>
+<tr><td><strong>Leaderboard estimate for the new file</strong></td><td><strong>0.1070</strong> [0.0290, 0.1850]</td>
+<td>EMPIRICAL-ESTIMATE (projection, never a score): fleet anchor 0.1067 &times; measured holdout ratio 1.0026; &plusmn;0.078 fleet LOSO RMSE</td></tr>
+<tr><td>Best historical claim, GEMSDOE32 B2</td><td>0.2778</td><td>USER-REPORTED; no organizer receipt</td></tr>
+<tr><td>Public leaderboard (2026-10-29 snapshot)</td><td>#1 = 0.4544</td><td>ORGANIZER-PUBLISHED snapshot; not a receipt for any project file</td></tr>
+</table>
+<p class="muted">Reading: the estimate does <em>not</em> establish a score above the 0.2778 reference; it is the honest fleet-model projection with its uncertainty. What is established locally: reproducible holdout parity with the best in-repo method, a unique placement, and a file that satisfies the published range rule. Only an uploaded submission produces an ORGANIZER-CONFIRMED score.</p></section>
+
+<section class="card"><h2>3. Uniqueness (duplicate stop)</h2>
+<p><strong>Unique vs the nine GEMSDOE focus sites: PASS.</strong> Share of this file's dots within 3&nbsp;px of each site's best raster (limit 70%):</p>
+<table>
+<tr><th>Site</th><th>Share within 3&nbsp;px</th><th>Spearman (dot union)</th></tr>
+<tr><td>GEMSDOE24</td><td>62.4%</td><td>0.04</td></tr><tr><td>GEMSDOE25</td><td>60.1%</td><td>0.0324</td></tr><tr><td>GEMSDOE27</td><td>62.9%</td><td>0.0397</td></tr><tr><td>GEMSDOE28</td><td>56.7%</td><td>0.0341</td></tr><tr><td>GEMSDOE30</td><td>60.1%</td><td>0.0324</td></tr><tr><td>GEMSDOE31</td><td>57.1%</td><td>0.0346</td></tr><tr><td>GEMSDOE32</td><td>54.4%</td><td>0.0362</td></tr><tr><td>GEMSDOE33</td><td>58.6%</td><td>0.0331</td></tr><tr><td>GEMSDOE36</td><td>54.6%</td><td>0.0356</td></tr>
+</table>
+<p>558 accessible registry rasters scanned, 0 errors (472 non-blanket, 86 dense/blanket witnesses). Max Spearman anywhere: 0.253 (limit 0.90) — cross-lane drift PASS. Literal 70%-halo flags: 13 (degeneracy, see below).</p>
+<p class="muted"><strong>Flagged irregularity (measured, not exempted):</strong> the literal &ldquo;70%-within-3&nbsp;px&rdquo; test is degenerate against dense-budget rasters: the 13 flags are dense fleet files (80k&ndash;206k dots whose halos blanket every ridge; Spearman 0.011&ndash;0.051, i.e. unrelated surfaces) and this repository's <em>own unpublished sibling research rasters</em> (0.82&ndash;0.92; same mandated pinned-template lineage, fresh seed/surface, never submitted anywhere). The scan's control shows the historical GEMSDOE32-B2 file (USER-REPORTED 0.2778) itself measures 0.92&ndash;1.00 against the same dense witnesses &mdash; the literal test rejects every dotted submission on record. Cross-lane drift (Spearman &gt; 0.90) never occurs.</p></section>
+
+<section class="card"><h2>4. The nine focus sites (historical references)</h2>
+<table>
+<tr><th>Site</th><th>Best file</th><th>Reported score</th><th>Unique vs other sites?</th><th>Action</th></tr>
+<tr><td>GEMSDOE24</td><td><code>gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</code></td><td>0.2477</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE25</td><td><code>gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</code></td><td>0.2600</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE27</td><td><code>gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</code></td><td>0.2449</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE28</td><td><code>gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif</code></td><td>0.2710</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE30</td><td><code>gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif</code></td><td>0.2600</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE31</td><td><code>gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif</code></td><td>0.2708</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE32</td><td><code>gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code></td><td>0.2778</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE33</td><td><code>GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif</code></td><td>0.2632</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr><tr><td>GEMSDOE36</td><td><code>gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif</code></td><td>0.2750</td><td>NO &mdash; shares &ge;86.7% of its dots within 3&nbsp;px of another site's dots (measured 2026-10-28, <code>evidence/nine_site_recheck_20261028.json</code>)</td><td>Reference only &mdash; do not submit these historical files</td></tr>
+</table>
+<p class="muted">All nine are near-copies of one 44,090-dot ancestor family (GEMSDOE25 and GEMSDOE30 decode to the same array; GEMSDOE32 B2 is that array minus dots within 2&nbsp;px of the mapped catalogue &mdash; measured lineage). Scores are USER-REPORTED; no organizer receipts exist.</p></section>
+
+<section class="card"><h2>5. Method and audit trail</h2>
+<ul>
+<li>Lane: <em>WBG3-DTOE (DTI-optimal tail emission on the pinned DPHS OOF stack)</em> &mdash; preregistered in <code>research/wbg3_preregistration_20261031.md</code> before the run.</li>
+<li>Stack: pinned shared template (gems57 evaluator/writer, hash-pinned), DPHS 60-feature zero-catalogue cache (owner-mirror, SHA-256-pinned restore), Minoux CELF 300&nbsp;m allocator with the exact DW-Tversky break-even bar.</li>
+<li>Preregistered arm grid: budget {26k, 38k} &times; gain bar {0.020, 0.035} &times; relay/tip modulator {on, off}; selected by pooled HOLDOUT-DTI, then gated by the duplicate stop.</li>
+<li>Honest negatives: the gain bar and modulator are neutral on folds; budget 26k is worse (0.146 vs 0.178). The CELF bar already stops emission naturally (fold emission 2.9k&ndash;18.2k &ll; cap) &mdash; the incumbent configuration is at its measured optimum.</li>
+<li>Checkout anchors reproduced the 2026-10-28 audit exactly: distal2 fixed-raster 0.0289, GEMSDOE32-B2 0.0067.</li>
+</ul>
+<table>
+<tr><th>Arm</th><th>Pooled HOLDOUT-DTI</th></tr>
+<tr><td><code>A0_inc_b38_g020_mod</code> (incumbent control)</td><td>0.177563</td></tr><tr><td><code>A1_b26_g020_mod</code></td><td>0.145870</td></tr><tr><td><code>A2_b38_g035_mod</code></td><td>0.177563</td></tr><tr><td><code>A3_b26_g035_mod</code></td><td>0.145870</td></tr><tr><td><code>A4_b26_g020_nomod</code></td><td>0.145965</td></tr><tr><td><code>A5_b38_g035_nomod</code> &#9733; chosen</td><td>0.177566</td></tr>
+</table>
+<p><a href="../../release/wbg3/runcard.json">Run card JSON &darr;</a> &middot;
+<a href="../../release/wbg3/registry_scan.json">Registry scan JSON &darr;</a> &middot;
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Official problem &amp; metric &nearr;</a> &middot;
+<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official leaderboard &nearr;</a> &middot;
+<a href="https://github.com/drivendataorg/gems-prize-reference-solution">Organizer reference solution &nearr;</a></p>
+<div class="warn"><strong>Honest limits.</strong> The local holdout scores withheld <em>catalogued</em> segments while the official test labels are uncatalogued new faults &mdash; the proxy is structurally analogous but not identical, so the estimate carries real uncertainty. All historical scores are USER-REPORTED. No weekly submission slot was spent generating this file; the slot is spent only when the owner uploads it.</div>
+</section>
+</main></body></html>

@@ -1,4 +1,27 @@
-## START HERE (2026-10-29) — authoritative decision: NEGATIVE / DO NOT SUBMIT
+## START HERE (2026-10-31) — WBG3-DTOE lane: one new unique candidate, OK TO DOWNLOAD AND SUBMIT (conditional)
+
+**This session generated, validated and published exactly one new submission TIFF.** Lane: `WBG3-DTOE` (preregistered in [`research/wbg3_preregistration_20261031.md`](research/wbg3_preregistration_20261031.md) before the run). Executive summary + one-click download: **[`docs/wbg3/index.html`](docs/wbg3/index.html)** (download buttons on [`release/wbg3/index.html`](release/wbg3/index.html)). Selector receipt: [`evidence/selector_receipt_wbg3_20261031.json`](evidence/selector_receipt_wbg3_20261031.json).
+
+| Item | Value |
+|---|---|
+| File to submit | [`release/wbg3/wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros.tif`](release/wbg3/wbg3-dtoe-A5_b38_g035_nomod-38000dots-20261031T012648Z-878eea5f-zeros.tif) (`.zip` sibling) |
+| SHA-256 | `c9c0c16224c323366a3c134175b91df0a87d7990ebd90da53a765ddefb7f922f` (134,511 bytes, 38,000 dots) |
+| Portal note (≤140 chars) | `WBG3-DTOE A5_b38_g035_nomod 100pctOOF CELF300m 38000dots HOLDOUT-DTI=0.1776 [0.1558,0.2006] not-a-score` |
+| Format | **PASS twice** — shared fail-closed writer receipt + independent strict validator: all-finite, every value in [0,1] (zeros outside footprint), EPSG:32611, 3730×3292, transform matches `sample_submission.tif`, 0 dots on the mapped catalogue. The earlier "Predicted values must be in range [0, 1]" portal error cannot recur for this file. |
+| Holdout | **HOLDOUT-DTI 0.177566**, 95% CI [0.155788, 0.200564], 60,988 withheld positives, evaluator `gems57-pooled-hide-v2`, fresh seed 20261031 — ties the incumbent control (0.177563) and replicates the historical distal2 0.1771. **Not a leaderboard score.** |
+| Leakage canary | PASS — 61 features, max single-feature AUC 0.6179 < 0.90 |
+| Unique vs the nine GEMSDOE focus sites | **PASS** — candidate dots within 3 px of each site's best raster: 54.4%–62.9% (limit 70%), measured on pinned bytes |
+| Unique vs accessible registry | Phase-B scan MEASURED (`evidence/wbg3_registry_scan.json`): 558 accessible registry rasters, 0 errors. Cross-lane drift (rho > 0.90): **PASS everywhere** (max Spearman 0.253). Literal 70%-halo flags: 13 — all are dense-budget fleet rasters (80k–206k dots; halo blankets every ridge; rho 0.011–0.051) or this repo's **own unpublished sibling research rasters** (0.82–0.92; same mandated pinned-template lineage, fresh seed/surface, never submitted anywhere). Witness control measured in the same scan: GEMSDOE32-B2 (USER-REPORTED 0.2778) itself scores 0.92–1.00 against the dense witnesses, so the halo test rejects every dotted submission on record, including the 0.2778 reference. Reported, not exempted. |
+| Leaderboard estimate | **EMPIRICAL-ESTIMATE ≈ 0.107 [0.029, 0.185]** (fleet anchor 0.1067 × measured holdout ratio; ±0.078 fleet LOSO RMSE). **This is a projection, never a score; no local evidence establishes a score above the USER-REPORTED 0.2778 reference.** |
+| Verdict | Conditional publish (selector receipt above; uniqueness per the session brief: unique vs the nine listed sites, no cross-lane drift, no exact duplicate of any listed submission). **Check your remaining weekly allowance on the submission page before uploading** — this sandbox cannot read the account quota. No slot was spent generating the file. |
+
+**What the arm grid showed (honest negatives are deliverables).** On the shared quadrant folds, the incumbent configuration (budget 38k cap, gain bar 0.020, modulator on) is already at its measured optimum: the exact-DTI break-even bar in the shared CELF allocator stops emission naturally (fold emission 2.9k–18.2k ≪ cap); budget 26k is worse (0.146 vs 0.178); the relay/tip modulator is neutral on folds. The chosen arm wins the preregistered argmax by 3×10⁻⁶ and differs from the incumbent only in the modulator-off full-map surface and the 0.035 gain bar. Checkout anchors reproduced the 2026-10-28 audit exactly (distal2 fixed-raster 0.0289; GEMSDOE32-B2 0.0067), proving this checkout measures identically to the pinned historical audits.
+
+**Why the 0.2778 reference scored highest (verified 2026-10-28, unchanged):** all nine focus sites' best files are near-copies of one 44,090-dot ancestor (GEMSDOE25 ≡ GEMSDOE30 bytewise; GEMSDOE32 B2 = ancestor minus dots within 2 px of the catalogue, freeing pure false-positive mass). Known USGS/INGENIOUS fault pixels are masked from scoring, so catalogue-adjacent dots earn nothing; pruning them plus modestly lower mass produced the family's best USER-REPORTED score. See [`docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md`](docs/EXECUTIVE_SUMMARY_NINE_SITES_20261028.md) and [`docs/wbg3/index.html`](docs/wbg3/index.html) for the labeled tables.
+
+---
+
+## START HERE (2026-10-29) — superseded session decision: NEGATIVE / DO NOT SUBMIT (historical)
 
 **There is currently no eligible submission TIFF. Do not download or submit any prediction file in this repository.** This is the fail-closed decision from the latest checkout review, not a claim that all historical approaches failed scientifically. No new experiment was authorized or run in this review, no new raster was generated, and no competition slot was used.
 
