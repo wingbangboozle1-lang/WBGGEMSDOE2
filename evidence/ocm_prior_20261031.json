@@ -1,0 +1,71 @@
+{
+ "schema": "wbg2.ocm-prior.v1",
+ "built_utc": "2026-10-31T01:11:18.094569+00:00",
+ "fields": {
+  "b02_rtp": 2,
+  "b06_tc": 6,
+  "b13_grav": 13,
+  "b15_depth": 15,
+  "b17_cond": 17,
+  "b19_slope": 19
+ },
+ "sigmas_px": [
+  1.5,
+  4.5
+ ],
+ "top_quantile": 0.9,
+ "repulsion_ramp_px": [
+  2.0,
+  5.0
+ ],
+ "band_stats": {
+  "b02_rtp": {
+   "band": 2,
+   "top_decile_thr": 35.206581115722656,
+   "top_cells": 516739,
+   "seconds": 4.0
+  },
+  "b06_tc": {
+   "band": 6,
+   "top_decile_thr": 0.7120411992073059,
+   "top_cells": 516739,
+   "seconds": 3.9
+  },
+  "b13_grav": {
+   "band": 13,
+   "top_decile_thr": 0.459693968296051,
+   "top_cells": 516739,
+   "seconds": 3.9
+  },
+  "b15_depth": {
+   "band": 15,
+   "top_decile_thr": 43.09354019165039,
+   "top_cells": 516739,
+   "seconds": 3.7
+  },
+  "b17_cond": {
+   "band": 17,
+   "top_decile_thr": 0.0364815816283226,
+   "top_cells": 516739,
+   "seconds": 3.8
+  },
+  "b19_slope": {
+   "band": 19,
+   "top_decile_thr": 2.0943117141723633,
+   "top_cells": 516739,
+   "seconds": 3.8
+  }
+ },
+ "conc_hist": {
+  "0": 10332349,
+  "1": 1427109,
+  "2": 334676,
+  "3": 34250,
+  "4": 1675,
+  "5": 83,
+  "6": 149018
+ },
+ "p_nonzero_cells": 1803222,
+ "p_max": 1.0,
+ "band_valid_inside": 5167373
+}

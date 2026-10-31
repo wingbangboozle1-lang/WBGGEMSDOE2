@@ -18,3 +18,5 @@ data_public/official/
 data/public/
 data_public/_cache/
 data_public/rasters_focus/
+# re-fetched pinned research rasters (hash-verified in evidence; restorable)
+/registry/focus_rasters/

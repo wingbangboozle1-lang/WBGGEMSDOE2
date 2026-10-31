@@ -1,0 +1,37 @@
+{
+  "schema": "wbg2.ocm-lane-config.v1",
+  "lane": "WBG2-OCM",
+  "lane_name": "Off-catalogue Multi-band Concordance emission (OCM)",
+  "created_utc": "2026-10-31",
+  "assignment_source": "Project-owner directive of 2026-10-31: 'Work on your own to complete tasks... keep iterating and testing until we have the highest scoring submission'. The lane is assigned here explicitly so the protocol's single-method-paragraph gate is satisfied; it is recorded, not self-invented in secret.",
+  "method_paragraph": "Using the hash-verified owner-mirrored 19-band geophysical stack on the organizer grid (EPSG:32611, 3730x3292, 100 m), build a label-free concordance surface: for each of six physically independent fields (rtp magnetics b2, total-count radiometrics b6, isostatic gravity b13, conductive-base depth b15, conductivity surface b17, detrended elevation slope b19) compute ridge magnitude |grad(G_sigma * band)| at sigma=1.5 px and sigma=4.5 px, take the per-field max, keep within-footprint top-decile cells, and sum field indicators to a concordance count C in 0..6; set prior p = (C/6)^2 multiplied by a smooth repulsion ramp R = clip((dist_to_visible_catalogue_px - 2)/3, 0, 1) that zeroes emission within 2 px of the MAPPED catalogue (known-fault pixels are masked from official scoring, so budget must concentrate off-catalogue) and ramps to full weight by 5 px; emit a fixed budget of ~39,000 unit-mass dots by descending expected kernel credit E[k] = p * k300 with greedy 300 m triangular-kernel coverage credit (shared gems57.emit greedy allocator, no private fork); write a float32 single-band GeoTIFF with value 1.0 at dots, 0.0 everywhere else inside the footprint and 0.0 outside (all-finite, no NaN anywhere), matching the pinned sample grid. All catalogue-derived geometry (the repulsion distance field) is rebuilt from visible faults only inside each buffered whole-segment hide-and-recover fold; concordance uses no catalogue at all.",
+  "grid": {
+    "height": 3730,
+    "width": 3292,
+    "epsg": 32611,
+    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+    "resolution_m": 100.0,
+    "footprint_cells": 5167373
+  },
+  "metric": {
+    "alpha": 0.2,
+    "beta": 0.8,
+    "radius_m": 300,
+    "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/"
+  },
+  "holdout": {
+    "evaluator": "shared template gems57-pooled-hide-v2 (data/shared_template, pinned commit 822a0ce5)",
+    "blocking": "four spatial quadrants; whole segments <=12 px with 3 px buffer; domain erode 12 px",
+    "caveat": "Owner-mirror labels.tif is byte-identical to existing_faults.tif (sha256 7ba308cc...), so hide-and-recover truth IS the mapped catalogue. Official scoring masks mapped faults, therefore this holdout measures the INVERSE of the leaderboard task for off-catalogue emitters. HOLDOUT-DTI is reported with that caveat and never promoted to a leaderboard projection."
+  },
+  "inputs": {
+    "training_features": {"path": "data/official/training_features.tif", "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5", "bytes": 418912844, "origin": "owner mirror buffedlizard55-lab/GEMSDOE split blobs, hash-verified"},
+    "existing_faults": {"path": "data/official/existing_faults.tif", "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093"},
+    "sample_submission": {"path": "data/official/sample_submission.tif", "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"}
+  },
+  "duplicate_stop": {
+    "rank_correlation_limit": 0.90,
+    "dot_halo_3px_limit": 0.70,
+    "audited_against": "nine focus-site pinned rasters (sha256-verified) plus every local fleet raster in docs/downloads and downloads/"
+  }
+}

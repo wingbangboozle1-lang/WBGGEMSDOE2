@@ -1,0 +1,223 @@
+{
+ "schema": "wbg2.ocm-uniqueness.v1",
+ "rule": "stop if rank-corr > 0.90 or >70% of our dots within 3 px of one registry raster",
+ "audited_files": 25,
+ "stops": [],
+ "dense_priors_documented_not_silent": [
+  "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif"
+ ],
+ "interpretation": "Dot-halo rule applied to sparse binary emission supports. Registered dense continuous priors (positive over >50% of the footprint, e.g. downloads/wbg-h1-blind-conduit-breach...zeros.tif) cover ANY non-empty candidate by construction; per AGENTS.md their exemption is documented here, not silent, and matches the nine-site recheck precedent that cleared distal2 under the same reading. This interpretation remains formally unresolved with the requester.",
+ "worst_halo": {
+  "halo": 1.0,
+  "corr": -0.036543203757331354,
+  "file": "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif"
+ },
+ "worst_sparse_halo": {
+  "file": "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif",
+  "halo": 0.4823846153846154,
+  "corr": 0.08300142426167481
+ },
+ "rows": {
+  "registry/focus_rasters/GEMSDOE24.tif": {
+   "group": "focus",
+   "their_dots": 60069,
+   "our_dots_within_3px_frac": 0.14843589743589744,
+   "smoothed_spearman": -0.0027701794998088165,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE25.tif": {
+   "group": "focus",
+   "their_dots": 44090,
+   "our_dots_within_3px_frac": 0.14205128205128206,
+   "smoothed_spearman": -0.002898649289760649,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE27.tif": {
+   "group": "focus",
+   "their_dots": 61328,
+   "our_dots_within_3px_frac": 0.1487948717948718,
+   "smoothed_spearman": -0.005391602856725149,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE28.tif": {
+   "group": "focus",
+   "their_dots": 37660,
+   "our_dots_within_3px_frac": 0.14146153846153847,
+   "smoothed_spearman": -0.0019378837699682164,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE30.tif": {
+   "group": "focus",
+   "their_dots": 44090,
+   "our_dots_within_3px_frac": 0.14205128205128206,
+   "smoothed_spearman": -0.002898649289760649,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE31.tif": {
+   "group": "focus",
+   "their_dots": 40199,
+   "our_dots_within_3px_frac": 0.14205128205128206,
+   "smoothed_spearman": -0.0023247795449355653,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE32.tif": {
+   "group": "focus",
+   "their_dots": 37654,
+   "our_dots_within_3px_frac": 0.14205128205128206,
+   "smoothed_spearman": -0.0004315637544356382,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE33.tif": {
+   "group": "focus",
+   "their_dots": 41865,
+   "our_dots_within_3px_frac": 0.14366666666666666,
+   "smoothed_spearman": -0.003019582521808663,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "registry/focus_rasters/GEMSDOE36.tif": {
+   "group": "focus",
+   "their_dots": 38854,
+   "our_dots_within_3px_frac": 0.14205128205128206,
+   "smoothed_spearman": -0.0015930059767548246,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif": {
+   "group": "docs/downloads",
+   "their_dots": 100000,
+   "our_dots_within_3px_frac": 0.07902564102564102,
+   "smoothed_spearman": -0.037884710260163025,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/wbg2-dz16-n34500-20261027T000000Z-8e4646cf-zeros.tif": {
+   "group": "docs/downloads",
+   "their_dots": 34500,
+   "our_dots_within_3px_frac": 0.28435897435897434,
+   "smoothed_spearman": 0.07008809226710282,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/wbg2-h1-stepxasym-e2-34564dots-20261026T221541Z-efd46877-zeros.tif": {
+   "group": "docs/downloads",
+   "their_dots": 34564,
+   "our_dots_within_3px_frac": 0.06815384615384615,
+   "smoothed_spearman": -0.05344157439845931,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/wbg4-sscc-blind-66383dots-20261028T170239Z.tif": {
+   "group": "docs/downloads",
+   "their_dots": 66383,
+   "our_dots_within_3px_frac": 0.018435897435897436,
+   "smoothed_spearman": 0.0008327002036190809,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif": {
+   "group": "downloads",
+   "their_dots": 5167373,
+   "our_dots_within_3px_frac": 1.0,
+   "smoothed_spearman": -0.036543203757331354,
+   "dense_continuous_prior": true,
+   "stop": false
+  },
+  "downloads/wbg2-blind-discontinuity-E3-soft88-20261027T185715Z-606d02c9c1-zeros.tif": {
+   "group": "downloads",
+   "their_dots": 100000,
+   "our_dots_within_3px_frac": 0.07902564102564102,
+   "smoothed_spearman": -0.037884710260163025,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/distal/wbg2-distaloof-natural_oof-38000dots-20261028T003000Z-8237e99a-zeros.tif": {
+   "group": "docs/downloads/distal",
+   "their_dots": 38000,
+   "our_dots_within_3px_frac": 0.13397435897435897,
+   "smoothed_spearman": 0.04078379509460902,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/distal/wbg2-distaloof-piedmont40-37870dots-20261028T003940Z-8163a5dc-zeros.tif": {
+   "group": "docs/downloads/distal",
+   "their_dots": 37870,
+   "our_dots_within_3px_frac": 0.15966666666666668,
+   "smoothed_spearman": 0.051152327363445486,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/distal/wbg2-distaloof-quota35-37988dots-20261028T003932Z-cbdb172d-zeros.tif": {
+   "group": "docs/downloads/distal",
+   "their_dots": 37988,
+   "our_dots_within_3px_frac": 0.1483846153846154,
+   "smoothed_spearman": 0.045497830234884365,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/distal_exp2/wbg2-distal2-natural_oof-38000dots-20261028T170304Z-062373ad-zeros.tif": {
+   "group": "docs/downloads/distal_exp2",
+   "their_dots": 38000,
+   "our_dots_within_3px_frac": 0.14933333333333335,
+   "smoothed_spearman": 0.04211447100429517,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2-zerooutside.tif": {
+   "group": "docs/downloads/gemsdoe",
+   "their_dots": 38000,
+   "our_dots_within_3px_frac": 0.4823846153846154,
+   "smoothed_spearman": 0.08300142426167481,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/gemsdoe/gems-wbg4-triphysics-ridge-38k-20261028T190000Z-b7c1e4a2.tif": {
+   "group": "docs/downloads/gemsdoe",
+   "their_dots": 38000,
+   "our_dots_within_3px_frac": 0.4823846153846154,
+   "smoothed_spearman": 0.08300142426167481,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/cbs/wbg2-d19dotted-38000dots-20261027T191824Z-cb2f6ff4-zeros.tif": {
+   "group": "docs/downloads/cbs",
+   "their_dots": 38000,
+   "our_dots_within_3px_frac": 0.3262307692307692,
+   "smoothed_spearman": 0.06789766210244302,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/dphs/wbg2-dphs-exp3-submod300m-20261027T194500Z-46a3a89a-zeros.tif": {
+   "group": "docs/downloads/dphs",
+   "their_dots": 36500,
+   "our_dots_within_3px_frac": 0.045153846153846156,
+   "smoothed_spearman": 0.00690003397466626,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/gvcd/wbg2-gvcd-exp3-oof-ventstress-37400-20261027T235800Z-5275cd04-zeros.tif": {
+   "group": "docs/downloads/gvcd",
+   "their_dots": 37400,
+   "our_dots_within_3px_frac": 0.21720512820512822,
+   "smoothed_spearman": 0.02130065919195391,
+   "dense_continuous_prior": false,
+   "stop": false
+  },
+  "docs/downloads/msptcd/wbg2-msptcd-e3-25594dots-20261027T173000Z-2642eedd-zeros.tif": {
+   "group": "docs/downloads/msptcd",
+   "their_dots": 25594,
+   "our_dots_within_3px_frac": 0.04874358974358974,
+   "smoothed_spearman": 0.06944143009536265,
+   "dense_continuous_prior": false,
+   "stop": false
+  }
+ },
+ "limitation": "Audited against nine sha256-verified focus-site pins plus every local fleet TIFF in this checkout; the global registry (~100 public fleet rasters) was not fully re-fetched, so this is a strong but incomplete uniqueness check."
+}

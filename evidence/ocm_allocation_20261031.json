@@ -1,0 +1,26 @@
+{
+ "schema": "wbg2.ocm-allocation.v1",
+ "k_truth_projection": 12783,
+ "arm_a": {
+  "policy": "shared gems57.emit.greedy_allocate",
+  "n_dots": 39871,
+  "surrogate_dti": 2.3654283045316977,
+  "rounds": 4,
+  "expected_covered_credit": 45908.44131338615,
+  "expected_self_credit": 39871.0
+ },
+ "arm_b": {
+  "policy": "fixed-budget bar=0 coverage greedy (lane-local stopping rule)",
+  "n_dots": 39000,
+  "budget": 39000
+ },
+ "allowed_cells": 4862825,
+ "dots_on_catalogue": {
+  "arm_a": 0,
+  "arm_b": 0
+ },
+ "dots_min_dist_to_catalogue_px": {
+  "arm_a": 7.0,
+  "arm_b": 7.0
+ }
+}
