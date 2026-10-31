@@ -1,0 +1,9 @@
+{
+ "name": "wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros",
+ "tif": "docs/downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.tif",
+ "sha256": "4a4700a93827c7090409a464af798f4e3a2c7004344d1c85c1aadee65890dbcb",
+ "zip": "docs/downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.zip",
+ "receipt": "docs/downloads/ocm/wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros.json",
+ "dots": 39000,
+ "note": "OCM: 6-field edge concordance x off-catalogue 2-5px repulsion, greedy 300m coverage; unique vs focus registry 2026-10-31"
+}

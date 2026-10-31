@@ -1,0 +1,9 @@
+{
+ "arm_c_no_repulsion": {
+  "n_dots": 39913,
+  "pooled_dti": 0.0017780506086554257,
+  "pooled_coverage": 0.0020099420127995074,
+  "pooled_n_truth": 22641,
+  "note": "diagnostic: same concordance prior WITHOUT off-catalogue repulsion; quantifies instrument misalignment"
+ }
+}

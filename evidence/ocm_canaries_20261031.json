@@ -1,0 +1,48 @@
+{
+ "schema": "wbg2.ocm-canaries.v1",
+ "evaluator": "shared holdout folds; AUC vs withheld catalogue pixels inside active domain",
+ "pre_registered": {
+  "conc_expect": "0.55-0.75; >0.90 leakage alarm",
+  "repulsion_expect": "inverted AUC >0.90 BY CONSTRUCTION (task misalignment, not silent leakage)"
+ },
+ "pooled": {
+  "conc_2": {
+   "mean_auc": 0.5156737352843087,
+   "n_cells": 8
+  },
+  "conc_3": {
+   "mean_auc": 0.5035819351123153,
+   "n_cells": 8
+  },
+  "conc_4": {
+   "mean_auc": 0.5002493576187516,
+   "n_cells": 8
+  },
+  "conc_5": {
+   "mean_auc": 0.499990625,
+   "n_cells": 8
+  },
+  "conc_6": {
+   "mean_auc": 0.5001893995512003,
+   "n_cells": 8
+  },
+  "conc_count": {
+   "mean_auc": 0.5591864201962555,
+   "n_cells": 8
+  },
+  "repulsion_R": {
+   "mean_auc": 0.023365625,
+   "n_cells": 8
+  }
+ },
+ "alarm": {
+  "conc_2": false,
+  "conc_3": false,
+  "conc_4": false,
+  "conc_5": false,
+  "conc_6": false,
+  "conc_count": false,
+  "repulsion_R": true
+ },
+ "note": "labels.tif is byte-identical to existing_faults.tif; holdout truth IS the mapped catalogue, which official scoring masks. Canary AUCs measure catalogue affinity, not leaderboard skill."
+}

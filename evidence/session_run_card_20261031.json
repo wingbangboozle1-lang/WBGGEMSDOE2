@@ -1,0 +1,175 @@
+{
+ "schema": "wbggems.session-run-card.v1",
+ "review_date": "2026-10-31",
+ "lane": "WBG2-OCM (config/wbg2_ocm_lane.json)",
+ "hypothesis": "Six-field edge concordance off-catalogue (H1, research/hypotheses_20261031.md)",
+ "mechanism": "Concordant subsurface edges (mag/radiometric/gravity/depth/conductivity/slope) mark blind fault strands; repulsion keeps budget off scoring-masked catalogue; greedy 300 m coverage spaces dots where the triangular kernel adds credit.",
+ "named_non_fault_process_that_could_mimic_it": "Buried lithologic/intrusive contacts and dike swarms produce concordant multi-field edges without faulting.",
+ "holdout_dti": null,
+ "holdout_ci_95": null,
+ "withheld_positives": null,
+ "evaluator_version": "shared gems57.holdout.evaluate / gems57-pooled-hide-v2 instrument",
+ "holdout_detail": {
+  "arm_a_dti_bar": {
+   "pooled_dti": 0.0,
+   "ci95_quadrant_bootstrap": [
+    0.0,
+    0.0
+   ],
+   "pooled_coverage": 0.0,
+   "pooled_n_truth": 22641,
+   "mean_fold_dti": 0.0,
+   "emitted_pixels": 39871,
+   "on_visible_catalogue": 0,
+   "per_fold_dti": {
+    "draw20_foldNW_all": 0.0,
+    "draw20_foldNE_all": 0.0,
+    "draw20_foldSW_all": 0.0,
+    "draw20_foldSE_all": 0.0,
+    "draw21_foldNW_all": 0.0,
+    "draw21_foldNE_all": 0.0,
+    "draw21_foldSW_all": 0.0,
+    "draw21_foldSE_all": 0.0
+   }
+  },
+  "arm_b_budget39k": {
+   "pooled_dti": 0.0,
+   "ci95_quadrant_bootstrap": [
+    0.0,
+    0.0
+   ],
+   "pooled_coverage": 0.0,
+   "pooled_n_truth": 22641,
+   "mean_fold_dti": 0.0,
+   "emitted_pixels": 39000,
+   "on_visible_catalogue": 0,
+   "per_fold_dti": {
+    "draw20_foldNW_all": 0.0,
+    "draw20_foldNE_all": 0.0,
+    "draw20_foldSW_all": 0.0,
+    "draw20_foldSE_all": 0.0,
+    "draw21_foldNW_all": 0.0,
+    "draw21_foldNE_all": 0.0,
+    "draw21_foldSW_all": 0.0,
+    "draw21_foldSE_all": 0.0
+   }
+  },
+  "ref_gemsdoe32_b2": {
+   "pooled_dti": 0.004384809290509451,
+   "ci95_quadrant_bootstrap": [
+    0.003902775374553953,
+    0.005275748449379897
+   ],
+   "pooled_coverage": 0.0062471799292281825,
+   "pooled_n_truth": 22641,
+   "mean_fold_dti": 0.004418799268365232,
+   "emitted_pixels": 37654,
+   "on_visible_catalogue": 0,
+   "per_fold_dti": {
+    "draw20_foldNW_all": 0.005119234300348168,
+    "draw20_foldNE_all": 0.005721849025628992,
+    "draw20_foldSW_all": 0.0036614968254688987,
+    "draw20_foldSE_all": 0.0034797123829621137,
+    "draw21_foldNW_all": 0.0031000233064623294,
+    "draw21_foldNE_all": 0.0058060526566376,
+    "draw21_foldSW_all": 0.004172962032270323,
+    "draw21_foldSE_all": 0.004289063617143429
+   }
+  }
+ },
+ "random_controls": {
+  "random_seed1": {
+   "pooled_dti": 0.044851216216756376,
+   "pooled_coverage": 0.0651840684181814
+  },
+  "random_seed2": {
+   "pooled_dti": 0.04328323425481558,
+   "pooled_coverage": 0.06290202158441958
+  },
+  "random_seed3": {
+   "pooled_dti": 0.04176637002290426,
+   "pooled_coverage": 0.06061915443690923
+  }
+ },
+ "canaries": {
+  "conc_2": {
+   "mean_auc": 0.5156737352843087,
+   "n_cells": 8
+  },
+  "conc_3": {
+   "mean_auc": 0.5035819351123153,
+   "n_cells": 8
+  },
+  "conc_4": {
+   "mean_auc": 0.5002493576187516,
+   "n_cells": 8
+  },
+  "conc_5": {
+   "mean_auc": 0.499990625,
+   "n_cells": 8
+  },
+  "conc_6": {
+   "mean_auc": 0.5001893995512003,
+   "n_cells": 8
+  },
+  "conc_count": {
+   "mean_auc": 0.5591864201962555,
+   "n_cells": 8
+  },
+  "repulsion_R": {
+   "mean_auc": 0.023365625,
+   "n_cells": 8
+  }
+ },
+ "allocation": {
+  "schema": "wbg2.ocm-allocation.v1",
+  "k_truth_projection": 12783,
+  "arm_a": {
+   "policy": "shared gems57.emit.greedy_allocate",
+   "n_dots": 39871,
+   "surrogate_dti": 2.3654283045316977,
+   "rounds": 4,
+   "expected_covered_credit": 45908.44131338615,
+   "expected_self_credit": 39871.0
+  },
+  "arm_b": {
+   "policy": "fixed-budget bar=0 coverage greedy (lane-local stopping rule)",
+   "n_dots": 39000,
+   "budget": 39000
+  },
+  "allowed_cells": 4862825,
+  "dots_on_catalogue": {
+   "arm_a": 0,
+   "arm_b": 0
+  },
+  "dots_min_dist_to_catalogue_px": {
+   "arm_a": 7.0,
+   "arm_b": 7.0
+  }
+ },
+ "correlation_overlap_vs_registry": {
+  "worst_halo": {
+   "halo": 1.0,
+   "corr": -0.036543203757331354,
+   "file": "downloads/wbg-h1-blind-conduit-breach-20261026T220000Z-a1b2c3d4-zeros.tif"
+  },
+  "stops": [],
+  "audited_files": 25
+ },
+ "raster_sha256": "4a4700a93827c7090409a464af798f4e3a2c7004344d1c85c1aadee65890dbcb",
+ "validator_output": {
+  "status": "shared write_submission passed: finite [0,1], no NaN inside footprint, CRS/shape/transform match pinned sample grid, zero mass on mapped catalogue"
+ },
+ "submission_name": "wbg2-ocm-conc6-rep2to5-20261031T012459Z-0d4d156f-zeros",
+ "submission_note": "OCM: 6-field edge concordance x off-catalogue 2-5px repulsion, greedy 300m coverage; unique vs focus registry 2026-10-31",
+ "submission_note_max_characters": 140,
+ "evidence_labels": {
+  "fleet_scores": "USER-REPORTED (no organizer receipts exist for any file)",
+  "k_truth": "PROJECTION (metric-model inversion of USER-REPORTED fleet scores)",
+  "holdout": "HOLDOUT-DTI on the catalogue-recovery instrument \u2014 INVERSE of the leaderboard task (official scoring masks mapped faults); not a score forecast",
+  "leaderboard": "ORGANIZER-PUBLISHED public snapshot 0.4544 #1 on 2026-10-29"
+ },
+ "verdict": "candidate_ready_selector_pending",
+ "runtime_seconds": 0.1,
+ "verdict_detail": "Automated gates (format, uniqueness vs audited registry, canaries) pass and the file is registered hash-bound in config/release_register.json. The mechanical approved_candidates() gate stays fail-closed: no wbggems.selector-receipt.v1 exists; the owner must record their real weekly quota (template on docs/ocm/how-to-submit.html). This card is not selector authorization."
+}
